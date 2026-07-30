@@ -4644,3 +4644,21 @@ artefakter. Bevismätningen ska behandla tele-genomfart som diskontinuitet (som 
 filtren: >250u-hopp räknas inte som förflyttning). Analytikern (dm3-analyst) frågas om
 mänskligt tele-fartutnyttjande OM det blir relevant i bevisfasen. Zonrastret exkluderar
 redan tele-voxlarna ur Gate 2-medlet.
+
+## 2026-07-30 — Bevisbryggan påbörjad (agent D) + exportkedjan klar
+ONNX-exportkedjan (rl/export_onnx.py) klar och verifierad: kontrakt v1 (obs[1,97] rå,
+normalisering INBAKAD i grafen — SF:s TorchScript-normaliserare kunde inte traceas,
+formeln clamp((x−μ)/√(σ²+1e−5),±5) bakas in ur checkpointens buffertar; jit.script
+neutraliseras vid modellbygge), rnn[1,512], action_params[1,11] dokumenterad ordning +
+metadata-json. Paritet torch↔onnxruntime: 2,4e-6 max över 20 slumpinputs. Fixar på
+vägen: torch 2.6+ weights_only-allowlist (numpy-skalärer i SF-checkpoints), onnx+
+onnxruntime installerade i .venv-sf. Obs-fixturer dumpade (rl/dump_obs_fixtures.py):
+400 ticks skriptad bunny på 100m via qwsim, peakfart 372.6, luftandel 98 % —
+facit för Rust-sidans obs-byggare.
+AGENT D STARTAD (bakgrund): policy-bryggan i rtx-boten — obs-paritet mot fixturerna
+(<1e-3), tract-onnx in-process CPU-inferens, ctlproto PolicyDrive-läge, ände-till-ände-
+smoke på RIKTIGA mvdsv (100m, teleport till korridorstart, låga farter väntade — loopen
+är beviset). Kombat-filerna orörda, aldrig cargo fmt. Leverans:
+evidence/policy_bridge_smoke.json + lokala commits i rtx-repot.
+Ägarens teleporter-notis och 800-är-golv inskrivna (föreg. post). Träningen rullar
+parallellt (41 k FPS); monitorn vaktar stegväxlingar.
