@@ -4679,3 +4679,29 @@ tränar. Curriculum A–D-daemonlogik skrivs vid fas 2-start (spawn_region-stöd
 gate1_v1-bevakning: steg 3, episodpeakar 448→451,6 på ~12 min — långsam klättring mot
 500-tröskeln, INTE stagnation. Vaktpostgräns satt: står medlet <500 i >1 h övervägs
 entropihöjning per RUNBOOK.
+
+## 2026-07-30 — BEVISBRYGGAN (Gate 1) PÅBÖRJAD: policy → riktig mvdsv (plan)
+Uppdrag: slutet-loop-bevis att gate1-policyn kan köra boten på RIKTIGA servern.
+Plan (körs i ordning, i rtx-repot):
+1. `crates/rex-policy` (ny): Rust-obs-byggare (RaySpec 81 strålar via rtx-nav hull0_trace
+   = samma CM_HullTrace-port som sim/csrc; kinetic 16) + tract-onnx-inferens av
+   pipeline/out/rl/gate1_v1_live.onnx (GRU 512, opset 17). Paritetsbin mot
+   obs_fixtures_100m.npz (konverteras till platt .bin med tools/npz_to_bin.py) — krav <1e-3.
+2. rtx-ctlproto: Cmd::PolicyDrive { bot, onnx, log } (+ Stop återanvänds).
+3. rtx-game: ControlOrder::Policy + bot/policy.rs (per-tick obs→inferens→set_bot_cmd,
+   yaw/pitch/last_action/jump_held speglas i drivern; jump_held per PM_CheckJump-regeln:
+   !jump→false, jump&&(vatten||luft)→oförändrad, annars→true). Kombat rörs EJ.
+4. Smoke: mvdsv + server_100m.cfg (port i cfg, ctl 27700), Teleport (224,-1408,32),
+   PolicyDrive 30 s, per-tick fartlogg (jsonl från spelmodulen), Rust-driverbin.
+5. evidence/policy_bridge_smoke.json + commit i rtx (lokal; push blockerad på token).
+Antagande (eget): msec tas från serverns frametime (sv_mintic 0.013 ⇒ normalt 13,
+loggas per tick); checkpointen är INTE färdigtränad — låga farter väntade, loopen är beviset.
+
+## 2026-07-30 — Gate 1-bevisartefakten publicerad (levande träningssida)
+https://claude.ai/code/artifact/e0cb9492-cdf6-4fc5-8e22-6121659a4918
+Innehåll (allt UPPMÄTT): peakfart-kurva ur 56 309 episoder (median + p10–p90 per 30 s-
+fönster; senaste p50 460, max 481), stegväxlingsmarkeringar, referenslinjer 320/800/821,4,
+nyckeltal (38,4 M frames, 41 k FPS, greedy-eval 448,7), simfundamentet (71 % på wire-
+kvantgolvet, p99 0,495 u, 16,55 M steg/s), hälsa (entropi 3,89→2,11). Tydligt märkt:
+"träningssim — inte gatebevis" + bevisregeln i sidfoten. Uppdateras per milstolpe genom
+republicering av samma scratchpad-fil (samma URL). Byggdata: scratchpad/gate1_curve.json.
