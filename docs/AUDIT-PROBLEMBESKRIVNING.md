@@ -85,6 +85,27 @@ samtidigt. **Svagheter:** okuraterat (strid, AFK, specialregler); formatvariatio
 utökningar som vår strikta parser avvisar); ingen enskild källa är "movement-only".
 Skrivskyddade och oersättliga — all bearbetning sker till separata store-kataloger.
 
+#### MVD kontra QWD i den extraherade storen — uppmätt 2026-07-30
+
+| egenskap | MVD (serverdemo) | QWD (klientdemo) |
+|---|---|---|
+| andel av trajectory_samples | **843,9 M rader (93 %)** | 64,1 M rader (7 %) |
+| demos / spelar-slots | 2 273 / 17 818 (≈ 7,8 spelare per demo = 4on4) | 512 / 3 118 |
+| samplingstakt (median, p5–p95 per demo+slot) | **29,0 sampel/s** (19,5–72,4) | 13,2 sampel/s (6,5–67,6) |
+| hastighet i samplen (`velocity_present`) | **0 %** — endast positioner | 43,3 % |
+| usercmds (knapptryck/intention) | **saknas helt** | 29,9 M rader (endast inspelaren) |
+
+**MVD:s fördelar:** volymen (nästan all statistik — höljesband, ruttgraf, heatmap — vilar på
+MVD-delen); alla spelare i matchen samtidigt, vilket ger 4on4-flödet och livssegmentering; drygt
+dubbla samplingstakten mot QWD-delen. **MVD:s nackdelar:** inga hastigheter (vz för RJ-analys
+måste härledas ur positionsdifferenser, därav golvprobs-vetten som är dt-oberoende) och inga
+usercmds (intentionen — hopptryck, styrning — är osynlig; det enda materialet med intention är
+ägarens egna QWD-demon i § 4.3 plus QWD-delens inspelarspår). **QWD-delens nackdelar:** liten
+(7 %), glesare sampling med större spridning, och usercmds finns bara för den spelare som
+spelade in. Konsekvens för träning: korpusen kan definiera *var* linjen går (geometri, band,
+tider) men aldrig *hur* den körs (styrsekvenser) — beteendekloning ur korpusen är därför
+utesluten som huvudväg, och RL mot korpushärledda grindar är den framkomliga.
+
 ### 4.2 Den extraherade korpusstoren `~/dm3-extract/store-dm3` (8,5 GB parquet)
 
 Arbetshästen. Hive-partitionerad parquet (split × format) med bl.a. `trajectory_samples`
