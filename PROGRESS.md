@@ -4225,3 +4225,45 @@ otäckta toppkanter · 15" med guldlinje = snabbaste vettade korpusexemplet; ref
 även på alla mappbara befintliga rutter (17 par → rutt-id). 36 rutter i listan totalt.
 Validerad headless: inga JS-fel, 36 rutter, 5 grupper; skärmdumpar lästa (graf-kant +
 window med guld mot grönt). Textbugg "streckad linje" på ref-rutter fixad före publicering.
+
+## 2026-07-30 — race_v9: rotfixar för linje-överanpassningen implementerade, träning startad
+
+**Ändringar i `pipeline/race.py`** (exakt de tre fixar sngspawn-utredningens verdict föreskrev):
+
+1. **Blandad geometri per rutt i Roller** (rad 245-263 + `_add_navmesh_env` rad 285-303):
+   vid `human_k > 0` får varje rutt nu k människobane-miljöer PLUS en navmeshmiljö i samma
+   batch, `n_per_route` delas på k+1. Undantag: rutter i `_teleport_dependent()` (quad_to_ra)
+   får ingen navmeshmiljö — deras meshväg kräver teleportern, precis som i ren navmesh-mod.
+   Poängen: strict-protokollets geometri är nu i distributionen; policyn kan inte längre
+   memorera en linje och logga 80 % medan den scorar 0 % på utvärderingsgeometrin.
+2. **Spawnkorrekta människobanor** (`START_TOL_U = 96.0` rad 177, filter i `human_paths_for`
+   rad 181-210): banor vars startpunkt ligger >96 u från `Route.start` släpps och en tydlig
+   rad loggas. Uppmätt vid start: sngspawn_a_to_mega tappar 1/24 (spawn b-banan),
+   sngspawn_b_to_mega tappar 23/24 — registret hade alltså 1 äkta spawn b-bana (utredningen
+   sade 0; registret har omextraherats sedan dess), så b tränar nu på 1 spawnkorrekt bana +
+   navmesh i stället för 6 fel-spawnade. Filtret gäller även poolade restart-states och eval.
+3. **Strict-probe under träning** (`PROBE_EVERY = 100` rad 364, `class StrictProbe`
+   rad 367-421, integration rad 454 och 591-597): var 100:e iteration (samt it 1 som
+   baslinje) körs n=16 samplade episoder per rutt på NAVMESH-miljön från ruttens SANNA start,
+   avkodade exakt som `strict_eval.run` (kategorisk fwd/side, yaw-medel, Bernoulli-hopp från
+   rå logit, inget hoppgolv, inga restarts). **Probekolumnen heter `strict_probe` i
+   train_log-jsonen** (per rutt: name/n/arrival_rate/median_s); i loggen är raden
+   `[probe it N] strict-navmesh sampled n=16 | ...`. Divergens rollout-% mot probe-% ÄR
+   överanpassningssignalen som saknades i v8-loggen.
+
+**Röktest** (3 iter, n=64, resume v8): ingen krasch; miljölistan visar båda geometrierna per
+rutt (t.ex. sngspawn_a 6 human + 1 navmesh; quad_to_ra korrekt UTAN navmesh); probelinjen
+skrevs och visade redan signalen: rollout `window:100%` mot probe `window: 31%`, allt annat
+0 % på strict-geometri — v8:s överanpassning, nu synlig i träningsloggen.
+
+**race_v9 KÖR i tmux `jobs:0`**: `--iterations 2500 --n-per-route 2048 --T 64 --ckpt
+race_v9.pt --resume race_v8.pt --human-k 6 --jump-floor 0.04 --jump-floor-final 0.01
+--restart-prob-final 0.35`, logg `pipeline/out/race/race_v9.log`. Verifierat: resumed,
+filterrader loggade, probe-baslinje it 1 (v8: window 38 %, allt annat 0 % strict-navmesh),
+`[it 1/2500 critic_warmup]` skriven.
+
+**Antaganden (egna beslut):** (a) sng_to_quad behåller sin navmeshmiljö (5946 u, kräver
+984 u/s snitt mot gaten) — spec-troget och strict-geometrin ska vara i distributionen;
+gate-tiden är onåbar där men ankomst inom timeout är inte utesluten, och rutten är inte i
+`_teleport_dependent()`. (b) Probens n=16 är billig (~1-2 min var 100:e iter) och skriver
+inga checkpoints. (c) Röktestets checkpoint `race_smoke_v9fix.pt` lämnad kvar (inget raderas).
