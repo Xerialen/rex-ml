@@ -5121,3 +5121,19 @@ som standard med ärlig not + "äkta pitch"-växel. Valideringskedjan krävde tr
 --use-angle=swiftshader + LD_LIBRARY_PATH till scratchpadens libasound (minnesregeln),
 (3) skärmdumpar LÄSTA: korridor, perspektiv, fog, HUD — allt renderar. 981 grönt vid
 peak-frame verifierat visuellt.
+
+## 2026-07-31 01:42 — FAS 2 INLEDD: Gate 2-träning live på dm3 (transfer från rekordpolicyn)
+BESLUT (eget, loggat): gate1_v1-träningen STOPPAD vid 954M frames — kravet (820) och
+submålet (850) är serverbevisade (984,0/30 körningar), kandidaten fryst; fortsatt Gate 1-
+träning vore GPU på ett löst problem. FAS 2 = Gate 2 (dm3 fritt strövande).
+UPPSTART: gate2_v1 seedad med rekordkandidaten (best.pth → checkpoint_000000001_transfer;
+obs/action-rum identiska, strafe-kärnan följer med) — learnern LADDADE transfern (0
+scratch-fallbacks; runnerns "Starting experiment from scratch" = bara ny experiment-
+katalog). 32 workers, 36,9k FPS, entropi 0.01 (ny karta ⇒ utforskning; std-tak kvar).
+Startreward −24,7 (fastnad-straff dominerar — korridorpolicyn kan inte dm3 än; väntat).
+DESIGNVAL: startar i steg D-form direkt (slumpstarter hela kartan, ingen A–C-curriculum)
+— Gate 1 lärde att curriculum-stegen togs på minuter; A–C byggs BARA om detta stallar
+(mätdrivet). Monitor bytt till gate2_v1.log (krascher + 30-min-hjärtslag med reward).
+GATE 2-MÅTT: eval_gate2 (GateScore-formeln, fastnad-räkning) körs periodiskt; gaten
+bevisas på riktiga servern (dm3-serverconfig + PolicyDrive — bryggan är kartagnostisk,
+obs-byggaren tar BSP:n; dm3-validering av Rust-obs-paritet BEHÖVS före serverbevis).
