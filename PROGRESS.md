@@ -4441,3 +4441,18 @@ record_strict/validate_replay-kedjan (LD_LIBRARY_PATH-kravet), återanvänds i f
 Duckdb-pass över storens usercmds (16,3 M forwardmove / 16,7 M sidemove nollskilda):
 ±508 dominerar (40,5 % fwd; 27,6+28,3 % side), därefter 400/320/348/352/500.
 rl/spec.py: FORWARDMOVE=SIDEMOVE=508 (var gissningen 800). 12/12 tester fortsatt gröna.
+
+## 2026-07-30 — Fas 0: Gate 2-miljökärnan byggd (17/17 tester), bevisbrygge-fynd
+rl/env_gate2.py: QWGate2Core — slumpade starter (rl/data/dm3_spawns.json, 6 st
+extraherade ur dm3.bsp entity-lump: (-880,-232,-16)@90 (192,-208,-176)@90
+(1472,-928,-24)@90 (1520,432,-88)@0 (-632,-680,-16)@90 (512,768,216)@270, slumpad
+yaw-offset ±180°), 60 s-episoder, fastnad-detektering (>2 s under 50 UPS → terminering
++ straff -5; zonmask-callable pluggas in när agent A:s raster landar — tills dess räknas
+fastnad ÖVERALLT, konservativt), per-episod medelfart och nyhetsvoxlar i info.
+Steg A–C-stöd via spawn_region-filter. 17/17 tester gröna.
+BEVISBRYGGE-FYND (viktigt för fas 1): record_strict/corridor kör i rex_env-SIMMEN,
+inte mot riktig server — race-erans "korridor-bevis" var simbaserade. Grundlag v3
+kräver gates på RIKTIGA mvdsv ⇒ beviskörningen måste gå via rtx-botens klientstack
+(testsuite/route-lab). Designas i slutet av fas 1 (policy-export → klientdrivning).
+Zonagentens statistikjobb verifierat LEVANDE (pid 960630, 645% CPU, 25 GB RAM) —
+agenten väcks av jobbslutet; delresultat finns redan i pipeline/out/gate2/.
