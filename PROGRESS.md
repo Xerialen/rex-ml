@@ -4795,3 +4795,11 @@ bryggbygget tar fortfarande kärnor — legitimt). Episodförorening 18:59-19:10
 de föräldralösa körde SAMMA vikter som nya körningen resumade från, samma stage.
 LÄRDOM (kompletterar pkill-lärdomen): döda hela processGRUPPEN (kill -- -PGID) eller
 föräldern med barn — aldrig bara mönstermatchade huvudprocessen.
+
+## 2026-07-30 19:12 — Interventionen BITER (första efter-mätningen, +14M frames)
+std dpitch: 220 → 2.54 (den underliggande parametern kollapsar mot taket — obs: evalen
+läser oklämd parameter eftersom SF_STDDEV_MAX bara är satt i träningsprocessen; i
+träningen är effektiv std redan 1.0). std dyaw: 0.074 → 0.089 — VÄNT UPPÅT för första
+gången; entropitrycket går nu in i styrdimensionen som avsett. Samplad peak 422 (n=1,
+brusigt). Nya checkpoints (2165/2664/3477) numrerar rent; loader-verktygen träffar rätt.
+Nästa avläsning: 19:20-väckningen (rullande p50) + diag flips/s när kurvan rört sig.
