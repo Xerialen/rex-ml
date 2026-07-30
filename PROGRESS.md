@@ -4746,3 +4746,18 @@ framgång = p50 bryter 480+ och stiger; mekanismkontroll via rl.diag_gate1
 STEG B om A inte biter inom 40 min: flip-kostnad i steg 3/4-belöningen — litet straff
 per luft-teckenbyte över ~6/s (prisar vicklingen direkt, skonar äkta half-beat).
 Implementeras då i rewards_gate1 + omstart; mäts mot samma baslinje.
+
+## 2026-07-30 18:58 — MÄTNING OMKULLKASTAR STEG A: entropifarmning upptäckt; intervention omformulerad
+Mätt på färsk checkpoint (61,9 M frames): inlärd std dyaw = 0.074 (KOLLAPSAD utforskning
+i styrdimensionen — kan inte utforska sig ur vicklingsoptimat) men std dpitch = 219.97.
+Policyn ENTROPIFARMAR: maxar brus i den fysikaliskt irrelevanta pitch-dimensionen för
+att tillfredsställa entropibonusen, och låter dyaw kollapsa. Global entropihöjning ensam
+hade bara pumpat MER pitch-brus — steg A i föregående plan var fel medicin.
+Samplad körning bekräftar: 23.7 flips/s (greedy 21.0), peak 450.
+OMFORMULERAD INTERVENTION (steg A'): SF_STDDEV_MAX=1.0 (stänger farmningskanalen;
+patch i venvens action_distributions.py, env-var-styrd så spawnade barnprocesser nås —
+ingen cfg-flagga finns; dokumenterad i sim/STACK.md, återapplicera vid venv-ombygge)
++ --exploration_loss_coeff=0.01 (trycket går nu till dyaw). Checkpoint-kompatibel
+(ren utklämpning, inga parameterändringar) ⇒ resume fungerar.
+Verifierat: env-varan styr (1.0 med, 10000 utan). Utlöses vid 19:20-väckningen om
+p50<500. Framgångsmått oförändrat: p50 480+ stigande, flips/s ned mot 2-4.

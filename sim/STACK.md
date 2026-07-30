@@ -78,3 +78,11 @@ Egen encoder (MLP) registreras vid behov med
 (se `sf_examples/train_custom_env_custom_model.py` i site-packages för fullt mönster).
 C++-vektoriserad miljö exponeras enklast per-env via pybind11 bakom detta gym-API;
 SF:s rollout-workers ger processparallellism ovanpå.
+
+## rex-ml-patch i denna venv (återapplicera vid ombygge!)
+`sample_factory/algo/utils/action_distributions.py` rad ~259: stddev_min/max läser
+env-varorna SF_STDDEV_MIN/SF_STDDEV_MAX (default oförändrade 1e-4/1e4). Motiv:
+uppmätt entropifarmning i gate1_v1 — pitch-std 220 medan dyaw-std kollapsade till
+0.074; taket (kör med SF_STDDEV_MAX=1.0) stänger den degenererade kanalen så
+entropibonusen tvingas till styrdimensionen. Ingen cfg-flagga finns; klass-
+attributet initieras vid import i varje spawnad process ⇒ env-var är rätt kanal.
