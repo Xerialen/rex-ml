@@ -4671,3 +4671,11 @@ episoder nu ~448 mot 420 vid växlingen — stiger, ingen stagnation.
 HÄLSA @38,4M frames (tensorboard, tensor-fältet — simple_value är 0 i TF2-events):
 entropi 3,89→2,11 (kontrollerad konvergens, INTE kollaps), value_loss 0,010→0,002,
 policy_loss normal. Reward 19,4→23,0. Ingen vaktpost utlöst.
+
+## 2026-07-30 — Fas 2-entrén klar och smoke-testad på dm3
+rl/train_gate2.py: registrerar qw_gate2 (fri strövning, slumpstarter, zonraster för
+fastnad-undantag). Smoke på qwsim/dm3: 4 608 steg, CPU, ren avslutning — dm3-miljön
+tränar. Curriculum A–D-daemonlogik skrivs vid fas 2-start (spawn_region-stödet finns).
+gate1_v1-bevakning: steg 3, episodpeakar 448→451,6 på ~12 min — långsam klättring mot
+500-tröskeln, INTE stagnation. Vaktpostgräns satt: står medlet <500 i >1 h övervägs
+entropihöjning per RUNBOOK.
