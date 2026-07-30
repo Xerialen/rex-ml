@@ -55,6 +55,51 @@
     "obs timer and inference timer are separate fields (obs_us, infer_us) in the tick log."
   ],
 
+  "sim2real_gap_2026_07_30": {
+    "symptom": "harvested candidate (sim greedy peak 740-777) collapsed on the live server: peak 161.0, mean 60.7, jump pressed 1164/1164 ticks",
+    "method": "frozen-checkpoint pairing (pipeline/out/rl/bridge_diag/eval_snapshot, ckpt 000044354) + per-tick comparison: sim reference rollout (rl/ref_rollout_gate1.py, logs pre-step state + kin obs + greedy action) vs instrumented driver tick log (kin[16], raw box means, jump_held)",
+    "root_cause_1_tract_miseval": {
+      "finding": "tract-onnx 0.21.10 evaluates the exported graph as ≈ NEGATED output — both with the fused ONNX GRU node and with a primitive-op cell containing the Sub(1,z) pattern. torch row0 [-5.305,-0.668,...,8.061,-8.002] vs tract [+5.306,+0.653,...,-8.025,+7.965]; max|diff| 29.33; jump argmax INVERTED on 100% of ticks (the constant-jump symptom). onnxruntime on the SAME file matches torch exactly — the runtime, not the export, is guilty.",
+      "fix": "rl/export_onnx.py now emits the GRU cell as primitive ops with the algebraically identical h' = n + z*(h-n) form (no scalar-minus pattern), plus a torch-vs-torch gate asserting the manual cell == forward_core. After the rewrite: tract == ORT == torch, max|diff| 1.43e-5, all argmax heads 100% equal over the 400 fixtures.",
+      "consequence": "EVERY .onnx exported before this fix (gate1_v1_live.onnx, gate1_candidate.onnx) is broken under tract and must be re-exported. gate1_candidate_fixed.onnx (from the frozen snapshot) is the corrected artifact; the original gate1_candidate.onnx was left untouched."
+    },
+    "root_cause_2_last_action_clamp": {
+      "finding": "rl/env.py stores the RAW unclipped policy box means in the last_action obs features (flat_action(box[0]*20)/20 = box[0], e.g. -4.32) while applying the clipped view delta; the driver stored the clamped value (±1). Measured |kin[10]| divergence up to 5.3 from tick 2 — corrupting the GRU input every tick.",
+      "fix": "spec::last_action_raw in rex-policy (regression test pins raw means through the block); driver uses it."
+    },
+    "cleared_suspicions": {
+      "jump_held_mirror": "EXACT — 537/537 ticks identical to the sim's engine-truth jump_held over the full reference run",
+      "obs_timing": "correct (post-move entity state == env post-step semantics; proven by the tick-level tracking below)",
+      "greedy_decode": "correct (all argmax heads 100% equal under runtime parity)",
+      "start_state_vz_artifact": "sim settles with residual vz=-104 in tick-1 obs (kin[2]=-0.13) vs 0 on the server — ablation shows no effect (box shift <0.02, same discrete actions)"
+    },
+    "process_hazard": "harvest/eval_dir is a MOVING TARGET (checkpoint_p0 updated continuously by training): the ONNX (20:22), the first sim reference (ckpt 42053, 20:28) and a later probe (ckpt 44354, 20:35) were all different policies. Export and evidence runs must pin a frozen snapshot — the bridge_diag/eval_snapshot pattern.",
+    "result_before_after": {
+      "pre_fix_peak_ups": 161.0,
+      "last_action_fix_only_peak_ups": 182.5,
+      "both_fixes_peak_ups": 758.0,
+      "sim_reference_peak_ups": 758.3,
+      "jump_presses_server_vs_sim": "271 vs 271 (identical)",
+      "tracking": "speed within 4 ups of the sim reference throughout; xy drift 9.9u after 537 ticks (7 s); first discrete-action divergence tick 36; identical discrete actions 60.1% of 537 ticks; final speed both 758",
+      "corridor": "server bot ran the full 100m corridor: y -1408 -> 3114 in the 15 s window"
+    },
+    "artifacts": {
+      "frozen_snapshot": "pipeline/out/rl/bridge_diag/eval_snapshot (ckpt 000044354_181673984)",
+      "fixed_onnx": "pipeline/out/rl/gate1_candidate_fixed.onnx (+ .json)",
+      "sim_reference_log": "evidence/policy_bridge_sim_ref.jsonl",
+      "server_tick_log": "evidence/policy_bridge_fixed_ticks.jsonl",
+      "mvd_demo": "demos/policy_bridge_fixed.mvd",
+      "rtx_commit": "1448c6a"
+    },
+    "repro": [
+      "cp -r pipeline/out/rl/train_dir/gate1_v1/harvest/eval_dir/{checkpoint_p0,config.json} pipeline/out/rl/bridge_diag/eval_snapshot/  # freeze first",
+      "PYTHONPATH=. sim/.venv-sf/bin/python -m rl.export_onnx pipeline/out/rl/bridge_diag/eval_snapshot --out pipeline/out/rl/bridge_diag/candidate_frozen.onnx",
+      "rtx/target/release/rex-policy-onnx-check <onnx> pipeline/out/rl/obs_fixtures_100m.bin <params_dump.bin>  # tract side of runtime parity",
+      "PYTHONPATH=. sim/.venv-sf/bin/python -m rl.ref_rollout_gate1 pipeline/out/rl/bridge_diag/eval_snapshot --out <ref.jsonl>",
+      "rtx/target/release/rex-policy-smoke 27700 <onnx> <ticklog.jsonl> 15 224 -1408 32 90 <demoname>"
+    ]
+  },
+
   "repro": [
     "cd ~/rex-ml/rtx && cargo build --release -p rex-policy -p rtx-game",
     "~/rex-ml/.venv/bin/python crates/rex-policy/tools/npz_to_bin.py ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.npz ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.bin",

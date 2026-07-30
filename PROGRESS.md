@@ -5021,3 +5021,53 @@ från 172M men med GAMLA marginalen), min första relansering tog aldrig (C-c/pi
 race). Ren cykel: gruppdöd verifierad till 0, relansering, RESUME VERIFIERAD utan scratch
 från checkpoint 44354 (181,7M frames). Väv-marginalen är nu AKTIV i alla workers.
 Skördaren rullar oavbrutet och fångar vävgenombrott när de kommer.
+
+## 2026-07-30 — SIM2REAL-GAPET DIAGNOSTISERAT OCH STÄNGT (rtx 1448c6a): 161 → 758 u/s
+Koordinatorns larm (kandidat 777 i sim, 161 på servern, hopp 933/933) rotorsakad med
+fruset-checkpoint-parning + tick-för-tick-jämförelse (rl/ref_rollout_gate1.py ↔ instrumenterad
+driver-logg med kin[16]/råa box-means/jump_held). TVÅ rotorsaker, båda bevisade:
+**1. tract-onnx 0.21.10 FELRÄKNAR grafen — utgången ≈ NEGERAD** (max|diff| 29,3 mot torch;
+jump-argmax inverterad 100 % av ticks = konstant-hopp-symptomet). Gäller BÅDE fuserade
+ONNX-GRU-noden och primitiva ops med `Sub(1,z)`-mönstret. ORT på samma fil == torch exakt ⇒
+runtimen fälld, inte exporten. FIX i rl/export_onnx.py: GRU-cellen emitteras som primitiver
+med algebraiskt identiska `h' = n + z*(h−n)` (inget skalär-minus) + torch-vs-torch-grind
+(manuell cell == forward_core, 16 slumpprover <1e-5). Efter fixen: tract == ORT == torch,
+max|diff| 1,4e-5, alla argmax-huvuden 100 % lika. **ALLA tidigare .onnx-exporter är trasiga
+under tract** (gate1_v1_live, gate1_candidate) — måste omexporteras. Korrigerad artefakt:
+pipeline/out/rl/gate1_candidate_fixed.onnx (ur frusen snapshot bridge_diag/eval_snapshot,
+ckpt 44354; originalet ORÖRT).
+**2. last_action-featuren bär RÅA oklippta means i träningsmiljön** (flat_action(box*20)/20 =
+box, t.ex. −4,32) medan appliceringen klipps — drivern lagrade klippt ±1 (|diff| upp till 5,3
+från tick 2, GRU-ingången korrupt varje tick). FIX: spec::last_action_raw + regressionstest.
+**Friade med mätning:** jump_held-spegeln EXAKT (537/537 == simmens motortruth); obs-timing
+rätt; greedy-avkodningen rätt; start-vz-artefakten (sim kin[2]=−0,13 tick 1) ablaterad — noll
+effekt (<0,02 box-skift).
+**PROCESSFARA:** harvest/eval_dir är RÖRLIGT MÅL (ckpt byttes 42053→44354 under diagnosen) —
+export/eval/bevis MÅSTE frysa snapshot först.
+**RESULTAT (samma frusna checkpoint):** server peak **758,0** vs sim-ref **758,3**; hopptryck
+**271 vs 271 exakt**; fart inom 4 u/s hela vägen; xy-drift 9,9 u efter 7 s; boten sprang hela
+100m-korridoren (y −1408→3114). Före/efter: 161,0 → 182,5 (enbart fix 2) → **758,0** (båda).
+Bevis: evidence/policy_bridge_smoke.json (sim2real-sektion), policy_bridge_{sim_ref,fixed_ticks}
+.jsonl, demos/policy_bridge_fixed.mvd. Inferens p50 1,70 ms under load 40/64 — budgetflaggan
+kvarstår (ren-maskin-mätning krävs).
+NÄSTA: omexportera alla levande ONNX-artefakter med fixade exportern (frys snapshot först);
+bevisprotokollets ≥30 körningar när GATE1_KANDIDAT flaggas.
+
+## 2026-07-30 20:58 — SIM2REAL STÄNGT: 790,4 PÅ RIKTIGA SERVERN (reproducerbart)
+Bryggagentens diagnos KLAR (rtx-commit 1448c6a): TVÅ rotorsaker, båda mätbevisade:
+(1) tract-onnx 0.21.10 NEGERAR den exporterade grafens utgång (max|diff| 29,3; jump-
+argmax inverterad 100 % — därav konstant-hopp/161; onnxruntime på samma fil == torch
+⇒ runtimen fälld). Fix i rl/export_onnx.py: GRU-cellen som primitiva ops med
+h'=n+z*(h−n) (undviker även tracts Sub(1,z)-bugg) + torch-vs-torch-grind; efter fix
+tract==ORT==torch (1,4e-5). ALLA äldre .onnx är trasiga under tract — omexport krävs
+(skriptet exporterar färskt). (2) last_action-featuren: träningen lagrar RÅA oklippta
+box-means i obs, drivern lagrade klippta ±1 (|diff| upp till 5,3/tick i GRU-ingången) —
+fixad + regressionstest. FRIADE: jump_held-spegeln (537/537 exakt), obs-timing.
+Agentens verifikat (frusen ckpt 44354): server 758,0 vs sim 758,3; hopptryck 271==271.
+MINA valideringskörningar med SKÖRDADE 792,3-kandidaten (fryst snapshot — eval_dir är
+rörligt mål, snapshot-steg inbyggt i skriptet): server-peak 786,4 / 790,4 / 790,4.
+GAP ~2-6 u/s. UPPREPADE PolicyDrive-sessioner mot samma server ger 0-fart (per-bot-state)
+⇒ protokollet kör FÄRSK SERVER PER KÖRNING (deterministiskt reproducerbart: 790,4×2).
+Skriptet uppdaterat (snapshot + server-per-run + rätt summarynycklar).
+LÄGE: 790,4 uppmätt på riktig server, 29,6 från 820-kravet. Träningen (väv-marginal)
+jagar resten; skördaren fångar. Kvarflagga: inferens p50 1,7 ms under load — fas 3.

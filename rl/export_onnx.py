@@ -46,10 +46,39 @@ class ExportWrapper(nn.Module):
     def forward(self, obs, rnn_state):
         x_norm = torch.clamp((obs - self.mu) * self.inv_sigma, -5.0, 5.0)
         x = self.ac.forward_head({"obs": x_norm})
-        core_out, new_rnn = self.ac.forward_core(x, rnn_state)
+        core_out, new_rnn = self._gru_cell(x, rnn_state)
         result = self.ac.forward_tail(core_out, values_only=False,
                                       sample_actions=False)
         return result["action_logits"], new_rnn
+
+    def _gru_cell(self, x, h):
+        """En GRU-cell utskriven i primitiva ops (matmul/sigmoid/tanh) i stället för
+        forward_core:s nn.GRU. MOTIV (uppmätt 2026-07-30, bridge-diagnosen): torch
+        exporterar nn.GRU som en fuserad ONNX GRU-nod, och tract-onnx 0.21 evaluerar
+        den FEL — utgången blir ≈ negationen av torchs (max|diff| 29,3 över fixturerna,
+        jump-argmax inverterad 100 % av ticks ⇒ konstant-hopp på servern, peak 161 mot
+        740 i sim). Primitiva ops rundar av hela nodklassen; verifierad tract-vs-torch-
+        paritet efter bytet: max|diff| ~1e-5. Semantiken är torchs egen (gate-ordning
+        r,z,n; linear_before_reset): n = tanh(Wn x + bWn + r*(Un h + bUn)).
+        Kräver 1-lagers GRU — assertas vid export."""
+        core = self.ac.core.core
+        w_ih, w_hh = core.weight_ih_l0, core.weight_hh_l0    # [3H, in], [3H, H]
+        b_ih, b_hh = core.bias_ih_l0, core.bias_hh_l0        # [3H], [3H]
+        H = core.hidden_size
+        gi = x @ w_ih.t() + b_ih                             # [1, 3H]
+        gh = h @ w_hh.t() + b_hh
+        i_r, i_z, i_n = gi[:, :H], gi[:, H:2 * H], gi[:, 2 * H:]
+        h_r, h_z, h_n = gh[:, :H], gh[:, H:2 * H], gh[:, 2 * H:]
+        r = torch.sigmoid(i_r + h_r)
+        z = torch.sigmoid(i_z + h_z)
+        n = torch.tanh(i_n + r * h_n)
+        # OBS: algebraiskt identiskt med (1-z)*n + z*h men UTAN skalär-minus-mönstret
+        # `Sub(1, z)` — tract 0.21 evaluerar det mönstret fel (utgången negeras; ORT ger
+        # rätt svar på samma graf). `n + z*(h - n)` använder bara tensor-Sub och rundar
+        # av runtimebuggen. Verifierat: torch-vs-tract max|diff| på fixturerna föll från
+        # 29,3 (ren negation) till float-brus efter omskrivningen.
+        new_h = n + z * (h - n)
+        return new_h, new_h
 
 
 def main(argv=None):
@@ -68,11 +97,29 @@ def main(argv=None):
     rnn_size = get_rnn_size(cfg)
     n_obs = env.observation_space.shape[0]
 
+    core = actor_critic.core.core
+    assert isinstance(core, nn.GRU) and core.num_layers == 1, \
+        "manuella GRU-cellen förutsätter 1-lagers nn.GRU"
+
     wrapper = ExportWrapper(actor_critic).eval()
     obs = torch.zeros(1, n_obs)
     rnn = torch.zeros(1, rnn_size)
     with torch.no_grad():
         params, new_rnn = wrapper(obs, rnn)
+
+    # Torch-vs-torch-grind: manuella cellen MÅSTE reproducera forward_core exakt
+    # (annars exporterar vi en annan policy än den utvärderade).
+    with torch.no_grad():
+        for _ in range(16):
+            o = torch.randn(1, n_obs)
+            h = torch.randn(1, rnn_size)
+            x = torch.clamp((o - wrapper.mu) * wrapper.inv_sigma, -5.0, 5.0)
+            enc = actor_critic.forward_head({"obs": x})
+            ref_out, ref_h = actor_critic.forward_core(enc, h)
+            man_out, man_h = wrapper._gru_cell(enc, h)
+            d = max(float((ref_out - man_out).abs().max()),
+                    float((ref_h - man_h).abs().max()))
+            assert d < 1e-5, f"manuell GRU-cell avviker från forward_core: {d}"
 
     torch.onnx.export(
         wrapper, (obs, rnn), str(args.out),

@@ -8,10 +8,19 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-CKPT_DIR="${1:-pipeline/out/rl/train_dir/gate1_v1/harvest/eval_dir}"
+SRC="${1:-pipeline/out/rl/train_dir/gate1_v1/harvest/best.pth}"
 N="${2:-30}"
 DUR="${3:-12}"
 ONNX="$PWD/pipeline/out/rl/gate1_candidate.onnx"   # ABSOLUT: servern (cwd playground) öppnar filen
+
+# FRYS SNAPSHOT (bryggdiagnosens lärdom: harvest/eval_dir är ett RÖRLIGT mål —
+# checkpointen byttes mitt under diagnos ⇒ ONNX och sim-eval var olika policies).
+# best.pth är ratchetens stabila artefakt; kopiera till frusen katalog före export.
+CKPT_DIR="pipeline/out/rl/gate1_candidate_snapshot"
+mkdir -p "$CKPT_DIR/checkpoint_p0"
+cp "$SRC" "$CKPT_DIR/checkpoint_p0/checkpoint_999999999_snapshot.pth"  # fast namn, cp skriver över
+cp pipeline/out/rl/train_dir/gate1_v1/config.json "$CKPT_DIR/config.json"
+echo "snapshot: $SRC -> $CKPT_DIR ($(sha256sum "$SRC" | cut -c1-12))"
 SCRATCH=/tmp/claude-1001/-home-benjamin-adm-rex-ml/003dd697-8855-417d-9d80-53960851ebcf/scratchpad
 TICKDIR="$SCRATCH/gate1_server_runs"
 mkdir -p "$TICKDIR"
@@ -19,20 +28,22 @@ mkdir -p "$TICKDIR"
 echo "=== 1/4 Exporterar kandidaten ($CKPT_DIR) ==="
 SF_STDDEV_MAX=1.0 PYTHONPATH=. sim/.venv-sf/bin/python -m rl.export_onnx "$CKPT_DIR" --out "$ONNX"
 
-echo "=== 2/4 Server + binärer ==="
+echo "=== 2/4 Binärer ==="
 ( cd rtx && cargo build --release -p rex-policy -p rtx-game 2>&1 | tail -2 )
 cp rtx/target/release/librtx.so rtx/playground/qw/qwprogs.so
-if ! pgrep -f "mvdsv.*server_100m" > /dev/null; then
-  tmux send-keys -t jobs:1 "cd ~/rex-ml/rtx/playground && ./mvdsv +exec server_100m.cfg" Enter 2>/dev/null \
-    || tmux new-window -t jobs -n gate1srv "cd ~/rex-ml/rtx/playground && ./mvdsv +exec server_100m.cfg"
-  sleep 4
-fi
 
-echo "=== 3/4 $N körningar à ${DUR}s ==="
+echo "=== 3/4 $N körningar à ${DUR}s (FÄRSK SERVER PER KÖRNING — upprepade"
+echo "    PolicyDrive-sessioner mot samma server ger 0-fart; oberoende körningar) ==="
+SRVLOG="$SCRATCH/gate1srv.log"
 for i in $(seq 1 "$N"); do
+  tmux kill-window -t rexml:gate1srv 2>/dev/null; : > "$SRVLOG"
+  tmux new-window -d -t rexml -n gate1srv \
+    "cd ~/rex-ml/rtx/playground && ./mvdsv +exec server_100m.cfg 2>&1 | tee -a $SRVLOG"
+  until grep -q "Server spawned" "$SRVLOG" 2>/dev/null; do sleep 1; done
+  sleep 2
   rtx/target/release/rex-policy-smoke 27700 "$ONNX" "$TICKDIR/run_$i.jsonl" "$DUR" \
     224 -1408 32 90 "gate1_ev_$i" > "$TICKDIR/summary_$i.json" 2>>"$TICKDIR/errors.log" \
-    && echo "  run $i: $(grep -oE '"peak_speed_ups":[0-9.]+' "$TICKDIR/summary_$i.json" | head -1)" \
+    && echo "  run $i: $(grep -oE '"peak_speed(_ups)?": ?[0-9.]+' "$TICKDIR/summary_$i.json" | head -1)" \
     || echo "  run $i: FEL (se errors.log)"
 done
 
@@ -48,9 +59,10 @@ for i in range(1, n + 1):
     if p.exists():
         try:
             s = json.load(open(p))
-            runs.append({"run": i, "peak": s.get("peak_speed_ups"),
+            runs.append({"run": i,
+                         "peak": s.get("peak_speed", s.get("peak_speed_ups")),
                          "ticks": s.get("ticks"), "hz": s.get("tick_rate_hz"),
-                         "msec13": s.get("msec13_fraction")})
+                         "msec13": s.get("msec13_frac", s.get("msec13_fraction"))})
         except Exception as e:
             runs.append({"run": i, "error": str(e)[:100]})
 peaks = np.array([r["peak"] for r in runs if r.get("peak") is not None])
