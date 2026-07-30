@@ -5009,3 +5009,15 @@ grindgeometri vid bakstart, kiralitetsfel; aggregaten nu konsekventa):
   landskapet i slutklättringen); DÄREFTER vidgas CROSS_TRACK_MARGIN 96→~400 (vägg 480)
   + ev. curriculum-steg 5 "väv" för 850-jakten. Loggas som fas 1b.
 Skörderatchet: 792,3 säkrad (checkpoints efter varierar 755-788 — ratchetens värde bevisat).
+
+## 2026-07-30 20:46 — VÄVEN ÖPPNAD: cross-track-marginal 96→400, ren omstart verifierad
+BESLUT OMPRÖVAT med ny fakta (eget, loggat): ratchen gör bytet riskfritt (792,3 bankad i
+harvest/best.pth) och väven gör 820 LÄTTARE (820 av vävtak 924 = slack; rakt 820 av 833 =
+13 u/s från perfektion). CROSS_TRACK_MARGIN 96→400 (vägg ±480, 80 u buffert; steg 4:s
+kollisionsstraff kvar). 25/25 tester gröna.
+RÖRIG OMSTARTSSEKVENS (journalförd ärligt): en oförklarad träningsstart 20:28 från tmux-
+panens skal (ppid = panskalet; trolig manuell historik-återkörning — den resumade korrekt
+från 172M men med GAMLA marginalen), min första relansering tog aldrig (C-c/pipeline-
+race). Ren cykel: gruppdöd verifierad till 0, relansering, RESUME VERIFIERAD utan scratch
+från checkpoint 44354 (181,7M frames). Väv-marginalen är nu AKTIV i alla workers.
+Skördaren rullar oavbrutet och fångar vävgenombrott när de kommer.

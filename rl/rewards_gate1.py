@@ -19,7 +19,12 @@ from .spec import TICK_DT
 CORRIDOR_X = 224.0
 CORRIDOR_START_Y = -1408.0
 CORRIDOR_END_Y = 2900.0
-CROSS_TRACK_MARGIN = 96.0   # fritt spelrum runt mittlinjen innan straff (steg 3+)
+# VIDGAD 96→400 (2026-07-30 20:38, mätgrundat): serpentinväv är verifierat den
+# överlägsna regimen (tak 924 vs rakt 833, evidence/ceiling_850_search.*; svängar
+# är gratis i v²) och 96-marginalen BLOCKERADE vävvägen aktivt. Väggarna står vid
+# ±480 (traceat) — 400 ger vävutrymme med 80 u buffert före straffzon; steg 4:s
+# kollisionsstraff står kvar. Riskfritt byte: skörderatchen har 792,3 bankad.
+CROSS_TRACK_MARGIN = 400.0
 WALL_IMPULSE_MIN = 100.0    # u/s plötslig fartförlust som räknas som kollision
 
 
