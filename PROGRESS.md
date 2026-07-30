@@ -4456,3 +4456,43 @@ kräver gates på RIKTIGA mvdsv ⇒ beviskörningen måste gå via rtx-botens kl
 (testsuite/route-lab). Designas i slutet av fas 1 (policy-export → klientdrivning).
 Zonagentens statistikjobb verifierat LEVANDE (pid 960630, 645% CPU, 25 GB RAM) —
 agenten väcks av jobbslutet; delresultat finns redan i pipeline/out/gate2/.
+
+## 2026-07-30 — GATE 2-ZONKLASSIFICERING KLAR (dm3, evidensbaserad)
+Verktyg: `pipeline/gate2_zones.py` (stats→classify→zonestats→report). Två fulla korpuspass
+över 908 M trajectory_samples (898,9 M filtrerade fartsampel; horisontell centraldifferens,
+spann ≥20 ms, 3-sampels median — deriverad max är warpkontaminerad 12 362 vs QWD-sant 3 135,
+därför är tak-kriteriet p99,9). 42 379 trafikerade 32u-voxlar: OPEN 75,4 % vol / 82,3 %
+trafik; CONSTRAINED (torr, mänsklig p99,9 <500) 2,0 %/6,6 % i 39 namngivna zoner med tak
+345–497 u/s; EXKLUDERAT vatten 10,0 % trafik (simfysik, p95 208), hiss 1,1 % (p50 30),
+tele 0,04 % (p50 0); LOWDATA (<30 sampel) 10,8 % vol / 0,005 % trafik. lq-korsvalidering:
+99,3 % våt i vattenvoxlar, 0,4 % i torra; 3 ytzoner (100 % våta, BSP=EMPTY-luftspalt)
+flyttade till vatten. Briefens OPEN-kriterium p95≥400 förkastat med mätning (10 % av
+bevisat öppna voxlar campas till p95<400). REKOMMENDATION: platt 500-gate på "resten"
+räcker INTE — zonvisa trösklar T=0,8×p999_zon för de takade (276–399 u/s), formel i
+evidence/gate2_zones.md. Leverabler: evidence/gate2_zones.{json,md},
+pipeline/out/gate2/{voxel_classes.npz,voxel_classes_meta.json,voxel_stats.parquet,
+zone_map.parquet,zone_stats.parquet}. Antaganden (egna beslut, dokumenterade i md:n):
+hisschakt = bbox+32u xy, z nedersta stopp→toppyta+64; tele-trigger expanderad med
+spelarhull (annars 0 voxlar — rå trigger tunnare än voxeln); teledestinationer EJ
+exkluderade (t2-utgången är i stället takad zon).
+
+## 2026-07-30 — GATE 2-DEFINITIONEN ANTAGEN (evidensbaserad) + kopplad till koden
+Zonagenten (A) KLAR: 898,9 M filtrerade fartsampel av 908 M + BSP-parsning ⇒ 42 379
+trafikerade voxlar klassade. Andelar (volym/trafik): OPEN 75,4/82,3 %, CONSTRAINED
+2,0/6,6 % (39 namngivna takade zoner, mänsklig p99,9 345–497), WATER 11,1/10,0 %
+(fysikcap 252 bekräftad, lq-korsvalidering 99,3 %/0,4 %), LIFT 0,6/1,1 % (p50 30 u/s),
+TELE 0,07/0,04 %, LOWDATA 10,8 % volym/0,005 % trafik. Metod: p99,9 som tak (rå max
+warpkontaminerad 12 362 mot QWD-facit 3 135), centraldiff-spann ≥20 ms, medianfilter 3.
+BESLUT (delegerat till mig av ägaren, taget): plattt 500-gate FÖRKASTAD (6,6 % av
+trafiken har tak <500 ⇒ RL-tryck lär agenten UNDVIKA tunnlarna). ANTAGEN FORMEL:
+T=500 i OPEN, T=0,8×p99,9 i CONSTRAINED, EXCLUDED+LOWDATA räknas ej;
+PASS ⇔ medel[v_h/T]≥1,0 OCH medel(v_h|OPEN)>500 OCH ≥70 % OPEN-voxlar besökta.
+BRIEF §2 uppdaterad. rl/zones.py: ZoneRaster (npz-uppslag, LOWDATA-default utanför
+rastret), GateScore (formelns tre termer + passed()). 25/25 tester gröna inkl. verifiering
+mot riktiga rastret (42 379 voxlar, 31 971 OPEN).
+DESSUTOM: globalt fildrivet curriculum (rl/curriculum_io.py + curriculum_daemon.py) —
+per-env-Curriculum i SF:s spawnade workers hade växlat steg OSYNKRONISERAT; nu äger en
+daemon stegbeslutet via stage.json, envarna rapporterar episoder till jsonl. E2e-smoke
+med fildrivet läge: 31 744 steg FPS 2459, episodfiler skapas per worker (tomma i smoken —
+episoderna är längre än smokens per-env-stegbudget, väntat).
+KVAR I FAS 0: endast agent B (libqwsim). Sedan: koppla qwsim-backend, verifiera, träna.

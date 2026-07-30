@@ -38,12 +38,18 @@ Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats
 
 ### Gate 2 — Spatial dominans (dm3, ingen navmesh)
 - **Krav:** fritt strövande från slumpade startpunkter/riktningar, ≥30 körningar × 60 s
-  på riktiga servern: (a) medelhastighet > 500 UPS **inom inkluderade zoner** enligt
-  `evidence/gate2_zones.json`; (b) **noll fastnade episoder** (definition i zondokumentet,
-  utgångspunkt: >2 s under 50 UPS utanför exkluderad zon = fastnad); (c) ingen rutt-,
-  waypoint- eller navmesh-information i policyns input.
-- **Zoner:** vatten, hisschakt och teleporterplattor exkluderas; geometriskt takade
-  torrzoner hanteras enligt zondokumentets gate-formel (härleds i fas 0, evidensbaserat).
+  på riktiga servern, med den **evidensbaserade gate-formeln** (härledd 2026-07-30 ur
+  898,9 M korpussampel + BSP, se `evidence/gate2_zones.md`; zonhärledningen var
+  delegerad till agenten av ägaren):
+  - T(v) = 500 u/s i INCLUDED_OPEN (75,4 % av volymen, 82,3 % av trafiken);
+    T(v) = 0,8 × mänsklig p99,9 i INCLUDED_CONSTRAINED (39 namngivna takade zoner,
+    tak 345–497 ⇒ mål 276–399); EXCLUDED_WATER/LIFT/TELE + LOWDATA räknas inte.
+  - **PASS ⇔ medel[v_h/T(v)] ≥ 1,0 OCH medel(v_h | OPEN) > 500 OCH ≥70 % av
+    OPEN-voxlarna besökta** (anti-loop: en bunny-slinga får inte maxa medlet).
+  - **noll fastnade episoder** (>2 s under 50 UPS utanför EXCLUDED-zon), och ingen
+    rutt-, waypoint- eller navmesh-information i policyns input.
+- Platt "500 överallt utom vatten/hiss/tele" FÖRKASTAD med mätstöd: 6,6 % av trafiken
+  är torra zoner med mänskligt tak under 500 — en platt gate lär agenten UNDVIKA dem.
 - **Bevis:** inspelade fri-strövnings-demos + per-zon-hastighetsstatistik i artefakten.
 
 När båda gates håller med bevis: skriv `REPORT.md`. Dess existens = klarsignalen.

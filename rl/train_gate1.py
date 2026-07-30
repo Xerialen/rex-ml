@@ -15,12 +15,7 @@ from sample_factory.cfg.arguments import parse_full_cfg, parse_sf_args
 from sample_factory.envs.env_utils import register_env
 from sample_factory.train import run_rl
 
-from rl.sf_env import QWGate1Env
-
-
-def make_env(full_env_name, cfg=None, env_config=None, render_mode=None):
-    # modulnivå — SF picklar fabriken till spawnade processer
-    return QWGate1Env(full_env_name, cfg, render_mode)
+from rl.sf_env import make_env
 
 
 def main(argv=None):

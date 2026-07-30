@@ -1,0 +1,1623 @@
+{
+ "generated": "pipeline/gate2_zones.py",
+ "map": "dm3",
+ "voxel_u": 32.0,
+ "corpus": {
+  "store": "/home/benjamin-adm/dm3-extract/store-dm3/trajectory_samples",
+  "raw_rows": 907977350,
+  "filtered_speed_samples": 898923363
+ },
+ "filters": {
+  "dt_max_ms": 200,
+  "jump_max_u": 250.0,
+  "min_n": 30,
+  "speed": "horizontal central difference, 3-sample median filtered",
+  "span_min_ms": 20,
+  "speed_metric": "horizontal central difference, 3-sample median filtered"
+ },
+ "thresholds": {
+  "cap_u": 500.0,
+  "open_p95_u": 400.0,
+  "min_n": 30,
+  "constrained_criterion": "p99.9 human hspeed < 500 (raw max is warp-contaminated)"
+ },
+ "summary": {
+  "voxels_with_traffic": 42379,
+  "classes": {
+   "EXCLUDED_WATER": {
+    "voxels": 4716,
+    "samples": 89917569,
+    "volume_share": 0.1113,
+    "traffic_share": 0.1,
+    "sample_level_hspeed": {
+     "n": 89917570,
+     "p50": 167.8,
+     "p95": 208.0,
+     "p99": 327.5,
+     "p999": 500.0,
+     "max": 7610.9,
+     "mean": 148.9
+    }
+   },
+   "EXCLUDED_LIFT": {
+    "voxels": 254,
+    "samples": 9701631,
+    "volume_share": 0.006,
+    "traffic_share": 0.0108,
+    "sample_level_hspeed": {
+     "n": 9701630,
+     "p50": 29.6,
+     "p95": 362.1,
+     "p99": 430.6,
+     "p999": 597.4,
+     "max": 6654.0,
+     "mean": 119.2
+    }
+   },
+   "EXCLUDED_TELE": {
+    "voxels": 28,
+    "samples": 367517,
+    "volume_share": 0.0007,
+    "traffic_share": 0.0004,
+    "sample_level_hspeed": {
+     "n": 367516,
+     "p50": 0.0,
+     "p95": 341.7,
+     "p99": 427.0,
+     "p999": 753.5,
+     "max": 8670.2,
+     "mean": 101.6
+    }
+   },
+   "INCLUDED_OPEN": {
+    "voxels": 31971,
+    "samples": 739374636,
+    "volume_share": 0.7544,
+    "traffic_share": 0.8225,
+    "sample_level_hspeed": {
+     "n": 739374653,
+     "p50": 334.8,
+     "p95": 496.2,
+     "p99": 580.4,
+     "p999": 908.5,
+     "max": 12361.9,
+     "mean": 304.0
+    }
+   },
+   "INCLUDED_CONSTRAINED": {
+    "voxels": 854,
+    "samples": 59521633,
+    "volume_share": 0.0202,
+    "traffic_share": 0.0662,
+    "sample_level_hspeed": {
+     "n": 59521640,
+     "note": "see zones[] for exact per-zone percentiles"
+    }
+   },
+   "INCLUDED_LOWDATA": {
+    "voxels": 4556,
+    "samples": 40377,
+    "volume_share": 0.1075,
+    "traffic_share": 0.0,
+    "sample_level_hspeed": {
+     "n": 40377,
+     "p50": 358.0,
+     "p95": 893.9,
+     "p99": 1297.2,
+     "p999": 2182.7,
+     "max": 12361.9,
+     "mean": 395.6
+    }
+   }
+  }
+ },
+ "zones": [
+  {
+   "id": 0,
+   "name": "ratop",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 47,
+   "samples": 17962892,
+   "centroid": [
+    43.9,
+    -645.2,
+    336.0
+   ],
+   "bounds": [
+    [
+     -224.0,
+     -736.0,
+     288.0
+    ],
+    [
+     320.0,
+     -512.0,
+     352.0
+    ]
+   ],
+   "desc": "RA-toppplattformen (campl\u00e4ge ovanp\u00e5 RA-hyllan, z 288-352)",
+   "hspeed": {
+    "n": 17962892,
+    "p50": 43.3,
+    "p95": 365.1,
+    "p99": 430.1,
+    "p999": 481.6,
+    "max": 3021.3,
+    "mean": 109.2
+   }
+  },
+  {
+   "id": 1,
+   "name": "rl",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 9540569,
+   "centroid": [
+    1493.8,
+    527.5,
+    -80.0
+   ],
+   "bounds": [
+    [
+     1472.0,
+     480.0,
+     -96.0
+    ],
+    [
+     1536.0,
+     576.0,
+     -64.0
+    ]
+   ],
+   "desc": "RL-plattformen (st\u00e5st\u00e4llet runt RL-spawnen)",
+   "hspeed": {
+    "n": 9540569,
+    "p50": 0.0,
+    "p95": 320.3,
+    "p99": 364.7,
+    "p999": 438.2,
+    "max": 5272.7,
+    "mean": 74.4
+   }
+  },
+  {
+   "id": 2,
+   "name": "quad",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 33,
+   "samples": 8711824,
+   "centroid": [
+    516.3,
+    685.4,
+    200.3
+   ],
+   "bounds": [
+    [
+     448.0,
+     576.0,
+     128.0
+    ],
+    [
+     576.0,
+     800.0,
+     224.0
+    ]
+   ],
+   "desc": "avsatsen/g\u00e5ngen ovanp\u00e5 \u00f6versta hissen (hisstopp z~191), mot quad-/SNG-sidan",
+   "hspeed": {
+    "n": 8711826,
+    "p50": 98.2,
+    "p95": 358.8,
+    "p99": 396.0,
+    "p999": 440.2,
+    "max": 8452.1,
+    "mean": 153.7
+   }
+  },
+  {
+   "id": 3,
+   "name": "mega-sng",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 12,
+   "samples": 3121670,
+   "centroid": [
+    -744.4,
+    99.4,
+    176.0
+   ],
+   "bounds": [
+    [
+     -864.0,
+     32.0,
+     128.0
+    ],
+    [
+     -672.0,
+     160.0,
+     192.0
+    ]
+   ],
+   "desc": "mega-hyllan i SNG-rummet",
+   "hspeed": {
+    "n": 3121670,
+    "p50": 163.8,
+    "p95": 367.6,
+    "p99": 421.0,
+    "p999": 471.5,
+    "max": 4209.3,
+    "mean": 168.6
+   }
+  },
+  {
+   "id": 4,
+   "name": "pent",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 36,
+   "samples": 2884652,
+   "centroid": [
+    542.2,
+    966.7,
+    47.7
+   ],
+   "bounds": [
+    [
+     448.0,
+     928.0,
+     0.0
+    ],
+    [
+     672.0,
+     1024.0,
+     192.0
+    ]
+   ],
+   "desc": "hisschaktets norra avsatser (mellanlandningar bakom hiss 2/3)",
+   "hspeed": {
+    "n": 2884652,
+    "p50": 171.6,
+    "p95": 389.5,
+    "p99": 429.6,
+    "p999": 470.4,
+    "max": 6515.3,
+    "mean": 178.2
+   }
+  },
+  {
+   "id": 5,
+   "name": "ya",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 8,
+   "samples": 1798447,
+   "centroid": [
+    1314.4,
+    -851.0,
+    -16.0
+   ],
+   "bounds": [
+    [
+     1184.0,
+     -896.0,
+     -32.0
+    ],
+    [
+     1376.0,
+     -832.0,
+     32.0
+    ]
+   ],
+   "desc": "YA-st\u00e4llet (gula rustningens golvyta)",
+   "hspeed": {
+    "n": 1798447,
+    "p50": 0.0,
+    "p95": 274.1,
+    "p99": 345.0,
+    "p999": 417.0,
+    "max": 9065.4,
+    "mean": 41.5
+   }
+  },
+  {
+   "id": 6,
+   "name": "constrained-misc",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 335,
+   "samples": 11429738,
+   "centroid": [
+    240.0,
+    -304.0,
+    80.0
+   ],
+   "bounds": [
+    [
+     -992.0,
+     -960.0,
+     -320.0
+    ],
+    [
+     2080.0,
+     1152.0,
+     576.0
+    ]
+   ],
+   "desc": "spridda sm\u00e5komponenter \u00f6ver hela kartan: kanter, h\u00f6rn, d\u00f6rrposter",
+   "hspeed": {
+    "n": 11429743,
+    "p50": 46.9,
+    "p95": 346.8,
+    "p99": 411.3,
+    "p999": 468.2,
+    "max": 8553.9,
+    "mean": 134.5
+   }
+  },
+  {
+   "id": 7,
+   "name": "tele-sng-in",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 692172,
+   "centroid": [
+    -180.6,
+    -362.2,
+    -112.0
+   ],
+   "bounds": [
+    [
+     -224.0,
+     -416.0,
+     -160.0
+    ],
+    [
+     -128.0,
+     -288.0,
+     -64.0
+    ]
+   ],
+   "desc": "trappschaktet mellan ring-planets underv\u00e5ning och t2-telen/RA-l\u00e5g",
+   "hspeed": {
+    "n": 692172,
+    "p50": 340.2,
+    "p95": 406.8,
+    "p99": 437.9,
+    "p999": 493.8,
+    "max": 3576.3,
+    "mean": 306.8
+   }
+  },
+  {
+   "id": 8,
+   "name": "ssg-ya",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 524071,
+   "centroid": [
+    1644.7,
+    -848.3,
+    38.8
+   ],
+   "bounds": [
+    [
+     1600.0,
+     -896.0,
+     0.0
+    ],
+    [
+     1696.0,
+     -832.0,
+     64.0
+    ]
+   ],
+   "desc": "SSG-hyllan vid YA-g\u00e5rden",
+   "hspeed": {
+    "n": 524071,
+    "p50": 319.7,
+    "p95": 402.4,
+    "p99": 437.9,
+    "p999": 483.5,
+    "max": 8435.4,
+    "mean": 231.9
+   }
+  },
+  {
+   "id": 9,
+   "name": "ratop-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 507533,
+   "centroid": [
+    418.0,
+    -534.1,
+    240.7
+   ],
+   "bounds": [
+    [
+     384.0,
+     -608.0,
+     192.0
+    ],
+    [
+     448.0,
+     -512.0,
+     288.0
+    ]
+   ],
+   "desc": "kantavsatsen/trappsteget \u00f6ster om RA-toppen",
+   "hspeed": {
+    "n": 507533,
+    "p50": 40.3,
+    "p95": 322.4,
+    "p99": 379.8,
+    "p999": 458.3,
+    "max": 1461.5,
+    "mean": 96.7
+   }
+  },
+  {
+   "id": 10,
+   "name": "ralow-ng-tunnel",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 464455,
+   "centroid": [
+    -361.6,
+    -875.4,
+    21.5
+   ],
+   "bounds": [
+    [
+     -384.0,
+     -896.0,
+     -64.0
+    ],
+    [
+     -320.0,
+     -800.0,
+     128.0
+    ]
+   ],
+   "desc": "NG-tunnelmynningen vid RA-l\u00e5g (vertikalt schakt i v\u00e4stv\u00e4ggen)",
+   "hspeed": {
+    "n": 464455,
+    "p50": 47.3,
+    "p95": 312.0,
+    "p99": 356.1,
+    "p999": 444.2,
+    "max": 1361.6,
+    "mean": 96.7
+   }
+  },
+  {
+   "id": 11,
+   "name": "sng",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 47,
+   "samples": 454197,
+   "centroid": [
+    -718.6,
+    485.6,
+    108.9
+   ],
+   "bounds": [
+    [
+     -768.0,
+     384.0,
+     -64.0
+    ],
+    [
+     -608.0,
+     672.0,
+     160.0
+    ]
+   ],
+   "desc": "SNG-rummets tr\u00e5nga v\u00e4st-/golvpartier",
+   "hspeed": {
+    "n": 454197,
+    "p50": 188.0,
+    "p95": 357.8,
+    "p99": 396.6,
+    "p999": 471.2,
+    "max": 2261.6,
+    "mean": 181.8
+   }
+  },
+  {
+   "id": 12,
+   "name": "window",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 333525,
+   "centroid": [
+    1328.3,
+    623.9,
+    48.0
+   ],
+   "bounds": [
+    [
+     1312.0,
+     544.0,
+     32.0
+    ],
+    [
+     1440.0,
+     640.0,
+     64.0
+    ]
+   ],
+   "desc": "f\u00f6nstret (window) mellan quad-\u00f6verv\u00e5ningen och RL-omr\u00e5det",
+   "hspeed": {
+    "n": 333525,
+    "p50": 0.0,
+    "p95": 196.4,
+    "p99": 310.4,
+    "p999": 381.2,
+    "max": 2203.3,
+    "mean": 26.6
+   }
+  },
+  {
+   "id": 13,
+   "name": "ssg-ya-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 277511,
+   "centroid": [
+    1935.9,
+    -262.4,
+    -89.7
+   ],
+   "bounds": [
+    [
+     1888.0,
+     -352.0,
+     -128.0
+    ],
+    [
+     1952.0,
+     -224.0,
+     -64.0
+    ]
+   ],
+   "desc": "\u00f6stra trappan/rampen fr\u00e5n YA-g\u00e5rden ner mot RL/mega-pent",
+   "hspeed": {
+    "n": 277511,
+    "p50": 331.4,
+    "p95": 428.6,
+    "p99": 449.5,
+    "p999": 497.2,
+    "max": 2335.7,
+    "mean": 254.7
+   }
+  },
+  {
+   "id": 14,
+   "name": "sng-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 50,
+   "samples": 205726,
+   "centroid": [
+    -599.5,
+    270.2,
+    -11.6
+   ],
+   "bounds": [
+    [
+     -704.0,
+     192.0,
+     -64.0
+    ],
+    [
+     -480.0,
+     384.0,
+     160.0
+    ]
+   ],
+   "desc": "SNG-rummets s\u00f6dra golv-/trappartier",
+   "hspeed": {
+    "n": 205726,
+    "p50": 0.0,
+    "p95": 393.5,
+    "p99": 444.3,
+    "p999": 477.4,
+    "max": 1451.6,
+    "mean": 129.2
+   }
+  },
+  {
+   "id": 15,
+   "name": "sng-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 55,
+   "samples": 198477,
+   "centroid": [
+    -418.3,
+    506.8,
+    59.1
+   ],
+   "bounds": [
+    [
+     -608.0,
+     320.0,
+     -64.0
+    ],
+    [
+     -352.0,
+     672.0,
+     160.0
+    ]
+   ],
+   "desc": "SNG-rummets \u00f6stra golv-/trappartier",
+   "hspeed": {
+    "n": 198477,
+    "p50": 43.1,
+    "p95": 370.1,
+    "p99": 417.1,
+    "p999": 477.3,
+    "max": 1410.7,
+    "mean": 125.3
+   }
+  },
+  {
+   "id": 16,
+   "name": "quad-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 155693,
+   "centroid": [
+    582.5,
+    239.8,
+    48.0
+   ],
+   "bounds": [
+    [
+     544.0,
+     160.0,
+     32.0
+    ],
+    [
+     608.0,
+     256.0,
+     64.0
+    ]
+   ],
+   "desc": "smala \u00f6verv\u00e5ningspassagen ring<->quad (z 32-64)",
+   "hspeed": {
+    "n": 155693,
+    "p50": 0.0,
+    "p95": 178.5,
+    "p99": 309.0,
+    "p999": 441.9,
+    "max": 1019.1,
+    "mean": 23.7
+   }
+  },
+  {
+   "id": 17,
+   "name": "sng-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 66226,
+   "centroid": [
+    -706.8,
+    568.4,
+    -16.3
+   ],
+   "bounds": [
+    [
+     -768.0,
+     512.0,
+     -64.0
+    ],
+    [
+     -672.0,
+     640.0,
+     0.0
+    ]
+   ],
+   "desc": "SNG-rummets nedre golvficka",
+   "hspeed": {
+    "n": 66226,
+    "p50": 24.3,
+    "p95": 325.3,
+    "p99": 371.0,
+    "p999": 448.6,
+    "max": 933.1,
+    "mean": 95.6
+   }
+  },
+  {
+   "id": 18,
+   "name": "ring",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 52614,
+   "centroid": [
+    286.0,
+    48.0,
+    -176.2
+   ],
+   "bounds": [
+    [
+     224.0,
+     32.0,
+     -224.0
+    ],
+    [
+     320.0,
+     64.0,
+     -160.0
+    ]
+   ],
+   "desc": "nedre korridorsh\u00f6rnet under ring-planet",
+   "hspeed": {
+    "n": 52614,
+    "p50": 0.0,
+    "p95": 255.4,
+    "p99": 351.9,
+    "p999": 443.4,
+    "max": 1107.3,
+    "mean": 35.9
+   }
+  },
+  {
+   "id": 19,
+   "name": "sng-5",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 44901,
+   "centroid": [
+    -717.5,
+    752.0,
+    85.7
+   ],
+   "bounds": [
+    [
+     -800.0,
+     736.0,
+     64.0
+    ],
+    [
+     -672.0,
+     768.0,
+     128.0
+    ]
+   ],
+   "desc": "SNG-rummets norra hylla",
+   "hspeed": {
+    "n": 44901,
+    "p50": 43.3,
+    "p95": 263.4,
+    "p99": 335.7,
+    "p999": 432.7,
+    "max": 740.9,
+    "mean": 73.9
+   }
+  },
+  {
+   "id": 20,
+   "name": "ratop-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 42412,
+   "centroid": [
+    420.7,
+    -874.3,
+    245.9
+   ],
+   "bounds": [
+    [
+     384.0,
+     -896.0,
+     224.0
+    ],
+    [
+     448.0,
+     -800.0,
+     288.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 42412,
+    "p50": 2.5,
+    "p95": 142.2,
+    "p99": 250.0,
+    "p999": 408.7,
+    "max": 1379.6,
+    "mean": 29.6
+   }
+  },
+  {
+   "id": 21,
+   "name": "mega-hill",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 22296,
+   "centroid": [
+    912.0,
+    -304.0,
+    -172.6
+   ],
+   "bounds": [
+    [
+     896.0,
+     -320.0,
+     -224.0
+    ],
+    [
+     928.0,
+     -288.0,
+     -96.0
+    ]
+   ],
+   "desc": "smala spalten vid kullens mega (hill-mega)",
+   "hspeed": {
+    "n": 22296,
+    "p50": 0.0,
+    "p95": 175.0,
+    "p99": 243.6,
+    "p999": 344.8,
+    "max": 864.2,
+    "mean": 25.6
+   }
+  },
+  {
+   "id": 22,
+   "name": "mega-hill-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 4605,
+   "centroid": [
+    1008.0,
+    -304.0,
+    -162.9
+   ],
+   "bounds": [
+    [
+     992.0,
+     -320.0,
+     -224.0
+    ],
+    [
+     1024.0,
+     -288.0,
+     -32.0
+    ]
+   ],
+   "desc": "smala spalten vid kullens mega, \u00f6stra delen",
+   "hspeed": {
+    "n": 4605,
+    "p50": 0.0,
+    "p95": 129.4,
+    "p99": 218.8,
+    "p999": 367.4,
+    "max": 551.3,
+    "mean": 15.6
+   }
+  },
+  {
+   "id": 23,
+   "name": "mega-sng-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 3721,
+   "centroid": [
+    -802.2,
+    355.4,
+    120.4
+   ],
+   "bounds": [
+    [
+     -832.0,
+     320.0,
+     64.0
+    ],
+    [
+     -768.0,
+     448.0,
+     160.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 3721,
+    "p50": 36.6,
+    "p95": 205.4,
+    "p99": 313.9,
+    "p999": 419.1,
+    "max": 706.7,
+    "mean": 58.1
+   }
+  },
+  {
+   "id": 24,
+   "name": "mega-pent",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 3402,
+   "centroid": [
+    1898.2,
+    373.8,
+    -67.3
+   ],
+   "bounds": [
+    [
+     1856.0,
+     352.0,
+     -192.0
+    ],
+    [
+     1920.0,
+     416.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 3402,
+    "p50": 0.0,
+    "p95": 83.3,
+    "p99": 226.8,
+    "p999": 379.5,
+    "max": 617.4,
+    "mean": 12.3
+   }
+  },
+  {
+   "id": 25,
+   "name": "rl-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 13,
+   "samples": 2753,
+   "centroid": [
+    1607.2,
+    447.9,
+    75.2
+   ],
+   "bounds": [
+    [
+     1536.0,
+     352.0,
+     0.0
+    ],
+    [
+     1696.0,
+     576.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 2753,
+    "p50": 32.4,
+    "p95": 240.4,
+    "p99": 394.7,
+    "p999": 480.2,
+    "max": 508.5,
+    "mean": 62.9
+   }
+  },
+  {
+   "id": 26,
+   "name": "rl-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 2209,
+   "centroid": [
+    1735.1,
+    559.3,
+    63.2
+   ],
+   "bounds": [
+    [
+     1696.0,
+     512.0,
+     32.0
+    ],
+    [
+     1760.0,
+     576.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 2209,
+    "p50": 0.0,
+    "p95": 192.9,
+    "p99": 323.7,
+    "p999": 474.2,
+    "max": 482.3,
+    "mean": 30.0
+   }
+  },
+  {
+   "id": 27,
+   "name": "mega-pent-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 8,
+   "samples": 2138,
+   "centroid": [
+    1902.9,
+    922.6,
+    -240.0
+   ],
+   "bounds": [
+    [
+     1856.0,
+     768.0,
+     -256.0
+    ],
+    [
+     1920.0,
+     992.0,
+     -224.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 2138,
+    "p50": 0.0,
+    "p95": 155.4,
+    "p99": 297.4,
+    "p999": 463.7,
+    "max": 636.0,
+    "mean": 19.1
+   }
+  },
+  {
+   "id": 28,
+   "name": "tele-sng-out",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 1279,
+   "centroid": [
+    65.5,
+    -412.6,
+    80.0
+   ],
+   "bounds": [
+    [
+     0.0,
+     -480.0,
+     64.0
+    ],
+    [
+     96.0,
+     -384.0,
+     96.0
+    ]
+   ],
+   "desc": "t2-telens utg\u00e5ngsplatta (destination, ej triggervolym)",
+   "hspeed": {
+    "n": 1279,
+    "p50": 34.5,
+    "p95": 237.5,
+    "p99": 376.9,
+    "p999": 477.4,
+    "max": 636.8,
+    "mean": 55.4
+   }
+  },
+  {
+   "id": 29,
+   "name": "quad-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 11,
+   "samples": 1245,
+   "centroid": [
+    519.7,
+    688.3,
+    272.0
+   ],
+   "bounds": [
+    [
+     448.0,
+     576.0,
+     256.0
+    ],
+    [
+     576.0,
+     768.0,
+     288.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 1245,
+    "p50": 325.9,
+    "p95": 422.2,
+    "p99": 441.4,
+    "p999": 492.0,
+    "max": 497.6,
+    "mean": 319.7
+   }
+  },
+  {
+   "id": 30,
+   "name": "ratop-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 13,
+   "samples": 1240,
+   "centroid": [
+    317.4,
+    -711.1,
+    425.2
+   ],
+   "bounds": [
+    [
+     288.0,
+     -832.0,
+     384.0
+    ],
+    [
+     416.0,
+     -608.0,
+     480.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 1240,
+    "p50": 103.8,
+    "p95": 354.3,
+    "p99": 455.5,
+    "p999": 487.1,
+    "max": 489.2,
+    "mean": 139.6
+   }
+  },
+  {
+   "id": 31,
+   "name": "pent-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 23,
+   "samples": 1212,
+   "centroid": [
+    1049.1,
+    1136.0,
+    8.2
+   ],
+   "bounds": [
+    [
+     896.0,
+     1120.0,
+     -96.0
+    ],
+    [
+     1248.0,
+     1152.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 1212,
+    "p50": 138.4,
+    "p95": 370.2,
+    "p99": 449.2,
+    "p999": 487.1,
+    "max": 491.9,
+    "mean": 163.4
+   }
+  },
+  {
+   "id": 32,
+   "name": "sng-6",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 1210,
+   "centroid": [
+    110.1,
+    687.0,
+    180.8
+   ],
+   "bounds": [
+    [
+     64.0,
+     640.0,
+     160.0
+    ],
+    [
+     128.0,
+     704.0,
+     256.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 1210,
+    "p50": 0.0,
+    "p95": 76.9,
+    "p99": 271.6,
+    "p999": 415.1,
+    "max": 466.3,
+    "mean": 11.0
+   }
+  },
+  {
+   "id": 33,
+   "name": "ratop-5",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 16,
+   "samples": 1201,
+   "centroid": [
+    177.5,
+    -694.4,
+    447.1
+   ],
+   "bounds": [
+    [
+     128.0,
+     -800.0,
+     416.0
+    ],
+    [
+     256.0,
+     -576.0,
+     480.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 1201,
+    "p50": 87.5,
+    "p95": 346.9,
+    "p99": 458.6,
+    "p999": 498.8,
+    "max": 500.9,
+    "mean": 132.0
+   }
+  },
+  {
+   "id": 34,
+   "name": "ratop-6",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 10,
+   "samples": 880,
+   "centroid": [
+    -9.4,
+    -626.5,
+    433.3
+   ],
+   "bounds": [
+    [
+     -32.0,
+     -704.0,
+     384.0
+    ],
+    [
+     32.0,
+     -544.0,
+     480.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 880,
+    "p50": 111.1,
+    "p95": 345.8,
+    "p99": 444.4,
+    "p999": 492.8,
+    "max": 513.3,
+    "mean": 143.0
+   }
+  },
+  {
+   "id": 35,
+   "name": "mega-pent-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 7,
+   "samples": 851,
+   "centroid": [
+    1968.0,
+    308.1,
+    69.5
+   ],
+   "bounds": [
+    [
+     1952.0,
+     160.0,
+     32.0
+    ],
+    [
+     1984.0,
+     384.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 851,
+    "p50": 90.6,
+    "p95": 351.9,
+    "p99": 418.4,
+    "p999": 437.3,
+    "max": 495.4,
+    "mean": 135.6
+   }
+  },
+  {
+   "id": 36,
+   "name": "ring-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 749,
+   "centroid": [
+    89.9,
+    -145.9,
+    -62.7
+   ],
+   "bounds": [
+    [
+     0.0,
+     -192.0,
+     -96.0
+    ],
+    [
+     128.0,
+     -128.0,
+     -32.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 749,
+    "p50": 0.0,
+    "p95": 335.2,
+    "p99": 401.8,
+    "p999": 470.1,
+    "max": 480.5,
+    "mean": 77.5
+   }
+  },
+  {
+   "id": 37,
+   "name": "ssg-ya-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 675,
+   "centroid": [
+    1842.0,
+    -174.0,
+    74.4
+   ],
+   "bounds": [
+    [
+     1696.0,
+     -192.0,
+     32.0
+    ],
+    [
+     1920.0,
+     -128.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 675,
+    "p50": 43.6,
+    "p95": 338.6,
+    "p99": 469.0,
+    "p999": 493.6,
+    "max": 500.2,
+    "mean": 99.2
+   }
+  },
+  {
+   "id": 38,
+   "name": "rl-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 662,
+   "centroid": [
+    1924.3,
+    95.7,
+    61.3
+   ],
+   "bounds": [
+    [
+     1888.0,
+     64.0,
+     32.0
+    ],
+    [
+     1984.0,
+     128.0,
+     96.0
+    ]
+   ],
+   "desc": null,
+   "hspeed": {
+    "n": 662,
+    "p50": 61.7,
+    "p95": 292.7,
+    "p99": 363.4,
+    "p999": 465.5,
+    "max": 474.5,
+    "mean": 83.7
+   }
+  }
+ ],
+ "lifts": [
+  {
+   "mins": [
+    561.0,
+    625.0,
+    -445.0
+   ],
+   "maxs": [
+    687.0,
+    751.0,
+    -65.0
+   ],
+   "top_bbox": [
+    [
+     593.0,
+     657.0,
+     -291.0
+    ],
+    [
+     655.0,
+     719.0,
+     -129.0
+    ]
+   ],
+   "travel": 154.0
+  },
+  {
+   "mins": [
+    561.0,
+    801.0,
+    -245.0
+   ],
+   "maxs": [
+    687.0,
+    927.0,
+    63.0
+   ],
+   "top_bbox": [
+    [
+     593.0,
+     833.0,
+     -127.0
+    ],
+    [
+     655.0,
+     895.0,
+     -1.0
+    ]
+   ],
+   "travel": 118.0
+  },
+  {
+   "mins": [
+    417.0,
+    801.0,
+    -149.0
+   ],
+   "maxs": [
+    607.0,
+    927.0,
+    255.0
+   ],
+   "top_bbox": [
+    [
+     449.0,
+     833.0,
+     17.0
+    ],
+    [
+     575.0,
+     895.0,
+     191.0
+    ]
+   ],
+   "travel": 166.0
+  }
+ ],
+ "teles": [
+  {
+   "mins": [
+    1153.0,
+    -943.0,
+    -47.0
+   ],
+   "maxs": [
+    1207.0,
+    -865.0,
+    39.0
+   ],
+   "raw_bbox": [
+    [
+     1169.0,
+     -927.0,
+     -15.0
+    ],
+    [
+     1191.0,
+     -881.0,
+     15.0
+    ]
+   ],
+   "target": "t1"
+  },
+  {
+   "mins": [
+    -535.0,
+    -487.0,
+    -31.0
+   ],
+   "maxs": [
+    -481.0,
+    -409.0,
+    71.0
+   ],
+   "raw_bbox": [
+    [
+     -519.0,
+     -471.0,
+     1.0
+    ],
+    [
+     -497.0,
+     -425.0,
+     47.0
+    ]
+   ],
+   "target": "t2"
+  }
+ ],
+ "gate_recommendation": {
+  "verdict": "exclude water/lift/tele is NOT sufficient alone - 6.6 % of traffic sits in dry zones with measured human ceilings 345-497 u/s (< 500); a flat 500-gate over them teaches the agent to avoid those zones",
+  "formula": {
+   "counted": "samples in INCLUDED_OPEN u INCLUDED_CONSTRAINED voxels",
+   "not_counted": "EXCLUDED_WATER, EXCLUDED_LIFT, EXCLUDED_TELE, INCLUDED_LOWDATA",
+   "target_open_u": 500.0,
+   "target_constrained": "0.8 * zone p99.9 (human ceiling), see zone_targets",
+   "score": "mean over validation samples of v_h / T(voxel)",
+   "pass": "score >= 1.0 AND mean(v_h | INCLUDED_OPEN) > 500 AND >= 70 % of INCLUDED_OPEN voxels visited (anti-loop guard)"
+  },
+  "zone_targets_u": {
+   "ratop": 385.3,
+   "rl": 350.6,
+   "quad": 352.2,
+   "mega-sng": 377.2,
+   "pent": 376.3,
+   "ya": 333.6,
+   "constrained-misc": 374.6,
+   "tele-sng-in": 395.0,
+   "ssg-ya": 386.8,
+   "ratop-2": 366.6,
+   "ralow-ng-tunnel": 355.4,
+   "sng": 377.0,
+   "window": 305.0,
+   "ssg-ya-2": 397.8,
+   "sng-2": 381.9,
+   "sng-3": 381.8,
+   "quad-2": 353.5,
+   "sng-4": 358.9,
+   "ring": 354.7,
+   "sng-5": 346.2,
+   "ratop-3": 327.0,
+   "mega-hill": 275.8,
+   "mega-hill-2": 293.9,
+   "mega-sng-2": 335.3,
+   "mega-pent": 303.6,
+   "rl-2": 384.2,
+   "rl-3": 379.4,
+   "mega-pent-2": 371.0,
+   "tele-sng-out": 381.9,
+   "quad-3": 393.6,
+   "ratop-4": 389.7,
+   "pent-2": 389.7,
+   "sng-6": 332.1,
+   "ratop-5": 399.0,
+   "ratop-6": 394.2,
+   "mega-pent-3": 349.8,
+   "ring-2": 376.1,
+   "ssg-ya-3": 394.9,
+   "rl-4": 372.4
+  }
+ }
+}

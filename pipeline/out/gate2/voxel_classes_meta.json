@@ -1,0 +1,1085 @@
+{
+ "voxel_u": 32.0,
+ "index": "world = index*32 .. index*32+32 (floor(coord/32))",
+ "classes": {
+  "1": "EXCLUDED_WATER",
+  "2": "EXCLUDED_LIFT",
+  "3": "EXCLUDED_TELE",
+  "4": "INCLUDED_OPEN",
+  "5": "INCLUDED_CONSTRAINED",
+  "6": "INCLUDED_LOWDATA"
+ },
+ "zones": [
+  {
+   "id": 0,
+   "name": "ratop",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 47,
+   "samples": 17962892,
+   "centroid": [
+    43.9,
+    -645.2,
+    336.0
+   ],
+   "bounds": [
+    [
+     -224.0,
+     -736.0,
+     288.0
+    ],
+    [
+     320.0,
+     -512.0,
+     352.0
+    ]
+   ]
+  },
+  {
+   "id": 1,
+   "name": "rl",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 9540569,
+   "centroid": [
+    1493.8,
+    527.5,
+    -80.0
+   ],
+   "bounds": [
+    [
+     1472.0,
+     480.0,
+     -96.0
+    ],
+    [
+     1536.0,
+     576.0,
+     -64.0
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "name": "quad",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 33,
+   "samples": 8711824,
+   "centroid": [
+    516.3,
+    685.4,
+    200.3
+   ],
+   "bounds": [
+    [
+     448.0,
+     576.0,
+     128.0
+    ],
+    [
+     576.0,
+     800.0,
+     224.0
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "name": "mega-sng",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 12,
+   "samples": 3121670,
+   "centroid": [
+    -744.4,
+    99.4,
+    176.0
+   ],
+   "bounds": [
+    [
+     -864.0,
+     32.0,
+     128.0
+    ],
+    [
+     -672.0,
+     160.0,
+     192.0
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "name": "pent",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 36,
+   "samples": 2884652,
+   "centroid": [
+    542.2,
+    966.7,
+    47.7
+   ],
+   "bounds": [
+    [
+     448.0,
+     928.0,
+     0.0
+    ],
+    [
+     672.0,
+     1024.0,
+     192.0
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "name": "ya",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 8,
+   "samples": 1798447,
+   "centroid": [
+    1314.4,
+    -851.0,
+    -16.0
+   ],
+   "bounds": [
+    [
+     1184.0,
+     -896.0,
+     -32.0
+    ],
+    [
+     1376.0,
+     -832.0,
+     32.0
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "name": "constrained-misc",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 335,
+   "samples": 11429738,
+   "centroid": [
+    240.0,
+    -304.0,
+    80.0
+   ],
+   "bounds": [
+    [
+     -992.0,
+     -960.0,
+     -320.0
+    ],
+    [
+     2080.0,
+     1152.0,
+     576.0
+    ]
+   ]
+  },
+  {
+   "id": 7,
+   "name": "tele-sng-in",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 692172,
+   "centroid": [
+    -180.6,
+    -362.2,
+    -112.0
+   ],
+   "bounds": [
+    [
+     -224.0,
+     -416.0,
+     -160.0
+    ],
+    [
+     -128.0,
+     -288.0,
+     -64.0
+    ]
+   ]
+  },
+  {
+   "id": 8,
+   "name": "ssg-ya",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 524071,
+   "centroid": [
+    1644.7,
+    -848.3,
+    38.8
+   ],
+   "bounds": [
+    [
+     1600.0,
+     -896.0,
+     0.0
+    ],
+    [
+     1696.0,
+     -832.0,
+     64.0
+    ]
+   ]
+  },
+  {
+   "id": 9,
+   "name": "ratop-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 507533,
+   "centroid": [
+    418.0,
+    -534.1,
+    240.7
+   ],
+   "bounds": [
+    [
+     384.0,
+     -608.0,
+     192.0
+    ],
+    [
+     448.0,
+     -512.0,
+     288.0
+    ]
+   ]
+  },
+  {
+   "id": 10,
+   "name": "ralow-ng-tunnel",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 464455,
+   "centroid": [
+    -361.6,
+    -875.4,
+    21.5
+   ],
+   "bounds": [
+    [
+     -384.0,
+     -896.0,
+     -64.0
+    ],
+    [
+     -320.0,
+     -800.0,
+     128.0
+    ]
+   ]
+  },
+  {
+   "id": 11,
+   "name": "sng",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 47,
+   "samples": 454197,
+   "centroid": [
+    -718.6,
+    485.6,
+    108.9
+   ],
+   "bounds": [
+    [
+     -768.0,
+     384.0,
+     -64.0
+    ],
+    [
+     -608.0,
+     672.0,
+     160.0
+    ]
+   ]
+  },
+  {
+   "id": 12,
+   "name": "window",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 333525,
+   "centroid": [
+    1328.3,
+    623.9,
+    48.0
+   ],
+   "bounds": [
+    [
+     1312.0,
+     544.0,
+     32.0
+    ],
+    [
+     1440.0,
+     640.0,
+     64.0
+    ]
+   ]
+  },
+  {
+   "id": 13,
+   "name": "ssg-ya-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 277511,
+   "centroid": [
+    1935.9,
+    -262.4,
+    -89.7
+   ],
+   "bounds": [
+    [
+     1888.0,
+     -352.0,
+     -128.0
+    ],
+    [
+     1952.0,
+     -224.0,
+     -64.0
+    ]
+   ]
+  },
+  {
+   "id": 14,
+   "name": "sng-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 50,
+   "samples": 205726,
+   "centroid": [
+    -599.5,
+    270.2,
+    -11.6
+   ],
+   "bounds": [
+    [
+     -704.0,
+     192.0,
+     -64.0
+    ],
+    [
+     -480.0,
+     384.0,
+     160.0
+    ]
+   ]
+  },
+  {
+   "id": 15,
+   "name": "sng-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 55,
+   "samples": 198477,
+   "centroid": [
+    -418.3,
+    506.8,
+    59.1
+   ],
+   "bounds": [
+    [
+     -608.0,
+     320.0,
+     -64.0
+    ],
+    [
+     -352.0,
+     672.0,
+     160.0
+    ]
+   ]
+  },
+  {
+   "id": 16,
+   "name": "quad-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 155693,
+   "centroid": [
+    582.5,
+    239.8,
+    48.0
+   ],
+   "bounds": [
+    [
+     544.0,
+     160.0,
+     32.0
+    ],
+    [
+     608.0,
+     256.0,
+     64.0
+    ]
+   ]
+  },
+  {
+   "id": 17,
+   "name": "sng-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 66226,
+   "centroid": [
+    -706.8,
+    568.4,
+    -16.3
+   ],
+   "bounds": [
+    [
+     -768.0,
+     512.0,
+     -64.0
+    ],
+    [
+     -672.0,
+     640.0,
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": 18,
+   "name": "ring",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 52614,
+   "centroid": [
+    286.0,
+    48.0,
+    -176.2
+   ],
+   "bounds": [
+    [
+     224.0,
+     32.0,
+     -224.0
+    ],
+    [
+     320.0,
+     64.0,
+     -160.0
+    ]
+   ]
+  },
+  {
+   "id": 19,
+   "name": "sng-5",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 44901,
+   "centroid": [
+    -717.5,
+    752.0,
+    85.7
+   ],
+   "bounds": [
+    [
+     -800.0,
+     736.0,
+     64.0
+    ],
+    [
+     -672.0,
+     768.0,
+     128.0
+    ]
+   ]
+  },
+  {
+   "id": 20,
+   "name": "ratop-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 42412,
+   "centroid": [
+    420.7,
+    -874.3,
+    245.9
+   ],
+   "bounds": [
+    [
+     384.0,
+     -896.0,
+     224.0
+    ],
+    [
+     448.0,
+     -800.0,
+     288.0
+    ]
+   ]
+  },
+  {
+   "id": 21,
+   "name": "mega-hill",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 22296,
+   "centroid": [
+    912.0,
+    -304.0,
+    -172.6
+   ],
+   "bounds": [
+    [
+     896.0,
+     -320.0,
+     -224.0
+    ],
+    [
+     928.0,
+     -288.0,
+     -96.0
+    ]
+   ]
+  },
+  {
+   "id": 22,
+   "name": "mega-hill-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 4605,
+   "centroid": [
+    1008.0,
+    -304.0,
+    -162.9
+   ],
+   "bounds": [
+    [
+     992.0,
+     -320.0,
+     -224.0
+    ],
+    [
+     1024.0,
+     -288.0,
+     -32.0
+    ]
+   ]
+  },
+  {
+   "id": 23,
+   "name": "mega-sng-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 3721,
+   "centroid": [
+    -802.2,
+    355.4,
+    120.4
+   ],
+   "bounds": [
+    [
+     -832.0,
+     320.0,
+     64.0
+    ],
+    [
+     -768.0,
+     448.0,
+     160.0
+    ]
+   ]
+  },
+  {
+   "id": 24,
+   "name": "mega-pent",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 3402,
+   "centroid": [
+    1898.2,
+    373.8,
+    -67.3
+   ],
+   "bounds": [
+    [
+     1856.0,
+     352.0,
+     -192.0
+    ],
+    [
+     1920.0,
+     416.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 25,
+   "name": "rl-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 13,
+   "samples": 2753,
+   "centroid": [
+    1607.2,
+    447.9,
+    75.2
+   ],
+   "bounds": [
+    [
+     1536.0,
+     352.0,
+     0.0
+    ],
+    [
+     1696.0,
+     576.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 26,
+   "name": "rl-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 2209,
+   "centroid": [
+    1735.1,
+    559.3,
+    63.2
+   ],
+   "bounds": [
+    [
+     1696.0,
+     512.0,
+     32.0
+    ],
+    [
+     1760.0,
+     576.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 27,
+   "name": "mega-pent-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 8,
+   "samples": 2138,
+   "centroid": [
+    1902.9,
+    922.6,
+    -240.0
+   ],
+   "bounds": [
+    [
+     1856.0,
+     768.0,
+     -256.0
+    ],
+    [
+     1920.0,
+     992.0,
+     -224.0
+    ]
+   ]
+  },
+  {
+   "id": 28,
+   "name": "tele-sng-out",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 5,
+   "samples": 1279,
+   "centroid": [
+    65.5,
+    -412.6,
+    80.0
+   ],
+   "bounds": [
+    [
+     0.0,
+     -480.0,
+     64.0
+    ],
+    [
+     96.0,
+     -384.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 29,
+   "name": "quad-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 11,
+   "samples": 1245,
+   "centroid": [
+    519.7,
+    688.3,
+    272.0
+   ],
+   "bounds": [
+    [
+     448.0,
+     576.0,
+     256.0
+    ],
+    [
+     576.0,
+     768.0,
+     288.0
+    ]
+   ]
+  },
+  {
+   "id": 30,
+   "name": "ratop-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 13,
+   "samples": 1240,
+   "centroid": [
+    317.4,
+    -711.1,
+    425.2
+   ],
+   "bounds": [
+    [
+     288.0,
+     -832.0,
+     384.0
+    ],
+    [
+     416.0,
+     -608.0,
+     480.0
+    ]
+   ]
+  },
+  {
+   "id": 31,
+   "name": "pent-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 23,
+   "samples": 1212,
+   "centroid": [
+    1049.1,
+    1136.0,
+    8.2
+   ],
+   "bounds": [
+    [
+     896.0,
+     1120.0,
+     -96.0
+    ],
+    [
+     1248.0,
+     1152.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 32,
+   "name": "sng-6",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 4,
+   "samples": 1210,
+   "centroid": [
+    110.1,
+    687.0,
+    180.8
+   ],
+   "bounds": [
+    [
+     64.0,
+     640.0,
+     160.0
+    ],
+    [
+     128.0,
+     704.0,
+     256.0
+    ]
+   ]
+  },
+  {
+   "id": 33,
+   "name": "ratop-5",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 16,
+   "samples": 1201,
+   "centroid": [
+    177.5,
+    -694.4,
+    447.1
+   ],
+   "bounds": [
+    [
+     128.0,
+     -800.0,
+     416.0
+    ],
+    [
+     256.0,
+     -576.0,
+     480.0
+    ]
+   ]
+  },
+  {
+   "id": 34,
+   "name": "ratop-6",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 10,
+   "samples": 880,
+   "centroid": [
+    -9.4,
+    -626.5,
+    433.3
+   ],
+   "bounds": [
+    [
+     -32.0,
+     -704.0,
+     384.0
+    ],
+    [
+     32.0,
+     -544.0,
+     480.0
+    ]
+   ]
+  },
+  {
+   "id": 35,
+   "name": "mega-pent-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 7,
+   "samples": 851,
+   "centroid": [
+    1968.0,
+    308.1,
+    69.5
+   ],
+   "bounds": [
+    [
+     1952.0,
+     160.0,
+     32.0
+    ],
+    [
+     1984.0,
+     384.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 36,
+   "name": "ring-2",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 749,
+   "centroid": [
+    89.9,
+    -145.9,
+    -62.7
+   ],
+   "bounds": [
+    [
+     0.0,
+     -192.0,
+     -96.0
+    ],
+    [
+     128.0,
+     -128.0,
+     -32.0
+    ]
+   ]
+  },
+  {
+   "id": 37,
+   "name": "ssg-ya-3",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 9,
+   "samples": 675,
+   "centroid": [
+    1842.0,
+    -174.0,
+    74.4
+   ],
+   "bounds": [
+    [
+     1696.0,
+     -192.0,
+     32.0
+    ],
+    [
+     1920.0,
+     -128.0,
+     96.0
+    ]
+   ]
+  },
+  {
+   "id": 38,
+   "name": "rl-4",
+   "class": "INCLUDED_CONSTRAINED",
+   "voxels": 6,
+   "samples": 662,
+   "centroid": [
+    1924.3,
+    95.7,
+    61.3
+   ],
+   "bounds": [
+    [
+     1888.0,
+     64.0,
+     32.0
+    ],
+    [
+     1984.0,
+     128.0,
+     96.0
+    ]
+   ]
+  }
+ ],
+ "lifts": [
+  {
+   "mins": [
+    561.0,
+    625.0,
+    -445.0
+   ],
+   "maxs": [
+    687.0,
+    751.0,
+    -65.0
+   ],
+   "top_bbox": [
+    [
+     593.0,
+     657.0,
+     -291.0
+    ],
+    [
+     655.0,
+     719.0,
+     -129.0
+    ]
+   ],
+   "travel": 154.0
+  },
+  {
+   "mins": [
+    561.0,
+    801.0,
+    -245.0
+   ],
+   "maxs": [
+    687.0,
+    927.0,
+    63.0
+   ],
+   "top_bbox": [
+    [
+     593.0,
+     833.0,
+     -127.0
+    ],
+    [
+     655.0,
+     895.0,
+     -1.0
+    ]
+   ],
+   "travel": 118.0
+  },
+  {
+   "mins": [
+    417.0,
+    801.0,
+    -149.0
+   ],
+   "maxs": [
+    607.0,
+    927.0,
+    255.0
+   ],
+   "top_bbox": [
+    [
+     449.0,
+     833.0,
+     17.0
+    ],
+    [
+     575.0,
+     895.0,
+     191.0
+    ]
+   ],
+   "travel": 166.0
+  }
+ ],
+ "teles": [
+  {
+   "mins": [
+    1153.0,
+    -943.0,
+    -47.0
+   ],
+   "maxs": [
+    1207.0,
+    -865.0,
+    39.0
+   ],
+   "raw_bbox": [
+    [
+     1169.0,
+     -927.0,
+     -15.0
+    ],
+    [
+     1191.0,
+     -881.0,
+     15.0
+    ]
+   ],
+   "target": "t1"
+  },
+  {
+   "mins": [
+    -535.0,
+    -487.0,
+    -31.0
+   ],
+   "maxs": [
+    -481.0,
+    -409.0,
+    71.0
+   ],
+   "raw_bbox": [
+    [
+     -519.0,
+     -471.0,
+     1.0
+    ],
+    [
+     -497.0,
+     -425.0,
+     47.0
+    ]
+   ],
+   "target": "t2"
+  }
+ ],
+ "filters": {
+  "dt_max_ms": 200,
+  "jump_max_u": 250.0,
+  "min_n": 30,
+  "speed": "horizontal central difference, 3-sample median filtered"
+ }
+}

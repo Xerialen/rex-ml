@@ -26,11 +26,30 @@ def _make_backend(cfg):
     return QwsimBackend(cfg)
 
 
+def _make_curriculum(cfg, env_config):
+    """Globalt fildrivet curriculum under SF-träning (cfg har train_dir);
+    lokal Curriculum annars (tester/smoke). Se rl/curriculum_io.py för varför:
+    per-env-instanser i spawnade workers hade växlat steg osynkroniserat."""
+    train_dir = getattr(cfg, "train_dir", None) if cfg is not None else None
+    if train_dir:
+        import os
+        from pathlib import Path
+        from rl.curriculum_io import FileCurriculumClient
+        exp_dir = Path(train_dir) / getattr(cfg, "experiment", "default")
+        if env_config is not None and "worker_index" in env_config:
+            env_id = f"w{env_config['worker_index']}v{env_config.get('vector_index', 0)}"
+        else:
+            env_id = f"pid{os.getpid()}"
+        return FileCurriculumClient(exp_dir, env_id)
+    return Curriculum()
+
+
 class QWGate1Env(gym.Env):
-    def __init__(self, full_env_name: str, cfg=None, render_mode=None):
+    def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None):
         self.name = full_env_name
         self.render_mode = render_mode
-        self.core = QWEnvCore(_make_backend(cfg), Curriculum(), cfg=EpisodeConfig())
+        self.core = QWEnvCore(_make_backend(cfg), _make_curriculum(cfg, env_config),
+                              cfg=EpisodeConfig())
         n_obs = self.core.obs_spec.n_obs
         self.observation_space = gym.spaces.Box(-4.0, 4.0, shape=(n_obs,), dtype=np.float32)
         self.action_space = gym.spaces.Tuple((
@@ -65,4 +84,9 @@ class QWGate1Env(gym.Env):
 
 def register(name: str = "qw_gate1"):
     from sample_factory.envs.env_utils import register_env
-    register_env(name, lambda fen, cfg, render_mode=None: QWGate1Env(fen, cfg, render_mode))
+    register_env(name, make_env)
+
+
+def make_env(full_env_name, cfg=None, env_config=None, render_mode=None):
+    # modulnivå — SF picklar fabriken till spawnade worker-processer
+    return QWGate1Env(full_env_name, cfg, env_config, render_mode)
