@@ -4920,3 +4920,15 @@ evidence/tele_speed_analysis.md (dm3-analytikern, 426 M grannskapssampel + BSP-g
   bryter kausalattribution; väntat antal ~0). Ingen simändring behövs.
 - SKULD BOKFÖRD: zon 28 "tele-sng-out" i gate2_zones.json felbeskriven — verklig t2-
   utgång (224,-320,75) ligger 250 u öster om zonens bounds. Rättas vid nästa zonpass.
+
+## 2026-07-30 19:52 — TAKMÄTNINGEN KLAR: 820-KRAVET ÄR FYSISKT NÅBART (tak 833,4)
+evidence/strafe_ceiling_qwsim.json (agent E, analytisk optimalstyrning i bit-exakta
+libqwsim, msec=13): peak max 833,4, median 826,6, 6/6 körningar över 820; första
+820-passage vid tick ~585 (7,6 s) — dvs vid korridorens SLUT: nära-perfekt spel krävs
+över hela sträckan, marginal ~13 u/s. Gamla rex_env-taket 821,4 var 12 enheter FÖR LÅGT.
+Fysikinsikt (agentens): accelspeed = accelerate*wishspeed*dt = 41,6 > 30-cap ⇒ optimal
+wishdir är VINKELRÄT mot velocity, +900 u²/s² per luftburen tick OAVSETT dt; perfekt
+bunny är friktionsfri (hopptick rensar onground före PM_Friction). msec=12 ger högre tak
+(842,9) via fler ticks/s — bevisprotokollet kör ärligt msec=13 (77 Hz); blandat 12/13
+(riktiga klienters 12,987 ms) ger samma median som ren 13 (826,7). GATE 1 STÅR.
+Träningsläge: samplat medel ~660 (konsolideringsfasen, entropi 0.003), klättring mot 750.
