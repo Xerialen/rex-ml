@@ -4734,3 +4734,15 @@ styrningen. BESLUTSPUNKT ~19:20 (1 h i steg 3 per vaktpostgränsen): om p50 fort
 (SF --exploration_loss_coeff, default 0.003 → 0.01) via omstart som auto-återupptar
 från senaste checkpoint (SF restore ur train_dir; daemon orörd). Jämförelse mot
 diag-baslinjen (flips/s 21.0, |dyaw| 3.6°/tick) avgör om vicklingen bryts.
+
+## 2026-07-30 18:56 — Interventionen FÖRBEREDD (exakt kommando, tvåstegsplan)
+SF-flaggor verifierade ur källan: --restart_behavior=resume är DEFAULT (samma experiment-
+katalog ⇒ auto-restore från senaste checkpoint; daemon och episodfiler orörda);
+--exploration_loss_coeff default 0.003.
+STEG A vid 19:20 om p50<500 (nu 459.0, n=3840 senaste 5 min): döda träningsprocessen,
+starta om EXAKT samma kommando + --exploration_loss_coeff=0.01. Mät 30-40 min:
+framgång = p50 bryter 480+ och stiger; mekanismkontroll via rl.diag_gate1
+(flips/s ska NED från 21.0 mot hoppcykelns ~2-4/s när half-beat ersätter vickling).
+STEG B om A inte biter inom 40 min: flip-kostnad i steg 3/4-belöningen — litet straff
+per luft-teckenbyte över ~6/s (prisar vicklingen direkt, skonar äkta half-beat).
+Implementeras då i rewards_gate1 + omstart; mäts mot samma baslinje.
