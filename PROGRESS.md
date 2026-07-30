@@ -4517,3 +4517,12 @@ vs 1D argmax) — greedy tas manuellt per delfördelning (means resp. argmax(log
 VERIFIERAT mot smoke-checkpointen (stub): greedy peak 405.0, samplat 489.0/550.1 —
 harnesset kör; siffrorna är stub-fysik och betyder inget om rörelse.
 Detta blir träningssimmens utvärdering; gatebeviset körs alltid på riktiga servern.
+
+## 2026-07-30 — Fas 2-verktyg i förväg: eval_gate2 klar
+rl/eval_gate2.py: fri-strövningsutvärdering mot ANTAGNA gate-formeln — GateScore-ackumulering
+per tick (T(v)-kvot, OPEN-medel, voxeltäckning), fastnad-räkning, JSON-rapport.
+VERIFIERAT mot smoke-checkpoint + riktiga rastret: score 0.683, OPEN-medel 344.4,
+täckning 0.28 %, gate_passed_sim=false — formeln fäller korrekt. Delar checkpoint-
+laddningen med eval_gate1. Båda gates har nu komplett mätkedja i träningssimmen;
+riktiga-server-bevisen är separata (RUNBOOK).
+VÄNTAR ENDAST på libqwsim-agentens bit-exakthetssiffror (aktiv, validerar).
