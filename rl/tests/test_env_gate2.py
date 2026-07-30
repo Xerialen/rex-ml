@@ -17,8 +17,8 @@ def test_reset_uses_spawn_positions():
     env = make_env()
     obs = env.reset()
     assert obs.shape == (env.obs_spec.n_obs,)
-    starts = {tuple(p) for p, _ in env.spawns}
-    assert tuple(env.pos) in starts
+    starts = {tuple(p[:2]) for p, _ in env.spawns}
+    assert tuple(env.pos[:2]) in starts   # settling ändrar bara z
 
 
 def test_stuck_terminates_with_penalty():
@@ -53,4 +53,4 @@ def test_spawn_region_filters():
                       rng=np.random.default_rng(3))
     for _ in range(10):
         env.reset()
-        assert tuple(env.pos) == (-880.0, -232.0, -16.0)
+        assert tuple(env.pos[:2]) == (-880.0, -232.0)   # settling ändrar bara z

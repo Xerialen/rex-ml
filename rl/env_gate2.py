@@ -86,6 +86,12 @@ class QWGate2Core:
         self._reset_state(self._pick_spawn())
         self.novelty.reset()
         self.b.reset(self.pos, self.vel, self.yaw)
+        # settla på golvet (entity-origins svävar; se rl/env.py reset)
+        for _ in range(20):
+            self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
+                self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+            if self.onground:
+                break
         return self._obs()
 
     def _obs(self) -> np.ndarray:

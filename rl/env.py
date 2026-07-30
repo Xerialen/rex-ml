@@ -133,6 +133,13 @@ class QWEnvCore:
     def reset(self) -> np.ndarray:
         self._reset_state()
         self.b.reset(self.pos, self.vel, self.yaw)
+        # entity-origins svävar över golvet (uppmätt: 100m-start z 32 -> settlad 24);
+        # låt gravitationen sätta ned spelaren så episoden börjar stående
+        for _ in range(20):
+            self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
+                self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+            if self.onground:
+                break
         return self._obs()
 
     def _obs(self) -> np.ndarray:
