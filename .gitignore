@@ -15,3 +15,7 @@ demos/**/*.zip
 
 # RL-stackens venv (5 GB, återskapas med uv + sim/STACK.md)
 sim/.venv-sf/
+sim/build/
+sim/__pycache__/
+sim/*.so
+rl/__pycache__/

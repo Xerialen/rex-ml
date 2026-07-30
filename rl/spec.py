@@ -9,7 +9,10 @@ from __future__ import annotations
 import dataclasses
 import numpy as np
 
-TICK_DT = 1.0 / 77.0
+# MÄTT (libqwsim-valideringen 2026-07-30): servern integrerar HELA millisekunder,
+# sv_mintic 0.013 ⇒ ticken är exakt 13 ms, inte 1/77 s (12.987 ms). Backend skickar
+# msec=13; denna konstant måste matcha simmens faktiska integrationssteg.
+TICK_DT = 0.013
 
 # Handlingsrum: Tuple(Box(2), Discrete(2), Discrete(3), Discrete(2)) i SF-termer.
 #   Box[0] = dyaw  i [-1, 1] -> grader/tick

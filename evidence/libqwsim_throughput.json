@@ -1,0 +1,69 @@
+{
+ "generated": "2026-07-30",
+ "bsp": "/home/benjamin-adm/mlx/qwserver/serverdir/id1/maps/dm3.bsp",
+ "machine": "vmonster: 64 cores, dt=13ms inputs, seeds from corpus positions",
+ "note": "slot-steps/s = full PM_PlayerMove server ticks incl. nudge/categorize/trace; rays = CM_HullTrace on hull 0, max_dist 4096",
+ "step_batch": [
+  {
+   "batch": 256,
+   "threads": 1,
+   "slot_steps_per_s": 551998.9349889543,
+   "ticks": 6528,
+   "wall_s": 3.0274841020000167
+  },
+  {
+   "batch": 1024,
+   "threads": 1,
+   "slot_steps_per_s": 542905.2906785853,
+   "ticks": 1600,
+   "wall_s": 3.0178376010153443
+  },
+  {
+   "batch": 4096,
+   "threads": 1,
+   "slot_steps_per_s": 762265.091626749,
+   "ticks": 576,
+   "wall_s": 3.0951122200349346
+  },
+  {
+   "batch": 256,
+   "threads": 64,
+   "slot_steps_per_s": 3083925.1283825706,
+   "ticks": 36160,
+   "wall_s": 3.001681174035184
+  },
+  {
+   "batch": 1024,
+   "threads": 64,
+   "slot_steps_per_s": 16553385.718618054,
+   "ticks": 48512,
+   "wall_s": 3.0009744740091264
+  },
+  {
+   "batch": 4096,
+   "threads": 64,
+   "slot_steps_per_s": 14147486.586860366,
+   "ticks": 10368,
+   "wall_s": 3.001757784979418
+  }
+ ],
+ "trace_rays": [
+  {
+   "threads": 1,
+   "origins": 4096,
+   "rays_per_origin": 128,
+   "rays_per_s": 3378589.381769876,
+   "mean_fraction": 0.04020467773079872,
+   "wall_s": 3.1035911189974286
+  },
+  {
+   "threads": 64,
+   "origins": 4096,
+   "rays_per_origin": 128,
+   "rays_per_s": 140631510.19349182,
+   "mean_fraction": 0.03987189754843712,
+   "wall_s": 3.001118592976127
+  }
+ ],
+ "realtime_factor_at_77hz": 214979.03530672798
+}

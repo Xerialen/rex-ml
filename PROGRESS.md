@@ -4567,3 +4567,60 @@ JOBB: tmux jobs — experiment gate1_v1, 32 workers × 8 envs, batch 4096, RNN, 
 fönster. Disk: SF sparar 2 checkpoints à ~2 MB — försumbart.
 NÄSTA: övervaka curriculum_log.jsonl + probe-farter; agentens slutrapport → formellt
 simgodkännande eller omstart; vid GATE1_KANDIDAT → bevisprotokollet (RUNBOOK).
+
+## 2026-07-30 — libqwsim BYGGD, VALIDERAD, BENCHMARKAD (DRL-pivotens fundament)
+
+**Leverans i `sim/`:** batchad, GIL-fri, bit-exakt QW-spelarfysik extraherad ur vendor/mvdsv-src
+(vendor orörd). `sim/csrc/` = byte-identiska kopior av pmove.c/pmovetst.c/cmodel.c/mathlib.c/
+md4.c + headers — diff mot vendor visar EXAKT 8 ändrade rader, samtliga enbart `__thread`
+(trådlokalitet för OpenMP-slots), dokumenterade i `sim/EXTRACTION-NOTES.md`. Shims (qwsvdef.h/
+shim.c) är ny infrastruktur utanför fysikvägen; usercmd_t verifierad mot QW-Group/qwprot master.
+Wrapper replikerar SV_RunCmd-vägen (pitchklamp ±70/80, jump_msec=0, brokenankle-hacket,
+physents={world}). pybind11-modul `qwsim` byggd mot repo-venven (`sim/build.sh`; Python.h från
+uv-cpython 3.12.13, cp312-ABI). API: load_bsp (dm3+100m testade), set/get_movevars, alloc_slots,
+reset, step_batch, get_state, trace_rays (raycast-percept, scoputillägg), point_contents.
+
+**Movevars låsta** = mvdsv-defaults == dragonbot_rtx_27500.cfg: g800/stop100/max320/acc10/fric4/
+entgrav1/ktjump1/övriga pm_*=0. OBS: PM_AirMove använder accelerate (10), sv_airaccelerate är död
+för spelare. dt: servern integrerar HELA millisekunder → msec=13 (0.013 s), inte 1/77.
+
+**Bit-exakthet (evidence/libqwsim_bitexact.json):** 22 QWD-dm3-körningar (movevars_id 49/39),
+1 463 485 wire-checkpoints, 2,0 M cmd-ticks validerade. Sanning = endast wire-ticks (protokollet
+kvantiserar pos 1/8 u, vel 1 u/s; icke-wire-rader är parserns EGEN simulering — ej facit) och
+wire laggar cmd-strömmen 0–12 cmds (ack; laggspårning med kontinuitetspreferens i validatorn).
+Resultat: 71,0 % av checkpoints ≤ 1/8 u (kvantgolvet), 91,0 % ≤ 1/4 u, 44,5 % byte-identiska i
+wire-kodning; median-posfel 0,094 u (= trunkeringsartefakten på z), max 0,5 (=cutgräns).
+Klippt 19,6 % av cmd-ticks — orsaker: knockback (39 457 cuts), hiss (5 638), teleport (21),
+"other" (73 125, koncentrerat till högping-demos; konsistent med serverns AM101-msec-trimning
+som är oobserverbar ur demot). Determinism: 1 vs 64 trådar bitidentiskt (200 ticks × 1484 slots).
+
+**Throughput (evidence/libqwsim_throughput.json), dm3, korpus-seedade positioner:**
+step_batch: 0,55–0,76 M slot-steps/s @1 tråd; 16,55 M @64 trådar (batch 1024) = ~215 000
+parallella 77 Hz-spelare i realtid. trace_rays: 3,4 M rays/s @1T, 140,6 M rays/s @64T
+(4096 origins × 128 strålar). Miljön är inte flaskhalsen för PPO.
+
+**Antaganden beslutade själv:** validering mot movevars_id 49/39-demos (944 QWD-demos saknar
+movevars_id — skippade); ktjump=1 (svep 0/1/slidefix/airstep/bunny gav ingen mätbar skillnad på
+dm3-demos); hisschakt icke-funktionella i simmen (server-entiteter, exkluderas ur Gate 2-zoner).
+NÄSTA: koppla qwsim till Sample Factory-vec-env (raycast-obs), Gate 1-curriculum på 100m.
+
+## 2026-07-30 — SIMMEN FORMELLT GODKÄND (agent B:s slutrapport) + träningen live
+Agent B KLAR. Fysiken byte-identisk med mvdsv (diff = 8 rader, samtliga `__thread`;
+upstream-sha256 loggade; -ffp-contract=off, ingen fast-math). BIT-EXAKTHET på 22 QWD-
+körningar, 1 463 485 wire-checkpoints: 71,0 % ≤ 1/8 u (wire-kvantgolvet), 91,0 % ≤ 1/4 u,
+44,5 % byte-identiska i wire-kodning, median 0,094 u; klippt 19,6 % FÖRKLARAT (knockback
+39 457, hiss 5 638, tele 21, "other" 73 125 = högping-msec-trimning, oobserverbar ur
+demot; renaste demos 4–8 %). Determinism 1 vs 64 trådar BITIDENTISK. Wire-ticks är enda
+facit (protokollet kvantiserar 1/8 u; icke-wire-rader är parserns egen rekonstruktion);
+wire laggar cmd-strömmen 0–12 cmds — validatorn laggmedveten. GODKÄND per BRIEF §3.1 —
+provisoriet hävt, ingen omstart behövs.
+THROUGHPUT: 16,55 M slot-steps/s @64 trådar (~215 000 parallella 77 Hz-spelare);
+trace_rays 140,6 M rays/s @64 trådar. get_state ren läsning.
+KORRIGERINGAR INTAGNA: dt = EXAKT 0,013 s (servern integrerar hela ms, sv_mintic 0.013)
+— TICK_DT uppdaterad i rl/spec.py (träningen startade med 1/77 = 0,1 % reward-skalfel,
+omstart omotiverad); sv_airaccelerate är DÖD för spelarfysik (PM_AirMove använder
+accelerate=10). Movevars == dragonbot_rtx_27500.cfg. Hiss-/tele-volymer ur BSP listade
+i EXTRACTION-NOTES (matchar zonrastrets exkluderingar).
+TRÄNING gate1_v1 LIVE i tmux rexml:jobs: 41 369 FPS (10s-fönster), 6,0 M frames på
+~2,5 min, policy uppdaterar, snittreward stigande (19,4). Daemon i jobs:0.
+.gitignore: sim/build, .so, pycache.
