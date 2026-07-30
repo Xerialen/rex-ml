@@ -4714,3 +4714,14 @@ KANDIDAT-PRÖVNING vid samplat medel 750 (+koll≤150); kandidaturen avgörs av 
 greedy-eval (median ≥800, qwsim, eval_gate1) och gaten bevisas därefter på riktiga
 servern som alltid. Daemonen omstartad med nya trösklar (stateless — bygger om fönstret
 ur färska episoder), verifierad KÖR. 25/25 tester gröna.
+
+## 2026-07-30 — Beteendediagnostik (rl/diag_gate1.py): platåmekanismen identifierad
+Greedy-episod, aktuell checkpoint (evidence/diag_gate1_v1_steg3.json): peak 459.5,
+korridoren AVKLARAD på 745 ticks (9,7 s — episoden slutar vid mål, inte tidsgräns).
+Bunny-mekaniken PERFEKT: luftandel 94 % (analytiska: 80 %), 14 markkontakter à median
+1 tick, landningsförlust 0.0 u. Styrningen är flaskhalsen: teckenbyten 21,0/s (var 3,7:e
+tick) med |dyaw| medel 3,6°/tick — snabbvickling i stället för half-beat (växling per
+hoppcykel ~0,65 s). Accelerationszonen utnyttjas ineffektivt ⇒ 459 vid mål där
+analytiska nådde 821 på samma sträcka. Detta är steg 3/4-slipningens jobb; ingen
+intervention nu (medlet stiger fortfarande). Baslinje sparad för platåbedömning —
+om entropihöjning övervägs jämförs mot dessa siffror.
