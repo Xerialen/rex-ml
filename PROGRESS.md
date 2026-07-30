@@ -4317,3 +4317,11 @@ OBS publiceringskonflikt: annan session hade återpublicerat GAMLA v7-sidan tidi
 verifierade via WebFetch att live-innehållet var v7-eran, skrev över med force (ägarens
 uttryckliga beställning). record_strict fick route_verdicts-param så sidans etiketter följer
 strict-domen (annars hade window ing.1 visat GODKÄND mot provets 0/8).
+
+### GITHUB-REPOT UPPE (ägarbeställning)
+https://github.com/Xerialen/rex-ml — PUBLIKT enligt ägarens besked, main grenskyddad
+(force-push och radering blockerade, enforce_admins på) EFTER pushen. 13 commits pushade,
+inkl. docs/AUDIT-PROBLEMBESKRIVNING.md (problembeskrivning + datakälls-audit med
+MVD/QWD-mätningarna). Repot fanns som tomt LICENSE-skal (annan session, idag 12:35) —
+mergat in i stället för överskrivet. gh-CLI i ~/.local/bin, token i gh:s config.
+OBS: rtx-repot (~/rex-ml/rtx) är fortfarande ENDAST lokalt.
