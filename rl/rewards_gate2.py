@@ -25,7 +25,9 @@ VOXEL_U = 32.0
 class VoxelNovelty:
     """Endast i belöningskalkylatorn — aldrig i observationerna."""
 
-    def __init__(self, bonus_per_voxel: float = 0.05):
+    # 0.05→0.15 (2026-07-31, mätgrundat): lat-optimum uppmätt vid 462M frames —
+    # samplat kryper i 28 u/s, 0,17 % täckning; nyheten måste väga tyngre.
+    def __init__(self, bonus_per_voxel: float = 0.15):
         self.bonus = bonus_per_voxel
         self.seen: set[tuple[int, int, int]] = set()
 
@@ -67,6 +69,12 @@ def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
 def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
                  novelty: VoxelNovelty) -> float:
     r = kinetic_multiplier(s, ray_fracs, ray_dirs)
+    # Gate 1-receptet (bevisat fartdrivande): exponentiell utdelning ÖVER motor-
+    # gränsen 320. Tillagt 2026-07-31 mot uppmätt lat-optimum (smyga undan
+    # fastnad-straffet i 28 u/s). Utan denna term saknar farten egen gradient.
+    sp = _speed_h(s.vel)
+    if sp > 320.0:
+        r += float(np.expm1((sp - 320.0) / 160.0)) * 0.01
     loss = _collision_loss(s)
     if loss > 0.0:
         r -= loss / 150.0        # impulskollision: massivt negativt (BRIEF §3.4)

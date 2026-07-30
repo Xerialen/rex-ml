@@ -5148,3 +5148,13 @@ EVALFIX på vägen: load_policy byggde en qwsim-100m-env bara för RUMMEN ⇒ ka
 blockerade gate2-evalens dm3 (en karta/process). Nu stub-env i laddaren (rummen är
 backend-oberoende) + evalerna bygger alltid sin egen riktiga miljö. 25/25 tester gröna.
 NÄSTA: periodiska evaler; vid platå övervägs A–C-curriculum/belöningsjustering (mätdrivet).
+
+## 2026-07-31 02:50 — LAT-OPTIMUM DIAGNOSTISERAT OCH ÅTGÄRDAT (fartgradient ympad)
+Platå bekräftad (reward −5,0 → −5,3 över 66M) och beteendet mätt: SAMPLAT 1/10 fastnad
+men OPEN-medelfart 28 u/s, täckning 0,17 % — policyn SMYGER undan fastnad-straffet
+(manifestets "lazy optima", ordagrant). Utan egen fartgradient stannar den där.
+ÅTGÄRD (mätgrundad, Gate 1-beprövad): (1) exp-fartterm över 320 (exakt Gate 1-steg-3-
+formen som bevisat driver mot taket) ympad i reward_gate2; (2) nyhetsbonus 0.05→0.15.
+25/25 tester gröna. Omstart med RIKTIG resume (checkpoint 116342, 476,5M frames, ingen
+scratch). Mäts om vid nästa hjärtslag + eval: framgång = OPEN-medelfart klättrar mot
+100+ inom ~30 min, täckning växer.
