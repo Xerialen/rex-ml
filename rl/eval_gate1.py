@@ -28,6 +28,11 @@ from rl.sf_env import QWGate1Env
 
 def load_policy(exp_dir: Path, device: str):
     import gymnasium as gym
+    # torch>=2.6 weights_only-default stoppar numpy-skalärer i SF-checkpoints;
+    # filerna är våra egna (train_dir) — allowlista typen
+    import numpy.core.multiarray
+    torch.serialization.add_safe_globals([numpy.core.multiarray.scalar,
+                                          np.dtype, np.dtypes.Float64DType])
     raw = json.load(open(exp_dir / "config.json"))
     cfg = AttrDict(raw.get("cfg", raw))
     env = QWGate1Env("qw_gate1", types.SimpleNamespace(qw_backend=cfg.get("qw_backend", "qwsim")))
