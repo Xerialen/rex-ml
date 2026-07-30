@@ -1,0 +1,130 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate1_v1",
+ "n": 30,
+ "mode": "sample",
+ "peak_median": 747.7,
+ "peak_max": 758.4,
+ "peak_p10": 736.13,
+ "episodes": [
+  {
+   "peak_speed": 743.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 754.0,
+   "stage": 0
+  },
+  {
+   "peak_speed": 757.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 753.1,
+   "stage": 0
+  },
+  {
+   "peak_speed": 736.2,
+   "stage": 0
+  },
+  {
+   "peak_speed": 757.4,
+   "stage": 0
+  },
+  {
+   "peak_speed": 736.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 754.6,
+   "stage": 0
+  },
+  {
+   "peak_speed": 747.9,
+   "stage": 0
+  },
+  {
+   "peak_speed": 747.5,
+   "stage": 0
+  },
+  {
+   "peak_speed": 757.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 755.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 738.5,
+   "stage": 0
+  },
+  {
+   "peak_speed": 742.3,
+   "stage": 0
+  },
+  {
+   "peak_speed": 737.1,
+   "stage": 0
+  },
+  {
+   "peak_speed": 735.4,
+   "stage": 0
+  },
+  {
+   "peak_speed": 751.6,
+   "stage": 0
+  },
+  {
+   "peak_speed": 746.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 734.1,
+   "stage": 0
+  },
+  {
+   "peak_speed": 755.8,
+   "stage": 0
+  },
+  {
+   "peak_speed": 748.6,
+   "stage": 0
+  },
+  {
+   "peak_speed": 737.3,
+   "stage": 0
+  },
+  {
+   "peak_speed": 735.5,
+   "stage": 0
+  },
+  {
+   "peak_speed": 750.0,
+   "stage": 0
+  },
+  {
+   "peak_speed": 758.4,
+   "stage": 0
+  },
+  {
+   "peak_speed": 754.6,
+   "stage": 0
+  },
+  {
+   "peak_speed": 741.9,
+   "stage": 0
+  },
+  {
+   "peak_speed": 746.3,
+   "stage": 0
+  },
+  {
+   "peak_speed": 744.1,
+   "stage": 0
+  },
+  {
+   "peak_speed": 752.9,
+   "stage": 0
+  }
+ ]
+}

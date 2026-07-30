@@ -11,8 +11,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import types
 from pathlib import Path
+
+# TRÄNINGSPARITET: träningen kör med SF_STDDEV_MAX=1.0 (stänger pitch-entropi-
+# farmningen). Utan samma klämma här samplar evalen med vild pitch och
+# UNDERSKATTAR policyn (uppmätt 2026-07-30: 676 vs 748 median). Måste sättas
+# FÖRE sample_factory-importerna (klassattribut läses vid import).
+os.environ.setdefault("SF_STDDEV_MAX", "1.0")
 
 import numpy as np
 import torch

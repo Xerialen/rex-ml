@@ -4967,3 +4967,16 @@ Träningen behöver INGEN ändring för submålet: exp-belöningen är obegräns
 trycker redan så högt fysiken tillåter. Bevissidan uppdaterad: 850-streckad linje +
 submålstext; kurvan uppdaterad (281 677 episoder, p50 680, max 726 — konsolideringen
 klättrar). Greedy-eval 723 (19:57-posten).
+
+## 2026-07-30 20:12 — GATE1_KANDIDAT-signalen utlöst; prövning pågår (greedy 780, krav 820)
+Daemonen 20:09: KANDIDAT vid samplat medel 754.2, koll 0 (daemonen avslutade sig själv —
+korrekt). Träning fortsätter (127 M frames, 37,7k fps).
+KANDIDATPRÖVNING körd — och en EVAL-BUGG hittad+fixad på vägen: evalprocessen saknade
+SF_STDDEV_MAX=1.0 (träningens pitch-klämma) ⇒ samplade evalen körde med vild pitch i
+obs (last_action/pitch-features) och UNDERSKATTADE policyn: 676/711 mot träningens 760.
+Med paritet: samplat median 747.7 / max 758.4 (matchar träningen — mysteriet löst),
+GREEDY 779.7. Konsolideringens greedy-resa: 459 → 723 → 780. 40 u/s kvar till 820-kravet.
+Parity-variabeln INBYGGD i eval_gate1/diag_gate1 (os.environ.setdefault före SF-import).
+PRÖVNINGEN EJ GODKÄND ÄN (780 < 820) ⇒ träningen fortsätter; greedy re-evalueras
+periodiskt; vid ≥820 körs SERVERPROTOKOLLET (bryggan redo). Om greedy platåar medan
+samplat ≥780: sista annealingsteget (entropi → ~0.0005) övervägs, loggas då.

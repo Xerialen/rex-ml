@@ -14,8 +14,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import types
 from pathlib import Path
+
+os.environ.setdefault("SF_STDDEV_MAX", "1.0")   # träningsparitet, se eval_gate1
 
 import numpy as np
 import torch
