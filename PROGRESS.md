@@ -5108,3 +5108,16 @@ korridoren — kravet "peak 820" är uppfyllt som formulerat; målgång-i-fart v
 definition). (3) demos bör kopieras in i rex-ml/demos/ + committas.
 DÄREFTER: Gate 2 (fas 2) — dm3 fritt strövande; verktygskedjan står klar (train_gate2,
 zonraster, GateScore, eval_gate2). REPORT.md skrivs FÖRST när BÅDA gates håller.
+
+## 2026-07-30 22:20 — Förstapersonsreplay av rekordet publicerad (validerad med lästa skärmdumpar)
+https://claude.ai/code/artifact/42720e05-8d2c-4414-a7a3-8707a4db3d68
+Byggd ur run_24:s per-tick-logg (1 159 ticks @77 Hz: pos/yaw/pitch/speed/onground) +
+100m.bsp-geometrin (3 690 trianglar ur BSP29-lumparna). WebGL-FP-kamera med tick-
+interpolering, fart-HUD (färgskifte vid 820/850), lufttimer, tidslinje, 0.25/0.5/1×.
+FYND UNDER BYGGET: policyns verkliga pitch ligger på klämgränsen 80° NED (irrelevant
+dimension i träningen → drev till clampen) — äkta FP vore golvstirrande; vyn horiseras
+som standard med ärlig not + "äkta pitch"-växel. Valideringskedjan krävde tre varv:
+(1) kolumnmajor-omskrivning av MVP (först svart värld), (2) headless-GL kräver
+--use-angle=swiftshader + LD_LIBRARY_PATH till scratchpadens libasound (minnesregeln),
+(3) skärmdumpar LÄSTA: korridor, perspektiv, fog, HUD — allt renderar. 981 grönt vid
+peak-frame verifierat visuellt.
