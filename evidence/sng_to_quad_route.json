@@ -1,0 +1,116 @@
+{
+  "what": "sng/lifts side -> Quad route: owner demo measurements, investigation of the 59/59 corpus 'gap' rejections, and the registered route",
+  "date": "2026-07-30",
+  "owner_request": "Jag saknar ett hopp från sng/lifts sidan till quad",
+
+  "owner_demos": {
+    "files": ["demos/dm3-drillar/sng-to-quad.qwd", "demos/dm3-drillar/(hex)sng-to-quad.qwd"],
+    "NOTE_duplicate": "the two files are byte-identical (same sha256 85fd9f10fb98c61f...) — the owner has ONE distinct recording of this route, not two",
+    "parser": "qw-demo-miner qwd/v2 strict extractor via pipeline.record_reference.load",
+    "ticks": 629,
+    "sample_rate_hz": 77.1,
+    "recording_duration_s": 8.156,
+    "start_xyz": [-518.6, 493.6, 120.0],
+    "start_is": "SNG weapon stand (sng item at (-512,448,96); 45.9 u from item origin)",
+    "end_xyz": [936.8, 336.0, 56.0],
+    "closest_approach_to_quad_u": 17.6,
+    "time_start_to_quad_s": 6.091,
+    "max_per_tick_displacement_u": 8.7,
+    "teleporter_used": false,
+    "median_speed_ups": 459.7,
+    "peak_speed_ups": 537.7,
+    "jump_presses": 6,
+    "air_segments_of_interest": [
+      {"which": "SNG platform hop up", "t_s": [1.208, 1.545], "takeoff": [-477.2, 468.0, 120.0],
+       "landing": [-438.8, 332.0, 163.9], "gap_u": 141.3, "dz_u": 43.9, "void_u": 143.9,
+       "takeoff_ups": 426, "kind": "gap_up"},
+      {"which": "SNG -> lifts-side walkway", "t_s": [1.545, 2.208], "takeoff": [-438.8, 332.0, 163.9],
+       "landing": [-201.6, 373.8, 163.9], "gap_u": 240.8, "dz_u": 0.0, "void_u": 186.4,
+       "air_s": 0.649, "takeoff_ups": 438, "kind": "gap"},
+      {"which": "THE trick jump, lifts side -> Quad platform, part 1 (onto the mid ledge)",
+       "t_s": [4.831, 5.169], "takeoff": [459.5, 151.6, 56.0], "landing": [598.4, 110.8, 99.9],
+       "gap_u": 144.8, "dz_u": 43.9, "void_u": 263.0, "takeoff_ups": 466, "kind": "gap_up"},
+      {"which": "THE trick jump, part 2 (mid ledge -> Quad platform)",
+       "t_s": [5.169, 5.493], "takeoff": [598.4, 110.8, 99.9], "landing": [732.0, 168.8, 56.0],
+       "gap_u": 145.7, "dz_u": -43.9, "void_u": 263.0, "takeoff_ups": 460, "kind": "gap"},
+      {"comment": "void_u = drop of the floor under the flight below the lower endpoint (record_replay.air_segments); the trick jump crosses a 263 u void in two ~145 u flights via a mid ledge at z~100, total ~290 u at 460-476 u/s, no rocket (max rise 43.9 u per flight, plain-jump height)"}
+    ]
+  },
+
+  "rejection_investigation": {
+    "what_the_59_were": "route-lab registry 'sngspawn-to-quad' (SNG-tele spawns -> Quad), 59 candidates inside the 4.27 s gate, all rejected by human_paths.vet as 'gap'",
+    "method": "refetched every rejected run's trajectory samples and measured the largest inter-sample position jump: dt, distance, endpoints, implied speed (full per-run table: evidence/sng_to_quad_gap_diagnostics.json)",
+    "verdict": "ALL 59 ARE TRUE TELEPORTS, ZERO FALSE REJECTIONS",
+    "true_teleports": 59,
+    "false_rejections": 0,
+    "evidence": {
+      "max_gap_distance_u_range": [776.5, 787.6],
+      "max_gap_dt_ms_range": [13, 34],
+      "implied_speed_ups_range": [23127, 60223],
+      "physics_bound": "max plausible player speed ~900 u/s = ~12 u per 14 ms tick; the measured jumps are 25-67x over the bound",
+      "fixed_endpoint_pair": {
+        "from_approx": [-540, -450, "z -16..27"],
+        "to_approx": [226, -318, 75],
+        "reading": "every run's jump connects the same two points — the dm3 SNG teleporter entrance and its exit; a trick jump would scatter its endpoints and stay under ~12 u/tick"
+      },
+      "examples": [
+        {"demo_key": 17837, "dt_ms": 13, "dist_u": 777.5, "from": [-539.8, -438.2, 7.2], "to": [225.5, -318.8, 74.9], "implied_ups": 59805},
+        {"demo_key": 36230, "dt_ms": 34, "dist_u": 786.3, "from": [-545.0, -451.8, 26.5], "to": [228.0, -316.0, 74.6], "implied_ups": 23127},
+        {"demo_key": 41578, "dt_ms": 13, "dist_u": 782.9, "from": [-541.6, -449.1, -16.0], "to": [225.0, -319.0, 75.0], "implied_ups": 60223}
+      ]
+    },
+    "does_the_trick_jump_trip_the_gap_check": "NO. The owner's demo peaks at 8.7 u/tick; the four clean corpus movement runs sample at ~20-72/s and their largest inter-sample steps stay far under the 220 u threshold. The vet filter was NOT loosened — no change was needed, globally or route-scoped.",
+    "conclusion_for_sngspawn_routes": "sngspawn_a/b_to_quad remain teleport-dependent as recorded; their 4.27 s gate is a teleporter time and stays excluded from training"
+  },
+
+  "new_item_pair_cohort": {
+    "registry_route": "zip-hex-sng-to-quad (start: sng item take, target: first quad take, same life, max 30 s — already defined in route-lab routes_dm3.json)",
+    "candidates_total": 8,
+    "movement_runs_pass_unchanged_vet": 4,
+    "teleport_detour_runs_rejected_as_gap": 4,
+    "movement_runs": [
+      {"name": ". ParadokS", "duration_s": 5.266, "combat": false},
+      {"name": "ski[SSC]", "duration_s": 5.426, "combat": true},
+      {"name": "grind", "duration_s": 6.040, "combat": false},
+      {"name": "(*)mystery", "duration_s": 6.486, "combat": false}
+    ],
+    "teleport_runs": [
+      {"name": "ToT_impulse", "duration_s": 10.045}, {"name": "Pierre", "duration_s": 10.192},
+      {"name": "stoli", "duration_s": 10.241}, {"name": "Zepp", "duration_s": 11.704}
+    ],
+    "teleport_runs_gap_evidence": "same fixed pair as the 59: e.g. demo 13504: 786.7 u in 14 ms from (-542.2,-463.9,-16.0) to (225.5,-318.5,74.9), implied 56190 u/s",
+    "envelope_leave_one_out": "SATISFIED: 4 independent human movement runs >= 3 required",
+    "paths_file": "pipeline/out/paths/zip-hex-sng-to-quad.json (4 paths, 2473-2753 u, 105-128 restart states each; extracted at pass_s=8.04 rather than gate_s because total supply is 4 and all 4 are inside the owner's acceptance band — recorded in the file)"
+  },
+
+  "registered_route": {
+    "file": "pipeline/cohort_routes.py",
+    "name": "sng_to_quad",
+    "start": [-512.0, 448.0, 120.0],
+    "start_derivation": "sng item corpus/map origin (-512,448,96) + PLAYER_ORIGIN_DZ 24, same rule as every item endpoint; owner demo starts 46 u from it",
+    "target": [952.0, 296.0, 80.0],
+    "target_derivation": "QUAD item origin (952,296,56) + 24, identical to the existing *_to_quad routes",
+    "gate_s": 6.04,
+    "gate_derivation": "median WITHOUT combat over the movement (non-teleport) runs [5.266, 6.040, 6.486]; teleport runs excluded because they are a different journey and slower — exclusion makes the gate harder, not easier. Pooled no-combat median incl. teleports would be 8.27 s (context only).",
+    "pass_s": 8.04,
+    "owner_s": 6.09,
+    "median_all_s": 5.73,
+    "n_cohort": 3,
+    "timeout_s": 14.04,
+    "max_ticks": 1131,
+    "wiring": [
+      "race.py _REGISTRY_OF: sng_to_quad -> zip-hex-sng-to-quad (human_paths_for finds the 4 tracks)",
+      "human_paths.py REGISTRY_TO_COHORT: zip-hex-sng-to-quad -> sng_to_quad (gate_of + default extraction)"
+    ],
+    "existing_routes_untouched": true,
+    "combat_layer_untouched": true
+  },
+
+  "open_items": [
+    "Only ONE distinct owner recording exists ((hex)sng-to-quad.qwd is a byte-identical copy of sng-to-quad.qwd) — ask the owner for a second take if a reference spread is wanted; the corpus envelope does not depend on it (4 human runs)",
+    "record_reference.DEMO_ROUTE not yet extended with sng-to-quad.qwd -> sng_to_quad (replay-page wiring only; do together with the quad_to_ra demo remap already flagged to the owner)",
+    "Navmesh path for sng_to_quad not measured: the mesh may not model the 263 u void jump (cf. quad_to_ra, mesh 5064 u vs straight 1248 u). Training should use human-geometry mode (human_k > 0), where the 4 tracks carry the route; if navmesh mode shows an absurd planned length, exclude it there the same way quad_to_ra is",
+    "Cohort is small: gate median over n=3 no-combat movement runs (4 with combat) vs n>=128 on other routes — stated on the route entry; the gate is nonetheless consistent with the owner's own 6.09 s",
+    "sngspawn_a/b_to_quad unchanged: their 59 rejections are all genuine teleports; that route stays impossible without teleport physics"
+  ]
+}

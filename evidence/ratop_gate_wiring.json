@@ -1,0 +1,51 @@
+{
+ "derived": "2026-07-30, manoeuvre gate wired into the strict protocol",
+ "why": "evidence/ratop_edge_jump.json measured that the envelope gate cannot fail the RA-top go-around (go-around stays 43-63 u from each route's cloud vs bands of 47.8-110.7 u, quad_to_ra has no band); the fix is a manoeuvre requirement per RA-top route",
+ "where": {
+  "gate": "pipeline/ratop_gate.py — MANOEUVRE_GATES anchors + check(route, pos, ground, speed)",
+  "wiring": "pipeline/strict_eval.py — run() keeps a per-tick ground flag in each trace (column 4), checks every ARRIVED episode of a gated route with ratop_gate.check(), and reports per-approach manoeuvre_rate / manoeuvre_gate / manoeuvre_worst_u; evaluate() adds route-level manoeuvre_gated / manoeuvre_rate_min / manoeuvre_gate and passes_strict now requires manoeuvre_gate (any arrived episode that skipped the jump fails the route)",
+  "test": "pipeline/tests/test_ratop_gate.py — .venv/bin/python -m pipeline.tests.test_ratop_gate (CPU only)"
+ },
+ "spec": {
+  "logic": "one airborne event, same spirit as pipeline/manoeuvres.py executed(): takeoff within tol_u of the human takeoff AND next ground contact within tol_u of the human landing, plus void_u >= min_void_u under the flight (record_replay.air_segments' floor probe, run on candidate segments only); demo-derived ground flags get single-tick apex blips (vz==0 at a jump's apex) cleared before segmentation — apex is a local z maximum where a real bunny-hop touch is a minimum, so bot traces are unaffected",
+  "tol_u": 96.0,
+  "min_void_u": 96.0,
+  "void_probe_u": 512.0,
+  "aggregation": "manoeuvre_rate = fraction of arrived episodes that executed the jump; route fails strict if any approach has an arrived episode that skipped it",
+  "routes": {
+   "ring_to_ratop": {"takeoff": [59.6, -551.1, 312.0], "landing": [159.9, -674.6, 328.0]},
+   "ralow_to_ratop": {"takeoff": [73.2, -554.1, 312.0], "landing": [178.0, -700.2, 328.0]},
+   "quad_to_ra": {"takeoff": [68.0, -561.1, 312.0], "landing": [216.9, -694.6, 328.0]},
+   "tunnel_to_ra": {"takeoff": [91.6, -564.0, 296.0], "landing": [202.5, -687.2, 328.0]}
+  },
+  "anchor_source": "human_jump fields of evidence/ratop_edge_jump.json, embedded as literals in pipeline/ratop_gate.py"
+ },
+ "test_results_2026_07_30": {
+  "reference_demo_ring_to_ratop": {
+   "demo": "demos/dm3-drillar/ring-to-ratop.qwd",
+   "executed": true,
+   "takeoff_err_u": 0.0,
+   "landing_err_u": 0.0,
+   "void_u": 335.9,
+   "pass_margin_u": 96.0,
+   "note": "errors are 0 because the anchors were derived from this demo; the margin the tolerance leaves is the full 96 u"
+  },
+  "reference_demo_ralow_to_ratop": {
+   "demo": "demos/dm3-drillar/ralow-to-ratop.qwd",
+   "executed": true, "takeoff_err_u": 0.1, "landing_err_u": 0.0, "void_u": 336.0
+  },
+  "reference_demo_tunnel_to_ra": {
+   "demo": "demos/dm3-drillar/(spawn)sngspawn-to-ring-to-ratop.qwd",
+   "executed": true, "takeoff_err_u": 0.0, "landing_err_u": 0.0, "void_u": 320.0
+  },
+  "quad_to_ra": "no owner reference demo exists (record_reference.py audit note); anchors from the evidence file, corpus means sit within tolerance",
+  "synthetic_go_around": {
+   "trace": "probed floor route from the evidence file: ledge z312 -> z264 walkway east -> ramp x~316 -> west along RA ledge, 137 ticks, ends 27.9 u from the landing anchor standing on it",
+   "executed": false,
+   "closest_air_segment": {"takeoff_err_u": 0.4, "landing_err_u": 140.5},
+   "fail_margin_u": 44.5,
+   "note": "fails on the one-event check: the drop off the ledge starts at the takeoff anchor but lands 140.5 u from the landing anchor (tol 96); walking onto the landing spot afterwards does not count"
+  },
+  "ungated_route": "check('window_to_rl', ...) returns None — routes off RA top are untouched"
+ }
+}

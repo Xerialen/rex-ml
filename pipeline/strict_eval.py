@@ -41,6 +41,7 @@ from . import clearance as CL
 from . import coverage as CV
 from . import policy as P
 from . import race
+from . import ratop_gate as RG
 
 OUT = Path("/home/benjamin-adm/rex-ml/pipeline/out/strict")
 BOOT = 2000
@@ -97,7 +98,10 @@ def run(actor, route: C.CohortRoute, start: tuple, n: int, dev: str = "cuda",
                 speeds[i].append(float(sp[i]))
             if obs[i, 8] < 0.5:
                 air[i] += 1
-            traces[i].append((float(Pp[i, 0]), float(Pp[i, 1]), float(Pp[i, 2]), float(sp[i])))
+            # Column 4 is the ground flag, kept so the RA-top manoeuvre gate can cut the episode
+            # into airborne segments; columns 0-3 are unchanged for every older consumer.
+            traces[i].append((float(Pp[i, 0]), float(Pp[i, 1]), float(Pp[i, 2]), float(sp[i]),
+                              float(obs[i, 8] >= 0.5)))
         obs, parts, dones = env.step(a)
         parts = np.asarray(parts)
         wall[live] |= parts[live, 2] < 0
@@ -124,6 +128,23 @@ def run(actor, route: C.CohortRoute, start: tuple, n: int, dev: str = "cuda",
     tr3 = [np.asarray(t, np.float32)[:, :3] for t in traces if t]
     env_d = EV.episode_max_dists(tr3, cloud, join_band_u=env_band) \
         if cloud is not None and tr3 else []
+    # The RA-top edge jump, where the route requires one. Added 2026-07-30 after
+    # evidence/ratop_edge_jump.json measured that the envelope cannot fail the go-around (the
+    # cloud covers the corridor, 43-63 u vs bands of 48-111 u), so the requirement is the
+    # manoeuvre itself: one airborne segment over >=96 u of void, human takeoff to human landing.
+    man_rate, man_gate, man_worst = None, None, None
+    if route.name in RG.MANOEUVRE_GATES:
+        checks = []
+        for i in np.flatnonzero(arrived):
+            tr = np.asarray(traces[i], np.float32)
+            if len(tr):
+                checks.append(RG.check(route.name, tr[:, :3], tr[:, 4] > 0.5, tr[:, 3]))
+        if checks:
+            ex = [c["executed"] for c in checks]
+            man_rate = round(float(np.mean(ex)), 3)
+            man_gate = bool(all(ex))
+            worst = [c["best"]["worst_u"] for c in checks if c["best"] is not None]
+            man_worst = round(max(worst), 1) if worst else None
     t_s = ticks * C.TICK_DT
     at = t_s[arrived]
     allsp = np.concatenate([np.array(x) for x in speeds if x]) if any(speeds) else np.array([0.0])
@@ -146,6 +167,9 @@ def run(actor, route: C.CohortRoute, start: tuple, n: int, dev: str = "cuda",
         "scrape_p95": round(float(np.percentile(scrape, 95)), 4) if scrape else None,
         "envelope_median_u": round(float(np.median(env_d)), 1) if env_d else None,
         "envelope_p95_u": round(float(np.percentile(env_d, 95)), 1) if env_d else None,
+        "manoeuvre_rate": man_rate,
+        "manoeuvre_gate": man_gate,
+        "manoeuvre_worst_u": man_worst,
         "frac_airborne": round(float(air.sum() / max(ticks.sum(), 1)), 3),
         "frac_above_320": round(float((allsp > 320).mean()), 3),
         "median_speed_ups": round(float(np.median(allsp)), 1),
@@ -166,7 +190,8 @@ def evaluate(ckpt: Path, n: int, dev: str = "cuda", greedy: bool = False,
     ev_band = EV.load_band()
     rows = []
     print(f"{'rutt':22s} {'ingång':>7} {'arr%':>6} {'median':>7} {'ci95':>15} {'p90':>7} "
-          f"{'värsta':>7} {'skrap':>7} {'band':>7} {'hölje':>7} {'ev.band':>7} {'luft%':>6} {'n_eff':>6}")
+          f"{'värsta':>7} {'skrap':>7} {'band':>7} {'hölje':>7} {'ev.band':>7} {'luft%':>6} "
+          f"{'n_eff':>6} {'manöv':>7}")
     for r in race.training_routes():
         ap = CV.mesh_approaches(race.MAP, r.target, n_probes=2500, seed=1)
         cloud = EV.route_cloud(r.name)
@@ -185,7 +210,8 @@ def evaluate(ckpt: Path, n: int, dev: str = "cuda", greedy: bool = False,
                   f"{pct(res['scrape_median'])} {pct(band.get(r.name)):>7} "
                   f"{res['envelope_median_u'] if res['envelope_median_u'] is not None else '-':>7} "
                   f"{ev_band.get(r.name, '-'):>7} "
-                  f"{res['frac_airborne'] * 100:5.1f}% {res['effective_n']:6d}", flush=True)
+                  f"{res['frac_airborne'] * 100:5.1f}% {res['effective_n']:6d} "
+                  f"{pct(res['manoeuvre_rate'])}", flush=True)
         if not per_start:
             continue
         meds = [x["median_s"] for x in per_start if x["median_s"] is not None]
@@ -201,6 +227,9 @@ def evaluate(ckpt: Path, n: int, dev: str = "cuda", greedy: bool = False,
             "envelope_worst_start_u": max((x["envelope_median_u"] for x in per_start
                                            if x["envelope_median_u"] is not None), default=None),
             "envelope_band_u": ev_band.get(r.name),
+            "manoeuvre_gated": r.name in RG.MANOEUVRE_GATES,
+            "manoeuvre_rate_min": min((x["manoeuvre_rate"] for x in per_start
+                                       if x["manoeuvre_rate"] is not None), default=None),
             "effective_n_min": min(x["effective_n"] for x in per_start),
             "per_start": per_start,
         }
@@ -210,12 +239,20 @@ def evaluate(ckpt: Path, n: int, dev: str = "cuda", greedy: bool = False,
         row["inside_corpus_envelope"] = bool(
             row["envelope_worst_start_u"] is not None and row["envelope_band_u"] is not None
             and row["envelope_worst_start_u"] <= row["envelope_band_u"])
+        # The manoeuvre requirement fails the route if ANY arrived episode skipped the edge jump —
+        # same spirit as the other gates: a line no human takes is a fail even if it is fast.
+        # Ungated routes pass vacuously; a gated route with no arrivals is already failed by the
+        # arrival gate, so only an explicit skip (manoeuvre_gate is False) fails here.
+        row["manoeuvre_gate"] = bool(
+            not row["manoeuvre_gated"]
+            or not any(x["manoeuvre_gate"] is False for x in per_start))
         row["passes_strict"] = bool(
             row["arrival_rate_min"] >= 1.0
             and row["median_worst_start_s"] is not None
             and row["median_worst_start_s"] <= r.pass_s
             and row["inside_corpus_scrape_band"]
-            and row["inside_corpus_envelope"])
+            and row["inside_corpus_envelope"]
+            and row["manoeuvre_gate"])
         CV.attach(row, attempts=n * len(per_start), distinct=row["effective_n_min"],
                   approaches_modelled=ap["approaches"], approaches_tested=len(per_start),
                   note="sampled decode; one start per modelled approach")
@@ -229,7 +266,9 @@ def evaluate(ckpt: Path, n: int, dev: str = "cuda", greedy: bool = False,
         {"ckpt": str(ckpt), "n_per_start": n, "greedy": greedy,
          "gate": {"arrive_box": C.ARRIVE_BOX, "arrive_z": C.ARRIVE_Z,
                   "tolerance_s": C.TOLERANCE_S,
-                  "wall_scrape_band": "corpus human p95 per route, see evidence/wall_band.json"},
+                  "wall_scrape_band": "corpus human p95 per route, see evidence/wall_band.json",
+                  "manoeuvre": "RA-top routes require the human edge jump per episode, "
+                               "see pipeline/ratop_gate.py and evidence/ratop_edge_jump.json"},
          "passed": passed, "n_passed": len(passed), "n_routes": len(rows), "routes": rows},
         indent=1, default=float))
     print(f"\n{len(passed)}/{len(rows)} rutter klarar det strikta provet; "

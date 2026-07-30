@@ -59,6 +59,10 @@ REGISTRY_TO_COHORT = {
     "zip-ring-to-ratop": "ring_to_ratop",
     "sngspawn-to-mega": ("sngspawn_a_to_mega", "sngspawn_b_to_mega"),
     "tunnel-to-ra": "tunnel_to_ra",
+    # sng/lifts side -> Quad, added 2026-07-30. Unlike sngspawn-to-quad this pair has clean
+    # movement runs: 8 candidates, 4 pass vet unchanged, 4 are true teleports (~780 u in one
+    # sample step) and are correctly rejected as `gap`.
+    "zip-hex-sng-to-quad": "sng_to_quad",
 }
 
 # A run is only usable as a path if the demo sampled it densely enough. MVD sampling is not uniform;
@@ -134,6 +138,43 @@ def fetch_paths(con, runs: list[dict]) -> dict[tuple[int, int, int], list[tuple]
 # rocket, and the movement policy has no rocket launcher — training its route geometry on a rocket
 # jump asks it to reproduce a trajectory its own physics cannot produce.
 MAX_RISE_PER_HALF_SECOND_U = 95.0
+
+# The rise alone misfires on stairs (audited 2026-07-30, `evidence/rj_filter_audit.json`): QW
+# stair-climbing steps *position* up to 16 u per tick with no velocity, so the RA stairs
+# legitimately rise 96-119 u in half a second — 640 of the 888 ralow_to_ratop rejections were
+# such climbs, with a floor within 40 u straight below every sample of the rise. A rocket jump is
+# free flight: on every audited route its rise hangs 136-480 u above the nearest floor. So a
+# >95 u rise is only a rocket jump when it is *airborne* — some sample after the window start
+# hangs more than FLOOR_SUPPORT_U above the floor straight below it. 64 u = a plain jump's
+# 45.5 u apex over the tread plus a 16 u stair step of slack. Implied per-interval vz cannot
+# separate the two (grounded stair climbs show up to ~1140 u/s from the instant steps).
+FLOOR_SUPPORT_U = 64.0
+FLOOR_PROBE_U = 512.0  # past dm3's deepest pit, same reach as record_replay's void probe
+
+
+def rise_is_floor_supported(samples: list[tuple], window_ms: int = 500) -> bool:
+    """True when every >``MAX_RISE_PER_HALF_SECOND_U`` window's climb keeps a floor within
+    ``FLOOR_SUPPORT_U`` below every sample after the window start — a stepped stair/ramp climb,
+    not free flight. Probes the map only when called, i.e. only on runs the rise heuristic
+    alone would already have rejected."""
+    import numpy as np
+
+    from .edge_signal import _floor_below
+
+    t = np.array([s[0] for s in samples], float)
+    p = np.array([[s[1], s[2], s[3]] for s in samples], np.float32)
+    z = p[:, 2]
+    depth = None
+    for i in range(len(t)):
+        for j in range(i - 1, -1, -1):
+            if t[i] - t[j] > window_ms:
+                break
+            if z[i] - z[j] > MAX_RISE_PER_HALF_SECOND_U:
+                if depth is None:
+                    depth = _floor_below(p, depth=FLOOR_PROBE_U, step=8.0)
+                if (depth[j + 1:i + 1] > FLOOR_SUPPORT_U).any():
+                    return False
+    return True
 
 
 def max_rise(samples: list[tuple], window_ms: int = 500) -> float:
@@ -218,7 +259,7 @@ def vet(samples: list[tuple], duration_s: float) -> tuple[bool, str, dict]:
         return False, "sparse", stats
     if biggest > MAX_SAMPLE_GAP_U:
         return False, "gap", stats
-    if rise > MAX_RISE_PER_HALF_SECOND_U:
+    if rise > MAX_RISE_PER_HALF_SECOND_U and not rise_is_floor_supported(samples):
         return False, "rocket_jump", stats
     return True, "ok", stats
 

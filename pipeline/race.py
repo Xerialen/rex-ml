@@ -154,15 +154,16 @@ PATHS_DIR = Path("/home/benjamin-adm/rex-ml/pipeline/out/paths")
 # cohort route name -> the route-lab registry file its human paths were extracted into
 _REGISTRY_OF = {
     "window_to_rl": "zip-window-to-rl",
-    "ralow_to_ratop": "zip-ralow-to-ratop",
+    "ralow_to_ratop": "zip-ralow-to-ratop-v2",  # RJ-filterrevisionen 2026-07-30: golvprob i stället for stigningsheuristik
     "lifts_to_sng_mega": "lifts-to-sng-mega",
     "quad_to_ra": "quad-to-ra",
     "ring_to_ratop": "zip-ring-to-ratop",
     "sngspawn_a_to_mega": "sngspawn-to-mega",
     "sngspawn_b_to_mega": "sngspawn-to-mega",
-    "tunnel_to_ra": "tunnel-to-ra",
+    "tunnel_to_ra": "tunnel-to-ra-v2",  # 8 -> 24 banor efter samma revision (evidence/rj_filter_audit.json)
     "sngspawn_a_to_quad": "sngspawn-to-quad",
     "sngspawn_b_to_quad": "sngspawn-to-quad",
+    "sng_to_quad": "zip-hex-sng-to-quad",
 }
 
 

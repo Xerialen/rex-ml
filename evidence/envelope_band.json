@@ -10,13 +10,18 @@
   },
   "ralow_to_ratop": {
    "n_runs": 24,
-   "loo_max_dist_p50": 15.8,
-   "gate_p95_u": 47.8
+   "loo_max_dist_p50": 17.6,
+   "gate_p95_u": 48.4
   },
   "lifts_to_sng_mega": {
    "n_runs": 24,
    "loo_max_dist_p50": 10.5,
    "gate_p95_u": 23.6
+  },
+  "quad_to_ra": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 26.0,
+   "gate_p95_u": 108.4
   },
   "ring_to_ratop": {
    "n_runs": 24,
@@ -34,9 +39,14 @@
    "gate_p95_u": 51.2
   },
   "tunnel_to_ra": {
-   "n_runs": 8,
-   "loo_max_dist_p50": 45.9,
-   "gate_p95_u": 110.7
+   "n_runs": 24,
+   "loo_max_dist_p50": 21.7,
+   "gate_p95_u": 64.2
+  },
+  "sng_to_quad": {
+   "n_runs": 4,
+   "loo_max_dist_p50": 153.5,
+   "gate_p95_u": 289.5
   }
  }
 }

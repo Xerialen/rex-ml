@@ -1,0 +1,2013 @@
+{
+ "date": "2026-07-30",
+ "method": {
+  "raw_runs": "same-life directed item-pair runs, cohort_cte_chain semantics generalized: A 'taken' -> first global take of B by same slot, dt<=15 s, B active at start, latest source per pickup, no slot spawn in between; dm3/mvd/4on4 only",
+  "vet": "pipeline/human_paths.py vet(): >=8 samples, >=12 samples/s, max 3-D sample gap <=220 u, max z-rise per 0.5 s <=95 u (rocket-jump filter). Same thresholds, same code.",
+  "vet_sample": "pairs marked vet_sample_is_fastest_n=true were vetted on their fastest 120 runs only; vet_ok is a lower bound for the pair",
+  "classification": "sufficient >=15 vetted runs; thin 3-14; missing <3",
+  "assumption": "15 s time bound chosen per audit brief; training routes use their own gates"
+ },
+ "item_nodes": {
+  "quad": [
+   952,
+   296,
+   56
+  ],
+  "ratop": [
+   256,
+   -704,
+   304
+  ],
+  "ralow_ng": [
+   -64,
+   -704,
+   -40
+  ],
+  "ya": [
+   1232,
+   -904,
+   -48
+  ],
+  "ssg_ya": [
+   1776,
+   -656,
+   -48
+  ],
+  "sng": [
+   -512,
+   448,
+   96
+  ],
+  "mega_sng": [
+   -720,
+   80,
+   160
+  ],
+  "mega_hill": [
+   564,
+   -48,
+   -192
+  ],
+  "mega_pent": [
+   1840,
+   624,
+   -204
+  ],
+  "rl": [
+   1520,
+   496,
+   -112
+  ],
+  "gl_water": [
+   1216,
+   240,
+   -416
+  ],
+  "lg_water": [
+   1544,
+   -192,
+   -416
+  ],
+  "ring": [
+   240,
+   -32,
+   56
+  ],
+  "pent": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ "training_routes": {
+  "window_to_rl": {
+   "registry": "zip-window-to-rl",
+   "gate_s": 2.75,
+   "candidates_inside_gate": 636,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {},
+   "fastest_s": 2.069,
+   "envelope_n_runs": 24,
+   "envelope_gate_p95_u": 40.2,
+   "verdict": "sufficient"
+  },
+  "sngspawn_to_quad": {
+   "registry": "sngspawn-to-quad",
+   "gate_s": 4.27,
+   "candidates_inside_gate": 59,
+   "vetted_kept": 0,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "gap": 59
+   },
+   "fastest_s": null,
+   "envelope_n_runs": null,
+   "envelope_gate_p95_u": null,
+   "verdict": "missing",
+   "note": "all 59 rejected 'gap' = the SNG teleporter; separate agent investigating"
+  },
+  "ralow_to_ratop": {
+   "registry": "zip-ralow-to-ratop",
+   "gate_s": 7.71,
+   "candidates_inside_gate": 1302,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 155
+   },
+   "fastest_s": 5.348,
+   "envelope_n_runs": 24,
+   "envelope_gate_p95_u": 47.8,
+   "verdict": "sufficient"
+  },
+  "lifts_to_sng_mega": {
+   "registry": "lifts-to-sng-mega",
+   "gate_s": 7.93,
+   "candidates_inside_gate": 2500,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 8
+   },
+   "fastest_s": 4.958,
+   "envelope_n_runs": 24,
+   "envelope_gate_p95_u": 23.6,
+   "verdict": "sufficient"
+  },
+  "quad_to_ra": {
+   "registry": "quad-to-ra",
+   "gate_s": 8.96,
+   "candidates_inside_gate": 669,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 113
+   },
+   "fastest_s": 6.705,
+   "envelope_n_runs": null,
+   "envelope_gate_p95_u": null,
+   "verdict": "sufficient",
+   "note": "no envelope band in evidence/envelope_band.json; 24 vetted paths exist"
+  },
+  "ring_to_ratop": {
+   "registry": "zip-ring-to-ratop",
+   "gate_s": 9.26,
+   "candidates_inside_gate": 493,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 143
+   },
+   "fastest_s": 5.679,
+   "envelope_n_runs": 24,
+   "envelope_gate_p95_u": 84.3,
+   "verdict": "sufficient"
+  },
+  "sngspawn_to_mega": {
+   "registry": "sngspawn-to-mega",
+   "gate_s": 9.98,
+   "candidates_inside_gate": 388,
+   "vetted_kept": 24,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 56
+   },
+   "fastest_s": 6.545,
+   "envelope_n_runs": 24,
+   "envelope_gate_p95_u": 51.2,
+   "verdict": "sufficient"
+  },
+  "tunnel_to_ra": {
+   "registry": "tunnel-to-ra",
+   "gate_s": 12.13,
+   "candidates_inside_gate": 106,
+   "vetted_kept": 8,
+   "kept_cap": 24,
+   "reject_reasons": {
+    "rocket_jump": 98
+   },
+   "fastest_s": 9.999,
+   "envelope_n_runs": 8,
+   "envelope_gate_p95_u": 110.7,
+   "verdict": "thin",
+   "note": "8 runs is the corpus supply inside the gate after RJ-filtering (98/106 rejected rocket_jump); widest envelope band 110.7 u"
+  }
+ },
+ "audited_pairs": {
+  "quad->ratop": {
+   "raw_runs_15s": 1756,
+   "raw_min_s": 4.83,
+   "raw_med_s": 9.5,
+   "vet_sample": 120,
+   "vet_sample_is_fastest_n": true,
+   "vet_ok": 21,
+   "vet_reject_reasons": {
+    "rocket_jump": 99
+   },
+   "vet_ok_fastest_s": 6.71,
+   "verdict": "sufficient"
+  },
+  "quad->sng": {
+   "raw_runs_15s": 521,
+   "raw_min_s": 4.22,
+   "raw_med_s": 8.86,
+   "vet_sample": 120,
+   "vet_sample_is_fastest_n": true,
+   "vet_ok": 118,
+   "vet_reject_reasons": {
+    "rocket_jump": 2
+   },
+   "vet_ok_fastest_s": 4.21,
+   "verdict": "sufficient"
+  },
+  "ralow_ng->ratop": {
+   "raw_runs_15s": 2852,
+   "raw_min_s": 0.85,
+   "raw_med_s": 7.86,
+   "vet_sample": 120,
+   "vet_sample_is_fastest_n": true,
+   "vet_ok": 5,
+   "vet_reject_reasons": {
+    "rocket_jump": 115
+   },
+   "vet_ok_fastest_s": 5.35,
+   "verdict": "thin"
+  },
+  "ratop->ssg_ya": {
+   "raw_runs_15s": 470,
+   "raw_min_s": 5.38,
+   "raw_med_s": 8.12,
+   "vet_sample": 120,
+   "vet_sample_is_fastest_n": true,
+   "vet_ok": 120,
+   "vet_reject_reasons": {},
+   "vet_ok_fastest_s": 5.38,
+   "verdict": "sufficient"
+  },
+  "ring->rl": {
+   "raw_runs_15s": 14,
+   "raw_min_s": 6.97,
+   "raw_med_s": 8.29,
+   "vet_sample": 14,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 11,
+   "vet_reject_reasons": {
+    "gap": 1,
+    "rocket_jump": 2
+   },
+   "vet_ok_fastest_s": 6.97,
+   "verdict": "thin"
+  },
+  "rl->ratop": {
+   "raw_runs_15s": 11,
+   "raw_min_s": 10.47,
+   "raw_med_s": 13.57,
+   "vet_sample": 11,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 0,
+   "vet_reject_reasons": {
+    "gap": 2,
+    "rocket_jump": 9
+   },
+   "vet_ok_fastest_s": null,
+   "verdict": "missing"
+  },
+  "sng->quad": {
+   "raw_runs_15s": 8,
+   "raw_min_s": 5.27,
+   "raw_med_s": 8.27,
+   "vet_sample": 8,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 4,
+   "vet_reject_reasons": {
+    "gap": 4
+   },
+   "vet_ok_fastest_s": 5.27,
+   "verdict": "thin"
+  },
+  "ssg_ya->ratop": {
+   "raw_runs_15s": 52,
+   "raw_min_s": 10.18,
+   "raw_med_s": 12.41,
+   "vet_sample": 52,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 4,
+   "vet_reject_reasons": {
+    "rocket_jump": 37,
+    "gap": 11
+   },
+   "vet_ok_fastest_s": 10.46,
+   "verdict": "thin"
+  },
+  "ya->ratop": {
+   "raw_runs_15s": 50,
+   "raw_min_s": 9.54,
+   "raw_med_s": 13.2,
+   "vet_sample": 50,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 0,
+   "vet_reject_reasons": {
+    "gap": 49,
+    "rocket_jump": 1
+   },
+   "vet_ok_fastest_s": null,
+   "verdict": "missing"
+  },
+  "ya->rl": {
+   "raw_runs_15s": 834,
+   "raw_min_s": 2.47,
+   "raw_med_s": 3.83,
+   "vet_sample": 834,
+   "vet_sample_is_fastest_n": false,
+   "vet_ok": 61,
+   "vet_reject_reasons": {
+    "gap": 767,
+    "rocket_jump": 6
+   },
+   "vet_ok_fastest_s": 4.26,
+   "verdict": "sufficient",
+   "note": "full vet of all 834 runs, not a fastest-120 sample"
+  },
+  "ya->ssg_ya": {
+   "raw_runs_15s": 5837,
+   "raw_min_s": 1.36,
+   "raw_med_s": 2.03,
+   "vet_sample": 120,
+   "vet_sample_is_fastest_n": true,
+   "vet_ok": 120,
+   "vet_reject_reasons": {},
+   "vet_ok_fastest_s": 1.36,
+   "verdict": "sufficient"
+  }
+ },
+ "raw_pair_matrix_15s": [
+  {
+   "from": "gl_water",
+   "to": "lg_water",
+   "n": 1431,
+   "min_s": 2.4,
+   "med_s": 3.14,
+   "p25_s": 2.94,
+   "p75_s": 3.67
+  },
+  {
+   "from": "gl_water",
+   "to": "mega_hill",
+   "n": 142,
+   "min_s": 3.44,
+   "med_s": 4.62,
+   "p25_s": 4.26,
+   "p75_s": 5.24
+  },
+  {
+   "from": "gl_water",
+   "to": "mega_pent",
+   "n": 1039,
+   "min_s": 4.63,
+   "med_s": 8.99,
+   "p25_s": 8.23,
+   "p75_s": 10.67
+  },
+  {
+   "from": "gl_water",
+   "to": "mega_sng",
+   "n": 3,
+   "min_s": 8.29,
+   "med_s": 8.57,
+   "p25_s": 8.43,
+   "p75_s": 11.41
+  },
+  {
+   "from": "gl_water",
+   "to": "pent",
+   "n": 3,
+   "min_s": 7.82,
+   "med_s": 8.01,
+   "p25_s": 7.92,
+   "p75_s": 11.44
+  },
+  {
+   "from": "gl_water",
+   "to": "quad",
+   "n": 1,
+   "min_s": 8.57,
+   "med_s": 8.57,
+   "p25_s": 8.57,
+   "p75_s": 8.57
+  },
+  {
+   "from": "gl_water",
+   "to": "ralow_ng",
+   "n": 311,
+   "min_s": 7.13,
+   "med_s": 9.58,
+   "p25_s": 8.38,
+   "p75_s": 11.17
+  },
+  {
+   "from": "gl_water",
+   "to": "ratop",
+   "n": 17,
+   "min_s": 10.4,
+   "med_s": 13.44,
+   "p25_s": 12.3,
+   "p75_s": 14.65
+  },
+  {
+   "from": "gl_water",
+   "to": "ring",
+   "n": 2,
+   "min_s": 5.09,
+   "med_s": 9.45,
+   "p25_s": 7.27,
+   "p75_s": 11.63
+  },
+  {
+   "from": "gl_water",
+   "to": "rl",
+   "n": 214,
+   "min_s": 5.45,
+   "med_s": 6.77,
+   "p25_s": 6.25,
+   "p75_s": 8.37
+  },
+  {
+   "from": "gl_water",
+   "to": "sng",
+   "n": 3,
+   "min_s": 8.9,
+   "med_s": 10.08,
+   "p25_s": 9.49,
+   "p75_s": 11.76
+  },
+  {
+   "from": "gl_water",
+   "to": "ssg_ya",
+   "n": 158,
+   "min_s": 4.42,
+   "med_s": 10.65,
+   "p25_s": 9.36,
+   "p75_s": 12.39
+  },
+  {
+   "from": "gl_water",
+   "to": "ya",
+   "n": 90,
+   "min_s": 4.61,
+   "med_s": 9.86,
+   "p25_s": 8.7,
+   "p75_s": 11.95
+  },
+  {
+   "from": "lg_water",
+   "to": "gl_water",
+   "n": 1318,
+   "min_s": 2.7,
+   "med_s": 5.06,
+   "p25_s": 4.26,
+   "p75_s": 7.05
+  },
+  {
+   "from": "lg_water",
+   "to": "mega_hill",
+   "n": 216,
+   "min_s": 4.15,
+   "med_s": 6.05,
+   "p25_s": 5.3,
+   "p75_s": 6.98
+  },
+  {
+   "from": "lg_water",
+   "to": "mega_pent",
+   "n": 3027,
+   "min_s": 6.95,
+   "med_s": 9.61,
+   "p25_s": 8.81,
+   "p75_s": 11.65
+  },
+  {
+   "from": "lg_water",
+   "to": "mega_sng",
+   "n": 1,
+   "min_s": 14.67,
+   "med_s": 14.67,
+   "p25_s": 14.67,
+   "p75_s": 14.67
+  },
+  {
+   "from": "lg_water",
+   "to": "pent",
+   "n": 3,
+   "min_s": 8.24,
+   "med_s": 9.26,
+   "p25_s": 8.75,
+   "p75_s": 9.39
+  },
+  {
+   "from": "lg_water",
+   "to": "quad",
+   "n": 2,
+   "min_s": 6.61,
+   "med_s": 8.45,
+   "p25_s": 7.53,
+   "p75_s": 9.37
+  },
+  {
+   "from": "lg_water",
+   "to": "ralow_ng",
+   "n": 767,
+   "min_s": 7.42,
+   "med_s": 11.07,
+   "p25_s": 9.82,
+   "p75_s": 12.45
+  },
+  {
+   "from": "lg_water",
+   "to": "ratop",
+   "n": 10,
+   "min_s": 13.43,
+   "med_s": 14.35,
+   "p25_s": 13.95,
+   "p75_s": 14.84
+  },
+  {
+   "from": "lg_water",
+   "to": "rl",
+   "n": 270,
+   "min_s": 3.91,
+   "med_s": 6.71,
+   "p25_s": 5.28,
+   "p75_s": 8.16
+  },
+  {
+   "from": "lg_water",
+   "to": "sng",
+   "n": 5,
+   "min_s": 12.69,
+   "med_s": 13.87,
+   "p25_s": 12.75,
+   "p75_s": 14.35
+  },
+  {
+   "from": "lg_water",
+   "to": "ssg_ya",
+   "n": 359,
+   "min_s": 6.3,
+   "med_s": 10.02,
+   "p25_s": 8.53,
+   "p75_s": 11.85
+  },
+  {
+   "from": "lg_water",
+   "to": "ya",
+   "n": 294,
+   "min_s": 5.86,
+   "med_s": 9.47,
+   "p25_s": 7.87,
+   "p75_s": 11.4
+  },
+  {
+   "from": "mega_hill",
+   "to": "gl_water",
+   "n": 2682,
+   "min_s": 2.63,
+   "med_s": 5.92,
+   "p25_s": 3.82,
+   "p75_s": 7.77
+  },
+  {
+   "from": "mega_hill",
+   "to": "lg_water",
+   "n": 3082,
+   "min_s": 2.75,
+   "med_s": 3.94,
+   "p25_s": 3.34,
+   "p75_s": 4.98
+  },
+  {
+   "from": "mega_hill",
+   "to": "mega_pent",
+   "n": 96,
+   "min_s": 0.02,
+   "med_s": 12.64,
+   "p25_s": 9.43,
+   "p75_s": 13.72
+  },
+  {
+   "from": "mega_hill",
+   "to": "mega_sng",
+   "n": 46,
+   "min_s": 0.05,
+   "med_s": 13.37,
+   "p25_s": 12.44,
+   "p75_s": 14.34
+  },
+  {
+   "from": "mega_hill",
+   "to": "pent",
+   "n": 2,
+   "min_s": 8.09,
+   "med_s": 11.24,
+   "p25_s": 9.67,
+   "p75_s": 12.82
+  },
+  {
+   "from": "mega_hill",
+   "to": "quad",
+   "n": 134,
+   "min_s": 0.89,
+   "med_s": 2.0,
+   "p25_s": 1.62,
+   "p75_s": 2.39
+  },
+  {
+   "from": "mega_hill",
+   "to": "ralow_ng",
+   "n": 2664,
+   "min_s": 3.12,
+   "med_s": 4.97,
+   "p25_s": 4.18,
+   "p75_s": 7.37
+  },
+  {
+   "from": "mega_hill",
+   "to": "ratop",
+   "n": 708,
+   "min_s": 3.64,
+   "med_s": 11.52,
+   "p25_s": 10.31,
+   "p75_s": 12.8
+  },
+  {
+   "from": "mega_hill",
+   "to": "ring",
+   "n": 20,
+   "min_s": 1.28,
+   "med_s": 2.93,
+   "p25_s": 2.24,
+   "p75_s": 8.45
+  },
+  {
+   "from": "mega_hill",
+   "to": "rl",
+   "n": 201,
+   "min_s": 4.95,
+   "med_s": 7.73,
+   "p25_s": 6.39,
+   "p75_s": 9.49
+  },
+  {
+   "from": "mega_hill",
+   "to": "sng",
+   "n": 133,
+   "min_s": 4.51,
+   "med_s": 12.04,
+   "p25_s": 10.63,
+   "p75_s": 13.21
+  },
+  {
+   "from": "mega_hill",
+   "to": "ssg_ya",
+   "n": 190,
+   "min_s": 3.82,
+   "med_s": 10.85,
+   "p25_s": 8.73,
+   "p75_s": 13.05
+  },
+  {
+   "from": "mega_hill",
+   "to": "ya",
+   "n": 73,
+   "min_s": 1.48,
+   "med_s": 11.22,
+   "p25_s": 8.95,
+   "p75_s": 12.92
+  },
+  {
+   "from": "mega_pent",
+   "to": "gl_water",
+   "n": 3205,
+   "min_s": 5.18,
+   "med_s": 6.04,
+   "p25_s": 5.71,
+   "p75_s": 6.74
+  },
+  {
+   "from": "mega_pent",
+   "to": "lg_water",
+   "n": 702,
+   "min_s": 5.69,
+   "med_s": 6.48,
+   "p25_s": 6.19,
+   "p75_s": 7.1
+  },
+  {
+   "from": "mega_pent",
+   "to": "mega_hill",
+   "n": 29,
+   "min_s": 0.05,
+   "med_s": 11.01,
+   "p25_s": 0.05,
+   "p75_s": 12.48
+  },
+  {
+   "from": "mega_pent",
+   "to": "mega_sng",
+   "n": 210,
+   "min_s": 0.05,
+   "med_s": 14.31,
+   "p25_s": 13.66,
+   "p75_s": 14.71
+  },
+  {
+   "from": "mega_pent",
+   "to": "pent",
+   "n": 13,
+   "min_s": 1.53,
+   "med_s": 2.4,
+   "p25_s": 1.76,
+   "p75_s": 3.49
+  },
+  {
+   "from": "mega_pent",
+   "to": "quad",
+   "n": 3,
+   "min_s": 6.1,
+   "med_s": 7.54,
+   "p25_s": 6.82,
+   "p75_s": 8.7
+  },
+  {
+   "from": "mega_pent",
+   "to": "ralow_ng",
+   "n": 26,
+   "min_s": 4.85,
+   "med_s": 14.21,
+   "p25_s": 12.93,
+   "p75_s": 14.45
+  },
+  {
+   "from": "mega_pent",
+   "to": "ratop",
+   "n": 14,
+   "min_s": 8.39,
+   "med_s": 13.25,
+   "p25_s": 12.36,
+   "p75_s": 14.01
+  },
+  {
+   "from": "mega_pent",
+   "to": "ring",
+   "n": 6,
+   "min_s": 8.66,
+   "med_s": 11.1,
+   "p25_s": 10.41,
+   "p75_s": 12.11
+  },
+  {
+   "from": "mega_pent",
+   "to": "rl",
+   "n": 32,
+   "min_s": 9.37,
+   "med_s": 12.24,
+   "p25_s": 10.86,
+   "p75_s": 12.89
+  },
+  {
+   "from": "mega_pent",
+   "to": "sng",
+   "n": 1113,
+   "min_s": 8.35,
+   "med_s": 12.35,
+   "p25_s": 11.61,
+   "p75_s": 13.23
+  },
+  {
+   "from": "mega_pent",
+   "to": "ssg_ya",
+   "n": 12,
+   "min_s": 9.6,
+   "med_s": 13.6,
+   "p25_s": 12.54,
+   "p75_s": 14.15
+  },
+  {
+   "from": "mega_pent",
+   "to": "ya",
+   "n": 7,
+   "min_s": 9.97,
+   "med_s": 12.55,
+   "p25_s": 11.15,
+   "p75_s": 14.44
+  },
+  {
+   "from": "mega_sng",
+   "to": "gl_water",
+   "n": 63,
+   "min_s": 5.62,
+   "med_s": 11.62,
+   "p25_s": 9.43,
+   "p75_s": 13.15
+  },
+  {
+   "from": "mega_sng",
+   "to": "lg_water",
+   "n": 27,
+   "min_s": 7.42,
+   "med_s": 11.55,
+   "p25_s": 9.85,
+   "p75_s": 13.87
+  },
+  {
+   "from": "mega_sng",
+   "to": "mega_hill",
+   "n": 129,
+   "min_s": 0.03,
+   "med_s": 6.14,
+   "p25_s": 4.97,
+   "p75_s": 8.2
+  },
+  {
+   "from": "mega_sng",
+   "to": "mega_pent",
+   "n": 28,
+   "min_s": 0.03,
+   "med_s": 10.15,
+   "p25_s": 0.05,
+   "p75_s": 13.5
+  },
+  {
+   "from": "mega_sng",
+   "to": "pent",
+   "n": 1,
+   "min_s": 8.72,
+   "med_s": 8.72,
+   "p25_s": 8.72,
+   "p75_s": 8.72
+  },
+  {
+   "from": "mega_sng",
+   "to": "quad",
+   "n": 10,
+   "min_s": 4.98,
+   "med_s": 5.89,
+   "p25_s": 5.48,
+   "p75_s": 6.2
+  },
+  {
+   "from": "mega_sng",
+   "to": "ralow_ng",
+   "n": 2127,
+   "min_s": 3.95,
+   "med_s": 6.16,
+   "p25_s": 5.29,
+   "p75_s": 8.02
+  },
+  {
+   "from": "mega_sng",
+   "to": "ratop",
+   "n": 784,
+   "min_s": 5.5,
+   "med_s": 11.22,
+   "p25_s": 9.51,
+   "p75_s": 12.99
+  },
+  {
+   "from": "mega_sng",
+   "to": "ring",
+   "n": 10,
+   "min_s": 3.34,
+   "med_s": 5.59,
+   "p25_s": 4.62,
+   "p75_s": 6.6
+  },
+  {
+   "from": "mega_sng",
+   "to": "rl",
+   "n": 8,
+   "min_s": 9.76,
+   "med_s": 12.14,
+   "p25_s": 11.48,
+   "p75_s": 12.45
+  },
+  {
+   "from": "mega_sng",
+   "to": "sng",
+   "n": 726,
+   "min_s": 1.6,
+   "med_s": 2.64,
+   "p25_s": 2.17,
+   "p75_s": 3.21
+  },
+  {
+   "from": "mega_sng",
+   "to": "ssg_ya",
+   "n": 60,
+   "min_s": 7.01,
+   "med_s": 9.97,
+   "p25_s": 8.7,
+   "p75_s": 11.62
+  },
+  {
+   "from": "mega_sng",
+   "to": "ya",
+   "n": 41,
+   "min_s": 6.96,
+   "med_s": 11.0,
+   "p25_s": 8.94,
+   "p75_s": 11.91
+  },
+  {
+   "from": "pent",
+   "to": "gl_water",
+   "n": 1178,
+   "min_s": 5.38,
+   "med_s": 9.08,
+   "p25_s": 8.5,
+   "p75_s": 9.95
+  },
+  {
+   "from": "pent",
+   "to": "lg_water",
+   "n": 197,
+   "min_s": 6.06,
+   "med_s": 9.72,
+   "p25_s": 8.65,
+   "p75_s": 10.97
+  },
+  {
+   "from": "pent",
+   "to": "mega_hill",
+   "n": 18,
+   "min_s": 3.09,
+   "med_s": 9.16,
+   "p25_s": 7.77,
+   "p75_s": 11.29
+  },
+  {
+   "from": "pent",
+   "to": "mega_pent",
+   "n": 2183,
+   "min_s": 1.54,
+   "med_s": 3.3,
+   "p25_s": 2.97,
+   "p75_s": 4.06
+  },
+  {
+   "from": "pent",
+   "to": "mega_sng",
+   "n": 8,
+   "min_s": 10.0,
+   "med_s": 14.0,
+   "p25_s": 13.39,
+   "p75_s": 14.39
+  },
+  {
+   "from": "pent",
+   "to": "quad",
+   "n": 2,
+   "min_s": 5.7,
+   "med_s": 6.59,
+   "p25_s": 6.15,
+   "p75_s": 7.03
+  },
+  {
+   "from": "pent",
+   "to": "ralow_ng",
+   "n": 33,
+   "min_s": 9.76,
+   "med_s": 12.95,
+   "p25_s": 11.64,
+   "p75_s": 13.55
+  },
+  {
+   "from": "pent",
+   "to": "ratop",
+   "n": 25,
+   "min_s": 9.49,
+   "med_s": 14.07,
+   "p25_s": 12.34,
+   "p75_s": 14.5
+  },
+  {
+   "from": "pent",
+   "to": "ring",
+   "n": 30,
+   "min_s": 5.98,
+   "med_s": 8.96,
+   "p25_s": 7.75,
+   "p75_s": 10.81
+  },
+  {
+   "from": "pent",
+   "to": "rl",
+   "n": 10,
+   "min_s": 10.35,
+   "med_s": 13.37,
+   "p25_s": 12.15,
+   "p75_s": 14.54
+  },
+  {
+   "from": "pent",
+   "to": "sng",
+   "n": 26,
+   "min_s": 7.85,
+   "med_s": 12.28,
+   "p25_s": 10.92,
+   "p75_s": 13.43
+  },
+  {
+   "from": "pent",
+   "to": "ssg_ya",
+   "n": 17,
+   "min_s": 3.82,
+   "med_s": 12.32,
+   "p25_s": 10.08,
+   "p75_s": 14.33
+  },
+  {
+   "from": "pent",
+   "to": "ya",
+   "n": 13,
+   "min_s": 7.75,
+   "med_s": 12.1,
+   "p25_s": 10.77,
+   "p75_s": 12.91
+  },
+  {
+   "from": "quad",
+   "to": "gl_water",
+   "n": 52,
+   "min_s": 5.12,
+   "med_s": 9.88,
+   "p25_s": 8.02,
+   "p75_s": 12.62
+  },
+  {
+   "from": "quad",
+   "to": "lg_water",
+   "n": 88,
+   "min_s": 4.43,
+   "med_s": 9.13,
+   "p25_s": 7.73,
+   "p75_s": 11.15
+  },
+  {
+   "from": "quad",
+   "to": "mega_hill",
+   "n": 1281,
+   "min_s": 1.15,
+   "med_s": 2.65,
+   "p25_s": 1.99,
+   "p75_s": 3.37
+  },
+  {
+   "from": "quad",
+   "to": "mega_pent",
+   "n": 324,
+   "min_s": 3.19,
+   "med_s": 9.01,
+   "p25_s": 7.09,
+   "p75_s": 11.33
+  },
+  {
+   "from": "quad",
+   "to": "mega_sng",
+   "n": 248,
+   "min_s": 5.89,
+   "med_s": 11.42,
+   "p25_s": 10.01,
+   "p75_s": 13.06
+  },
+  {
+   "from": "quad",
+   "to": "pent",
+   "n": 3,
+   "min_s": 4.51,
+   "med_s": 7.68,
+   "p25_s": 6.09,
+   "p75_s": 9.04
+  },
+  {
+   "from": "quad",
+   "to": "ralow_ng",
+   "n": 1096,
+   "min_s": 3.84,
+   "med_s": 8.9,
+   "p25_s": 7.13,
+   "p75_s": 11.02
+  },
+  {
+   "from": "quad",
+   "to": "ratop",
+   "n": 1756,
+   "min_s": 4.83,
+   "med_s": 9.5,
+   "p25_s": 8.47,
+   "p75_s": 11.31
+  },
+  {
+   "from": "quad",
+   "to": "ring",
+   "n": 113,
+   "min_s": 1.49,
+   "med_s": 2.91,
+   "p25_s": 2.38,
+   "p75_s": 4.45
+  },
+  {
+   "from": "quad",
+   "to": "rl",
+   "n": 20,
+   "min_s": 5.39,
+   "med_s": 10.65,
+   "p25_s": 8.43,
+   "p75_s": 12.57
+  },
+  {
+   "from": "quad",
+   "to": "sng",
+   "n": 521,
+   "min_s": 4.22,
+   "med_s": 8.86,
+   "p25_s": 7.23,
+   "p75_s": 11.28
+  },
+  {
+   "from": "quad",
+   "to": "ssg_ya",
+   "n": 816,
+   "min_s": 3.5,
+   "med_s": 6.83,
+   "p25_s": 5.66,
+   "p75_s": 8.89
+  },
+  {
+   "from": "quad",
+   "to": "ya",
+   "n": 352,
+   "min_s": 3.92,
+   "med_s": 7.52,
+   "p25_s": 6.24,
+   "p75_s": 9.53
+  },
+  {
+   "from": "ralow_ng",
+   "to": "gl_water",
+   "n": 85,
+   "min_s": 6.34,
+   "med_s": 10.5,
+   "p25_s": 9.53,
+   "p75_s": 12.32
+  },
+  {
+   "from": "ralow_ng",
+   "to": "lg_water",
+   "n": 36,
+   "min_s": 7.32,
+   "med_s": 10.63,
+   "p25_s": 8.56,
+   "p75_s": 12.38
+  },
+  {
+   "from": "ralow_ng",
+   "to": "mega_hill",
+   "n": 145,
+   "min_s": 3.37,
+   "med_s": 5.43,
+   "p25_s": 4.49,
+   "p75_s": 7.17
+  },
+  {
+   "from": "ralow_ng",
+   "to": "mega_pent",
+   "n": 16,
+   "min_s": 7.95,
+   "med_s": 12.41,
+   "p25_s": 10.19,
+   "p75_s": 13.45
+  },
+  {
+   "from": "ralow_ng",
+   "to": "mega_sng",
+   "n": 274,
+   "min_s": 4.6,
+   "med_s": 12.02,
+   "p25_s": 10.69,
+   "p75_s": 13.41
+  },
+  {
+   "from": "ralow_ng",
+   "to": "quad",
+   "n": 2,
+   "min_s": 4.96,
+   "med_s": 5.31,
+   "p25_s": 5.14,
+   "p75_s": 5.49
+  },
+  {
+   "from": "ralow_ng",
+   "to": "ratop",
+   "n": 2852,
+   "min_s": 0.85,
+   "med_s": 7.86,
+   "p25_s": 7.03,
+   "p75_s": 9.35
+  },
+  {
+   "from": "ralow_ng",
+   "to": "ring",
+   "n": 26,
+   "min_s": 3.31,
+   "med_s": 4.42,
+   "p25_s": 3.74,
+   "p75_s": 6.01
+  },
+  {
+   "from": "ralow_ng",
+   "to": "rl",
+   "n": 9,
+   "min_s": 8.74,
+   "med_s": 10.79,
+   "p25_s": 10.36,
+   "p75_s": 12.37
+  },
+  {
+   "from": "ralow_ng",
+   "to": "sng",
+   "n": 564,
+   "min_s": 6.3,
+   "med_s": 9.47,
+   "p25_s": 7.97,
+   "p75_s": 11.84
+  },
+  {
+   "from": "ralow_ng",
+   "to": "ssg_ya",
+   "n": 113,
+   "min_s": 6.37,
+   "med_s": 8.92,
+   "p25_s": 7.63,
+   "p75_s": 11.16
+  },
+  {
+   "from": "ralow_ng",
+   "to": "ya",
+   "n": 36,
+   "min_s": 6.42,
+   "med_s": 9.59,
+   "p25_s": 8.14,
+   "p75_s": 11.52
+  },
+  {
+   "from": "ratop",
+   "to": "gl_water",
+   "n": 292,
+   "min_s": 4.81,
+   "med_s": 10.94,
+   "p25_s": 8.86,
+   "p75_s": 12.69
+  },
+  {
+   "from": "ratop",
+   "to": "lg_water",
+   "n": 130,
+   "min_s": 5.46,
+   "med_s": 9.67,
+   "p25_s": 7.32,
+   "p75_s": 11.69
+  },
+  {
+   "from": "ratop",
+   "to": "mega_hill",
+   "n": 848,
+   "min_s": 2.6,
+   "med_s": 4.47,
+   "p25_s": 3.57,
+   "p75_s": 6.17
+  },
+  {
+   "from": "ratop",
+   "to": "mega_pent",
+   "n": 106,
+   "min_s": 6.62,
+   "med_s": 12.2,
+   "p25_s": 10.8,
+   "p75_s": 13.7
+  },
+  {
+   "from": "ratop",
+   "to": "mega_sng",
+   "n": 1143,
+   "min_s": 5.94,
+   "med_s": 12.74,
+   "p25_s": 11.37,
+   "p75_s": 13.7
+  },
+  {
+   "from": "ratop",
+   "to": "quad",
+   "n": 106,
+   "min_s": 3.36,
+   "med_s": 4.66,
+   "p25_s": 4.18,
+   "p75_s": 5.91
+  },
+  {
+   "from": "ratop",
+   "to": "ralow_ng",
+   "n": 3977,
+   "min_s": 0.89,
+   "med_s": 4.39,
+   "p25_s": 2.63,
+   "p75_s": 7.97
+  },
+  {
+   "from": "ratop",
+   "to": "ring",
+   "n": 95,
+   "min_s": 2.53,
+   "med_s": 3.22,
+   "p25_s": 2.92,
+   "p75_s": 4.3
+  },
+  {
+   "from": "ratop",
+   "to": "rl",
+   "n": 40,
+   "min_s": 7.64,
+   "med_s": 10.63,
+   "p25_s": 9.04,
+   "p75_s": 13.64
+  },
+  {
+   "from": "ratop",
+   "to": "sng",
+   "n": 2076,
+   "min_s": 6.46,
+   "med_s": 10.67,
+   "p25_s": 9.28,
+   "p75_s": 12.52
+  },
+  {
+   "from": "ratop",
+   "to": "ssg_ya",
+   "n": 470,
+   "min_s": 5.38,
+   "med_s": 8.12,
+   "p25_s": 6.54,
+   "p75_s": 10.48
+  },
+  {
+   "from": "ratop",
+   "to": "ya",
+   "n": 27,
+   "min_s": 7.18,
+   "med_s": 11.66,
+   "p25_s": 9.75,
+   "p75_s": 13.43
+  },
+  {
+   "from": "ring",
+   "to": "gl_water",
+   "n": 75,
+   "min_s": 4.22,
+   "med_s": 10.18,
+   "p25_s": 6.45,
+   "p75_s": 11.79
+  },
+  {
+   "from": "ring",
+   "to": "lg_water",
+   "n": 62,
+   "min_s": 4.13,
+   "med_s": 7.27,
+   "p25_s": 5.8,
+   "p75_s": 9.02
+  },
+  {
+   "from": "ring",
+   "to": "mega_hill",
+   "n": 317,
+   "min_s": 1.01,
+   "med_s": 2.42,
+   "p25_s": 1.88,
+   "p75_s": 3.94
+  },
+  {
+   "from": "ring",
+   "to": "mega_pent",
+   "n": 18,
+   "min_s": 7.94,
+   "med_s": 10.04,
+   "p25_s": 8.7,
+   "p75_s": 11.35
+  },
+  {
+   "from": "ring",
+   "to": "mega_sng",
+   "n": 122,
+   "min_s": 5.71,
+   "med_s": 11.15,
+   "p25_s": 9.01,
+   "p75_s": 13.64
+  },
+  {
+   "from": "ring",
+   "to": "pent",
+   "n": 13,
+   "min_s": 4.49,
+   "med_s": 5.83,
+   "p25_s": 4.83,
+   "p75_s": 7.66
+  },
+  {
+   "from": "ring",
+   "to": "quad",
+   "n": 1338,
+   "min_s": 1.2,
+   "med_s": 1.93,
+   "p25_s": 1.81,
+   "p75_s": 2.12
+  },
+  {
+   "from": "ring",
+   "to": "ralow_ng",
+   "n": 275,
+   "min_s": 2.55,
+   "med_s": 9.53,
+   "p25_s": 7.73,
+   "p75_s": 11.98
+  },
+  {
+   "from": "ring",
+   "to": "ratop",
+   "n": 1130,
+   "min_s": 4.11,
+   "med_s": 9.68,
+   "p25_s": 7.33,
+   "p75_s": 11.25
+  },
+  {
+   "from": "ring",
+   "to": "rl",
+   "n": 14,
+   "min_s": 6.97,
+   "med_s": 8.29,
+   "p25_s": 7.76,
+   "p75_s": 10.3
+  },
+  {
+   "from": "ring",
+   "to": "sng",
+   "n": 222,
+   "min_s": 3.99,
+   "med_s": 9.15,
+   "p25_s": 6.36,
+   "p75_s": 11.74
+  },
+  {
+   "from": "ring",
+   "to": "ssg_ya",
+   "n": 212,
+   "min_s": 3.89,
+   "med_s": 7.92,
+   "p25_s": 6.37,
+   "p75_s": 10.2
+  },
+  {
+   "from": "ring",
+   "to": "ya",
+   "n": 28,
+   "min_s": 4.62,
+   "med_s": 9.21,
+   "p25_s": 6.55,
+   "p75_s": 11.17
+  },
+  {
+   "from": "rl",
+   "to": "gl_water",
+   "n": 844,
+   "min_s": 3.33,
+   "med_s": 7.95,
+   "p25_s": 5.44,
+   "p75_s": 10.44
+  },
+  {
+   "from": "rl",
+   "to": "lg_water",
+   "n": 453,
+   "min_s": 2.66,
+   "med_s": 4.64,
+   "p25_s": 3.78,
+   "p75_s": 5.93
+  },
+  {
+   "from": "rl",
+   "to": "mega_hill",
+   "n": 72,
+   "min_s": 4.04,
+   "med_s": 6.69,
+   "p25_s": 5.71,
+   "p75_s": 9.17
+  },
+  {
+   "from": "rl",
+   "to": "mega_pent",
+   "n": 1705,
+   "min_s": 2.89,
+   "med_s": 11.26,
+   "p25_s": 9.99,
+   "p75_s": 12.95
+  },
+  {
+   "from": "rl",
+   "to": "mega_sng",
+   "n": 3,
+   "min_s": 9.57,
+   "med_s": 13.97,
+   "p25_s": 11.77,
+   "p75_s": 14.34
+  },
+  {
+   "from": "rl",
+   "to": "pent",
+   "n": 5,
+   "min_s": 2.82,
+   "med_s": 9.54,
+   "p25_s": 9.19,
+   "p75_s": 9.82
+  },
+  {
+   "from": "rl",
+   "to": "quad",
+   "n": 11,
+   "min_s": 7.73,
+   "med_s": 10.69,
+   "p25_s": 9.51,
+   "p75_s": 11.51
+  },
+  {
+   "from": "rl",
+   "to": "ralow_ng",
+   "n": 239,
+   "min_s": 7.59,
+   "med_s": 11.6,
+   "p25_s": 10.31,
+   "p75_s": 13.07
+  },
+  {
+   "from": "rl",
+   "to": "ratop",
+   "n": 11,
+   "min_s": 10.47,
+   "med_s": 13.57,
+   "p25_s": 11.95,
+   "p75_s": 14.66
+  },
+  {
+   "from": "rl",
+   "to": "ring",
+   "n": 3,
+   "min_s": 7.38,
+   "med_s": 8.9,
+   "p25_s": 8.14,
+   "p75_s": 11.38
+  },
+  {
+   "from": "rl",
+   "to": "sng",
+   "n": 45,
+   "min_s": 9.84,
+   "med_s": 14.18,
+   "p25_s": 13.42,
+   "p75_s": 14.65
+  },
+  {
+   "from": "rl",
+   "to": "ssg_ya",
+   "n": 2971,
+   "min_s": 4.91,
+   "med_s": 8.43,
+   "p25_s": 7.31,
+   "p75_s": 9.74
+  },
+  {
+   "from": "rl",
+   "to": "ya",
+   "n": 1532,
+   "min_s": 0.96,
+   "med_s": 7.97,
+   "p25_s": 7.2,
+   "p75_s": 9.28
+  },
+  {
+   "from": "sng",
+   "to": "gl_water",
+   "n": 78,
+   "min_s": 6.14,
+   "med_s": 12.53,
+   "p25_s": 10.51,
+   "p75_s": 13.59
+  },
+  {
+   "from": "sng",
+   "to": "lg_water",
+   "n": 35,
+   "min_s": 7.08,
+   "med_s": 11.81,
+   "p25_s": 9.66,
+   "p75_s": 12.78
+  },
+  {
+   "from": "sng",
+   "to": "mega_hill",
+   "n": 129,
+   "min_s": 3.01,
+   "med_s": 5.93,
+   "p25_s": 4.9,
+   "p75_s": 8.95
+  },
+  {
+   "from": "sng",
+   "to": "mega_pent",
+   "n": 46,
+   "min_s": 2.19,
+   "med_s": 12.1,
+   "p25_s": 9.43,
+   "p75_s": 13.6
+  },
+  {
+   "from": "sng",
+   "to": "mega_sng",
+   "n": 19257,
+   "min_s": 1.65,
+   "med_s": 3.38,
+   "p25_s": 2.71,
+   "p75_s": 4.04
+  },
+  {
+   "from": "sng",
+   "to": "pent",
+   "n": 1,
+   "min_s": 11.49,
+   "med_s": 11.49,
+   "p25_s": 11.49,
+   "p75_s": 11.49
+  },
+  {
+   "from": "sng",
+   "to": "quad",
+   "n": 8,
+   "min_s": 5.27,
+   "med_s": 8.27,
+   "p25_s": 5.89,
+   "p75_s": 10.2
+  },
+  {
+   "from": "sng",
+   "to": "ralow_ng",
+   "n": 1896,
+   "min_s": 5.42,
+   "med_s": 9.72,
+   "p25_s": 8.49,
+   "p75_s": 11.51
+  },
+  {
+   "from": "sng",
+   "to": "ratop",
+   "n": 344,
+   "min_s": 8.14,
+   "med_s": 12.73,
+   "p25_s": 11.53,
+   "p75_s": 13.79
+  },
+  {
+   "from": "sng",
+   "to": "ring",
+   "n": 20,
+   "min_s": 3.21,
+   "med_s": 4.77,
+   "p25_s": 3.65,
+   "p75_s": 8.01
+  },
+  {
+   "from": "sng",
+   "to": "rl",
+   "n": 6,
+   "min_s": 7.75,
+   "med_s": 11.61,
+   "p25_s": 9.04,
+   "p75_s": 12.78
+  },
+  {
+   "from": "sng",
+   "to": "ssg_ya",
+   "n": 74,
+   "min_s": 5.9,
+   "med_s": 11.48,
+   "p25_s": 9.88,
+   "p75_s": 12.85
+  },
+  {
+   "from": "sng",
+   "to": "ya",
+   "n": 35,
+   "min_s": 6.74,
+   "med_s": 11.85,
+   "p25_s": 10.45,
+   "p75_s": 13.53
+  },
+  {
+   "from": "ssg_ya",
+   "to": "gl_water",
+   "n": 352,
+   "min_s": 3.98,
+   "med_s": 10.74,
+   "p25_s": 8.79,
+   "p75_s": 12.78
+  },
+  {
+   "from": "ssg_ya",
+   "to": "lg_water",
+   "n": 352,
+   "min_s": 3.64,
+   "med_s": 7.68,
+   "p25_s": 5.49,
+   "p75_s": 9.9
+  },
+  {
+   "from": "ssg_ya",
+   "to": "mega_hill",
+   "n": 77,
+   "min_s": 4.93,
+   "med_s": 6.97,
+   "p25_s": 6.35,
+   "p75_s": 9.21
+  },
+  {
+   "from": "ssg_ya",
+   "to": "mega_pent",
+   "n": 658,
+   "min_s": 4.96,
+   "med_s": 10.32,
+   "p25_s": 8.38,
+   "p75_s": 12.77
+  },
+  {
+   "from": "ssg_ya",
+   "to": "mega_sng",
+   "n": 21,
+   "min_s": 12.27,
+   "med_s": 13.26,
+   "p25_s": 12.86,
+   "p75_s": 14.1
+  },
+  {
+   "from": "ssg_ya",
+   "to": "pent",
+   "n": 5,
+   "min_s": 4.06,
+   "med_s": 5.34,
+   "p25_s": 5.04,
+   "p75_s": 5.67
+  },
+  {
+   "from": "ssg_ya",
+   "to": "quad",
+   "n": 18,
+   "min_s": 4.17,
+   "med_s": 6.19,
+   "p25_s": 5.54,
+   "p75_s": 6.5
+  },
+  {
+   "from": "ssg_ya",
+   "to": "ralow_ng",
+   "n": 116,
+   "min_s": 7.05,
+   "med_s": 12.48,
+   "p25_s": 10.87,
+   "p75_s": 13.52
+  },
+  {
+   "from": "ssg_ya",
+   "to": "ratop",
+   "n": 52,
+   "min_s": 10.18,
+   "med_s": 12.41,
+   "p25_s": 11.45,
+   "p75_s": 13.42
+  },
+  {
+   "from": "ssg_ya",
+   "to": "ring",
+   "n": 3,
+   "min_s": 4.9,
+   "med_s": 10.52,
+   "p25_s": 7.71,
+   "p75_s": 11.17
+  },
+  {
+   "from": "ssg_ya",
+   "to": "rl",
+   "n": 193,
+   "min_s": 3.89,
+   "med_s": 7.33,
+   "p25_s": 5.74,
+   "p75_s": 9.71
+  },
+  {
+   "from": "ssg_ya",
+   "to": "sng",
+   "n": 101,
+   "min_s": 8.39,
+   "med_s": 12.84,
+   "p25_s": 10.99,
+   "p75_s": 13.95
+  },
+  {
+   "from": "ssg_ya",
+   "to": "ya",
+   "n": 5599,
+   "min_s": 1.31,
+   "med_s": 2.36,
+   "p25_s": 1.94,
+   "p75_s": 2.99
+  },
+  {
+   "from": "ya",
+   "to": "gl_water",
+   "n": 2399,
+   "min_s": 2.6,
+   "med_s": 10.51,
+   "p25_s": 8.33,
+   "p75_s": 11.84
+  },
+  {
+   "from": "ya",
+   "to": "lg_water",
+   "n": 1190,
+   "min_s": 2.79,
+   "med_s": 6.11,
+   "p25_s": 4.5,
+   "p75_s": 8.79
+  },
+  {
+   "from": "ya",
+   "to": "mega_hill",
+   "n": 371,
+   "min_s": 3.22,
+   "med_s": 5.09,
+   "p25_s": 4.34,
+   "p75_s": 7.29
+  },
+  {
+   "from": "ya",
+   "to": "mega_pent",
+   "n": 4556,
+   "min_s": 3.41,
+   "med_s": 6.03,
+   "p25_s": 5.18,
+   "p75_s": 8.03
+  },
+  {
+   "from": "ya",
+   "to": "mega_sng",
+   "n": 247,
+   "min_s": 8.33,
+   "med_s": 12.68,
+   "p25_s": 11.49,
+   "p75_s": 13.73
+  },
+  {
+   "from": "ya",
+   "to": "pent",
+   "n": 1521,
+   "min_s": 1.74,
+   "med_s": 1.98,
+   "p25_s": 1.89,
+   "p75_s": 2.1
+  },
+  {
+   "from": "ya",
+   "to": "quad",
+   "n": 209,
+   "min_s": 2.63,
+   "med_s": 3.2,
+   "p25_s": 2.88,
+   "p75_s": 3.74
+  },
+  {
+   "from": "ya",
+   "to": "ralow_ng",
+   "n": 356,
+   "min_s": 5.69,
+   "med_s": 11.35,
+   "p25_s": 9.62,
+   "p75_s": 13.2
+  },
+  {
+   "from": "ya",
+   "to": "ratop",
+   "n": 50,
+   "min_s": 9.54,
+   "med_s": 13.2,
+   "p25_s": 11.59,
+   "p75_s": 13.99
+  },
+  {
+   "from": "ya",
+   "to": "ring",
+   "n": 16,
+   "min_s": 3.58,
+   "med_s": 5.66,
+   "p25_s": 4.53,
+   "p75_s": 8.17
+  },
+  {
+   "from": "ya",
+   "to": "rl",
+   "n": 834,
+   "min_s": 2.47,
+   "med_s": 3.83,
+   "p25_s": 2.82,
+   "p75_s": 5.98
+  },
+  {
+   "from": "ya",
+   "to": "sng",
+   "n": 704,
+   "min_s": 6.12,
+   "med_s": 10.91,
+   "p25_s": 8.99,
+   "p75_s": 12.91
+  },
+  {
+   "from": "ya",
+   "to": "ssg_ya",
+   "n": 5837,
+   "min_s": 1.36,
+   "med_s": 2.03,
+   "p25_s": 1.78,
+   "p75_s": 2.62
+  }
+ ],
+ "wanted_demos": [
+  {
+   "route": "YA -> RA-topp (movement-only, sngspawn->quad-trickhoppet speglat)",
+   "status": "CONFIRMED MISSING",
+   "evidence": "50 same-life runs in corpus, 0 survive vet: 49 'gap' (teleporter traversal), 1 rocket_jump. Zero movement-only YA->RA-top geometry exists.",
+   "priority": 1
+  },
+  {
+   "route": "tunnel -> RA",
+   "status": "thin",
+   "evidence": "8 vetted runs (98/106 candidates rejected rocket_jump); envelope band 110.7 u is the widest of all routes. 2-3 owner demos would tighten it.",
+   "priority": 2
+  },
+  {
+   "route": "sngspawn -> quad (movement-only, without teleporter)",
+   "status": "missing",
+   "evidence": "59/59 corpus candidates rejected 'gap' (teleporter). If the owner's trick jump avoids the tele, one demo supplies the only obtainable geometry. (Separate agent investigating the route itself.)",
+   "priority": 2
+  },
+  {
+   "route": "RL -> RA-topp (movement-only)",
+   "status": "missing",
+   "evidence": "11 raw runs, 0 survive (9 rocket_jump, 2 gap). Owner demos rl_to_ratop.qwd / spawn-rl_to_ratop.qwd exist but corpus suggests the fast line is RJ-dependent \u2014 verify whether a movement-only line exists at all before recording.",
+   "priority": 3
+  },
+  {
+   "route": "SSG -> RA-topp",
+   "status": "thin",
+   "evidence": "52 raw, 4 vetted (37 rocket_jump, 11 gap), fastest vetted 10.46 s. Owner demo ssg-to-ratop.qwd exists; corpus is thin.",
+   "priority": 3
+  },
+  {
+   "route": "SNG -> quad",
+   "status": "thin",
+   "evidence": "8 raw, 4 vetted (4 gap), fastest vetted 5.27 s. Owner demos sng-to-quad.qwd + hex variant exist; corpus thin.",
+   "priority": 4
+  },
+  {
+   "route": "ring -> RL",
+   "status": "thin",
+   "evidence": "14 raw, 11 vetted, fastest 6.97 s. Owner demo ring-to-rl.qwd exists.",
+   "priority": 4
+  },
+  {
+   "route": "LG -> pent (lg-to-pent-to-mega drills)",
+   "status": "missing",
+   "evidence": "3 raw same-life runs in the whole corpus (pent is rarely up in 4on4). Owner demos are effectively the only source.",
+   "priority": 4
+  },
+  {
+   "route": "quad -> RA(-topp)",
+   "status": "NOT needed",
+   "evidence": "corpus sufficient: 669 candidates inside the 8.96 s gate, 24 vetted paths kept, fastest 6.71 s. What is missing is only the owner's own reference demo/time, not corpus data.",
+   "priority": null
+  }
+ ]
+}

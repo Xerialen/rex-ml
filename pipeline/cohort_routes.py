@@ -61,6 +61,9 @@ QUAD = _at(952.0, 296.0, 56.0)
 MH_SNG = _at(-720.0, 80.0, 160.0)
 RING = _at(240.0, -32.0, 56.0)
 NG = _at(-64.0, -704.0, -40.0)
+# The super nailgun on the SNG platform (`weapon_supernailgun` in `demos/dm3-drillar/dm3-items.json`
+# and the `sng` item in the corpus) — the start of the owner's sng/lifts-side -> Quad jump route.
+SNG_W = _at(-512.0, 448.0, 96.0)
 
 # The band the owner set: median + this many seconds is still a pass.
 TOLERANCE_S = 2.0
@@ -151,6 +154,25 @@ ROUTES: list[CohortRoute] = [
                 gate_s=9.98, owner_s=7.38, median_all_s=10.49, n_cohort=875, timeout_s=_t(9.98)),
     CohortRoute("tunnel_to_ra", (192.0, -208.0, -176.0), RA,
                 gate_s=12.13, owner_s=None, median_all_s=12.52, n_cohort=239, timeout_s=_t(12.13)),
+    # ADDED 2026-07-30 on the owner's request ("Jag saknar ett hopp från sng/lifts sidan till
+    # quad"). Registry binding: `zip-hex-sng-to-quad` (SNG item take -> first Quad take, same
+    # life). The full cohort is 8 runs, but they are TWO different journeys: 4 movement runs
+    # (5.27-6.49 s, no position jump anywhere) and 4 runs that detour through the SNG teleporter
+    # (10.0-11.7 s; a measured ~780 u position jump from ~(-540,-450) to ~(226,-318,75) inside
+    # one 13-34 ms sample step). The gate is the median WITHOUT combat over the *movement* runs
+    # only [5.266, 6.040, 6.486] — the teleport runs are a different (and slower) journey, and
+    # excluding them makes the gate harder, not easier. Pooled no-combat median incl. teleports
+    # would be 8.27 s, recorded here for context, gated on nowhere. The owner's reference demo
+    # (`demos/dm3-drillar/sng-to-quad.qwd`, 629 ticks @ 77 Hz) runs SNG stand -> Quad in 6.09 s
+    # with a max per-tick displacement of 8.7 u — pure movement, median speed 460 u/s, and the
+    # critical lifts-side -> Quad gap jump crosses a 263 u void. `median_all_s` is the movement
+    # runs' median including combat (n=4).
+    CohortRoute("sng_to_quad", SNG_W, QUAD,
+                gate_s=6.04, owner_s=6.09, median_all_s=5.73, n_cohort=3, timeout_s=_t(6.04),
+                note="Start is the SNG weapon stand; the route crosses the lifts-side gap to the "
+                     "Quad platform (263 u void under the flight in the owner's demo). Rocket "
+                     "jumps remain banned here — all four kept human runs clear the 95 u "
+                     "half-second rise vet."),
 ]
 
 # Routes that share one human median because the registry pools their start points. Reported

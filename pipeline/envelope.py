@@ -51,7 +51,9 @@ def _run_max_dist(samples: np.ndarray, cloud: np.ndarray, chunk: int = 2048) -> 
 def derive() -> dict:
     """The per-route envelope band, leave-one-out over the human paths. Writes :data:`BAND`."""
     out = {}
-    for r in race.training_routes():
+    # human_k=1: the band exists for every route with human geometry — `quad_to_ra` is excluded
+    # from *navmesh* training only and was silently bandless in the first derivation.
+    for r in race.training_routes(human_k=1):
         paths = [_densify(np.asarray(p["path"], np.float32))
                  for p in race.human_paths_for(r, 10_000)]
         if len(paths) < 3:
@@ -88,7 +90,7 @@ def load_band() -> dict[str, float]:
 
 def route_cloud(route_name: str) -> np.ndarray | None:
     """The densified union of the route's human paths, for grading policy runs against."""
-    r = next((x for x in race.training_routes() if x.name == route_name), None)
+    r = next((x for x in race.training_routes(human_k=1) if x.name == route_name), None)
     if r is None:
         return None
     paths = [_densify(np.asarray(p["path"], np.float32))

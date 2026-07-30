@@ -1,0 +1,363 @@
+{
+ "derived": "2026-07-30, ratop edge-to-edge jump analysis",
+ "method": {
+  "human_jump": "reference demo manoeuvres (evidence/manoeuvres_by_route.json), apex-split segments merged (ground flag is derived vz==0 and splits jumps at apex); void = floor drop below lower endpoint along the flight line, probe 512 u",
+  "corpus": "per-run final void crossing in pipeline/out/paths/*.json tails: densified at 8 u, over-void where floor >120 u below origin (96 u void + 24 u hull), last contiguous stretch >=24 u before arrival",
+  "gap_geometry": "floor grid probe at z=336: void strip y=-600..-664, ~350 u deep, spans x=-64..296; only connected floor around it is the eastern ramp corridor x~304-336 (floor z 196-288)",
+  "go_around": "synthesized along that corridor (navmesh plan_many was rejected: its 'walk' path used a jump link straight over the void); waypoints on probed floor +24 u",
+  "go_around_waypoints_xy": [
+   [
+    60,
+    -551
+   ],
+   [
+    120,
+    -556
+   ],
+   [
+    200,
+    -562
+   ],
+   [
+    296,
+    -570
+   ],
+   [
+    316,
+    -600
+   ],
+   [
+    316,
+    -640
+   ],
+   [
+    316,
+    -688
+   ],
+   [
+    288,
+    -700
+   ],
+   [
+    256,
+    -702
+   ],
+   [
+    216,
+    -696
+   ],
+   [
+    180,
+    -694
+   ]
+  ],
+  "go_around_len_u": 575.3
+ },
+ "routes": {
+  "ring_to_ratop": {
+   "human_jump": {
+    "takeoff": [
+     59.6,
+     -551.1,
+     312.0
+    ],
+    "landing": [
+     159.9,
+     -674.6,
+     328.0
+    ],
+    "gap_xy_u": 159.1,
+    "dz_u": 16.0,
+    "air_s": 0.616,
+    "void_u": 336.0
+   },
+   "corpus": {
+    "n_runs": 24,
+    "n_with_final_gap_crossing": 24,
+    "takeoff_mean": [
+     47.7,
+     -587.2,
+     327.8
+    ],
+    "takeoff_std": [
+     33.5,
+     2.6,
+     15.4
+    ],
+    "landing_mean": [
+     67.9,
+     -660.1,
+     354.1
+    ],
+    "landing_std": [
+     39.0,
+     2.5,
+     13.8
+    ],
+    "span_xy_p50": 77.2,
+    "span_xy_min": 67.1,
+    "span_xy_max": 91.2,
+    "void_p50": 348.0
+   },
+   "go_around": {
+    "max_sep_from_jump_line_u": 184.5,
+    "max_dist_to_route_cloud_u": 60.3,
+    "worst_point": [
+     288.0,
+     -700.0,
+     328.0
+    ],
+    "envelope_band_u": 84.3
+   },
+   "observed_strict_race_v7": {
+    "envelope_band_u": 84.3,
+    "envelope_worst_full_route_u": 252.0,
+    "top_approach_starts": [
+     {
+      "start": [
+       371.5,
+       -813.0,
+       264.0
+      ],
+      "envelope_median_u": 27.3,
+      "envelope_p95_u": 31.4
+     },
+     {
+      "start": [
+       32.0,
+       -844.0,
+       152.0
+      ],
+      "envelope_median_u": 28.1,
+      "envelope_p95_u": 35.0
+     }
+    ]
+   },
+   "envelope_gate_catches_go_around": "no"
+  },
+  "ralow_to_ratop": {
+   "human_jump": {
+    "takeoff": [
+     73.2,
+     -554.1,
+     312.0
+    ],
+    "landing": [
+     178.0,
+     -700.2,
+     328.0
+    ],
+    "gap_xy_u": 179.8,
+    "dz_u": 16.0,
+    "air_s": 0.616,
+    "void_u": 335.6
+   },
+   "corpus": {
+    "n_runs": 24,
+    "n_with_final_gap_crossing": 24,
+    "takeoff_mean": [
+     76.2,
+     -587.9,
+     308.5
+    ],
+    "takeoff_std": [
+     16.9,
+     2.1,
+     33.0
+    ],
+    "landing_mean": [
+     96.0,
+     -665.8,
+     334.9
+    ],
+    "landing_std": [
+     31.4,
+     32.8,
+     34.4
+    ],
+    "span_xy_p50": 76.5,
+    "span_xy_min": 66.3,
+    "span_xy_max": 238.1,
+    "void_p50": 336.0
+   },
+   "go_around": {
+    "max_sep_from_jump_line_u": 182.1,
+    "max_dist_to_route_cloud_u": 43.4,
+    "worst_point": [
+     272.0,
+     -701.0,
+     328.0
+    ],
+    "envelope_band_u": 47.8
+   },
+   "observed_strict_race_v7": {
+    "envelope_band_u": 47.8,
+    "envelope_worst_full_route_u": 248.6,
+    "top_approach_starts": [
+     {
+      "start": [
+       371.5,
+       -813.0,
+       264.0
+      ],
+      "envelope_median_u": 50.9,
+      "envelope_p95_u": 52.5
+     },
+     {
+      "start": [
+       32.0,
+       -844.0,
+       152.0
+      ],
+      "envelope_median_u": 50.8,
+      "envelope_p95_u": 52.4
+     }
+    ]
+   },
+   "envelope_gate_catches_go_around": "marginal"
+  },
+  "quad_to_ra": {
+   "human_jump": {
+    "takeoff": [
+     68.0,
+     -561.1,
+     312.0
+    ],
+    "landing": [
+     216.9,
+     -694.6,
+     328.0
+    ],
+    "gap_xy_u": 200.0,
+    "dz_u": 16.0,
+    "air_s": 0.616,
+    "void_u": 336.0
+   },
+   "corpus": {
+    "n_runs": 24,
+    "n_with_final_gap_crossing": 24,
+    "takeoff_mean": [
+     66.2,
+     -587.8,
+     320.8
+    ],
+    "takeoff_std": [
+     17.9,
+     2.6,
+     11.7
+    ],
+    "landing_mean": [
+     76.3,
+     -659.8,
+     347.2
+    ],
+    "landing_std": [
+     24.0,
+     2.9,
+     11.4
+    ],
+    "span_xy_p50": 72.5,
+    "span_xy_min": 65.5,
+    "span_xy_max": 83.8,
+    "void_p50": 344.0
+   },
+   "go_around": {
+    "max_sep_from_jump_line_u": 158.2,
+    "max_dist_to_route_cloud_u": 54.3,
+    "worst_point": [
+     288.0,
+     -700.0,
+     328.0
+    ],
+    "envelope_band_u": null
+   },
+   "observed_strict_race_v7": {},
+   "envelope_gate_catches_go_around": "no band exists (route absent from envelope_band.json) - gate cannot catch it"
+  },
+  "tunnel_to_ra": {
+   "human_jump": {
+    "takeoff": [
+     91.6,
+     -564.0,
+     296.0
+    ],
+    "landing": [
+     202.5,
+     -687.2,
+     328.0
+    ],
+    "gap_xy_u": 165.8,
+    "dz_u": 32.0,
+    "air_s": 0.518,
+    "void_u": 320.0
+   },
+   "corpus": {
+    "n_runs": 8,
+    "n_with_final_gap_crossing": 8,
+    "takeoff_mean": [
+     -6.3,
+     -588.1,
+     344.4
+    ],
+    "takeoff_std": [
+     38.5,
+     2.0,
+     9.8
+    ],
+    "landing_mean": [
+     -1.6,
+     -660.6,
+     366.8
+    ],
+    "landing_std": [
+     52.5,
+     2.8,
+     5.9
+    ],
+    "span_xy_p50": 75.4,
+    "span_xy_min": 65.6,
+    "span_xy_max": 79.0,
+    "void_p50": 360.0
+   },
+   "go_around": {
+    "max_sep_from_jump_line_u": 158.9,
+    "max_dist_to_route_cloud_u": 62.8,
+    "worst_point": [
+     288.0,
+     -700.0,
+     328.0
+    ],
+    "envelope_band_u": 110.7
+   },
+   "observed_strict_race_v7": {
+    "envelope_band_u": 110.7,
+    "envelope_worst_full_route_u": 163.6,
+    "top_approach_starts": [
+     {
+      "start": [
+       371.5,
+       -813.0,
+       264.0
+      ],
+      "envelope_median_u": 41.2,
+      "envelope_p95_u": 80.8
+     },
+     {
+      "start": [
+       32.0,
+       -844.0,
+       152.0
+      ],
+      "envelope_median_u": 37.3,
+      "envelope_p95_u": 41.5
+     }
+    ]
+   },
+   "envelope_gate_catches_go_around": "no"
+  }
+ },
+ "recommendation": {
+  "verdict": "The envelope gate CANNOT reliably catch the go-around on any RA-top route. The go-around corridor (z=264 walkway east to x~316, then the ramp up at x~300-330, then west along the RA ledge) is largely covered by the human corpus: the human line crosses that area earlier in the run (walkway crossing at x~280-360, z=264), and the envelope is an unordered point cloud with no notion of sequence or of being airborne. The synthesized go-around stays 43-63 u from each route's cloud: ring 60.3 vs band 84.3 (no), ralow 43.4 vs 47.8 (marginal - observed bot p95 was 50.8-52.5, a 3-5 u fail that any small line change erases), tunnel 62.8 vs 110.7 (no), quad_to_ra has no band at all. Confirmed empirically: in strict race_v7 env2, episodes from the two approach starts nearest RA-top passed the envelope on ring (27.3-35.0 u) and tunnel (37.3-80.8 u) while the owner reports the bot goes around.",
+  "manoeuvre_requirement": "Use pipeline/manoeuvres.py executed(): require, per RA-top route, an airborne segment whose takeoff is within 96 u of the human jump takeoff and whose next ground contact is within 96 u of the human landing, checked as one event (walking around and standing on the landing does not count). Additionally require void_u >= 96 for that segment via record_replay.air_segments() so a hop along the ledge cannot satisfy it. All machinery exists: executed() takes (pos, ground, Manoeuvre, tol); strict_eval already records pos+ground frames per episode in record_replay.record_route(). Anchor points per route: this file's human_jump takeoff/landing (reference), corpus takeoff/landing means as cross-check. 96 u tolerance covers the corpus takeoff spread (std x up to 38 u, tunnel)."
+ }
+}

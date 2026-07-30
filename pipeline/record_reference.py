@@ -48,7 +48,31 @@ DEMO_ROUTE = {
     "sngspawns-to-sngmega.qwd": "sngspawn_a_to_mega",
     "(spawn)sngspawn-to-ring-to-ratop.qwd": "tunnel_to_ra",
     "(spawn)rarox-to-quad.qwd": "sngspawn_a_to_quad",
-    "(spawn)rl-to-ratop-xer.qwd": "quad_to_ra",
+    # Registered 2026-07-30 with the route itself; `(hex)sng-to-quad.qwd` is a byte-identical
+    # copy of this file, so the owner has ONE distinct recording of the journey.
+    "sng-to-quad.qwd": "sng_to_quad",
+    # NOTE (audit 2026-07-30): `(spawn)rl-to-ratop-xer.qwd` was wrongly mapped to `quad_to_ra`
+    # here. Parsed, the demo starts 2 u from the RL stand point (1520.8, 494.1, -88) and ends on
+    # RA top (279.8, -672, 328; closest approach 15.2 u), never coming within 272 u of Quad —
+    # it is an RL -> RA-top run. No cohort route with that identity exists in
+    # `cohort_routes.ROUTES` (`ralow_to_ratop` starts at the NG, a different journey), so the demo
+    # is recorded below in UNMAPPED_DEMOS instead of being forced onto the wrong route.
+    # **`quad_to_ra` therefore has NO owner reference demo** — verified against the owner's zip;
+    # one needs to be recorded before that route can carry a reference record.
+}
+
+# Owner demos whose journey has no cohort route to be the reference for. Stated here so the fact
+# is one grep away rather than rediscovered: these are real recordings, just not of any route in
+# `cohort_routes.ROUTES`.
+UNMAPPED_DEMOS = {
+    # RL -> RA-top, 1525 ticks / 19.792 s, parses cleanly with the strict extractor.
+    "(spawn)rl-to-ratop-xer.qwd": "rl_to_ratop (no such cohort route)",
+    # These two are byte-identical copies of each other (same sha256 0f0b0463...) and are
+    # FTE-extension recordings the strict QWD v2 extractor REJECTS
+    # ("unsupported FTEX mask bits 0x21087008") — unusable as references regardless of mapping.
+    # The `-xer` file above is the owner's re-recording of the same journey in a parseable format.
+    "rl_to_ratop.qwd": "rl_to_ratop (no such cohort route; unparseable FTE demo)",
+    "spawn-rl_to_ratop.qwd": "rl_to_ratop (no such cohort route; unparseable FTE demo)",
 }
 MANIFEST = Path("/home/benjamin-adm/rtx-mltest/testsuite/scenarios/dm3/routes-v1.json")
 OUT = Path("/home/benjamin-adm/rex-ml/pipeline/out/replay")

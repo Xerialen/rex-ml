@@ -3971,3 +3971,210 @@ tunnel_to_ra (bara 8 kvar), YA->ratop okänt, quad->ra-referens saknas.
 ## GIT
 - `~/rex-ml` initieras som repo i detta steg (pipeline/, PROGRESS.md, evidence/, .gitignore för
   .venv/out/demos-binärer). `~/rex-ml/rtx` är eget repo — committas separat. KÖR ALDRIG cargo fmt.
+
+## 2026-07-30, EFTER COMPACT: PARALLELLA SUBAGENTER STARTADE
+race_v8 vid it 880/2500 (~50 min kvar, tmux jobs:0). Fyra subagenter igång samtidigt:
+1. **Mappningsfix** — rättar `record_reference.DEMO_ROUTE` ((spawn)rl-to-ratop-xer.qwd är
+   RL→RA-topp, inte quad_to_ra), verifierar rl_to_ratop-demona genom parsern, dokumenterar
+   sngspawn a/b → `evidence/demo_audit_mapping.json`
+2. **RA-topp-kanthoppet** — mäter kant-till-kant-hoppet i människodata (luftsegment + tomrum),
+   testar om höljesgrinden fäller "går runt" uppe vid toppen → `evidence/ratop_edge_jump.json`
+3. **sng→quad-rutten** — parsar ägarens demon, utreder 59/59 gap-förkastningarna (teleport eller
+   falskt utslag på trickhoppet?), registrerar rutten → `evidence/sng_to_quad_route.json`
+4. **Korpustillräcklighet** — duckdb över store-dm3, alla riktade item-par, vet-överlevnad →
+   `evidence/corpus_sufficiency.{json,md}` med önskelista på demos (YA→ratop, quad→ra särskilt)
+Bakgrundsvakt väcker mig när race_v8 är klar → då `strict_eval` med höljesgrind mot
+`strict_race_v7_env2.json` (0/7).
+
+### Agent 1 KLAR: mappningsfixen (`evidence/demo_audit_mapping.json`)
+- `(spawn)rl-to-ratop-xer.qwd` borttagen ur DEMO_ROUTE (var felmappad till quad_to_ra).
+  Parsad: 1525 tick / 19,79 s, start 2,0 u från RL, slut 39,9 u från RA-toppens ståpunkt
+  (närmast 15,2 u), aldrig närmare Quad än 272 u — definitivt RL→RA-topp.
+- ÖVERRASKNING: `rl_to_ratop.qwd` och `spawn-rl_to_ratop.qwd` är BYTE-IDENTISKA och båda
+  FTE-inspelningar som parsern förkastar (FTEX-mask 0x21087008, 0 rader). Bara -xer-filen
+  är användbar; den ligger nu i dokumenterad `UNMAPPED_DEMOS` (ingen rl_to_ratop-rutt finns).
+- RA:s riktiga position: (256, −704, 304) — korpusverifierad mot 186k plockhändelser.
+- quad_to_ra har nu ÄRLIGT inget referensdemo — behöver spelas in av ägaren (filsvep över
+  alla korpusar hittade bara q1dm17-filer).
+- sngspawn a/b bekräftat: två spawnpunkter (−880,−232,−16) och (−632,−680,−16), poolade gates.
+
+### Agent 4 KLAR: korpustillräcklighet (`evidence/corpus_sufficiency.{json,md}`)
+Metod: route-labs kohortsemantik över 14 item-noder (dt<=15 s, samma liv), pipelinens egna vet().
+- RÄCKER: window→RL, ralow→RA, lifts→mega, quad→RA (24 vettade av 669!), ring→RA,
+  sngspawn→mega, quad→SNG, RA-topp→SSG, YA→SSG, YA→RL (icke-tele, 61 vettade).
+- TUNT: tunnel→RA (8 kvar, 98 RJ-förkastade), SSG→ratop (4), SNG→quad (4), ring→RL (11).
+- SAKNAS: YA→RA-topp (50 råa, 0 överlever — 49 tele-gap), sngspawn→quad (59→0 tele-gap),
+  RL→RA-topp (11→0: 9 RJ — snabba linjen ser RJ-beroende ut!), LG→pent (3).
+- ÖNSKELISTA till ägaren (prio): 1) YA→RA-topp (bekräftat noll användbara), 2) tunnel→RA 2-3 st,
+  3) sngspawn→quad utan tele, 4) RL→RA-topp om movement-only-linje finns (kolla om ägarens eget
+  demo är RJ!), 5) SSG→ratop + SNG→quad ett par vardera.
+- quad→RA: korpusen RÄCKER — bara ägarens referensdemo/tid saknas.
+- SKULD: envelope_band.json saknar band för quad_to_ra trots 24 banor — beräkna.
+
+## 2026-07-30: sng_to_quad-rutten registrerad (ägarens "hopp från sng/lifts-sidan till quad")
+- **Demon parsade** (`record_reference.load`, qwd/v2): `sng-to-quad.qwd` = 629 tick @ 77,1 Hz,
+  start (-518.6, 493.6, 120) = SNG-vapnet, närmast quad 17,6 u vid t=6,091 s. Max
+  positionssteg per tick **8,7 u — ingen teleport i demot.** Trickhoppet: lifts-sidan -> quad
+  i TVÅ flygningar via en mellanhylla, (459.5,151.6,56) -> (598.4,110.8,99.9) -> (732.0,168.8,56),
+  ~145 u vardera över **263 u void**, 460-476 u/s, max stigning 43,9 u (vanligt hopp, ingen raket).
+  OBS: `(hex)sng-to-quad.qwd` är **bytidentisk kopia** (samma sha256) — EN inspelning finns.
+- **59/59-utredningen AVGJORD: alla 59 är äkta teleporter, noll falska förkastningar.**
+  Största prov-till-prov-hoppet i varje förkastad körning: 776-787 u på 13-34 ms
+  (23 000-60 000 u/s implicerat, mot fysikens ~900), och ALLA förbinder samma fasta par
+  (~-540,-450) -> (226,-318,75) = SNG-teleportern. Gap-filtret ändrades INTE (behövdes inte).
+  Tabell: `evidence/sng_to_quad_gap_diagnostics.json`.
+- **Nytt kohortpar `zip-hex-sng-to-quad`** (sng-take -> quad-take, fanns redan i route-labs
+  register): 8 kandidater = 4 rörelselöpningar (5,27/5,43/6,04/6,49 s — klarar befintlig vet
+  OFÖRÄNDRAD) + 4 teleportomvägar (10,0-11,7 s, korrekt förkastade). Hölje-LOO uppfyllt (4 >= 3).
+- **Registrerat:** `cohort_routes.py` `sng_to_quad` start=SNG-vapnet (-512,448,120),
+  mål=QUAD (952,296,80), gate 6,04 s (no-combat-median över rörelselöpningarna; poolad median
+  inkl. teleport vore 8,27 — gatar ingenstans), owner 6,09, timeout 14,04. Banfil
+  `pipeline/out/paths/zip-hex-sng-to-quad.json` (4 banor, filtrerad vid pass_s=8,04 eftersom
+  totala utbudet är 4 och alla ligger i ägarens band — antagande, noterat i filen).
+  Wiring: `race._REGISTRY_OF` + `human_paths.REGISTRY_TO_COHORT`. Befintliga rutter orörda.
+- Evidens: `evidence/sng_to_quad_route.json`. ÖPPET: navmesh-vägen omätt (troligen saknar
+  meshen 263-u-hoppet — träna i human-geometriläge eller uteslut i navmeshläge som quad_to_ra);
+  be ägaren om en andra tagning av demot; sngspawn_a/b_to_quad oförändrat teleportberoende.
+
+### Agent 3 KLAR: sng→quad-rutten (`evidence/sng_to_quad_route.json`)
+- Ägarens demo: 629 tick / 8,16 s, SNG-stället → 17,6 u från Quad vid t=6,09 s. Trickhoppet är
+  TVÅ flykter via en mittavsats: (459,152,56)→(598,111,100)→(732,169,56), ~145 u vardera över
+  263 u tomrum, 460-476 u/s, 43,9 u stigning = vanligt hopp, inget rakethopp. Max
+  tickförflyttning 8,7 u — ingen teleport. OBS: `(hex)sng-to-quad.qwd` är byte-identisk kopia.
+- 59/59-förkastningarna: ALLA äkta teleporter (776-787 u på 13-34 ms = 25-67× fysikgränsen,
+  samma fasta par ≈(−540,−450)→(226,−318,75) = SNG-teleportern). Noll falska utslag —
+  vet-filtret orört. Diagnostik: `evidence/sng_to_quad_gap_diagnostics.json`.
+- Korpus: route-labs `zip-hex-sng-to-quad` gav 8 kandidater = 4 movement-körningar (5,27-6,49 s,
+  klarar vet med RJ-filter) + 4 tele-omvägar (korrekt förkastade). LOO uppfyllt (4 ≥ 3).
+  Banfil: `pipeline/out/paths/zip-hex-sng-to-quad.json`.
+- REGISTRERAD: `sng_to_quad`, start (−512,448,120), mål QUAD (952,296,80), gate_s 6,04,
+  owner_s 6,09, pass_s 8,04, timeout 1131 tick. Med i training_routes() (nu 8 rutter).
+- Jag mappade även `sng-to-quad.qwd` → sng_to_quad i DEMO_ROUTE (verifierat: 8 demos, alla
+  rutter/filer finns).
+- KVAR: navmeshplanen omätt (263 u-hoppet finns troligen inte i meshen — träna rutten i
+  human-geometriläge); race_v8 startade FÖRE registreringen → 0 % väntas där; be ägaren om
+  en andra tagning (hex-filen är dubblett); gate vilar på n=3 no-combat-körningar.
+
+### Agent 2 KLAR: RA-topp-kanthoppet (`evidence/ratop_edge_jump.json`)
+- Hoppet är UNIVERSELLT i människodata: 24/24, 24/24, 24/24, 8/8 körningar (ring/ralow/quad/
+  tunnel) korsar samma ~350 u djupa tomrumsremsa vid y≈−600..−664, x=−64..296, som SISTA
+  tomrumskorsning. Referensdemona: gap 159-200 u, 0,52-0,62 s luft, +16..32 dz.
+- HÖLJESGRINDEN KAN INTE FÄLLA "GÅR RUNT": den syntetiserade gå-runt-vägen (575 u via ramp,
+  öster) mäter 60,3 u mot rings band 84,3 (går igenom), 62,8 mot tunnelns 110,7 (igenom),
+  43,4 mot ralows 47,8 (marginal). Orsak: gå-runt-korridoren täcks av människomolnet SJÄLVT
+  (linjen korsar samma östområde tidigare i löpet) och höljet är ett OORDNAT punktmoln utan
+  sekvens/luftbegrepp. Empiriskt bekräftat: race_v7-episoder som går runt PASSERADE höljet.
+- ÅTGÄRD: manöverkrav. `manoeuvres.executed()` finns redan och gör exakt rätt (takeoff inom
+  tol av människans avstamp OCH nästa markkontakt inom tol av landningen). Rekommenderad grind
+  per ratop-rutt: sista luftsegment med void_u >= 96, avstamp/landning inom 96 u av ankarna
+  (täcker korpusens spridning, std_x <= 38 u). Ankarpunkter i evidensfilen. Enda kopplingen
+  som saknas: strict_eval behåller frames + anropar executed().
+- OBS: navmeshens "walk"-plan mellan hoppändpunkterna använder en JUMP-LINK rakt över tomrummet
+  — planen är alltså inte gå-runt-vägen här.
+
+### Inline-arbete medan manövergrind-agenten kör
+- **-xer-demot RJ-friat:** demots eget vz-fält max 259,0 u/s < 270 över alla 1525 tick — inget
+  rakethopp. De två 96 u/0,5 s-stigningarna är trappsteg/hiss (16 u positionssteg per tick).
+  Ägarens RL→RA-topp-linje är alltså giltig referens, till skillnad från korpusens 9/11 RJ.
+- **Höljesband omderiverade med human_k=1** (`envelope.py`, även `route_cloud`): alla gamla
+  band OFÖRÄNDRADE (regressionskoll ok). Nya: quad_to_ra 108,4 u (24 körningar, p50 26 —
+  spridda linjer), sng_to_quad 289,5 u (bara 4 körningar — LOO p50 153,5, banden ligger långt
+  isär; ETT OANVÄNDBART BRETT BAND). Slutsats: sng_to_quads verkliga grind bör vara
+  MANÖVERKRAVET (dubbelhoppet över 263 u-tomrummet), inte höljet — samma mekanism som ratop.
+
+### Agent 5 KLAR: manövergrinden inkopplad (`evidence/ratop_gate_wiring.json`)
+- Ny `pipeline/ratop_gate.py`: MANOEUVRE_GATES med ankare för ring/ralow/quad/tunnel→ratop
+  (ur ratop_edge_jump.json), TOL_U=96, MIN_VOID_U=96, check() = ett luftsegment vars avstamp
+  OCH nästa markkontakt ligger inom tol + >=96 u tomrum under (samma golvprob som air_segments).
+  `_strip_apex_blips()` hanterar referensdemonas härledda markflagga (vz==0 vid apex).
+- `strict_eval.py`: spårkolumn 4 = markflagga; per ingång manoeuvre_rate/gate/worst_u;
+  passes_strict kräver nu manövern — EN ankommen episod som hoppar över hoppet fäller rutten.
+- Test (`pipeline/tests/test_ratop_gate.py`, CPU): ring-demo PASS (0,0/0,0 u, tomrum 336),
+  ralow PASS, tunnel PASS; syntetisk gå-runt FAIL (landar 140,5 u från ankaret = 44,5 u utanför
+  tol) — exakt fallet höljet inte kunde fälla. Ogatad rutt → None.
+
+### sng_to_quad in i manövergrinden (efter att ägardemot FÄLLDE första ankarsättningen)
+Lärdom: mittavsatsen (z 99,9) är HÖGRE än båda kanterna (z 56) — en entickskontakt där är ett
+lokalt z-max och raderas av `_strip_apex_blips`, så ägarens dubbelhopp mäts som ETT 50-ticks
+luftsegment som landar vid bortre kanten. Grinden accepterar nu TVÅ landningsankare
+(avsatsen ELLER bortre kanten): sammanslaget hopp 0,0/0,1 u fel, tomrum 263 u = PASS; delad
+variant (2 tick på avsatsen) PASS; icke-hopp fälls ("lämnade aldrig marken"). Alla
+ratop-tester fortsatt gröna. `check()` tar nu atleast_2d-landningar.
+
+### NY ARTEFAKT: DM3-ruttatlasen (ägarbeställning under pågående arbete)
+https://claude.ai/code/artifact/f2e03c40-b2ba-4f9c-b855-f56c9e1bfc19
+3D-röntgenvy (additiv WebGL, sky-trianglar bortfiltrerade) av dm3 ur `dm3_geo.bin` +
+BSP-entiteterna: 14 items (vapen/armor/quad/pent/ring/3 megas), 6 spawns, 2 teleportrar
+(brushvolym→destination, streckade linjer), 3 hissar (wireframe-boxar). Ruttlista i fyra
+statusgrupper (9 tränas / 4 korpus-ok / 4 tunt / 4 saknas) ur corpus_sufficiency +
+cohort_routes; tränade rutter ritar 4 människolinjer, övriga streckad rak linje.
+Byggpipeline i scratchpad: atlas_prep.py → atlas_template.html → dm3-atlas.html;
+validerad headless (21 kontroller, skärmdumpar LÄSTA — readPixels-kollen är falsklarm
+pga preserveDrawingBuffer=false). Bugg hittad och fixad: needsDraw init true → första
+req() ritade aldrig.
+
+### TRAFIKHEATMAP I ATLASEN + ÄRLIG TÄCKNINGSMÄTNING (ägarbeställning)
+Lager "korpustrafik" i atlasen: ALLA 907 977 350 positionssamples ur store-dm3, aggregerade
+per 32 u-voxel (43 639 voxlar, log-skala, duckdb 11 s) — RÅTT, ovettat, inga ruttfilter.
+Ärlig täckningsmätning (voxelviktad trafik mot ruttunionen = människomoln för 9 träningsrutter
++ räta linjer för de 12 övriga identifierade):
+- inom 96 u: 60,0 % av all trafik; inom 160 u: 73,7 % (toppdecilen: 65,9/78,3 %)
+- 16,9 % av trafiken är HET och >160 u från varje identifierad rutt. Klustren:
+  * STORA ÖSTRUMMET (pentrummet) dominerar: golv/vatten (1952,61,−138), mega_pent-korridoren
+    (1886,447,−72), LG-området (1698,−85,−202), SSG-anslutningarna (1905,−399) + (1602,−431)
+    — ihop ~6 % av all trafik, i praktiken NOLL ruttäckning öster om RL/YA-linjen
+  * korridoren mitt→öst vid GL-vattnet (1055,−45,−171), 1,4 %
+  * mega-kullen själv (508,−38,−184) — mest strid, 58 u från noden
+  * väst om NG mot tunneln (−369,−715), norra bron vid spawn 6 (545,973)/(514,838)
+FÖRBEHÅLL: rå trafik inkluderar strid — östrummet är dm3:s huvudarena, så en del är fajt,
+inte förflyttning. Men boten måste ändå kunna korsa rummet. Kandidat-ruttfamiljer att ta fram:
+RL↔mega_pent, SSG↔pentrummet, GL↔LG-vattenvägarna, RA-låg↔tunnel väst, norra bron.
+Heatamp dämpad (0,030+0,20·v²); artefakten ompublicerad (samma URL).
+
+### Agent 6 KLAR: RJ-filterrevisionen (`evidence/rj_filter_audit.json`) — INKOPPLAD
+- Misstanken UNDERDREV: fulla skanningar visar 888 RJ-förkastade på ralow (inte 155), varav
+  **640 äkta trappklättringar** (stigning 95-119 u med golv <=40 u under VARJE sampel, median
+  8 u); äkta RJ stiger 169-480 u hängande 136-480 u över golv. Bimodalt, ingen överlapp.
+  Implied-vz oanvändbart som kriterium (trappsteg ger upp till 1140 u/s).
+- Nytt kriterium i `human_paths.py::vet()`: rocket_jump kräver att stigningsfönstret är
+  LUFTBURET (>64 u över golvprobat golv). Nya förkastningsmängden strikt delmängd av gamla
+  per körning; rl→ratops "9 kända RJ" var 7 äkta + 2 felklassade trappklättringar.
+- Kohortvinster: tunnel_to_ra 8 → 24 banor (snabbast 10,0 → 8,70 s), ralow ~oförändrad.
+- INKOPPLAT av mig: `race._REGISTRY_OF` pekar nu på `zip-ralow-to-ratop-v2` och
+  `tunnel-to-ra-v2`; höljesband omderiverade: tunnel 110,7 → **64,2 u**, ralow 47,8 → 48,4,
+  övriga oförändrade (regressionskoll ok).
+- FÖLJDARBETE: quad (423 återvunna) och ring (335) kan också få omkomponerade topp-24-kohorter
+  med nya vet() — gör efter race_v8-betygsättningen så inte målstolparna flyttas mitt i.
+  OBS: race_v8 tränade på v1-tunnelbanor (8 st); betygsätts mot v2-molnet (ärligare, stramare).
+
+### Agent 7 STARTAD: ruttgrafen ur korpusen (ägarbeställning: "identifiera saknade rutter på riktigt")
+24 noder (14 items + 6 spawns + 4 tele-ändpunkter), direkttransiter inom samma liv
+(dödsbrytning via frags, route-labs semantik), riktad kanttabell med n/median-tid, klassning
+COVERED/PARTIAL/MISSING mot de 21 identifierade rutterna. Leverans:
+evidence/route_graph.json + evidence/route_graph_missing.md (svensk rankad saknas-tabell).
+
+### ÄGARDIREKTIV (2 st)
+1. Beräkning ska ske LOKALT på vmonster — bekräftat att så redan sker (duckdb/extraktion/
+   träning lokalt; endast agenternas LLM-resonerande är Anthropic-side).
+2. NÄSTA STEG efter ruttgrafen: för VARJE identifierad rutt (befintliga + saknade kanter ur
+   route_graph.json), plocka SNABBASTE korpusexemplet som referens och addera i atlasen.
+   Viktigt: snabbast VETTAD (movement-only, nya golvprob-vet) är referensen — snabbast rå
+   redovisas bredvid för ärlighet (ofta RJ/tele). Per rutt: banan + tid + demo_key.
+
+## STRICT-PROV race_v8 (`pipeline/out/strict/strict_race_v8.json`) — 0/8, MEN:
+**Manövergrinden och människogeometrin FUNGERAR där policyn kommer fram:**
+- ralow ing.2: 85,4 % ank, 1,88 s, hölje 44,0 < 48,4 ✓, **manöver 100 %** ✓
+- ring ing.2: 81,2 %, 1,87 s, hölje 45,4 < 84,3 ✓, **manöver 100 %** ✓
+- tunnel ing.2: 79,2 %, 1,87 s, hölje 39,3 < NYA bandet 64,2 ✓, **manöver 100 %** ✓
+  → kant-till-kant-hoppet vid RA-toppen UTFÖRS nu i varje ankommen episod (v7 gick runt).
+- window ing.1: 100 %, 0,79 s, 0 % skrap, hölje 29,7 < 40,2 — men bara EN modellerad ingång.
+- sng_to_quad ing.1/2: 100 % ankomst 2,30-2,94 s MEN **manöver 0 %** — policyn (otränad på
+  rutten) når quad UTAN dubbelhoppet; höljet (283 mot oanvändbara 289,5) hade släppt igenom
+  den — manövergrinden fäller korrekt. Precis det grinden byggdes för.
+**Kvarstående fel:**
+- Ankomstandel 79-85 % på de bra ingångarna (grinden kräver 100 %; Wilson-skulden kvarstår).
+- Ruttstarterna (ing.0) misslyckas på nästan allt; window ing.0 fortsätter österut (hölje 710).
+- REGRESSION: sngspawn a/b föll från 89,6/91,7 % (v7) till 0 % med skrap 60-69 % mot band 22 %
+  — trots träningsloggens 77 %. Måste utredas: human_k-geometrin eller hastighetsfokusen
+  (spd 0,647) bröt något. Träningsmått och strict-mått skiljer sig (avkodning + startpunkter).
+- Obyggbar start Vec3(-501,265,155) på sngspawn ing.2 (känd skuld).

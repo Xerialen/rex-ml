@@ -1,0 +1,63 @@
+{
+  "audit": "reference-demo mapping audit, pipeline/record_reference.py DEMO_ROUTE",
+  "date": "2026-07-30",
+  "confirmed_error": "(spawn)rl-to-ratop-xer.qwd was mapped to route quad_to_ra; the demo is actually an RL -> RA-top run",
+  "old_mapping": {
+    "(spawn)rl-to-ratop-xer.qwd": "quad_to_ra"
+  },
+  "new_mapping": {
+    "(spawn)rl-to-ratop-xer.qwd": "REMOVED from DEMO_ROUTE; recorded in UNMAPPED_DEMOS as rl_to_ratop (no cohort route with that identity exists in pipeline/cohort_routes.py)",
+    "rl_to_ratop.qwd": "UNMAPPED_DEMOS: rl_to_ratop, unparseable FTE demo",
+    "spawn-rl_to_ratop.qwd": "UNMAPPED_DEMOS: rl_to_ratop, unparseable FTE demo (byte-identical copy of rl_to_ratop.qwd)"
+  },
+  "why_not_remapped_to_a_route": "DEMO_ROUTE values must be keys of cohort_routes.BY_NAME (build_record does C.BY_NAME[route_name]). The route set has no rl_to_ratop route — ralow_to_ratop starts at the NG at RA-low, a different journey — and inventing a new route was explicitly out of scope. The demos' true identity is stated once in UNMAPPED_DEMOS in record_reference.py.",
+  "parse_verification": {
+    "parser": "qw-demo-miner strict QWD v2 extractor (qwd_v2.extractor.extract_file), the same parser record_reference.load() uses",
+    "(spawn)rl-to-ratop-xer.qwd": {
+      "parses": true,
+      "ticks": 1525,
+      "duration_s": 19.792,
+      "demo_id_sha256": "5930b78c36f1e59c8525e563300fd51e95cfec55282ebbbff0309af08f73ccfc",
+      "start_xyz": [1520.8, 494.1, -88.0],
+      "start_judgement": "2.0 u from the RL standing point (item origin 1520,496,-112 + 24 u player-origin lift = z -88): the run starts AT the rocket launcher",
+      "end_xyz": [279.8, -672.0, 328.0],
+      "end_judgement": "39.9 u from the RA-top standing point (item origin 256,-704,304 + 24 = z 328); closest approach 15.2 u at tick 1363 (t=17.701 s): the run ends ON RA top",
+      "min_dist_to_quad_anywhere_u": 272.2,
+      "verdict": "RL -> RA-top run. Cannot be quad_to_ra: the trajectory never comes within 272 u of the Quad (952,296,56)."
+    },
+    "rl_to_ratop.qwd": {
+      "parses": false,
+      "ticks": 0,
+      "demo_id_sha256": "0f0b046373601961e8f91040c5482ddab938a3be4c064ab7a7819a72fb4d72e3",
+      "bytes": 141515,
+      "rejection": "strict extractor rejects it: unsupported FTEX mask bits 0x21087008 (FTE-extension recording); bytes_consumed 38 of 141515, zero rows extracted",
+      "verdict": "labelled RL -> RA-top by the owner but unusable as a pipeline reference; the -xer file is the parseable re-recording of the same journey (PROGRESS.md notes it is a NEW recording, not a rename)"
+    },
+    "spawn-rl_to_ratop.qwd": {
+      "parses": false,
+      "ticks": 0,
+      "demo_id_sha256": "0f0b046373601961e8f91040c5482ddab938a3be4c064ab7a7819a72fb4d72e3",
+      "bytes": 141515,
+      "rejection": "identical FTEX rejection",
+      "verdict": "byte-identical copy of rl_to_ratop.qwd (same size, same sha256) — one recording under two filenames, not two demos"
+    }
+  },
+  "sngspawn_a_b_explanation": {
+    "question": "why do routes sngspawn_a_to_mega and sngspawn_b_to_mega both exist?",
+    "answer": "dm3 has two SNG-side spawn points and the route-lab registry binds both; the human median pools runs from both spawns, so the pipeline builds one route per spawn and gates both on the pooled median (cohort_routes.POOLED maps sngspawn_to_mega -> (a, b), same for sngspawn_to_quad).",
+    "verified_coordinates": {
+      "sngspawn_a": [-880.0, -232.0, -16.0],
+      "sngspawn_b": [-632.0, -680.0, -16.0],
+      "source": "pipeline/cohort_routes.py lines 128-133 (sngspawn_*_to_quad) and 148-151 (sngspawn_*_to_mega); both route pairs use exactly these two starts, matching the expected (-880,-232) and (-632,-680)"
+    }
+  },
+  "missing_demos": [
+    {
+      "route": "quad_to_ra",
+      "status": "NO owner reference demo exists anywhere — verified against the owner's zip and by filename search over demos/, qwd-corpus, mvd-corpus and qwd-miner-movement-bundle (only q1dm17 corpus files match quad*ra patterns, nothing on dm3). One needs to be recorded before quad_to_ra can carry a reference record."
+    }
+  ],
+  "files_changed": [
+    "/home/benjamin-adm/rex-ml/pipeline/record_reference.py"
+  ]
+}
