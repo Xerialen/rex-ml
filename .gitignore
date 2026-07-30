@@ -19,3 +19,6 @@ sim/build/
 sim/__pycache__/
 sim/*.so
 rl/__pycache__/
+pipeline/out/rl/train_dir/
+pipeline/out/rl/*.onnx
+.keepgoing_count
