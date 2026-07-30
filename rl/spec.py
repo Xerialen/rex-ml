@@ -17,7 +17,10 @@ TICK_DT = 1.0 / 77.0
 #   Discrete(2) = framåtknapp (0/1)   — fristående: QW-bunny kräver släppt W
 #   Discrete(3) = sidled (0=ingen, 1=vänster, 2=höger)
 #   Discrete(2) = hopp (0/1)
-MAX_DYAW_DEG = 15.0    # 15°/tick @77 Hz = 1155°/s; half-beat behöver snabba teckenbyten
+# MÄTT 2026-07-30 ur QWD-korpusens 29,8 M usercmds (Δyaw normerat till 13 ms-tick):
+# p50 0,31° / p99 9,5° / p99,9 18,0° / p99,99 119,7° (combat-flickar). Cappen 20°/tick
+# täcker p99,9 av mänsklig rörelseinput med marginal; flickarna är inte rörelse.
+MAX_DYAW_DEG = 20.0
 MAX_DPITCH_DEG = 10.0
 PITCH_MIN, PITCH_MAX = -70.0, 80.0
 

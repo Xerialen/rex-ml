@@ -4526,3 +4526,11 @@ täckning 0.28 %, gate_passed_sim=false — formeln fäller korrekt. Delar check
 laddningen med eval_gate1. Båda gates har nu komplett mätkedja i träningssimmen;
 riktiga-server-bevisen är separata (RUNBOOK).
 VÄNTAR ENDAST på libqwsim-agentens bit-exakthetssiffror (aktiv, validerar).
+
+## 2026-07-30 — Spec-validering med mätning: Δyaw-cap höjd 15 → 20°/tick
+Duckdb-pass över QWD-usercmds (29 765 485 konsekutiva kommandon, yaw är 16-bit
+vinkelenheter 65536=360°, normerat till 13 ms): |Δyaw|/tick p50 0,31, p90 3,61,
+p99 9,50, p99,9 17,96, p99,99 119,69, max 259,7. Gissningen 15°/tick hade klippt
+p99,9-svansen (där half-beat-vändningar vid hög fart bor); 20°/tick täcker p99,9
+med marginal. p99,99+ är combat-flickar — inte rörelseinput. rl/spec.py uppdaterad,
+25/25 tester gröna.
