@@ -99,12 +99,19 @@ Skrivskyddade och oersättliga — all bearbetning sker till separata store-kata
 MVD-delen); alla spelare i matchen samtidigt, vilket ger 4on4-flödet och livssegmentering; drygt
 dubbla samplingstakten mot QWD-delen. **MVD:s nackdelar:** inga hastigheter (vz för RJ-analys
 måste härledas ur positionsdifferenser, därav golvprobs-vetten som är dt-oberoende) och inga
-usercmds (intentionen — hopptryck, styrning — är osynlig; det enda materialet med intention är
-ägarens egna QWD-demon i § 4.3 plus QWD-delens inspelarspår). **QWD-delens nackdelar:** liten
-(7 %), glesare sampling med större spridning, och usercmds finns bara för den spelare som
-spelade in. Konsekvens för träning: korpusen kan definiera *var* linjen går (geometri, band,
-tider) men aldrig *hur* den körs (styrsekvenser) — beteendekloning ur korpusen är därför
-utesluten som huvudväg, och RL mot korpushärledda grindar är den framkomliga.
+usercmds (intentionen — hopptryck, styrning — är osynlig i MVD-delen). **QWD-delens
+nackdelar:** liten (7 %), glesare sampling med större spridning, och usercmds finns bara för
+den spelare som spelade in.
+
+**Rättelse/precisering (2026-07-30, efter korsläsning mot projektets fas 1-audit `AUDIT.md`):**
+storen innehåller utöver `trajectory_samples` även `replay_ticks` (per-tick tillstånd:
+position, hastighet, onground, jump_held, waterlevel vid 72–77 Hz) och `usercmds` (29,9 M
+rader) för QWD-delmängden, joinbara på (demo_key, slot, cmd_ordinal). Beteendekloning är
+alltså **möjlig på QWD-delmängden** — fas 1–2 tränade också BC/DAgger-policyer på exakt den —
+men **strukturellt omöjlig på MVD-bulken** (93 % av volymen), eftersom MVD är en server-
+entitetsström utan klientkommandon. Slutsatsen står därmed kvar i försvagad form: korpusens
+*bredd* (band, ruttgraf, tider) kommer från MVD utan intention; intention finns bara i den
+lilla QWD-delen och i ägarens referensdemon, och RL mot korpushärledda grindar bär huvudvägen.
 
 ### 4.2 Den extraherade korpusstoren `~/dm3-extract/store-dm3` (8,5 GB parquet)
 

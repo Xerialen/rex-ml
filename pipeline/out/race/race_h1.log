@@ -1,0 +1,73 @@
+routes=['window_to_rl', 'ralow_to_ratop', 'lifts_to_sng_mega', 'quad_to_ra', 'ring_to_ratop', 'sngspawn_a_to_mega', 'sngspawn_b_to_mega', 'tunnel_to_ra']  n_per_route=1024  human_k=8  envs=64  total_slots=8192  T=64  gamma=0.999
+  window_to_rl           human:6796@2.069             path    1327 u  n=  128  gate  2.75s  needs    482 u/s average
+  window_to_rl           human:56762@2.174            path    1237 u  n=  128  gate  2.75s  needs    450 u/s average
+  window_to_rl           human:22269@2.178            path    1134 u  n=  128  gate  2.75s  needs    412 u/s average
+  window_to_rl           human:28039@2.179            path    1133 u  n=  128  gate  2.75s  needs    412 u/s average
+  window_to_rl           human:55363@2.185            path    1249 u  n=  128  gate  2.75s  needs    454 u/s average
+  window_to_rl           human:18302@2.204            path    1216 u  n=  128  gate  2.75s  needs    442 u/s average
+  window_to_rl           human:6281@2.237             path    1279 u  n=  128  gate  2.75s  needs    465 u/s average
+  window_to_rl           human:13577@2.282            path    1243 u  n=  128  gate  2.75s  needs    452 u/s average
+  ralow_to_ratop         human:44665@5.348            path    2562 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:38678@5.62             path    2559 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:22675@5.631            path    2642 u  n=  128  gate  7.71s  needs    343 u/s average
+  ralow_to_ratop         human:43489@5.762            path    2579 u  n=  128  gate  7.71s  needs    334 u/s average
+  ralow_to_ratop         human:19017@5.783            path    2198 u  n=  128  gate  7.71s  needs    285 u/s average
+  ralow_to_ratop         human:11339@5.842            path    2562 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:31522@5.847            path    2533 u  n=  128  gate  7.71s  needs    329 u/s average
+  ralow_to_ratop         human:9183@5.864             path    2555 u  n=  128  gate  7.71s  needs    331 u/s average
+  lifts_to_sng_mega      human:48877@4.958            path    2171 u  n=  128  gate  7.93s  needs    274 u/s average
+  lifts_to_sng_mega      human:55716@4.971            path    2139 u  n=  128  gate  7.93s  needs    270 u/s average
+  lifts_to_sng_mega      human:29817@4.98             path    2161 u  n=  128  gate  7.93s  needs    273 u/s average
+  lifts_to_sng_mega      human:50580@4.98             path    2194 u  n=  128  gate  7.93s  needs    277 u/s average
+  lifts_to_sng_mega      human:26750@4.987            path    2212 u  n=  128  gate  7.93s  needs    279 u/s average
+  lifts_to_sng_mega      human:21055@5.01             path    2159 u  n=  128  gate  7.93s  needs    272 u/s average
+  lifts_to_sng_mega      human:55638@5.011            path    2141 u  n=  128  gate  7.93s  needs    270 u/s average
+  lifts_to_sng_mega      human:507@5.012              path    2151 u  n=  128  gate  7.93s  needs    271 u/s average
+  quad_to_ra             human:22919@6.705            path    3133 u  n=  128  gate  8.96s  needs    350 u/s average
+  quad_to_ra             human:21963@6.963            path    2955 u  n=  128  gate  8.96s  needs    330 u/s average
+  quad_to_ra             human:31815@7.045            path    3210 u  n=  128  gate  8.96s  needs    358 u/s average
+  quad_to_ra             human:26736@7.076            path    3221 u  n=  128  gate  8.96s  needs    359 u/s average
+  quad_to_ra             human:27014@7.088            path    3271 u  n=  128  gate  8.96s  needs    365 u/s average
+  quad_to_ra             human:4150@7.205             path    3287 u  n=  128  gate  8.96s  needs    367 u/s average
+  quad_to_ra             human:20442@7.25             path    3103 u  n=  128  gate  8.96s  needs    346 u/s average
+  quad_to_ra             human:49478@7.267            path    3268 u  n=  128  gate  8.96s  needs    365 u/s average
+  ring_to_ratop          human:50580@5.679            path    2423 u  n=  128  gate  9.26s  needs    262 u/s average
+  ring_to_ratop          human:12764@5.788            path    2480 u  n=  128  gate  9.26s  needs    268 u/s average
+  ring_to_ratop          human:43734@5.986            path    2525 u  n=  128  gate  9.26s  needs    273 u/s average
+  ring_to_ratop          human:18643@6.136            path    2639 u  n=  128  gate  9.26s  needs    285 u/s average
+  ring_to_ratop          human:23831@6.233            path    2650 u  n=  128  gate  9.26s  needs    286 u/s average
+  ring_to_ratop          human:7969@6.374             path    2570 u  n=  128  gate  9.26s  needs    278 u/s average
+  ring_to_ratop          human:31073@6.402            path    2517 u  n=  128  gate  9.26s  needs    272 u/s average
+  ring_to_ratop          human:21780@6.467            path    2503 u  n=  128  gate  9.26s  needs    270 u/s average
+  sngspawn_a_to_mega     human:54935@6.545            path    2719 u  n=  128  gate  9.98s  needs    272 u/s average
+  sngspawn_a_to_mega     human:11862@6.635            path    2760 u  n=  128  gate  9.98s  needs    277 u/s average
+  sngspawn_a_to_mega     human:45738@6.735            path    2656 u  n=  128  gate  9.98s  needs    266 u/s average
+  sngspawn_a_to_mega     human:2234@6.748             path    2781 u  n=  128  gate  9.98s  needs    279 u/s average
+  sngspawn_a_to_mega     human:45576@6.896            path    2829 u  n=  128  gate  9.98s  needs    283 u/s average
+  sngspawn_a_to_mega     human:7948@6.93              path    2734 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_a_to_mega     human:35991@6.933            path    2739 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_a_to_mega     human:44523@6.939            path    2796 u  n=  128  gate  9.98s  needs    280 u/s average
+  sngspawn_b_to_mega     human:54935@6.545            path    2719 u  n=  128  gate  9.98s  needs    272 u/s average
+  sngspawn_b_to_mega     human:11862@6.635            path    2760 u  n=  128  gate  9.98s  needs    277 u/s average
+  sngspawn_b_to_mega     human:45738@6.735            path    2656 u  n=  128  gate  9.98s  needs    266 u/s average
+  sngspawn_b_to_mega     human:2234@6.748             path    2781 u  n=  128  gate  9.98s  needs    279 u/s average
+  sngspawn_b_to_mega     human:45576@6.896            path    2829 u  n=  128  gate  9.98s  needs    283 u/s average
+  sngspawn_b_to_mega     human:7948@6.93              path    2734 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_b_to_mega     human:35991@6.933            path    2739 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_b_to_mega     human:44523@6.939            path    2796 u  n=  128  gate  9.98s  needs    280 u/s average
+  tunnel_to_ra           human:4783@9.999             path    3799 u  n=  128  gate 12.13s  needs    313 u/s average
+  tunnel_to_ra           human:3199@10.653            path    4134 u  n=  128  gate 12.13s  needs    341 u/s average
+  tunnel_to_ra           human:47035@11.144           path    4253 u  n=  128  gate 12.13s  needs    351 u/s average
+  tunnel_to_ra           human:7089@11.222            path    4283 u  n=  128  gate 12.13s  needs    353 u/s average
+  tunnel_to_ra           human:47148@11.234           path    4628 u  n=  128  gate 12.13s  needs    382 u/s average
+  tunnel_to_ra           human:30305@11.286           path    4438 u  n=  128  gate 12.13s  needs    366 u/s average
+  tunnel_to_ra           human:4783@11.519            path    4163 u  n=  128  gate 12.13s  needs    343 u/s average
+  tunnel_to_ra           human:42047@11.558           path    4335 u  n=  128  gate 12.13s  needs    357 u/s average
+[it     1/3000 critic_warmup] rew -0.0222 vl    0.044 ent +0.094 kl -0.0000 spd 0.387 4s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    10/3000 critic_warmup] rew -0.0215 vl    0.051 ent +0.040 kl -0.0000 spd 0.322 27s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    20/3000           ppo] rew -0.0048 vl    1.218 ent -0.158 kl 0.0266 spd 0.689 52s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    30/3000           ppo] rew -0.0098 vl    0.073 ent -0.414 kl 0.0103 spd 0.802 78s | window:  1%/8.58 ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    40/3000           ppo] rew -0.0028 vl    1.461 ent -0.576 kl 0.0084 spd 0.818 104s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    50/3000           ppo] rew -0.0118 vl    0.044 ent -0.637 kl 0.0413 spd 0.809 128s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    60/3000           ppo] rew -0.0028 vl    0.854 ent -0.721 kl 0.0111 spd 0.844 154s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    70/3000           ppo] rew +0.0068 vl    2.857 ent -0.713 kl 0.0124 spd 0.770 185s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   quad:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  

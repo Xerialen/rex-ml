@@ -1,0 +1,23 @@
+rutt                    avstamp  kant<48u   övriga  kant<48u   kvot
+window_to_rl                 50     30.0%     2484      2.6%  11.64
+ralow_to_ratop              262     17.9%     3149      3.0%   6.01
+lifts_to_sng_mega           191      9.9%     3900      5.7%   1.76
+ring_to_ratop               199     15.6%     3075      1.9%   8.26
+sngspawn_a_to_mega          343      5.0%     9714      4.8%   1.03
+sngspawn_b_to_mega          343      5.0%     9714      4.8%   1.03
+tunnel_to_ra                234      6.4%     3565      2.4%   2.63
+
+ALLA                       1622      9.9%    35601      4.1%   2.42
+median kant framför: avstamp 320 u, övriga 320 u
+
+rutt                    vid kant  i luften/hoppar
+window_to_rl                  79           100.0%
+ralow_to_ratop               141            95.7%
+lifts_to_sng_mega            240            99.6%
+ring_to_ratop                 89           100.0%
+sngspawn_a_to_mega           485            98.1%
+sngspawn_b_to_mega           485            98.1%
+tunnel_to_ra                 102            95.1%
+ALLA                        1621            98.1%
+
+skrev /home/benjamin-adm/rex-ml/evidence/edge_signal.json

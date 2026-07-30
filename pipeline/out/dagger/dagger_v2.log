@@ -1,0 +1,14 @@
+expert begränsad till människor i rörelse (>100 u/s): 18,525,831 kandidater
+expert: 3,000,000 referenstransitioner på GPU, k=16
+kalibrering på held-out korpus: grannavstånd p50 0.0981 p90 0.3560 p99 0.6392
+[runda 1/10] besökta 120,000  utan mänskligt svar  82.6%  aggregat 19,712  loss 0.6628  63s
+[runda 2/10] besökta 120,000  utan mänskligt svar  91.5%  aggregat 28,413  loss 0.6453  130s
+[runda 3/10] besökta 120,000  utan mänskligt svar  62.1%  aggregat 39,417  loss 0.6045  198s
+[runda 4/10] besökta 120,000  utan mänskligt svar  61.9%  aggregat 79,446  loss 0.5651  268s
+[runda 5/10] besökta 120,000  utan mänskligt svar  60.2%  aggregat 97,130  loss 0.5513  337s
+[runda 6/10] besökta 120,000  utan mänskligt svar  66.3%  aggregat 130,183  loss 0.5393  406s
+[runda 7/10] besökta 120,000  utan mänskligt svar  69.5%  aggregat 161,320  loss 0.5356  474s
+[runda 8/10] besökta 120,000  utan mänskligt svar  71.0%  aggregat 190,819  loss 0.5350  543s
+[runda 9/10] besökta 120,000  utan mänskligt svar  73.4%  aggregat 219,432  loss 0.5402  613s
+[runda 10/10] besökta 120,000  utan mänskligt svar  71.6%  aggregat 248,362  loss 0.5396  682s
+sparade /home/benjamin-adm/rex-ml/pipeline/out/dagger/dagger_v2.pt

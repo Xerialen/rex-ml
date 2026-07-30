@@ -1,0 +1,40 @@
+rutt                    ingång   arr%  median            ci95     p90  värsta   skrap    band   hölje ev.band  luft%  n_eff   manöv
+window_to_rl                 0   31.2    5.55  [5.312, 5.948]    6.17    6.84  40.33%   5.50%   710.0    40.2  48.8%     48       -
+window_to_rl                 1  100.0    0.79  [0.792, 0.799]    0.82    0.83   0.00%   5.50%    29.7    40.2   1.6%     48       -
+ralow_to_ratop               0    0.0       -    [None, None]       -       -  20.00%  19.39%   162.9    48.4  52.7%     48       -
+ralow_to_ratop               1    0.0       -    [None, None]       -       -  14.00%  19.39%   165.4    48.4  62.8%     48       -
+ralow_to_ratop               2   85.4    1.88   [1.87, 1.896]    1.91    1.95   2.88%  19.39%    44.0    48.4  58.0%     48 100.00%
+ralow_to_ratop               3    0.0       -    [None, None]       -       -  21.00%  19.39%   162.9    48.4  80.6%     48       -
+lifts_to_sng_mega            0    0.0       -    [None, None]       -       -  73.67%   4.61%   331.1    23.6   4.9%     48       -
+/home/benjamin-adm/rex-ml/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:4608: RuntimeWarning: invalid value encountered in scalar subtract
+  diff_b_a = b - a
+lifts_to_sng_mega            1    0.0       -    [None, None]       -       -  64.67%   4.61%     inf    23.6  35.0%     48       -
+lifts_to_sng_mega            2   route start Vec3(-501.3, 265.3, 154.7) does not 
+lifts_to_sng_mega            3    0.0       -    [None, None]       -       -  35.00%   4.61%     inf    23.6  70.2%     48       -
+ring_to_ratop                0    0.0       -    [None, None]       -       -  18.00%  17.10%   296.2    84.3  51.8%     48       -
+ring_to_ratop                1    0.0       -    [None, None]       -       -  14.00%  17.10%   295.3    84.3  62.7%     48       -
+ring_to_ratop                2   81.2    1.87  [1.857, 1.883]    1.90    1.92   2.90%  17.10%    45.4    84.3  63.9%     48 100.00%
+ring_to_ratop                3    0.0       -    [None, None]       -       -  20.67%  17.10%   285.6    84.3  79.8%     48       -
+sngspawn_a_to_mega           0    0.0       -    [None, None]       -       -  69.33%  22.03%   231.0    51.2  26.9%     48       -
+sngspawn_a_to_mega           1    0.0       -    [None, None]       -       -  68.00%  22.03%   230.9    51.2  33.0%     48       -
+sngspawn_a_to_mega           2   route start Vec3(-501.3, 265.3, 154.7) does not 
+sngspawn_a_to_mega           3    0.0       -    [None, None]       -       -  35.00%  22.03%   192.6    51.2  73.3%     48       -
+sngspawn_b_to_mega           0    0.0       -    [None, None]       -       -  60.00%  22.03%   230.8    51.2  30.1%     48       -
+sngspawn_b_to_mega           1    0.0       -    [None, None]       -       -  26.33%  22.03%   230.9    51.2  40.2%     48       -
+sngspawn_b_to_mega           2   route start Vec3(-501.3, 265.3, 154.7) does not 
+sngspawn_b_to_mega           3    0.0       -    [None, None]       -       -  36.67%  22.03%   192.7    51.2  72.4%     48       -
+tunnel_to_ra                 0    0.0       -    [None, None]       -       -  18.67%  24.05%   155.3    64.2  51.0%     48       -
+tunnel_to_ra                 1    0.0       -    [None, None]       -       -  15.00%  24.05%   155.3    64.2  70.4%     48       -
+tunnel_to_ra                 2   79.2    1.87   [1.857, 1.87]    1.90    1.94   3.51%  24.05%    39.3    64.2  67.8%     48 100.00%
+tunnel_to_ra                 3    0.0       -    [None, None]       -       -  20.67%  24.05%   155.3    64.2  81.0%     48       -
+sng_to_quad                  0    0.0       -    [None, None]       -       -  17.94%       -   137.3   289.5   8.9%     48       -
+sng_to_quad                  1  100.0    2.94  [2.896, 2.987]    3.14    3.34   4.00%       -   282.9   289.5  23.2%     48   0.00%
+sng_to_quad                  2  100.0    2.30  [2.286, 2.305]    2.57    2.74   0.00%       -   284.6   289.5  30.6%     48   0.00%
+
+COVERAGE WARNINGS
+  window_to_rl: the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more
+  lifts_to_sng_mega: 3 of 4 modelled approaches to the target were exercised
+  sngspawn_a_to_mega: 3 of 4 modelled approaches to the target were exercised
+  sngspawn_b_to_mega: 3 of 4 modelled approaches to the target were exercised
+
+0/8 rutter klarar det strikta provet; skrev /home/benjamin-adm/rex-ml/pipeline/out/strict/strict_race_v8.json

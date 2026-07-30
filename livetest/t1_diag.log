@@ -1,0 +1,14 @@
+T1 drills: 57 declared, puppeting bot ent=1, pacifist=true
+[1/57] r011-RL-spawn->RA
+       TIMEOUT after 60.0s with no terminal event
+[2/57] r016-RL-spawn->Ring
+       STALLED at 1665u (best 1068u) after 17.7s
+[3/57] r018-RL-spawn->SNG_Mega
+       STALLED at 1799u (best 1798u) after 18.9s
+[4/57] r019-RL-spawn->LG
+       STALLED at 0u (best 4u) after 8.9s
+[5/57] r021-SNG-tele_spawn_A->YA
+       ARRIVED 25.1s  peak 510 u/s  drift 897u  rev 335
+[6/57] r023-SNG-tele_spawn_A->Quad
+       ARRIVED 21.8s  peak 510 u/s  drift 935u  rev 254
+[7/57] r024-SNG-tele_spawn_A->Pent

@@ -1,0 +1,21 @@
+[model_r2_big    5000] loss 51.273  val H300 med 36.19u (best 36.19u)  H600 med 94.03u p90 201.18u  19s
+[model_r2_big   10000] loss 48.905  val H300 med 35.03u (best 35.03u)  H600 med 92.93u p90 199.71u  40s
+[model_r2_big   15000] loss 50.193  val H300 med 34.61u (best 34.61u)  H600 med 92.42u p90 198.97u  61s
+[model_r2_big   20000] loss 49.691  val H300 med 34.12u (best 34.12u)  H600 med 91.92u p90 198.95u  82s
+[model_r2_big   25000] loss 49.746  val H300 med 33.76u (best 33.76u)  H600 med 91.59u p90 198.37u  103s
+[model_r2_big   30000] loss 49.022  val H300 med 33.43u (best 33.43u)  H600 med 91.15u p90 199.13u  125s
+[model_r2_big   35000] loss 47.620  val H300 med 33.32u (best 33.32u)  H600 med 90.93u p90 198.01u  146s
+[model_r2_big   40000] loss 49.846  val H300 med 33.09u (best 33.09u)  H600 med 90.81u p90 197.18u  167s
+[model_r2_big   45000] loss 48.779  val H300 med 32.95u (best 32.95u)  H600 med 90.54u p90 197.51u  189s
+[model_r2_big   50000] loss 48.694  val H300 med 32.87u (best 32.87u)  H600 med 90.47u p90 196.78u  210s
+[model_r2_big   55000] loss 48.971  val H300 med 32.76u (best 32.76u)  H600 med 90.34u p90 196.59u  231s
+[model_r2_big   60000] loss 46.727  val H300 med 32.67u (best 32.67u)  H600 med 90.08u p90 197.17u  253s
+[model_r2_big   65000] loss 48.127  val H300 med 32.63u (best 32.63u)  H600 med 89.90u p90 197.61u  274s
+[model_r2_big   70000] loss 45.521  val H300 med 32.53u (best 32.53u)  H600 med 89.81u p90 197.06u  295s
+[model_r2_big   75000] loss 48.993  val H300 med 32.53u (best 32.53u)  H600 med 89.78u p90 196.99u  316s
+[model_r2_big   80000] loss 47.663  val H300 med 32.49u (best 32.49u)  H600 med 89.77u p90 196.58u  337s
+[model_r2_big   85000] loss 47.213  val H300 med 32.47u (best 32.47u)  H600 med 89.69u p90 196.98u  358s
+[model_r2_big   90000] loss 46.129  val H300 med 32.46u (best 32.46u)  H600 med 89.63u p90 197.09u  380s
+[model_r2_big   95000] loss 45.823  val H300 med 32.45u (best 32.45u)  H600 med 89.59u p90 197.08u  401s
+[model_r2_big  100000] loss 45.375  val H300 med 32.46u (best 32.45u)  H600 med 89.60u p90 196.91u  422s
+saved /home/benjamin-adm/rex-ml/pipeline/out/predict_enemy/model_r2_big.pt  params=534531  best_val_h300_median=32.45u

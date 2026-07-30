@@ -1,0 +1,40 @@
+routes=['window_to_rl', 'ralow_to_ratop', 'lifts_to_sng_mega', 'ring_to_ratop', 'sngspawn_a_to_mega', 'sngspawn_b_to_mega', 'tunnel_to_ra']  n_per_route=2048  total_envs=14336  T=64  gamma=0.999
+  window_to_rl           path    2002 u  gate  3.75s  needs    534 u/s average
+  ralow_to_ratop         path    3052 u  gate  7.71s  needs    396 u/s average
+  lifts_to_sng_mega      path    2325 u  gate  7.93s  needs    293 u/s average
+  ring_to_ratop          path    2842 u  gate  9.26s  needs    307 u/s average
+  sngspawn_a_to_mega     path    2540 u  gate  9.98s  needs    255 u/s average
+  sngspawn_b_to_mega     path    3110 u  gate  9.98s  needs    312 u/s average
+  tunnel_to_ra           path    3885 u  gate 12.13s  needs    320 u/s average
+[it     1/3000 critic_warmup] rew -0.0176 vl    0.034 ent +0.063 kl 0.0000 spd 0.495 2s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    10/3000 critic_warmup] rew -0.0168 vl    0.064 ent +0.111 kl 0.0000 spd 0.450 14s | window:  0%/  -   ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    20/3000           ppo] rew -0.0121 vl    0.059 ent -0.141 kl 0.0111 spd 0.715 27s | window:  0%/12.38 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    30/3000           ppo] rew -0.0096 vl    0.122 ent -0.133 kl 0.0086 spd 0.792 40s | window:  2%/9.02 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    40/3000           ppo] rew -0.0094 vl    0.056 ent -0.269 kl 0.0103 spd 0.936 53s | window: 90%/7.49 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    50/3000           ppo] rew -0.0087 vl    0.178 ent -0.253 kl 0.0140 spd 0.915 66s | window:  4%/7.07 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    60/3000           ppo] rew -0.0093 vl    0.030 ent -0.183 kl 0.0199 spd 0.958 80s | window: 11%/6.89 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    70/3000           ppo] rew +0.0088 vl    1.837 ent -0.082 kl 0.0214 spd 0.924 93s | window: 94%/6.55 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    80/3000           ppo] rew -0.0116 vl    0.108 ent +0.053 kl 0.0056 spd 0.881 106s | window: 97%/6.30 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    90/3000           ppo] rew -0.0121 vl    0.083 ent -0.023 kl 0.0053 spd 0.884 119s | window: 84%/6.13 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   100/3000           ppo] rew -0.0111 vl    0.115 ent +0.052 kl 0.0054 spd 0.940 132s | window: 30%/6.05 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   110/3000           ppo] rew -0.0007 vl    1.539 ent +0.037 kl 0.0065 spd 0.876 146s | window: 41%/5.89 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   120/3000           ppo] rew -0.0092 vl    0.170 ent +0.171 kl 0.0045 spd 0.931 159s | window: 86%/5.77 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   130/3000           ppo] rew +0.0042 vl    1.396 ent +0.225 kl 0.0055 spd 0.871 172s | window: 80%/5.73 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   140/3000           ppo] rew -0.0108 vl    0.187 ent +0.264 kl 0.0053 spd 0.918 185s | window: 75%/5.73 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   150/3000           ppo] rew +0.0006 vl    0.407 ent +0.296 kl 0.0053 spd 0.949 198s | window: 83%/5.67 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   160/3000           ppo] rew -0.0141 vl    0.120 ent +0.420 kl 0.0049 spd 0.937 211s | window: 84%/5.71 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   170/3000           ppo] rew +0.0040 vl    0.298 ent +0.431 kl 0.0041 spd 1.039 224s | window: 85%/5.70 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   180/3000           ppo] rew -0.0138 vl    0.087 ent +0.442 kl 0.0045 spd 0.940 238s | window: 87%/5.73 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   190/3000           ppo] rew +0.0028 vl    0.374 ent +0.466 kl 0.0044 spd 0.948 252s | window: 86%/5.60 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   200/3000           ppo] rew -0.0131 vl    0.086 ent +0.513 kl 0.0038 spd 0.944 265s | window: 90%/5.66 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   210/3000           ppo] rew +0.0016 vl    0.331 ent +0.572 kl 0.0040 spd 0.967 279s | window: 84%/5.53 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   220/3000           ppo] rew +0.0018 vl    1.241 ent +0.551 kl 0.0041 spd 0.950 293s | window: 87%/5.56 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   230/3000           ppo] rew +0.0167 vl    2.100 ent +0.671 kl 0.0042 spd 0.958 309s | window: 86%/5.56 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   240/3000           ppo] rew -0.0040 vl    0.187 ent +0.636 kl 0.0038 spd 0.966 326s | window: 90%/5.56 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   250/3000           ppo] rew -0.0087 vl    0.128 ent +0.715 kl 0.0039 spd 0.947 339s | window: 85%/5.57 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   260/3000           ppo] rew +0.0099 vl    1.504 ent +0.696 kl 0.0041 spd 0.964 352s | window: 90%/5.53 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   270/3000           ppo] rew -0.0097 vl    0.111 ent +0.859 kl 0.0038 spd 0.944 365s | window: 89%/5.59 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   280/3000           ppo] rew -0.0006 vl    0.408 ent +0.875 kl 0.0040 spd 0.968 381s | window: 91%/5.50 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   290/3000           ppo] rew -0.0088 vl    0.114 ent +0.896 kl 0.0041 spd 0.932 396s | window: 88%/5.54 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   300/3000           ppo] rew -0.0022 vl    0.262 ent +1.072 kl 0.0044 spd 0.963 410s | window: 91%/5.49 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it   310/3000           ppo] rew -0.0043 vl    0.109 ent +0.879 kl 0.0033 spd 0.956 423s | window: 92%/5.47 ralow:  0%/  -   lifts:  0%/  -   ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  

@@ -1,8 +1,14 @@
 .venv/
 rtx/
-pipeline/out/
 pipeline/__pycache__/
 pipeline/**/__pycache__/
-*.log
-demos/**/*.qwd
+# Regenererbara flergigabytesmellanprodukter fran fas 1-2 — for stora for GitHub.
+# Allt ovrigt under pipeline/out (checkpoints, banor, strict-resultat, replays, loggar) versioneras.
+pipeline/out/predict_enemy/
+pipeline/out/policy/
+pipeline/out/step1_ticks/
+pipeline/out/step1_segments/
+pipeline/out/step1_state_runs/
+pipeline/out/smoke_ticks/
+pipeline/out/smoke_segments/
 demos/**/*.zip

@@ -1,0 +1,32 @@
+[
+  {
+    "it": 1,
+    "phase": "critic_warmup",
+    "policy_loss": -2.578599378466606e-08,
+    "value_loss": 0.006401517312042415,
+    "entropy": -1.3029244542121887,
+    "reward_mean": 0.0004355669079814106,
+    "adv_std_raw": 0.04513738676905632,
+    "term_progress": -0.010784666053950787,
+    "term_speed": 0.027170658111572266,
+    "term_wall": 0.0,
+    "term_timeout": 0.0,
+    "term_arrive": 0.0,
+    "s": 0.9
+  },
+  {
+    "it": 2,
+    "phase": "ppo",
+    "policy_loss": 0.021768642589449883,
+    "value_loss": 0.0026640357973519713,
+    "entropy": -1.3476054072380066,
+    "reward_mean": 0.00038780737668275833,
+    "adv_std_raw": 0.019727695733308792,
+    "term_progress": 0.0012422004947438836,
+    "term_speed": 0.018769266083836555,
+    "term_wall": 0.0,
+    "term_timeout": 0.0,
+    "term_arrive": 0.0,
+    "s": 1.0
+  }
+]

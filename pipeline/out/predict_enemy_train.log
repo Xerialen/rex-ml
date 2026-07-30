@@ -1,0 +1,16 @@
+/home/benjamin-adm/rex-ml/pipeline/predict_enemy.py:386: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  log.append(dict(it=it, train_loss=float(loss), val_median_u=vmed, s=round(time.time() - t0, 1)))
+[model    5000] loss 51.343  val median 61.04u  best 61.04u  12s
+[model   10000] loss 51.914  val median 59.42u  best 59.42u  32s
+[model   15000] loss 49.808  val median 58.32u  best 58.32u  52s
+[model   20000] loss 48.658  val median 57.59u  best 57.59u  72s
+[model   25000] loss 41.171  val median 57.10u  best 57.10u  92s
+[model   30000] loss 46.503  val median 56.61u  best 56.61u  112s
+[model   35000] loss 51.118  val median 56.47u  best 56.47u  131s
+[model   40000] loss 48.490  val median 56.03u  best 56.03u  151s
+[model   45000] loss 47.224  val median 55.95u  best 55.95u  168s
+[model   50000] loss 45.243  val median 55.69u  best 55.69u  188s
+[model   55000] loss 45.730  val median 55.71u  best 55.69u  208s
+[model   60000] loss 44.282  val median 55.55u  best 55.55u  228s
+saved /home/benjamin-adm/rex-ml/pipeline/out/predict_enemy/model.pt  params=18819  best_val_median=55.55u

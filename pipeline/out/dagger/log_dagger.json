@@ -1,0 +1,13 @@
+[
+ {
+  "round": 1,
+  "visited": 13440,
+  "aggregate": 3542,
+  "frac_no_human_answer": 0.7365,
+  "neighbour_dist_p50": 1.1446,
+  "neighbour_dist_p90": 1.8418,
+  "cut": 0.6245,
+  "loss": 0.8084,
+  "s": 3.2
+ }
+]

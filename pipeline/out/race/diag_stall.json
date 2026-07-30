@@ -1,0 +1,117 @@
+{
+ "ckpt": "pipeline/out/race/race_v2.pt",
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "path_len_u": 2001.9,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.824,
+    "p10": 0.824,
+    "p90": 0.824
+   },
+   "arc_reached_u_median": 1649.4,
+   "peak_reached_at_frac_of_episode": 0.966,
+   "speed_at_peak_ups_median": 144.7
+  },
+  {
+   "name": "ralow_to_ratop",
+   "path_len_u": 3052.2,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.8,
+    "p10": 0.8,
+    "p90": 0.8
+   },
+   "arc_reached_u_median": 2442.2,
+   "peak_reached_at_frac_of_episode": 0.423,
+   "speed_at_peak_ups_median": 346.9
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "path_len_u": 2325.5,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.735,
+    "p10": 0.735,
+    "p90": 0.735
+   },
+   "arc_reached_u_median": 1709.3,
+   "peak_reached_at_frac_of_episode": 0.315,
+   "speed_at_peak_ups_median": 345.1
+  },
+  {
+   "name": "ring_to_ratop",
+   "path_len_u": 2841.9,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.785,
+    "p10": 0.785,
+    "p90": 0.785
+   },
+   "arc_reached_u_median": 2231.6,
+   "peak_reached_at_frac_of_episode": 0.406,
+   "speed_at_peak_ups_median": 349.8
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "path_len_u": 2540.1,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.757,
+    "p10": 0.757,
+    "p90": 0.757
+   },
+   "arc_reached_u_median": 1923.8,
+   "peak_reached_at_frac_of_episode": 0.62,
+   "speed_at_peak_ups_median": 300.8
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "path_len_u": 3110.3,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.802,
+    "p10": 0.802,
+    "p90": 0.802
+   },
+   "arc_reached_u_median": 2494.7,
+   "peak_reached_at_frac_of_episode": 0.457,
+   "speed_at_peak_ups_median": 395.1
+  },
+  {
+   "name": "tunnel_to_ra",
+   "path_len_u": 3884.8,
+   "n": 48,
+   "outcomes": {
+    "timeout": 48
+   },
+   "frac_of_path_reached": {
+    "median": 0.843,
+    "p10": 0.843,
+    "p90": 0.843
+   },
+   "arc_reached_u_median": 3274.7,
+   "peak_reached_at_frac_of_episode": 0.452,
+   "speed_at_peak_ups_median": 336.2
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+loaded 27,119,227 locomotion ticks in 18.3s
+26,868,177 usable transitions (99.1 %)
+{
+  "n": 26868177,
+  "state_cols": [
+    "v_fwd",
+    "v_right",
+    "vz",
+    "speed_xy",
+    "slip_sin",
+    "slip_cos",
+    "omega_prev",
+    "pitch",
+    "on_ground",
+    "was_air",
+    "goal_f",
+    "goal_r",
+    "goal_z",
+    "goal_dist"
+  ],
+  "action_cols": [
+    "fmove",
+    "smove",
+    "dyaw",
+    "jump"
+  ],
+  "s_scale": [
+    400.0,
+    400.0,
+    400.0,
+    400.0,
+    1.0,
+    1.0,
+    10.0,
+    90.0,
+    1.0,
+    1.0,
+    500.0,
+    500.0,
+    200.0,
+    500.0
+  ],
+  "a_scale": [
+    400.0,
+    400.0,
+    0.3499999940395355,
+    1.0
+  ],
+  "h_min": 15,
+  "h_max": 60,
+  "kinds": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8
+  ],
+  "splits": {
+    "train": 23313692,
+    "val": 1683881,
+    "test": 1870604
+  },
+  "reward_p": {
+    "1": -316.1676133279068,
+    "50": 245.4498650885324,
+    "99": 796.010241443471
+  }
+}

@@ -1,0 +1,43 @@
+referens window-to-rl.qwd                       -> window_to_rl            432 tick
+referens ralow-to-ratop.qwd                     -> ralow_to_ratop          751 tick
+referens ring-to-ratop.qwd                      -> ring_to_ratop          1168 tick
+referens lifts-or-ring-to-sngmega.qwd           -> lifts_to_sng_mega      1041 tick
+referens sngspawns-to-sngmega.qwd               -> sngspawn_a_to_mega      838 tick
+referens (spawn)sngspawn-to-ring-to-ratop.qwd   -> tunnel_to_ra            939 tick
+referens (spawn)rarox-to-quad.qwd               -> sngspawn_a_to_quad      476 tick
+referens sng-to-quad.qwd                        -> sng_to_quad             629 tick
+
+strikt prov, race_v9 (ruttdomar ur strict_race_v9.json: 0/8 godkända):
+  window_to_rl           ing.0   95.8 %    5.143 s  skrap 0.04  
+  window_to_rl           ing.1  100.0 %    0.896 s  skrap 0.0  
+  ralow_to_ratop         ing.0    0.0 %     None s  skrap 0.16  
+  ralow_to_ratop         ing.1    0.0 %     None s  skrap 0.0833  
+  ralow_to_ratop         ing.2   95.8 %     1.87 s  skrap 0.0  
+  ralow_to_ratop         ing.3    0.0 %     None s  skrap 0.1333  
+  lifts_to_sng_mega      ing.0    2.1 %    6.558 s  skrap 0.34  
+  lifts_to_sng_mega      ing.1    2.1 %     6.39 s  skrap 0.4167  
+  lifts_to_sng_mega      ing.2  starten går inte att bygga — hoppas över
+  lifts_to_sng_mega      ing.3  100.0 %    1.325 s  skrap 0.0538  
+  ring_to_ratop          ing.0    0.0 %     None s  skrap 0.0933  
+  ring_to_ratop          ing.1    0.0 %     None s  skrap 0.0967  
+  ring_to_ratop          ing.2   95.8 %    1.877 s  skrap 0.0  
+  ring_to_ratop          ing.3    0.0 %     None s  skrap 0.1233  
+  sngspawn_a_to_mega     ing.0    2.1 %    6.143 s  skrap 0.3867  
+  sngspawn_a_to_mega     ing.1    2.1 %    6.039 s  skrap 0.4067  
+  sngspawn_a_to_mega     ing.2  starten går inte att bygga — hoppas över
+  sngspawn_a_to_mega     ing.3  100.0 %    1.338 s  skrap 0.0576  
+  sngspawn_b_to_mega     ing.0    6.2 %    8.156 s  skrap 0.36  
+  sngspawn_b_to_mega     ing.1    2.1 %    6.234 s  skrap 0.4133  
+  sngspawn_b_to_mega     ing.2  starten går inte att bygga — hoppas över
+  sngspawn_b_to_mega     ing.3  100.0 %    1.299 s  skrap 0.059  
+  tunnel_to_ra           ing.0    0.0 %     None s  skrap 0.15  
+  tunnel_to_ra           ing.1    0.0 %     None s  skrap 0.08  
+  tunnel_to_ra           ing.2   95.8 %    1.844 s  skrap 0.0  
+  tunnel_to_ra           ing.3    0.0 %     None s  skrap 0.1333  
+  sng_to_quad            ing.0    0.0 %     None s  skrap 0.1667  
+  sng_to_quad            ing.1  100.0 %    3.221 s  skrap 0.1067  
+  sng_to_quad            ing.2  100.0 %     3.39 s  skrap 0.1233  
+100m     analytisk              topp  821.9 u/s, ankomst 100.0%
+100m     policy race_v9         topp  472.9 u/s, ankomst 100.0%
+
+36 poster, 2.28 MB bildrutor, sida 4.07 MB -> /tmp/claude-1001/-home-benjamin-adm-rex-ml/003dd697-8855-417d-9d80-53960851ebcf/scratchpad/dm3-replay.html

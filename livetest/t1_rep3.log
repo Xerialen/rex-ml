@@ -1,0 +1,302 @@
+T1 drills: 150 declared, puppeting bot ent=1, pacifist=true
+[1/150] r002-RA-tunnel_spawn->RA
+       ARRIVED 8.2s  peak 481 u/s  drift 392u  rev 130
+[2/150] r003-RA-tunnel_spawn->YA
+       ARRIVED 16.7s  peak 553 u/s  drift 1051u  rev 170
+[3/150] r004-RA-tunnel_spawn->RL
+       ARRIVED 9.7s  peak 515 u/s  drift 574u  rev 93
+[4/150] r005-RA-tunnel_spawn->Quad
+       ARRIVED 25.3s  peak 513 u/s  drift 636u  rev 578
+[5/150] r006-RA-tunnel_spawn->Pent
+       ARRIVED 14.9s  peak 491 u/s  drift 743u  rev 72
+[6/150] r007-RA-tunnel_spawn->Ring
+       ARRIVED 7.7s  peak 530 u/s  drift 375u  rev 151
+[7/150] r008-RA-tunnel_spawn->Hill_Mega
+       ARRIVED 1.7s  peak 448 u/s  drift 137u  rev 0
+[8/150] r009-RA-tunnel_spawn->SNG_Mega
+       ARRIVED 8.2s  peak 494 u/s  drift 685u  rev 89
+[9/150] r010-RA-tunnel_spawn->LG
+       ARRIVED 7.1s  peak 516 u/s  drift 204u  rev 60
+[10/150] r011-RL-spawn->RA
+       STALLED at 1025u (best 987u) after 16.5s
+[11/150] r012-RL-spawn->YA
+       ARRIVED 8.1s  peak 528 u/s  drift 615u  rev 95
+[12/150] r013-RL-spawn->RL
+       ARRIVED 0.2s  peak 256 u/s  drift 2u  rev 0
+[13/150] r014-RL-spawn->Quad
+       ARRIVED 9.9s  peak 519 u/s  drift 963u  rev 131
+[14/150] r015-RL-spawn->Pent
+       ARRIVED 12.4s  peak 495 u/s  drift 384u  rev 132
+[15/150] r016-RL-spawn->Ring
+       STALLED at 1665u (best 1072u) after 18.4s
+[16/150] r017-RL-spawn->Hill_Mega
+       ARRIVED 7.3s  peak 495 u/s  drift 554u  rev 82
+[17/150] r018-RL-spawn->SNG_Mega
+       ARRIVED 25.1s  peak 522 u/s  drift 782u  rev 358
+[18/150] r019-RL-spawn->LG
+       ARRIVED 5.9s  peak 495 u/s  drift 483u  rev 66
+[19/150] r020-SNG-tele_spawn_A->RA
+       TIMEOUT after 60.0s with no terminal event
+[20/150] r021-SNG-tele_spawn_A->YA
+       ARRIVED 21.6s  peak 547 u/s  drift 967u  rev 366
+[21/150] r022-SNG-tele_spawn_A->RL
+       ARRIVED 14.9s  peak 506 u/s  drift 709u  rev 132
+[22/150] r023-SNG-tele_spawn_A->Quad
+       ARRIVED 20.0s  peak 537 u/s  drift 940u  rev 241
+[23/150] r024-SNG-tele_spawn_A->Pent
+       ARRIVED 24.5s  peak 495 u/s  drift 1144u  rev 474
+[24/150] r025-SNG-tele_spawn_A->Ring
+       ARRIVED 9.6s  peak 521 u/s  drift 839u  rev 112
+[25/150] r026-SNG-tele_spawn_A->Hill_Mega
+       ARRIVED 8.0s  peak 501 u/s  drift 533u  rev 92
+[26/150] r027-SNG-tele_spawn_A->SNG_Mega
+       ARRIVED 4.1s  peak 352 u/s  drift 129u  rev 14
+[27/150] r028-SNG-tele_spawn_A->LG
+       STALLED at 0u (best 6u) after 21.2s
+[28/150] r029-SNG-tele_spawn_B->RA
+       ARRIVED 25.1s  peak 500 u/s  drift 174u  rev 426
+[29/150] r030-SNG-tele_spawn_B->YA
+       ARRIVED 15.9s  peak 525 u/s  drift 901u  rev 218
+[30/150] r031-SNG-tele_spawn_B->RL
+       ARRIVED 12.0s  peak 540 u/s  drift 584u  rev 88
+[31/150] r032-SNG-tele_spawn_B->Quad
+       ARRIVED 17.8s  peak 507 u/s  drift 678u  rev 195
+[32/150] r033-SNG-tele_spawn_B->Pent
+       ARRIVED 25.0s  peak 516 u/s  drift 842u  rev 219
+[33/150] r034-SNG-tele_spawn_B->Ring
+       ARRIVED 11.6s  peak 510 u/s  drift 758u  rev 157
+[34/150] r035-SNG-tele_spawn_B->Hill_Mega
+       ARRIVED 6.8s  peak 500 u/s  drift 177u  rev 54
+[35/150] r036-SNG-tele_spawn_B->SNG_Mega
+       ARRIVED 4.2s  peak 495 u/s  drift 184u  rev 7
+[36/150] r037-SNG-tele_spawn_B->LG
+       ARRIVED 12.0s  peak 512 u/s  drift 440u  rev 131
+[37/150] r038-YA-box_spawn->RA
+       STALLED at 1025u (best 905u) after 14.1s
+[38/150] r039-YA-box_spawn->YA
+       ARRIVED 0.9s  peak 419 u/s  drift 24u  rev 2
+[39/150] r040-YA-box_spawn->RL
+       STALLED at 577u (best 322u) after 15.8s
+[40/150] r041-YA-box_spawn->Quad
+       ARRIVED 4.4s  peak 522 u/s  drift 332u  rev 0
+[41/150] r042-YA-box_spawn->Pent
+       ARRIVED 6.7s  peak 495 u/s  drift 254u  rev 16
+[42/150] r043-YA-box_spawn->Ring
+       ARRIVED 17.2s  peak 529 u/s  drift 923u  rev 288
+[43/150] r044-YA-box_spawn->Hill_Mega
+       ARRIVED 9.6s  peak 494 u/s  drift 590u  rev 83
+[44/150] r045-YA-box_spawn->SNG_Mega
+       ARRIVED 17.3s  peak 533 u/s  drift 744u  rev 177
+[45/150] r046-YA-box_spawn->LG
+       STALLED at 0u (best 5u) after 7.7s
+[46/150] r047-Lifts_spawn->RA
+       STALLED at 1494u (best 1494u) after 4.0s
+[47/150] r048-Lifts_spawn->YA
+       STALLED at 1807u (best 1807u) after 4.0s
+[48/150] r049-Lifts_spawn->RL
+       STALLED at 1033u (best 1033u) after 4.0s
+[49/150] r050-Lifts_spawn->Quad
+       STALLED at 657u (best 657u) after 4.0s
+[50/150] r051-Lifts_spawn->Pent
+       STALLED at 481u (best 481u) after 4.0s
+[51/150] r052-Lifts_spawn->Ring
+       STALLED at 850u (best 850u) after 4.0s
+[52/150] r053-Lifts_spawn->Hill_Mega
+       STALLED at 834u (best 834u) after 4.0s
+[53/150] r054-Lifts_spawn->SNG_Mega
+       STALLED at 1417u (best 1417u) after 4.0s
+[54/150] r055-Lifts_spawn->LG
+       STALLED at 1404u (best 1404u) after 4.0s
+[55/150] r056-RA->YA
+       ARRIVED 16.6s  peak 524 u/s  drift 1008u  rev 328
+[56/150] r057-RA->RL
+       ARRIVED 16.1s  peak 517 u/s  drift 617u  rev 207
+[57/150] r058-RA->Quad
+       ARRIVED 12.5s  peak 500 u/s  drift 509u  rev 144
+[58/150] r059-RA->Pent
+       STALLED at 1790u (best 1674u) after 6.6s
+[59/150] r060-RA->Ring
+       STALLED at 784u (best 626u) after 6.9s
+[60/150] r061-RA->Hill_Mega
+       ARRIVED 6.4s  peak 494 u/s  drift 591u  rev 78
+[61/150] r062-RA->SNG_Mega
+       ARRIVED 7.8s  peak 495 u/s  drift 546u  rev 36
+[62/150] r063-RA->LG
+       STALLED at 1454u (best 1371u) after 6.6s
+[63/150] r064-YA->RA
+       ARRIVED 18.2s  peak 520 u/s  drift 1270u  rev 369
+[64/150] r065-YA->RL
+       ARRIVED 25.1s  peak 495 u/s  drift 1112u  rev 339
+[65/150] r066-YA->Quad
+       ARRIVED 6.2s  peak 500 u/s  drift 354u  rev 47
+[66/150] r067-YA->Pent
+       ARRIVED 10.4s  peak 529 u/s  drift 312u  rev 40
+[67/150] r068-YA->Ring
+       ARRIVED 14.5s  peak 539 u/s  drift 709u  rev 267
+[68/150] r069-YA->Hill_Mega
+       ARRIVED 6.6s  peak 494 u/s  drift 431u  rev 83
+[69/150] r070-YA->SNG_Mega
+       TIMEOUT after 60.0s with no terminal event
+[70/150] r071-YA->LG
+       STALLED at 0u (best 6u) after 11.4s
+[71/150] r072-RL->RA
+       ARRIVED 17.5s  peak 495 u/s  drift 630u  rev 230
+[72/150] r073-RL->YA
+       ARRIVED 7.5s  peak 528 u/s  drift 623u  rev 62
+[73/150] r074-RL->Quad
+       ARRIVED 9.6s  peak 519 u/s  drift 1040u  rev 170
+[74/150] r075-RL->Pent
+       ARRIVED 12.1s  peak 493 u/s  drift 462u  rev 128
+[75/150] r076-RL->Ring
+       ARRIVED 19.2s  peak 515 u/s  drift 1041u  rev 338
+[76/150] r077-RL->Hill_Mega
+       ARRIVED 7.4s  peak 494 u/s  drift 627u  rev 83
+[77/150] r078-RL->SNG_Mega
+       STALLED at 1799u (best 1798u) after 18.9s
+[78/150] r079-RL->LG
+       ARRIVED 5.6s  peak 494 u/s  drift 453u  rev 75
+[79/150] r080-Quad->RA
+       ARRIVED 25.2s  peak 628 u/s  drift 607u  rev 453
+[80/150] r081-Quad->YA
+       ARRIVED 10.2s  peak 524 u/s  drift 506u  rev 122
+[81/150] r082-Quad->RL
+       ARRIVED 20.7s  peak 513 u/s  drift 587u  rev 225
+[82/150] r083-Quad->Pent
+       ARRIVED 4.6s  peak 492 u/s  drift 361u  rev 64
+[83/150] r084-Quad->Ring
+       ARRIVED 2.6s  peak 452 u/s  drift 76u  rev 0
+[84/150] r085-Quad->Hill_Mega
+       ARRIVED 3.5s  peak 374 u/s  drift 253u  rev 34
+[85/150] r086-Quad->SNG_Mega
+       ARRIVED 16.9s  peak 506 u/s  drift 712u  rev 179
+[86/150] r087-Quad->LG
+       ARRIVED 7.5s  peak 534 u/s  drift 257u  rev 125
+[87/150] r088-Pent->RA
+       ARRIVED 25.3s  peak 517 u/s  drift 540u  rev 296
+[88/150] r089-Pent->YA
+       ARRIVED 21.0s  peak 548 u/s  drift 861u  rev 255
+[89/150] r090-Pent->RL
+       ARRIVED 20.4s  peak 493 u/s  drift 927u  rev 309
+[90/150] r091-Pent->Quad
+       ARRIVED 19.4s  peak 516 u/s  drift 534u  rev 327
+[91/150] r092-Pent->Ring
+       ARRIVED 11.6s  peak 486 u/s  drift 517u  rev 92
+[92/150] r093-Pent->Hill_Mega
+       ARRIVED 11.6s  peak 486 u/s  drift 545u  rev 112
+[93/150] r094-Pent->SNG_Mega
+       ARRIVED 18.0s  peak 490 u/s  drift 591u  rev 124
+[94/150] r095-Pent->LG
+       ARRIVED 7.5s  peak 479 u/s  drift 246u  rev 0
+[95/150] r096-Ring->RA
+       ARRIVED 25.4s  peak 492 u/s  drift 486u  rev 504
+[96/150] r097-Ring->YA
+       STALLED at 1045u (best 845u) after 25.2s
+[97/150] r098-Ring->RL
+       ARRIVED 9.2s  peak 517 u/s  drift 585u  rev 67
+[98/150] r099-Ring->Quad
+       ARRIVED 6.8s  peak 494 u/s  drift 420u  rev 55
+[99/150] r100-Ring->Pent
+       ARRIVED 11.0s  peak 495 u/s  drift 722u  rev 57
+[100/150] r101-Ring->Hill_Mega
+       ARRIVED 2.7s  peak 327 u/s  drift 79u  rev 0
+[101/150] r102-Ring->SNG_Mega
+       ARRIVED 10.2s  peak 504 u/s  drift 780u  rev 178
+[102/150] r103-Ring->LG
+       STALLED at 1u (best 2u) after 10.0s
+[103/150] r104-Hill_Mega->RA
+       ARRIVED 25.3s  peak 501 u/s  drift 591u  rev 510
+[104/150] r105-Hill_Mega->YA
+       ARRIVED 9.5s  peak 523 u/s  drift 1048u  rev 120
+[105/150] r106-Hill_Mega->RL
+       ARRIVED 6.9s  peak 518 u/s  drift 596u  rev 50
+[106/150] r107-Hill_Mega->Quad
+       ARRIVED 5.7s  peak 495 u/s  drift 477u  rev 48
+[107/150] r108-Hill_Mega->Pent
+       ARRIVED 11.1s  peak 495 u/s  drift 594u  rev 101
+[108/150] r109-Hill_Mega->Ring
+       ARRIVED 9.8s  peak 503 u/s  drift 837u  rev 191
+[109/150] r110-Hill_Mega->SNG_Mega
+       ARRIVED 11.1s  peak 496 u/s  drift 785u  rev 133
+[110/150] r111-Hill_Mega->LG
+       ARRIVED 6.8s  peak 519 u/s  drift 286u  rev 88
+[111/150] r112-SNG_Mega->RA
+       TIMEOUT after 60.0s with no terminal event
+[112/150] r113-SNG_Mega->YA
+       TIMEOUT after 60.0s with no terminal event
+[113/150] r114-SNG_Mega->RL
+       TIMEOUT after 60.0s with no terminal event
+[114/150] r115-SNG_Mega->Quad
+       TIMEOUT after 60.0s with no terminal event
+[115/150] r116-SNG_Mega->Pent
+       TIMEOUT after 60.0s with no terminal event
+[116/150] r117-SNG_Mega->Ring
+       TIMEOUT after 60.0s with no terminal event
+[117/150] r118-SNG_Mega->Hill_Mega
+       TIMEOUT after 60.0s with no terminal event
+[118/150] r119-SNG_Mega->LG
+       TIMEOUT after 60.0s with no terminal event
+[119/150] r120-LG->RA
+       ARRIVED 25.3s  peak 492 u/s  drift 1536u  rev 413
+[120/150] r121-LG->YA
+       ARRIVED 25.3s  peak 519 u/s  drift 1446u  rev 588
+[121/150] r122-LG->RL
+       ARRIVED 25.3s  peak 519 u/s  drift 1076u  rev 426
+[122/150] r123-LG->Quad
+       ARRIVED 17.3s  peak 486 u/s  drift 604u  rev 128
+[123/150] r124-LG->Pent
+       ARRIVED 7.6s  peak 482 u/s  drift 271u  rev 0
+[124/150] r125-LG->Ring
+       ARRIVED 18.6s  peak 491 u/s  drift 1136u  rev 161
+[125/150] r126-LG->Hill_Mega
+       ARRIVED 18.6s  peak 486 u/s  drift 1125u  rev 186
+[126/150] r127-LG->SNG_Mega
+       ARRIVED 24.0s  peak 488 u/s  drift 1132u  rev 204
+[127/150] r128-RA-tunnel_spawn->Pent_Mega
+       ARRIVED 19.5s  peak 491 u/s  drift 698u  rev 167
+[128/150] r129-RL-spawn->Pent_Mega
+       ARRIVED 22.9s  peak 495 u/s  drift 713u  rev 378
+[129/150] r130-SNG-tele_spawn_A->Pent_Mega
+       ARRIVED 23.0s  peak 524 u/s  drift 962u  rev 278
+[130/150] r131-SNG-tele_spawn_B->Pent_Mega
+       ARRIVED 25.3s  peak 514 u/s  drift 701u  rev 198
+[131/150] r132-YA-box_spawn->Pent_Mega
+       ARRIVED 25.1s  peak 524 u/s  drift 761u  rev 467
+[132/150] r133-Lifts_spawn->Pent_Mega
+       STALLED at 1322u (best 1322u) after 4.0s
+[133/150] r134-RA->Pent_Mega
+       ARRIVED 25.2s  peak 494 u/s  drift 754u  rev 305
+[134/150] r135-YA->Pent_Mega
+       ARRIVED 18.6s  peak 495 u/s  drift 777u  rev 298
+[135/150] r136-RL->Pent_Mega
+       ARRIVED 19.6s  peak 493 u/s  drift 668u  rev 328
+[136/150] r137-Quad->Pent_Mega
+       ARRIVED 9.9s  peak 578 u/s  drift 709u  rev 176
+[137/150] r138-Pent->Pent_Mega
+       ARRIVED 13.3s  peak 489 u/s  drift 383u  rev 210
+[138/150] r139-Ring->Pent_Mega
+       ARRIVED 25.2s  peak 495 u/s  drift 666u  rev 333
+[139/150] r140-Hill_Mega->Pent_Mega
+       ARRIVED 25.1s  peak 494 u/s  drift 705u  rev 279
+[140/150] r141-SNG_Mega->Pent_Mega
+       TIMEOUT after 60.0s with no terminal event
+[141/150] r142-LG->Pent_Mega
+       ARRIVED 12.9s  peak 485 u/s  drift 721u  rev 127
+[142/150] r143-Pent_Mega->RA
+       ARRIVED 25.3s  peak 518 u/s  drift 1188u  rev 333
+[143/150] r144-Pent_Mega->YA
+       STALLED at 1045u (best 851u) after 25.2s
+[144/150] r145-Pent_Mega->RL
+       ARRIVED 25.2s  peak 552 u/s  drift 905u  rev 515
+[145/150] r146-Pent_Mega->Quad
+       ARRIVED 14.1s  peak 515 u/s  drift 872u  rev 140
+[146/150] r147-Pent_Mega->Pent
+       ARRIVED 3.5s  peak 468 u/s  drift 231u  rev 0
+[147/150] r148-Pent_Mega->Ring
+       ARRIVED 15.7s  peak 511 u/s  drift 898u  rev 143
+[148/150] r149-Pent_Mega->Hill_Mega
+       ARRIVED 17.6s  peak 577 u/s  drift 1016u  rev 236
+[149/150] r150-Pent_Mega->SNG_Mega
+       ARRIVED 20.6s  peak 519 u/s  drift 704u  rev 180
+[150/150] r151-Pent_Mega->LG
+       ARRIVED 8.5s  peak 485 u/s  drift 448u  rev 54
+--> evidence/t1_rep3.raw.json: failed

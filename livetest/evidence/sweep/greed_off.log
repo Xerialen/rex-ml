@@ -1,0 +1,31 @@
+T1 drills: 14 declared, puppeting bot ent=1, pacifist=true
+[1/14] sng-to-quad-r1
+       STALLED at 1076u (best 344u) after 20.3s
+[2/14] spawn-rarox-to-quad-r1
+       TIMEOUT after 30.0s with no terminal event
+[3/14] ssg-to-ratop-r1
+       ARRIVED 25.0s vs 10.17s (-14.79)  peak 499 u/s  drift 977u  rev 466
+[4/14] ratop-to-ssg-r1
+       STALLED at 596u (best 503u) after 19.4s
+[5/14] quad-to-sng-r1
+       ARRIVED 15.6s vs 5.03s (-10.59)  peak 495 u/s  drift 1275u  rev 182
+[6/14] sngspawns-to-sngmega-r1
+       ARRIVED 13.2s vs 6.99s (-6.24)  peak 498 u/s  drift 334u  rev 177
+[7/14] ring-to-ratop-r1
+       ARRIVED 7.2s vs 6.30s (-0.91)  peak 506 u/s  drift 361u  rev 113
+[8/14] sng-to-quad-r2
+       TIMEOUT after 30.0s with no terminal event
+[9/14] spawn-rarox-to-quad-r2
+       ARRIVED 25.0s vs 3.36s (-21.59)  peak 495 u/s  drift 676u  rev 413
+[10/14] ssg-to-ratop-r2
+       ARRIVED 22.0s vs 10.17s (-11.81)  peak 500 u/s  drift 965u  rev 388
+[11/14] ratop-to-ssg-r2
+       ARRIVED 18.5s vs 6.13s (-12.41)  peak 547 u/s  drift 972u  rev 312
+[12/14] quad-to-sng-r2
+       ARRIVED 17.2s vs 5.03s (-12.16)  peak 495 u/s  drift 1274u  rev 249
+[13/14] sngspawns-to-sngmega-r2
+       ARRIVED 4.6s vs 6.99s (+2.35)  peak 461 u/s  drift 322u  rev 6
+[14/14] ring-to-ratop-r2
+       ARRIVED 15.2s vs 6.30s (-8.88)  peak 483 u/s  drift 331u  rev 283
+--> evidence/sweep/greed_off.raw.json: failed
+failed

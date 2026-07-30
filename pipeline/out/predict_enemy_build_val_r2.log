@@ -1,0 +1,4 @@
+[val] feat rows 38,046,503 (2.0s)
+[val] H=300 paired 10,000,000 -> kept 10,000,000 (8.9s)
+[val] H=600 paired 10,000,000 -> kept 10,000,000 (9.6s)
+[val] wrote 20,000,000 rows -> /home/benjamin-adm/rex-ml/pipeline/out/predict_enemy

@@ -1,0 +1,4 @@
+[TEST H=300] n=38,584,375 still 97.7/144.3  linear 44.7/106.4  learned 35.5/81.6
+[TEST H=600] n=37,266,220 still 169.5/273.3  linear 127.3/282.3  learned 93.5/202.0
+wrote /home/benjamin-adm/rex-ml/evidence/k0_2_predictor.json
+GATE: FAILED

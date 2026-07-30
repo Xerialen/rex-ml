@@ -1,0 +1,259 @@
+{
+ "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/race/race_v5.pt",
+ "n_episodes": 32,
+ "greedy": true,
+ "tolerance_s": 2.0,
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "geometry": "navmesh",
+   "path_len_u": 2001.9,
+   "n_episodes": 32,
+   "gate_s": 2.75,
+   "pass_s": 4.75,
+   "owner_s": 3.49,
+   "arrival_rate": 1.0,
+   "outcome_counts": {
+    "arrived": 32
+   },
+   "median_s": 4.298,
+   "best_s": 4.298,
+   "p90_s": 4.298,
+   "delta_vs_gate_s": 1.548,
+   "passes_gate": true,
+   "frac_moving_ticks_above_320ups": 0.9379084967320261,
+   "median_speed_ups": 480.8989562988281,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 1,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 1 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more"
+    ]
+   }
+  },
+  {
+   "name": "ralow_to_ratop",
+   "geometry": "navmesh",
+   "path_len_u": 3052.2,
+   "n_episodes": 32,
+   "gate_s": 7.71,
+   "pass_s": 9.71,
+   "owner_s": 7.48,
+   "arrival_rate": 1.0,
+   "outcome_counts": {
+    "arrived": 32
+   },
+   "median_s": 8.4,
+   "best_s": 8.4,
+   "p90_s": 8.4,
+   "delta_vs_gate_s": 0.69,
+   "passes_gate": true,
+   "frac_moving_ticks_above_320ups": 0.9348914858096828,
+   "median_speed_ups": 422.0911865234375,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 3,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 3 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 3 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "geometry": "navmesh",
+   "path_len_u": 2325.5,
+   "n_episodes": 32,
+   "gate_s": 7.93,
+   "pass_s": 9.93,
+   "owner_s": null,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.2493573264781491,
+   "median_speed_ups": 28.5456485748291,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 4,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 4 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "ring_to_ratop",
+   "geometry": "navmesh",
+   "path_len_u": 2841.9,
+   "n_episodes": 32,
+   "gate_s": 9.26,
+   "pass_s": 11.26,
+   "owner_s": 6.97,
+   "arrival_rate": 1.0,
+   "outcome_counts": {
+    "arrived": 32
+   },
+   "median_s": 8.078,
+   "best_s": 8.078,
+   "p90_s": 8.078,
+   "delta_vs_gate_s": -1.182,
+   "passes_gate": true,
+   "frac_moving_ticks_above_320ups": 0.8246527777777778,
+   "median_speed_ups": 421.5334167480469,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 3,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 3 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 3 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "geometry": "navmesh",
+   "path_len_u": 2540.1,
+   "n_episodes": 32,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.25267175572519085,
+   "median_speed_ups": 26.313495635986328,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 4,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 4 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "geometry": "navmesh",
+   "path_len_u": 3110.3,
+   "n_episodes": 32,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.3104229607250755,
+   "median_speed_ups": 30.722576141357422,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 4,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 4 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "tunnel_to_ra",
+   "geometry": "navmesh",
+   "path_len_u": 3884.8,
+   "n_episodes": 32,
+   "gate_s": 12.13,
+   "pass_s": 14.13,
+   "owner_s": null,
+   "arrival_rate": 1.0,
+   "outcome_counts": {
+    "arrived": 32
+   },
+   "median_s": 11.13,
+   "best_s": 11.13,
+   "p90_s": 11.13,
+   "delta_vs_gate_s": -1.0,
+   "passes_gate": true,
+   "frac_moving_ticks_above_320ups": 0.8576826196473551,
+   "median_speed_ups": 425.2783966064453,
+   "wall_contact_episodes": 32,
+   "effective_n": 1,
+   "coverage": {
+    "attempts": 32,
+    "distinct_trajectories": 1,
+    "effective_n": 1,
+    "approaches_modelled": 3,
+    "approaches_tested": 1,
+    "note": "one start point; the mesh models 3 approach(es) to this target",
+    "warnings": [
+     "32 attempts produced 1 distinct trajectory \u2014 the effective sample size is 1, and any spread statistic (p90, worst case, variance) over these describes the decode rule, not the policy",
+     "1 of 3 modelled approaches to the target were exercised"
+    ]
+   }
+  }
+ ],
+ "passed": [
+  "window_to_rl",
+  "ralow_to_ratop",
+  "ring_to_ratop",
+  "tunnel_to_ra"
+ ],
+ "n_passed": 4,
+ "n_routes": 7,
+ "excluded_teleport_dependent": [
+  "quad_to_ra",
+  "sngspawn_a_to_quad",
+  "sngspawn_b_to_quad"
+ ]
+}

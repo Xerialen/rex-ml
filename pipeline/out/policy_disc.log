@@ -1,0 +1,11 @@
+discrete-head BC on 23,313,692 transitions; class balance f=[0.08791696 0.46160458 0.45047846] s=[0.28246217 0.4397919  0.27774593]
+/home/benjamin-adm/rex-ml/pipeline/policy.py:462: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  print(f"[disc {it:>7}] loss {float(loss):.4f}  {time.time()-t0:.0f}s", flush=True)
+[disc   20000] loss 1.0791  123s
+[disc   40000] loss 1.1312  248s
+[disc   60000] loss 1.0227  369s
+[disc   80000] loss 1.0415  494s
+[disc  100000] loss 0.9959  619s
+[disc  120000] loss 1.0068  745s
+saved /home/benjamin-adm/rex-ml/pipeline/out/policy/actor_disc.pt

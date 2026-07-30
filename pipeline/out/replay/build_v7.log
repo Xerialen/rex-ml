@@ -1,0 +1,54 @@
+referens window-to-rl.qwd                       -> window_to_rl            432 tick
+referens ralow-to-ratop.qwd                     -> ralow_to_ratop          751 tick
+referens ring-to-ratop.qwd                      -> ring_to_ratop          1168 tick
+referens lifts-or-ring-to-sngmega.qwd           -> lifts_to_sng_mega      1041 tick
+referens sngspawns-to-sngmega.qwd               -> sngspawn_a_to_mega      838 tick
+referens (spawn)sngspawn-to-ring-to-ratop.qwd   -> tunnel_to_ra            939 tick
+referens (spawn)rarox-to-quad.qwd               -> sngspawn_a_to_quad      476 tick
+referens (spawn)rl-to-ratop-xer.qwd             -> quad_to_ra             1525 tick
+policy   window_to_rl           greedy    32 försök,   1 unika
+policy   window_to_rl           sampled   24 försök,  24 unika
+policy   ralow_to_ratop         greedy    32 försök,   1 unika
+policy   ralow_to_ratop         sampled   24 försök,  24 unika
+policy   lifts_to_sng_mega      greedy    32 försök,   1 unika
+policy   lifts_to_sng_mega      sampled   24 försök,  24 unika
+policy   ring_to_ratop          greedy    32 försök,   1 unika
+policy   ring_to_ratop          sampled   24 försök,  24 unika
+policy   sngspawn_a_to_mega     greedy    32 försök,   1 unika
+policy   sngspawn_a_to_mega     sampled   24 försök,  24 unika
+policy   sngspawn_b_to_mega     greedy    32 försök,   1 unika
+policy   sngspawn_b_to_mega     sampled   24 försök,  24 unika
+policy   tunnel_to_ra           greedy    32 försök,   1 unika
+policy   tunnel_to_ra           sampled   24 försök,  24 unika
+
+strikt prov, race_v7:
+  window_to_rl           ing.0  100.0 %    4.078 s  skrap 0.0  GODKÄND
+  window_to_rl           ing.1  100.0 %    0.896 s  skrap 0.0  GODKÄND
+  ralow_to_ratop         ing.0  100.0 %    7.935 s  skrap 0.16  GODKÄND
+  ralow_to_ratop         ing.1  100.0 %    5.662 s  skrap 0.1  GODKÄND
+  ralow_to_ratop         ing.2  100.0 %    2.273 s  skrap 0.12  GODKÄND
+  ralow_to_ratop         ing.3  100.0 %    3.234 s  skrap 0.1267  GODKÄND
+  lifts_to_sng_mega      ing.0   22.9 %    5.883 s  skrap 0.2133  
+  lifts_to_sng_mega      ing.1   93.8 %    5.779 s  skrap 0.11  
+  lifts_to_sng_mega      ing.2  starten går inte att bygga — hoppas över
+  lifts_to_sng_mega      ing.3  100.0 %    1.169 s  skrap 0.0633  
+  ring_to_ratop          ing.0   97.9 %    7.558 s  skrap 0.1067  
+  ring_to_ratop          ing.1  100.0 %    5.662 s  skrap 0.1  GODKÄND
+  ring_to_ratop          ing.2   91.7 %    2.273 s  skrap 0.12  
+  ring_to_ratop          ing.3  100.0 %    3.234 s  skrap 0.1367  GODKÄND
+  sngspawn_a_to_mega     ing.0   89.6 %    6.143 s  skrap 0.1033  
+  sngspawn_a_to_mega     ing.1   93.8 %    5.766 s  skrap 0.1067  
+  sngspawn_a_to_mega     ing.2  starten går inte att bygga — hoppas över
+  sngspawn_a_to_mega     ing.3  100.0 %    1.169 s  skrap 0.0448  GODKÄND
+  sngspawn_b_to_mega     ing.0   95.8 %    7.481 s  skrap 0.1167  
+  sngspawn_b_to_mega     ing.1   87.5 %    5.753 s  skrap 0.11  
+  sngspawn_b_to_mega     ing.2  starten går inte att bygga — hoppas över
+  sngspawn_b_to_mega     ing.3  100.0 %    1.065 s  skrap 0.0  GODKÄND
+  tunnel_to_ra           ing.0   75.0 %   10.565 s  skrap 0.1867  
+  tunnel_to_ra           ing.1  100.0 %    5.669 s  skrap 0.1  GODKÄND
+  tunnel_to_ra           ing.2   97.9 %    2.273 s  skrap 0.12  
+  tunnel_to_ra           ing.3  100.0 %    3.221 s  skrap 0.1333  GODKÄND
+100m     analytisk              topp  821.9 u/s, ankomst 100.0%
+100m     policy race_v5         topp  471.2 u/s, ankomst 100.0%
+
+47 poster, 5.83 MB bildrutor, sida 9.08 MB -> /tmp/claude-1001/-home-benjamin-adm-rex-ml/003dd697-8855-417d-9d80-53960851ebcf/scratchpad/dm3-replay.html

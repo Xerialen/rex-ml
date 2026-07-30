@@ -1,0 +1,124 @@
+[
+ {
+  "it": 1,
+  "phase": "critic_warmup",
+  "lr": 0.0003,
+  "ent_coef": 0.01,
+  "policy_loss": -1.4980832929722965e-07,
+  "value_loss": 0.035956115170847625,
+  "entropy": 0.6158640831708908,
+  "approx_kl": 0.0,
+  "reward_mean": -0.03169293329119682,
+  "term_progress": -0.8543804287910461,
+  "term_speed": 0.1720249354839325,
+  "term_wall": -0.0004359653976280242,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0,
+  "jump_floor": 0.4,
+  "jump_rate": 0.5694580376148224,
+  "s": 1.4,
+  "routes": [
+   {
+    "name": "window_to_rl",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 2.75,
+    "pass_s": 4.75
+   },
+   {
+    "name": "ralow_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.71,
+    "pass_s": 9.71
+   },
+   {
+    "name": "lifts_to_sng_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.93,
+    "pass_s": 9.93
+   },
+   {
+    "name": "ring_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.26,
+    "pass_s": 11.26
+   },
+   {
+    "name": "sngspawn_a_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "sngspawn_b_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "tunnel_to_ra",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 12.13,
+    "pass_s": 14.13
+   }
+  ]
+ },
+ {
+  "it": 2,
+  "phase": "ppo",
+  "lr": 0.000175,
+  "ent_coef": 0.0055,
+  "policy_loss": 0.010847591883248242,
+  "value_loss": 0.05224716058000922,
+  "entropy": 0.6159848906099796,
+  "approx_kl": 0.0259204157628119,
+  "reward_mean": -0.0250901710242033,
+  "term_progress": 0.7407194972038269,
+  "term_speed": 0.1899714320898056,
+  "term_wall": -0.004725865088403225,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0,
+  "jump_floor": 0.2,
+  "jump_rate": 0.3912179283797741,
+  "s": 2.2
+ },
+ {
+  "it": 3,
+  "phase": "ppo",
+  "lr": 5.000000000000002e-05,
+  "ent_coef": 0.0009999999999999992,
+  "policy_loss": -0.0027167734479007777,
+  "value_loss": 0.04221971199149266,
+  "entropy": 0.5790375545620918,
+  "approx_kl": 0.005041230695042032,
+  "reward_mean": -0.02514527179300785,
+  "term_progress": 0.6670808792114258,
+  "term_speed": 0.2017432451248169,
+  "term_wall": -0.01689801923930645,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0,
+  "jump_floor": 0.0,
+  "jump_rate": 0.4464285927824676,
+  "s": 2.9
+ }
+]

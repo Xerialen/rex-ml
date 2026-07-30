@@ -1,0 +1,887 @@
+{
+ "ckpt": "pipeline/out/race/race_v7.pt",
+ "n_per_start": 48,
+ "greedy": false,
+ "gate": {
+  "arrive_box": 24.0,
+  "arrive_z": 48.0,
+  "tolerance_s": 2.0,
+  "wall_scrape_band": "corpus human p95 per route, see evidence/wall_band.json"
+ },
+ "passed": [],
+ "n_passed": 0,
+ "n_routes": 7,
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "gate_s": 2.75,
+   "pass_s": 4.75,
+   "owner_s": 3.49,
+   "starts_tested": 2,
+   "approaches_modelled": 1,
+   "arrival_rate_min": 1.0,
+   "median_worst_start_s": 4.077922077922079,
+   "wall_contact_total": 17,
+   "scrape_worst_start": 0.0,
+   "scrape_band_p95": 0.055,
+   "envelope_worst_start_u": 355.0,
+   "envelope_band_u": 40.2,
+   "effective_n_min": 47,
+   "per_start": [
+    {
+     "start": [
+      1328.0,
+      540.0,
+      71.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 4.077922077922079,
+     "median_ci95": [
+      4.065,
+      4.078
+     ],
+     "p90_s": 4.103896103896104,
+     "worst_s": 4.402597402597403,
+     "wall_contact_episodes": 16,
+     "scrape_median": 0.0,
+     "scrape_p95": 0.0133,
+     "envelope_median_u": 355.0,
+     "envelope_p95_u": 360.4,
+     "frac_airborne": 0.691,
+     "frac_above_320": 0.967,
+     "median_speed_ups": 480.5,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      1824.0,
+      416.0,
+      -88.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 0.8831168831168832,
+     "median_ci95": [
+      0.87,
+      0.883
+     ],
+     "p90_s": 0.9090909090909092,
+     "worst_s": 1.2467532467532467,
+     "wall_contact_episodes": 1,
+     "scrape_median": 0.0,
+     "scrape_p95": 0.0,
+     "envelope_median_u": 34.9,
+     "envelope_p95_u": 39.7,
+     "frac_airborne": 0.635,
+     "frac_above_320": 0.839,
+     "median_speed_ups": 403.6,
+     "effective_n": 47,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": false,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 96,
+    "distinct_trajectories": 47,
+    "effective_n": 47,
+    "approaches_modelled": 1,
+    "approaches_tested": 2,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": [
+     "the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more"
+    ]
+   }
+  },
+  {
+   "name": "ralow_to_ratop",
+   "gate_s": 7.71,
+   "pass_s": 9.71,
+   "owner_s": 7.48,
+   "starts_tested": 4,
+   "approaches_modelled": 3,
+   "arrival_rate_min": 1.0,
+   "median_worst_start_s": 7.935064935064935,
+   "wall_contact_total": 192,
+   "scrape_worst_start": 0.16,
+   "scrape_band_p95": 0.1939,
+   "envelope_worst_start_u": 248.6,
+   "envelope_band_u": 47.8,
+   "effective_n_min": 48,
+   "per_start": [
+    {
+     "start": [
+      -64.0,
+      -704.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 7.935064935064935,
+     "median_ci95": [
+      7.922,
+      7.948
+     ],
+     "p90_s": 7.974025974025975,
+     "worst_s": 8.051948051948052,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.16,
+     "scrape_p95": 0.2043,
+     "envelope_median_u": 248.5,
+     "envelope_p95_u": 254.6,
+     "frac_airborne": 0.55,
+     "frac_above_320": 0.979,
+     "median_speed_ups": 445.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      345.3,
+      -562.9,
+      59.4
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 5.655844155844156,
+     "median_ci95": [
+      5.649,
+      5.675
+     ],
+     "p90_s": 5.701298701298701,
+     "worst_s": 5.740259740259741,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1067,
+     "scrape_p95": 0.14,
+     "envelope_median_u": 248.6,
+     "envelope_p95_u": 259.5,
+     "frac_airborne": 0.553,
+     "frac_above_320": 0.959,
+     "median_speed_ups": 444.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      371.5,
+      -813.0,
+      264.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 2.25974025974026,
+     "median_ci95": [
+      2.26,
+      2.273
+     ],
+     "p90_s": 2.2766233766233768,
+     "worst_s": 2.2987012987012987,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1267,
+     "scrape_p95": 0.1467,
+     "envelope_median_u": 50.9,
+     "envelope_p95_u": 52.5,
+     "frac_airborne": 0.551,
+     "frac_above_320": 0.927,
+     "median_speed_ups": 445.2,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      32.0,
+      -844.0,
+      152.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 3.207792207792208,
+     "median_ci95": [
+      3.201,
+      3.221
+     ],
+     "p90_s": 3.6623376623376624,
+     "worst_s": 3.7402597402597406,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1267,
+     "scrape_p95": 0.171,
+     "envelope_median_u": 50.8,
+     "envelope_p95_u": 52.4,
+     "frac_airborne": 0.555,
+     "frac_above_320": 0.891,
+     "median_speed_ups": 441.9,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": false,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 192,
+    "distinct_trajectories": 48,
+    "effective_n": 48,
+    "approaches_modelled": 3,
+    "approaches_tested": 4,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": []
+   }
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "gate_s": 7.93,
+   "pass_s": 9.93,
+   "owner_s": null,
+   "starts_tested": 3,
+   "approaches_modelled": 4,
+   "arrival_rate_min": 0.3125,
+   "median_worst_start_s": 5.870129870129871,
+   "wall_contact_total": 126,
+   "scrape_worst_start": 0.17,
+   "scrape_band_p95": 0.0461,
+   "envelope_worst_start_u": 323.2,
+   "envelope_band_u": 23.6,
+   "effective_n_min": 42,
+   "per_start": [
+    {
+     "start": [
+      508.0,
+      610.0,
+      182.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.3125,
+     "median_s": 5.870129870129871,
+     "median_ci95": [
+      5.857,
+      5.87
+     ],
+     "p90_s": 5.8909090909090915,
+     "worst_s": 5.896103896103896,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.17,
+     "scrape_p95": 0.311,
+     "envelope_median_u": 323.2,
+     "envelope_p95_u": 331.9,
+     "frac_airborne": 0.781,
+     "frac_above_320": 0.523,
+     "median_speed_ups": 329.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 15,
+      "timeout": 33
+     }
+    },
+    {
+     "start": [
+      -832.0,
+      -128.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.9166666666666666,
+     "median_s": 5.740259740259741,
+     "median_ci95": [
+      5.727,
+      5.747
+     ],
+     "p90_s": 6.138961038961039,
+     "worst_s": 6.1818181818181825,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1,
+     "scrape_p95": 0.1643,
+     "envelope_median_u": 34.0,
+     "envelope_p95_u": 201.1,
+     "frac_airborne": 0.677,
+     "frac_above_320": 0.807,
+     "median_speed_ups": 441.5,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 44,
+      "timeout": 4
+     }
+    },
+    {
+     "start": [
+      -829.3,
+      362.7,
+      184.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 1.1493506493506493,
+     "median_ci95": [
+      1.084,
+      1.156
+     ],
+     "p90_s": 1.168831168831169,
+     "worst_s": 1.1818181818181819,
+     "wall_contact_episodes": 30,
+     "scrape_median": 0.0645,
+     "scrape_p95": 0.0968,
+     "envelope_median_u": 20.9,
+     "envelope_p95_u": 23.5,
+     "frac_airborne": 0.596,
+     "frac_above_320": 0.749,
+     "median_speed_ups": 397.0,
+     "effective_n": 42,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": false,
+   "inside_corpus_envelope": false,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 144,
+    "distinct_trajectories": 42,
+    "effective_n": 42,
+    "approaches_modelled": 4,
+    "approaches_tested": 3,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": [
+     "3 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "ring_to_ratop",
+   "gate_s": 9.26,
+   "pass_s": 11.26,
+   "owner_s": 6.97,
+   "starts_tested": 4,
+   "approaches_modelled": 3,
+   "arrival_rate_min": 0.9791666666666666,
+   "median_worst_start_s": 7.558441558441559,
+   "wall_contact_total": 192,
+   "scrape_worst_start": 0.14,
+   "scrape_band_p95": 0.171,
+   "envelope_worst_start_u": 252.0,
+   "envelope_band_u": 84.3,
+   "effective_n_min": 48,
+   "per_start": [
+    {
+     "start": [
+      240.0,
+      -32.0,
+      80.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 7.558441558441559,
+     "median_ci95": [
+      7.545,
+      7.578
+     ],
+     "p90_s": 7.636363636363637,
+     "worst_s": 7.662337662337663,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1133,
+     "scrape_p95": 0.1553,
+     "envelope_median_u": 250.4,
+     "envelope_p95_u": 255.3,
+     "frac_airborne": 0.499,
+     "frac_above_320": 0.943,
+     "median_speed_ups": 444.9,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      345.3,
+      -562.9,
+      59.4
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 5.662337662337663,
+     "median_ci95": [
+      5.649,
+      5.675
+     ],
+     "p90_s": 5.7272727272727275,
+     "worst_s": 5.740259740259741,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1,
+     "scrape_p95": 0.1467,
+     "envelope_median_u": 252.0,
+     "envelope_p95_u": 262.7,
+     "frac_airborne": 0.553,
+     "frac_above_320": 0.961,
+     "median_speed_ups": 444.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      371.5,
+      -813.0,
+      264.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.9791666666666666,
+     "median_s": 2.25974025974026,
+     "median_ci95": [
+      2.26,
+      2.273
+     ],
+     "p90_s": 2.285714285714286,
+     "worst_s": 2.311688311688312,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1267,
+     "scrape_p95": 0.14,
+     "envelope_median_u": 27.3,
+     "envelope_p95_u": 31.4,
+     "frac_airborne": 0.604,
+     "frac_above_320": 0.797,
+     "median_speed_ups": 440.6,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 47,
+      "timeout": 1
+     }
+    },
+    {
+     "start": [
+      32.0,
+      -844.0,
+      152.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 3.207792207792208,
+     "median_ci95": [
+      3.208,
+      3.221
+     ],
+     "p90_s": 3.3246753246753262,
+     "worst_s": 3.6623376623376624,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.14,
+     "scrape_p95": 0.1733,
+     "envelope_median_u": 28.1,
+     "envelope_p95_u": 35.0,
+     "frac_airborne": 0.56,
+     "frac_above_320": 0.914,
+     "median_speed_ups": 442.3,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": false,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 192,
+    "distinct_trajectories": 48,
+    "effective_n": 48,
+    "approaches_modelled": 3,
+    "approaches_tested": 4,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": []
+   }
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "starts_tested": 3,
+   "approaches_modelled": 4,
+   "arrival_rate_min": 0.8958333333333334,
+   "median_worst_start_s": 5.961038961038962,
+   "wall_contact_total": 127,
+   "scrape_worst_start": 0.1,
+   "scrape_band_p95": 0.2203,
+   "envelope_worst_start_u": 49.0,
+   "envelope_band_u": 51.2,
+   "effective_n_min": 46,
+   "per_start": [
+    {
+     "start": [
+      -880.0,
+      -232.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.8958333333333334,
+     "median_s": 5.961038961038962,
+     "median_ci95": [
+      5.922,
+      6.286
+     ],
+     "p90_s": 6.348051948051949,
+     "worst_s": 6.9480519480519485,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1,
+     "scrape_p95": 0.1333,
+     "envelope_median_u": 33.6,
+     "envelope_p95_u": 172.0,
+     "frac_airborne": 0.657,
+     "frac_above_320": 0.799,
+     "median_speed_ups": 440.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 43,
+      "timeout": 5
+     }
+    },
+    {
+     "start": [
+      -832.0,
+      -128.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.8958333333333334,
+     "median_s": 5.740259740259741,
+     "median_ci95": [
+      5.727,
+      5.753
+     ],
+     "p90_s": 6.140259740259741,
+     "worst_s": 6.194805194805196,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1,
+     "scrape_p95": 0.16,
+     "envelope_median_u": 44.5,
+     "envelope_p95_u": 116.1,
+     "frac_airborne": 0.696,
+     "frac_above_320": 0.76,
+     "median_speed_ups": 438.5,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 43,
+      "timeout": 5
+     }
+    },
+    {
+     "start": [
+      -829.3,
+      362.7,
+      184.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 1.155844155844156,
+     "median_ci95": [
+      1.143,
+      1.156
+     ],
+     "p90_s": 1.168831168831169,
+     "worst_s": 1.1818181818181819,
+     "wall_contact_episodes": 31,
+     "scrape_median": 0.0506,
+     "scrape_p95": 0.0909,
+     "envelope_median_u": 49.0,
+     "envelope_p95_u": 50.8,
+     "frac_airborne": 0.593,
+     "frac_above_320": 0.743,
+     "median_speed_ups": 396.5,
+     "effective_n": 46,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": true,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 144,
+    "distinct_trajectories": 46,
+    "effective_n": 46,
+    "approaches_modelled": 4,
+    "approaches_tested": 3,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": [
+     "3 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "starts_tested": 3,
+   "approaches_modelled": 4,
+   "arrival_rate_min": 0.9166666666666666,
+   "median_worst_start_s": 7.415584415584416,
+   "wall_contact_total": 125,
+   "scrape_worst_start": 0.1133,
+   "scrape_band_p95": 0.2203,
+   "envelope_worst_start_u": 49.8,
+   "envelope_band_u": 51.2,
+   "effective_n_min": 44,
+   "per_start": [
+    {
+     "start": [
+      -632.0,
+      -680.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.9166666666666666,
+     "median_s": 7.415584415584416,
+     "median_ci95": [
+      7.403,
+      7.429
+     ],
+     "p90_s": 7.805194805194806,
+     "worst_s": 7.8311688311688314,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1133,
+     "scrape_p95": 0.1733,
+     "envelope_median_u": 49.8,
+     "envelope_p95_u": 115.4,
+     "frac_airborne": 0.614,
+     "frac_above_320": 0.841,
+     "median_speed_ups": 443.4,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 44,
+      "timeout": 4
+     }
+    },
+    {
+     "start": [
+      -832.0,
+      -128.0,
+      -16.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.9166666666666666,
+     "median_s": 5.753246753246754,
+     "median_ci95": [
+      5.727,
+      5.792
+     ],
+     "p90_s": 6.151948051948052,
+     "worst_s": 6.207792207792208,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1133,
+     "scrape_p95": 0.1467,
+     "envelope_median_u": 44.7,
+     "envelope_p95_u": 124.4,
+     "frac_airborne": 0.672,
+     "frac_above_320": 0.799,
+     "median_speed_ups": 440.2,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 44,
+      "timeout": 4
+     }
+    },
+    {
+     "start": [
+      -829.3,
+      362.7,
+      184.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 1.155844155844156,
+     "median_ci95": [
+      1.039,
+      1.156
+     ],
+     "p90_s": 1.168831168831169,
+     "worst_s": 1.1818181818181819,
+     "wall_contact_episodes": 29,
+     "scrape_median": 0.0633,
+     "scrape_p95": 0.0972,
+     "envelope_median_u": 49.0,
+     "envelope_p95_u": 50.5,
+     "frac_airborne": 0.596,
+     "frac_above_320": 0.757,
+     "median_speed_ups": 400.8,
+     "effective_n": 44,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": true,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 144,
+    "distinct_trajectories": 44,
+    "effective_n": 44,
+    "approaches_modelled": 4,
+    "approaches_tested": 3,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": [
+     "3 of 4 modelled approaches to the target were exercised"
+    ]
+   }
+  },
+  {
+   "name": "tunnel_to_ra",
+   "gate_s": 12.13,
+   "pass_s": 14.13,
+   "owner_s": null,
+   "starts_tested": 4,
+   "approaches_modelled": 3,
+   "arrival_rate_min": 0.7916666666666666,
+   "median_worst_start_s": 10.551948051948052,
+   "wall_contact_total": 192,
+   "scrape_worst_start": 0.1833,
+   "scrape_band_p95": 0.2405,
+   "envelope_worst_start_u": 163.6,
+   "envelope_band_u": 110.7,
+   "effective_n_min": 48,
+   "per_start": [
+    {
+     "start": [
+      192.0,
+      -208.0,
+      -176.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.7916666666666666,
+     "median_s": 10.551948051948052,
+     "median_ci95": [
+      10.532,
+      10.571
+     ],
+     "p90_s": 10.627272727272727,
+     "worst_s": 10.662337662337663,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1833,
+     "scrape_p95": 0.2377,
+     "envelope_median_u": 161.3,
+     "envelope_p95_u": 172.9,
+     "frac_airborne": 0.443,
+     "frac_above_320": 0.757,
+     "median_speed_ups": 412.7,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 38,
+      "timeout": 10
+     }
+    },
+    {
+     "start": [
+      345.3,
+      -562.9,
+      59.4
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 5.64935064935065,
+     "median_ci95": [
+      5.636,
+      5.662
+     ],
+     "p90_s": 5.6922077922077925,
+     "worst_s": 5.714285714285714,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1,
+     "scrape_p95": 0.1443,
+     "envelope_median_u": 163.6,
+     "envelope_p95_u": 173.6,
+     "frac_airborne": 0.554,
+     "frac_above_320": 0.961,
+     "median_speed_ups": 445.2,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    },
+    {
+     "start": [
+      371.5,
+      -813.0,
+      264.0
+     ],
+     "n": 48,
+     "arrival_rate": 0.9375,
+     "median_s": 2.25974025974026,
+     "median_ci95": [
+      2.26,
+      2.273
+     ],
+     "p90_s": 2.2805194805194806,
+     "worst_s": 2.285714285714286,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1249,
+     "scrape_p95": 0.14,
+     "envelope_median_u": 41.2,
+     "envelope_p95_u": 80.8,
+     "frac_airborne": 0.702,
+     "frac_above_320": 0.587,
+     "median_speed_ups": 423.1,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 45,
+      "timeout": 3
+     }
+    },
+    {
+     "start": [
+      32.0,
+      -844.0,
+      152.0
+     ],
+     "n": 48,
+     "arrival_rate": 1.0,
+     "median_s": 3.207792207792208,
+     "median_ci95": [
+      3.208,
+      3.221
+     ],
+     "p90_s": 3.25974025974026,
+     "worst_s": 3.64935064935065,
+     "wall_contact_episodes": 48,
+     "scrape_median": 0.1333,
+     "scrape_p95": 0.16,
+     "envelope_median_u": 37.3,
+     "envelope_p95_u": 41.5,
+     "frac_airborne": 0.56,
+     "frac_above_320": 0.913,
+     "median_speed_ups": 442.5,
+     "effective_n": 48,
+     "outcomes": {
+      "arrived": 48
+     }
+    }
+   ],
+   "inside_corpus_scrape_band": true,
+   "inside_corpus_envelope": false,
+   "passes_strict": false,
+   "coverage": {
+    "attempts": 192,
+    "distinct_trajectories": 48,
+    "effective_n": 48,
+    "approaches_modelled": 3,
+    "approaches_tested": 4,
+    "note": "sampled decode; one start per modelled approach",
+    "warnings": []
+   }
+  }
+ ]
+}

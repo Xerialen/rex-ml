@@ -1,0 +1,9 @@
+/home/benjamin-adm/rex-ml/pipeline/policy.py:241: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  print(f"[bc {it:>7}] mse {float(loss):.4f}  {time.time()-t0:.0f}s", flush=True)
+[bc   20000] mse 0.0970  66s
+[bc   40000] mse 0.1022  148s
+[bc   60000] mse 0.0921  230s
+[bc   80000] mse 0.0939  312s
+[bc  100000] mse 0.0912  394s
+saved /home/benjamin-adm/rex-ml/pipeline/out/policy/actor_bc.pt

@@ -1,0 +1,35 @@
+rutt                    ingång   arr%  median            ci95     p90  värsta  vägg  luft%  n_eff
+window_to_rl                 0    0.0       -    [None, None]       -       -    13   8.1%     48
+window_to_rl                 1    0.0       -    [None, None]       -       -    36   8.5%     48
+ralow_to_ratop               0    0.0       -    [None, None]       -       -     6   7.9%     48
+ralow_to_ratop               1    0.0       -    [None, None]       -       -    44  13.0%     48
+ralow_to_ratop               2    0.0       -    [None, None]       -       -    44  17.8%     48
+ralow_to_ratop               3    0.0       -    [None, None]       -       -    41  14.0%     48
+lifts_to_sng_mega            0    0.0       -    [None, None]       -       -    11   6.7%     48
+lifts_to_sng_mega            1    0.0       -    [None, None]       -       -    43   8.1%     48
+lifts_to_sng_mega            2   route start Vec3(-501.3, 265.3, 154.7) does not 
+lifts_to_sng_mega            3    0.0       -    [None, None]       -       -    27   9.9%     48
+ring_to_ratop                0    0.0       -    [None, None]       -       -    37   8.3%     48
+ring_to_ratop                1    0.0       -    [None, None]       -       -    45  13.1%     48
+ring_to_ratop                2    0.0       -    [None, None]       -       -    41  19.6%     48
+ring_to_ratop                3    0.0       -    [None, None]       -       -    46  15.2%     48
+sngspawn_a_to_mega           0    0.0       -    [None, None]       -       -    25   7.6%     48
+sngspawn_a_to_mega           1    0.0       -    [None, None]       -       -    45   6.6%     48
+sngspawn_a_to_mega           2   route start Vec3(-501.3, 265.3, 154.7) does not 
+sngspawn_a_to_mega           3    0.0       -    [None, None]       -       -    30   8.8%     48
+sngspawn_b_to_mega           0    0.0       -    [None, None]       -       -    36   5.8%     48
+sngspawn_b_to_mega           1    0.0       -    [None, None]       -       -    44   7.6%     48
+sngspawn_b_to_mega           2   route start Vec3(-501.3, 265.3, 154.7) does not 
+sngspawn_b_to_mega           3    0.0       -    [None, None]       -       -    35   9.2%     48
+tunnel_to_ra                 0    0.0       -    [None, None]       -       -    36   7.3%     48
+tunnel_to_ra                 1    0.0       -    [None, None]       -       -    47  11.1%     48
+tunnel_to_ra                 2    0.0       -    [None, None]       -       -    46  23.2%     48
+tunnel_to_ra                 3    0.0       -    [None, None]       -       -    46  15.4%     48
+
+COVERAGE WARNINGS
+  window_to_rl: the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more
+  lifts_to_sng_mega: 3 of 4 modelled approaches to the target were exercised
+  sngspawn_a_to_mega: 3 of 4 modelled approaches to the target were exercised
+  sngspawn_b_to_mega: 3 of 4 modelled approaches to the target were exercised
+
+0/7 rutter klarar det strikta provet; skrev /home/benjamin-adm/rex-ml/pipeline/out/strict/strict_dagger_v2.json

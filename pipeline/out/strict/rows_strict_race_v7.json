@@ -1,0 +1,806 @@
+[
+ {
+  "name": "window_to_rl",
+  "gate_s": 2.75,
+  "pass_s": 4.75,
+  "owner_s": 3.49,
+  "starts_tested": 2,
+  "approaches_modelled": 1,
+  "arrival_rate_min": 1.0,
+  "median_worst_start_s": 4.0649350649350655,
+  "wall_contact_total": 18,
+  "scrape_worst_start": 0.0,
+  "scrape_band_p95": 0.055,
+  "effective_n_min": 45,
+  "per_start": [
+   {
+    "start": [
+     1328.0,
+     540.0,
+     71.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 4.0649350649350655,
+    "median_ci95": [
+     4.065,
+     4.078
+    ],
+    "p90_s": 4.094805194805195,
+    "worst_s": 4.12987012987013,
+    "wall_contact_episodes": 15,
+    "scrape_median": 0.0,
+    "scrape_p95": 0.0133,
+    "frac_airborne": 0.692,
+    "frac_above_320": 0.968,
+    "median_speed_ups": 480.6,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     1824.0,
+     416.0,
+     -88.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 0.8831168831168832,
+    "median_ci95": [
+     0.883,
+     0.896
+    ],
+    "p90_s": 0.9389610389610391,
+    "worst_s": 1.4545454545454546,
+    "wall_contact_episodes": 3,
+    "scrape_median": 0.0,
+    "scrape_p95": 0.0366,
+    "frac_airborne": 0.596,
+    "frac_above_320": 0.836,
+    "median_speed_ups": 402.1,
+    "effective_n": 45,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": true,
+  "coverage": {
+   "attempts": 96,
+   "distinct_trajectories": 45,
+   "effective_n": 45,
+   "approaches_modelled": 1,
+   "approaches_tested": 2,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more"
+   ]
+  }
+ },
+ {
+  "name": "ralow_to_ratop",
+  "gate_s": 7.71,
+  "pass_s": 9.71,
+  "owner_s": 7.48,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.9375,
+  "median_worst_start_s": 7.922077922077922,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.16,
+  "scrape_band_p95": 0.1939,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     -64.0,
+     -704.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 7.922077922077922,
+    "median_ci95": [
+     7.916,
+     7.935
+    ],
+    "p90_s": 7.961038961038962,
+    "worst_s": 8.012987012987013,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.16,
+    "scrape_p95": 0.2087,
+    "frac_airborne": 0.551,
+    "frac_above_320": 0.982,
+    "median_speed_ups": 446.1,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.64935064935065,
+    "median_ci95": [
+     5.636,
+     5.662
+    ],
+    "p90_s": 5.705194805194806,
+    "worst_s": 5.766233766233767,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1033,
+    "scrape_p95": 0.151,
+    "frac_airborne": 0.554,
+    "frac_above_320": 0.958,
+    "median_speed_ups": 445.1,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.9375,
+    "median_s": 2.25974025974026,
+    "median_ci95": [
+     2.26,
+     2.273
+    ],
+    "p90_s": 2.272727272727273,
+    "worst_s": 2.2987012987012987,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1267,
+    "scrape_p95": 0.1443,
+    "frac_airborne": 0.679,
+    "frac_above_320": 0.637,
+    "median_speed_ups": 432.2,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 45,
+     "timeout": 3
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.207792207792208,
+    "median_ci95": [
+     3.195,
+     3.221
+    ],
+    "p90_s": 3.6662337662337663,
+    "worst_s": 3.7272727272727275,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1333,
+    "scrape_p95": 0.1577,
+    "frac_airborne": 0.553,
+    "frac_above_320": 0.898,
+    "median_speed_ups": 442.4,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "lifts_to_sng_mega",
+  "gate_s": 7.93,
+  "pass_s": 9.93,
+  "owner_s": null,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.4791666666666667,
+  "median_worst_start_s": 5.870129870129871,
+  "wall_contact_total": 128,
+  "scrape_worst_start": 0.1933,
+  "scrape_band_p95": 0.0461,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     508.0,
+     610.0,
+     182.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.4791666666666667,
+    "median_s": 5.870129870129871,
+    "median_ci95": [
+     5.857,
+     5.883
+    ],
+    "p90_s": 5.896103896103896,
+    "worst_s": 6.272727272727273,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1933,
+    "scrape_p95": 0.3267,
+    "frac_airborne": 0.738,
+    "frac_above_320": 0.594,
+    "median_speed_ups": 353.3,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 23,
+     "timeout": 25
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.8958333333333334,
+    "median_s": 5.753246753246754,
+    "median_ci95": [
+     5.74,
+     5.766
+    ],
+    "p90_s": 6.142857142857143,
+    "worst_s": 6.1818181818181825,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1,
+    "scrape_p95": 0.1443,
+    "frac_airborne": 0.684,
+    "frac_above_320": 0.777,
+    "median_speed_ups": 439.6,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 43,
+     "timeout": 5
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 1.155844155844156,
+    "median_ci95": [
+     1.149,
+     1.156
+    ],
+    "p90_s": 1.168831168831169,
+    "worst_s": 1.1818181818181819,
+    "wall_contact_episodes": 32,
+    "scrape_median": 0.0629,
+    "scrape_p95": 0.1026,
+    "frac_airborne": 0.591,
+    "frac_above_320": 0.743,
+    "median_speed_ups": 397.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "ring_to_ratop",
+  "gate_s": 9.26,
+  "pass_s": 11.26,
+  "owner_s": 6.97,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.9166666666666666,
+  "median_worst_start_s": 7.571428571428572,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.1367,
+  "scrape_band_p95": 0.171,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     240.0,
+     -32.0,
+     80.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 7.571428571428572,
+    "median_ci95": [
+     7.545,
+     7.571
+    ],
+    "p90_s": 7.636363636363637,
+    "worst_s": 7.77922077922078,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1133,
+    "scrape_p95": 0.1643,
+    "frac_airborne": 0.499,
+    "frac_above_320": 0.945,
+    "median_speed_ups": 444.9,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.64935064935065,
+    "median_ci95": [
+     5.636,
+     5.662
+    ],
+    "p90_s": 5.714285714285714,
+    "worst_s": 5.766233766233767,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1,
+    "scrape_p95": 0.1443,
+    "frac_airborne": 0.553,
+    "frac_above_320": 0.96,
+    "median_speed_ups": 445.5,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.9166666666666666,
+    "median_s": 2.2467532467532467,
+    "median_ci95": [
+     2.247,
+     2.26
+    ],
+    "p90_s": 2.272727272727273,
+    "worst_s": 2.311688311688312,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.12,
+    "scrape_p95": 0.151,
+    "frac_airborne": 0.708,
+    "frac_above_320": 0.563,
+    "median_speed_ups": 411.2,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 44,
+     "timeout": 4
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.207792207792208,
+    "median_ci95": [
+     3.195,
+     3.221
+    ],
+    "p90_s": 3.2636363636363637,
+    "worst_s": 3.7532467532467533,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1367,
+    "scrape_p95": 0.1643,
+    "frac_airborne": 0.56,
+    "frac_above_320": 0.915,
+    "median_speed_ups": 443.9,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "sngspawn_a_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.7916666666666666,
+  "median_worst_start_s": 5.9480519480519485,
+  "wall_contact_total": 127,
+  "scrape_worst_start": 0.11,
+  "scrape_band_p95": 0.2203,
+  "effective_n_min": 46,
+  "per_start": [
+   {
+    "start": [
+     -880.0,
+     -232.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.9375,
+    "median_s": 5.9480519480519485,
+    "median_ci95": [
+     5.909,
+     6.312
+    ],
+    "p90_s": 6.350649350649351,
+    "worst_s": 6.935064935064935,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1067,
+    "scrape_p95": 0.1463,
+    "frac_airborne": 0.639,
+    "frac_above_320": 0.841,
+    "median_speed_ups": 442.1,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 45,
+     "timeout": 3
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.7916666666666666,
+    "median_s": 5.766233766233767,
+    "median_ci95": [
+     5.753,
+     5.909
+    ],
+    "p90_s": 6.159740259740261,
+    "worst_s": 6.1818181818181825,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.11,
+    "scrape_p95": 0.1533,
+    "frac_airborne": 0.737,
+    "frac_above_320": 0.646,
+    "median_speed_ups": 427.3,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 38,
+     "timeout": 10
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 1.1493506493506493,
+    "median_ci95": [
+     1.091,
+     1.156
+    ],
+    "p90_s": 1.168831168831169,
+    "worst_s": 1.1818181818181819,
+    "wall_contact_episodes": 31,
+    "scrape_median": 0.0523,
+    "scrape_p95": 0.0897,
+    "frac_airborne": 0.594,
+    "frac_above_320": 0.747,
+    "median_speed_ups": 397.8,
+    "effective_n": 46,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 46,
+   "effective_n": 46,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "sngspawn_b_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.8541666666666666,
+  "median_worst_start_s": 7.415584415584416,
+  "wall_contact_total": 127,
+  "scrape_worst_start": 0.1167,
+  "scrape_band_p95": 0.2203,
+  "effective_n_min": 46,
+  "per_start": [
+   {
+    "start": [
+     -632.0,
+     -680.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.9166666666666666,
+    "median_s": 7.415584415584416,
+    "median_ci95": [
+     7.403,
+     7.513
+    ],
+    "p90_s": 7.814285714285715,
+    "worst_s": 7.8311688311688314,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1167,
+    "scrape_p95": 0.1577,
+    "frac_airborne": 0.614,
+    "frac_above_320": 0.845,
+    "median_speed_ups": 444.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 44,
+     "timeout": 4
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.8541666666666666,
+    "median_s": 5.766233766233767,
+    "median_ci95": [
+     5.74,
+     5.961
+    ],
+    "p90_s": 6.155844155844156,
+    "worst_s": 6.298701298701299,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1,
+    "scrape_p95": 0.151,
+    "frac_airborne": 0.704,
+    "frac_above_320": 0.701,
+    "median_speed_ups": 433.9,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 41,
+     "timeout": 7
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 1.142857142857143,
+    "median_ci95": [
+     1.097,
+     1.156
+    ],
+    "p90_s": 1.168831168831169,
+    "worst_s": 1.168831168831169,
+    "wall_contact_episodes": 31,
+    "scrape_median": 0.0321,
+    "scrape_p95": 0.1099,
+    "frac_airborne": 0.594,
+    "frac_above_320": 0.749,
+    "median_speed_ups": 398.0,
+    "effective_n": 46,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 46,
+   "effective_n": 46,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "tunnel_to_ra",
+  "gate_s": 12.13,
+  "pass_s": 14.13,
+  "owner_s": null,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.75,
+  "median_worst_start_s": 10.545454545454547,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.1733,
+  "scrape_band_p95": 0.2405,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     192.0,
+     -208.0,
+     -176.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.75,
+    "median_s": 10.545454545454547,
+    "median_ci95": [
+     10.532,
+     10.558
+    ],
+    "p90_s": 10.577922077922079,
+    "worst_s": 10.688311688311689,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1733,
+    "scrape_p95": 0.242,
+    "frac_airborne": 0.45,
+    "frac_above_320": 0.717,
+    "median_speed_ups": 398.6,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 36,
+     "timeout": 12
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.64935064935065,
+    "median_ci95": [
+     5.636,
+     5.662
+    ],
+    "p90_s": 5.6922077922077925,
+    "worst_s": 5.7272727272727275,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1,
+    "scrape_p95": 0.1377,
+    "frac_airborne": 0.554,
+    "frac_above_320": 0.961,
+    "median_speed_ups": 445.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 2.25974025974026,
+    "median_ci95": [
+     2.26,
+     2.273
+    ],
+    "p90_s": 2.2766233766233768,
+    "worst_s": 2.311688311688312,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1267,
+    "scrape_p95": 0.1443,
+    "frac_airborne": 0.551,
+    "frac_above_320": 0.93,
+    "median_speed_ups": 445.7,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.207792207792208,
+    "median_ci95": [
+     3.195,
+     3.221
+    ],
+    "p90_s": 3.3597402597402617,
+    "worst_s": 3.7272727272727275,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.1333,
+    "scrape_p95": 0.1667,
+    "frac_airborne": 0.563,
+    "frac_above_320": 0.915,
+    "median_speed_ups": 445.2,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": true,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ }
+]

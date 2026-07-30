@@ -1,0 +1,17 @@
+rutt                   källa      körn       n  tick<1u   EP<1u   EP<2u   EP<4u  ep-min
+lifts_to_sng_mega      människa     24    4039    2.87%   95.8%   95.8%  100.0%     0.5
+lifts_to_sng_mega      bot          16    6056   26.95%  100.0%  100.0%  100.0%     0.5
+ralow_to_ratop         människa     24    3070   13.32%  100.0%  100.0%  100.0%     0.5
+ralow_to_ratop         bot          16    9486   10.85%  100.0%  100.0%  100.0%     0.5
+ring_to_ratop          människa     24    2869   11.19%  100.0%  100.0%  100.0%     0.5
+ring_to_ratop          bot          16    8953   19.19%  100.0%  100.0%  100.0%     0.5
+sngspawn_a_to_mega     människa     24    9906   10.29%  100.0%  100.0%  100.0%     0.5
+sngspawn_a_to_mega     bot          16    6353   20.86%  100.0%  100.0%  100.0%     0.5
+sngspawn_b_to_mega     människa     24    9906   10.29%  100.0%  100.0%  100.0%     0.5
+sngspawn_b_to_mega     bot          16    8006   22.77%  100.0%  100.0%  100.0%     0.5
+tunnel_to_ra           människa      8    3445   12.10%  100.0%  100.0%  100.0%     0.5
+tunnel_to_ra           bot          16   12717   13.92%  100.0%  100.0%  100.0%     0.5
+window_to_rl           människa     24    2520    0.91%   33.3%   41.7%   45.8%     4.0
+window_to_rl           bot          16    4859    0.27%   62.5%   93.8%  100.0%     0.5
+
+skrev /home/benjamin-adm/rex-ml/evidence/wall_clearance.json

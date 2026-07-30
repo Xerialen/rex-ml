@@ -1,0 +1,730 @@
+[
+ {
+  "name": "window_to_rl",
+  "gate_s": 2.75,
+  "pass_s": 4.75,
+  "owner_s": 3.49,
+  "starts_tested": 2,
+  "approaches_modelled": 1,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 42,
+  "effective_n_min": 47,
+  "per_start": [
+   {
+    "start": [
+     1328.0,
+     540.0,
+     71.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 2,
+    "frac_airborne": 0.019,
+    "frac_above_320": 0.002,
+    "median_speed_ups": 67.2,
+    "effective_n": 47,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     1824.0,
+     416.0,
+     -88.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 40,
+    "frac_airborne": 0.012,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 83.2,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 96,
+   "distinct_trajectories": 47,
+   "effective_n": 47,
+   "approaches_modelled": 1,
+   "approaches_tested": 2,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more"
+   ]
+  }
+ },
+ {
+  "name": "ralow_to_ratop",
+  "gate_s": 7.71,
+  "pass_s": 9.71,
+  "owner_s": 7.48,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 56,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     -64.0,
+     -704.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 1,
+    "frac_airborne": 0.01,
+    "frac_above_320": 0.002,
+    "median_speed_ups": 76.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 27,
+    "frac_airborne": 0.053,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 64.7,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 11,
+    "frac_airborne": 0.013,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 75.9,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 17,
+    "frac_airborne": 0.038,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 57.2,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "lifts_to_sng_mega",
+  "gate_s": 7.93,
+  "pass_s": 9.93,
+  "owner_s": null,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 19,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     508.0,
+     610.0,
+     182.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 1,
+    "frac_airborne": 0.012,
+    "frac_above_320": 0.052,
+    "median_speed_ups": 83.5,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 12,
+    "frac_airborne": 0.006,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 87.2,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 6,
+    "frac_airborne": 0.018,
+    "frac_above_320": 0.035,
+    "median_speed_ups": 63.6,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "ring_to_ratop",
+  "gate_s": 9.26,
+  "pass_s": 11.26,
+  "owner_s": 6.97,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 100,
+  "effective_n_min": 47,
+  "per_start": [
+   {
+    "start": [
+     240.0,
+     -32.0,
+     80.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 43,
+    "frac_airborne": 0.008,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 77.1,
+    "effective_n": 47,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 29,
+    "frac_airborne": 0.048,
+    "frac_above_320": 0.003,
+    "median_speed_ups": 64.2,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 12,
+    "frac_airborne": 0.011,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 73.7,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 16,
+    "frac_airborne": 0.028,
+    "frac_above_320": 0.003,
+    "median_speed_ups": 57.4,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 47,
+   "effective_n": 47,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "sngspawn_a_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 15,
+  "effective_n_min": 46,
+  "per_start": [
+   {
+    "start": [
+     -880.0,
+     -232.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 1,
+    "frac_airborne": 0.003,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 73.9,
+    "effective_n": 46,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 7,
+    "frac_airborne": 0.005,
+    "frac_above_320": 0.01,
+    "median_speed_ups": 85.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 7,
+    "frac_airborne": 0.018,
+    "frac_above_320": 0.035,
+    "median_speed_ups": 66.5,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 46,
+   "effective_n": 46,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "sngspawn_b_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 25,
+  "effective_n_min": 47,
+  "per_start": [
+   {
+    "start": [
+     -632.0,
+     -680.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 13,
+    "frac_airborne": 0.009,
+    "frac_above_320": 0.004,
+    "median_speed_ups": 80.6,
+    "effective_n": 47,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 7,
+    "frac_airborne": 0.005,
+    "frac_above_320": 0.004,
+    "median_speed_ups": 85.4,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 5,
+    "frac_airborne": 0.014,
+    "frac_above_320": 0.044,
+    "median_speed_ups": 72.4,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 47,
+   "effective_n": 47,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "tunnel_to_ra",
+  "gate_s": 12.13,
+  "pass_s": 14.13,
+  "owner_s": null,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 60,
+  "effective_n_min": 37,
+  "per_start": [
+   {
+    "start": [
+     192.0,
+     -208.0,
+     -176.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 8,
+    "frac_airborne": 0.011,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 66.3,
+    "effective_n": 37,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 23,
+    "frac_airborne": 0.038,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 60.1,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 13,
+    "frac_airborne": 0.012,
+    "frac_above_320": 0.0,
+    "median_speed_ups": 68.2,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 16,
+    "frac_airborne": 0.033,
+    "frac_above_320": 0.001,
+    "median_speed_ups": 54.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 37,
+   "effective_n": 37,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ }
+]

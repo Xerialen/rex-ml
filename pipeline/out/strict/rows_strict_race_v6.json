@@ -1,0 +1,798 @@
+[
+ {
+  "name": "window_to_rl",
+  "gate_s": 2.75,
+  "pass_s": 4.75,
+  "owner_s": 3.49,
+  "starts_tested": 2,
+  "approaches_modelled": 1,
+  "arrival_rate_min": 1.0,
+  "median_worst_start_s": 5.64935064935065,
+  "wall_contact_total": 48,
+  "scrape_worst_start": 0.3733,
+  "scrape_band_p95": 0.055,
+  "effective_n_min": 28,
+  "per_start": [
+   {
+    "start": [
+     1328.0,
+     540.0,
+     71.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.64935064935065,
+    "median_ci95": [
+     5.649,
+     5.649
+    ],
+    "p90_s": 5.662337662337663,
+    "worst_s": 5.818181818181818,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3733,
+    "scrape_p95": 0.402,
+    "frac_airborne": 0.276,
+    "frac_above_320": 0.917,
+    "median_speed_ups": 440.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     1824.0,
+     416.0,
+     -88.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 0.7662337662337663,
+    "median_ci95": [
+     0.766,
+     0.766
+    ],
+    "p90_s": 0.7792207792207793,
+    "worst_s": 0.8051948051948052,
+    "wall_contact_episodes": 0,
+    "scrape_median": 0.0,
+    "scrape_p95": 0.0,
+    "frac_airborne": 0.017,
+    "frac_above_320": 0.832,
+    "median_speed_ups": 436.6,
+    "effective_n": 28,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 96,
+   "distinct_trajectories": 28,
+   "effective_n": 28,
+   "approaches_modelled": 1,
+   "approaches_tested": 2,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "the navmesh models a single approach to this target, so no route table built on it can test more than one way in; the map itself has more"
+   ]
+  }
+ },
+ {
+  "name": "ralow_to_ratop",
+  "gate_s": 7.71,
+  "pass_s": 9.71,
+  "owner_s": 7.48,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": 8.811688311688311,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.4133,
+  "scrape_band_p95": 0.1939,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     -64.0,
+     -704.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 8.811688311688311,
+    "median_ci95": [
+     8.779,
+     8.825
+    ],
+    "p90_s": 8.987012987012987,
+    "worst_s": 9.090909090909092,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.4133,
+    "scrape_p95": 0.4667,
+    "frac_airborne": 0.347,
+    "frac_above_320": 0.924,
+    "median_speed_ups": 448.1,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 0.9791666666666666,
+    "median_s": 5.857142857142858,
+    "median_ci95": [
+     5.844,
+     5.896
+    ],
+    "p90_s": 6.0181818181818185,
+    "worst_s": 6.1818181818181825,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.38,
+    "scrape_p95": 0.431,
+    "frac_airborne": 0.376,
+    "frac_above_320": 0.936,
+    "median_speed_ups": 450.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 47,
+     "timeout": 1
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.35,
+    "scrape_p95": 0.4336,
+    "frac_airborne": 0.064,
+    "frac_above_320": 0.466,
+    "median_speed_ups": 296.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.5,
+    "median_ci95": [
+     3.429,
+     3.513
+    ],
+    "p90_s": 3.5792207792207797,
+    "worst_s": 3.7012987012987018,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.22,
+    "scrape_p95": 0.291,
+    "frac_airborne": 0.528,
+    "frac_above_320": 0.905,
+    "median_speed_ups": 459.8,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "lifts_to_sng_mega",
+  "gate_s": 7.93,
+  "pass_s": 9.93,
+  "owner_s": null,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 144,
+  "scrape_worst_start": 0.5067,
+  "scrape_band_p95": 0.0461,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     508.0,
+     610.0,
+     182.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.5067,
+    "scrape_p95": 0.571,
+    "frac_airborne": 0.058,
+    "frac_above_320": 0.234,
+    "median_speed_ups": 30.3,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.0733,
+    "scrape_p95": 0.142,
+    "frac_airborne": 0.789,
+    "frac_above_320": 0.165,
+    "median_speed_ups": 23.9,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3,
+    "scrape_p95": 0.4177,
+    "frac_airborne": 0.713,
+    "frac_above_320": 0.144,
+    "median_speed_ups": 26.5,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "ring_to_ratop",
+  "gate_s": 9.26,
+  "pass_s": 11.26,
+  "owner_s": 6.97,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": 8.01948051948052,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.3871,
+  "scrape_band_p95": 0.171,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     240.0,
+     -32.0,
+     80.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 8.01948051948052,
+    "median_ci95": [
+     7.968,
+     8.091
+    ],
+    "p90_s": 8.25974025974026,
+    "worst_s": 8.376623376623376,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3733,
+    "scrape_p95": 0.4243,
+    "frac_airborne": 0.284,
+    "frac_above_320": 0.936,
+    "median_speed_ups": 447.3,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.857142857142858,
+    "median_ci95": [
+     5.857,
+     5.948
+    ],
+    "p90_s": 6.038961038961039,
+    "worst_s": 6.1818181818181825,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3867,
+    "scrape_p95": 0.4443,
+    "frac_airborne": 0.391,
+    "frac_above_320": 0.946,
+    "median_speed_ups": 451.4,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3871,
+    "scrape_p95": 0.4677,
+    "frac_airborne": 0.072,
+    "frac_above_320": 0.371,
+    "median_speed_ups": 217.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.5,
+    "median_ci95": [
+     3.461,
+     3.519
+    ],
+    "p90_s": 3.6103896103896105,
+    "worst_s": 3.6883116883116887,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.24,
+    "scrape_p95": 0.2887,
+    "frac_airborne": 0.525,
+    "frac_above_320": 0.904,
+    "median_speed_ups": 461.7,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ },
+ {
+  "name": "sngspawn_a_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 144,
+  "scrape_worst_start": 0.3077,
+  "scrape_band_p95": 0.2203,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     -880.0,
+     -232.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.0633,
+    "scrape_p95": 0.1577,
+    "frac_airborne": 0.796,
+    "frac_above_320": 0.16,
+    "median_speed_ups": 23.4,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.0733,
+    "scrape_p95": 0.1987,
+    "frac_airborne": 0.802,
+    "frac_above_320": 0.15,
+    "median_speed_ups": 22.8,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3077,
+    "scrape_p95": 0.453,
+    "frac_airborne": 0.755,
+    "frac_above_320": 0.121,
+    "median_speed_ups": 24.5,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "sngspawn_b_to_mega",
+  "gate_s": 9.98,
+  "pass_s": 11.98,
+  "owner_s": 7.38,
+  "starts_tested": 3,
+  "approaches_modelled": 4,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": null,
+  "wall_contact_total": 144,
+  "scrape_worst_start": 0.2911,
+  "scrape_band_p95": 0.2203,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     -632.0,
+     -680.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.17,
+    "scrape_p95": 0.2643,
+    "frac_airborne": 0.719,
+    "frac_above_320": 0.24,
+    "median_speed_ups": 27.8,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.07,
+    "scrape_p95": 0.1553,
+    "frac_airborne": 0.81,
+    "frac_above_320": 0.146,
+    "median_speed_ups": 23.0,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.2911,
+    "scrape_p95": 0.491,
+    "frac_airborne": 0.657,
+    "frac_above_320": 0.146,
+    "median_speed_ups": 28.9,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 144,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 4,
+   "approaches_tested": 3,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": [
+    "3 of 4 modelled approaches to the target were exercised"
+   ]
+  }
+ },
+ {
+  "name": "tunnel_to_ra",
+  "gate_s": 12.13,
+  "pass_s": 14.13,
+  "owner_s": null,
+  "starts_tested": 4,
+  "approaches_modelled": 3,
+  "arrival_rate_min": 0.0,
+  "median_worst_start_s": 10.90909090909091,
+  "wall_contact_total": 192,
+  "scrape_worst_start": 0.3888,
+  "scrape_band_p95": 0.2405,
+  "effective_n_min": 48,
+  "per_start": [
+   {
+    "start": [
+     192.0,
+     -208.0,
+     -176.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 10.90909090909091,
+    "median_ci95": [
+     10.883,
+     10.968
+    ],
+    "p90_s": 11.051948051948052,
+    "worst_s": 11.129870129870131,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.35,
+    "scrape_p95": 0.4243,
+    "frac_airborne": 0.28,
+    "frac_above_320": 0.944,
+    "median_speed_ups": 449.1,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 5.883116883116884,
+    "median_ci95": [
+     5.857,
+     5.974
+    ],
+    "p90_s": 6.051948051948052,
+    "worst_s": 6.1818181818181825,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3833,
+    "scrape_p95": 0.442,
+    "frac_airborne": 0.383,
+    "frac_above_320": 0.947,
+    "median_speed_ups": 451.0,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   },
+   {
+    "start": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "n": 48,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "median_ci95": [
+     null,
+     null
+    ],
+    "p90_s": null,
+    "worst_s": null,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.3888,
+    "scrape_p95": 0.4682,
+    "frac_airborne": 0.045,
+    "frac_above_320": 0.394,
+    "median_speed_ups": 222.5,
+    "effective_n": 48,
+    "outcomes": {
+     "timeout": 48
+    }
+   },
+   {
+    "start": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "n": 48,
+    "arrival_rate": 1.0,
+    "median_s": 3.5194805194805197,
+    "median_ci95": [
+     3.429,
+     3.532
+    ],
+    "p90_s": 3.6532467532467536,
+    "worst_s": 3.7142857142857144,
+    "wall_contact_episodes": 48,
+    "scrape_median": 0.22,
+    "scrape_p95": 0.2977,
+    "frac_airborne": 0.513,
+    "frac_above_320": 0.901,
+    "median_speed_ups": 460.4,
+    "effective_n": 48,
+    "outcomes": {
+     "arrived": 48
+    }
+   }
+  ],
+  "inside_corpus_scrape_band": false,
+  "passes_strict": false,
+  "coverage": {
+   "attempts": 192,
+   "distinct_trajectories": 48,
+   "effective_n": 48,
+   "approaches_modelled": 3,
+   "approaches_tested": 4,
+   "note": "sampled decode; one start per modelled approach",
+   "warnings": []
+  }
+ }
+]

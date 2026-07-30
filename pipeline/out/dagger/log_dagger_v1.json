@@ -1,0 +1,112 @@
+[
+ {
+  "round": 1,
+  "visited": 120000,
+  "aggregate": 15450,
+  "frac_no_human_answer": 0.8712,
+  "neighbour_dist_p50": 1.0734,
+  "neighbour_dist_p90": 1.6773,
+  "cut": 0.5031,
+  "loss": 0.6241,
+  "s": 68.5
+ },
+ {
+  "round": 2,
+  "visited": 120000,
+  "aggregate": 46979,
+  "frac_no_human_answer": 0.7373,
+  "neighbour_dist_p50": 0.756,
+  "neighbour_dist_p90": 0.9533,
+  "cut": 0.5031,
+  "loss": 0.5275,
+  "s": 137.6
+ },
+ {
+  "round": 3,
+  "visited": 120000,
+  "aggregate": 91690,
+  "frac_no_human_answer": 0.6274,
+  "neighbour_dist_p50": 0.7822,
+  "neighbour_dist_p90": 1.0512,
+  "cut": 0.5031,
+  "loss": 0.5073,
+  "s": 205.9
+ },
+ {
+  "round": 4,
+  "visited": 120000,
+  "aggregate": 135991,
+  "frac_no_human_answer": 0.6308,
+  "neighbour_dist_p50": 0.8061,
+  "neighbour_dist_p90": 1.1431,
+  "cut": 0.5031,
+  "loss": 0.5043,
+  "s": 275.5
+ },
+ {
+  "round": 5,
+  "visited": 120000,
+  "aggregate": 188553,
+  "frac_no_human_answer": 0.562,
+  "neighbour_dist_p50": 0.6947,
+  "neighbour_dist_p90": 0.9417,
+  "cut": 0.5031,
+  "loss": 0.4978,
+  "s": 345.1
+ },
+ {
+  "round": 6,
+  "visited": 120000,
+  "aggregate": 245417,
+  "frac_no_human_answer": 0.5261,
+  "neighbour_dist_p50": 0.6492,
+  "neighbour_dist_p90": 0.922,
+  "cut": 0.5031,
+  "loss": 0.4908,
+  "s": 413.8
+ },
+ {
+  "round": 7,
+  "visited": 120000,
+  "aggregate": 299145,
+  "frac_no_human_answer": 0.5523,
+  "neighbour_dist_p50": 0.7461,
+  "neighbour_dist_p90": 0.9228,
+  "cut": 0.5031,
+  "loss": 0.4855,
+  "s": 481.3
+ },
+ {
+  "round": 8,
+  "visited": 120000,
+  "aggregate": 352390,
+  "frac_no_human_answer": 0.5563,
+  "neighbour_dist_p50": 0.7197,
+  "neighbour_dist_p90": 0.9311,
+  "cut": 0.5031,
+  "loss": 0.4825,
+  "s": 552.6
+ },
+ {
+  "round": 9,
+  "visited": 120000,
+  "aggregate": 409149,
+  "frac_no_human_answer": 0.527,
+  "neighbour_dist_p50": 0.604,
+  "neighbour_dist_p90": 0.9137,
+  "cut": 0.5031,
+  "loss": 0.4787,
+  "s": 621.4
+ },
+ {
+  "round": 10,
+  "visited": 120000,
+  "aggregate": 464425,
+  "frac_no_human_answer": 0.5394,
+  "neighbour_dist_p50": 0.642,
+  "neighbour_dist_p90": 0.9205,
+  "cut": 0.5031,
+  "loss": 0.4759,
+  "s": 692.6
+ }
+]

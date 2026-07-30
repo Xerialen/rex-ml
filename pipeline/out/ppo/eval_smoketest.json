@@ -1,0 +1,346 @@
+{
+  "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/ppo/ppo_actor_smoketest.pt",
+  "n_episodes": 4,
+  "routes": [
+    {
+      "name": "cell_503_194",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 16.688,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": null
+    },
+    {
+      "name": "cell_724_503",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 12.698,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": null
+    },
+    {
+      "name": "hex_ratop_to_ssg",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 28.7,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 7.08
+    },
+    {
+      "name": "hex_ssg_to_ratop",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 40.698,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 10.43
+    },
+    {
+      "name": "hexagon_sod_tur",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 9.688,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": null
+    },
+    {
+      "name": "highbridge_to_rl",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 15.694,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 3.09
+    },
+    {
+      "name": "ra_climb",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 30.688000000000002,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": null
+    },
+    {
+      "name": "ralow_to_ratop",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 31.696,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 7.78
+    },
+    {
+      "name": "ring_to_ratop",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 30.688000000000002,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 7.52
+    },
+    {
+      "name": "ring_to_rl",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 24.696,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 5.8
+    },
+    {
+      "name": "spawn_lift_to_pent_to_pentmega",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 35.7,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 9.17
+    },
+    {
+      "name": "spawn_rarox_to_quad",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 17.696,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 3.79
+    },
+    {
+      "name": "spawn_rl_to_ratop_xer",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 53.69,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 14.51
+    },
+    {
+      "name": "spawn_sngspawn_to_ring_to_ratop",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 34.692,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 8.83
+    },
+    {
+      "name": "window_to_rl",
+      "n_episodes": 4,
+      "arrival_rate": 0.0,
+      "outcome_counts": {
+        "timeout": 4
+      },
+      "median_completion_time_s": null,
+      "p90_completion_time_s": null,
+      "median_completion_time_s_all": 15.694,
+      "frac_moving_ticks_above_320ups": 0.0,
+      "median_horizontal_speed_ups": 0.0,
+      "wall_contact_episodes": 0,
+      "human_ref_ups": 331.0,
+      "reference_time_s": 3.12
+    }
+  ],
+  "construction_failures": [
+    {
+      "name": "hex_quad_to_sng",
+      "start": [
+        936.8,
+        336.0,
+        56.0
+      ],
+      "target": [
+        -523.4,
+        453.2,
+        120.0
+      ],
+      "error": "route start Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "hex_sng_to_quad",
+      "start": [
+        -518.6,
+        493.6,
+        120.0
+      ],
+      "target": [
+        936.8,
+        336.0,
+        56.0
+      ],
+      "error": "route goal Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "lg_to_pent_to_pentmega",
+      "start": [
+        1551.1,
+        -194.1,
+        -392.0
+      ],
+      "target": [
+        1865.8,
+        631.2,
+        -180.0
+      ],
+      "error": "route start Vec3(1551.1, -194.1, -392.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "lifts_or_ring_to_sngmega",
+      "start": [
+        514.4,
+        759.6,
+        216.0
+      ],
+      "target": [
+        -688.0,
+        78.1,
+        184.0
+      ],
+      "error": "route goal Vec3(-688.0, 78.1, 184.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "sng_mega",
+      "start": [
+        -473.0,
+        514.0,
+        120.0
+      ],
+      "target": [
+        -720.0,
+        80.0,
+        160.0
+      ],
+      "error": "route goal Vec3(-720.0, 80.0, 160.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "sngspawns_to_sngmega",
+      "start": [
+        -880.0,
+        -232.0,
+        -16.0
+      ],
+      "target": [
+        -688.0,
+        79.1,
+        184.0
+      ],
+      "error": "route goal Vec3(-688.0, 79.1, 184.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "spawn_ra_tunnel_to_lg",
+      "start": [
+        192.0,
+        -207.0,
+        -176.0
+      ],
+      "target": [
+        1562.0,
+        -189.2,
+        -392.0
+      ],
+      "error": "route goal Vec3(1562.0, -189.2, -392.0) does not snap onto the navmesh"
+    }
+  ]
+}

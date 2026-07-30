@@ -1,0 +1,110 @@
+[
+ {
+  "it": 1,
+  "phase": "critic_warmup",
+  "lr": 0.0003,
+  "ent_coef": 0.01,
+  "policy_loss": -6.097252480685711e-09,
+  "value_loss": 0.023901274136733264,
+  "entropy": -0.05123669921886176,
+  "approx_kl": 0.0,
+  "reward_mean": -0.026847179979085922,
+  "term_progress": 0.19802285730838776,
+  "term_speed": 0.21666383743286133,
+  "term_wall": -0.0194091796875,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0,
+  "s": 1.8,
+  "routes": [
+   {
+    "name": "window_to_rl",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 2.75,
+    "pass_s": 4.75
+   },
+   {
+    "name": "ralow_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.71,
+    "pass_s": 9.71
+   },
+   {
+    "name": "lifts_to_sng_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.93,
+    "pass_s": 9.93
+   },
+   {
+    "name": "quad_to_ra",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 8.96,
+    "pass_s": 10.96
+   },
+   {
+    "name": "ring_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.26,
+    "pass_s": 11.26
+   },
+   {
+    "name": "sngspawn_a_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "sngspawn_b_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "tunnel_to_ra",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 12.13,
+    "pass_s": 14.13
+   }
+  ]
+ },
+ {
+  "it": 2,
+  "phase": "ppo",
+  "lr": 5.000000000000002e-05,
+  "ent_coef": 0.0009999999999999992,
+  "policy_loss": -0.007231082854559645,
+  "value_loss": 0.02112302291789092,
+  "entropy": 0.10347849479876459,
+  "approx_kl": 0.009132106264587492,
+  "reward_mean": -0.022675899788737297,
+  "term_progress": 0.8610416650772095,
+  "term_speed": 0.37188002467155457,
+  "term_wall": -0.01611328125,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0,
+  "s": 2.7
+ }
+]

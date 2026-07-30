@@ -1,0 +1,20 @@
+train transitions 23,313,692  dev=cuda
+/home/benjamin-adm/rex-ml/pipeline/policy.py:288: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  log.append(dict(it=it, critic=float(closs), bc=float(bc),
+[  10000] critic 0.0192  bc 0.3351  q 0.909  93s
+[  20000] critic 0.0208  bc 0.2875  q 1.089  190s
+[  30000] critic 0.0144  bc 0.2432  q 1.114  287s
+[  40000] critic 0.0294  bc 0.2642  q 0.850  383s
+[  50000] critic 0.2389  bc 0.2638  q 0.952  478s
+[  60000] critic 4.7673  bc 0.2697  q -1.050  574s
+[  70000] critic 0.2352  bc 0.3330  q 2.165  670s
+[  80000] critic 1.7471  bc 0.2610  q 13.339  765s
+[  90000] critic 1.8065  bc 0.2935  q 20.364  861s
+[ 100000] critic 2.2957  bc 0.2643  q 20.759  956s
+[ 110000] critic 1.4373  bc 0.2659  q 20.846  1030s
+[ 120000] critic 1.3974  bc 0.2737  q 20.633  1122s
+[ 130000] critic 1.2302  bc 0.2440  q 20.044  1218s
+[ 140000] critic 0.7450  bc 0.2584  q 19.780  1313s
+[ 150000] critic 0.5174  bc 0.1790  q 13.451  1410s
+saved /home/benjamin-adm/rex-ml/pipeline/out/policy/actor.pt

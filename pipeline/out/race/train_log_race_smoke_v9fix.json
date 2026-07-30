@@ -1,0 +1,198 @@
+[
+ {
+  "it": 1,
+  "phase": "ppo",
+  "lr": 0.0003,
+  "ent_coef": 0.01,
+  "policy_loss": 0.027140747759403894,
+  "value_loss": 11.32031686604023,
+  "entropy": -1.2523399107158184,
+  "approx_kl": 0.13780752359889448,
+  "reward_mean": 0.008278592489659786,
+  "term_progress": 4.486566066741943,
+  "term_speed": 1.2190392017364502,
+  "term_wall": -0.06450177729129791,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0003336298977956176,
+  "term_track": -0.04199425131082535,
+  "jump_floor": 0.04,
+  "restart_lo": 0.75,
+  "jump_rate": 0.32662366330623627,
+  "s": 1.7,
+  "strict_probe": [
+   {
+    "name": "window_to_rl",
+    "n": 16,
+    "arrival_rate": 0.3125,
+    "median_s": 6.0649350649350655
+   },
+   {
+    "name": "ralow_to_ratop",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "lifts_to_sng_mega",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "ring_to_ratop",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "sngspawn_a_to_mega",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "sngspawn_b_to_mega",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "tunnel_to_ra",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   },
+   {
+    "name": "sng_to_quad",
+    "n": 16,
+    "arrival_rate": 0.0,
+    "median_s": null
+   }
+  ],
+  "routes": [
+   {
+    "name": "window_to_rl",
+    "episodes": 3,
+    "arrival_rate": 1.0,
+    "median_s": 0.18181818181818182,
+    "best_s": 0.15584415584415584,
+    "gate_s": 2.75,
+    "pass_s": 4.75
+   },
+   {
+    "name": "ralow_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.71,
+    "pass_s": 9.71
+   },
+   {
+    "name": "lifts_to_sng_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 7.93,
+    "pass_s": 9.93
+   },
+   {
+    "name": "quad_to_ra",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 8.96,
+    "pass_s": 10.96
+   },
+   {
+    "name": "ring_to_ratop",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.26,
+    "pass_s": 11.26
+   },
+   {
+    "name": "sngspawn_a_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "sngspawn_b_to_mega",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 9.98,
+    "pass_s": 11.98
+   },
+   {
+    "name": "tunnel_to_ra",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 12.13,
+    "pass_s": 14.13
+   },
+   {
+    "name": "sng_to_quad",
+    "episodes": 0,
+    "arrival_rate": 0.0,
+    "median_s": null,
+    "best_s": null,
+    "gate_s": 6.04,
+    "pass_s": 8.04
+   }
+  ]
+ },
+ {
+  "it": 2,
+  "phase": "ppo",
+  "lr": 0.000175,
+  "ent_coef": 0.0055,
+  "policy_loss": -0.0019722026991075836,
+  "value_loss": 8.249936670064926,
+  "entropy": -1.1624978817999363,
+  "approx_kl": 0.030985884885012638,
+  "reward_mean": 0.017123395577073097,
+  "term_progress": 4.280183792114258,
+  "term_speed": 1.140993356704712,
+  "term_wall": -0.08229537308216095,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0008896797080524266,
+  "term_track": -0.07573730498552322,
+  "jump_floor": 0.025,
+  "restart_lo": 0.12499999999999997,
+  "jump_rate": 0.3314056880772114,
+  "s": 21.8
+ },
+ {
+  "it": 3,
+  "phase": "ppo",
+  "lr": 5.000000000000002e-05,
+  "ent_coef": 0.0009999999999999992,
+  "policy_loss": -0.00641745710890973,
+  "value_loss": 11.227895945310593,
+  "entropy": -1.0822496339678764,
+  "approx_kl": 0.005671151965316312,
+  "reward_mean": 0.028747014701366425,
+  "term_progress": 4.367033004760742,
+  "term_speed": 1.0544735193252563,
+  "term_wall": -0.08896797150373459,
+  "term_timeout": 0.0,
+  "term_arrive": 0.0014457295183092356,
+  "term_track": -0.12310982495546341,
+  "jump_floor": 0.010000000000000002,
+  "restart_lo": 0.0,
+  "jump_rate": 0.31194394640624523,
+  "s": 22.7
+ }
+]

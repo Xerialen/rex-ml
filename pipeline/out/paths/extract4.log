@@ -1,0 +1,9 @@
+{"registry": "zip-window-to-rl", "gate_s": 2.75, "kept": 24, "candidates_inside_gate": 636, "fastest_s": 2.069, "fastest_path_len_u": 1334.5, "reject_reasons": {}}
+{"registry": "sngspawn-to-quad", "gate_s": 4.27, "kept": 0, "candidates_inside_gate": 59, "fastest_s": null, "fastest_path_len_u": null, "reject_reasons": {"gap": 59}}
+{"registry": "zip-ralow-to-ratop", "gate_s": 7.71, "kept": 24, "candidates_inside_gate": 1302, "fastest_s": 5.348, "fastest_path_len_u": 2607.4, "reject_reasons": {"rocket_jump": 155}}
+{"registry": "lifts-to-sng-mega", "gate_s": 7.93, "kept": 24, "candidates_inside_gate": 2500, "fastest_s": 4.958, "fastest_path_len_u": 2208.1, "reject_reasons": {"rocket_jump": 8}}
+{"registry": "quad-to-ra", "gate_s": 8.96, "kept": 24, "candidates_inside_gate": 669, "fastest_s": 6.705, "fastest_path_len_u": 3176.0, "reject_reasons": {"rocket_jump": 113}}
+{"registry": "zip-ring-to-ratop", "gate_s": 9.26, "kept": 24, "candidates_inside_gate": 493, "fastest_s": 5.679, "fastest_path_len_u": 2460.5, "reject_reasons": {"rocket_jump": 143}}
+{"registry": "sngspawn-to-mega", "gate_s": 9.98, "kept": 24, "candidates_inside_gate": 388, "fastest_s": 6.545, "fastest_path_len_u": 2754.6, "reject_reasons": {"rocket_jump": 56}}
+{"registry": "tunnel-to-ra", "gate_s": 12.13, "kept": 8, "candidates_inside_gate": 106, "fastest_s": 9.999, "fastest_path_len_u": 3892.6, "reject_reasons": {"rocket_jump": 98}}
+wrote /home/benjamin-adm/rex-ml/pipeline/out/paths

@@ -1,0 +1,15 @@
+window_to_rl           greedy   n= 32 distinct=  1 arr=100.0%  med=4.31  wall=32
+window_to_rl           sampled  n= 24 distinct= 24 arr=100.0%  med=4.4  wall=6
+ralow_to_ratop         greedy   n= 32 distinct=  1 arr=100.0%  med=8.41  wall=32
+ralow_to_ratop         sampled  n= 24 distinct= 24 arr= 95.8%  med=8.5  wall=24
+lifts_to_sng_mega      greedy   n= 32 distinct=  1 arr=  0.0%  med=None  wall=32
+lifts_to_sng_mega      sampled  n= 24 distinct= 24 arr=  0.0%  med=None  wall=24
+ring_to_ratop          greedy   n= 32 distinct=  1 arr=100.0%  med=8.09  wall=32
+ring_to_ratop          sampled  n= 24 distinct= 24 arr= 95.8%  med=8.13  wall=24
+sngspawn_a_to_mega     greedy   n= 32 distinct=  1 arr=  0.0%  med=None  wall=32
+sngspawn_a_to_mega     sampled  n= 24 distinct= 24 arr=  0.0%  med=None  wall=24
+sngspawn_b_to_mega     greedy   n= 32 distinct=  1 arr=  0.0%  med=None  wall=32
+sngspawn_b_to_mega     sampled  n= 24 distinct= 24 arr=  0.0%  med=None  wall=24
+tunnel_to_ra           greedy   n= 32 distinct=  1 arr=100.0%  med=11.14  wall=32
+tunnel_to_ra           sampled  n= 24 distinct= 24 arr=100.0%  med=11.34  wall=24
+frames 3.27 MB -> /home/benjamin-adm/rex-ml/pipeline/out/replay/frames_v5.bin

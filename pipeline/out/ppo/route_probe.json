@@ -1,0 +1,119 @@
+{
+  "constructible": [
+    "cell_503_194",
+    "cell_724_503",
+    "hex_ratop_to_ssg",
+    "hex_ssg_to_ratop",
+    "hexagon_sod_tur",
+    "highbridge_to_rl",
+    "ra_climb",
+    "ralow_to_ratop",
+    "ring_to_ratop",
+    "ring_to_rl",
+    "spawn_lift_to_pent_to_pentmega",
+    "spawn_rarox_to_quad",
+    "spawn_rl_to_ratop_xer",
+    "spawn_sngspawn_to_ring_to_ratop",
+    "window_to_rl"
+  ],
+  "failed": [
+    {
+      "name": "hex_quad_to_sng",
+      "start": [
+        936.8,
+        336.0,
+        56.0
+      ],
+      "target": [
+        -523.4,
+        453.2,
+        120.0
+      ],
+      "error": "route start Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "hex_sng_to_quad",
+      "start": [
+        -518.6,
+        493.6,
+        120.0
+      ],
+      "target": [
+        936.8,
+        336.0,
+        56.0
+      ],
+      "error": "route goal Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "lg_to_pent_to_pentmega",
+      "start": [
+        1551.1,
+        -194.1,
+        -392.0
+      ],
+      "target": [
+        1865.8,
+        631.2,
+        -180.0
+      ],
+      "error": "route start Vec3(1551.1, -194.1, -392.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "lifts_or_ring_to_sngmega",
+      "start": [
+        514.4,
+        759.6,
+        216.0
+      ],
+      "target": [
+        -688.0,
+        78.1,
+        184.0
+      ],
+      "error": "route goal Vec3(-688.0, 78.1, 184.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "sng_mega",
+      "start": [
+        -473.0,
+        514.0,
+        120.0
+      ],
+      "target": [
+        -720.0,
+        80.0,
+        160.0
+      ],
+      "error": "route goal Vec3(-720.0, 80.0, 160.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "sngspawns_to_sngmega",
+      "start": [
+        -880.0,
+        -232.0,
+        -16.0
+      ],
+      "target": [
+        -688.0,
+        79.1,
+        184.0
+      ],
+      "error": "route goal Vec3(-688.0, 79.1, 184.0) does not snap onto the navmesh"
+    },
+    {
+      "name": "spawn_ra_tunnel_to_lg",
+      "start": [
+        192.0,
+        -207.0,
+        -176.0
+      ],
+      "target": [
+        1562.0,
+        -189.2,
+        -392.0
+      ],
+      "error": "route goal Vec3(1562.0, -189.2, -392.0) does not snap onto the navmesh"
+    }
+  ]
+}

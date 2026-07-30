@@ -1,0 +1,71 @@
+508 demos in 13 batches of <= 40
+[1/13] demos 60..4444  2,153,204 rows  172,105 segs  116.0 MB  14.5s   total 2,153,204 rows / 0.12 GB   eta 2.9 min
+[2/13] demos 4554..9481  1,842,142 rows  143,066 segs  102.3 MB  10.9s   total 3,995,346 rows / 0.22 GB   eta 2.3 min
+[3/13] demos 9649..14842  2,198,578 rows  163,349 segs  119.4 MB  12.8s   total 6,193,924 rows / 0.34 GB   eta 2.1 min
+[4/13] demos 14950..19184  2,509,482 rows  198,060 segs  138.7 MB  14.7s   total 8,703,406 rows / 0.48 GB   eta 2.0 min
+[5/13] demos 19226..22751  2,392,432 rows  194,047 segs  132.7 MB  14.3s   total 11,095,838 rows / 0.61 GB   eta 1.8 min
+[6/13] demos 22763..27023  1,948,053 rows  151,435 segs  106.9 MB  11.5s   total 13,043,891 rows / 0.72 GB   eta 1.5 min
+[7/13] demos 27096..31161  2,122,992 rows  161,507 segs  113.1 MB  12.4s   total 15,166,883 rows / 0.83 GB   eta 1.3 min
+[8/13] demos 31229..35663  2,073,000 rows  167,901 segs  114.5 MB  12.4s   total 17,239,883 rows / 0.94 GB   eta 1.1 min
+[9/13] demos 35980..39812  1,853,875 rows  151,172 segs  103.5 MB  11.1s   total 19,093,758 rows / 1.05 GB   eta 0.8 min
+[10/13] demos 39889..43797  2,145,778 rows  163,989 segs  116.3 MB  12.6s   total 21,239,536 rows / 1.16 GB   eta 0.6 min
+[11/13] demos 43865..48624  2,525,925 rows  190,631 segs  139.3 MB  14.7s   total 23,765,461 rows / 1.30 GB   eta 0.4 min
+[12/13] demos 48666..53141  2,384,763 rows  183,198 segs  129.8 MB  13.9s   total 26,150,224 rows / 1.43 GB   eta 0.2 min
+[13/13] demos 53311..56822  1,784,159 rows  130,671 segs  96.6 MB  10.3s   total 27,934,383 rows / 1.53 GB   eta 0.0 min
+
+{
+  "tag": "step1",
+  "demos": 508,
+  "batches": 13,
+  "rows": 27934383,
+  "segments": 2171131,
+  "state_runs": 732380,
+  "bytes_on_disk": 1529171288,
+  "wall_seconds": 166.2,
+  "ticks_by_kind": {
+    "trim_ground": 10479152,
+    "trim_air": 5242120,
+    "maneuver_jump": 161091,
+    "maneuver_rocket_jump": 5515,
+    "maneuver_external": 345161,
+    "maneuver_fall": 449962,
+    "maneuver_land": 340224,
+    "other_ground": 8716649,
+    "other_air": 1730029,
+    "water": 464480
+  },
+  "segments_by_kind": {
+    "trim_ground": 421568,
+    "trim_air": 205157,
+    "maneuver_jump": 81010,
+    "maneuver_rocket_jump": 1759,
+    "maneuver_external": 91513,
+    "maneuver_fall": 225611,
+    "maneuver_land": 191816,
+    "other_ground": 509444,
+    "other_air": 277044,
+    "water": 166209
+  },
+  "thresholds": {
+    "msec_min": 1,
+    "msec_max": 50,
+    "vz_zero_eps": 1e-06,
+    "min_air_run": 2,
+    "min_ground_run": 1,
+    "impulse_dvz": 60.0,
+    "impulse_dvxy": 40.0,
+    "fire_window_before": 3,
+    "fire_window_after": 1,
+    "rocket_impulse_min": 120.0,
+    "rocket_up_min": 0.5,
+    "rocket_pitch_min": 20.0,
+    "jump_dvz_lo": 200.0,
+    "jump_dvz_hi": 340.0,
+    "maneuver_pad": 2,
+    "trim_min_len": 8,
+    "trim_phi_tol": 0.2,
+    "trim_omega_tol": 3.0,
+    "trim_speed_rel_tol": 0.35,
+    "trim_min_speed": 40.0
+  }
+}

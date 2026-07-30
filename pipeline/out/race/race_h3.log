@@ -1,0 +1,102 @@
+routes=['window_to_rl', 'ralow_to_ratop', 'lifts_to_sng_mega', 'quad_to_ra', 'ring_to_ratop', 'sngspawn_a_to_mega', 'sngspawn_b_to_mega', 'tunnel_to_ra']  n_per_route=1024  human_k=8  envs=64  total_slots=8192  T=64  gamma=0.999
+  window_to_rl           human:6796@2.069             path    1327 u  n=  128  gate  2.75s  needs    482 u/s average
+  window_to_rl           human:56762@2.174            path    1237 u  n=  128  gate  2.75s  needs    450 u/s average
+  window_to_rl           human:22269@2.178            path    1134 u  n=  128  gate  2.75s  needs    412 u/s average
+  window_to_rl           human:28039@2.179            path    1133 u  n=  128  gate  2.75s  needs    412 u/s average
+  window_to_rl           human:55363@2.185            path    1249 u  n=  128  gate  2.75s  needs    454 u/s average
+  window_to_rl           human:18302@2.204            path    1216 u  n=  128  gate  2.75s  needs    442 u/s average
+  window_to_rl           human:6281@2.237             path    1279 u  n=  128  gate  2.75s  needs    465 u/s average
+  window_to_rl           human:13577@2.282            path    1243 u  n=  128  gate  2.75s  needs    452 u/s average
+  ralow_to_ratop         human:44665@5.348            path    2562 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:38678@5.62             path    2559 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:22675@5.631            path    2642 u  n=  128  gate  7.71s  needs    343 u/s average
+  ralow_to_ratop         human:43489@5.762            path    2579 u  n=  128  gate  7.71s  needs    334 u/s average
+  ralow_to_ratop         human:19017@5.783            path    2198 u  n=  128  gate  7.71s  needs    285 u/s average
+  ralow_to_ratop         human:11339@5.842            path    2562 u  n=  128  gate  7.71s  needs    332 u/s average
+  ralow_to_ratop         human:31522@5.847            path    2533 u  n=  128  gate  7.71s  needs    329 u/s average
+  ralow_to_ratop         human:9183@5.864             path    2555 u  n=  128  gate  7.71s  needs    331 u/s average
+  lifts_to_sng_mega      human:48877@4.958            path    2171 u  n=  128  gate  7.93s  needs    274 u/s average
+  lifts_to_sng_mega      human:55716@4.971            path    2139 u  n=  128  gate  7.93s  needs    270 u/s average
+  lifts_to_sng_mega      human:29817@4.98             path    2161 u  n=  128  gate  7.93s  needs    273 u/s average
+  lifts_to_sng_mega      human:50580@4.98             path    2194 u  n=  128  gate  7.93s  needs    277 u/s average
+  lifts_to_sng_mega      human:26750@4.987            path    2212 u  n=  128  gate  7.93s  needs    279 u/s average
+  lifts_to_sng_mega      human:21055@5.01             path    2159 u  n=  128  gate  7.93s  needs    272 u/s average
+  lifts_to_sng_mega      human:55638@5.011            path    2141 u  n=  128  gate  7.93s  needs    270 u/s average
+  lifts_to_sng_mega      human:507@5.012              path    2151 u  n=  128  gate  7.93s  needs    271 u/s average
+  quad_to_ra             human:22919@6.705            path    3133 u  n=  128  gate  8.96s  needs    350 u/s average
+  quad_to_ra             human:21963@6.963            path    2955 u  n=  128  gate  8.96s  needs    330 u/s average
+  quad_to_ra             human:31815@7.045            path    3210 u  n=  128  gate  8.96s  needs    358 u/s average
+  quad_to_ra             human:26736@7.076            path    3221 u  n=  128  gate  8.96s  needs    359 u/s average
+  quad_to_ra             human:27014@7.088            path    3271 u  n=  128  gate  8.96s  needs    365 u/s average
+  quad_to_ra             human:4150@7.205             path    3287 u  n=  128  gate  8.96s  needs    367 u/s average
+  quad_to_ra             human:20442@7.25             path    3103 u  n=  128  gate  8.96s  needs    346 u/s average
+  quad_to_ra             human:49478@7.267            path    3268 u  n=  128  gate  8.96s  needs    365 u/s average
+  ring_to_ratop          human:50580@5.679            path    2423 u  n=  128  gate  9.26s  needs    262 u/s average
+  ring_to_ratop          human:12764@5.788            path    2480 u  n=  128  gate  9.26s  needs    268 u/s average
+  ring_to_ratop          human:43734@5.986            path    2525 u  n=  128  gate  9.26s  needs    273 u/s average
+  ring_to_ratop          human:18643@6.136            path    2639 u  n=  128  gate  9.26s  needs    285 u/s average
+  ring_to_ratop          human:23831@6.233            path    2650 u  n=  128  gate  9.26s  needs    286 u/s average
+  ring_to_ratop          human:7969@6.374             path    2570 u  n=  128  gate  9.26s  needs    278 u/s average
+  ring_to_ratop          human:31073@6.402            path    2517 u  n=  128  gate  9.26s  needs    272 u/s average
+  ring_to_ratop          human:21780@6.467            path    2503 u  n=  128  gate  9.26s  needs    270 u/s average
+  sngspawn_a_to_mega     human:54935@6.545            path    2719 u  n=  128  gate  9.98s  needs    272 u/s average
+  sngspawn_a_to_mega     human:11862@6.635            path    2760 u  n=  128  gate  9.98s  needs    277 u/s average
+  sngspawn_a_to_mega     human:45738@6.735            path    2656 u  n=  128  gate  9.98s  needs    266 u/s average
+  sngspawn_a_to_mega     human:2234@6.748             path    2781 u  n=  128  gate  9.98s  needs    279 u/s average
+  sngspawn_a_to_mega     human:45576@6.896            path    2829 u  n=  128  gate  9.98s  needs    283 u/s average
+  sngspawn_a_to_mega     human:7948@6.93              path    2734 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_a_to_mega     human:35991@6.933            path    2739 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_a_to_mega     human:44523@6.939            path    2796 u  n=  128  gate  9.98s  needs    280 u/s average
+  sngspawn_b_to_mega     human:54935@6.545            path    2719 u  n=  128  gate  9.98s  needs    272 u/s average
+  sngspawn_b_to_mega     human:11862@6.635            path    2760 u  n=  128  gate  9.98s  needs    277 u/s average
+  sngspawn_b_to_mega     human:45738@6.735            path    2656 u  n=  128  gate  9.98s  needs    266 u/s average
+  sngspawn_b_to_mega     human:2234@6.748             path    2781 u  n=  128  gate  9.98s  needs    279 u/s average
+  sngspawn_b_to_mega     human:45576@6.896            path    2829 u  n=  128  gate  9.98s  needs    283 u/s average
+  sngspawn_b_to_mega     human:7948@6.93              path    2734 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_b_to_mega     human:35991@6.933            path    2739 u  n=  128  gate  9.98s  needs    274 u/s average
+  sngspawn_b_to_mega     human:44523@6.939            path    2796 u  n=  128  gate  9.98s  needs    280 u/s average
+  tunnel_to_ra           human:4783@9.999             path    3799 u  n=  128  gate 12.13s  needs    313 u/s average
+  tunnel_to_ra           human:3199@10.653            path    4134 u  n=  128  gate 12.13s  needs    341 u/s average
+  tunnel_to_ra           human:47035@11.144           path    4253 u  n=  128  gate 12.13s  needs    351 u/s average
+  tunnel_to_ra           human:7089@11.222            path    4283 u  n=  128  gate 12.13s  needs    353 u/s average
+  tunnel_to_ra           human:47148@11.234           path    4628 u  n=  128  gate 12.13s  needs    382 u/s average
+  tunnel_to_ra           human:30305@11.286           path    4438 u  n=  128  gate 12.13s  needs    366 u/s average
+  tunnel_to_ra           human:4783@11.519            path    4163 u  n=  128  gate 12.13s  needs    343 u/s average
+  tunnel_to_ra           human:42047@11.558           path    4335 u  n=  128  gate 12.13s  needs    357 u/s average
+[it     1/4000 critic_warmup] rew -0.0148 vl    2.240 ent +0.276 kl -0.0000 spd 0.652 jmp 0.127 lo 0.75 3s | window:100%/0.21 ralow:100%/0.77 lifts:100%/0.46 quad:100%/0.78 ring:100%/0.69 sngspa:100%/0.55 sngspa:100%/0.60 tunnel:  0%/  -  
+[it    10/4000 critic_warmup] rew -0.0407 vl    0.882 ent +0.286 kl -0.0000 spd 0.181 jmp 0.175 lo 0.75 18s | window:100%/0.34 ralow:100%/1.53 lifts:100%/1.00 quad:100%/1.09 ring:100%/1.68 sngspa:100%/1.13 sngspa:100%/1.34 tunnel:100%/2.30
+[it    20/4000           ppo] rew +0.0022 vl   10.764 ent +0.152 kl 0.0131 spd 0.425 jmp 0.167 lo 0.74 42s | window: 84%/0.28 ralow:  9%/0.63 lifts:  6%/0.45 quad:  0%/6.70 ring:100%/7.36 sngspa:  0%/  -   sngspa:  0%/  -   tunnel:  0%/  -  
+[it    30/4000           ppo] rew -0.0186 vl    3.721 ent +0.009 kl 0.0138 spd 0.412 jmp 0.203 lo 0.74 69s | window: 83%/0.27 ralow: 90%/1.79 lifts: 86%/1.66 quad: 91%/1.20 ring: 16%/0.73 sngspa: 13%/0.56 sngspa: 13%/0.57 tunnel: 16%/1.43
+[it    40/4000           ppo] rew +0.0014 vl   12.981 ent -0.027 kl 0.0095 spd 0.451 jmp 0.182 lo 0.74 95s | window: 93%/0.34 ralow: 19%/0.85 lifts: 22%/0.45 quad:  0%/0.53 ring: 33%/0.63 sngspa:  0%/  -   sngspa:  0%/  -   tunnel:100%/5.89
+[it    50/4000           ppo] rew +0.0042 vl    3.723 ent +0.024 kl 0.0102 spd 0.461 jmp 0.221 lo 0.73 122s | window: 93%/0.32 ralow: 82%/1.83 lifts:100%/0.53 quad: 58%/1.13 ring: 19%/0.73 sngspa: 16%/0.56 sngspa: 17%/0.55 tunnel: 14%/1.65
+[it    60/4000           ppo] rew +0.0174 vl   10.946 ent +0.072 kl 0.0161 spd 0.437 jmp 0.233 lo 0.73 148s | window: 97%/0.36 ralow: 23%/1.25 lifts: 27%/0.46 quad:  5%/0.62 ring:  0%/  -   sngspa:  0%/  -   sngspa:  0%/  -   tunnel: 76%/2.91
+[it    70/4000           ppo] rew +0.0094 vl   11.194 ent +0.014 kl 0.0163 spd 0.414 jmp 0.213 lo 0.73 175s | window: 96%/0.41 ralow: 80%/1.51 lifts:100%/1.29 quad: 61%/1.61 ring: 29%/0.77 sngspa: 27%/0.53 sngspa: 28%/0.55 tunnel:  1%/1.94
+[it    80/4000           ppo] rew -0.0030 vl    6.192 ent +0.041 kl 0.0135 spd 0.419 jmp 0.239 lo 0.73 201s | window: 95%/0.39 ralow: 35%/1.13 lifts: 34%/0.48 quad:  5%/0.60 ring:  0%/  -   sngspa:100%/0.57 sngspa:100%/0.59 tunnel: 62%/2.34
+[it    90/4000           ppo] rew +0.0015 vl    3.162 ent +0.026 kl 0.0135 spd 0.400 jmp 0.238 lo 0.72 227s | window: 95%/0.41 ralow: 90%/1.79 lifts:  0%/  -   quad: 56%/1.61 ring: 29%/1.08 sngspa: 36%/0.52 sngspa: 36%/0.53 tunnel: 93%/3.47
+[it   100/4000           ppo] rew +0.0136 vl    6.711 ent -0.016 kl 0.0108 spd 0.430 jmp 0.240 lo 0.72 253s | window: 96%/0.36 ralow: 43%/1.43 lifts: 34%/0.49 quad:  7%/0.83 ring: 75%/1.46 sngspa: 92%/1.04 sngspa: 87%/0.90 tunnel: 29%/1.75
+[it   110/4000           ppo] rew +0.0084 vl    8.137 ent -0.001 kl 0.0122 spd 0.400 jmp 0.229 lo 0.72 280s | window: 96%/0.42 ralow: 56%/1.67 lifts:  0%/  -   quad: 42%/1.54 ring: 26%/0.74 sngspa: 22%/0.55 sngspa: 20%/0.53 tunnel: 66%/3.35
+[it   120/4000           ppo] rew +0.0076 vl    7.396 ent -0.079 kl 0.0116 spd 0.413 jmp 0.234 lo 0.71 306s | window: 96%/0.39 ralow: 56%/1.32 lifts: 38%/0.49 quad:  8%/0.92 ring: 62%/1.60 sngspa: 46%/0.60 sngspa: 45%/0.98 tunnel: 18%/1.25
+[it   130/4000           ppo] rew +0.0093 vl   12.013 ent -0.089 kl 0.0112 spd 0.420 jmp 0.252 lo 0.71 333s | window: 96%/0.42 ralow: 49%/1.54 lifts:  0%/  -   quad: 31%/1.51 ring: 28%/0.80 sngspa: 20%/0.57 sngspa: 20%/0.54 tunnel: 45%/2.83
+[it   140/4000           ppo] rew +0.0015 vl    7.503 ent -0.099 kl 0.0167 spd 0.407 jmp 0.243 lo 0.71 359s | window: 95%/0.41 ralow: 62%/1.47 lifts: 40%/0.48 quad:  9%/0.76 ring: 47%/1.04 sngspa: 48%/0.63 sngspa: 47%/0.57 tunnel: 24%/3.15
+[it   150/4000           ppo] rew +0.0213 vl   13.043 ent -0.148 kl 0.0073 spd 0.446 jmp 0.227 lo 0.7 385s | window: 94%/0.41 ralow: 44%/1.46 lifts: 23%/0.45 quad: 31%/1.48 ring: 25%/1.14 sngspa: 25%/0.45 sngspa: 25%/0.43 tunnel: 31%/2.03
+[it   160/4000           ppo] rew -0.0054 vl    5.918 ent -0.057 kl 0.0116 spd 0.397 jmp 0.296 lo 0.7 411s | window: 95%/0.42 ralow: 70%/1.23 lifts: 58%/0.43 quad:  9%/1.29 ring: 68%/1.53 sngspa: 39%/0.52 sngspa: 46%/0.52 tunnel: 57%/3.16
+[it   170/4000           ppo] rew +0.0166 vl   12.885 ent -0.094 kl 0.0081 spd 0.452 jmp 0.250 lo 0.7 438s | window: 94%/0.42 ralow: 42%/1.48 lifts: 29%/0.43 quad: 30%/1.53 ring: 24%/0.83 sngspa: 21%/0.49 sngspa: 21%/0.49 tunnel: 18%/1.81
+[it   180/4000           ppo] rew +0.0002 vl    5.664 ent +0.001 kl 0.0114 spd 0.411 jmp 0.271 lo 0.69 464s | window: 95%/0.42 ralow: 71%/1.71 lifts: 60%/0.46 quad: 10%/1.30 ring: 65%/1.58 sngspa: 34%/0.59 sngspa: 36%/0.53 tunnel: 37%/3.28
+[it   190/4000           ppo] rew +0.0136 vl   11.746 ent -0.062 kl 0.0095 spd 0.452 jmp 0.252 lo 0.69 490s | window: 94%/0.43 ralow: 41%/1.26 lifts: 36%/0.45 quad: 28%/1.34 ring: 24%/0.66 sngspa: 19%/0.48 sngspa: 18%/0.46 tunnel: 19%/2.60
+[it   200/4000           ppo] rew -0.0047 vl    5.661 ent -0.004 kl 0.0198 spd 0.403 jmp 0.293 lo 0.69 516s | window: 93%/0.42 ralow: 74%/1.75 lifts: 56%/0.49 quad:  9%/1.23 ring: 50%/1.46 sngspa: 34%/0.52 sngspa: 40%/0.49 tunnel: 31%/2.52
+[it   210/4000           ppo] rew +0.0194 vl   14.438 ent -0.100 kl 0.0079 spd 0.469 jmp 0.270 lo 0.68 542s | window: 93%/0.43 ralow: 42%/1.43 lifts: 39%/0.38 quad: 27%/1.51 ring: 23%/0.63 sngspa: 14%/0.45 sngspa: 15%/0.43 tunnel: 34%/3.14
+[it   220/4000           ppo] rew -0.0067 vl    7.029 ent -0.033 kl 0.0094 spd 0.396 jmp 0.292 lo 0.68 568s | window: 93%/0.43 ralow: 69%/1.75 lifts: 50%/0.39 quad: 11%/1.04 ring: 44%/1.40 sngspa: 43%/0.41 sngspa: 42%/0.42 tunnel: 29%/3.04
+[it   230/4000           ppo] rew +0.0111 vl   13.360 ent -0.065 kl 0.0144 spd 0.423 jmp 0.287 lo 0.68 595s | window: 92%/0.45 ralow: 44%/1.13 lifts: 45%/0.42 quad: 32%/1.60 ring: 25%/0.69 sngspa:  8%/0.53 sngspa:  8%/0.55 tunnel: 43%/3.25
+[it   240/4000           ppo] rew -0.0022 vl    7.930 ent -0.068 kl 0.0108 spd 0.388 jmp 0.286 lo 0.68 621s | window: 93%/0.45 ralow: 58%/1.46 lifts: 82%/0.48 quad: 14%/1.25 ring: 48%/1.67 sngspa: 36%/0.53 sngspa: 37%/0.50 tunnel: 25%/3.24
+[it   250/4000           ppo] rew -0.0025 vl    5.309 ent -0.096 kl 0.0091 spd 0.381 jmp 0.265 lo 0.67 647s | window: 93%/0.45 ralow: 50%/1.68 lifts: 49%/0.46 quad: 30%/1.54 ring: 25%/1.20 sngspa: 77%/0.45 sngspa: 65%/0.45 tunnel: 38%/3.26
+[it   260/4000           ppo] rew -0.0027 vl    8.080 ent -0.097 kl 0.0093 spd 0.360 jmp 0.268 lo 0.67 673s | window: 93%/0.45 ralow: 44%/1.57 lifts: 61%/0.48 quad: 15%/1.48 ring: 49%/1.51 sngspa: 35%/0.57 sngspa: 36%/0.57 tunnel: 30%/3.34
+[it   270/4000           ppo] rew -0.0065 vl    6.199 ent -0.071 kl 0.0096 spd 0.339 jmp 0.278 lo 0.67 699s | window: 92%/0.43 ralow: 52%/1.50 lifts: 48%/0.50 quad: 29%/1.72 ring: 25%/1.02 sngspa: 73%/0.83 sngspa: 71%/0.67 tunnel: 37%/3.05
+[it   280/4000           ppo] rew -0.0052 vl    8.694 ent -0.081 kl 0.0110 spd 0.335 jmp 0.295 lo 0.66 725s | window: 92%/0.43 ralow: 44%/1.66 lifts: 32%/0.49 quad: 13%/1.31 ring: 45%/1.34 sngspa: 32%/0.57 sngspa: 34%/0.57 tunnel: 47%/3.53
+[it   290/4000           ppo] rew -0.0085 vl    5.741 ent -0.084 kl 0.0096 spd 0.329 jmp 0.318 lo 0.66 751s | window: 90%/0.42 ralow: 59%/1.76 lifts: 50%/0.56 quad: 22%/1.67 ring: 21%/0.89 sngspa: 52%/0.71 sngspa: 48%/0.72 tunnel: 41%/2.55
+[it   300/4000           ppo] rew +0.0064 vl    8.979 ent -0.165 kl 0.0088 spd 0.348 jmp 0.307 lo 0.66 777s | window: 91%/0.45 ralow: 45%/1.34 lifts: 46%/0.50 quad: 17%/1.58 ring: 38%/1.20 sngspa: 36%/0.67 sngspa: 38%/0.67 tunnel: 49%/2.77
+[it   310/4000           ppo] rew -0.0031 vl    6.096 ent -0.156 kl 0.0109 spd 0.342 jmp 0.321 lo 0.65 803s | window: 93%/0.43 ralow: 66%/1.18 lifts: 62%/0.59 quad: 30%/1.41 ring: 25%/0.87 sngspa: 59%/0.81 sngspa: 55%/0.78 tunnel: 41%/2.14
+[it   320/4000           ppo] rew +0.0052 vl    9.774 ent -0.213 kl 0.0106 spd 0.363 jmp 0.320 lo 0.65 830s | window: 92%/0.45 ralow: 44%/1.34 lifts: 50%/0.53 quad: 22%/1.46 ring: 47%/1.30 sngspa: 39%/0.71 sngspa: 40%/0.71 tunnel: 43%/2.41
+[it   330/4000           ppo] rew -0.0064 vl    6.226 ent -0.177 kl 0.0150 spd 0.329 jmp 0.331 lo 0.65 862s | window: 89%/0.45 ralow: 63%/1.27 lifts: 62%/0.62 quad: 34%/1.48 ring: 29%/1.16 sngspa: 65%/0.80 sngspa: 63%/0.74 tunnel: 46%/2.44
+[it   340/4000           ppo] rew +0.0137 vl   10.802 ent -0.297 kl 0.0109 spd 0.383 jmp 0.315 lo 0.64 889s | window: 90%/0.45 ralow: 53%/1.19 lifts: 47%/0.57 quad: 30%/1.29 ring: 48%/1.23 sngspa: 36%/0.64 sngspa: 38%/0.63 tunnel: 48%/2.52
+[it   350/4000           ppo] rew +0.0012 vl    7.260 ent -0.296 kl 0.0135 spd 0.342 jmp 0.327 lo 0.64 922s | window: 91%/0.45 ralow: 66%/1.05 lifts: 62%/0.69 quad: 40%/1.30 ring: 35%/0.99 sngspa: 56%/0.84 sngspa: 58%/0.85 tunnel: 51%/2.69
+[it   360/4000           ppo] rew +0.0133 vl   10.990 ent -0.390 kl 0.0148 spd 0.406 jmp 0.300 lo 0.64 949s | window: 90%/0.45 ralow: 67%/1.02 lifts: 48%/0.55 quad: 32%/1.11 ring: 57%/0.78 sngspa: 34%/0.71 sngspa: 35%/0.69 tunnel: 50%/2.61

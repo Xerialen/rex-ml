@@ -1,0 +1,45 @@
+[22:41:14] routes: 15 constructible, 7 failed to construct
+[22:41:14]   CONSTRUCTION FAILURE hex_quad_to_sng: route start Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE hex_sng_to_quad: route goal Vec3(936.8, 336.0, 56.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE lg_to_pent_to_pentmega: route start Vec3(1551.1, -194.1, -392.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE lifts_or_ring_to_sngmega: route goal Vec3(-688.0, 78.1, 184.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE sng_mega: route goal Vec3(-720.0, 80.0, 160.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE sngspawns_to_sngmega: route goal Vec3(-688.0, 79.1, 184.0) does not snap onto the navmesh
+[22:41:14]   CONSTRUCTION FAILURE spawn_ra_tunnel_to_lg: route goal Vec3(1562.0, -189.2, -392.0) does not snap onto the navmesh
+[22:41:14] === training rtx_default: RewardWeights(progress=0.01, speed=0.02, wall=1.0, timeout=1.0, arrive=10.0) ===
+[rtx_default it    1/800 critic_warmup] reward -0.0855  vloss 7.5598  ploss -0.0000  ent 0.088  arrive 0.0000  wall -0.0979  speed 0.4404  3s
+[rtx_default it    5/800 critic_warmup] reward -0.1885  vloss 11.2349  ploss 0.0000  ent 0.092  arrive 0.0001  wall -0.1994  speed 0.3902  10s
+[rtx_default it   10/800 critic_warmup] reward -0.2114  vloss 11.6435  ploss -0.0000  ent 0.077  arrive 0.0001  wall -0.2211  speed 0.3434  19s
+[rtx_default it   15/800 critic_warmup] reward -0.2139  vloss 9.9179  ploss -0.0000  ent 0.062  arrive 0.0002  wall -0.2244  speed 0.2981  28s
+[rtx_default it   20/800 critic_warmup] reward -0.1802  vloss 12.1345  ploss -0.0000  ent 0.110  arrive 0.0001  wall -0.1903  speed 0.3894  37s
+[rtx_default it   25/800           ppo] reward -0.0452  vloss 3.2502  ploss -0.0055  ent 0.124  arrive 0.0001  wall -0.0541  speed 0.2775  46s
+[rtx_default it   30/800           ppo] reward -0.0126  vloss 1.3232  ploss -0.0028  ent 0.024  arrive 0.0001  wall -0.0210  speed 0.2991  54s
+[rtx_default it   35/800           ppo] reward -0.0099  vloss 0.8991  ploss 0.0010  ent -0.302  arrive 0.0001  wall -0.0208  speed 0.3276  64s
+[rtx_default it   40/800           ppo] reward -0.0040  vloss 0.4345  ploss -0.0031  ent -0.829  arrive 0.0001  wall -0.0115  speed 0.2235  72s
+[rtx_default it   45/800           ppo] reward -0.0000  vloss 0.2066  ploss -0.0024  ent -1.143  arrive 0.0000  wall -0.0051  speed 0.1462  81s
+[rtx_default it   50/800           ppo] reward 0.0007  vloss 0.1314  ploss -0.0025  ent -1.290  arrive 0.0000  wall -0.0033  speed 0.1034  90s
+[rtx_default it   55/800           ppo] reward 0.0019  vloss 0.0866  ploss -0.0021  ent -1.304  arrive 0.0000  wall -0.0018  speed 0.0972  98s
+[rtx_default it   60/800           ppo] reward 0.0005  vloss 0.1418  ploss -0.0014  ent -1.312  arrive 0.0000  wall -0.0037  speed 0.1188  107s
+[rtx_default it   65/800           ppo] reward -0.0008  vloss 0.0468  ploss -0.0020  ent -1.443  arrive 0.0000  wall -0.0008  speed 0.0312  116s
+[rtx_default it   70/800           ppo] reward 0.0008  vloss 0.1955  ploss -0.0017  ent -1.141  arrive 0.0000  wall -0.0061  speed 0.1831  125s
+[rtx_default it   75/800           ppo] reward -0.0004  vloss 0.0658  ploss -0.0025  ent -1.354  arrive 0.0000  wall -0.0020  speed 0.0663  134s
+[rtx_default it   80/800           ppo] reward -0.0005  vloss 0.1478  ploss -0.0019  ent -1.206  arrive 0.0000  wall -0.0055  speed 0.1472  143s
+[rtx_default it   85/800           ppo] reward 0.0004  vloss 0.0776  ploss -0.0027  ent -1.264  arrive 0.0000  wall -0.0027  speed 0.0914  152s
+[rtx_default it   90/800           ppo] reward -0.0018  vloss 0.1751  ploss -0.0019  ent -1.188  arrive 0.0000  wall -0.0062  speed 0.1389  160s
+[rtx_default it   95/800           ppo] reward 0.0002  vloss 0.1135  ploss -0.0023  ent -1.289  arrive 0.0000  wall -0.0027  speed 0.0819  169s
+[rtx_default it  100/800           ppo] reward 0.0005  vloss 0.2626  ploss -0.0023  ent -1.139  arrive 0.0001  wall -0.0067  speed 0.1675  178s
+[rtx_default it  105/800           ppo] reward -0.0010  vloss 0.1394  ploss -0.0028  ent -1.234  arrive 0.0000  wall -0.0031  speed 0.0943  187s
+[rtx_default it  110/800           ppo] reward -0.0013  vloss 0.2363  ploss -0.0024  ent -1.162  arrive 0.0000  wall -0.0070  speed 0.1442  196s
+[rtx_default it  115/800           ppo] reward 0.0027  vloss 0.1763  ploss -0.0019  ent -1.130  arrive 0.0000  wall -0.0041  speed 0.1663  205s
+[rtx_default it  120/800           ppo] reward 0.0026  vloss 0.2398  ploss -0.0018  ent -1.072  arrive 0.0001  wall -0.0066  speed 0.2258  214s
+[rtx_default it  125/800           ppo] reward 0.0041  vloss 0.1761  ploss -0.0013  ent -1.097  arrive 0.0000  wall -0.0034  speed 0.2065  223s
+[rtx_default it  130/800           ppo] reward 0.0009  vloss 0.1495  ploss -0.0017  ent -1.201  arrive 0.0000  wall -0.0040  speed 0.1213  232s
+[rtx_default it  135/800           ppo] reward 0.0013  vloss 0.1078  ploss -0.0015  ent -1.254  arrive 0.0001  wall -0.0012  speed 0.0655  240s
+[rtx_default it  140/800           ppo] reward 0.0015  vloss 0.3305  ploss -0.0023  ent -0.982  arrive 0.0001  wall -0.0087  speed 0.2730  249s
+[rtx_default it  145/800           ppo] reward 0.0007  vloss 0.2417  ploss -0.0018  ent -1.111  arrive 0.0001  wall -0.0040  speed 0.1640  258s
+[rtx_default it  150/800           ppo] reward 0.0019  vloss 0.3634  ploss -0.0024  ent -0.997  arrive 0.0002  wall -0.0076  speed 0.2397  268s
+[rtx_default it  155/800           ppo] reward 0.0022  vloss 0.3448  ploss -0.0010  ent -0.956  arrive 0.0002  wall -0.0076  speed 0.2680  277s
+[rtx_default it  160/800           ppo] reward 0.0054  vloss 0.3769  ploss 0.0011  ent -0.919  arrive 0.0002  wall -0.0078  speed 0.3397  286s
+[rtx_default it  165/800           ppo] reward 0.0013  vloss 0.2911  ploss -0.0015  ent -1.082  arrive 0.0002  wall -0.0046  speed 0.1798  294s
+[rtx_default it  170/800           ppo] reward 0.0027  vloss 0.3451  ploss -0.0018  ent -1.031  arrive 0.0002  wall -0.0055  speed 0.2237  304s
+[rtx_default it  175/800           ppo] reward 0.0055  vloss 0.4687  ploss -0.0015  ent -1.013  arrive 0.0003  wall -0.0069  speed 0.2701  312s

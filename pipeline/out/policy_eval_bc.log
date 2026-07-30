@@ -1,0 +1,3 @@
+train: fmove MAE 125.2  smove MAE 166.5  dyaw MAE 0.54 deg  jump acc 96.7%  quadrant 26.2%
+val: fmove MAE 119.6  smove MAE 156.2  dyaw MAE 0.57 deg  jump acc 96.4%  quadrant 24.5%
+test: fmove MAE 128.8  smove MAE 179.8  dyaw MAE 0.60 deg  jump acc 97.0%  quadrant 27.7%

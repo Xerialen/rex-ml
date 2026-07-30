@@ -1,0 +1,680 @@
+{
+ "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/race/race_h4.pt",
+ "n_episodes": 64,
+ "greedy": true,
+ "tolerance_s": 2.0,
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "geometry": "human:55363@2.185",
+   "path_len_u": 1248.7,
+   "n_episodes": 64,
+   "gate_s": 2.75,
+   "pass_s": 4.75,
+   "owner_s": 3.49,
+   "arrival_rate": 0.125,
+   "outcome_counts": {
+    "arrived": 64
+   },
+   "median_s": 3.0380000000000003,
+   "best_s": 3.0380000000000003,
+   "p90_s": 3.0380000000000003,
+   "delta_vs_gate_s": 0.288,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.7407407407407407,
+   "median_speed_ups": 393.5837097167969,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": 3.0380000000000003,
+   "best_track_arrival_rate": 1.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 1,
+   "per_track": [
+    {
+     "geometry": "human:6796@2.069",
+     "path_len_u": 1326.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:56762@2.174",
+     "path_len_u": 1236.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:22269@2.178",
+     "path_len_u": 1134.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:28039@2.179",
+     "path_len_u": 1132.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:55363@2.185",
+     "path_len_u": 1248.7,
+     "arrival_rate": 1.0,
+     "median_s": 3.0380000000000003,
+     "best_s": 3.0380000000000003
+    },
+    {
+     "geometry": "human:18302@2.204",
+     "path_len_u": 1216.1,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:6281@2.237",
+     "path_len_u": 1279.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:13577@2.282",
+     "path_len_u": 1243.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "ralow_to_ratop",
+   "geometry": "human:31522@5.847",
+   "path_len_u": 2533.4,
+   "n_episodes": 64,
+   "gate_s": 7.71,
+   "pass_s": 9.71,
+   "owner_s": 7.48,
+   "arrival_rate": 0.125,
+   "outcome_counts": {
+    "arrived": 64
+   },
+   "median_s": 6.23,
+   "best_s": 6.23,
+   "p90_s": 6.23,
+   "delta_vs_gate_s": -1.48,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.831081081081081,
+   "median_speed_ups": 449.3517608642578,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": 6.23,
+   "best_track_arrival_rate": 1.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 1,
+   "per_track": [
+    {
+     "geometry": "human:44665@5.348",
+     "path_len_u": 2562.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:38678@5.62",
+     "path_len_u": 2558.7,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:22675@5.631",
+     "path_len_u": 2642.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:43489@5.762",
+     "path_len_u": 2579.0,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:19017@5.783",
+     "path_len_u": 2197.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:11339@5.842",
+     "path_len_u": 2562.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:31522@5.847",
+     "path_len_u": 2533.4,
+     "arrival_rate": 1.0,
+     "median_s": 6.23,
+     "best_s": 6.23
+    },
+    {
+     "geometry": "human:9183@5.864",
+     "path_len_u": 2554.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "geometry": "human:48877@4.958",
+   "path_len_u": 2170.9,
+   "n_episodes": 64,
+   "gate_s": 7.93,
+   "pass_s": 9.93,
+   "owner_s": null,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 64
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.2651413189771198,
+   "median_speed_ups": 29.65808868408203,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": null,
+   "best_track_arrival_rate": 0.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 0,
+   "per_track": [
+    {
+     "geometry": "human:48877@4.958",
+     "path_len_u": 2170.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:55716@4.971",
+     "path_len_u": 2139.3,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:29817@4.98",
+     "path_len_u": 2161.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:50580@4.98",
+     "path_len_u": 2193.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:26750@4.987",
+     "path_len_u": 2211.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:21055@5.01",
+     "path_len_u": 2159.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:55638@5.011",
+     "path_len_u": 2140.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:507@5.012",
+     "path_len_u": 2151.1,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "quad_to_ra",
+   "geometry": "human:22919@6.705",
+   "path_len_u": 3132.7,
+   "n_episodes": 64,
+   "gate_s": 8.96,
+   "pass_s": 10.96,
+   "owner_s": null,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 64
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.11409942950285248,
+   "median_speed_ups": 23.031015396118164,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": null,
+   "best_track_arrival_rate": 0.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 0,
+   "per_track": [
+    {
+     "geometry": "human:22919@6.705",
+     "path_len_u": 3132.7,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:21963@6.963",
+     "path_len_u": 2954.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:31815@7.045",
+     "path_len_u": 3210.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:26736@7.076",
+     "path_len_u": 3220.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:27014@7.088",
+     "path_len_u": 3270.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:4150@7.205",
+     "path_len_u": 3287.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:20442@7.25",
+     "path_len_u": 3103.1,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:49478@7.267",
+     "path_len_u": 3267.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "ring_to_ratop",
+   "geometry": "human:50580@5.679",
+   "path_len_u": 2423.4,
+   "n_episodes": 64,
+   "gate_s": 9.26,
+   "pass_s": 11.26,
+   "owner_s": 6.97,
+   "arrival_rate": 0.375,
+   "outcome_counts": {
+    "arrived": 64
+   },
+   "median_s": 6.062,
+   "best_s": 6.062,
+   "p90_s": 6.062,
+   "delta_vs_gate_s": -3.198,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.7384259259259259,
+   "median_speed_ups": 442.2033233642578,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": 6.062,
+   "best_track_arrival_rate": 1.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 3,
+   "per_track": [
+    {
+     "geometry": "human:50580@5.679",
+     "path_len_u": 2423.4,
+     "arrival_rate": 1.0,
+     "median_s": 6.062,
+     "best_s": 6.062
+    },
+    {
+     "geometry": "human:12764@5.788",
+     "path_len_u": 2480.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:43734@5.986",
+     "path_len_u": 2525.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:18643@6.136",
+     "path_len_u": 2639.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:23831@6.233",
+     "path_len_u": 2649.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:7969@6.374",
+     "path_len_u": 2569.7,
+     "arrival_rate": 1.0,
+     "median_s": 7.0280000000000005,
+     "best_s": 7.0280000000000005
+    },
+    {
+     "geometry": "human:31073@6.402",
+     "path_len_u": 2517.1,
+     "arrival_rate": 1.0,
+     "median_s": 6.44,
+     "best_s": 6.44
+    },
+    {
+     "geometry": "human:21780@6.467",
+     "path_len_u": 2503.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "geometry": "human:54935@6.545",
+   "path_len_u": 2719.2,
+   "n_episodes": 64,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 64
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.4618973561430793,
+   "median_speed_ups": 287.58758544921875,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": null,
+   "best_track_arrival_rate": 0.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 0,
+   "per_track": [
+    {
+     "geometry": "human:54935@6.545",
+     "path_len_u": 2719.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:11862@6.635",
+     "path_len_u": 2760.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:45738@6.735",
+     "path_len_u": 2655.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:2234@6.748",
+     "path_len_u": 2781.0,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:45576@6.896",
+     "path_len_u": 2829.3,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:7948@6.93",
+     "path_len_u": 2733.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:35991@6.933",
+     "path_len_u": 2738.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:44523@6.939",
+     "path_len_u": 2796.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "geometry": "human:54935@6.545",
+   "path_len_u": 2719.2,
+   "n_episodes": 64,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 64
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.4618973561430793,
+   "median_speed_ups": 287.58758544921875,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": null,
+   "best_track_arrival_rate": 0.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 0,
+   "per_track": [
+    {
+     "geometry": "human:54935@6.545",
+     "path_len_u": 2719.2,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:11862@6.635",
+     "path_len_u": 2760.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:45738@6.735",
+     "path_len_u": 2655.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:2234@6.748",
+     "path_len_u": 2781.0,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:45576@6.896",
+     "path_len_u": 2829.3,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:7948@6.93",
+     "path_len_u": 2733.8,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:35991@6.933",
+     "path_len_u": 2738.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:44523@6.939",
+     "path_len_u": 2796.4,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  },
+  {
+   "name": "tunnel_to_ra",
+   "geometry": "human:7089@11.222",
+   "path_len_u": 4283.3,
+   "n_episodes": 64,
+   "gate_s": 12.13,
+   "pass_s": 14.13,
+   "owner_s": null,
+   "arrival_rate": 0.5,
+   "outcome_counts": {
+    "arrived": 64
+   },
+   "median_s": 9.534,
+   "best_s": 9.534,
+   "p90_s": 9.534,
+   "delta_vs_gate_s": -2.596,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.8807069219440353,
+   "median_speed_ups": 443.92437744140625,
+   "wall_contact_episodes": 64,
+   "best_track_median_s": 9.534,
+   "best_track_arrival_rate": 1.0,
+   "tracks_evaluated": 8,
+   "tracks_with_any_arrival": 4,
+   "per_track": [
+    {
+     "geometry": "human:4783@9.999",
+     "path_len_u": 3798.9,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:3199@10.653",
+     "path_len_u": 4133.9,
+     "arrival_rate": 1.0,
+     "median_s": 9.59,
+     "best_s": 9.59
+    },
+    {
+     "geometry": "human:47035@11.144",
+     "path_len_u": 4253.1,
+     "arrival_rate": 1.0,
+     "median_s": 9.898,
+     "best_s": 9.898
+    },
+    {
+     "geometry": "human:7089@11.222",
+     "path_len_u": 4283.3,
+     "arrival_rate": 1.0,
+     "median_s": 9.534,
+     "best_s": 9.534
+    },
+    {
+     "geometry": "human:47148@11.234",
+     "path_len_u": 4628.3,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:30305@11.286",
+     "path_len_u": 4438.1,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    },
+    {
+     "geometry": "human:4783@11.519",
+     "path_len_u": 4162.5,
+     "arrival_rate": 1.0,
+     "median_s": 10.444,
+     "best_s": 10.444
+    },
+    {
+     "geometry": "human:42047@11.558",
+     "path_len_u": 4334.6,
+     "arrival_rate": 0.0,
+     "median_s": null,
+     "best_s": null
+    }
+   ]
+  }
+ ],
+ "passed": [],
+ "n_passed": 0,
+ "n_routes": 8,
+ "excluded_teleport_dependent": [
+  "quad_to_ra",
+  "sngspawn_a_to_quad",
+  "sngspawn_b_to_quad"
+ ]
+}

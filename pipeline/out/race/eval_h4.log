@@ -1,0 +1,11 @@
+route                   arr%  median    best     p90   gate  pass<=       d   >320  medspd  wall
+window_to_rl            12.5    3.04    3.04    3.04   2.75    4.75    0.29  74.1%   393.6    64  tracks 1/8
+ralow_to_ratop          12.5    6.23    6.23    6.23   7.71    9.71   -1.48  83.1%   449.4    64  tracks 1/8
+lifts_to_sng_mega        0.0       -       -       -   7.93    9.93       -  26.5%    29.7    64  tracks 0/8
+quad_to_ra               0.0       -       -       -   8.96   10.96       -  11.4%    23.0    64  tracks 0/8
+ring_to_ratop           37.5    6.06    6.06    6.06   9.26   11.26   -3.20  73.8%   442.2    64  tracks 3/8
+sngspawn_a_to_mega       0.0       -       -       -   9.98   11.98       -  46.2%   287.6    64  tracks 0/8
+sngspawn_b_to_mega       0.0       -       -       -   9.98   11.98       -  46.2%   287.6    64  tracks 0/8
+tunnel_to_ra            50.0    9.53    9.53    9.53  12.13   14.13   -2.60  88.1%   443.9    64  tracks 4/8
+
+0/8 routes inside the owner's band; wrote /home/benjamin-adm/rex-ml/pipeline/out/race/eval_race_h4.json

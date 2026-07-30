@@ -1,0 +1,151 @@
+{
+ "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/race/race_v1.pt",
+ "n_episodes": 32,
+ "greedy": true,
+ "tolerance_s": 2.0,
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "n_episodes": 32,
+   "gate_s": 3.75,
+   "pass_s": 5.75,
+   "owner_s": 3.49,
+   "arrival_rate": 1.0,
+   "outcome_counts": {
+    "arrived": 32
+   },
+   "median_s": 5.2780000000000005,
+   "best_s": 5.2780000000000005,
+   "p90_s": 5.2780000000000005,
+   "delta_vs_gate_s": 1.528,
+   "passes_gate": true,
+   "frac_moving_ticks_above_320ups": 0.8218085106382979,
+   "median_speed_ups": 351.1451873779297,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "ralow_to_ratop",
+   "n_episodes": 32,
+   "gate_s": 7.71,
+   "pass_s": 9.71,
+   "owner_s": 7.48,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.9530315969257045,
+   "median_speed_ups": 361.5779724121094,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "n_episodes": 32,
+   "gate_s": 7.93,
+   "pass_s": 9.93,
+   "owner_s": null,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.769098712446352,
+   "median_speed_ups": 357.5783386230469,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "ring_to_ratop",
+   "n_episodes": 32,
+   "gate_s": 9.26,
+   "pass_s": 11.26,
+   "owner_s": 6.97,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.8167580266249022,
+   "median_speed_ups": 358.0719299316406,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "n_episodes": 32,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.7805810397553516,
+   "median_speed_ups": 354.6606903076172,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "n_episodes": 32,
+   "gate_s": 9.98,
+   "pass_s": 11.98,
+   "owner_s": 7.38,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.7879968823070927,
+   "median_speed_ups": 347.9427490234375,
+   "wall_contact_episodes": 32
+  },
+  {
+   "name": "tunnel_to_ra",
+   "n_episodes": 32,
+   "gate_s": 12.13,
+   "pass_s": 14.13,
+   "owner_s": null,
+   "arrival_rate": 0.0,
+   "outcome_counts": {
+    "timeout": 32
+   },
+   "median_s": null,
+   "best_s": null,
+   "p90_s": null,
+   "delta_vs_gate_s": null,
+   "passes_gate": false,
+   "frac_moving_ticks_above_320ups": 0.9343263371699391,
+   "median_speed_ups": 361.09503173828125,
+   "wall_contact_episodes": 32
+  }
+ ],
+ "passed": [
+  "window_to_rl"
+ ],
+ "n_passed": 1,
+ "n_routes": 7,
+ "excluded_teleport_dependent": [
+  "quad_to_ra",
+  "sngspawn_a_to_quad",
+  "sngspawn_b_to_quad"
+ ]
+}
