@@ -23,10 +23,11 @@ PITCH_MIN, PITCH_MAX = -70.0, 80.0
 
 # usercmd-magnituder vid full deflektion. Servern klipper wishspeed mot maxspeed,
 # så >=320 är ekvivalent på marken; riktningen styrs av kvoten fwd/side.
-# TODO(verifiera): jämför mot korpusens inspelade usercmds när qwsim-valideringen
-# landat (agent B rapporterar typiska forwardmove/sidemove-värden).
-FORWARDMOVE = 800.0
-SIDEMOVE = 800.0
+# MÄTT 2026-07-30 ur korpusens usercmds (16,3 M/16,7 M nollskilda cmds):
+# ±508 dominerar (40,5 % av forwardmove, 27,6/28,3 % av sidemove) — klassisk
+# cl_forwardspeed/cl_sidespeed-config. Vi matchar människorna.
+FORWARDMOVE = 508.0
+SIDEMOVE = 508.0
 
 SPEED_NORM = 800.0     # Gate 1-målet; hastigheter normaliseras mot denna
 

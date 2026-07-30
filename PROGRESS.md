@@ -4436,3 +4436,8 @@ Fynd vid skaning av bevisbryggan: rex_env.PyVecEnv (gamla Rust/C++-simmen) finns
 driver pipeline/corridor.py — men dess fysiktrohet är ovaliderad, vilket är exakt varför
 libqwsim byggs med bit-exakthetsbevis. Riktiga-server-bryggan för gatebevis =
 record_strict/validate_replay-kedjan (LD_LIBRARY_PATH-kravet), återanvänds i fas 1.
+
+## 2026-07-30 — Spec-TODO löst med mätning: usercmd-magnituder = ±508
+Duckdb-pass över storens usercmds (16,3 M forwardmove / 16,7 M sidemove nollskilda):
+±508 dominerar (40,5 % fwd; 27,6+28,3 % side), därefter 400/320/348/352/500.
+rl/spec.py: FORWARDMOVE=SIDEMOVE=508 (var gissningen 800). 12/12 tester fortsatt gröna.
