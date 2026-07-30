@@ -4534,3 +4534,21 @@ p99 9,50, p99,9 17,96, p99,99 119,69, max 259,7. Gissningen 15°/tick hade klipp
 p99,9-svansen (där half-beat-vändningar vid hög fart bor); 20°/tick täcker p99,9
 med marginal. p99,99+ är combat-flickar — inte rörelseinput. rl/spec.py uppdaterad,
 25/25 tester gröna.
+
+## 2026-07-30 — GENOMBROTT: hela träningskedjan kör på RIKTIG pmove-fysik
+qwsim-modulens verkliga API kartlagt (modulnivå, global slotpool: alloc_slots sätter
+TOTAL, load_bsp per process, angles=[pitch,yaw,roll], BUTTON_JUMP=bit1, msec u8;
+movevars-defaults valideringslåsta: gravity 800 maxspeed 320 friction 4 airaccel 10
+ktjump 1). rl/qwsim_backend.py omskriven mot det (processglobal slotutdelning i block,
+en karta per process med guard), sf_env väljer karta per gate (100m/dm3).
+FYSIKBEVIS genom hela stacken (uppmätt): markfart EXAKT 320.0; hopp vz 259.6 =
+270−ett ticks gravitation, luftburen 0.64 s, stighöjd 43.8 u; startpunkten z=32 svävar
+(första tick faller till z=24 — träningen bör settla eller starta på 24);
+LUFTACCELERATION BEKRÄFTAD: grov skriptad bunny (6°/tick-svep, alternerad sidled,
+hopp vid mark) peakar 372.6 u/s > 320-taket. Exploiten finns; optimal styrning = policyn.
+APPO-SMOKE PÅ RIKTIG FYSIK: 61 440 steg, FPS 5788.3 (snabbare än stubbens 4514 —
+C++-fysiken slår python-stubben), 8 workers, RNN, GPU, ren avslutning.
+bitexact-filen (agentens, 18:14): 1.22 M wire-checkpoints/22 QWD-körningar, pos-fel
+p99-av-p99 0.495 u (wire-nät 1/8 u), pm-vars låsta. VÄNTAR på agentens slutrapport för
+tolkning av clip_fraction 37 % (varav "other" 249 k) innan simmen formellt GODKÄNNS
+per BRIEF §3.1 — därefter startas steg 1-träningen på allvar.

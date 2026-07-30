@@ -17,13 +17,13 @@ from rl.env import EpisodeConfig, QWEnvCore, StubBackend
 from rl.rewards_gate1 import Curriculum
 
 
-def _make_backend(cfg):
-    """qwsim när den finns; stub annars (endast smoke — träning kräver qwsim)."""
+def _make_backend(cfg, map_name: str):
+    """qwsim (riktig fysik) som default; stub endast för smoke/tester."""
     backend_name = getattr(cfg, "qw_backend", "qwsim") if cfg is not None else "qwsim"
     if backend_name == "stub":
         return StubBackend()
-    from rl.qwsim_backend import QwsimBackend  # landar med libqwsim (agent B)
-    return QwsimBackend(cfg)
+    from rl.qwsim_backend import QwsimBackend
+    return QwsimBackend(cfg, map_name=map_name)
 
 
 def _make_curriculum(cfg, env_config):
@@ -48,7 +48,7 @@ class QWGate1Env(gym.Env):
     def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None):
         self.name = full_env_name
         self.render_mode = render_mode
-        self.core = QWEnvCore(_make_backend(cfg), _make_curriculum(cfg, env_config),
+        self.core = QWEnvCore(_make_backend(cfg, "100m"), _make_curriculum(cfg, env_config),
                               cfg=EpisodeConfig())
         n_obs = self.core.obs_spec.n_obs
         self.observation_space = gym.spaces.Box(-4.0, 4.0, shape=(n_obs,), dtype=np.float32)
@@ -92,7 +92,7 @@ class QWGate2Env(gym.Env):
         self.name = full_env_name
         self.render_mode = render_mode
         is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
-        self.core = QWGate2Core(_make_backend(cfg), cfg=Gate2Config(),
+        self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=Gate2Config(),
                                 is_excluded=is_excluded)
         n_obs = self.core.obs_spec.n_obs
         self.observation_space = gym.spaces.Box(-4.0, 4.0, shape=(n_obs,), dtype=np.float32)
