@@ -4662,3 +4662,12 @@ smoke på RIKTIGA mvdsv (100m, teleport till korridorstart, låga farter väntad
 evidence/policy_bridge_smoke.json + lokala commits i rtx-repot.
 Ägarens teleporter-notis och 800-är-golv inskrivna (föreg. post). Träningen rullar
 parallellt (41 k FPS); monitorn vaktar stegväxlingar.
+
+## 2026-07-30 — Tillsyn: första skarpa evalen + träningshälsa GRÖN
+eval_gate1 första gången på QWSIM-backend (ej stub): greedy peak 448.7, 16/16 identiska
+(deterministisk policy från fast start — väntat; riktiga-server-bevisen får spridning ur
+nätjitter/msec). evidence/eval_gate1_v1_early.json. Steg 3 pågår (tröskel 500 för steg 4);
+episoder nu ~448 mot 420 vid växlingen — stiger, ingen stagnation.
+HÄLSA @38,4M frames (tensorboard, tensor-fältet — simple_value är 0 i TF2-events):
+entropi 3,89→2,11 (kontrollerad konvergens, INTE kollaps), value_loss 0,010→0,002,
+policy_loss normal. Reward 19,4→23,0. Ingen vaktpost utlöst.

@@ -1,0 +1,74 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate1_v1",
+ "n": 16,
+ "mode": "greedy",
+ "peak_median": 448.7,
+ "peak_max": 448.7,
+ "peak_p10": 448.7,
+ "episodes": [
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  },
+  {
+   "peak_speed": 448.7,
+   "stage": 0
+  }
+ ]
+}
