@@ -4952,3 +4952,18 @@ max 833,4 (msec=13); blandat 12/13 identiskt (826,8); ren 12 ger 839,0 (fler tic
 41,6 > 30-cappen ⇒ addspeed-cappen binder alltid ⇒ theta_opt exakt 90°; CheckJump före
 Friction ⇒ perfekt bunny friktionsfri. 820 nås sista ~0,3 s av nära-perfekt körning.
 Kalibrering: cirkelstart 4°/tick, launch-tröskel 485 (430 tappade två faser till 804/816).
+
+## 2026-07-30 20:02 — ÄGARENS SUBMÅL: peak 850. Bokfört + feasibility-sökning startad
+Ägaren (20:00): "Du får ett submål nu att nå 850 som peak." BRIEF uppdaterad: 820 = KRAV,
+850 = SUBMÅL, spåras separat. ÄRLIG BOKFÖRING: 850 ligger ÖVER bästa kända analytiska
+spel (833,4 @77 Hz; 842,9 @83 Hz) — kräver ~535 felfria luftticks + bättre uppskjut än
+cirkelfasens ~491 inom korridorlängden (taket är BANLÄNGDSbegränsat: +900 u²/s²/lufttick,
+v² linjär i ticks). Inte bevisat omöjligt: analytiska styrningen är UNDRE gräns för
+optimum; övermänsklig teknikupptäckt är RL:ns själva syfte (manifestets tes).
+AGENT F STARTAD: systematisk analytisk sökning efter 850-väg i qwsim — serpentinbana
+(±480 u väggutrymme), bättre uppskjut, vertikala tricks, msec-regimens servergränser
+(ärlig 77 Hz separeras från protokollutnyttjande). Svaret "bästa funna är X" är giltigt.
+Träningen behöver INGEN ändring för submålet: exp-belöningen är obegränsad — policyn
+trycker redan så högt fysiken tillåter. Bevissidan uppdaterad: 850-streckad linje +
+submålstext; kurvan uppdaterad (281 677 episoder, p50 680, max 726 — konsolideringen
+klättrar). Greedy-eval 723 (19:57-posten).

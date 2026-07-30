@@ -30,6 +30,11 @@ Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats
 ## 2. Gates (terminerande mål)
 
 ### Gate 1 — Kinetisk dominans (100m.bsp) — SKÄRPT 2026-07-30 19:35
+- **SUBMÅL (ägaren 2026-07-30 20:00): peak 850.** Ligger ÖVER bästa kända analytiska
+  spel (uppmätt tak 833,4 @77 Hz / 842,9 @83 Hz, evidence/strafe_ceiling_qwsim.json) —
+  dvs kräver teknik BORTOM den analytiska styrningen (~535 felfria luftticks + bättre
+  uppskjut än cirkelfasens ~491 inom korridorlängden). Inte bevisat omöjligt (analytiska
+  är undre gräns för optimum); spåras och rapporteras separat från 820-kravet.
 - **Krav (ägarens ord):** "peaken ska vara 820 på 100m.bsp" ⇒ uppmätt peak ≥ **820 UPS**
   på riktiga mvdsv-servern, bästa körning över ≥30; hela fördelningen rapporteras.
   Tolkning loggad: bästa-körning-peak (medianpeak ≥820 vore fysiskt odefinierat mot
