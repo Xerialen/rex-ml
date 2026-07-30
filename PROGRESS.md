@@ -4859,3 +4859,10 @@ Daemonen växlar till steg 4 när rullande medel ≥500.
   punkt, redovisad, inte ursäktad.
 HELA BEVISKEDJAN FUNGERAR: träna → exportera → paritet → sluten loop på riktig server →
 MVD. Kandidatprotokollet är nu tryckknapp när träningen når 750-signalen.
+
+## 2026-07-30 19:24 — Bevissidan uppdaterad: interventionsberättelsen + bryggan synlig
+Republicerad (samma URL): 159 269 episoder, kurvan visar nu dipp→återhämtning→platåbrott
+med gul interventionsmarkering (19:01); senaste p50 493, max 503. Fundamentet fick två
+bryggrader: obs-paritet 0.0 (bitidentisk) och sluten loop 77,3 Hz live (2319 ticks,
+0 fel). Chip-räknaren fixad (interventionsmarkeringen räknades felaktigt som steg).
+p50 493 ⇒ steg 4-växlingen väntas inom minuter (daemonens rullande medel ≥500).
