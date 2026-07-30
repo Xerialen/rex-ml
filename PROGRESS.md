@@ -4866,3 +4866,11 @@ med gul interventionsmarkering (19:01); senaste p50 493, max 503. Fundamentet fi
 bryggrader: obs-paritet 0.0 (bitidentisk) och sluten loop 77,3 Hz live (2319 ticks,
 0 fel). Chip-räknaren fixad (interventionsmarkeringen räknades felaktigt som steg).
 p50 493 ⇒ steg 4-växlingen väntas inom minuter (daemonens rullande medel ≥500).
+
+## 2026-07-30 19:26 — STEG 4 NÅTT (sista steget före kandidatsignalen)
+Daemonen växlade 19:22:32: rullande medel-peak 500.6 (161 120 episoder totalt i steget),
+kollisionsförlust 0.0. Steg 4 = half-beat-slipning med väggstraff aktivt; utgången är
+KANDIDAT-PRÖVNINGEN vid samplat medel 750 (+koll≤150) ⇒ 30-körnings greedy-eval ≥800 ⇒
+riktiga-server-protokollet (bryggan står redo, paritet 0.0, 77,3 Hz bevisad).
+Facit hittills för interventionen: 420-platå → steg 4 på ~25 min efter std-tak+entropi.
+Curriculumets hela resa: steg 1→4 på ~56 min träningstid (inkl. omstart).
