@@ -4774,3 +4774,14 @@ på "Loading state from checkpoint". Monitorn återarmeras efter bekräftad upps
 Framtida processdöd: använd PID, inte mönster som förekommer i åskådares kommandorader.
 19:20-väckningen står kvar — blir första efter-interventionsavläsningen (~15 min efter
 resume). Framgångsmått: p50 480+ stigande, flips/s 21→2-4, dyaw-std upp från 0.074.
+
+## 2026-07-30 19:06 — Interventionen LIVE; räknarnollning hanterad, stale-checkpoint-fällan röjd
+Omstarten kör (pid-familj 1226xxx, SF_STDDEV_MAX=1.0 + entropi 0.01). VIKTERNA följde
+med (p50 447.5 tre minuter in — omöjligt från noll; originalet behövde ~30 M frames dit)
+men SF:s stegräknare nollades (nya checkpoints numreras från 0; kosmetiskt).
+FÄLLA RÖJD: gamla högnumrerade checkpoints (16217/17411, 66/71 M frames, PRE-intervention)
+låg kvar och hade vunnit varje "senaste"-sortering — framtida resume/eval/export hade
+tyst laddat gamla vikter. Flyttade till checkpoint_p0/pre-intervention/ (inget raderat).
+FPS 41k→17,6k — troligen bryggagentens cargo-byggen på kärnorna; bevakas, åtgärdas ej.
+Monitorn återarmerad (pgrep-säkert mönster). Väntar: nästa nya checkpoint-save
+(bakgrundsvakt), 19:20-avläsningen (först efter-intervention), daemonen kör orörd.
