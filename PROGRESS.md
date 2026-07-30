@@ -4803,3 +4803,11 @@ träningen är effektiv std redan 1.0). std dyaw: 0.074 → 0.089 — VÄNT UPP�
 gången; entropitrycket går nu in i styrdimensionen som avsett. Samplad peak 422 (n=1,
 brusigt). Nya checkpoints (2165/2664/3477) numrerar rent; loader-verktygen träffar rätt.
 Nästa avläsning: 19:20-väckningen (rullande p50) + diag flips/s när kurvan rört sig.
+
+## 2026-07-30 19:14 — Analytikern satt i arbete: teleporter-fartfrågan (Gate 2-bevisdesign)
+dm3-analytikern (ägarens analyst.md som grundlag; körd som general-purpose då agent-
+registret laddas vid sessionsstart) analyserar i bakgrunden: fartprofil före/efter
+tele-genomfart per teleporter, fartverktyg vs ompositionering, och konkret regel för
+hur Gate 2-mätningen på riktiga servern ska behandla tele (sim-tränad policy har aldrig
+sett fungerande tele). Leverans: evidence/tele_speed_analysis.md. Stänger ägarens
+teleporter-flagg med mätningar i stället för antagande.
