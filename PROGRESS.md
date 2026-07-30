@@ -4178,3 +4178,50 @@ evidence/route_graph.json + evidence/route_graph_missing.md (svensk rankad sakna
   — trots träningsloggens 77 %. Måste utredas: human_k-geometrin eller hastighetsfokusen
   (spd 0,647) bröt något. Träningsmått och strict-mått skiljer sig (avkodning + startpunkter).
 - Obyggbar start Vec3(-501,265,155) på sngspawn ing.2 (känd skuld).
+
+### Agent 7 KLAR: ruttgrafen (`evidence/route_graph.json`, `route_graph_missing.md`)
+3 008 058 direkttransiter ur 2 146 demos (19,7 % dödsartefakter bortfiltrerade). 381 kanter
+med >=20 demos: 16 COVERED / 90 PARTIAL / 272 MISSING / 3 TELE. Volym: 23,8 % MISSING.
+Huvudfynd: (1) hela mega_hill/vatten/pent-komplexet saknas i ruttsetet; (2) rundowns
+(FRÅN item) saknas systematiskt — mega_sng→spawn1 32k transiter, ratop→spawn5 32k;
+(3) fyra "identifierade" rutter (ya→rl/ratop/ssg, rl→ratop) existerar INTE som direkta
+kanter — människor kör dem alltid via mellannoder (segmentkedjor); (4) tele = 14,5 % av
+volymen. Topp-saknad: mega_hill→spawn2 38k/1,28 s.
+SAMMA AGENT FORTSÄTTER nu med ägarens nästa beställning: snabbaste VETTADE korpusexempel
+per identifierad rutt + topp-15 saknade kanter → evidence/fastest_refs.json (snabbast rå
+redovisas bredvid). Därefter: atlasuppdatering med ny grupp ur grafen + referenslinjer.
+
+### sngspawn-regressionen utredd (2026-07-30) — `evidence/sngspawn_regression.json`
+Reproducerad med strict_eval:s egen kodväg (n=48/villkor, spawn a/b-start):
+v7 samplad 89,6/89,6 % — v8 samplad 0/0 % — v8 girig 0/0 % (v7 girig: a 0 % [deterministisk
+stall vid (-800,153,19), 18 u/s — bara samplingen räddade v7:s siffra], b 100 %).
+**MEKANISM: GEOMETRIBYTET (human_k=6), inte entropikollaps och inte fartöverskott.**
+Policyn är en linje-överanpassad pure-pursuit-följare: v8 klarar 77-100 % på 4 av de 6
+människobanor den tränades på (medel 76,7 % samplad = träningsloggens 77-80 %) men 0/48 på
+navmeshmiljön som strict alltid bygger; symmetriskt klarar v7 0/48 på människogeometrin.
+Träningsmåttet och strict-måttet mäter alltså olika miljöer (Route.path), samma avkodning.
+På navmeshmiljön kör varje v8-episod de första 2,3 s korrekt (västväggsklättringen till
+z=118) och lämnar sedan linjen på SAMMA ställe — NV-hörnsvängen (x -863..-872, y 630-720,
+t 2,30-2,64 s, 187-360 u/s), faller av rampens innerkant och når aldrig z>=120 igen: 5/8
+mal mot x=-688-väggen på golvet i ~330 u/s (= skrapexplosionen 60-69 % mot bandets 22 %),
+3/8 står stilla vid x=-872 i ~20 u/s. Entropi FRIAD: v8:s diskreta huvuden har HÖGRE
+entropi än v7 (fwd 0,216 mot 0,067; side 0,379 mot 0,181) och v8 faller även girigt.
+Fart FRIAD: v8 är långsammare än v7 på navmiljön (344-350 mot 440-443 u/s median).
+Extra defekt: _REGISTRY_OF pekar båda sngspawn-rutterna på 'sngspawn-to-mega' vars alla
+24 banor startar vid spawn a — v8 tränade aldrig en enda episod från spawn b.
+**race_v9-fix:** blandad geometri per rutt (människobanor + navmeshmiljön i samma
+Roller-batch), b-banor filtrerade på startpunkt (eller navmesh-fallback för b), samt en
+periodisk strict-liknande navmesh-probe under träningen så kurvorna inte kan divergera
+osett. INTE entropigolv, INTE lägre fartvikt. Ingen träning startad.
+
+### Agent 7 forts. KLAR: snabbaste referenser (`evidence/fastest_refs.json`) + ATLAS v3
+32 par, ALLA med vettad överlevare (samma vet som pipeline; snabbast RÅ redovisas bredvid —
+ärlighet: ralow→ratop rå 0,25 s är RJ, vettad 3,52 s; pent→spawn6 315/316 snabbaste är RJ).
+OBS boxtider (±64/±80-box till box), EJ jämförbara 1:1 med kohort-gates.
+Nyckelfynd: ya→rl/ya→ratop — de 300 snabbaste använder ALLA teleportern; movement-only
+3,70/11,53 s mot rå 0,56/5,87 s. Människornas rutt DÄR ÄR telen.
+ATLAS ompublicerad (samma URL, "ruttgraf-och-referenser"): ny lila grupp "Korpusgrafen:
+otäckta toppkanter · 15" med guldlinje = snabbaste vettade korpusexemplet; referens-guldlinjer
+även på alla mappbara befintliga rutter (17 par → rutt-id). 36 rutter i listan totalt.
+Validerad headless: inga JS-fel, 36 rutter, 5 grupper; skärmdumpar lästa (graf-kant +
+window med guld mot grönt). Textbugg "streckad linje" på ref-rutter fixad före publicering.

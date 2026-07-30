@@ -1,0 +1,1228 @@
+{
+ "date": "2026-07-30",
+ "question": "Why did sngspawn_a/b_to_mega fall 89.6/91.7 % (race_v7) -> 0.0 % (race_v8) in the strict protocol while race_v8's own training log reports ~77-80 % on the same routes?",
+ "protocol": "pipeline/strict_eval.py:run and pipeline/record_strict.py:record_approach reused unmodified; n=48 per condition; sampled = categorical sampling as in the strict protocol, greedy = argmax; starts = route starts (spawn a (-880,-232,-16), spawn b (-632,-680,-16)); target mega_sng (-720,80,160)+24dz; TICK_DT=1/77.",
+ "ckpt_meta": {
+  "v7": {
+   "iteration": 3000,
+   "human_k": 0,
+   "geometry": [
+    "navmesh",
+    "navmesh",
+    "navmesh"
+   ]
+  },
+  "v8": {
+   "iteration": 2500,
+   "human_k": 6,
+   "geometry": [
+    "human:6796@2.069",
+    "human:56762@2.174",
+    "human:22269@2.178"
+   ]
+  }
+ },
+ "reproduction_navmesh_env": {
+  "sngspawn_a_to_mega|v7|sampled": {
+   "arrival_rate": 0.8958333333333334,
+   "median_s": 5.935064935064935,
+   "median_ci95": [
+    5.922,
+    6.299
+   ],
+   "p90_s": 6.350649350649351,
+   "worst_s": 6.38961038961039,
+   "scrape_median": 0.1067,
+   "scrape_p95": 0.1443,
+   "envelope_median_u": 32.7,
+   "envelope_p95_u": 126.6,
+   "median_speed_ups": 439.7,
+   "frac_airborne": 0.659,
+   "frac_above_320": 0.788,
+   "outcomes": {
+    "arrived": 43,
+    "timeout": 5
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "sngspawn_a_to_mega|v7|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.0867,
+   "scrape_p95": 0.111,
+   "envelope_median_u": 116.5,
+   "envelope_p95_u": 116.5,
+   "median_speed_ups": 17.3,
+   "frac_airborne": 0.873,
+   "frac_above_320": 0.27,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  },
+  "sngspawn_a_to_mega|v8|sampled": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.7067,
+   "scrape_p95": 0.7643,
+   "envelope_median_u": 230.9,
+   "envelope_p95_u": 231.5,
+   "median_speed_ups": 344.1,
+   "frac_airborne": 0.284,
+   "frac_above_320": 0.559,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "sngspawn_a_to_mega|v8|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.22,
+   "scrape_p95": 0.2643,
+   "envelope_median_u": 235.5,
+   "envelope_p95_u": 235.5,
+   "median_speed_ups": 26.8,
+   "frac_airborne": 0.62,
+   "frac_above_320": 0.318,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  },
+  "sngspawn_b_to_mega|v7|sampled": {
+   "arrival_rate": 0.8958333333333334,
+   "median_s": 7.4025974025974035,
+   "median_ci95": [
+    7.39,
+    7.429
+   ],
+   "p90_s": 7.825974025974027,
+   "worst_s": 7.857142857142858,
+   "scrape_median": 0.12,
+   "scrape_p95": 0.1733,
+   "envelope_median_u": 50.1,
+   "envelope_p95_u": 116.0,
+   "median_speed_ups": 443.1,
+   "frac_airborne": 0.623,
+   "frac_above_320": 0.834,
+   "outcomes": {
+    "arrived": 43,
+    "timeout": 5
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "sngspawn_b_to_mega|v7|greedy": {
+   "arrival_rate": 1.0,
+   "median_s": 7.38961038961039,
+   "median_ci95": [
+    7.39,
+    7.39
+   ],
+   "p90_s": 7.38961038961039,
+   "worst_s": 7.38961038961039,
+   "scrape_median": 0.1267,
+   "scrape_p95": 0.16,
+   "envelope_median_u": 51.5,
+   "envelope_p95_u": 51.5,
+   "median_speed_ups": 455.8,
+   "frac_airborne": 0.582,
+   "frac_above_320": 0.947,
+   "outcomes": {
+    "arrived": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  },
+  "sngspawn_b_to_mega|v8|sampled": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.63,
+   "scrape_p95": 0.6887,
+   "envelope_median_u": 230.8,
+   "envelope_p95_u": 231.1,
+   "median_speed_ups": 350.5,
+   "frac_airborne": 0.242,
+   "frac_above_320": 0.586,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "sngspawn_b_to_mega|v8|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.3133,
+   "scrape_p95": 0.3667,
+   "envelope_median_u": 236.1,
+   "envelope_p95_u": 236.1,
+   "median_speed_ups": 29.4,
+   "frac_airborne": 0.547,
+   "frac_above_320": 0.315,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  }
+ },
+ "cross_geometry_human_tracks": {
+  "track0:54935|v7|sampled": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.3433,
+   "scrape_p95": 0.752,
+   "envelope_median_u": 178.1,
+   "envelope_p95_u": 196.5,
+   "median_speed_ups": 264.6,
+   "frac_airborne": 0.427,
+   "frac_above_320": 0.409,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track0:54935|v7|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "median_ci95": [
+    null,
+    null
+   ],
+   "p90_s": null,
+   "worst_s": null,
+   "scrape_median": 0.46,
+   "scrape_p95": 0.5243,
+   "envelope_median_u": 189.2,
+   "envelope_p95_u": 189.2,
+   "median_speed_ups": 320.3,
+   "frac_airborne": 0.238,
+   "frac_above_320": 0.505,
+   "outcomes": {
+    "timeout": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  },
+  "track0:54935|v8|sampled": {
+   "arrival_rate": 0.9375,
+   "median_s": 6.12987012987013,
+   "median_ci95": [
+    6.117,
+    6.13
+   ],
+   "p90_s": 6.1818181818181825,
+   "worst_s": 7.142857142857143,
+   "scrape_median": 0.04,
+   "scrape_p95": 0.249,
+   "envelope_median_u": 21.9,
+   "envelope_p95_u": 157.6,
+   "median_speed_ups": 426.9,
+   "frac_airborne": 0.506,
+   "frac_above_320": 0.93,
+   "outcomes": {
+    "arrived": 45,
+    "timeout": 3
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track0:54935|v8|greedy": {
+   "arrival_rate": 1.0,
+   "median_s": 6.116883116883117,
+   "median_ci95": [
+    6.117,
+    6.117
+   ],
+   "p90_s": 6.116883116883117,
+   "worst_s": 6.116883116883117,
+   "scrape_median": 0.04,
+   "scrape_p95": 0.0643,
+   "envelope_median_u": 21.7,
+   "envelope_p95_u": 21.7,
+   "median_speed_ups": 433.4,
+   "frac_airborne": 0.49,
+   "frac_above_320": 0.979,
+   "outcomes": {
+    "arrived": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 1
+  },
+  "track1:11862|v8|sampled": {
+   "arrival_rate": 0.5208333333333334,
+   "median_s": 6.428571428571429,
+   "median_ci95": [
+    6.416,
+    6.468
+   ],
+   "p90_s": 6.566233766233767,
+   "worst_s": 7.038961038961039,
+   "scrape_median": 0.1167,
+   "scrape_p95": 0.3867,
+   "envelope_median_u": 31.9,
+   "envelope_p95_u": 230.9,
+   "median_speed_ups": 380.8,
+   "frac_airborne": 0.565,
+   "frac_above_320": 0.839,
+   "outcomes": {
+    "arrived": 25,
+    "timeout": 23
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track2:45738|v8|sampled": {
+   "arrival_rate": 0.9583333333333334,
+   "median_s": 6.077922077922079,
+   "median_ci95": [
+    6.052,
+    6.091
+   ],
+   "p90_s": 7.194805194805196,
+   "worst_s": 7.363636363636364,
+   "scrape_median": 0.0333,
+   "scrape_p95": 0.0733,
+   "envelope_median_u": 24.9,
+   "envelope_p95_u": 36.9,
+   "median_speed_ups": 423.1,
+   "frac_airborne": 0.517,
+   "frac_above_320": 0.91,
+   "outcomes": {
+    "arrived": 46,
+    "timeout": 2
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track3:2234|v8|sampled": {
+   "arrival_rate": 0.9583333333333334,
+   "median_s": 6.2857142857142865,
+   "median_ci95": [
+    6.26,
+    6.312
+   ],
+   "p90_s": 6.545454545454546,
+   "worst_s": 7.155844155844156,
+   "scrape_median": 0.0333,
+   "scrape_p95": 0.0733,
+   "envelope_median_u": 18.0,
+   "envelope_p95_u": 44.4,
+   "median_speed_ups": 426.1,
+   "frac_airborne": 0.494,
+   "frac_above_320": 0.949,
+   "outcomes": {
+    "arrived": 46,
+    "timeout": 2
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track4:45576|v8|sampled": {
+   "arrival_rate": 0.22916666666666666,
+   "median_s": 8.168831168831169,
+   "median_ci95": [
+    8.091,
+    8.234
+   ],
+   "p90_s": 8.714285714285715,
+   "worst_s": 9.025974025974026,
+   "scrape_median": 0.3767,
+   "scrape_p95": 0.6287,
+   "envelope_median_u": 228.8,
+   "envelope_p95_u": 230.9,
+   "median_speed_ups": 334.6,
+   "frac_airborne": 0.309,
+   "frac_above_320": 0.552,
+   "outcomes": {
+    "arrived": 11,
+    "timeout": 37
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  },
+  "track5:7948|v8|sampled": {
+   "arrival_rate": 1.0,
+   "median_s": 6.25974025974026,
+   "median_ci95": [
+    6.247,
+    6.286
+   ],
+   "p90_s": 6.406493506493507,
+   "worst_s": 6.740259740259741,
+   "scrape_median": 0.04,
+   "scrape_p95": 0.0667,
+   "envelope_median_u": 22.9,
+   "envelope_p95_u": 30.5,
+   "median_speed_ups": 431.6,
+   "frac_airborne": 0.487,
+   "frac_above_320": 0.959,
+   "outcomes": {
+    "arrived": 48
+   },
+   "wall_contact_episodes": 48,
+   "effective_n": 48
+  }
+ },
+ "v8_mean_arrival_over_6_human_tracks_sampled": 0.7674,
+ "training_log_sngspa_final": {
+  "arrival_pct": 80,
+  "median_s": 6.4,
+  "note": "race_v8.log it2500; measured on human-path envs, sampled decode, with 35 % of episodes restarting mid-route from recorded human states (restart_prob_final=0.35)"
+ },
+ "nav_path_len_u": 2540.10546875,
+ "human_track_len_u": [
+  2719,
+  2760,
+  2656,
+  2781,
+  2829,
+  2734
+ ],
+ "nav_vs_human_union_u": {
+  "median": 15.9,
+  "p95": 45.0,
+  "max": 55.2,
+  "max_at": [
+   -904.0,
+   224.0,
+   72.0
+  ]
+ },
+ "v8_first_divergence_from_nav_line": [
+  {
+   "tick": 200,
+   "t_s": 2.6,
+   "pos": [
+    -870.7,
+    707.4,
+    61.3
+   ],
+   "speed": 233.4
+  },
+  {
+   "tick": 179,
+   "t_s": 2.32,
+   "pos": [
+    -864.0,
+    638.9,
+    118.0
+   ],
+   "speed": 309.7
+  },
+  {
+   "tick": 177,
+   "t_s": 2.3,
+   "pos": [
+    -863.3,
+    635.0,
+    118.7
+   ],
+   "speed": 359.9
+  },
+  {
+   "tick": 203,
+   "t_s": 2.64,
+   "pos": [
+    -870.9,
+    718.1,
+    57.3
+   ],
+   "speed": 186.6
+  },
+  {
+   "tick": 203,
+   "t_s": 2.64,
+   "pos": [
+    -872.0,
+    716.1,
+    57.3
+   ],
+   "speed": 238.1
+  },
+  {
+   "tick": 177,
+   "t_s": 2.3,
+   "pos": [
+    -862.8,
+    633.4,
+    118.7
+   ],
+   "speed": 338.4
+  },
+  {
+   "tick": 177,
+   "t_s": 2.3,
+   "pos": [
+    -863.3,
+    629.1,
+    118.7
+   ],
+   "speed": 331.1
+  },
+  {
+   "tick": 202,
+   "t_s": 2.62,
+   "pos": [
+    -870.0,
+    711.3,
+    61.3
+   ],
+   "speed": 228.5
+  }
+ ],
+ "trace_summaries": {
+  "v7|sampled": {
+   "arrival_rate": 1.0,
+   "median_s": 5.987,
+   "episodes": [
+    {
+     "arrived": true,
+     "ticks": 486,
+     "end": [
+      -742.6,
+      82.4,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 411.6,
+     "speed_median": 448.6,
+     "speed_max": 570.4,
+     "dev_navmesh_median": 37.2,
+     "dev_navmesh_max": 115.1,
+     "dev_human_median": 17.9,
+     "dev_human_max": 49.0
+    },
+    {
+     "arrived": true,
+     "ticks": 488,
+     "end": [
+      -743.1,
+      85.9,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 410.4,
+     "speed_median": 444.8,
+     "speed_max": 570.5,
+     "dev_navmesh_median": 37.2,
+     "dev_navmesh_max": 115.3,
+     "dev_human_median": 17.4,
+     "dev_human_max": 47.2
+    },
+    {
+     "arrived": true,
+     "ticks": 454,
+     "end": [
+      -739.7,
+      82.8,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 408.8,
+     "speed_median": 453.0,
+     "speed_max": 569.9,
+     "dev_navmesh_median": 37.7,
+     "dev_navmesh_max": 111.3,
+     "dev_human_median": 15.9,
+     "dev_human_max": 51.4
+    },
+    {
+     "arrived": true,
+     "ticks": 457,
+     "end": [
+      -741.3,
+      87.2,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 411.9,
+     "speed_median": 447.4,
+     "speed_max": 565.5,
+     "dev_navmesh_median": 37.1,
+     "dev_navmesh_max": 93.6,
+     "dev_human_median": 13.2,
+     "dev_human_max": 51.2
+    },
+    {
+     "arrived": true,
+     "ticks": 464,
+     "end": [
+      -739.8,
+      77.9,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 412.4,
+     "speed_median": 445.8,
+     "speed_max": 545.6,
+     "dev_navmesh_median": 36.8,
+     "dev_navmesh_max": 97.3,
+     "dev_human_median": 14.9,
+     "dev_human_max": 48.4
+    },
+    {
+     "arrived": true,
+     "ticks": 458,
+     "end": [
+      -738.4,
+      83.9,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 407.9,
+     "speed_median": 447.4,
+     "speed_max": 561.4,
+     "dev_navmesh_median": 36.1,
+     "dev_navmesh_max": 99.4,
+     "dev_human_median": 11.5,
+     "dev_human_max": 49.2
+    },
+    {
+     "arrived": true,
+     "ticks": 486,
+     "end": [
+      -743.1,
+      86.0,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 410.2,
+     "speed_median": 442.5,
+     "speed_max": 568.9,
+     "dev_navmesh_median": 38.1,
+     "dev_navmesh_max": 111.7,
+     "dev_human_median": 17.5,
+     "dev_human_max": 48.8
+    },
+    {
+     "arrived": true,
+     "ticks": 455,
+     "end": [
+      -743.4,
+      84.7,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 408.8,
+     "speed_median": 452.5,
+     "speed_max": 548.4,
+     "dev_navmesh_median": 37.4,
+     "dev_navmesh_max": 99.2,
+     "dev_human_median": 13.2,
+     "dev_human_max": 49.8
+    }
+   ]
+  },
+  "v7|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "episodes": [
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -800.0,
+      153.3,
+      18.9
+     ],
+     "end_speed_mean_last_1s": 10.4,
+     "speed_median": 17.7,
+     "speed_max": 574.3,
+     "dev_navmesh_median": 104.5,
+     "dev_navmesh_max": 114.6,
+     "dev_human_median": 134.8,
+     "dev_human_max": 139.3
+    }
+   ]
+  },
+  "v8|sampled": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "episodes": [
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -688.0,
+      214.6,
+      -16.0
+     ],
+     "end_speed_mean_last_1s": 308.2,
+     "speed_median": 365.9,
+     "speed_max": 448.2,
+     "dev_navmesh_median": 194.9,
+     "dev_navmesh_max": 228.4,
+     "dev_human_median": 193.8,
+     "dev_human_max": 249.8
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      637.1,
+      11.6
+     ],
+     "end_speed_mean_last_1s": 16.9,
+     "speed_median": 24.0,
+     "speed_max": 457.3,
+     "dev_navmesh_median": 117.0,
+     "dev_navmesh_max": 149.5,
+     "dev_human_median": 117.6,
+     "dev_human_max": 179.0
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      681.4,
+      9.5
+     ],
+     "end_speed_mean_last_1s": 16.8,
+     "speed_median": 23.3,
+     "speed_max": 443.8,
+     "dev_navmesh_median": 109.7,
+     "dev_navmesh_max": 152.5,
+     "dev_human_median": 117.8,
+     "dev_human_max": 177.4
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -688.0,
+      260.4,
+      -16.0
+     ],
+     "end_speed_mean_last_1s": 304.2,
+     "speed_median": 365.0,
+     "speed_max": 452.7,
+     "dev_navmesh_median": 195.5,
+     "dev_navmesh_max": 228.4,
+     "dev_human_median": 194.1,
+     "dev_human_max": 249.9
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -688.0,
+      293.2,
+      -16.0
+     ],
+     "end_speed_mean_last_1s": 304.8,
+     "speed_median": 365.6,
+     "speed_max": 447.7,
+     "dev_navmesh_median": 195.1,
+     "dev_navmesh_max": 228.3,
+     "dev_human_median": 193.8,
+     "dev_human_max": 249.8
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -688.0,
+      306.3,
+      -16.0
+     ],
+     "end_speed_mean_last_1s": 321.2,
+     "speed_median": 365.1,
+     "speed_max": 445.0,
+     "dev_navmesh_median": 195.3,
+     "dev_navmesh_max": 228.4,
+     "dev_human_median": 194.1,
+     "dev_human_max": 249.4
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -688.0,
+      335.0,
+      -16.0
+     ],
+     "end_speed_mean_last_1s": 332.1,
+     "speed_median": 367.4,
+     "speed_max": 450.1,
+     "dev_navmesh_median": 195.4,
+     "dev_navmesh_max": 228.4,
+     "dev_human_median": 194.0,
+     "dev_human_max": 249.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      672.7,
+      4.7
+     ],
+     "end_speed_mean_last_1s": 18.8,
+     "speed_median": 23.1,
+     "speed_max": 437.7,
+     "dev_navmesh_median": 109.7,
+     "dev_navmesh_max": 150.0,
+     "dev_human_median": 117.7,
+     "dev_human_max": 179.4
+    }
+   ]
+  },
+  "v8|greedy": {
+   "arrival_rate": 0.0,
+   "median_s": null,
+   "episodes": [
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    },
+    {
+     "arrived": false,
+     "ticks": 1435,
+     "end": [
+      -872.0,
+      575.0,
+      27.4
+     ],
+     "end_speed_mean_last_1s": 13.3,
+     "speed_median": 24.3,
+     "speed_max": 443.3,
+     "dev_navmesh_median": 117.5,
+     "dev_navmesh_max": 224.6,
+     "dev_human_median": 114.5,
+     "dev_human_max": 240.6
+    }
+   ]
+  },
+  "v8|sampled|humantrack0": {
+   "arrival_rate": 1.0,
+   "median_s": 6.123,
+   "episodes": [
+    {
+     "arrived": true,
+     "ticks": 472,
+     "end": [
+      -764.7,
+      87.6,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 443.2,
+     "speed_median": 432.0,
+     "speed_max": 520.8,
+     "dev_navmesh_median": 28.0,
+     "dev_navmesh_max": 102.7,
+     "dev_human_median": 8.6,
+     "dev_human_max": 32.8
+    },
+    {
+     "arrived": true,
+     "ticks": 471,
+     "end": [
+      -764.9,
+      81.0,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 451.5,
+     "speed_median": 433.3,
+     "speed_max": 522.1,
+     "dev_navmesh_median": 27.2,
+     "dev_navmesh_max": 106.6,
+     "dev_human_median": 10.4,
+     "dev_human_max": 36.6
+    },
+    {
+     "arrived": true,
+     "ticks": 480,
+     "end": [
+      -767.9,
+      87.6,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 445.5,
+     "speed_median": 430.6,
+     "speed_max": 525.0,
+     "dev_navmesh_median": 27.4,
+     "dev_navmesh_max": 97.9,
+     "dev_human_median": 8.9,
+     "dev_human_max": 35.9
+    },
+    {
+     "arrived": true,
+     "ticks": 473,
+     "end": [
+      -764.3,
+      89.0,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 442.6,
+     "speed_median": 434.0,
+     "speed_max": 520.4,
+     "dev_navmesh_median": 27.9,
+     "dev_navmesh_max": 104.1,
+     "dev_human_median": 9.3,
+     "dev_human_max": 32.9
+    },
+    {
+     "arrived": true,
+     "ticks": 476,
+     "end": [
+      -764.4,
+      85.5,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 444.2,
+     "speed_median": 432.5,
+     "speed_max": 520.3,
+     "dev_navmesh_median": 28.5,
+     "dev_navmesh_max": 108.0,
+     "dev_human_median": 10.0,
+     "dev_human_max": 33.1
+    },
+    {
+     "arrived": true,
+     "ticks": 471,
+     "end": [
+      -764.7,
+      85.5,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 450.6,
+     "speed_median": 431.7,
+     "speed_max": 520.5,
+     "dev_navmesh_median": 26.6,
+     "dev_navmesh_max": 108.6,
+     "dev_human_median": 9.2,
+     "dev_human_max": 35.7
+    },
+    {
+     "arrived": true,
+     "ticks": 471,
+     "end": [
+      -766.6,
+      84.9,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 449.0,
+     "speed_median": 435.4,
+     "speed_max": 521.8,
+     "dev_navmesh_median": 28.1,
+     "dev_navmesh_max": 107.0,
+     "dev_human_median": 7.9,
+     "dev_human_max": 36.3
+    },
+    {
+     "arrived": true,
+     "ticks": 470,
+     "end": [
+      -767.3,
+      83.5,
+      184.0
+     ],
+     "end_speed_mean_last_1s": 447.0,
+     "speed_median": 434.8,
+     "speed_max": 519.9,
+     "dev_navmesh_median": 26.9,
+     "dev_navmesh_max": 106.5,
+     "dev_human_median": 9.3,
+     "dev_human_max": 37.5
+    }
+   ]
+  }
+ },
+ "entropy_probe_discrete_heads": {
+  "v7": {
+   "entropy_fwd": 0.0667,
+   "entropy_side": 0.1808,
+   "p_jump_mean": 0.251
+  },
+  "v8": {
+   "entropy_fwd": 0.2164,
+   "entropy_side": 0.3789,
+   "p_jump_mean": 0.0966
+  }
+ },
+ "timeout_clusters_v8_sampled_navmesh": [
+  {
+   "where": "east wall x=-688, y 214-335, z=-16 (lower floor below the mega platform)",
+   "episodes": "5/8",
+   "speed_at_timeout_ups": "304-332",
+   "note": "circles the lower room grinding the x=-688 wall at speed -> the 60-70 % scrape"
+  },
+  {
+   "where": "north-west wall x=-872, y 575-681, z 5-27",
+   "episodes": "3/8",
+   "speed_at_timeout_ups": "17-19",
+   "note": "stuck nearly still below the ledge it fell off"
+  }
+ ],
+ "verdict": {
+  "mechanism": "GEOMETRY SWITCH (human_k=6), not entropy collapse and not speed overshoot. The policy is a line-overfitted pure-pursuit follower: each checkpoint only completes the route on the exact path geometry its lookahead observations were trained on. race_v8 (trained on 6 human tracks) arrives 77-100 % on 4 of those 6 tracks (mean 76.7 %, matching its training log's 77-80 %) but 0/48 on the navmesh env the strict protocol builds; symmetrically race_v7 (trained on the navmesh plan) arrives 89.6 % there but 0/48 on human track geometry. On the navmesh env every v8 episode executes the first 2.3 s (west-wall climb to z=118) then leaves the line at the same NW corner turn (x -863..-872, y 630-720, t 2.30-2.64 s, 187-360 ups), falls off the ramp's inner edge and never regains z>=120: 5/8 grind the x=-688 wall on the lower floor at ~330 ups (explains scrape 60-69 % vs corpus band 22 %), 3/8 sit stuck at x=-872 at ~20 ups.",
+  "entropy_collapse_rejected": "v8's discrete-head entropies are HIGHER than v7's (fwd 0.216 vs 0.067, side 0.379 vs 0.181 nats on each policy's own visited states); the log's ent -0.93 vs v7's -1.10 is dominated by the yaw log_std; and v8 fails greedy too (0/48), so the decode rule is not the mechanism. Separate pre-existing fragility found: v7 GREEDY from spawn a is a deterministic stall at (-800,153,19) at 18 ups, 0/48 - only sampling saved v7's 89.6 %.",
+  "speed_overshoot_rejected": "v8 is SLOWER than v7 on the nav env (median moving speed 344-350 vs 440-443 ups); the scrape explosion is wall-grinding while off-route, not higher speed on the line.",
+  "training_vs_strict_discrepancy": "Both numbers are true of different environments: race.py's logged arrival % is measured on the human-path envs (plus 35 % mid-route human-state restarts); strict_eval always constructs the navmesh env. Same decode (sampled), different Route.path geometry.",
+  "sngspawn_b_extra_defect": "_REGISTRY_OF maps both sngspawn_a_to_mega and sngspawn_b_to_mega to registry 'sngspawn-to-mega', whose 24 tracks ALL start at spawn a (-880,-232,-16). race_v8 therefore never trained a single episode from spawn b; its training-log 'sngspa b 80 %' was measured on spawn-a geometry."
+ },
+ "race_v9_fix": [
+  "1. Mixed geometry per route: keep the human_k tracks AND the navmesh env in the same Roller batch (e.g. 6 human envs + 1 navmesh env per route), so the eval geometry is in-distribution and the policy must become path-general instead of line-overfitted.",
+  "2. Fix _REGISTRY_OF / human_paths_for so sngspawn_b_to_mega gets tracks that start at spawn b (filter registry tracks by start point, or fall back to navmesh for b).",
+  "3. Add a periodic strict-style probe during training: every N iters, run sampled episodes on the NAVMESH env from the route start and log that arrival rate next to the rollout number - the two curves diverging is exactly the signal that was missed here.",
+  "4. Not recommended: entropy floor (entropy did not collapse) or lower speed weight (v8 is already slower than v7)."
+ ]
+}

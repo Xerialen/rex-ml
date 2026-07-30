@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -167,17 +168,40 @@ _REGISTRY_OF = {
 }
 
 
+# A human track whose first point is further than this from `Route.start` is another spawn's line,
+# not a run of this route. Measured 2026-07-30 (`evidence/sngspawn_regression.json`): the
+# `sngspawn-to-mega` registry's 24 tracks ALL start at spawn a (-880,-232,-16), 512 u from spawn b
+# (-632,-680,-16), so race_v8 never trained a single sngspawn_b episode from spawn b while its log
+# reported "sngspa b 80 %" — measured on spawn-a geometry. 96 u is ~4x the arrive box and well under
+# any two spawn points' separation.
+START_TOL_U = 96.0
+_WARNED_WRONG_START: set[str] = set()
+
+
 def human_paths_for(route: C.CohortRoute, k: int) -> list[dict]:
     """Up to `k` human runs of this route, fastest first, from `human_paths.py`'s extraction.
 
     Empty if the route has no usable human geometry — `sngspawn_*_to_quad` is the case, where every
     candidate run contains a position jump larger than any player movement, i.e. the teleporter.
+    Tracks that do not start at this route's own start (within `START_TOL_U`) are dropped: a
+    registry may pool several spawn points, and a wrong-spawn line trains a different route while
+    reporting this one's name.
     """
     reg = _REGISTRY_OF.get(route.name)
     f = PATHS_DIR / f"{reg}.json" if reg else None
     if not f or not f.exists():
         return []
-    return json.loads(f.read_text()).get("paths", [])[:k]
+    paths = json.loads(f.read_text()).get("paths", [])
+    ok = [p for p in paths if math.dist(p["path"][0], route.start) <= START_TOL_U]
+    if len(ok) < len(paths) and route.name not in _WARNED_WRONG_START:
+        _WARNED_WRONG_START.add(route.name)
+        bad = next(p for p in paths if math.dist(p["path"][0], route.start) > START_TOL_U)
+        print(f"human_paths_for({route.name}): dropped {len(paths) - len(ok)}/{len(paths)} tracks "
+              f"starting >{START_TOL_U:.0f} u from route start {route.start} "
+              f"(e.g. track[0]={bad['path'][0]})"
+              + ("" if ok else " — no spawn-correct tracks, falling back to navmesh geometry"),
+              flush=True)
+    return ok[:k]
 
 
 class Roller:
@@ -188,9 +212,15 @@ class Roller:
 
       * `human_k == 0` — one environment per route, running the **navmesh's** planned path.
       * `human_k > 0`  — `human_k` environments per route, each running a different **human** run's
-        recorded track, with `n_per_route` split between them. Several tracks rather than one so the
-        policy learns the route rather than one player's particular line through it, and because a
-        single track's start state is one sample of where the binding fired.
+        recorded track, **plus one environment running the navmesh's planned path**, with
+        `n_per_route` split between them. Several tracks rather than one so the policy learns the
+        route rather than one player's particular line through it, and because a single track's
+        start state is one sample of where the binding fired. The navmesh env rides in the same
+        batch because it is the geometry every strict evaluation builds: race_v8, trained on human
+        lines alone, logged 77-80 % arrival while scoring 0/48 on the navmesh env — a line-
+        overfitted follower, not a route policy (`evidence/sngspawn_regression.json`). Exception:
+        routes in `_teleport_dependent()` get no navmesh env here either — their mesh path needs a
+        teleporter the mesh does not model, exactly as in navmesh-only mode.
 
     In human-geometry mode a route with no usable human track falls back to its navmesh path rather
     than vanishing from the batch — a route that silently left the training set would read, in the
@@ -212,7 +242,8 @@ class Roller:
         for ri, r in enumerate(routes):
             tracks = human_paths_for(r, human_k) if human_k else []
             if tracks:
-                per = max(1, n_per_route // len(tracks))
+                add_nav = r.name not in _teleport_dependent()
+                per = max(1, n_per_route // (len(tracks) + (1 if add_nav else 0)))
                 for tr in tracks:
                     self.envs.append(rex_env.PyVecEnv.from_path(
                         MAP, [tuple(p) for p in tr["path"]], per, C.ARRIVE_BOX, r.max_ticks))
@@ -226,23 +257,10 @@ class Roller:
                         self.has_restarts.append(True)
                     else:
                         self.has_restarts.append(False)
+                if add_nav:
+                    self._add_navmesh_env(rex_env, r, ri, per, sizes)
             else:
-                self.envs.append(rex_env.PyVecEnv(MAP, r.start, r.target, n_per_route,
-                                                  C.ARRIVE_BOX, r.max_ticks))
-                self.routes.append(r)
-                self.route_of_env.append(ri)
-                self.geometry.append("navmesh")
-                sizes.append(n_per_route)
-                # A navmesh route has no recorded states of its own, but the human runs of the same
-                # route were run through the same rooms — their states are still in-distribution
-                # places to restart, even though the path being followed is the mesh's.
-                pooled = np.asarray([st for t in human_paths_for(r, 24)
-                                     for st in (t.get("restart_states") or [])], dtype=np.float32)
-                if pooled.size:
-                    self.envs[-1].set_restarts(pooled, 0.0, 0.92)
-                    self.has_restarts.append(True)
-                else:
-                    self.has_restarts.append(False)
+                self._add_navmesh_env(rex_env, r, ri, n_per_route, sizes)
 
         self.base_routes = routes
         self.n_per_env = sizes
@@ -263,6 +281,24 @@ class Roller:
         # route whether that route is running one navmesh path or eight human tracks.
         self.done_times = [[] for _ in routes]     # arrival times, seconds
         self.done_outcomes = [[] for _ in routes]  # 'arrived' | 'timeout' | 'void'
+
+    def _add_navmesh_env(self, rex_env, r: C.CohortRoute, ri: int, n: int, sizes: list[int]):
+        self.envs.append(rex_env.PyVecEnv(MAP, r.start, r.target, n, C.ARRIVE_BOX, r.max_ticks))
+        self.routes.append(r)
+        self.route_of_env.append(ri)
+        self.geometry.append("navmesh")
+        sizes.append(n)
+        # A navmesh env has no recorded states of its own, but the human runs of the same route
+        # were run through the same rooms — their states are still in-distribution places to
+        # restart, even though the path being followed is the mesh's. (`human_paths_for` filters
+        # by start point, so a route with only wrong-spawn tracks pools nothing here.)
+        pooled = np.asarray([st for t in human_paths_for(r, 24)
+                             for st in (t.get("restart_states") or [])], dtype=np.float32)
+        if pooled.size:
+            self.envs[-1].set_restarts(pooled, 0.0, 0.92)
+            self.has_restarts.append(True)
+        else:
+            self.has_restarts.append(False)
 
     def step(self, ac, sample: bool = True):
         torch = self.torch
@@ -325,6 +361,65 @@ class Roller:
         return rows
 
 
+PROBE_EVERY = 100   # iterations between in-training strict probes; also runs at it == 1
+
+
+class StrictProbe:
+    """A miniature of the strict protocol, run during training: sampled episodes on the NAVMESH
+    env from each route's TRUE start, decoded exactly as `strict_eval.run` decodes — categorical
+    forward/side, yaw mean (not a Normal sample), Bernoulli jump from the raw logit (no jump
+    floor) — and with no restart states, so every episode begins where every evaluation begins.
+
+    Exists because race_v8's training log reported 77-80 % arrival for its whole run while the
+    strict protocol scored it 0/48: the two numbers were measured on different `Route.path`
+    geometries, and nothing in the log could show it (`evidence/sngspawn_regression.json`,
+    `training_vs_strict_discrepancy`). This puts the strict-geometry number in the same log, so the
+    rollout curve and the probe curve diverging IS the line-overfit signal, at iteration N instead
+    of after 2500. Teleport-dependent routes are excluded — their navmesh path is not runnable, so
+    a probe on it measures the mesh's defect, not the policy."""
+
+    def __init__(self, routes: list[C.CohortRoute], n: int, dev: str):
+        import rex_env
+        self.torch, _ = _torch()
+        self.dev = dev
+        self.n = n
+        self.routes = [r for r in routes if r.name not in _teleport_dependent()]
+        self.envs = [rex_env.PyVecEnv(MAP, r.start, r.target, n, C.ARRIVE_BOX, r.max_ticks)
+                     for r in self.routes]
+
+    def run(self, ac) -> list[dict]:
+        torch = self.torch
+        rows = []
+        for r, env in zip(self.routes, self.envs):
+            obs = env.reset()
+            done = np.zeros(self.n, dtype=bool)
+            ticks = np.zeros(self.n, dtype=np.int64)
+            arrive_s: list[float] = []
+            for _ in range(r.max_ticks + 2):
+                t = obs_to_state(obs, torch, self.dev)
+                with torch.no_grad():
+                    fl, sl, yaw, jl = ac.actor(t)
+                    f = torch.distributions.Categorical(logits=fl).sample()
+                    s = torch.distributions.Categorical(logits=sl).sample()
+                    jz = jl.squeeze(-1)
+                    j = (torch.rand_like(jz) < torch.sigmoid(jz)).float()
+                a = actions_to_env((f, s, yaw.squeeze(-1), j))
+                live = ~done
+                ticks[live] += 1
+                obs, parts, dones = env.step(a)
+                parts = np.asarray(parts)
+                for i in np.flatnonzero(live & np.asarray(dones)):
+                    done[i] = True
+                    if parts[i, 4] > 0:
+                        arrive_s.append(float(ticks[i]) * TICK_DT)
+                if done.all():
+                    break
+            rows.append(dict(name=r.name, n=self.n,
+                             arrival_rate=len(arrive_s) / self.n,
+                             median_s=float(np.median(arrive_s)) if arrive_s else None))
+        return rows
+
+
 def gae(rewards, values, dones, last_value, gamma=GAMMA, lam=LAM):
     return ppo.gae(rewards, values, dones, last_value, gamma=gamma, lam=lam)
 
@@ -354,6 +449,9 @@ def train(iterations: int, n_per_route: int, T: int, epochs: int, minibatches: i
     opt_critic = torch.optim.Adam(list(ac.critic.parameters()), lr=lr)
 
     roller = Roller(routes, n_per_route, dev, human_k=human_k)
+    # The strict-geometry arrival % is logged next to the rollout arrival % every PROBE_EVERY
+    # iterations (and at it 1, as the resumed checkpoint's baseline) — see StrictProbe.
+    probe = StrictProbe(routes, n=16, dev=dev)
 
     # Recalibrate the behaviour-cloned jump head before the first rollout. Measured on this
     # environment's own states, the warm start emits a jump logit of -6.10 — p = 0.002 — against a
@@ -490,6 +588,13 @@ def train(iterations: int, n_per_route: int, T: int, epochs: int, minibatches: i
                                  if restart_curriculum else None),
                      jump_rate=float(np.mean([float(x.float().mean()) for x in buf["jump"]])),
                      s=round(time.time() - t0, 1))
+        if it == 1 or it % PROBE_EVERY == 0:
+            entry["strict_probe"] = probe.run(ac)
+            p_hits = [f"{p['name'].split('_to_')[0][:6]}:{p['arrival_rate'] * 100:3.0f}%/"
+                      f"{('%.2f' % p['median_s']) if p['median_s'] else '  -  '}"
+                      for p in entry["strict_probe"]]
+            print(f"[probe it {it:>5}] strict-navmesh sampled n=16 | " + " ".join(p_hits),
+                  flush=True)
         if it % log_every == 0 or it == 1:
             entry["routes"] = roller.drain_stats()
             hits = [f"{r['name'].split('_to_')[0][:6]}:"
