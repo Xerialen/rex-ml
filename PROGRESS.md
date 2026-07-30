@@ -4633,3 +4633,14 @@ luftaccelerationen redan i steg 1 (384 > 320 kräver den). Snittreward 21.1 och
 stigande, 41 k FPS stabilt. Nästa tröskel: steg 3→4 vid medel-peak 500; slutmål
 steg 4: 800 + koll<150 ⇒ GATE1_KANDIDAT ⇒ bevisprotokoll på riktiga servern.
 Daemonen kör i tmux jobs:0 (ägarens gamla session — flyttas ej, den arbetar).
+
+## 2026-07-30 — Ägarbesked: 800 är GOLV, inte mål + teleporter-medvetenhet
+Ägaren: "Gaten på 800 är bara ett verktyg för att kolla att botten har lärt sig speed.
+Den får absolut röra sig snabbare." — inga beteendetak; RUNBOOK-klippet vid 850 är
+sista-utväg för värdefunktionsstabilitet, inte ett farttak, och höjs hellre än används.
+Teleportrarna (2 st på dm3): DÖDA i träningssimmen (server-entiteter utanför pmove) —
+policyn kan inte lära sig dem; på RIKTIGA servern kastar de spelaren och kan ge fart-
+artefakter. Bevismätningen ska behandla tele-genomfart som diskontinuitet (som korpus-
+filtren: >250u-hopp räknas inte som förflyttning). Analytikern (dm3-analyst) frågas om
+mänskligt tele-fartutnyttjande OM det blir relevant i bevisfasen. Zonrastret exkluderar
+redan tele-voxlarna ur Gate 2-medlet.
