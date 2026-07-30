@@ -4874,3 +4874,12 @@ KANDIDAT-PRÖVNINGEN vid samplat medel 750 (+koll≤150) ⇒ 30-körnings greedy
 riktiga-server-protokollet (bryggan står redo, paritet 0.0, 77,3 Hz bevisad).
 Facit hittills för interventionen: 420-platå → steg 4 på ~25 min efter std-tak+entropi.
 Curriculumets hela resa: steg 1→4 på ~56 min träningstid (inkl. omstart).
+
+## 2026-07-30 19:28 — Steg 4-diag: mekanismen vrider sig rätt; konsolideringsbehov noterat
+evidence/diag_gate1_v1_steg4.json (greedy): flips 21.0→16.3/s (rätt riktning, ej framme
+vid 2-4), |dyaw|-amplitud 3.6→0.87°/tick, landningsförlust 0.0. MEN greedy-peak kvar på
+459 medan SAMPLAT medel passerat 500 — bruset bär del av farten; greedy vilar nu 8 ticks/
+markkontakt (var 1). Exploateringen okonsoliderad — vanligt PPO-slutspelsläge.
+PLANERAT MOTDRAG (utlöses när samplat medel närmar sig ~700): sänk entropikoefficienten
+tillbaka (0.01→0.003 el. lägre) så vinsterna kristalliseras i greedy — kandidatprövningen
+är greedy ≥800. Loggas här så beslutet är förberett, inte improviserat.

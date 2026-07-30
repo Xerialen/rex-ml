@@ -1,0 +1,19 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate1_v1",
+ "ticks": 760,
+ "peak": 458.99193455260075,
+ "final": 409.2491049089457,
+ "frac_airborne": 0.8039473684210526,
+ "ref_analytic": {
+  "peak": 821.4,
+  "frac_airborne": 0.8
+ },
+ "ground_contacts": 13,
+ "ground_ticks_median": 8.0,
+ "abs_dyaw_air_mean": 0.04335534017389783,
+ "abs_dyaw_air_max": 0.37859219312667847,
+ "halfbeat_sign_flips_per_s": 16.295546558704455,
+ "landing_loss_median_u": 0.0,
+ "landing_loss_max_u": 0.0,
+ "speed_p50_last_2s": 429.4521910670935
+}
