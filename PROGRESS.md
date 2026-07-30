@@ -5078,3 +5078,17 @@ Efter marginalbytets väntade dipp (615) har ratchen passerat gamla toppen: 792,
 807,2. Träning 42k FPS. 19,3 u/s till 820-KRAVET; 820-väckningen armerad (skördarens
 självavslut vid mål). Serverbeviset är verifierat vid 790-nivån (sim2real-gap 2-6 u/s)
 — när skörden når 820 väntas servern följa med.
+
+## 2026-07-30 21:37 — SKÖRD 958,2 — kandidaten SÄKRAD; orbit-beteendet journalfört ärligt
+Skördaren nådde målet och självavslutade: checkpoint 77359 (316,9M frames) greedy-peak
+958,2 (språng från 808,8 — förbi väv-analytikens målbundna 924). Kandidat fryst
+(sha256 12770c495c154f87). DIAGNOS (evidence/diag_gate1_958.json): policyn FULLBORDAR
+INTE korridoren — den KRETSAR i vävutrymmet och ackumulerar obegränsat (1155 ticks =
+tidsgräns, uthålligt ~948 sista 2 s, luftandel 96 %, landningsförlust MEDIAN −0,5 =
+vinner fart på studsarna, 23 markkontakter à 1 tick). Fysikaliskt legitimt (öppen-rums-
+strafe, ingen buggexploit) men VIKTIG DEFINITIONSFRÅGA journalförd: ägarens krav
+"peaken ska vara 820 på 100m" uppfylls; MÅLGÅNG i fart är en annan (hårdare) definition
+— rapporteras transparent, ägaren avgör om kravet ska skärpas till completion-peak.
+SERVERPROTOKOLLET STARTAT: 30 körningar à 15 s (färsk server per körning), bakgrund.
+Träning fortsätter (44k FPS, 330M frames) — 850-submålet kan redan vara internt slaget
+(958 i sim); servern avgör.

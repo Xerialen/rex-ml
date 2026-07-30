@@ -1,0 +1,19 @@
+{
+ "experiment": "pipeline/out/rl/gate1_candidate_snapshot",
+ "ticks": 1155,
+ "peak": 958.1976152375335,
+ "final": 948.7708191357942,
+ "frac_airborne": 0.9584415584415584,
+ "ref_analytic": {
+  "peak": 821.4,
+  "frac_airborne": 0.8
+ },
+ "ground_contacts": 23,
+ "ground_ticks_median": 1.0,
+ "abs_dyaw_air_mean": 0.10228470674210734,
+ "abs_dyaw_air_max": 0.2964093089103699,
+ "halfbeat_sign_flips_per_s": 50.14985014985015,
+ "landing_loss_median_u": -0.5190037348193641,
+ "landing_loss_max_u": 0.0,
+ "speed_p50_last_2s": 947.9756481666091
+}
