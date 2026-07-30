@@ -4507,3 +4507,13 @@ rl/RUNBOOK.md skriven: fas 1-startkommandon (tmux, 32 workers), encoderbeslut (d
 (entropi/lr/reward-klipp ~850), Gate 1-bevisprotokollet (export → rtx-klient → mvdsv-demos
 ≥30 körningar → bevissida → först då rapport). rtx-klientstacken skanad: rtx-client
 (nätkod) + rex-env (usercmd-mönster) är bryggan; detaljdesign när kandidat finns.
+
+## 2026-07-30 — Fas 1-verktyg: eval-harnesset klart (rl/eval_gate1.py)
+Laddar SF-checkpoint (create_actor_critic + Learner.load_checkpoint; obs-rummet måste
+Dict-wrappas som SF gör internt), kör N episoder greedy/samplat med RNN-state, skriver
+peak-median/max/p10 + per-episod-JSON. Två SF-API-hinder lösta: (1) Dict({"obs": Box}),
+(2) TupleActionDistribution.argmax kraschar på blandade kont+diskreta huvuden (2D means
+vs 1D argmax) — greedy tas manuellt per delfördelning (means resp. argmax(log_probs)).
+VERIFIERAT mot smoke-checkpointen (stub): greedy peak 405.0, samplat 489.0/550.1 —
+harnesset kör; siffrorna är stub-fysik och betyder inget om rörelse.
+Detta blir träningssimmens utvärdering; gatebeviset körs alltid på riktiga servern.
