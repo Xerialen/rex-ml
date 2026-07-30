@@ -4496,3 +4496,14 @@ daemon stegbeslutet via stage.json, envarna rapporterar episoder till jsonl. E2e
 med fildrivet läge: 31 744 steg FPS 2459, episodfiler skapas per worker (tomma i smoken —
 episoderna är längre än smokens per-env-stegbudget, väntat).
 KVAR I FAS 0: endast agent B (libqwsim). Sedan: koppla qwsim-backend, verifiera, träna.
+
+## 2026-07-30 — dm3-analyst registrerad (ägarbesked) + fas 1-körbok
+Ägaren: analyst.md (repo-roten, hans commit b9010c2) är en subagent som ÄGER alla frågor
+om mänskligt 4on4-spel på dm3 och använder mvd_analyzer; den jobbar åt mig. Registrerad
+som .claude/agents/dm3-analyst.md (pekar på analyst.md som grundlag); mvd_analyzer
+klonad till ~/mvd_analyzer (Go: mvd-reader/analytics/api/mcp). Sparad i persistent memory.
+rl/RUNBOOK.md skriven: fas 1-startkommandon (tmux, 32 workers), encoderbeslut (default-MLP,
+1D-konv över azimut som uppgradering VID uppmätt stagnation), vaktposter med åtgärder
+(entropi/lr/reward-klipp ~850), Gate 1-bevisprotokollet (export → rtx-klient → mvdsv-demos
+≥30 körningar → bevissida → först då rapport). rtx-klientstacken skanad: rtx-client
+(nätkod) + rex-env (usercmd-mönster) är bryggan; detaljdesign när kandidat finns.
