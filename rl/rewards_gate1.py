@@ -96,7 +96,12 @@ class StageCriteria:
         (300.0, np.inf),   # steg 1 -> 2: springer korridoren stabilt
         (330.0, np.inf),   # steg 2 -> 3: hopprytmen slår motorgränsen ibland
         (500.0, np.inf),   # steg 3 -> 4: circle jump + accel fungerar
-        (800.0, 150.0),    # steg 4 -> KLAR (= Gate 1-kandidat, bevisas på servern)
+        # steg 4 -> KANDIDAT-PRÖVNING: träningsepisoder är SAMPLADE — medel 800
+        # mot taket 821 hade krävt nära-perfekt spel i varje slumpad episod och
+        # kunde aldrig utlösas. 750 samplat medel signalerar prövning; själva
+        # kandidaturen avgörs av 30-körnings GREEDY-eval (median >= 800, qwsim),
+        # och gaten bevisas därefter alltid på riktiga servern.
+        (750.0, 150.0),
     )
 
 

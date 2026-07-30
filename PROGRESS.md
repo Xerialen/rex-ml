@@ -4705,3 +4705,12 @@ nyckeltal (38,4 M frames, 41 k FPS, greedy-eval 448,7), simfundamentet (71 % på
 kvantgolvet, p99 0,495 u, 16,55 M steg/s), hälsa (entropi 3,89→2,11). Tydligt märkt:
 "träningssim — inte gatebevis" + bevisregeln i sidfoten. Uppdateras per milstolpe genom
 republicering av samma scratchpad-fil (samma URL). Byggdata: scratchpad/gate1_curve.json.
+
+## 2026-07-30 — Designfix: kandidat-kriteriet gjort uppnåeligt (750 samplat + greedy-prövning)
+Upptäckt risk: steg 4-utgången krävde SAMPLAT medel-peak ≥800 mot taket 821 — nära-
+perfekt spel i varje slumpad träningsepisod, kunde realistiskt aldrig utlösas trots
+gate-kapabel policy (greedy exploaterar; träningen samplar). FIX: steg 4 signalerar
+KANDIDAT-PRÖVNING vid samplat medel 750 (+koll≤150); kandidaturen avgörs av 30-körnings
+greedy-eval (median ≥800, qwsim, eval_gate1) och gaten bevisas därefter på riktiga
+servern som alltid. Daemonen omstartad med nya trösklar (stateless — bygger om fönstret
+ur färska episoder), verifierad KÖR. 25/25 tester gröna.
