@@ -48,7 +48,9 @@ def test_moving_agent_not_stuck_and_counts_speed():
 
 
 def test_spawn_region_filters():
-    env = QWGate2Core(StubBackend(),
+    b = StubBackend()
+    b.X_WALL = 1e6          # stubbens korridorväggar clampar annars dm3-spawnens x
+    env = QWGate2Core(b,
                       cfg=Gate2Config(spawn_region=((-1000, -400, -50), (-500, 0, 50))),
                       rng=np.random.default_rng(3))
     for _ in range(10):
