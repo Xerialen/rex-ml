@@ -4552,3 +4552,18 @@ bitexact-filen (agentens, 18:14): 1.22 M wire-checkpoints/22 QWD-körningar, pos
 p99-av-p99 0.495 u (wire-nät 1/8 u), pm-vars låsta. VÄNTAR på agentens slutrapport för
 tolkning av clip_fraction 37 % (varav "other" 249 k) innan simmen formellt GODKÄNNS
 per BRIEF §3.1 — därefter startas steg 1-träningen på allvar.
+
+## 2026-07-30 — STEG 1-TRÄNINGEN STARTAR (gate1_v1, provisoriskt simgodkännande)
+Settling-fix i båda miljökärnorna (reset stegar ≤20 no-op-ticks till markkontakt; hopp
+fungerar tick 1). 25/25 tester gröna.
+BESLUT (eget, loggat): träningen startas FÖRE byggagentens slutrapport. Grund: alla
+direktmätta fysikbevis håller (320.0 exakt; vz 259.6 = 270−g·dt exakt; luftaccel 372.6
+skriptat; movevars serverlåsta; bitexact p99-av-p99 0.495 u = wire-nätets kvantiserings-
+nivå, truth själv är 1/8 u-kvantiserad). Klipp-andelens tolkning (37 %, "other" 249 k)
+kvarstår som öppen fråga till agentens rapport — visar den ett fysikfel STARTAS
+TRÄNINGEN OM (billigt nu, dyrt att vänta). Simgodkännandet är PROVISORISKT tills dess.
+JOBB: tmux jobs — experiment gate1_v1, 32 workers × 8 envs, batch 4096, RNN, GPU,
+2e9 steg tak (avbryts när curriculum-daemonen skriver GATE1_KANDIDAT). Daemon i samma
+fönster. Disk: SF sparar 2 checkpoints à ~2 MB — försumbart.
+NÄSTA: övervaka curriculum_log.jsonl + probe-farter; agentens slutrapport → formellt
+simgodkännande eller omstart; vid GATE1_KANDIDAT → bevisprotokollet (RUNBOOK).
