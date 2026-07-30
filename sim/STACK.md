@@ -86,3 +86,9 @@ uppmätt entropifarmning i gate1_v1 — pitch-std 220 medan dyaw-std kollapsade 
 0.074; taket (kör med SF_STDDEV_MAX=1.0) stänger den degenererade kanalen så
 entropibonusen tvingas till styrdimensionen. Ingen cfg-flagga finns; klass-
 attributet initieras vid import i varje spawnad process ⇒ env-var är rätt kanal.
+
+## rex-ml-patch 2: learner.py rad ~281 (återapplicera vid ombygge!)
+`torch.load(..., weights_only=False)` — torch>=2.6-defaulten fällde varje resume till
+tyst "starting from scratch" (numpy-skalärer i SF:s egna checkpoints). Egna filer, trusted.
+sitecustomize-vägen räckte INTE (torch-import vid interpreter-boot når inte learnerns
+process pålitligt).

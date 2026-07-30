@@ -15,9 +15,11 @@ inga waypoints, ingen navmesh, ingen mänsklig-linje-BC i policyn. Rumsperceptio
 (`docs/phase-archive/`) och får inte återupptas.
 
 ## Terminerande mål — missionen är KLAR när BÅDA gates är passerade MED BEVIS
-**Gate 1 — Kinetisk dominans:** median-peak ≥ **800 UPS** på `100m.bsp` över ≥30 körningar,
-uppmätt på RIKTIGA mvdsv-servern (inte träningssimmen). Uppmätt fysiktak: 821,4 UPS —
-gaten är möjlig men kräver nära nog perfekt strafe.
+**Gate 1 — Kinetisk dominans (SKÄRPT av ägaren 2026-07-30 19:35):** uppmätt **peak ≥ 820
+UPS** på `100m.bsp` på RIKTIGA mvdsv-servern (bästa körning över ≥30; hela fördelningen
+rapporteras). Gamla 800-golvet är ersatt. OBS: gamla takmätningen 821,4 var i rex_env
+(dt=1/77) — taket MÅSTE ommätas i bit-exakta qwsim (13 ms) innan gaten kan bedömas;
+ligger det sanna taket under 820 är det en arkitekturinvaliderande mätning (stoppvillkor).
 **Gate 2 — Spatial dominans:** fritt strövande på dm3 från slumpade startpunkter, ≥30
 körningar × 60 s på riktiga servern: medelhastighet > **500 UPS** inom inkluderade zoner
 (`evidence/gate2_zones.json` — evidensbaserat härledda; vatten/hiss/tele exkluderade,

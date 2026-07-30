@@ -4883,3 +4883,23 @@ markkontakt (var 1). Exploateringen okonsoliderad — vanligt PPO-slutspelsläge
 PLANERAT MOTDRAG (utlöses när samplat medel närmar sig ~700): sänk entropikoefficienten
 tillbaka (0.01→0.003 el. lägre) så vinsterna kristalliseras i greedy — kandidatprövningen
 är greedy ≥800. Loggas här så beslutet är förberett, inte improviserat.
+
+## 2026-07-30 19:42 — ÄGARSKÄRPNING: Gate 1 = PEAK 820. Resume-buggen FUNNEN OCH FIXAD.
+ÄGAREN (19:35): "Kravet är att peaken ska vara 820 på 100m.bsp" + "320 är ingenting"
+(korrekt — bryggans smoke bevisade endast sluten loop). CLAUDE.md + BRIEF.md uppdaterade:
+Gate 1 = uppmätt peak ≥820 på riktiga servern, bästa körning av ≥30, hela fördelningen
+rapporteras (tolkning loggad; medianpeak ≥820 vore odefinierat mot taket).
+TAKFRÅGAN ÖPPNAD: 821,4 mättes i GAMLA rex_env (dt=1/77) — AGENT E startad: mäter sanna
+taket i bit-exakta qwsim (msec=13, analytisk optimalstyrning portad från strafe_expert).
+Tak <820 ⇒ arkitekturinvaliderande (stoppvillkor) — rapporteras rakt om så.
+RESUME-BUGGEN (rotorsak till räknarnollningarna): torch>=2.6 weights_only-default fäller
+SF-learnerns torch.load på numpy-skalärer ⇒ TYST "starting from scratch" vid VARJE omstart.
+KORREKTION AV HISTORIEN: interventionsomstarten 19:01 startade alltså också från noll —
+"vikterna följde med" (19:06-posten) var FEL; klättringen 420→704 var OMLÄRNING från
+scratch under de korrigerade utforskningsinställningarna (std-tak+entropi), vilket i sig
+är ett starkare resultat för interventionen än viktbevarande hade varit.
+FIX: sitecustomize-försök nådde inte learnern (torch-import vid boot sväljs) ⇒ direkt
+patch i venvens learner.py rad 281: weights_only=False (egna checkpoints, trusted;
+dokumenteras i STACK.md). VERIFIERAT: 19:39-relanseringen laddade checkpoint 14674 UTAN
+scratch-fallback, räknaren FORTSÄTTER (68,3M frames). Annealing-läget (entropi 0.003,
+SF_STDDEV_MAX=1.0) är därmed live på 704-nivåpolicyn som avsett.

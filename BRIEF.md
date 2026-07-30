@@ -29,12 +29,17 @@ Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats
 
 ## 2. Gates (terminerande mål)
 
-### Gate 1 — Kinetisk dominans (100m.bsp)
-- **Krav:** median-peak-hastighet ≥ 800 UPS över ≥30 körningar, på riktiga mvdsv-servern.
-- **Uppmätt tak:** 821,4 UPS (analytisk strafe, `evidence/strafe_ceiling_100m.json`,
-  dt=1/77). Marginalen är ~21 UPS ⇒ gaten kräver nära-perfekt half-beat-strafe.
+### Gate 1 — Kinetisk dominans (100m.bsp) — SKÄRPT 2026-07-30 19:35
+- **Krav (ägarens ord):** "peaken ska vara 820 på 100m.bsp" ⇒ uppmätt peak ≥ **820 UPS**
+  på riktiga mvdsv-servern, bästa körning över ≥30; hela fördelningen rapporteras.
+  Tolkning loggad: bästa-körning-peak (medianpeak ≥820 vore fysiskt odefinierat mot
+  taket); ägaren korrigerar om annan tolkning avses.
+- **Takfråga ÖPPEN:** gamla 821,4 (`evidence/strafe_ceiling_100m.json`) mättes i rex_env
+  med dt=1/77. Ommätning i bit-exakta qwsim (msec=13) pågår — ligger sanna taket under
+  820 är gaten omöjlig och det är en arkitekturinvaliderande mätning (stoppvillkor 3).
 - **Bevis:** inspelade demos + hastighetskurvor i bevisartefakten, före rapport.
-- Referens: race_v5 (gamla arkitekturen) nådde 472 UPS på samma korridor.
+- Referens: race_v5 (gamla arkitekturen) nådde 472 UPS; bryggans smoke 327,6 bevisade
+  ENDAST sluten loop (ägaren: "320 är ingenting" — korrekt, fart bevisas av policyn).
 
 ### Gate 2 — Spatial dominans (dm3, ingen navmesh)
 - **Krav:** fritt strövande från slumpade startpunkter/riktningar, ≥30 körningar × 60 s
