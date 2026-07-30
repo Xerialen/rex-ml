@@ -4903,3 +4903,20 @@ patch i venvens learner.py rad 281: weights_only=False (egna checkpoints, truste
 dokumenteras i STACK.md). VERIFIERAT: 19:39-relanseringen laddade checkpoint 14674 UTAN
 scratch-fallback, räknaren FORTSÄTTER (68,3M frames). Annealing-läget (entropi 0.003,
 SF_STDDEV_MAX=1.0) är därmed live på 704-nivåpolicyn som avsett.
+
+## 2026-07-30 19:47 — Analytikerns teleporter-rapport journalförd (kom mitt i kraschhanteringen)
+evidence/tele_speed_analysis.md (dm3-analytikern, 426 M grannskapssampel + BSP-geometri):
+- Servern ERSÄTTER farten med fast 300 u/s-impuls i destinationsvinkelns riktning
+  (wire-facit: exakt 300.0, vz=0). t2-inlopp p50 495 ⇒ förlust ~145-200 u/s per transit.
+- Telarna är i praktiken OANVÄNDA av människor: 2+27 transits i HELA korpusen
+  (7 564 speltimmar) ≈ 1 per ~480 timmar; spelare DÖR vid telarna 50-70× oftare än de
+  använder dem. Zonrapportens "materialiseras stillastående p50=0" var FELFÖRKLARAD
+  (lik/campare, inte transitfart).
+- Farhågan var SPEGELVÄND: tele-utträden ger legitima LÅGfartsampel (300 i zoner med mål
+  500) — bias NEDÅT, aldrig uppåt.
+- ANTAGEN REGEL (Gate 2-protokollet): TELEPORT-EVENT = steg >250 u som landar inom 64 u
+  2D av destination (|z-75|≤32); exkludera [t, t+500 ms] ur fartmedlet; logga antal per
+  körning; flagga/separera körningar med event (sim-policyn kan inte telen — asymmetri
+  bryter kausalattribution; väntat antal ~0). Ingen simändring behövs.
+- SKULD BOKFÖRD: zon 28 "tele-sng-out" i gate2_zones.json felbeskriven — verklig t2-
+  utgång (224,-320,75) ligger 250 u öster om zonens bounds. Rättas vid nästa zonpass.
