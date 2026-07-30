@@ -17,9 +17,10 @@ inga waypoints, ingen navmesh, ingen mänsklig-linje-BC i policyn. Rumsperceptio
 ## Terminerande mål — missionen är KLAR när BÅDA gates är passerade MED BEVIS
 **Gate 1 — Kinetisk dominans (SKÄRPT av ägaren 2026-07-30 19:35):** uppmätt **peak ≥ 820
 UPS** på `100m.bsp` på RIKTIGA mvdsv-servern (bästa körning över ≥30; hela fördelningen
-rapporteras). Gamla 800-golvet är ersatt. OBS: gamla takmätningen 821,4 var i rex_env
-(dt=1/77) — taket MÅSTE ommätas i bit-exakta qwsim (13 ms) innan gaten kan bedömas;
-ligger det sanna taket under 820 är det en arkitekturinvaliderande mätning (stoppvillkor).
+rapporteras). Gamla 800-golvet är ersatt. Tak OMMÄTT i bit-exakta qwsim: analytiskt
+optimum 833,4 @77 Hz (8/8 över 820, evidence/strafe_ceiling_qwsim.json) — kravet nåbart.
+**SUBMÅL (ägaren 20:00): peak 850** — ÖVER kända analytiska taket; spåras separat,
+kräver teknik bortom analytisk styrning (sökning pågår, evidence/ceiling_850_search.*).
 **Gate 2 — Spatial dominans:** fritt strövande på dm3 från slumpade startpunkter, ≥30
 körningar × 60 s på riktiga servern: medelhastighet > **500 UPS** inom inkluderade zoner
 (`evidence/gate2_zones.json` — evidensbaserat härledda; vatten/hiss/tele exkluderade,
