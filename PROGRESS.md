@@ -5137,3 +5137,14 @@ DESIGNVAL: startar i steg D-form direkt (slumpstarter hela kartan, ingen A–C-c
 GATE 2-MÅTT: eval_gate2 (GateScore-formeln, fastnad-räkning) körs periodiskt; gaten
 bevisas på riktiga servern (dm3-serverconfig + PolicyDrive — bryggan är kartagnostisk,
 obs-byggaren tar BSP:n; dm3-validering av Rust-obs-paritet BEHÖVS före serverbevis).
+
+## 2026-07-31 03:55 — Gate 2-baslinje mätt (greedy hjälplös än — väntat); evalfix
+Hjärtslag: reward −24,7 → −5,0 på 396M frames (fastnad-straffen minskar snabbt).
+FÖRSTA FORMEL-EVALEN (greedy, n=10, qwsim/dm3): 10/10 fastnade, score 0.101, OPEN-medel
+50,4, täckning 0,13 % ⇒ gate_passed_sim=false. Väntat mönster (Gate 1-lärdomen: samplat
+med nyhetsbonus leder greedy tidigt; konsolidering kommer senare). Baslinje:
+evidence/eval_gate2_early.json.
+EVALFIX på vägen: load_policy byggde en qwsim-100m-env bara för RUMMEN ⇒ kartvakten
+blockerade gate2-evalens dm3 (en karta/process). Nu stub-env i laddaren (rummen är
+backend-oberoende) + evalerna bygger alltid sin egen riktiga miljö. 25/25 tester gröna.
+NÄSTA: periodiska evaler; vid platå övervägs A–C-curriculum/belöningsjustering (mätdrivet).

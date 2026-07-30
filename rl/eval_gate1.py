@@ -42,7 +42,10 @@ def load_policy(exp_dir: Path, device: str):
                                           np.dtype, np.dtypes.Float64DType])
     raw = json.load(open(exp_dir / "config.json"))
     cfg = AttrDict(raw.get("cfg", raw))
-    env = QWGate1Env("qw_gate1", types.SimpleNamespace(qw_backend=cfg.get("qw_backend", "qwsim")))
+    # STUB här: envn behövs bara för obs/action-RUMMEN (backend-oberoende), och
+    # qwsim tillåter en karta per process — en 100m-laddning här hade blockerat
+    # gate2-evalens dm3. Anroparen bygger sin egen riktiga miljö.
+    env = QWGate1Env("qw_gate1", types.SimpleNamespace(qw_backend="stub"))
     # SF wrappar platta Box-observationer i Dict({"obs": ...}) internt
     obs_space = gym.spaces.Dict({"obs": env.observation_space})
     actor_critic = create_actor_critic(cfg, obs_space, env.action_space)
@@ -102,9 +105,10 @@ def main(argv=None):
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args(argv)
 
-    cfg, env, actor_critic = load_policy(args.exp_dir, args.device)
-    if args.backend:
-        env = QWGate1Env("qw_gate1", types.SimpleNamespace(qw_backend=args.backend))
+    cfg, _spaces_env, actor_critic = load_policy(args.exp_dir, args.device)
+    # load_policy ger en STUB-env (bara rummen) — bygg alltid riktiga miljön här
+    backend = args.backend or cfg.get("qw_backend", "qwsim")
+    env = QWGate1Env("qw_gate1", types.SimpleNamespace(qw_backend=backend))
     res = run_episodes(env, actor_critic, cfg, args.n, args.device, args.sample)
     peaks = np.array([r["peak_speed"] for r in res])
     summary = {
