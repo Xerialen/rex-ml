@@ -229,9 +229,12 @@ def main():
     rows = []
     for mode in mode_list:
         n = len(phases8)
+        # at dt=12 ms the ground circle caps just below 485 (friction per tick wins
+        # a little), so the pure-12 variant gets a slightly lower launch threshold
+        mode_launch = min(b_launch, 450.0) if mode == "p12" else b_launch
         rr = simulate(np.full(n, b_chir, np.float32),
                       np.full(n, b_chir * b_omega, np.float32),
-                      np.full(n, b_launch, np.float32),
+                      np.full(n, mode_launch, np.float32),
                       np.array(phases8, np.float32), [mode] * n)
         for i in range(n):
             rows.append(dict(

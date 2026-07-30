@@ -4932,3 +4932,23 @@ bunny är friktionsfri (hopptick rensar onground före PM_Friction). msec=12 ger
 (842,9) via fler ticks/s — bevisprotokollet kör ärligt msec=13 (77 Hz); blandat 12/13
 (riktiga klienters 12,987 ms) ger samma median som ren 13 (826,7). GATE 1 STÅR.
 Träningsläge: samplat medel ~660 (konsolideringsfasen, entropi 0.003), klättring mot 750.
+
+## 2026-07-30 — Takmätningen SLUTFÖRD (launch-tröskelfix): 8/8 faser över 820
+evidence/strafe_ceiling_qwsim.json (slutversion, sim/strafe_ceiling_qwsim.py): kalibrering
+tie-breakade tidigare till launch=430 vilket lät två startfaser lämna cirkeln för tidigt
+(432/466 u/s ⇒ peak 804/816). Med launch=485 (cirkelns tak ~491 vid msec=13): msec=13
+peaks 821,7–833,4 (median 826,7), blandat 12/13: 821,7–833,4 (median 826,8) — 8/8 faser
+≥820 i båda. Ren msec=12 (diagnostik, launch 450 pga cirkeltak ~483 vid dt=12): 827,8–842,9
+(median 839,0). Bästa 13ms-körning: 820 passeras tick 557 (7,24 s), 25 ticks över 820,
+ankomst y=2900 vid 833,4 u/s; max avdrift 191 u mot väggavstånd 480 u, inga väggträffar.
+
+## 2026-07-30 19:57 — Greedy 459→723 (konsolideringen verkar); takmätningens slutversion
+Interim-eval (greedy, qwsim, n=8): peak 723.0 (identiska — deterministisk från fast
+start). Från 459 vid steg 4-start till 723 efter entropinedtrappningen: konsolideringen
+flyttar samplade vinster in i exploateringsläget som designat. 97 u/s kvar till kravet.
+Takagentens SLUTKÖRNING (ersätter interim 6/6): 8/8 startfaser över 820, median 826,7,
+max 833,4 (msec=13); blandat 12/13 identiskt (826,8); ren 12 ger 839,0 (fler ticks/s,
++900 u²/s² per lufttick är dt-oberoende). Fysik verifierad UR KÄLLAN: ocappad wishspeed
+41,6 > 30-cappen ⇒ addspeed-cappen binder alltid ⇒ theta_opt exakt 90°; CheckJump före
+Friction ⇒ perfekt bunny friktionsfri. 820 nås sista ~0,3 s av nära-perfekt körning.
+Kalibrering: cirkelstart 4°/tick, launch-tröskel 485 (430 tappade två faser till 804/816).
