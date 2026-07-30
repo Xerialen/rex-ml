@@ -4725,3 +4725,12 @@ hoppcykel ~0,65 s). Accelerationszonen utnyttjas ineffektivt ⇒ 459 vid mål d�
 analytiska nådde 821 på samma sträcka. Detta är steg 3/4-slipningens jobb; ingen
 intervention nu (medlet stiger fortfarande). Baslinje sparad för platåbedömning —
 om entropihöjning övervägs jämförs mot dessa siffror.
+
+## 2026-07-30 18:53 — Artefakten uppdaterad; TIDIG PLATÅVARNING i steg 3
+Bevissidan republicerad (samma URL), 75 290 episoder. Trend: p50 420→448→460→460 —
+inbromsning under 500-tröskeln. Diagnosen (föreg. post): snabbvicklings-optimum i
+styrningen. BESLUTSPUNKT ~19:20 (1 h i steg 3 per vaktpostgränsen): om p50 fortfarande
+<500 ⇒ intervention per RUNBOOK, förstahandsval höjd entropikoefficient
+(SF --exploration_loss_coeff, default 0.003 → 0.01) via omstart som auto-återupptar
+från senaste checkpoint (SF restore ur train_dir; daemon orörd). Jämförelse mot
+diag-baslinjen (flips/s 21.0, |dyaw| 3.6°/tick) avgör om vicklingen bryts.
