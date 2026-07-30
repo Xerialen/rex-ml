@@ -4325,3 +4325,14 @@ inkl. docs/AUDIT-PROBLEMBESKRIVNING.md (problembeskrivning + datakälls-audit me
 MVD/QWD-mätningarna). Repot fanns som tomt LICENSE-skal (annan session, idag 12:35) —
 mergat in i stället för överskrivet. gh-CLI i ~/.local/bin, token i gh:s config.
 OBS: rtx-repot (~/rex-ml/rtx) är fortfarande ENDAST lokalt.
+
+### ALLT UPP PÅ MAIN + rtx-repo skapat (push väntar på token-rättighet)
+rex-ml main = 465 filer: nu även checkpoints race_v1-v9 (2,4 MB st), pipeline/out/{race,strict,
+paths,replay,ppo,dagger,dmp,...}, loggar, ägardemona (qwd, 3,4 MB), mvdsv som riktig submodul
+(QW-Group/mvdsv). Utelämnat (regenererbart, för stort för GitHub): predict_enemy 8,8 G,
+policy 3,5 G, step1-/smoke-datamängderna (~13,7 G totalt) — dokumenterat i .gitignore.
+AUDIT-rättelse pushad: storen har replay_ticks + usercmds för QWD-delen ⇒ BC möjlig där
+(fas 1-2 gjorde det), strukturellt omöjlig på MVD-bulken. REPORT.md/AUDIT.md i repot är
+FAS 1-DOKUMENT (27-28/7, före denna missionsbåge); REPORT säger själv "done is not met".
+https://github.com/Xerialen/rex-ml-rtx skapat men push ger 403 — fine-grained-tokenen
+omfattar inte nya repot. Väntar på ägaren.
