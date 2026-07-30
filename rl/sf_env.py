@@ -82,6 +82,46 @@ class QWGate1Env(gym.Env):
         return None
 
 
+class QWGate2Env(gym.Env):
+    """Fritt strövande dm3 (Gate 2). Samma obs/action-rum som Gate 1;
+    zonrastret används för fastnad-undantag (vatten/hiss/tele)."""
+
+    def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None):
+        from rl.env_gate2 import Gate2Config, QWGate2Core
+        from rl.zones import RASTER, ZoneRaster
+        self.name = full_env_name
+        self.render_mode = render_mode
+        is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
+        self.core = QWGate2Core(_make_backend(cfg), cfg=Gate2Config(),
+                                is_excluded=is_excluded)
+        n_obs = self.core.obs_spec.n_obs
+        self.observation_space = gym.spaces.Box(-4.0, 4.0, shape=(n_obs,), dtype=np.float32)
+        self.action_space = gym.spaces.Tuple((
+            gym.spaces.Box(-1.0, 1.0, shape=(2,), dtype=np.float32),
+            gym.spaces.Discrete(2), gym.spaces.Discrete(3), gym.spaces.Discrete(2),
+        ))
+
+    def reset(self, *, seed=None, options=None):
+        super().reset(seed=seed)
+        if seed is not None:
+            self.core.rng = np.random.default_rng(seed)
+        return self.core.reset().astype(np.float32), {}
+
+    def step(self, action):
+        if isinstance(action, (tuple, list)) and len(action) == 4:
+            box, fwd, side, jump = action
+        else:
+            a = np.asarray(action).ravel()
+            box, fwd, side, jump = a[0:2], a[2], a[3], a[4]
+        obs, r, done, info = self.core.step(np.asarray(box, dtype=np.float32),
+                                            int(fwd), int(side), int(jump))
+        truncated = done and not info["stuck"]
+        return obs.astype(np.float32), r, done and info["stuck"], truncated, info
+
+    def render(self):
+        return None
+
+
 def register(name: str = "qw_gate1"):
     from sample_factory.envs.env_utils import register_env
     register_env(name, make_env)
@@ -90,3 +130,7 @@ def register(name: str = "qw_gate1"):
 def make_env(full_env_name, cfg=None, env_config=None, render_mode=None):
     # modulnivå — SF picklar fabriken till spawnade worker-processer
     return QWGate1Env(full_env_name, cfg, env_config, render_mode)
+
+
+def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
+    return QWGate2Env(full_env_name, cfg, env_config, render_mode)
