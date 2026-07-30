@@ -4991,3 +4991,21 @@ harvest/best.pth, avslutar själv vid ≥820 ("kandidaten säkrad — kör serve
 och/eller overrun-peak (bortom mål) felmärkt. Agenten återsänd med verifieringskrav:
 reproducera 924 fristående med per-tick-bevis att peaken sker FÖRE mål-y 2900 @77Hz,
 laga aggregeringen, skriv md:n. Journalförs INTE förrän verifierad.
+
+## 2026-07-30 20:32 — 850 VERIFIERAT NÅBART (serpentinväv, 924 ärligt) + belöningsinsikt
+Sökagenten VERIFIERAD (mina invändningar åtgärdade — argumentordningsbugg i step_batch,
+grindgeometri vid bakstart, kiralitetsfel; aggregaten nu konsekventa):
+- ÄRLIG msec=13: rak 833,4; serpentin φ=25: 852,1; φ=35: 862,2; φ=55: 924,1
+  (fristående reproducerad, tick-logg: peak vid själva målticken y=2904; 850 passeras
+  vid y=1763 — 1137 u FÖRE mål). Äkta 77Hz-mix 905,6. Fasmedian φ=55 är 798,7 —
+  toppen kräver bra launchfas.
+- FYSIK: svängar är GRATIS i v² (vinkelräta +30-adden både accelererar och svänger) ⇒
+  väv = banlängd = fler luftticks. Bakstart +12 (hjälper ej mot väv), inga vertikala
+  tricks (målskylten svävar), msec-utnyttjande ONÖDIGT (servern saknar undre gräns,
+  sv_user.c AM101 — men 850 nås ärligt).
+- KONSEKVENS FÖR TRÄNINGEN: reward stage3/4 straffar cross-track >96 u ⇒ BLOCKERAR
+  vävvägen aktivt; policyn är belöningslåst i rak-regimen (~833-tak). BESLUT (eget):
+  820 SÄKRAS FÖRST med nuvarande belöning (skörd 792, rak-tak 833 räcker; ändra inte
+  landskapet i slutklättringen); DÄREFTER vidgas CROSS_TRACK_MARGIN 96→~400 (vägg 480)
+  + ev. curriculum-steg 5 "väv" för 850-jakten. Loggas som fas 1b.
+Skörderatchet: 792,3 säkrad (checkpoints efter varierar 755-788 — ratchetens värde bevisat).
