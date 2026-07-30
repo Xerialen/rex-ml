@@ -4382,3 +4382,34 @@ TRE SUBAGENTER STARTADE (bakgrund):
  B) libqwsim-bygget → sim/ + evidence/libqwsim_bitexact.json + libqwsim_throughput.json.
  C) Träningsstack → sample-factory-install, torch/CUDA-verifiering, sim/STACK.md.
 NÄSTA (när agenterna landar): env-adapter qwsim↔Sample Factory, obs/action-smoke, fas 1.
+
+## 2026-07-30 — Subagent C KLAR: träningsstack verifierad, sim/STACK.md skriven
+- Huvud-venv (.venv): torch 2.13.0+cu130, CUDA OK mot H100 NVL (matmul 10x4096^3 = 0.149 s). Orörd.
+- sample-factory 2.1.1 ville nedgradera numpy 2.5.1->1.26.4 => KONFLIKT => separat venv
+  sim/.venv-sf (torch 2.13.0+cu130 hardlänkad ur uv-cache, gymnasium 0.29.1, pybind11 3.0.4).
+- APPO-smoke (sf_examples.train_custom_env_custom_model, GPU): 21504 steg / ~18 s, FPS 1198, ren exit.
+- Hybrid kont+diskret action space: STÖDS NATIVT (gym.spaces.Tuple -> TupleActionDistribution);
+  Box-delen måste vara platt 1-D. Registrering: register_env() + parse_sf_args + run_rl.
+- Byggkedja: gcc 13.3.0 + OpenMP(64 trådar) OK; cmake saknas i PATH (installeras vid behov).
+- Detaljer + kodskiss: sim/STACK.md.
+
+## 2026-07-30 — Fas 0: stack klar (agent C), env-adapterkärnan byggd och testad
+AGENT C KLAR: sample-factory 2.1.1 i sim/.venv-sf (egen venv — SF pinnar numpy<2 och hade
+nedgraderat huvud-venvens numpy 2.5.1; torch 2.13.0+cu130 hardlänkad, H100 verifierad,
+APPO-exempelsmoke 1197.8 FPS på GPU). Hybrid handlingsrum STÖDS NATIVT:
+gym.spaces.Tuple((Box platt 1-D, Discrete...)) via TupleActionDistribution. cmake/ninja
+saknas i PATH (libqwsim får bygga med setup.py/gcc). Skiss i sim/STACK.md.
+SCOPUTÖKNING till libqwsim-agenten skickad: batchad trace_rays-API (perceptionsstrålarna)
++ get_state, trådparallell, med i throughput-benchen.
+ENV-ADAPTERKÄRNAN byggd (rl/): spec.py (RaySpec 81 strålar: 25 azimut × 3 elevationer
+tätare framåt + 4 golvprober + ned/upp, max 2048u; kinetiska features 16 st; handlings-
+mappning dyaw ±15°/tick, dpitch ±10°/tick, fristående W, sidled v/h, hopp; usercmd-
+magnituder 800 — TODO verifiera mot korpusens usercmds när agent B landar),
+rewards_gate1.py (steg 1–4 enligt BRIEF §4 + Curriculum-växlare med automatiska
+konvergenskriterier: 300/330/500-peak → steg upp, 800-peak + <150 kollisionsförlust →
+Gate 1-KANDIDAT), env.py (QWEnvCore + Backend-protokoll speglande qwsim-API:t +
+StubBackend endast för test), sf_env.py (gymnasium-wrapper, Tuple-space, register_env).
+MÄTT: 8/8 enhetstester gröna (huvud-venv, pytest installerat via uv);
+SF-smoke i .venv-sf: obs (97,), 200 slumpsteg, register_env OK.
+KVAR I FAS 0: agent A (gate2-zoner) och agent B (libqwsim) arbetar; sedan
+rl/qwsim_backend.py + träningsstart steg 1.
