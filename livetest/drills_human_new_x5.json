@@ -1,0 +1,512 @@
+[
+ {
+  "id": "quad-to-sng-r1",
+  "kind": "route",
+  "from": "quad",
+  "to": "SNG",
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025
+ },
+ {
+  "id": "ratop-to-ssg-r1",
+  "kind": "route",
+  "from": "ratop",
+  "to": "SSG",
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13
+ },
+ {
+  "id": "rl_to_ratop-r1",
+  "kind": "route",
+  "from": "rl",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169
+ },
+ {
+  "id": "sng-to-quad-r1",
+  "kind": "route",
+  "from": "sng",
+  "to": "Quad",
+  "from_xyz": [
+   -539,
+   497,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.0
+ },
+ {
+  "id": "ssg-to-ratop-r1",
+  "kind": "route",
+  "from": "ssg",
+  "to": "RA",
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r1",
+  "kind": "route",
+  "from": "ya",
+  "to": "RL",
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "quad-to-sng-r2",
+  "kind": "route",
+  "from": "quad",
+  "to": "SNG",
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025
+ },
+ {
+  "id": "ratop-to-ssg-r2",
+  "kind": "route",
+  "from": "ratop",
+  "to": "SSG",
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13
+ },
+ {
+  "id": "rl_to_ratop-r2",
+  "kind": "route",
+  "from": "rl",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169
+ },
+ {
+  "id": "sng-to-quad-r2",
+  "kind": "route",
+  "from": "sng",
+  "to": "Quad",
+  "from_xyz": [
+   -539,
+   497,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.0
+ },
+ {
+  "id": "ssg-to-ratop-r2",
+  "kind": "route",
+  "from": "ssg",
+  "to": "RA",
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r2",
+  "kind": "route",
+  "from": "ya",
+  "to": "RL",
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "quad-to-sng-r3",
+  "kind": "route",
+  "from": "quad",
+  "to": "SNG",
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025
+ },
+ {
+  "id": "ratop-to-ssg-r3",
+  "kind": "route",
+  "from": "ratop",
+  "to": "SSG",
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13
+ },
+ {
+  "id": "rl_to_ratop-r3",
+  "kind": "route",
+  "from": "rl",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169
+ },
+ {
+  "id": "sng-to-quad-r3",
+  "kind": "route",
+  "from": "sng",
+  "to": "Quad",
+  "from_xyz": [
+   -539,
+   497,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.0
+ },
+ {
+  "id": "ssg-to-ratop-r3",
+  "kind": "route",
+  "from": "ssg",
+  "to": "RA",
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r3",
+  "kind": "route",
+  "from": "ya",
+  "to": "RL",
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "quad-to-sng-r4",
+  "kind": "route",
+  "from": "quad",
+  "to": "SNG",
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025
+ },
+ {
+  "id": "ratop-to-ssg-r4",
+  "kind": "route",
+  "from": "ratop",
+  "to": "SSG",
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13
+ },
+ {
+  "id": "rl_to_ratop-r4",
+  "kind": "route",
+  "from": "rl",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169
+ },
+ {
+  "id": "sng-to-quad-r4",
+  "kind": "route",
+  "from": "sng",
+  "to": "Quad",
+  "from_xyz": [
+   -539,
+   497,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.0
+ },
+ {
+  "id": "ssg-to-ratop-r4",
+  "kind": "route",
+  "from": "ssg",
+  "to": "RA",
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r4",
+  "kind": "route",
+  "from": "ya",
+  "to": "RL",
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "quad-to-sng-r5",
+  "kind": "route",
+  "from": "quad",
+  "to": "SNG",
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025
+ },
+ {
+  "id": "ratop-to-ssg-r5",
+  "kind": "route",
+  "from": "ratop",
+  "to": "SSG",
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13
+ },
+ {
+  "id": "rl_to_ratop-r5",
+  "kind": "route",
+  "from": "rl",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169
+ },
+ {
+  "id": "sng-to-quad-r5",
+  "kind": "route",
+  "from": "sng",
+  "to": "Quad",
+  "from_xyz": [
+   -539,
+   497,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.0
+ },
+ {
+  "id": "ssg-to-ratop-r5",
+  "kind": "route",
+  "from": "ssg",
+  "to": "RA",
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r5",
+  "kind": "route",
+  "from": "ya",
+  "to": "RL",
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208
+ }
+]

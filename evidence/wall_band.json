@@ -1,0 +1,43 @@
+{
+ "derived": "human runs in the dm3 corpus, moving ticks only",
+ "statistic": "fraction of moving ticks with lateral hull clearance < 1 u",
+ "gate": "a policy's median run must not exceed the human p95 for that route",
+ "moving_ups": 100.0,
+ "routes": [
+  {
+   "route": "lifts_to_sng_mega",
+   "human_p50": 0.0219,
+   "human_p95_gate": 0.0461
+  },
+  {
+   "route": "ralow_to_ratop",
+   "human_p50": 0.1503,
+   "human_p95_gate": 0.1939
+  },
+  {
+   "route": "ring_to_ratop",
+   "human_p50": 0.1111,
+   "human_p95_gate": 0.171
+  },
+  {
+   "route": "sngspawn_a_to_mega",
+   "human_p50": 0.0686,
+   "human_p95_gate": 0.2203
+  },
+  {
+   "route": "sngspawn_b_to_mega",
+   "human_p50": 0.0686,
+   "human_p95_gate": 0.2203
+  },
+  {
+   "route": "tunnel_to_ra",
+   "human_p50": 0.1482,
+   "human_p95_gate": 0.2405
+  },
+  {
+   "route": "window_to_rl",
+   "human_p50": 0.0,
+   "human_p95_gate": 0.055
+  }
+ ]
+}

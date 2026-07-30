@@ -1,0 +1,343 @@
+{
+  "spec": "K0.2-enemy-prediction",
+  "status": "REVIEW ROUND 1 response. Test split NOT re-touched this round, per reviewer instruction ('test split stays untouched until the final measurement'). All results below are val. The round-1 test measurement is retained further down as a superseded historical record (it was measured honestly at the time, but used a model trained on 0.8% of the corpus and is now known to be a loose upper bound on error, not a ceiling).",
+  "dt_window_ms": [
+    8,
+    40
+  ],
+  "tol_ms": 25,
+  "dist_thresholds_u": [
+    16.0,
+    40.0,
+    160.0
+  ],
+  "corrections_to_spec": {
+    "velocity_present_claim": "Spec states velocity_present is false everywhere. Measured on the full split=train table: mvd (752,249,168 rows, 93% of the table) has velocity_present=false / vx null for 100% of rows -- spec is RIGHT here. qwd (55,031,703 rows) has velocity_present=true with real vx/vy/vz for 23,836,754 rows (43.3% of qwd, the recording-POV rows) -- spec is WRONG here. An earlier revision of this file inverted the mvd half of this statement (claimed velocity_present=true for mvd); that was backwards from both the spec and the data and is corrected here. Methodology is unaffected either way: this module finite-differences positions uniformly regardless of the native velocity columns."
+  },
+  "row_counts": {
+    "train": 100000000,
+    "train_demo_cap": null,
+    "train_note": "full split=train, all 2,449 demos, no demo-level subsampling (round 1 used demo_cap=300, 0.8% of the 807M-row corpus); row_cap=50,000,000 per horizon via post-hoc random subsample of the full 646.9M/H=300 (resp. H=600) candidate population, not reservoir sampling (see pipeline/predict_enemy.py _stage_paired docstring for the measured reservoir-sampling bug this replaced).",
+    "val": 20000000,
+    "val_demo_cap": null,
+    "val_note": "full split=val, all 176 demos, row_cap=10,000,000 per horizon.",
+    "test_note": "NOT touched this round."
+  },
+  "disk_usage_gb": 8.8,
+  "disk_budget_gb": 20,
+  "feature_set": [
+    "v0_f",
+    "v0_r",
+    "v0_z",
+    "v1_f",
+    "v1_r",
+    "v1_z",
+    "have_v1",
+    "speed0",
+    "dyaw_view",
+    "sin_vp",
+    "cos_vp",
+    "dt0_ms",
+    "dt1_ms",
+    "elapsed_ms"
+  ],
+  "models": {
+    "primary_model_r2_big": {
+      "description": "REVIEW ROUND 1 primary model: full-diversity 100M-row train set, scaled architecture.",
+      "architecture": "MLP 14->512->512->512->3, ReLU, SmoothL1(beta=5.0) loss on frame-space offset",
+      "n_params": 534531,
+      "val_results": {
+        "300": {
+          "n": 10000000,
+          "still": {
+            "median_u": 98.0,
+            "p90_u": 144.14,
+            "frac_under_16u": 0.1046,
+            "frac_under_40u": 0.1833,
+            "frac_under_160u": 0.9522
+          },
+          "linear": {
+            "median_u": 44.68,
+            "p90_u": 106.14,
+            "frac_under_16u": 0.1929,
+            "frac_under_40u": 0.4346,
+            "frac_under_160u": 0.9694
+          },
+          "learned": {
+            "median_u": 32.45,
+            "p90_u": 79.35,
+            "frac_under_16u": 0.2483,
+            "frac_under_40u": 0.5992,
+            "frac_under_160u": 0.9777
+          }
+        },
+        "600": {
+          "n": 10000000,
+          "still": {
+            "median_u": 170.23,
+            "p90_u": 272.95,
+            "frac_under_16u": 0.0715,
+            "frac_under_40u": 0.123,
+            "frac_under_160u": 0.4691
+          },
+          "linear": {
+            "median_u": 127.06,
+            "p90_u": 280.72,
+            "frac_under_16u": 0.0777,
+            "frac_under_40u": 0.1538,
+            "frac_under_160u": 0.6284
+          },
+          "learned": {
+            "median_u": 89.59,
+            "p90_u": 197.08,
+            "frac_under_16u": 0.0837,
+            "frac_under_40u": 0.1924,
+            "frac_under_160u": 0.8191
+          }
+        }
+      }
+    },
+    "data_only_model_r2": {
+      "description": "Same architecture family as round 1 (256 width) but depth=3 (136,195 params -- a round-1/round-2 midpoint caused by a CLI-default bug caught during this run, kept as a useful isolated 'more data alone, ~same size' data point), trained on the same 100M-row set.",
+      "architecture": "MLP 14->256->256->256->3, ReLU, SmoothL1(beta=5.0) loss on frame-space offset",
+      "n_params": 136195,
+      "val_results": {
+        "300": {
+          "n": 10000000,
+          "still": {
+            "median_u": 98.0,
+            "p90_u": 144.14,
+            "frac_under_16u": 0.1046,
+            "frac_under_40u": 0.1833,
+            "frac_under_160u": 0.9522
+          },
+          "linear": {
+            "median_u": 44.68,
+            "p90_u": 106.14,
+            "frac_under_16u": 0.1929,
+            "frac_under_40u": 0.4346,
+            "frac_under_160u": 0.9694
+          },
+          "learned": {
+            "median_u": 33.04,
+            "p90_u": 79.89,
+            "frac_under_16u": 0.2405,
+            "frac_under_40u": 0.5918,
+            "frac_under_160u": 0.9773
+          }
+        },
+        "600": {
+          "n": 10000000,
+          "still": {
+            "median_u": 170.23,
+            "p90_u": 272.95,
+            "frac_under_16u": 0.0715,
+            "frac_under_40u": 0.123,
+            "frac_under_160u": 0.4691
+          },
+          "linear": {
+            "median_u": 127.06,
+            "p90_u": 280.72,
+            "frac_under_16u": 0.0777,
+            "frac_under_40u": 0.1538,
+            "frac_under_160u": 0.6284
+          },
+          "learned": {
+            "median_u": 90.73,
+            "p90_u": 197.74,
+            "frac_under_16u": 0.081,
+            "frac_under_40u": 0.1887,
+            "frac_under_160u": 0.8171
+          }
+        }
+      }
+    },
+    "view_angle_ablation_model_r2_ablate": {
+      "description": "Same architecture as primary_model_r2_big (534,531 vs 532,995 params -- the difference is exactly the dropped input columns' first-layer weights) but with dyaw_view/sin_vp/cos_vp removed, retrained on the full 100M-row set to re-check round 1's ablation finding at this data scale.",
+      "architecture": "MLP 11->512->512->512->3, ReLU, SmoothL1(beta=5.0) loss on frame-space offset",
+      "n_params": 532995,
+      "val_results": {
+        "300": {
+          "n": 10000000,
+          "still": {
+            "median_u": 98.0,
+            "p90_u": 144.14,
+            "frac_under_16u": 0.1046,
+            "frac_under_40u": 0.1833,
+            "frac_under_160u": 0.9522
+          },
+          "linear": {
+            "median_u": 44.68,
+            "p90_u": 106.14,
+            "frac_under_16u": 0.1929,
+            "frac_under_40u": 0.4346,
+            "frac_under_160u": 0.9694
+          },
+          "learned": {
+            "median_u": 33.7,
+            "p90_u": 80.68,
+            "frac_under_16u": 0.2408,
+            "frac_under_40u": 0.5826,
+            "frac_under_160u": 0.9777
+          }
+        },
+        "600": {
+          "n": 10000000,
+          "still": {
+            "median_u": 170.23,
+            "p90_u": 272.95,
+            "frac_under_16u": 0.0715,
+            "frac_under_40u": 0.123,
+            "frac_under_160u": 0.4691
+          },
+          "linear": {
+            "median_u": 127.06,
+            "p90_u": 280.72,
+            "frac_under_16u": 0.0777,
+            "frac_under_40u": 0.1538,
+            "frac_under_160u": 0.6284
+          },
+          "learned": {
+            "median_u": 92.43,
+            "p90_u": 200.38,
+            "frac_under_16u": 0.0802,
+            "frac_under_40u": 0.1812,
+            "frac_under_160u": 0.8103
+          }
+        }
+      }
+    }
+  },
+  "summary_val_h300_median_u": {
+    "round_1_model_70k_params_5_86M_rows": 35.1,
+    "round_2_model_r2_136k_params_100M_rows": 33.04,
+    "round_2_model_r2_big_534k_params_100M_rows": 32.45,
+    "round_2_ablate_no_view_angles_533k_params_100M_rows": 33.7,
+    "note": "More data alone (round1's architecture at 100M rows) moves the H=300 median from ~35.1u to ~33.0u; adding the architecture scale-up (256->512 width) moves it further to ~32.5u. View-angle features contribute ~1.1-1.5u at every scale tried (round 1: 35.1 vs 36.2 at 70k params/5.86M rows; round 2: 32.5 vs 33.7 at 533k params/100M rows) -- real, reproducible, but not close to closing a 12-16u gap to any of the candidate direct-hit/rocket-splash thresholds. The remaining gap looks like a feature-set ceiling, not a data- or capacity-starved one: train loss is flat at the end of every run in both rounds."
+  },
+  "historical_round_1_test_measurement_SUPERSEDED": {
+    "note": "Test split touched once under round 1's rules, before the data/model scale was known to be a live question. Retained for transparency, not as a current result -- do not compare against round 2's val numbers on gate terms; the model here is undertrained by round 2's own finding.",
+    "architecture": "MLP 14->256->256->3, ReLU, SmoothL1(beta=5.0) loss on frame-space offset",
+    "n_params": 70403,
+    "row_counts": {
+      "train": 5856984,
+      "val": 1440937,
+      "test": 39040944
+    },
+    "horizons": {
+      "300": {
+        "n": 38584375,
+        "still_median_u": 97.7,
+        "still_p90_u": 144.3,
+        "linear_median_u": 44.7,
+        "linear_p90_u": 106.4,
+        "learned_median_u": 35.5,
+        "learned_p90_u": 81.6
+      },
+      "600": {
+        "n": 37266220,
+        "still_median_u": 169.5,
+        "still_p90_u": 273.3,
+        "linear_median_u": 127.3,
+        "linear_p90_u": 282.3,
+        "learned_median_u": 93.5,
+        "learned_p90_u": 202.0
+      }
+    },
+    "gate_computed_at_the_time": {
+      "h300_median_le_28_7": false,
+      "h600_median_lt_126_9": true,
+      "h600_p90_lt_272_0": true,
+      "passed": false,
+      "note": "This gate (16u direct-hit fire_tolerance derived margin) is itself under review -- see spec REVIEW ROUND 1. No gate is computed for round 2's results above; only the raw distribution is reported, per reviewer instruction."
+    }
+  },
+  "round_2_test_measurement_FINAL": {
+    "note": "Final, one-time split=test measurement. Not a gate -- the gate as written fell and the owner is not moving it; this is a closing record for a banked artifact (K1-K3 deferred). Compare against this same checkpoint's val numbers elsewhere in this file to see the val/test gap directly.",
+    "checkpoint_path": "/home/benjamin-adm/rex-ml/pipeline/out/predict_enemy/model_r2_big.pt",
+    "dt_window_ms": [
+      8,
+      40
+    ],
+    "tol_ms": 25,
+    "dist_thresholds_u": [
+      16.0,
+      40.0,
+      160.0
+    ],
+    "row_counts": {
+      "train": 100000000,
+      "val": 20000000,
+      "test": 39040944
+    },
+    "feature_set": [
+      "v0_f",
+      "v0_r",
+      "v0_z",
+      "v1_f",
+      "v1_r",
+      "v1_z",
+      "have_v1",
+      "speed0",
+      "dyaw_view",
+      "sin_vp",
+      "cos_vp",
+      "dt0_ms",
+      "dt1_ms",
+      "elapsed_ms"
+    ],
+    "architecture": "MLP 14->512->512->512->3, ReLU, SmoothL1(beta=5.0) loss on frame-space offset",
+    "n_params": 534531,
+    "split": "test",
+    "horizons": {
+      "300": {
+        "n": 38584375,
+        "still": {
+          "median_u": 97.67,
+          "p90_u": 144.25,
+          "frac_under_16u": 0.1054,
+          "frac_under_40u": 0.1838,
+          "frac_under_160u": 0.9509
+        },
+        "linear": {
+          "median_u": 44.69,
+          "p90_u": 106.45,
+          "frac_under_16u": 0.1947,
+          "frac_under_40u": 0.4358,
+          "frac_under_160u": 0.9689
+        },
+        "learned": {
+          "median_u": 32.76,
+          "p90_u": 79.94,
+          "frac_under_16u": 0.2453,
+          "frac_under_40u": 0.5945,
+          "frac_under_160u": 0.9776
+        }
+      },
+      "600": {
+        "n": 37266220,
+        "still": {
+          "median_u": 169.5,
+          "p90_u": 273.32,
+          "frac_under_16u": 0.0731,
+          "frac_under_40u": 0.1244,
+          "frac_under_160u": 0.4714
+        },
+        "linear": {
+          "median_u": 127.3,
+          "p90_u": 282.32,
+          "frac_under_16u": 0.0794,
+          "frac_under_40u": 0.1549,
+          "frac_under_160u": 0.627
+        },
+        "learned": {
+          "median_u": 90.18,
+          "p90_u": 198.54,
+          "frac_under_16u": 0.0848,
+          "frac_under_40u": 0.1919,
+          "frac_under_160u": 0.8164
+        }
+      }
+    }
+  }
+}

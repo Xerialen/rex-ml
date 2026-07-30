@@ -1,0 +1,325 @@
+[
+ {
+  "id": "sngspawns-to-sngmega",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425,
+  "snap": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385,
+  "snap": false
+ },
+ {
+  "id": "ralow-to-ratop",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437,
+  "snap": false
+ },
+ {
+  "id": "ring-to-ratop",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388,
+  "snap": false
+ },
+ {
+  "id": "highbridge-to-rl",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390,
+  "snap": false
+ },
+ {
+  "id": "window-to-rl",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452,
+  "snap": false
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454,
+  "snap": false
+ },
+ {
+  "id": "quad-to-sng",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467,
+  "snap": false
+ },
+ {
+  "id": "ratop-to-ssg",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480,
+  "snap": false
+ },
+ {
+  "id": "sng-to-quad",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469,
+  "snap": false
+ },
+ {
+  "id": "ssg-to-ratop",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456,
+  "snap": false
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465,
+  "snap": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287,
+  "snap": false
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410,
+  "snap": false
+ },
+ {
+  "id": "spawn-rl_to_ratop",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530,
+  "snap": false
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410,
+  "snap": false
+ },
+ {
+  "id": "spawn-rarox-to-quad",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447,
+  "snap": false
+ }
+]

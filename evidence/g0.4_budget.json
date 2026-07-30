@@ -1,0 +1,143 @@
+{
+  "machine": {
+    "cpu_model": "INTEL(R) XEON(R) GOLD 6526Y",
+    "logical_cpus": 64,
+    "cpufreq_governor": "unavailable: no /sys/devices/system/cpu/cpu*/cpufreq entries exposed in this environment (governor/turbo state could not be queried or pinned)",
+    "turbo_state": "unavailable: same reason as governor",
+    "binary_pinned_with": "taskset -c <core> (single logical core; recommended invocation, see file header)",
+    "rustc_version": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+    "profile": "release (lto=thin, codegen-units=1, per workspace Cargo.toml)",
+    "noise_finding": "A standalone busy-loop with no MLP/DMP code at all, pinned the same way, showed the identical bimodal pattern on this machine: clean sub-2us timings or a jump past 1ms (902 of 2,000,000 samples, i.e. 0.045%, all >1ms, none between 3.5us and 1ms) — periodic external preemption (OS scheduler / NUMA / shared-tenant jitter), not architecture cost. See methodology.timer_note."
+  },
+  "methodology": {
+    "iterations_per_point_per_repeat": 40000,
+    "warmup_iterations": 2000,
+    "repeats": 3,
+    "threads": 1,
+    "measures": "Dmp::step + (Mlp|Mlp3)::forward + decode + TrackingGuard::check, i.e. ManeuverAutomaton::tick's Mode::Maneuver arm, the same 'complete path' bench_per_tick_budget names",
+    "nin_nout_fixed": "NIN=14, NOUT=8 per SPEC G0.2's shipped contract; only hidden width/depth vary",
+    "wall_clock_timer": "std::time::Instant (CLOCK_MONOTONIC), one timestamp pair per tick, not amortised — this is the number SPEC G0.4 asks for ('per-tick wall cost') and the one the 250/500us decision below is computed from",
+    "cpu_time_timer": "clock_gettime(CLOCK_THREAD_CPUTIME_ID), one timestamp pair per tick — excludes any interval this thread was descheduled; reported as a diagnostic to separate architecture cost from this machine's scheduling noise, NOT used for the decision",
+    "timer_overhead_caveat": "each sample pays two Instant::now() plus two clock_gettime() calls (tens of ns combined); included in, not subtracted from, the reported numbers",
+    "timer_note": "wall-clock p99/max on this shared, non-isolated box are contaminated by external preemption for every point whose total run time exceeds roughly a second (see machine.noise_finding); CPU-time percentiles are the cleaner read on architecture-caused cost"
+  },
+  "sweep": [
+    {
+      "depth": 2,
+      "width": 256,
+      "params": 71688,
+      "wall_repeats_us": [{"p50": 36.965, "p99": 40.203, "max": 60.664, "samples_over_1ms": 0}, {"p50": 27.194, "p99": 38.191, "max": 53.606, "samples_over_1ms": 0}, {"p50": 27.194, "p99": 30.405, "max": 52.342, "samples_over_1ms": 0}],
+      "wall_p50_us_range": [27.194, 36.965],
+      "wall_p99_us_range": [30.405, 40.203],
+      "wall_max_us_range": [52.342, 60.664],
+      "cpu_repeats_us": [{"p50": 36.717, "p99": 39.928, "max": 60.412}, {"p50": 27.018, "p99": 37.948, "max": 52.645}, {"p50": 27.019, "p99": 30.215, "max": 48.374}],
+      "cpu_p50_us_range": [27.018, 36.717],
+      "cpu_p99_us_range": [30.215, 39.928],
+      "cpu_max_us_range": [48.374, 60.412]
+    },
+    {
+      "depth": 2,
+      "width": 512,
+      "params": 274440,
+      "wall_repeats_us": [{"p50": 121.521, "p99": 126.520, "max": 155.509, "samples_over_1ms": 0}, {"p50": 121.502, "p99": 125.895, "max": 301.686, "samples_over_1ms": 0}, {"p50": 121.509, "p99": 125.758, "max": 216.705, "samples_over_1ms": 0}],
+      "wall_p50_us_range": [121.502, 121.521],
+      "wall_p99_us_range": [125.758, 126.520],
+      "wall_max_us_range": [155.509, 301.686],
+      "cpu_repeats_us": [{"p50": 121.333, "p99": 126.110, "max": 155.079}, {"p50": 121.315, "p99": 125.575, "max": 166.763}, {"p50": 121.321, "p99": 125.501, "max": 147.935}],
+      "cpu_p50_us_range": [121.315, 121.333],
+      "cpu_p99_us_range": [125.501, 126.110],
+      "cpu_max_us_range": [147.935, 166.763]
+    },
+    {
+      "depth": 2,
+      "width": 1024,
+      "params": 1073160,
+      "wall_repeats_us": [{"p50": 516.399, "p99": 525.965, "max": 693.918, "samples_over_1ms": 0}, {"p50": 515.922, "p99": 521.416, "max": 693.592, "samples_over_1ms": 0}, {"p50": 515.876, "p99": 521.070, "max": 693.740, "samples_over_1ms": 0}],
+      "wall_p50_us_range": [515.876, 516.399],
+      "wall_p99_us_range": [521.070, 525.965],
+      "wall_max_us_range": [693.592, 693.918],
+      "cpu_repeats_us": [{"p50": 516.109, "p99": 524.109, "max": 693.570}, {"p50": 515.677, "p99": 520.238, "max": 693.185}, {"p50": 515.630, "p99": 520.099, "max": 693.361}],
+      "cpu_p50_us_range": [515.630, 516.109],
+      "cpu_p99_us_range": [520.099, 524.109],
+      "cpu_max_us_range": [693.185, 693.570]
+    },
+    {
+      "depth": 2,
+      "width": 2048,
+      "params": 4243464,
+      "wall_repeats_us": [{"p50": 2112.433, "p99": 2128.975, "max": 2704.144, "samples_over_1ms": 40000}, {"p50": 2111.002, "p99": 2124.340, "max": 2815.805, "samples_over_1ms": 40000}, {"p50": 2110.937, "p99": 2131.076, "max": 2628.208, "samples_over_1ms": 40000}],
+      "wall_p50_us_range": [2110.937, 2112.433],
+      "wall_p99_us_range": [2124.340, 2131.076],
+      "wall_max_us_range": [2628.208, 2815.805],
+      "cpu_repeats_us": [{"p50": 2112.095, "p99": 2125.347, "max": 2703.750}, {"p50": 2110.673, "p99": 2119.366, "max": 2815.443}, {"p50": 2110.609, "p99": 2124.223, "max": 2627.852}],
+      "cpu_p50_us_range": [2110.609, 2112.095],
+      "cpu_p99_us_range": [2119.366, 2125.347],
+      "cpu_max_us_range": [2627.852, 2815.443]
+    },
+    {
+      "depth": 3,
+      "width": 256,
+      "params": 137480,
+      "wall_repeats_us": [{"p50": 52.331, "p99": 54.177, "max": 79.927, "samples_over_1ms": 0}, {"p50": 52.271, "p99": 54.126, "max": 147.269, "samples_over_1ms": 0}, {"p50": 52.324, "p99": 55.177, "max": 105.733, "samples_over_1ms": 0}],
+      "wall_p50_us_range": [52.271, 52.331],
+      "wall_p99_us_range": [54.126, 55.177],
+      "wall_max_us_range": [79.927, 147.269],
+      "cpu_repeats_us": [{"p50": 52.144, "p99": 53.975, "max": 72.845}, {"p50": 52.085, "p99": 53.916, "max": 62.296}, {"p50": 52.135, "p99": 54.948, "max": 66.597}],
+      "cpu_p50_us_range": [52.085, 52.144],
+      "cpu_p99_us_range": [53.916, 54.948],
+      "cpu_max_us_range": [62.296, 72.845]
+    },
+    {
+      "depth": 3,
+      "width": 512,
+      "params": 537096,
+      "wall_repeats_us": [{"p50": 240.081, "p99": 245.352, "max": 357.408, "samples_over_1ms": 0}, {"p50": 240.082, "p99": 243.942, "max": 352.666, "samples_over_1ms": 0}, {"p50": 240.085, "p99": 245.883, "max": 360.068, "samples_over_1ms": 0}],
+      "wall_p50_us_range": [240.081, 240.085],
+      "wall_p99_us_range": [243.942, 245.883],
+      "wall_max_us_range": [352.666, 360.068],
+      "cpu_repeats_us": [{"p50": 239.818, "p99": 244.350, "max": 356.888}, {"p50": 239.821, "p99": 243.542, "max": 348.042}, {"p50": 239.824, "p99": 244.961, "max": 359.780}],
+      "cpu_p50_us_range": [239.818, 239.824],
+      "cpu_p99_us_range": [243.542, 244.961],
+      "cpu_max_us_range": [348.042, 359.780]
+    },
+    {
+      "depth": 3,
+      "width": 1024,
+      "params": 2122760,
+      "wall_repeats_us": [{"p50": 1025.972, "p99": 1036.764, "max": 1139.170, "samples_over_1ms": 40000}, {"p50": 1025.966, "p99": 1035.685, "max": 1378.721, "samples_over_1ms": 40000}, {"p50": 1025.963, "p99": 1031.346, "max": 1197.880, "samples_over_1ms": 40000}],
+      "wall_p50_us_range": [1025.963, 1025.972],
+      "wall_p99_us_range": [1031.346, 1036.764],
+      "wall_max_us_range": [1139.170, 1378.721],
+      "cpu_repeats_us": [{"p50": 1025.650, "p99": 1033.320, "max": 1121.717}, {"p50": 1025.647, "p99": 1032.900, "max": 1378.323}, {"p50": 1025.644, "p99": 1029.811, "max": 1197.615}],
+      "cpu_p50_us_range": [1025.644, 1025.650],
+      "cpu_p99_us_range": [1029.811, 1033.320],
+      "cpu_max_us_range": [1121.717, 1378.323]
+    },
+    {
+      "depth": 3,
+      "width": 2048,
+      "params": 8439816,
+      "wall_repeats_us": [{"p50": 4277.888, "p99": 4333.857, "max": 6264.852, "samples_over_1ms": 40000}, {"p50": 4277.547, "p99": 4320.442, "max": 5573.843, "samples_over_1ms": 40000}, {"p50": 4277.837, "p99": 4318.522, "max": 5240.744, "samples_over_1ms": 40000}],
+      "wall_p50_us_range": [4277.547, 4277.888],
+      "wall_p99_us_range": [4318.522, 4333.857],
+      "wall_max_us_range": [5240.744, 6264.852],
+      "cpu_repeats_us": [{"p50": 4277.629, "p99": 4325.718, "max": 6264.588}, {"p50": 4277.275, "p99": 4313.867, "max": 5573.708}, {"p50": 4277.503, "p99": 4312.356, "max": 5240.533}],
+      "cpu_p50_us_range": [4277.275, 4277.629],
+      "cpu_p99_us_range": [4312.356, 4325.718],
+      "cpu_max_us_range": [5240.533, 6264.588]
+    }
+  ],
+  "decision": {
+    "_basis": "wall-clock p99, per SPEC G0.4's 'per-tick wall cost'; see machine.noise_finding for why this gate is contaminated by environment noise past the smallest architecture on this box",
+    "winner_by_wall_p99": {"depth": 3, "width": 512, "params": 537096, "wall_p99_us_range": [243.942, 245.883]},
+    "depth2_crosses_250us_at_width_WALL": {"width": 1024, "median_p99_us": 521.416},
+    "depth2_crosses_500us_at_width_WALL": {"width": 1024, "median_p99_us": 521.416},
+    "depth3_crosses_250us_at_width_WALL": {"width": 1024, "median_p99_us": 1035.685},
+    "depth3_crosses_500us_at_width_WALL": {"width": 1024, "median_p99_us": 1035.685},
+    "depth2_crosses_250us_at_width_CPU": {"width": 1024, "median_p99_us": 520.238},
+    "depth2_crosses_500us_at_width_CPU": {"width": 1024, "median_p99_us": 520.238},
+    "depth3_crosses_250us_at_width_CPU": {"width": 1024, "median_p99_us": 1032.900},
+    "depth3_crosses_500us_at_width_CPU": {"width": 1024, "median_p99_us": 1032.900},
+    "_crossing_note": "null means the entire swept range (256..2048) stays at or under that threshold for that depth, on that clock"
+  }
+}

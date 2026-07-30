@@ -1,0 +1,234 @@
+{
+ "routes": [
+  {
+   "name": "window_to_rl",
+   "nodes": 56,
+   "path_len_u": 2001.9,
+   "euclid_u": 246.4,
+   "gate_s": 3.75,
+   "required_avg_ups": 533.8,
+   "start": [
+    1328.0,
+    540.0,
+    71.0
+   ],
+   "target": [
+    1520.0,
+    496.0,
+    -88.0
+   ],
+   "snapped_goal": [
+    1520.0,
+    496.0,
+    -87.96875
+   ]
+  },
+  {
+   "name": "sngspawn_a_to_quad",
+   "nodes": 190,
+   "path_len_u": 6772.1,
+   "euclid_u": 1907.9,
+   "gate_s": 4.27,
+   "required_avg_ups": 1586.0,
+   "start": [
+    -880.0,
+    -232.0,
+    -16.0
+   ],
+   "target": [
+    952.0,
+    296.0,
+    80.0
+   ],
+   "snapped_goal": [
+    952.0,
+    296.0,
+    56.03125
+   ]
+  },
+  {
+   "name": "sngspawn_b_to_quad",
+   "nodes": 174,
+   "path_len_u": 6190.3,
+   "euclid_u": 1861.9,
+   "gate_s": 4.27,
+   "required_avg_ups": 1449.7,
+   "start": [
+    -632.0,
+    -680.0,
+    -16.0
+   ],
+   "target": [
+    952.0,
+    296.0,
+    80.0
+   ],
+   "snapped_goal": [
+    952.0,
+    296.0,
+    56.03125
+   ]
+  },
+  {
+   "name": "ralow_to_ratop",
+   "nodes": 84,
+   "path_len_u": 3052.2,
+   "euclid_u": 469.8,
+   "gate_s": 7.71,
+   "required_avg_ups": 395.9,
+   "start": [
+    -64.0,
+    -704.0,
+    -16.0
+   ],
+   "target": [
+    256.0,
+    -704.0,
+    328.0
+   ],
+   "snapped_goal": [
+    256.0,
+    -704.0,
+    328.0
+   ]
+  },
+  {
+   "name": "lifts_to_sng_mega",
+   "nodes": 59,
+   "path_len_u": 2325.5,
+   "euclid_u": 1346.5,
+   "gate_s": 7.93,
+   "required_avg_ups": 293.2,
+   "start": [
+    508.0,
+    610.0,
+    182.0
+   ],
+   "target": [
+    -720.0,
+    80.0,
+    184.0
+   ],
+   "snapped_goal": [
+    -720.0,
+    80.0,
+    184.03125
+   ]
+  },
+  {
+   "name": "quad_to_ra",
+   "nodes": 126,
+   "path_len_u": 5063.7,
+   "euclid_u": 1248.4,
+   "gate_s": 8.96,
+   "required_avg_ups": 565.1,
+   "start": [
+    952.0,
+    296.0,
+    80.0
+   ],
+   "target": [
+    256.0,
+    -704.0,
+    328.0
+   ],
+   "snapped_goal": [
+    256.0,
+    -704.0,
+    328.0
+   ]
+  },
+  {
+   "name": "ring_to_ratop",
+   "nodes": 77,
+   "path_len_u": 2841.9,
+   "euclid_u": 725.1,
+   "gate_s": 9.26,
+   "required_avg_ups": 306.9,
+   "start": [
+    240.0,
+    -32.0,
+    80.0
+   ],
+   "target": [
+    256.0,
+    -704.0,
+    328.0
+   ],
+   "snapped_goal": [
+    256.0,
+    -704.0,
+    328.0
+   ]
+  },
+  {
+   "name": "sngspawn_a_to_mega",
+   "nodes": 65,
+   "path_len_u": 2540.1,
+   "euclid_u": 403.7,
+   "gate_s": 9.98,
+   "required_avg_ups": 254.5,
+   "start": [
+    -880.0,
+    -232.0,
+    -16.0
+   ],
+   "target": [
+    -720.0,
+    80.0,
+    184.0
+   ],
+   "snapped_goal": [
+    -720.0,
+    80.0,
+    184.03125
+   ]
+  },
+  {
+   "name": "sngspawn_b_to_mega",
+   "nodes": 80,
+   "path_len_u": 3110.3,
+   "euclid_u": 790.8,
+   "gate_s": 9.98,
+   "required_avg_ups": 311.7,
+   "start": [
+    -632.0,
+    -680.0,
+    -16.0
+   ],
+   "target": [
+    -720.0,
+    80.0,
+    184.0
+   ],
+   "snapped_goal": [
+    -720.0,
+    80.0,
+    184.03125
+   ]
+  },
+  {
+   "name": "tunnel_to_ra",
+   "nodes": 102,
+   "path_len_u": 3884.8,
+   "euclid_u": 710.0,
+   "gate_s": 12.13,
+   "required_avg_ups": 320.3,
+   "start": [
+    192.0,
+    -208.0,
+    -176.0
+   ],
+   "target": [
+    256.0,
+    -704.0,
+    328.0
+   ],
+   "snapped_goal": [
+    256.0,
+    -704.0,
+    328.0
+   ]
+  }
+ ]
+}

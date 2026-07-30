@@ -1,0 +1,42 @@
+{
+ "derived": "human paths per route; per-run max distance to the union of the other runs",
+ "gate": "a policy run's max distance to the corpus union must not exceed the human p95",
+ "densify_u": 16.0,
+ "routes": {
+  "window_to_rl": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 12.5,
+   "gate_p95_u": 40.2
+  },
+  "ralow_to_ratop": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 15.8,
+   "gate_p95_u": 47.8
+  },
+  "lifts_to_sng_mega": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 10.5,
+   "gate_p95_u": 23.6
+  },
+  "ring_to_ratop": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 18.8,
+   "gate_p95_u": 84.3
+  },
+  "sngspawn_a_to_mega": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 19.6,
+   "gate_p95_u": 51.2
+  },
+  "sngspawn_b_to_mega": {
+   "n_runs": 24,
+   "loo_max_dist_p50": 19.6,
+   "gate_p95_u": 51.2
+  },
+  "tunnel_to_ra": {
+   "n_runs": 8,
+   "loo_max_dist_p50": 45.9,
+   "gate_p95_u": 110.7
+  }
+ }
+}

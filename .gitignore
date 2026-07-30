@@ -1,0 +1,8 @@
+.venv/
+rtx/
+pipeline/out/
+pipeline/__pycache__/
+pipeline/**/__pycache__/
+*.log
+demos/**/*.qwd
+demos/**/*.zip

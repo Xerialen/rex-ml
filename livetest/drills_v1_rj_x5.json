@@ -1,0 +1,122 @@
+[
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r1",
+  "kind": "route",
+  "from_xyz": [
+   957.75,
+   787.75,
+   -296.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.39,
+  "max_secs": 6.037,
+  "human_travel_secs": 5.416,
+  "human_closest_u": 27.065,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": true
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r2",
+  "kind": "route",
+  "from_xyz": [
+   957.75,
+   787.75,
+   -296.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.39,
+  "max_secs": 6.037,
+  "human_travel_secs": 5.416,
+  "human_closest_u": 27.065,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": true
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r3",
+  "kind": "route",
+  "from_xyz": [
+   957.75,
+   787.75,
+   -296.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.39,
+  "max_secs": 6.037,
+  "human_travel_secs": 5.416,
+  "human_closest_u": 27.065,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": true
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r4",
+  "kind": "route",
+  "from_xyz": [
+   957.75,
+   787.75,
+   -296.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.39,
+  "max_secs": 6.037,
+  "human_travel_secs": 5.416,
+  "human_closest_u": 27.065,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": true
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r5",
+  "kind": "route",
+  "from_xyz": [
+   957.75,
+   787.75,
+   -296.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.39,
+  "max_secs": 6.037,
+  "human_travel_secs": 5.416,
+  "human_closest_u": 27.065,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": true
+ }
+]

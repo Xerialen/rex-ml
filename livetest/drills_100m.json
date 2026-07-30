@@ -1,0 +1,172 @@
+[
+ {
+  "id": "100m-corridor-rep01",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep02",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep03",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep04",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep05",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep06",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep07",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep08",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep09",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ },
+ {
+  "id": "100m-corridor-rep10",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "100m finish",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ],
+  "min_peak_speed": 800.0
+ }
+]

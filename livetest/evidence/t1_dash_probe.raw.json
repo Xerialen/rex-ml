@@ -1,0 +1,369 @@
+{
+  "conditions": {
+    "bot_ent": 1,
+    "other_bots_held": 0,
+    "pacifist": true,
+    "telemetry": true,
+    "timeout_floor_secs": 40.0
+  },
+  "kind": "movement_drills",
+  "result": {
+    "arrival_rate": 0.0,
+    "arrived": 0,
+    "arrived_below_speed_bar": 0,
+    "arrived_elapsed": null,
+    "arrived_over_time_target": 0,
+    "arrived_peak_speed": null,
+    "drills": [
+      {
+        "best_dist": 267.1087951660156,
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.8706512451172
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "SpeedJump",
+            "reason": "prestrafe_deficit",
+            "speed": 66.72998046875
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 510.1247863769531
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 510.1247863769531
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 510.1247863769531
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 510.1247863769531
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 510.1247863769531
+          }
+        ],
+        "budget_secs": 46.56666564941406,
+        "end_dist": 261.0145568847656,
+        "from_cell": 4294967295,
+        "goal": [
+          -32.0,
+          3488.0,
+          24.0
+        ],
+        "id": "suite_x-32-r1",
+        "kind": "corridor",
+        "metrics": {
+          "elapsed": 17.40703582763672,
+          "max_cross_track": 49.056678771972656,
+          "max_heading_deg": 85.46734619140625,
+          "max_yaw_step_deg": 30.884328842163086,
+          "max_z_gain": 43.980010986328125,
+          "mean_speed": 332.2340087890625,
+          "path_len": 5783.20947265625,
+          "peak_progress": 0.2484806329011917,
+          "peak_speed": 532.0870971679688,
+          "reverse_frames": 0,
+          "samples": 849
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 14,
+        "planned_path_len": 1075.790283203125,
+        "settled_start": [
+          -32.0,
+          -2100.0,
+          24.03125
+        ],
+        "snapped_goal": true,
+        "snapped_start": false,
+        "start": [
+          -32.0,
+          -2100.0,
+          24.0
+        ],
+        "start_error": 0.03125,
+        "straight_dist": 5588.0,
+        "to_cell": 1241,
+        "wall_secs": 17.13768196105957
+      },
+      {
+        "best_dist": 5588.0,
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          }
+        ],
+        "budget_secs": 46.56666564941406,
+        "end_dist": 5588.0,
+        "from_cell": 4294967295,
+        "goal": [
+          -32.0,
+          3488.0,
+          24.0
+        ],
+        "id": "suite_x-32-r2",
+        "kind": "corridor",
+        "metrics": {
+          "elapsed": 4.004444122314453,
+          "max_cross_track": 0.0,
+          "max_heading_deg": 0.0,
+          "max_yaw_step_deg": 0.0,
+          "max_z_gain": 1.0,
+          "mean_speed": 0.0,
+          "path_len": 0.0,
+          "peak_progress": 0.0,
+          "peak_speed": 0.0,
+          "reverse_frames": 0,
+          "samples": 196
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 14,
+        "planned_path_len": 1075.790283203125,
+        "settled_start": [
+          -32.0,
+          -2100.0,
+          25.0
+        ],
+        "snapped_goal": true,
+        "snapped_start": false,
+        "start": [
+          -32.0,
+          -2100.0,
+          24.0
+        ],
+        "start_error": 1.0,
+        "straight_dist": 5588.0,
+        "to_cell": 1241,
+        "wall_secs": 3.735405445098877
+      },
+      {
+        "best_dist": 4320.0,
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          }
+        ],
+        "budget_secs": 40.0,
+        "end_dist": 4320.0,
+        "from_cell": 4294967295,
+        "goal": [
+          224.0,
+          2912.0,
+          24.0
+        ],
+        "id": "agents_x224-r1",
+        "kind": "corridor",
+        "metrics": {
+          "elapsed": 4.002532958984375,
+          "max_cross_track": 0.0,
+          "max_heading_deg": 0.0,
+          "max_yaw_step_deg": 0.0,
+          "max_z_gain": 1.0,
+          "mean_speed": 0.0,
+          "path_len": 0.0,
+          "peak_progress": 0.0,
+          "peak_speed": 0.0,
+          "reverse_frames": 0,
+          "samples": 196
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 35,
+        "planned_path_len": 1160.4661865234375,
+        "settled_start": [
+          224.0,
+          -1408.0,
+          33.0
+        ],
+        "snapped_goal": true,
+        "snapped_start": false,
+        "start": [
+          224.0,
+          -1408.0,
+          32.0
+        ],
+        "start_error": 1.0,
+        "straight_dist": 4320.0,
+        "to_cell": 2669,
+        "wall_secs": 3.7330551147460938
+      },
+      {
+        "best_dist": 4320.0,
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 0.0
+          }
+        ],
+        "budget_secs": 40.0,
+        "end_dist": 4320.0,
+        "from_cell": 4294967295,
+        "goal": [
+          224.0,
+          2912.0,
+          24.0
+        ],
+        "id": "agents_x224-r2",
+        "kind": "corridor",
+        "metrics": {
+          "elapsed": 4.015811920166016,
+          "max_cross_track": 0.0,
+          "max_heading_deg": 0.0,
+          "max_yaw_step_deg": 0.0,
+          "max_z_gain": 1.0,
+          "mean_speed": 0.0,
+          "path_len": 0.0,
+          "peak_progress": 0.0,
+          "peak_speed": 0.0,
+          "reverse_frames": 0,
+          "samples": 197
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 4,
+        "planned_path_len": 142.23968505859375,
+        "settled_start": [
+          224.0,
+          -1408.0,
+          33.0
+        ],
+        "snapped_goal": true,
+        "snapped_start": false,
+        "start": [
+          224.0,
+          -1408.0,
+          32.0
+        ],
+        "start_error": 1.0,
+        "straight_dist": 4320.0,
+        "to_cell": 2669,
+        "wall_secs": 3.7487072944641113
+      }
+    ],
+    "errored": 0,
+    "pass_rate": 0.0,
+    "passed": 0,
+    "stalled": 4,
+    "status": "failed",
+    "total": 4
+  },
+  "tier": "T1"
+}

@@ -1,0 +1,1442 @@
+[
+ {
+  "id": "sngspawns-to-sngmega-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385
+ },
+ {
+  "id": "ralow-to-ratop-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437
+ },
+ {
+  "id": "ring-to-ratop-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388
+ },
+ {
+  "id": "highbridge-to-rl-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390
+ },
+ {
+  "id": "window-to-rl-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452
+ },
+ {
+  "id": "quad-to-sng-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467
+ },
+ {
+  "id": "ratop-to-ssg-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480
+ },
+ {
+  "id": "sng-to-quad-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469
+ },
+ {
+  "id": "ssg-to-ratop-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rl_to_ratop-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rarox-to-quad-r1",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447
+ },
+ {
+  "id": "sngspawns-to-sngmega-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385
+ },
+ {
+  "id": "ralow-to-ratop-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437
+ },
+ {
+  "id": "ring-to-ratop-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388
+ },
+ {
+  "id": "highbridge-to-rl-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390
+ },
+ {
+  "id": "window-to-rl-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452
+ },
+ {
+  "id": "quad-to-sng-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467
+ },
+ {
+  "id": "ratop-to-ssg-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480
+ },
+ {
+  "id": "sng-to-quad-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469
+ },
+ {
+  "id": "ssg-to-ratop-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rl_to_ratop-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rarox-to-quad-r2",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447
+ },
+ {
+  "id": "sngspawns-to-sngmega-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385
+ },
+ {
+  "id": "ralow-to-ratop-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437
+ },
+ {
+  "id": "ring-to-ratop-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388
+ },
+ {
+  "id": "highbridge-to-rl-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390
+ },
+ {
+  "id": "window-to-rl-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452
+ },
+ {
+  "id": "quad-to-sng-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467
+ },
+ {
+  "id": "ratop-to-ssg-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480
+ },
+ {
+  "id": "sng-to-quad-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469
+ },
+ {
+  "id": "ssg-to-ratop-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rl_to_ratop-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rarox-to-quad-r3",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447
+ },
+ {
+  "id": "sngspawns-to-sngmega-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385
+ },
+ {
+  "id": "ralow-to-ratop-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437
+ },
+ {
+  "id": "ring-to-ratop-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388
+ },
+ {
+  "id": "highbridge-to-rl-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390
+ },
+ {
+  "id": "window-to-rl-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452
+ },
+ {
+  "id": "quad-to-sng-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467
+ },
+ {
+  "id": "ratop-to-ssg-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480
+ },
+ {
+  "id": "sng-to-quad-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469
+ },
+ {
+  "id": "ssg-to-ratop-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rl_to_ratop-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rarox-to-quad-r4",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447
+ },
+ {
+  "id": "sngspawns-to-sngmega-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987,
+  "human_path": 2968,
+  "human_mean": 425
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.325,
+  "human_path": 2818,
+  "human_mean": 385
+ },
+ {
+  "id": "ralow-to-ratop-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324,
+  "human_path": 3203,
+  "human_mean": 437
+ },
+ {
+  "id": "ring-to-ratop-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 6.299,
+  "human_path": 2446,
+  "human_mean": 388
+ },
+ {
+  "id": "highbridge-to-rl-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48,
+  "human_path": 967,
+  "human_mean": 390
+ },
+ {
+  "id": "window-to-rl-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377,
+  "human_path": 1075,
+  "human_mean": 452
+ },
+ {
+  "id": "quad-to-sng-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "human_secs": 5.025,
+  "human_path": 2347,
+  "human_mean": 467
+ },
+ {
+  "id": "ratop-to-ssg-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "human_secs": 6.13,
+  "human_path": 2942,
+  "human_mean": 480
+ },
+ {
+  "id": "sng-to-quad-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "human_secs": 5.221,
+  "human_path": 2447,
+  "human_mean": 469
+ },
+ {
+  "id": "ssg-to-ratop-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "human_secs": 10.169,
+  "human_path": 4636,
+  "human_mean": 456
+ },
+ {
+  "id": "ya-to-tele-to-window-to-rl-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "human_secs": 3.208,
+  "human_path": 1492,
+  "human_mean": 465
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "human_secs": 10.156,
+  "human_path": 2914,
+  "human_mean": 287
+ },
+ {
+  "id": "spawn-lift-to-pent-to-pentmega-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "human_secs": 6.714,
+  "human_path": 2753,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rl_to_ratop-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "human_secs": 12.169,
+  "human_path": 6449,
+  "human_mean": 530
+ },
+ {
+  "id": "spawn-ra-tunnel-to-lg-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "human_secs": 4.429,
+  "human_path": 1815,
+  "human_mean": 410
+ },
+ {
+  "id": "spawn-rarox-to-quad-r5",
+  "kind": "route",
+  "rj_allowed": false,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "human_secs": 3.363,
+  "human_path": 1503,
+  "human_mean": 447
+ }
+]

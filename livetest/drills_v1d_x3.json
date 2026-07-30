@@ -1,0 +1,1430 @@
+[
+ {
+  "id": "(hex)quad-to-sng-r1",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "item_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "human_closest_u": 26.4,
+  "owner_reach_s": 5.247,
+  "owner_bar_s": 5.876,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r1",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1797.375,
+   -647.75,
+   -24.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "item_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "human_closest_u": 33.2,
+  "owner_reach_s": 7.064,
+  "owner_bar_s": 7.912,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r1",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   959.25,
+   300.125,
+   71.5
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 17.6,
+  "owner_reach_s": 5.351,
+  "owner_bar_s": 5.993,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256.75,
+   -706.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 10.338,
+  "owner_bar_s": 11.578,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1857.75,
+   662.375,
+   -135.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 80.6,
+  "owner_reach_s": 6.896,
+  "owner_bar_s": 7.724,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r1",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1546.25,
+   -191.625,
+   -392.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "item_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 4.675,
+  "owner_bar_s": 5.237,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r1",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   948.25,
+   300.875,
+   68.75
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 14.2,
+  "owner_reach_s": 3.467,
+  "owner_bar_s": 3.883,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r1",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   251.375,
+   -689.5,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 28.4,
+  "owner_reach_s": 14.156,
+  "owner_bar_s": 15.855,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256.875,
+   -698.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.7,
+  "owner_reach_s": 8.533,
+  "owner_bar_s": 9.557,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "highbridge-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1595.75,
+   478.625,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 81.3,
+  "owner_reach_s": 2.715,
+  "owner_bar_s": 3.04,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1862.625,
+   632.75,
+   -180.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 34.1,
+  "owner_reach_s": 10.506,
+  "owner_bar_s": 11.767,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -718.5,
+   88.25,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 25.4,
+  "owner_reach_s": 7.494,
+  "owner_bar_s": 8.393,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ralow-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   251.625,
+   -696.75,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 25.5,
+  "owner_reach_s": 7.481,
+  "owner_bar_s": 8.378,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   252.0,
+   -703.125,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.3,
+  "owner_reach_s": 6.974,
+  "owner_bar_s": 7.811,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1514.0,
+   493.25,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 24.9,
+  "owner_reach_s": 5.559,
+  "owner_bar_s": 6.226,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -719.375,
+   79.875,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 24.0,
+  "owner_reach_s": 7.169,
+  "owner_bar_s": 8.03,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "window-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1633.0,
+   481.0,
+   -82.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 117.8,
+  "owner_reach_s": 2.493,
+  "owner_bar_s": 2.793,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)quad-to-sng-r2",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "item_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "human_closest_u": 26.4,
+  "owner_reach_s": 5.247,
+  "owner_bar_s": 5.876,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r2",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1797.375,
+   -647.75,
+   -24.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "item_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "human_closest_u": 33.2,
+  "owner_reach_s": 7.064,
+  "owner_bar_s": 7.912,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r2",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   959.25,
+   300.125,
+   71.5
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 17.6,
+  "owner_reach_s": 5.351,
+  "owner_bar_s": 5.993,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256.75,
+   -706.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 10.338,
+  "owner_bar_s": 11.578,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1857.75,
+   662.375,
+   -135.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 80.6,
+  "owner_reach_s": 6.896,
+  "owner_bar_s": 7.724,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r2",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1546.25,
+   -191.625,
+   -392.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "item_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 4.675,
+  "owner_bar_s": 5.237,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r2",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   948.25,
+   300.875,
+   68.75
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 14.2,
+  "owner_reach_s": 3.467,
+  "owner_bar_s": 3.883,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r2",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   251.375,
+   -689.5,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 28.4,
+  "owner_reach_s": 14.156,
+  "owner_bar_s": 15.855,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256.875,
+   -698.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.7,
+  "owner_reach_s": 8.533,
+  "owner_bar_s": 9.557,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "highbridge-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1595.75,
+   478.625,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 81.3,
+  "owner_reach_s": 2.715,
+  "owner_bar_s": 3.04,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1862.625,
+   632.75,
+   -180.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 34.1,
+  "owner_reach_s": 10.506,
+  "owner_bar_s": 11.767,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -718.5,
+   88.25,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 25.4,
+  "owner_reach_s": 7.494,
+  "owner_bar_s": 8.393,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ralow-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   251.625,
+   -696.75,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 25.5,
+  "owner_reach_s": 7.481,
+  "owner_bar_s": 8.378,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   252.0,
+   -703.125,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.3,
+  "owner_reach_s": 6.974,
+  "owner_bar_s": 7.811,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1514.0,
+   493.25,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 24.9,
+  "owner_reach_s": 5.559,
+  "owner_bar_s": 6.226,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -719.375,
+   79.875,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 24.0,
+  "owner_reach_s": 7.169,
+  "owner_bar_s": 8.03,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "window-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1633.0,
+   481.0,
+   -82.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 117.8,
+  "owner_reach_s": 2.493,
+  "owner_bar_s": 2.793,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)quad-to-sng-r3",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "item_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "human_closest_u": 26.4,
+  "owner_reach_s": 5.247,
+  "owner_bar_s": 5.876,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r3",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1797.375,
+   -647.75,
+   -24.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "item_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "human_closest_u": 33.2,
+  "owner_reach_s": 7.064,
+  "owner_bar_s": 7.912,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r3",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   959.25,
+   300.125,
+   71.5
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 17.6,
+  "owner_reach_s": 5.351,
+  "owner_bar_s": 5.993,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256.75,
+   -706.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 10.338,
+  "owner_bar_s": 11.578,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1857.75,
+   662.375,
+   -135.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 80.6,
+  "owner_reach_s": 6.896,
+  "owner_bar_s": 7.724,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r3",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1546.25,
+   -191.625,
+   -392.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "item_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "human_closest_u": 24.1,
+  "owner_reach_s": 4.675,
+  "owner_bar_s": 5.237,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r3",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   948.25,
+   300.875,
+   68.75
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "item_xyz": [
+   952,
+   296,
+   56
+  ],
+  "human_closest_u": 14.2,
+  "owner_reach_s": 3.467,
+  "owner_bar_s": 3.883,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r3",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   251.375,
+   -689.5,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 28.4,
+  "owner_reach_s": 14.156,
+  "owner_bar_s": 15.855,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256.875,
+   -698.375,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.7,
+  "owner_reach_s": 8.533,
+  "owner_bar_s": 9.557,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "highbridge-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1595.75,
+   478.625,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 81.3,
+  "owner_reach_s": 2.715,
+  "owner_bar_s": 3.04,
+  "rj_allowed": false,
+  "goal_airborne": true
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1862.625,
+   632.75,
+   -180.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "item_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "human_closest_u": 34.1,
+  "owner_reach_s": 10.506,
+  "owner_bar_s": 11.767,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -718.5,
+   88.25,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 25.4,
+  "owner_reach_s": 7.494,
+  "owner_bar_s": 8.393,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ralow-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   251.625,
+   -696.75,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 25.5,
+  "owner_reach_s": 7.481,
+  "owner_bar_s": 8.378,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   252.0,
+   -703.125,
+   328.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "item_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "human_closest_u": 24.3,
+  "owner_reach_s": 6.974,
+  "owner_bar_s": 7.811,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "ring-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1514.0,
+   493.25,
+   -88.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 24.9,
+  "owner_reach_s": 5.559,
+  "owner_bar_s": 6.226,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -719.375,
+   79.875,
+   184.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "item_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "human_closest_u": 24.0,
+  "owner_reach_s": 7.169,
+  "owner_bar_s": 8.03,
+  "rj_allowed": false,
+  "goal_airborne": false
+ },
+ {
+  "id": "window-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1633.0,
+   481.0,
+   -82.375
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "item_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "human_closest_u": 117.8,
+  "owner_reach_s": 2.493,
+  "owner_bar_s": 2.793,
+  "rj_allowed": false,
+  "goal_airborne": true
+ }
+]

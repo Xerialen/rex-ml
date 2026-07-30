@@ -1,0 +1,2402 @@
+[
+ {
+  "id": "r002-RA-tunnel_spawn->RA",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "RA",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r003-RA-tunnel_spawn->YA",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "YA",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r004-RA-tunnel_spawn->RL",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "RL",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r005-RA-tunnel_spawn->Quad",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "Quad",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r006-RA-tunnel_spawn->Pent",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "Pent",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r007-RA-tunnel_spawn->Ring",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "Ring",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r008-RA-tunnel_spawn->Hill_Mega",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "Hill Mega",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r009-RA-tunnel_spawn->SNG_Mega",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "SNG Mega",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r010-RA-tunnel_spawn->LG",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "LG",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r011-RL-spawn->RA",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r012-RL-spawn->YA",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "YA",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r013-RL-spawn->RL",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "RL",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r014-RL-spawn->Quad",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "Quad",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r015-RL-spawn->Pent",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "Pent",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r016-RL-spawn->Ring",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "Ring",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r017-RL-spawn->Hill_Mega",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r018-RL-spawn->SNG_Mega",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r019-RL-spawn->LG",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "LG",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r020-SNG-tele_spawn_A->RA",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "RA",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r021-SNG-tele_spawn_A->YA",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "YA",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r022-SNG-tele_spawn_A->RL",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "RL",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r023-SNG-tele_spawn_A->Quad",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "Quad",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r024-SNG-tele_spawn_A->Pent",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "Pent",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r025-SNG-tele_spawn_A->Ring",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "Ring",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r026-SNG-tele_spawn_A->Hill_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "Hill Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r027-SNG-tele_spawn_A->SNG_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r028-SNG-tele_spawn_A->LG",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "LG",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r029-SNG-tele_spawn_B->RA",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "RA",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r030-SNG-tele_spawn_B->YA",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "YA",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r031-SNG-tele_spawn_B->RL",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "RL",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r032-SNG-tele_spawn_B->Quad",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "Quad",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r033-SNG-tele_spawn_B->Pent",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "Pent",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r034-SNG-tele_spawn_B->Ring",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "Ring",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r035-SNG-tele_spawn_B->Hill_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "Hill Mega",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r036-SNG-tele_spawn_B->SNG_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r037-SNG-tele_spawn_B->LG",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "LG",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r038-YA-box_spawn->RA",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "RA",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r039-YA-box_spawn->YA",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "YA",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r040-YA-box_spawn->RL",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "RL",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r041-YA-box_spawn->Quad",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "Quad",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r042-YA-box_spawn->Pent",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "Pent",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r043-YA-box_spawn->Ring",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "Ring",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r044-YA-box_spawn->Hill_Mega",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r045-YA-box_spawn->SNG_Mega",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r046-YA-box_spawn->LG",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "LG",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r047-Lifts_spawn->RA",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "RA",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r048-Lifts_spawn->YA",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "YA",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r049-Lifts_spawn->RL",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "RL",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r050-Lifts_spawn->Quad",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "Quad",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r051-Lifts_spawn->Pent",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "Pent",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r052-Lifts_spawn->Ring",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "Ring",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r053-Lifts_spawn->Hill_Mega",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "Hill Mega",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r054-Lifts_spawn->SNG_Mega",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "SNG Mega",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r055-Lifts_spawn->LG",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "LG",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r056-RA->YA",
+  "kind": "prox",
+  "from": "RA",
+  "to": "YA",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r057-RA->RL",
+  "kind": "prox",
+  "from": "RA",
+  "to": "RL",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r058-RA->Quad",
+  "kind": "prox",
+  "from": "RA",
+  "to": "Quad",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r059-RA->Pent",
+  "kind": "prox",
+  "from": "RA",
+  "to": "Pent",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r060-RA->Ring",
+  "kind": "prox",
+  "from": "RA",
+  "to": "Ring",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r061-RA->Hill_Mega",
+  "kind": "prox",
+  "from": "RA",
+  "to": "Hill Mega",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r062-RA->SNG_Mega",
+  "kind": "prox",
+  "from": "RA",
+  "to": "SNG Mega",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r063-RA->LG",
+  "kind": "prox",
+  "from": "RA",
+  "to": "LG",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r064-YA->RA",
+  "kind": "prox",
+  "from": "YA",
+  "to": "RA",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r065-YA->RL",
+  "kind": "prox",
+  "from": "YA",
+  "to": "RL",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r066-YA->Quad",
+  "kind": "prox",
+  "from": "YA",
+  "to": "Quad",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r067-YA->Pent",
+  "kind": "prox",
+  "from": "YA",
+  "to": "Pent",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r068-YA->Ring",
+  "kind": "prox",
+  "from": "YA",
+  "to": "Ring",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r069-YA->Hill_Mega",
+  "kind": "prox",
+  "from": "YA",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r070-YA->SNG_Mega",
+  "kind": "prox",
+  "from": "YA",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r071-YA->LG",
+  "kind": "prox",
+  "from": "YA",
+  "to": "LG",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r072-RL->RA",
+  "kind": "prox",
+  "from": "RL",
+  "to": "RA",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r073-RL->YA",
+  "kind": "prox",
+  "from": "RL",
+  "to": "YA",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r074-RL->Quad",
+  "kind": "prox",
+  "from": "RL",
+  "to": "Quad",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r075-RL->Pent",
+  "kind": "prox",
+  "from": "RL",
+  "to": "Pent",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r076-RL->Ring",
+  "kind": "prox",
+  "from": "RL",
+  "to": "Ring",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r077-RL->Hill_Mega",
+  "kind": "prox",
+  "from": "RL",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r078-RL->SNG_Mega",
+  "kind": "prox",
+  "from": "RL",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r079-RL->LG",
+  "kind": "prox",
+  "from": "RL",
+  "to": "LG",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r080-Quad->RA",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "RA",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r081-Quad->YA",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "YA",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r082-Quad->RL",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "RL",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r083-Quad->Pent",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "Pent",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r084-Quad->Ring",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "Ring",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r085-Quad->Hill_Mega",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "Hill Mega",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r086-Quad->SNG_Mega",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "SNG Mega",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r087-Quad->LG",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "LG",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r088-Pent->RA",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "RA",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r089-Pent->YA",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "YA",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r090-Pent->RL",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "RL",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r091-Pent->Quad",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "Quad",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r092-Pent->Ring",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "Ring",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r093-Pent->Hill_Mega",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r094-Pent->SNG_Mega",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r095-Pent->LG",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "LG",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r096-Ring->RA",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "RA",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r097-Ring->YA",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "YA",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r098-Ring->RL",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "RL",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r099-Ring->Quad",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "Quad",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r100-Ring->Pent",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "Pent",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r101-Ring->Hill_Mega",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "Hill Mega",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r102-Ring->SNG_Mega",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r103-Ring->LG",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "LG",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r104-Hill_Mega->RA",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "RA",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r105-Hill_Mega->YA",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "YA",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r106-Hill_Mega->RL",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "RL",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r107-Hill_Mega->Quad",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "Quad",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r108-Hill_Mega->Pent",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "Pent",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r109-Hill_Mega->Ring",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "Ring",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r110-Hill_Mega->SNG_Mega",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "SNG Mega",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r111-Hill_Mega->LG",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "LG",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r112-SNG_Mega->RA",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "RA",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r113-SNG_Mega->YA",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "YA",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r114-SNG_Mega->RL",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "RL",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r115-SNG_Mega->Quad",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "Quad",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r116-SNG_Mega->Pent",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "Pent",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r117-SNG_Mega->Ring",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "Ring",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r118-SNG_Mega->Hill_Mega",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "Hill Mega",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r119-SNG_Mega->LG",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "LG",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ },
+ {
+  "id": "r120-LG->RA",
+  "kind": "prox",
+  "from": "LG",
+  "to": "RA",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r121-LG->YA",
+  "kind": "prox",
+  "from": "LG",
+  "to": "YA",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r122-LG->RL",
+  "kind": "prox",
+  "from": "LG",
+  "to": "RL",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r123-LG->Quad",
+  "kind": "prox",
+  "from": "LG",
+  "to": "Quad",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r124-LG->Pent",
+  "kind": "prox",
+  "from": "LG",
+  "to": "Pent",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r125-LG->Ring",
+  "kind": "prox",
+  "from": "LG",
+  "to": "Ring",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r126-LG->Hill_Mega",
+  "kind": "prox",
+  "from": "LG",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r127-LG->SNG_Mega",
+  "kind": "prox",
+  "from": "LG",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r128-RA-tunnel_spawn->Pent_Mega",
+  "kind": "spawn",
+  "from": "RA-tunnel spawn",
+  "to": "Pent Mega",
+  "from_xyz": [
+   192,
+   -208,
+   -176
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r129-RL-spawn->Pent_Mega",
+  "kind": "spawn",
+  "from": "RL-spawn",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r130-SNG-tele_spawn_A->Pent_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn A",
+  "to": "Pent Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r131-SNG-tele_spawn_B->Pent_Mega",
+  "kind": "spawn",
+  "from": "SNG-tele spawn B",
+  "to": "Pent Mega",
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r132-YA-box_spawn->Pent_Mega",
+  "kind": "spawn",
+  "from": "YA-box spawn",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1472,
+   -928,
+   -24
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r133-Lifts_spawn->Pent_Mega",
+  "kind": "spawn",
+  "from": "Lifts spawn",
+  "to": "Pent Mega",
+  "from_xyz": [
+   512,
+   768,
+   216
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r134-RA->Pent_Mega",
+  "kind": "prox",
+  "from": "RA",
+  "to": "Pent Mega",
+  "from_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r135-YA->Pent_Mega",
+  "kind": "prox",
+  "from": "YA",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1232,
+   -904,
+   -48
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r136-RL->Pent_Mega",
+  "kind": "prox",
+  "from": "RL",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r137-Quad->Pent_Mega",
+  "kind": "prox",
+  "from": "Quad",
+  "to": "Pent Mega",
+  "from_xyz": [
+   952,
+   296,
+   56
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r138-Pent->Pent_Mega",
+  "kind": "prox",
+  "from": "Pent",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1008,
+   800,
+   -296
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r139-Ring->Pent_Mega",
+  "kind": "prox",
+  "from": "Ring",
+  "to": "Pent Mega",
+  "from_xyz": [
+   240,
+   -32,
+   56
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r140-Hill_Mega->Pent_Mega",
+  "kind": "prox",
+  "from": "Hill Mega",
+  "to": "Pent Mega",
+  "from_xyz": [
+   564,
+   -48,
+   -192
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r141-SNG_Mega->Pent_Mega",
+  "kind": "prox",
+  "from": "SNG Mega",
+  "to": "Pent Mega",
+  "from_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r142-LG->Pent_Mega",
+  "kind": "prox",
+  "from": "LG",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ]
+ },
+ {
+  "id": "r143-Pent_Mega->RA",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "RA",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ]
+ },
+ {
+  "id": "r144-Pent_Mega->YA",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "YA",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   1232,
+   -904,
+   -48
+  ]
+ },
+ {
+  "id": "r145-Pent_Mega->RL",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "RL",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ]
+ },
+ {
+  "id": "r146-Pent_Mega->Quad",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "Quad",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ]
+ },
+ {
+  "id": "r147-Pent_Mega->Pent",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "Pent",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   1008,
+   800,
+   -296
+  ]
+ },
+ {
+  "id": "r148-Pent_Mega->Ring",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "Ring",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   240,
+   -32,
+   56
+  ]
+ },
+ {
+  "id": "r149-Pent_Mega->Hill_Mega",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "Hill Mega",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   564,
+   -48,
+   -192
+  ]
+ },
+ {
+  "id": "r150-Pent_Mega->SNG_Mega",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "SNG Mega",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ]
+ },
+ {
+  "id": "r151-Pent_Mega->LG",
+  "kind": "prox",
+  "from": "Pent Mega",
+  "to": "LG",
+  "from_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ]
+ }
+]

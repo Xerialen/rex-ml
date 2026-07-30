@@ -1,0 +1,200 @@
+{
+  "spec": "F1.0",
+  "train_config": {
+    "depth": 3,
+    "width": 512,
+    "steps": 120000,
+    "batch": 1024,
+    "lr": 0.0003,
+    "seed": 0,
+    "n_params": 537096,
+    "objective": "same as shipped actor_disc.pt: CE(fmove sign class) + CE(smove sign class) + 10*MSE(tanh(yaw)) + BCEWithLogits(jump), Adam",
+    "data": "pipeline/out/policy/{S,A,SP}.npy, train split only (SP==0), same build() as the shipped policy",
+    "source_ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/policy/actor_disc_3x512.pt"
+  },
+  "param_counts": {
+    "old_2x256": {
+      "nin": 14,
+      "nh": 256,
+      "depth": 2,
+      "nout": 8,
+      "bytes": 286752,
+      "params": 71688
+    },
+    "new_3x512": {
+      "nin": 14,
+      "nh": 512,
+      "depth": 3,
+      "nout": 8,
+      "bytes": 2148384,
+      "params": 537096
+    }
+  },
+  "parity": {
+    "n_rows": 200000,
+    "source": "S.npy[SP==2] (held-out test split, never seen by train_disc)",
+    "seed": 0,
+    "depth": 3,
+    "nh": 512,
+    "thresholds": {
+      "fmove_agreement": 1.0,
+      "smove_agreement": 1.0,
+      "jump_agreement": 1.0,
+      "dyaw_max_abs_diff": 1e-05,
+      "logit_max_abs_diff": 0.001
+    },
+    "measured": {
+      "fmove_agreement": 1.0,
+      "smove_agreement": 1.0,
+      "jump_agreement": 1.0,
+      "dyaw_max_abs_diff": 1.8998980522155762e-07,
+      "logit_max_abs_diff": 1.9073486328125e-05
+    },
+    "passed": {
+      "fmove_agreement": true,
+      "smove_agreement": true,
+      "jump_agreement": true,
+      "dyaw_max_abs_diff": true,
+      "logit_max_abs_diff": true
+    },
+    "all_passed": true,
+    "f_head_argmax_ties": 0,
+    "s_head_argmax_ties": 0,
+    "rust_binary": "/home/benjamin-adm/rex-ml/rtx/target/release/nav_policy_parity_3x512",
+    "rust_wall_s": 50.149,
+    "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/policy/actor_disc_3x512.pt"
+  },
+  "held_out_agreement": {
+    "val": {
+      "old_2x256": {
+        "fmove_class_acc": 0.842466,
+        "smove_class_acc": 0.7729,
+        "move_quadrant_agreement": 0.66998,
+        "fmove_mae": 108.903936,
+        "smove_mae": 156.483888,
+        "dyaw_mae_deg": 0.5644789934158325,
+        "jump_acc": 0.965042
+      },
+      "new_3x512": {
+        "fmove_class_acc": 0.849968,
+        "smove_class_acc": 0.782978,
+        "move_quadrant_agreement": 0.68412,
+        "fmove_mae": 107.907672,
+        "smove_mae": 150.805528,
+        "dyaw_mae_deg": 0.5459912419319153,
+        "jump_acc": 0.967182
+      },
+      "new_minus_old": {
+        "fmove_class_acc": 0.007501999999999898,
+        "smove_class_acc": 0.01007799999999992,
+        "move_quadrant_agreement": 0.01413999999999993,
+        "fmove_mae": -0.9962639999999965,
+        "smove_mae": -5.678359999999998,
+        "dyaw_mae_deg": -0.018487751483917236,
+        "jump_acc": 0.0021400000000000308
+      }
+    },
+    "test": {
+      "old_2x256": {
+        "fmove_class_acc": 0.836702,
+        "smove_class_acc": 0.773052,
+        "move_quadrant_agreement": 0.665662,
+        "fmove_mae": 101.19444,
+        "smove_mae": 148.012496,
+        "dyaw_mae_deg": 0.6031824946403503,
+        "jump_acc": 0.970408
+      },
+      "new_3x512": {
+        "fmove_class_acc": 0.847062,
+        "smove_class_acc": 0.784884,
+        "move_quadrant_agreement": 0.683206,
+        "fmove_mae": 97.9142,
+        "smove_mae": 141.098568,
+        "dyaw_mae_deg": 0.5822371244430542,
+        "jump_acc": 0.972608
+      },
+      "new_minus_old": {
+        "fmove_class_acc": 0.010360000000000036,
+        "smove_class_acc": 0.011832000000000065,
+        "move_quadrant_agreement": 0.017544000000000004,
+        "fmove_mae": -3.2802400000000063,
+        "smove_mae": -6.9139279999999985,
+        "dyaw_mae_deg": -0.020945370197296143,
+        "jump_acc": 0.0021999999999999797
+      }
+    }
+  },
+  "larger_policy_imitates_better": true,
+  "loss_curve_diagnosis": {
+    "loss_curve_raw": [
+      {
+        "it": 20000,
+        "loss": 0.9952729940414429,
+        "s": 131.7
+      },
+      {
+        "it": 40000,
+        "loss": 1.048187255859375,
+        "s": 260.2
+      },
+      {
+        "it": 60000,
+        "loss": 0.9701458215713501,
+        "s": 384.7
+      },
+      {
+        "it": 80000,
+        "loss": 0.9721058011054993,
+        "s": 515.2
+      },
+      {
+        "it": 100000,
+        "loss": 0.945669412612915,
+        "s": 646.3
+      },
+      {
+        "it": 120000,
+        "loss": 0.9516829252243042,
+        "s": 765.9
+      }
+    ],
+    "loss_curve_shape": "flat and noisy from the first logged point (20k steps) through 120k: 0.9953, 1.0482, 0.9701, 0.9721, 0.9457, 0.9517 -- no visible descent, does not distinguish 'converged early' from 'stuck early' by itself.",
+    "class_balance_train_split": {
+      "fmove_sign_class_freq_neg0_pos": [
+        0.08791696,
+        0.46160458,
+        0.45047846
+      ],
+      "smove_sign_class_freq_neg0_pos": [
+        0.28246217,
+        0.4397919,
+        0.27774593
+      ],
+      "note": "same underlying (S,A) data feeds both the 2x256 and 3x512 runs, so this imbalance is a property of the task/data, not something introduced by training the larger network."
+    },
+    "marginal_entropy_floor_nats": {
+      "fmove_ce_if_predicting_only_the_marginal": 0.9298,
+      "smove_ce_if_predicting_only_the_marginal": 1.0742,
+      "sum": 2.004,
+      "measured_total_loss_range": [
+        0.9457,
+        1.0482
+      ],
+      "interpretation": "the two CE terms alone would sum to about 2.0 nats for a model that learned nothing but the class marginals; the actually-observed total loss (which also includes 10*MSE(yaw) and BCE(jump)) sits far below that already at the first logged point (20k steps), so substantial learning happened before logging started -- consistent with fast early convergence followed by a plateau, not with an optimizer that never got moving."
+    },
+    "confound_not_ruled_out": "train_disc's printed loss is a single random minibatch of 1024 (not a smoothed running average or a fixed eval-set loss), so batch-to-batch sampling variance alone is enough to make a genuinely-still-improving curve look flat/noisy at this scale of improvement. No comparable per-step loss log exists for the original 2x256 run (its train_disc() predates this task's logging change and only printed to stdout, which was not captured), so there is no direct within-setup baseline to confirm the flat shape is shared across both network sizes rather than specific to the larger one.",
+    "held_out_generalization_evidence": {
+      "train_val_test_gap": "old net: quadrant agreement 66.9%/67.0%/66.6% (train/val/test); new net: 68.8%/68.4%/68.3%. Both nets show <0.5pp train-vs-held-out gap -- no overfitting artifact in either -- and the new net's improvement over the old one is consistent in sign and similar in size across ALL THREE splits and ALL SEVEN reported metrics.",
+      "significance": "a training pathology specific to the larger net (bad LR, unstable optimization, dead units) would be expected to show up as *worse* or erratic held-out behaviour, or a widened train/val gap, relative to the smaller net -- neither is observed. This rules out the strong form of reading 2 ('the larger network is not learning'). It does not rule out the weak form ('a training setup tuned for the larger network specifically -- LR schedule, class-weighted CE, more steps -- would realize a bigger gain than the ~1-2pp measured here')."
+    },
+    "conclusion": "Evidence leans toward reading 1 (the task is close to its ceiling for this 14-dim feature set) over the strong form of reading 2, but 'bought nothing' is empirically false: the 3x512 policy beats the 2x256 policy on every one of the 7 reported held-out metrics, on both val and test, by consistent (if modest: ~1-2 percentage points on the classification metrics, several units on MAE) margins, with no sign of overfitting in either network. The flat/noisy composite loss curve does not by itself prove either reading: it is a single noisy minibatch quantity, not a smoothed or fixed-eval-set metric, and the marginal-entropy calculation above shows the model was already well past the 'predict-only-the-class-frequencies' floor by the first logged point (20k steps), so a fast-early/flat-later shape is exactly what a well-behaved run would look like too.",
+    "what_i_would_change_if_rerunning_to_test_reading_2_directly": [
+      "log loss on a fixed, held-out eval batch (a few thousand rows, same batch every log step) instead of a fresh random training minibatch, to get a low-noise curve that can actually distinguish 'still improving slowly' from 'genuinely flat'",
+      "add class-weighted CrossEntropyLoss (or focal loss) for the f/s heads given the measured 8.8%/46%/45% and 28%/44%/28% imbalance -- this affects both network sizes equally today, so removing it as a confound would clarify whether the extra capacity is being spent on the rare class or wasted",
+      "add an LR schedule (warmup + decay, or just a lower flat LR) for the 512-wide network -- wider layers typically want a smaller per-parameter step size at fixed batch size, and a flat 3e-4 for the whole run could be too coarse to let the last stretch of optimization resolve into a visible descent rather than noise",
+      "train for materially more steps (or a larger batch) at the same LR, since 537k params over 120k steps at batch 1024 gives the wider network fewer effective gradient updates per parameter than the 71.7k-param network had at the same step count",
+      "log gradient norms per layer (especially the third hidden layer, the one depth=3 adds over the shipped network) to check directly whether it is contributing signal or sitting near-dead"
+    ],
+    "not_done": "none of the above changes were applied -- the instruction was to run the comparison as specified and report the reading, not to tune the result."
+  }
+}

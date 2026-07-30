@@ -1,0 +1,597 @@
+[
+ {
+  "id": "sngspawns-to-sngmega-r1",
+  "kind": "route",
+  "from": "sngspawns",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r1",
+  "kind": "route",
+  "from": "lifts-or-ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   514,
+   799,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.065
+ },
+ {
+  "id": "ralow-to-ratop-r1",
+  "kind": "route",
+  "from": "ralow",
+  "to": "RA",
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324
+ },
+ {
+  "id": "ring-to-ratop-r1",
+  "kind": "route",
+  "from": "ring",
+  "to": "RA",
+  "from_xyz": [
+   523,
+   -368,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 5.533
+ },
+ {
+  "id": "highbridge-to-rl-r1",
+  "kind": "route",
+  "from": "highbridge",
+  "to": "RL",
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48
+ },
+ {
+  "id": "window-to-rl-r1",
+  "kind": "route",
+  "from": "window",
+  "to": "RL",
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r1",
+  "kind": "route",
+  "from": "rj-pent",
+  "to": "Quad",
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909
+ },
+ {
+  "id": "sngspawns-to-sngmega-r2",
+  "kind": "route",
+  "from": "sngspawns",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r2",
+  "kind": "route",
+  "from": "lifts-or-ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   514,
+   799,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.065
+ },
+ {
+  "id": "ralow-to-ratop-r2",
+  "kind": "route",
+  "from": "ralow",
+  "to": "RA",
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324
+ },
+ {
+  "id": "ring-to-ratop-r2",
+  "kind": "route",
+  "from": "ring",
+  "to": "RA",
+  "from_xyz": [
+   523,
+   -368,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 5.533
+ },
+ {
+  "id": "highbridge-to-rl-r2",
+  "kind": "route",
+  "from": "highbridge",
+  "to": "RL",
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48
+ },
+ {
+  "id": "window-to-rl-r2",
+  "kind": "route",
+  "from": "window",
+  "to": "RL",
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r2",
+  "kind": "route",
+  "from": "rj-pent",
+  "to": "Quad",
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909
+ },
+ {
+  "id": "sngspawns-to-sngmega-r3",
+  "kind": "route",
+  "from": "sngspawns",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r3",
+  "kind": "route",
+  "from": "lifts-or-ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   514,
+   799,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.065
+ },
+ {
+  "id": "ralow-to-ratop-r3",
+  "kind": "route",
+  "from": "ralow",
+  "to": "RA",
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324
+ },
+ {
+  "id": "ring-to-ratop-r3",
+  "kind": "route",
+  "from": "ring",
+  "to": "RA",
+  "from_xyz": [
+   523,
+   -368,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 5.533
+ },
+ {
+  "id": "highbridge-to-rl-r3",
+  "kind": "route",
+  "from": "highbridge",
+  "to": "RL",
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48
+ },
+ {
+  "id": "window-to-rl-r3",
+  "kind": "route",
+  "from": "window",
+  "to": "RL",
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r3",
+  "kind": "route",
+  "from": "rj-pent",
+  "to": "Quad",
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909
+ },
+ {
+  "id": "sngspawns-to-sngmega-r4",
+  "kind": "route",
+  "from": "sngspawns",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r4",
+  "kind": "route",
+  "from": "lifts-or-ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   514,
+   799,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.065
+ },
+ {
+  "id": "ralow-to-ratop-r4",
+  "kind": "route",
+  "from": "ralow",
+  "to": "RA",
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324
+ },
+ {
+  "id": "ring-to-ratop-r4",
+  "kind": "route",
+  "from": "ring",
+  "to": "RA",
+  "from_xyz": [
+   523,
+   -368,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 5.533
+ },
+ {
+  "id": "highbridge-to-rl-r4",
+  "kind": "route",
+  "from": "highbridge",
+  "to": "RL",
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48
+ },
+ {
+  "id": "window-to-rl-r4",
+  "kind": "route",
+  "from": "window",
+  "to": "RL",
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r4",
+  "kind": "route",
+  "from": "rj-pent",
+  "to": "Quad",
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909
+ },
+ {
+  "id": "sngspawns-to-sngmega-r5",
+  "kind": "route",
+  "from": "sngspawns",
+  "to": "SNG Mega",
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "human_secs": 6.987
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r5",
+  "kind": "route",
+  "from": "lifts-or-ring",
+  "to": "SNG Mega",
+  "from_xyz": [
+   514,
+   799,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "human_secs": 7.065
+ },
+ {
+  "id": "ralow-to-ratop-r5",
+  "kind": "route",
+  "from": "ralow",
+  "to": "RA",
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "human_secs": 7.324
+ },
+ {
+  "id": "ring-to-ratop-r5",
+  "kind": "route",
+  "from": "ring",
+  "to": "RA",
+  "from_xyz": [
+   523,
+   -368,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "human_secs": 5.533
+ },
+ {
+  "id": "highbridge-to-rl-r5",
+  "kind": "route",
+  "from": "highbridge",
+  "to": "RL",
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "human_secs": 2.48
+ },
+ {
+  "id": "window-to-rl-r5",
+  "kind": "route",
+  "from": "window",
+  "to": "RL",
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "human_secs": 2.377
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r5",
+  "kind": "route",
+  "from": "rj-pent",
+  "to": "Quad",
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909
+ }
+]

@@ -1,0 +1,32 @@
+{
+  "n_rows": 200000,
+  "source": "S.npy[SP==2] (held-out test split, never seen by train_disc)",
+  "seed": 0,
+  "thresholds": {
+    "fmove_agreement": 1.0,
+    "smove_agreement": 1.0,
+    "jump_agreement": 1.0,
+    "dyaw_max_abs_diff": 1e-05,
+    "logit_max_abs_diff": 0.001
+  },
+  "measured": {
+    "fmove_agreement": 1.0,
+    "smove_agreement": 1.0,
+    "jump_agreement": 1.0,
+    "dyaw_max_abs_diff": 6.295740604400635e-07,
+    "logit_max_abs_diff": 1.811981201171875e-05
+  },
+  "passed": {
+    "fmove_agreement": true,
+    "smove_agreement": true,
+    "jump_agreement": true,
+    "dyaw_max_abs_diff": true,
+    "logit_max_abs_diff": true
+  },
+  "all_passed": true,
+  "f_head_argmax_ties": 0,
+  "s_head_argmax_ties": 0,
+  "rust_binary": "/home/benjamin-adm/rex-ml/rtx/target/release/rex-env-policy-parity",
+  "rust_wall_s": 5.885,
+  "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/policy/actor_disc.pt"
+}

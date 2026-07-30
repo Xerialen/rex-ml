@@ -1,0 +1,120 @@
+{
+  "kind": "preflight",
+  "result": {
+    "checks": [
+      {
+        "check": "control_channel",
+        "detail": "Status answered",
+        "pass": true
+      },
+      {
+        "check": "map_loaded",
+        "detail": "map=dm3",
+        "pass": true
+      },
+      {
+        "check": "navmesh_ready",
+        "detail": "navmesh=ready",
+        "pass": true
+      },
+      {
+        "check": "navmesh_cells",
+        "detail": "cells=4634",
+        "pass": true
+      },
+      {
+        "check": "navmesh_links",
+        "detail": "links=36956",
+        "pass": true
+      },
+      {
+        "check": "navmesh_rj_links",
+        "detail": "rj_links=2021",
+        "pass": true
+      },
+      {
+        "check": "movevar_sv_gravity",
+        "detail": "sv_gravity=800 want=800",
+        "pass": true
+      },
+      {
+        "check": "movevar_sv_maxspeed",
+        "detail": "sv_maxspeed=320 want=320",
+        "pass": true
+      },
+      {
+        "check": "movevar_sv_accelerate",
+        "detail": "sv_accelerate=10 want=10",
+        "pass": true
+      },
+      {
+        "check": "movevar_sv_friction",
+        "detail": "sv_friction=4 want=4",
+        "pass": true
+      },
+      {
+        "check": "movevar_sv_stopspeed",
+        "detail": "sv_stopspeed=100 want=100",
+        "pass": true
+      },
+      {
+        "check": "verb_maps",
+        "detail": "1 maps, current map listed",
+        "pass": true
+      },
+      {
+        "check": "verb_items",
+        "detail": "45 items",
+        "pass": true
+      },
+      {
+        "check": "verb_links",
+        "detail": "2021 rj links",
+        "pass": true
+      },
+      {
+        "check": "bots_present",
+        "detail": "4 bots on the roster",
+        "pass": true
+      },
+      {
+        "check": "bot_alive",
+        "detail": "bot ent=1 is alive",
+        "pass": true
+      },
+      {
+        "check": "verb_cell",
+        "detail": "cell 771 under bot, 7 outgoing links",
+        "pass": true
+      },
+      {
+        "check": "verb_route",
+        "detail": "route query answered",
+        "pass": true
+      },
+      {
+        "check": "puppet_teleport",
+        "detail": "landed 1.00u from the requested point",
+        "pass": true
+      },
+      {
+        "check": "puppet_hold",
+        "detail": "bot parked",
+        "pass": true
+      }
+    ],
+    "observed": {
+      "bots": 4,
+      "cells": 4634,
+      "links": 36956,
+      "map": "dm3",
+      "navmesh": "ready",
+      "rj_links": 2021,
+      "server_time": 286.88726806640625
+    },
+    "passed": 20,
+    "status": "passed",
+    "total": 20
+  },
+  "tier": "T0"
+}

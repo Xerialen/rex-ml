@@ -1,0 +1,342 @@
+{
+ "sngspawns-to-sngmega.qwd": {
+  "secs": 6.98736599999998,
+  "from_xyz": [
+   -880,
+   -232,
+   -16
+  ],
+  "to_xyz": [
+   -776,
+   80,
+   184
+  ],
+  "frames": 538,
+  "path_len": 2968,
+  "mean_speed": 425,
+  "pauses": 0,
+  "goal_name": "SNG Mega",
+  "seg": 0,
+  "closest_u": 24
+ },
+ "lifts-or-ring-to-sngmega.qwd": {
+  "secs": 7.32467699999998,
+  "from_xyz": [
+   514,
+   760,
+   216
+  ],
+  "to_xyz": [
+   -774,
+   103,
+   184
+  ],
+  "frames": 564,
+  "path_len": 2818,
+  "mean_speed": 385,
+  "pauses": 1,
+  "goal_name": "SNG Mega",
+  "seg": 0,
+  "closest_u": 25
+ },
+ "ralow-to-ratop.qwd": {
+  "secs": 7.324249000000009,
+  "from_xyz": [
+   -12,
+   -574,
+   -16
+  ],
+  "to_xyz": [
+   197,
+   -706,
+   328
+  ],
+  "frames": 564,
+  "path_len": 3203,
+  "mean_speed": 437,
+  "pauses": 0,
+  "goal_name": "RA",
+  "seg": 0,
+  "closest_u": 25
+ },
+ "ring-to-ratop.qwd": {
+  "secs": 6.298857999999996,
+  "from_xyz": [
+   494,
+   -385,
+   56
+  ],
+  "to_xyz": [
+   198,
+   -692,
+   328
+  ],
+  "frames": 485,
+  "path_len": 2446,
+  "mean_speed": 388,
+  "pauses": 1,
+  "goal_name": "RA",
+  "seg": 0,
+  "closest_u": 24
+ },
+ "highbridge-to-rl.qwd": {
+  "secs": 2.4804999999999495,
+  "from_xyz": [
+   1359,
+   -348,
+   -24
+  ],
+  "to_xyz": [
+   1586,
+   401,
+   -64
+  ],
+  "frames": 191,
+  "path_len": 967,
+  "mean_speed": 390,
+  "pauses": 0,
+  "goal_name": "RL",
+  "seg": 0,
+  "closest_u": 81
+ },
+ "window-to-rl.qwd": {
+  "secs": 2.3766169999999534,
+  "from_xyz": [
+   1296,
+   446,
+   56
+  ],
+  "to_xyz": [
+   1625,
+   438,
+   -68
+  ],
+  "frames": 183,
+  "path_len": 1075,
+  "mean_speed": 452,
+  "pauses": 0,
+  "goal_name": "RL",
+  "seg": 0,
+  "closest_u": 118
+ },
+ "rj-pent-to-lifts-to-window-to-quad.qwd": {
+  "secs": 4.909469999999999,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "frames": 378,
+  "path_len": 2231,
+  "mean_speed": 454,
+  "pauses": 0,
+  "goal_name": "Quad",
+  "seg": 0,
+  "closest_u": 27
+ },
+ "quad-to-sng.qwd": {
+  "secs": 5.0254819999999825,
+  "from_xyz": [
+   936,
+   336,
+   56
+  ],
+  "to_xyz": [
+   -496,
+   470,
+   153
+  ],
+  "frames": 387,
+  "path_len": 2347,
+  "mean_speed": 467,
+  "pauses": 0,
+  "goal_name": "SNG",
+  "seg": 0,
+  "closest_u": 26
+ },
+ "ratop-to-ssg.qwd": {
+  "secs": 6.129672999999997,
+  "from_xyz": [
+   264,
+   -692,
+   328
+  ],
+  "to_xyz": [
+   1770,
+   -657,
+   12
+  ],
+  "frames": 472,
+  "path_len": 2942,
+  "mean_speed": 480,
+  "pauses": 0,
+  "goal_name": "SSG",
+  "seg": 0,
+  "closest_u": 33
+ },
+ "sng-to-quad.qwd": {
+  "secs": 5.220650000000006,
+  "from_xyz": [
+   -519,
+   494,
+   120
+  ],
+  "to_xyz": [
+   902,
+   307,
+   92
+  ],
+  "frames": 402,
+  "path_len": 2447,
+  "mean_speed": 469,
+  "pauses": 1,
+  "goal_name": "Quad",
+  "seg": 0,
+  "closest_u": 18
+ },
+ "ssg-to-ratop.qwd": {
+  "secs": 10.168801000000002,
+  "from_xyz": [
+   1777,
+   -672,
+   -24
+  ],
+  "to_xyz": [
+   199,
+   -708,
+   329
+  ],
+  "frames": 783,
+  "path_len": 4636,
+  "mean_speed": 456,
+  "pauses": 0,
+  "goal_name": "RA",
+  "seg": 0,
+  "closest_u": 24
+ },
+ "ya-to-tele-to-window-to-rl.qwd": {
+  "secs": 3.2077950000000044,
+  "from_xyz": [
+   1447,
+   -944,
+   -24
+  ],
+  "to_xyz": [
+   1607,
+   513,
+   -20
+  ],
+  "frames": 246,
+  "path_len": 1492,
+  "mean_speed": 465,
+  "pauses": 0,
+  "goal_name": "RL",
+  "seg": 0,
+  "closest_u": 32
+ },
+ "lg-to-pent-to-pentmega.qwd": {
+  "secs": 10.156036,
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1849,
+   746,
+   -187
+  ],
+  "frames": 782,
+  "path_len": 2914,
+  "mean_speed": 287,
+  "pauses": 0,
+  "goal_name": "Pent Mega",
+  "seg": 0,
+  "closest_u": 34
+ },
+ "spawn-lift-to-pent-to-pentmega.qwd": {
+  "secs": 6.714337999999998,
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1867,
+   744,
+   -175
+  ],
+  "frames": 517,
+  "path_len": 2753,
+  "mean_speed": 410,
+  "pauses": 1,
+  "goal_name": "Pent Mega",
+  "seg": 0,
+  "closest_u": 81
+ },
+ "spawn-rl_to_ratop.qwd": {
+  "secs": 12.168822999999975,
+  "from_xyz": [
+   1520,
+   432,
+   -88
+  ],
+  "to_xyz": [
+   203,
+   -709,
+   334
+  ],
+  "frames": 937,
+  "path_len": 6449,
+  "mean_speed": 530,
+  "pauses": 0,
+  "goal_name": "RA",
+  "seg": 0,
+  "closest_u": 26
+ },
+ "spawn-ra-tunnel-to-lg.qwd": {
+  "secs": 4.4286200000000235,
+  "from_xyz": [
+   192,
+   -207,
+   -176
+  ],
+  "to_xyz": [
+   1514,
+   -196,
+   -360
+  ],
+  "frames": 341,
+  "path_len": 1815,
+  "mean_speed": 410,
+  "pauses": 0,
+  "goal_name": "LG",
+  "seg": 0,
+  "closest_u": 24
+ },
+ "spawn-rarox-to-quad.qwd": {
+  "secs": 3.3630980000000363,
+  "from_xyz": [
+   -632,
+   -680,
+   -16
+  ],
+  "to_xyz": [
+   945,
+   248,
+   88
+  ],
+  "frames": 259,
+  "path_len": 1503,
+  "mean_speed": 447,
+  "pauses": 0,
+  "goal_name": "Quad",
+  "seg": 0,
+  "closest_u": 14
+ }
+}

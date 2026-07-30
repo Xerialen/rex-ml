@@ -1,0 +1,63 @@
+T1 drills: 30 declared, puppeting bot ent=1, pacifist=true
+[1/30] quad-to-sng-r1
+       ARRIVED 14.9s vs 5.03s (-9.89)  peak 495 u/s  drift 1195u  rev 160
+[2/30] ratop-to-ssg-r1
+       ARRIVED 15.5s vs 6.13s (-9.37)  peak 549 u/s  drift 857u  rev 259
+[3/30] rl_to_ratop-r1
+       ARRIVED 15.9s vs 12.17s (-3.78)  peak 494 u/s  drift 591u  rev 202
+[4/30] sng-to-quad-r1
+       ARRIVED 10.4s vs 5.00s (-5.41)  peak 495 u/s  drift 344u  rev 82
+[5/30] ssg-to-ratop-r1
+       ARRIVED 17.7s vs 10.17s (-7.57)  peak 500 u/s  drift 971u  rev 273
+[6/30] ya-to-tele-to-window-to-rl-r1
+       STALLED at 584u (best 566u) after 14.2s
+[7/30] quad-to-sng-r2
+       ARRIVED 13.9s vs 5.03s (-8.90)  peak 495 u/s  drift 1199u  rev 190
+[8/30] ratop-to-ssg-r2
+       ARRIVED 17.3s vs 6.13s (-11.17)  peak 541 u/s  drift 836u  rev 344
+[9/30] rl_to_ratop-r2
+       ARRIVED 25.0s vs 12.17s (-12.80)  peak 507 u/s  drift 590u  rev 470
+[10/30] sng-to-quad-r2
+       ARRIVED 9.7s vs 5.00s (-4.69)  peak 494 u/s  drift 366u  rev 68
+[11/30] ssg-to-ratop-r2
+       ARRIVED 16.7s vs 10.17s (-6.53)  peak 498 u/s  drift 859u  rev 269
+[12/30] ya-to-tele-to-window-to-rl-r2
+       ARRIVED 9.3s vs 3.21s (-6.11)  peak 495 u/s  drift 427u  rev 76
+[13/30] quad-to-sng-r3
+       ARRIVED 17.2s vs 5.03s (-12.17)  peak 495 u/s  drift 1273u  rev 212
+[14/30] ratop-to-ssg-r3
+       TIMEOUT after 30.0s with no terminal event
+[15/30] rl_to_ratop-r3
+       ARRIVED 16.4s vs 12.17s (-4.19)  peak 511 u/s  drift 592u  rev 239
+[16/30] sng-to-quad-r3
+       ARRIVED 10.5s vs 5.00s (-5.53)  peak 495 u/s  drift 420u  rev 81
+[17/30] ssg-to-ratop-r3
+       ARRIVED 17.9s vs 10.17s (-7.74)  peak 500 u/s  drift 968u  rev 277
+[18/30] ya-to-tele-to-window-to-rl-r3
+       ARRIVED 8.3s vs 3.21s (-5.10)  peak 495 u/s  drift 416u  rev 54
+[19/30] quad-to-sng-r4
+       ARRIVED 15.6s vs 5.03s (-10.61)  peak 513 u/s  drift 1282u  rev 182
+[20/30] ratop-to-ssg-r4
+       ARRIVED 18.0s vs 6.13s (-11.91)  peak 549 u/s  drift 982u  rev 348
+[21/30] rl_to_ratop-r4
+       STALLED at 1075u (best 1031u) after 16.2s
+[22/30] sng-to-quad-r4
+       ARRIVED 9.8s vs 5.00s (-4.84)  peak 494 u/s  drift 366u  rev 51
+[23/30] ssg-to-ratop-r4
+       ARRIVED 24.9s vs 10.17s (-14.74)  peak 502 u/s  drift 860u  rev 460
+[24/30] ya-to-tele-to-window-to-rl-r4
+       STALLED at 584u (best 569u) after 14.3s
+[25/30] quad-to-sng-r5
+       ARRIVED 15.2s vs 5.03s (-10.15)  peak 495 u/s  drift 1195u  rev 148
+[26/30] ratop-to-ssg-r5
+       ARRIVED 20.0s vs 6.13s (-13.89)  peak 546 u/s  drift 688u  rev 285
+[27/30] rl_to_ratop-r5
+       ARRIVED 25.0s vs 12.17s (-12.83)  peak 506 u/s  drift 590u  rev 493
+[28/30] sng-to-quad-r5
+       ARRIVED 12.2s vs 5.00s (-7.24)  peak 496 u/s  drift 540u  rev 135
+[29/30] ssg-to-ratop-r5
+       ARRIVED 17.6s vs 10.17s (-7.39)  peak 495 u/s  drift 975u  rev 279
+[30/30] ya-to-tele-to-window-to-rl-r5
+       STALLED at 584u (best 560u) after 14.2s
+--> evidence/t1_human_baseline_new.raw.json: failed
+failed

@@ -1,0 +1,172 @@
+[
+ {
+  "id": "lg-to-pent-to-mega-r1",
+  "kind": "route",
+  "from": "lg",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1855,
+   677,
+   -180
+  ],
+  "human_secs": 10.351
+ },
+ {
+  "id": "spawn-lift-to-pent-r1",
+  "kind": "route",
+  "from": "spawn-lift",
+  "to": "Pent",
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1011,
+   764,
+   -249
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "lg-to-pent-to-mega-r2",
+  "kind": "route",
+  "from": "lg",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1855,
+   677,
+   -180
+  ],
+  "human_secs": 10.351
+ },
+ {
+  "id": "spawn-lift-to-pent-r2",
+  "kind": "route",
+  "from": "spawn-lift",
+  "to": "Pent",
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1011,
+   764,
+   -249
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "lg-to-pent-to-mega-r3",
+  "kind": "route",
+  "from": "lg",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1855,
+   677,
+   -180
+  ],
+  "human_secs": 10.351
+ },
+ {
+  "id": "spawn-lift-to-pent-r3",
+  "kind": "route",
+  "from": "spawn-lift",
+  "to": "Pent",
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1011,
+   764,
+   -249
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "lg-to-pent-to-mega-r4",
+  "kind": "route",
+  "from": "lg",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1855,
+   677,
+   -180
+  ],
+  "human_secs": 10.351
+ },
+ {
+  "id": "spawn-lift-to-pent-r4",
+  "kind": "route",
+  "from": "spawn-lift",
+  "to": "Pent",
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1011,
+   764,
+   -249
+  ],
+  "human_secs": 3.208
+ },
+ {
+  "id": "lg-to-pent-to-mega-r5",
+  "kind": "route",
+  "from": "lg",
+  "to": "Pent Mega",
+  "from_xyz": [
+   1551,
+   -194,
+   -392
+  ],
+  "to_xyz": [
+   1855,
+   677,
+   -180
+  ],
+  "human_secs": 10.351
+ },
+ {
+  "id": "spawn-lift-to-pent-r5",
+  "kind": "route",
+  "from": "spawn-lift",
+  "to": "Pent",
+  "from_xyz": [
+   511,
+   740,
+   216
+  ],
+  "to_xyz": [
+   1011,
+   764,
+   -249
+  ],
+  "human_secs": 3.208
+ }
+]

@@ -1,0 +1,66 @@
+RESUME — rex-ml, written 2026-07-28 before context compaction.
+
+STANDING MANDATE STILL APPLIES. Read ~/rex-ml/BRIEF.md. Do not stop between steps and
+do not wait for instructions; "I finished the step and await your call" is the failure
+mode. Stop only for: data deletion/overwrite, >20 GB disk or >4 h wall-clock, a
+measurement that refutes the architecture, or a judgement no measurement can settle.
+
+Read for context, in this order:
+  ~/rex-ml/REPORT.md    — every measurement, the full chain, what is and is not proven
+  ~/rex-ml/PROGRESS.md  — dated log; the tail entries are the live state
+  ~/rex-ml/AUDIT.md     — why store-dm3 is the data source
+
+STATE: steps 1-5 all implemented and measured. Definition of done NOT met.
+
+The one thing left, and it is bounded:
+  Wire the step 2b policy into the Rust bot, then re-run self-play and compare
+  against the measured RTX baseline. Concretely:
+   1. Export pipeline/out/policy/actor_disc.pt into rtx-nav's automaton::Mlp.
+      The Rust Mlp is currently 14->256->256->4 with a tanh head. The trained actor
+      has THREE-LOGIT heads per move axis (sign classifier: -1/0/+1) plus continuous
+      dyaw and a jump logit — so the Rust side needs those heads, not 4x tanh.
+      S_SCALE / A_SCALE in pipeline/policy.py must be reproduced EXACTLY.
+   2. Hook automaton::ManeuverAutomaton into rtx-game's bot control path
+      (crates/rtx-game/src/bot/{mod,steer,bhop,rj}.rs — steer.rs is 2135 lines).
+   3. Re-run the self-play measurement and compare to the baseline below.
+
+BASELINE TO BEAT (RTX's own controller, dm3, 4 bots, 420 s, measured live):
+  7 frags total (2/3/2/0) | 23 stall events | airborne 37.2 %
+  speed p50 283 / p90 475 / max 703 u/s
+  live navmesh 4634 cells / 36956 links / 2021 rocket-jump links
+Human corpus for calibration: ground-trim median 313 u/s, fastest air-trim exit
+1746 u/s, airborne 28.4 %. The bot's median is human-like; its PEAK is 2.5x too low.
+
+HOW TO RUN SELF-PLAY (hard-won; do not rediscover):
+  Server MUST run in tmux — a plain Bash tool call kills it when the call returns:
+    tmux send-keys -t rexml:jobs "cd ~/rex-ml/rtx/playground && \
+      ./mvdsv -game qw -port 27600 +exec server.cfg" Enter
+  Then:  ~/rex-ml/rtx/target/release/rex-selfplay 27700 420 out.jsonl
+  Long client runs also need their own tmux window (rexml:bench).
+  * rtx_bot_alone 1 is LOAD-BEARING. With 0 the navmesh never builds and no bots
+    spawn, and it looks exactly like a broken install (navmesh=none, cells=0).
+  * A headless server needs NO pak0.pak/PAK1.PAK with a loose .bsp. AGENTS.md is
+    wrong about that.
+  * playground/ is gitignored and symlinks the owner's licensed lab data at
+    ~/mlx/qwserver/serverdir (mvdsv 1.20-dev, id1/maps/dm3.bsp). Never copy that
+    data out or commit it.
+
+rtx repo: branch rex-ml/step3-cvar @ f4d607c, 18 test suites green, rustfmt-clean,
+NOT pushed (working rule). New code: navmesh/cvar.rs, automaton.rs, crates/rex-selfplay.
+
+KEY MEASUREMENTS not to re-derive (all in REPORT.md with reproduce commands):
+  - Planner 1058 us mean / 2188 p90 vs 500 us budget -> must stay amortised. CONFIRMED.
+  - Per-tick path (DMP+MLP+guard) 26.7 us -> 19x headroom. CONFIRMED.
+  - DMP goal-given landing 9.5 u median val, 94 % within 32 u. Goal-PREDICTED fails at
+    ~200 u: where a rocket jump lands is not a function of the launch state.
+  - Step 2a: do NOT widen from all-maps staging. train==val error => model-limited.
+  - onground column in store-dm3 is unusable; ground contact is derived.
+  - replay_ticks[i] is the PRE-move state; usercmd[i] drives i -> i+1.
+  - Quake's (forward,right) basis is LEFT-handed; body-frame rotation composition
+    is not the same rotation. Silent bug, cost 33 u/s.
+  - fmove/smove are 3-class keyboard axes. MSE on them collapses to the mean and the
+    sign becomes noise (25 % quadrant agreement = chance). Discrete heads -> 67.0 %.
+
+Guardrails: rm/rmdir/shred/dd/git-clean are DENIED in settings — ask instead of retrying.
+Disk: 182 GB free. Corpora are write-protected and irreplaceable.
+Long jobs go in tmux window rexml:jobs, never blocking context.

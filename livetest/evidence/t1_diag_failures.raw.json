@@ -1,0 +1,21 @@
+{
+  "conditions": {
+    "bot_ent": 1,
+    "other_bots_held": 3,
+    "pacifist": true,
+    "timeout_floor_secs": 60.0
+  },
+  "kind": "movement_drills",
+  "result": {
+    "arrival_rate": 0.0,
+    "arrived": 0,
+    "arrived_elapsed": null,
+    "arrived_peak_speed": null,
+    "drills": [],
+    "errored": 0,
+    "stalled": 0,
+    "status": "failed",
+    "total": 0
+  },
+  "tier": "T1"
+}

@@ -1,0 +1,2635 @@
+[
+ {
+  "route": "window_to_rl",
+  "index": 0,
+  "takeoff": [
+   1384.6,
+   319.2,
+   56.0
+  ],
+  "landing": [
+   1396.6,
+   266.6,
+   80.0
+  ],
+  "air_ticks": 8,
+  "air_s": 0.112,
+  "gap_u": 59.1,
+  "rise_u": 24.0,
+  "takeoff_speed_ups": 464.2,
+  "peak_speed_ups": 464.2,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 313.4
+ },
+ {
+  "route": "window_to_rl",
+  "index": 1,
+  "takeoff": [
+   1396.6,
+   266.6,
+   80.0
+  ],
+  "landing": [
+   1446.2,
+   57.5,
+   -24.0
+  ],
+  "air_ticks": 38,
+  "air_s": 0.532,
+  "gap_u": 238.8,
+  "rise_u": -104.0,
+  "takeoff_speed_ups": 463.2,
+  "peak_speed_ups": 483.6,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 20.4,
+  "plain_reach_u": 312.7
+ },
+ {
+  "route": "window_to_rl",
+  "index": 2,
+  "takeoff": [
+   1446.2,
+   57.5,
+   -24.0
+  ],
+  "landing": [
+   1546.4,
+   160.6,
+   19.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 150.3,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 477.0,
+  "peak_speed_ups": 494.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 17.1,
+  "plain_reach_u": 322.0
+ },
+ {
+  "route": "window_to_rl",
+  "index": 3,
+  "takeoff": [
+   1546.4,
+   160.6,
+   19.9
+  ],
+  "landing": [
+   1611.5,
+   373.1,
+   -64.0
+  ],
+  "air_ticks": 34,
+  "air_s": 0.476,
+  "gap_u": 237.6,
+  "rise_u": -83.9,
+  "takeoff_speed_ups": 493.8,
+  "peak_speed_ups": 493.8,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 333.3
+ },
+ {
+  "route": "window_to_rl",
+  "index": 4,
+  "takeoff": [
+   1618.2,
+   404.8,
+   -64.0
+  ],
+  "landing": [
+   1639.0,
+   493.8,
+   -88.0
+  ],
+  "air_ticks": 18,
+  "air_s": 0.252,
+  "gap_u": 94.5,
+  "rise_u": -24.0,
+  "takeoff_speed_ups": 372.6,
+  "peak_speed_ups": 373.2,
+  "walk_u": 91.7,
+  "shortcut_u": -2.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.6,
+  "plain_reach_u": 251.5
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 0,
+  "takeoff": [
+   -670.4,
+   -571.4,
+   -16.0
+  ],
+  "landing": [
+   -596.9,
+   -450.4,
+   27.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 148.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 433.2,
+  "peak_speed_ups": 449.4,
+  "walk_u": 154.2,
+  "shortcut_u": 5.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 16.2,
+  "plain_reach_u": 292.4
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 1,
+  "takeoff": [
+   -596.9,
+   -450.4,
+   27.9
+  ],
+  "landing": [
+   224.0,
+   -320.0,
+   75.0
+  ],
+  "air_ticks": 9,
+  "air_s": 0.126,
+  "gap_u": 832.5,
+  "rise_u": 47.1,
+  "takeoff_speed_ups": 450.6,
+  "peak_speed_ups": 453.5,
+  "walk_u": 2136.0,
+  "shortcut_u": 1303.5,
+  "critical": false,
+  "kind": "teleport_or_gap",
+  "demands": [
+   "n\u00e5r 831 u, ett vanligt hopp fr\u00e5n 451 u/s klarar 304"
+  ],
+  "air_gain_ups": 2.9,
+  "plain_reach_u": 304.2
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 2,
+  "takeoff": [
+   224.0,
+   -320.0,
+   75.0
+  ],
+  "landing": [
+   265.4,
+   -278.6,
+   60.0
+  ],
+  "air_ticks": 14,
+  "air_s": 0.196,
+  "gap_u": 60.4,
+  "rise_u": -15.0,
+  "takeoff_speed_ups": 299.8,
+  "peak_speed_ups": 299.8,
+  "walk_u": 74.4,
+  "shortcut_u": 14.0,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 202.4
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 3,
+  "takeoff": [
+   274.1,
+   -269.9,
+   60.0
+  ],
+  "landing": [
+   298.1,
+   -246.5,
+   56.0
+  ],
+  "air_ticks": 7,
+  "air_s": 0.098,
+  "gap_u": 33.7,
+  "rise_u": -4.0,
+  "takeoff_speed_ups": 319.6,
+  "peak_speed_ups": 319.6,
+  "walk_u": 33.5,
+  "shortcut_u": -0.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 215.7
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 4,
+  "takeoff": [
+   428.4,
+   -222.0,
+   56.0
+  ],
+  "landing": [
+   570.4,
+   -177.6,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 155.1,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 445.5,
+  "peak_speed_ups": 458.2,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 12.7,
+  "plain_reach_u": 300.7
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 5,
+  "takeoff": [
+   570.4,
+   -177.6,
+   99.9
+  ],
+  "landing": [
+   867.6,
+   -151.4,
+   99.9
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 298.4,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 458.1,
+  "peak_speed_ups": 488.6,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": true,
+  "kind": "jump",
+  "demands": [
+   "vinner 31 u/s i luften (luftstyrning)"
+  ],
+  "air_gain_ups": 30.5,
+  "plain_reach_u": 309.2
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 6,
+  "takeoff": [
+   867.6,
+   -151.4,
+   99.9
+  ],
+  "landing": [
+   929.5,
+   -7.6,
+   56.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 162.5,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 488.5,
+  "peak_speed_ups": 506.2,
+  "walk_u": 178.0,
+  "shortcut_u": 15.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 17.7,
+  "plain_reach_u": 329.7
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 7,
+  "takeoff": [
+   929.5,
+   -7.6,
+   56.0
+  ],
+  "landing": [
+   939.9,
+   162.9,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 176.4,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 505.9,
+  "peak_speed_ups": 505.9,
+  "walk_u": 164.8,
+  "shortcut_u": -11.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 341.5
+ },
+ {
+  "route": "sngspawn_a_to_quad",
+  "index": 8,
+  "takeoff": [
+   939.9,
+   162.9,
+   99.9
+  ],
+  "landing": [
+   948.4,
+   331.6,
+   56.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 174.6,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 505.9,
+  "peak_speed_ups": 505.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 341.5
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 0,
+  "takeoff": [
+   5.6,
+   -793.4,
+   -16.0
+  ],
+  "landing": [
+   156.9,
+   -828.0,
+   27.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 161.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 458.5,
+  "peak_speed_ups": 465.9,
+  "walk_u": 182.5,
+  "shortcut_u": 21.3,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.4,
+  "plain_reach_u": 309.5
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 1,
+  "takeoff": [
+   156.9,
+   -828.0,
+   27.9
+  ],
+  "landing": [
+   348.9,
+   -817.8,
+   67.9
+  ],
+  "air_ticks": 31,
+  "air_s": 0.434,
+  "gap_u": 196.4,
+  "rise_u": 40.0,
+  "takeoff_speed_ups": 466.1,
+  "peak_speed_ups": 483.4,
+  "walk_u": 208.4,
+  "shortcut_u": 12.0,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 17.3,
+  "plain_reach_u": 314.6
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 2,
+  "takeoff": [
+   348.9,
+   -817.8,
+   67.9
+  ],
+  "landing": [
+   432.0,
+   -839.8,
+   48.0
+  ],
+  "air_ticks": 16,
+  "air_s": 0.224,
+  "gap_u": 88.3,
+  "rise_u": -19.9,
+  "takeoff_speed_ups": 483.6,
+  "peak_speed_ups": 488.7,
+  "walk_u": 95.0,
+  "shortcut_u": 6.7,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.1,
+  "plain_reach_u": 326.4
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 3,
+  "takeoff": [
+   472.4,
+   -708.4,
+   56.0
+  ],
+  "landing": [
+   406.6,
+   -581.1,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 149.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 423.8,
+  "peak_speed_ups": 437.0,
+  "walk_u": 182.9,
+  "shortcut_u": 33.1,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 13.2,
+  "plain_reach_u": 286.1
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 4,
+  "takeoff": [
+   406.6,
+   -581.1,
+   99.9
+  ],
+  "landing": [
+   315.4,
+   -528.0,
+   72.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 109.2,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 437.6,
+  "peak_speed_ups": 442.2,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 4.6,
+  "plain_reach_u": 295.4
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 5,
+  "takeoff": [
+   56.1,
+   -571.5,
+   152.0
+  ],
+  "landing": [
+   17.2,
+   -719.1,
+   195.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 158.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 452.1,
+  "peak_speed_ups": 459.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.6,
+  "plain_reach_u": 305.2
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 6,
+  "takeoff": [
+   17.2,
+   -719.1,
+   195.9
+  ],
+  "landing": [
+   20.1,
+   -863.5,
+   152.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 150.9,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 459.4,
+  "peak_speed_ups": 460.0,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.6,
+  "plain_reach_u": 310.1
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 7,
+  "takeoff": [
+   361.2,
+   -808.9,
+   264.0
+  ],
+  "landing": [
+   368.2,
+   -657.4,
+   307.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 157.9,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 450.6,
+  "peak_speed_ups": 457.0,
+  "walk_u": 153.0,
+  "shortcut_u": -4.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 6.3,
+  "plain_reach_u": 304.2
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 8,
+  "takeoff": [
+   368.2,
+   -657.4,
+   307.9
+  ],
+  "landing": [
+   283.4,
+   -531.6,
+   264.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 157.9,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 456.8,
+  "peak_speed_ups": 466.9,
+  "walk_u": 157.0,
+  "shortcut_u": -0.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 10.1,
+  "plain_reach_u": 308.3
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 9,
+  "takeoff": [
+   73.2,
+   -554.1,
+   312.0
+  ],
+  "landing": [
+   79.5,
+   -668.6,
+   355.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 122.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 439.1,
+  "peak_speed_ups": 439.1,
+  "walk_u": 155.6,
+  "shortcut_u": 32.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 296.4
+ },
+ {
+  "route": "ralow_to_ratop",
+  "index": 10,
+  "takeoff": [
+   79.5,
+   -668.6,
+   355.9
+  ],
+  "landing": [
+   178.0,
+   -700.2,
+   328.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 107.1,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 393.2,
+  "peak_speed_ups": 401.4,
+  "walk_u": 110.8,
+  "shortcut_u": 3.7,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 8.2,
+  "plain_reach_u": 265.4
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 0,
+  "takeoff": [
+   505.5,
+   628.0,
+   216.0
+  ],
+  "landing": [
+   483.8,
+   597.8,
+   56.0
+  ],
+  "air_ticks": 48,
+  "air_s": 0.672,
+  "gap_u": 164.3,
+  "rise_u": -160.0,
+  "takeoff_speed_ups": 327.9,
+  "peak_speed_ups": 327.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 221.3
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 1,
+  "takeoff": [
+   383.2,
+   624.1,
+   56.0
+  ],
+  "landing": [
+   256.9,
+   571.1,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 143.9,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 419.1,
+  "peak_speed_ups": 434.6,
+  "walk_u": 144.4,
+  "shortcut_u": 0.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 15.6,
+  "plain_reach_u": 282.9
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 2,
+  "takeoff": [
+   256.9,
+   571.1,
+   99.9
+  ],
+  "landing": [
+   113.2,
+   604.1,
+   56.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 153.8,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 435.7,
+  "peak_speed_ups": 437.1,
+  "walk_u": 156.2,
+  "shortcut_u": 2.4,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 1.5,
+  "plain_reach_u": 294.1
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 3,
+  "takeoff": [
+   93.0,
+   612.8,
+   56.0
+  ],
+  "landing": [
+   25.2,
+   654.5,
+   40.0
+  ],
+  "air_ticks": 14,
+  "air_s": 0.196,
+  "gap_u": 81.2,
+  "rise_u": -16.0,
+  "takeoff_speed_ups": 406.5,
+  "peak_speed_ups": 407.8,
+  "walk_u": 81.2,
+  "shortcut_u": -0.0,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 1.3,
+  "plain_reach_u": 274.4
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 4,
+  "takeoff": [
+   -158.9,
+   776.6,
+   120.0
+  ],
+  "landing": [
+   -241.5,
+   659.9,
+   163.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 149.6,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 451.8,
+  "peak_speed_ups": 459.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 8.1,
+  "plain_reach_u": 305.0
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 5,
+  "takeoff": [
+   -241.5,
+   659.9,
+   163.9
+  ],
+  "landing": [
+   -304.4,
+   520.8,
+   120.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 158.9,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 459.7,
+  "peak_speed_ups": 465.6,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.8,
+  "plain_reach_u": 310.3
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 6,
+  "takeoff": [
+   -464.0,
+   496.2,
+   120.0
+  ],
+  "landing": [
+   -480.1,
+   363.9,
+   163.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 140.4,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 456.1,
+  "peak_speed_ups": 467.1,
+  "walk_u": 188.2,
+  "shortcut_u": 47.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 10.9,
+  "plain_reach_u": 307.9
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 7,
+  "takeoff": [
+   -480.1,
+   363.9,
+   163.9
+  ],
+  "landing": [
+   -465.9,
+   272.0,
+   144.0
+  ],
+  "air_ticks": 16,
+  "air_s": 0.224,
+  "gap_u": 95.1,
+  "rise_u": -19.9,
+  "takeoff_speed_ups": 466.5,
+  "peak_speed_ups": 472.4,
+  "walk_u": 108.7,
+  "shortcut_u": 13.6,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.8,
+  "plain_reach_u": 314.9
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 8,
+  "takeoff": [
+   -465.9,
+   272.0,
+   144.0
+  ],
+  "landing": [
+   -465.1,
+   267.1,
+   187.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 44.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 70.0,
+  "peak_speed_ups": 70.0,
+  "walk_u": 86.3,
+  "shortcut_u": 42.1,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 47.2
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 9,
+  "takeoff": [
+   -465.1,
+   267.1,
+   187.9
+  ],
+  "landing": [
+   -466.0,
+   260.0,
+   176.0
+  ],
+  "air_ticks": 12,
+  "air_s": 0.168,
+  "gap_u": 13.9,
+  "rise_u": -11.9,
+  "takeoff_speed_ups": 42.2,
+  "peak_speed_ups": 42.2,
+  "walk_u": 0.0,
+  "shortcut_u": -13.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 28.5
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 10,
+  "takeoff": [
+   -554.5,
+   210.1,
+   176.0
+  ],
+  "landing": [
+   -682.8,
+   281.5,
+   219.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 153.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 444.2,
+  "peak_speed_ups": 452.0,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.8,
+  "plain_reach_u": 299.8
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 11,
+  "takeoff": [
+   -682.8,
+   281.5,
+   219.9
+  ],
+  "landing": [
+   -814.8,
+   291.6,
+   184.0
+  ],
+  "air_ticks": 22,
+  "air_s": 0.308,
+  "gap_u": 137.2,
+  "rise_u": -35.9,
+  "takeoff_speed_ups": 453.2,
+  "peak_speed_ups": 471.3,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 18.1,
+  "plain_reach_u": 305.9
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 12,
+  "takeoff": [
+   -814.8,
+   291.6,
+   184.0
+  ],
+  "landing": [
+   -880.2,
+   160.5,
+   227.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 153.0,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 472.2,
+  "peak_speed_ups": 494.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 22.5,
+  "plain_reach_u": 318.7
+ },
+ {
+  "route": "lifts_to_sng_mega",
+  "index": 13,
+  "takeoff": [
+   -880.2,
+   160.5,
+   227.9
+  ],
+  "landing": [
+   -799.6,
+   98.1,
+   184.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 111.0,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 495.8,
+  "peak_speed_ups": 504.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 8.9,
+  "plain_reach_u": 334.7
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 0,
+  "takeoff": [
+   1575.8,
+   510.5,
+   -88.0
+  ],
+  "landing": [
+   1708.6,
+   457.5,
+   -44.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 149.6,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 448.4,
+  "peak_speed_ups": 456.1,
+  "walk_u": 168.1,
+  "shortcut_u": 18.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.7,
+  "plain_reach_u": 302.7
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 1,
+  "takeoff": [
+   1708.6,
+   457.5,
+   -44.1
+  ],
+  "landing": [
+   1731.4,
+   359.0,
+   -64.0
+  ],
+  "air_ticks": 16,
+  "air_s": 0.224,
+  "gap_u": 103.0,
+  "rise_u": -19.9,
+  "takeoff_speed_ups": 456.6,
+  "peak_speed_ups": 469.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 13.1,
+  "plain_reach_u": 308.2
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 2,
+  "takeoff": [
+   1731.4,
+   359.0,
+   -64.0
+  ],
+  "landing": [
+   1678.5,
+   207.6,
+   -20.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 166.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 470.9,
+  "peak_speed_ups": 477.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.1,
+  "plain_reach_u": 317.8
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 3,
+  "takeoff": [
+   1678.5,
+   207.6,
+   -20.1
+  ],
+  "landing": [
+   1585.2,
+   -67.4,
+   -168.0
+  ],
+  "air_ticks": 46,
+  "air_s": 0.644,
+  "gap_u": 325.9,
+  "rise_u": -147.9,
+  "takeoff_speed_ups": 478.9,
+  "peak_speed_ups": 495.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 16.2,
+  "plain_reach_u": 323.3
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 4,
+  "takeoff": [
+   1585.2,
+   -67.4,
+   -168.0
+  ],
+  "landing": [
+   1439.2,
+   -144.1,
+   -124.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 170.7,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 495.0,
+  "peak_speed_ups": 514.4,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 19.3,
+  "plain_reach_u": 334.1
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 5,
+  "takeoff": [
+   1439.2,
+   -144.1,
+   -124.1
+  ],
+  "landing": [
+   1187.6,
+   58.9,
+   -124.1
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 323.3,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 515.1,
+  "peak_speed_ups": 545.2,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": true,
+  "kind": "jump",
+  "demands": [
+   "vinner 30 u/s i luften (luftstyrning)"
+  ],
+  "air_gain_ups": 30.1,
+  "plain_reach_u": 347.7
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 6,
+  "takeoff": [
+   1187.6,
+   58.9,
+   -124.1
+  ],
+  "landing": [
+   1035.6,
+   -29.1,
+   -168.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 181.0,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 542.1,
+  "peak_speed_ups": 554.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 12.6,
+  "plain_reach_u": 365.9
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 7,
+  "takeoff": [
+   1035.6,
+   -29.1,
+   -168.0
+  ],
+  "landing": [
+   895.8,
+   78.8,
+   -124.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 182.0,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 555.4,
+  "peak_speed_ups": 573.0,
+  "walk_u": 204.5,
+  "shortcut_u": 22.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 17.6,
+  "plain_reach_u": 374.9
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 8,
+  "takeoff": [
+   895.8,
+   78.8,
+   -124.1
+  ],
+  "landing": [
+   718.4,
+   214.2,
+   -200.0
+  ],
+  "air_ticks": 32,
+  "air_s": 0.448,
+  "gap_u": 235.8,
+  "rise_u": -75.9,
+  "takeoff_speed_ups": 573.0,
+  "peak_speed_ups": 584.0,
+  "walk_u": 254.8,
+  "shortcut_u": 19.1,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.0,
+  "plain_reach_u": 386.7
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 9,
+  "takeoff": [
+   718.4,
+   214.2,
+   -200.0
+  ],
+  "landing": [
+   529.5,
+   184.0,
+   -156.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 196.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 584.2,
+  "peak_speed_ups": 590.9,
+  "walk_u": 203.8,
+  "shortcut_u": 7.6,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 6.7,
+  "plain_reach_u": 394.3
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 10,
+  "takeoff": [
+   529.5,
+   184.0,
+   -156.1
+  ],
+  "landing": [
+   303.9,
+   -41.1,
+   -160.0
+  ],
+  "air_ticks": 42,
+  "air_s": 0.588,
+  "gap_u": 318.8,
+  "rise_u": -3.9,
+  "takeoff_speed_ups": 591.1,
+  "peak_speed_ups": 614.0,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 23.0,
+  "plain_reach_u": 399.0
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 11,
+  "takeoff": [
+   303.9,
+   -41.1,
+   -160.0
+  ],
+  "landing": [
+   202.2,
+   -99.2,
+   -176.0
+  ],
+  "air_ticks": 14,
+  "air_s": 0.196,
+  "gap_u": 118.2,
+  "rise_u": -16.0,
+  "takeoff_speed_ups": 614.0,
+  "peak_speed_ups": 619.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.0,
+  "plain_reach_u": 414.5
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 12,
+  "takeoff": [
+   202.2,
+   -99.2,
+   -176.0
+  ],
+  "landing": [
+   25.0,
+   -185.6,
+   -132.1
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 202.0,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 619.6,
+  "peak_speed_ups": 624.0,
+  "walk_u": 218.4,
+  "shortcut_u": 16.4,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 4.5,
+  "plain_reach_u": 418.2
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 13,
+  "takeoff": [
+   25.0,
+   -185.6,
+   -132.1
+  ],
+  "landing": [
+   -207.5,
+   -336.0,
+   -132.1
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 276.9,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 624.0,
+  "peak_speed_ups": 629.5,
+  "walk_u": 318.4,
+  "shortcut_u": 41.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.5,
+  "plain_reach_u": 421.2
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 14,
+  "takeoff": [
+   -207.5,
+   -336.0,
+   -132.1
+  ],
+  "landing": [
+   -198.2,
+   -336.0,
+   -144.0
+  ],
+  "air_ticks": 12,
+  "air_s": 0.168,
+  "gap_u": 15.1,
+  "rise_u": -11.9,
+  "takeoff_speed_ups": 23.0,
+  "peak_speed_ups": 64.0,
+  "walk_u": 9.2,
+  "shortcut_u": -5.8,
+  "critical": true,
+  "kind": "jump",
+  "demands": [
+   "vinner 41 u/s i luften (luftstyrning)"
+  ],
+  "air_gain_ups": 41.0,
+  "plain_reach_u": 15.5
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 15,
+  "takeoff": [
+   53.0,
+   -501.9,
+   -16.0
+  ],
+  "landing": [
+   -23.6,
+   -628.4,
+   27.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 154.3,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 472.2,
+  "peak_speed_ups": 472.2,
+  "walk_u": 155.5,
+  "shortcut_u": 1.3,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 318.7
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 16,
+  "takeoff": [
+   -23.6,
+   -628.4,
+   27.9
+  ],
+  "landing": [
+   146.9,
+   -836.0,
+   27.9
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 268.7,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 464.2,
+  "peak_speed_ups": 493.4,
+  "walk_u": 355.3,
+  "shortcut_u": 86.6,
+  "critical": true,
+  "kind": "jump",
+  "demands": [
+   "vinner 29 u/s i luften (luftstyrning)"
+  ],
+  "air_gain_ups": 29.2,
+  "plain_reach_u": 313.3
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 17,
+  "takeoff": [
+   146.9,
+   -836.0,
+   27.9
+  ],
+  "landing": [
+   350.9,
+   -833.4,
+   67.9
+  ],
+  "air_ticks": 31,
+  "air_s": 0.434,
+  "gap_u": 207.9,
+  "rise_u": 40.0,
+  "takeoff_speed_ups": 491.5,
+  "peak_speed_ups": 509.0,
+  "walk_u": 209.1,
+  "shortcut_u": 1.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 17.5,
+  "plain_reach_u": 331.8
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 18,
+  "takeoff": [
+   350.9,
+   -833.4,
+   67.9
+  ],
+  "landing": [
+   435.8,
+   -846.8,
+   56.0
+  ],
+  "air_ticks": 12,
+  "air_s": 0.168,
+  "gap_u": 86.7,
+  "rise_u": -11.9,
+  "takeoff_speed_ups": 508.3,
+  "peak_speed_ups": 508.7,
+  "walk_u": 89.2,
+  "shortcut_u": 2.4,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.3,
+  "plain_reach_u": 343.1
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 19,
+  "takeoff": [
+   477.6,
+   -697.1,
+   56.0
+  ],
+  "landing": [
+   399.8,
+   -576.2,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 150.3,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 425.8,
+  "peak_speed_ups": 438.7,
+  "walk_u": 178.8,
+  "shortcut_u": 28.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 12.9,
+  "plain_reach_u": 287.4
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 20,
+  "takeoff": [
+   399.8,
+   -576.2,
+   99.9
+  ],
+  "landing": [
+   304.0,
+   -530.8,
+   72.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 109.6,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 440.6,
+  "peak_speed_ups": 442.9,
+  "walk_u": 124.4,
+  "shortcut_u": 14.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 2.3,
+  "plain_reach_u": 297.4
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 21,
+  "takeoff": [
+   75.8,
+   -562.9,
+   152.0
+  ],
+  "landing": [
+   28.4,
+   -705.8,
+   195.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 156.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 448.0,
+  "peak_speed_ups": 458.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 10.8,
+  "plain_reach_u": 302.4
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 22,
+  "takeoff": [
+   28.4,
+   -705.8,
+   195.9
+  ],
+  "landing": [
+   17.1,
+   -849.6,
+   152.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 150.8,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 455.7,
+  "peak_speed_ups": 455.7,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 307.6
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 23,
+  "takeoff": [
+   356.8,
+   -820.5,
+   264.0
+  ],
+  "landing": [
+   367.1,
+   -671.9,
+   307.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 155.3,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 444.2,
+  "peak_speed_ups": 456.0,
+  "walk_u": 153.6,
+  "shortcut_u": -1.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.8,
+  "plain_reach_u": 299.8
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 24,
+  "takeoff": [
+   367.1,
+   -671.9,
+   307.9
+  ],
+  "landing": [
+   295.2,
+   -548.4,
+   264.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 149.5,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 456.0,
+  "peak_speed_ups": 461.5,
+  "walk_u": 149.5,
+  "shortcut_u": 0.1,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.5,
+  "plain_reach_u": 307.8
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 25,
+  "takeoff": [
+   68.0,
+   -561.1,
+   312.0
+  ],
+  "landing": [
+   107.8,
+   -673.8,
+   355.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 127.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 439.2,
+  "peak_speed_ups": 439.2,
+  "walk_u": 137.0,
+  "shortcut_u": 9.7,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 296.5
+ },
+ {
+  "route": "quad_to_ra",
+  "index": 26,
+  "takeoff": [
+   107.8,
+   -673.8,
+   355.9
+  ],
+  "landing": [
+   216.9,
+   -694.6,
+   328.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 114.5,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 423.5,
+  "peak_speed_ups": 427.6,
+  "walk_u": 127.0,
+  "shortcut_u": 12.4,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 4.2,
+  "plain_reach_u": 285.8
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 0,
+  "takeoff": [
+   72.2,
+   -573.2,
+   152.0
+  ],
+  "landing": [
+   23.5,
+   -718.6,
+   195.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 159.5,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 451.8,
+  "peak_speed_ups": 462.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.1,
+  "plain_reach_u": 305.0
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 1,
+  "takeoff": [
+   23.5,
+   -718.6,
+   195.9
+  ],
+  "landing": [
+   24.0,
+   -865.5,
+   152.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 153.3,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 462.9,
+  "peak_speed_ups": 462.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 312.5
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 2,
+  "takeoff": [
+   360.6,
+   -797.4,
+   264.0
+  ],
+  "landing": [
+   355.8,
+   -642.6,
+   307.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 160.9,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 458.6,
+  "peak_speed_ups": 459.0,
+  "walk_u": 158.6,
+  "shortcut_u": -2.3,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.4,
+  "plain_reach_u": 309.6
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 3,
+  "takeoff": [
+   355.8,
+   -642.6,
+   307.9
+  ],
+  "landing": [
+   279.9,
+   -528.0,
+   264.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 144.3,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 459.3,
+  "peak_speed_ups": 468.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 8.9,
+  "plain_reach_u": 310.0
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 4,
+  "takeoff": [
+   59.6,
+   -551.1,
+   312.0
+  ],
+  "landing": [
+   77.1,
+   -648.0,
+   355.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 107.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 416.6,
+  "peak_speed_ups": 416.6,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 281.2
+ },
+ {
+  "route": "ring_to_ratop",
+  "index": 5,
+  "takeoff": [
+   77.1,
+   -648.0,
+   355.9
+  ],
+  "landing": [
+   159.9,
+   -674.6,
+   328.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 91.3,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 330.6,
+  "peak_speed_ups": 337.0,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 6.4,
+  "plain_reach_u": 223.2
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 0,
+  "takeoff": [
+   -939.9,
+   355.8,
+   120.0
+  ],
+  "landing": [
+   -931.5,
+   503.9,
+   163.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 154.7,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 449.7,
+  "peak_speed_ups": 457.9,
+  "walk_u": 150.8,
+  "shortcut_u": -3.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 8.3,
+  "plain_reach_u": 303.5
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 1,
+  "takeoff": [
+   -931.5,
+   503.9,
+   163.9
+  ],
+  "landing": [
+   -868.0,
+   794.9,
+   163.9
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 297.8,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 457.9,
+  "peak_speed_ups": 478.4,
+  "walk_u": 318.0,
+  "shortcut_u": 20.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 20.4,
+  "plain_reach_u": 309.1
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 2,
+  "takeoff": [
+   -868.0,
+   794.9,
+   163.9
+  ],
+  "landing": [
+   -716.5,
+   854.2,
+   120.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 168.5,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 479.2,
+  "peak_speed_ups": 483.4,
+  "walk_u": 166.1,
+  "shortcut_u": -2.4,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 4.2,
+  "plain_reach_u": 323.5
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 3,
+  "takeoff": [
+   -566.6,
+   806.9,
+   120.0
+  ],
+  "landing": [
+   -543.1,
+   654.8,
+   163.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 160.1,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 457.9,
+  "peak_speed_ups": 468.9,
+  "walk_u": 212.5,
+  "shortcut_u": 52.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.0,
+  "plain_reach_u": 309.1
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 4,
+  "takeoff": [
+   -543.1,
+   654.8,
+   163.9
+  ],
+  "landing": [
+   -481.5,
+   348.1,
+   163.9
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 312.8,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 465.2,
+  "peak_speed_ups": 479.8,
+  "walk_u": 352.6,
+  "shortcut_u": 39.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 14.6,
+  "plain_reach_u": 314.0
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 5,
+  "takeoff": [
+   -481.5,
+   348.1,
+   163.9
+  ],
+  "landing": [
+   -474.6,
+   272.0,
+   144.0
+  ],
+  "air_ticks": 16,
+  "air_s": 0.224,
+  "gap_u": 79.0,
+  "rise_u": -19.9,
+  "takeoff_speed_ups": 479.3,
+  "peak_speed_ups": 480.9,
+  "walk_u": 78.3,
+  "shortcut_u": -0.7,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 1.7,
+  "plain_reach_u": 323.5
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 6,
+  "takeoff": [
+   -474.6,
+   272.0,
+   144.0
+  ],
+  "landing": [
+   -471.5,
+   269.2,
+   187.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 44.1,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 30.0,
+  "peak_speed_ups": 52.0,
+  "walk_u": 71.9,
+  "shortcut_u": 27.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 22.0,
+  "plain_reach_u": 20.2
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 7,
+  "takeoff": [
+   -471.5,
+   269.2,
+   187.9
+  ],
+  "landing": [
+   -471.2,
+   260.1,
+   176.0
+  ],
+  "air_ticks": 12,
+  "air_s": 0.168,
+  "gap_u": 15.0,
+  "rise_u": -11.9,
+  "takeoff_speed_ups": 51.1,
+  "peak_speed_ups": 58.9,
+  "walk_u": 9.1,
+  "shortcut_u": -5.8,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 7.7,
+  "plain_reach_u": 34.5
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 8,
+  "takeoff": [
+   -592.9,
+   225.6,
+   176.0
+  ],
+  "landing": [
+   -711.2,
+   307.5,
+   219.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 150.5,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 426.4,
+  "peak_speed_ups": 427.7,
+  "walk_u": 167.7,
+  "shortcut_u": 17.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 1.3,
+  "plain_reach_u": 287.8
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 9,
+  "takeoff": [
+   -711.2,
+   307.5,
+   219.9
+  ],
+  "landing": [
+   -837.6,
+   305.1,
+   184.0
+  ],
+  "air_ticks": 22,
+  "air_s": 0.308,
+  "gap_u": 131.4,
+  "rise_u": -35.9,
+  "takeoff_speed_ups": 428.3,
+  "peak_speed_ups": 447.7,
+  "walk_u": 136.8,
+  "shortcut_u": 5.5,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 19.4,
+  "plain_reach_u": 289.1
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 10,
+  "takeoff": [
+   -837.6,
+   305.1,
+   184.0
+  ],
+  "landing": [
+   -891.6,
+   167.5,
+   227.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 154.2,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 448.8,
+  "peak_speed_ups": 471.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 22.3,
+  "plain_reach_u": 303.0
+ },
+ {
+  "route": "sngspawn_a_to_mega",
+  "index": 11,
+  "takeoff": [
+   -891.6,
+   167.5,
+   227.9
+  ],
+  "landing": [
+   -780.9,
+   80.0,
+   184.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 147.8,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 472.1,
+  "peak_speed_ups": 483.3,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.2,
+  "plain_reach_u": 318.6
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 0,
+  "takeoff": [
+   -651.0,
+   -279.1,
+   -16.0
+  ],
+  "landing": [
+   -621.9,
+   -426.6,
+   27.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 156.6,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 460.8,
+  "peak_speed_ups": 460.8,
+  "walk_u": 152.6,
+  "shortcut_u": -4.0,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 311.0
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 1,
+  "takeoff": [
+   -621.9,
+   -426.6,
+   27.9
+  ],
+  "landing": [
+   224.0,
+   -320.0,
+   75.0
+  ],
+  "air_ticks": 15,
+  "air_s": 0.21,
+  "gap_u": 853.9,
+  "rise_u": 47.1,
+  "takeoff_speed_ups": 460.5,
+  "peak_speed_ups": 471.1,
+  "walk_u": 2161.8,
+  "shortcut_u": 1307.9,
+  "critical": false,
+  "kind": "teleport_or_gap",
+  "demands": [
+   "n\u00e5r 853 u, ett vanligt hopp fr\u00e5n 460 u/s klarar 311"
+  ],
+  "air_gain_ups": 10.6,
+  "plain_reach_u": 310.8
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 2,
+  "takeoff": [
+   224.0,
+   -320.0,
+   75.0
+  ],
+  "landing": [
+   255.2,
+   -269.4,
+   60.0
+  ],
+  "air_ticks": 14,
+  "air_s": 0.196,
+  "gap_u": 61.4,
+  "rise_u": -15.0,
+  "takeoff_speed_ups": 299.8,
+  "peak_speed_ups": 303.6,
+  "walk_u": 68.6,
+  "shortcut_u": 7.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 3.7,
+  "plain_reach_u": 202.4
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 3,
+  "takeoff": [
+   255.2,
+   -269.4,
+   60.0
+  ],
+  "landing": [
+   271.9,
+   -240.4,
+   56.0
+  ],
+  "air_ticks": 7,
+  "air_s": 0.098,
+  "gap_u": 33.7,
+  "rise_u": -4.0,
+  "takeoff_speed_ups": 319.7,
+  "peak_speed_ups": 319.7,
+  "walk_u": 33.4,
+  "shortcut_u": -0.2,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 215.8
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 4,
+  "takeoff": [
+   327.1,
+   64.1,
+   56.0
+  ],
+  "landing": [
+   409.6,
+   -35.1,
+   99.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 136.3,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 468.9,
+  "peak_speed_ups": 468.9,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 316.5
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 5,
+  "takeoff": [
+   409.6,
+   -35.1,
+   99.9
+  ],
+  "landing": [
+   400.6,
+   -285.9,
+   99.9
+  ],
+  "air_ticks": 50,
+  "air_s": 0.7,
+  "gap_u": 250.9,
+  "rise_u": 0.0,
+  "takeoff_speed_ups": 439.1,
+  "peak_speed_ups": 478.3,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": true,
+  "kind": "jump",
+  "demands": [
+   "vinner 39 u/s i luften (luftstyrning)"
+  ],
+  "air_gain_ups": 39.2,
+  "plain_reach_u": 296.4
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 6,
+  "takeoff": [
+   400.6,
+   -285.9,
+   99.9
+  ],
+  "landing": [
+   470.8,
+   -418.2,
+   56.0
+  ],
+  "air_ticks": 24,
+  "air_s": 0.336,
+  "gap_u": 156.1,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 477.7,
+  "peak_speed_ups": 491.1,
+  "walk_u": 163.4,
+  "shortcut_u": 7.3,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 13.4,
+  "plain_reach_u": 322.5
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 7,
+  "takeoff": [
+   150.9,
+   -573.9,
+   152.0
+  ],
+  "landing": [
+   72.5,
+   -705.8,
+   195.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 159.6,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 457.4,
+  "peak_speed_ups": 458.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.7,
+  "plain_reach_u": 308.7
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 8,
+  "takeoff": [
+   72.5,
+   -705.8,
+   195.9
+  ],
+  "landing": [
+   51.0,
+   -820.8,
+   168.0
+  ],
+  "air_ticks": 19,
+  "air_s": 0.266,
+  "gap_u": 120.3,
+  "rise_u": -27.9,
+  "takeoff_speed_ups": 458.2,
+  "peak_speed_ups": 469.1,
+  "walk_u": null,
+  "shortcut_u": null,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.0,
+  "plain_reach_u": 309.3
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 9,
+  "takeoff": [
+   354.9,
+   -819.8,
+   264.0
+  ],
+  "landing": [
+   374.0,
+   -667.0,
+   307.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 160.1,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 457.3,
+  "peak_speed_ups": 462.5,
+  "walk_u": 154.1,
+  "shortcut_u": -5.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 5.2,
+  "plain_reach_u": 308.7
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 10,
+  "takeoff": [
+   374.0,
+   -667.0,
+   307.9
+  ],
+  "landing": [
+   273.4,
+   -558.1,
+   264.0
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 154.6,
+  "rise_u": -43.9,
+  "takeoff_speed_ups": 463.2,
+  "peak_speed_ups": 474.4,
+  "walk_u": 152.0,
+  "shortcut_u": -2.7,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 11.2,
+  "plain_reach_u": 312.6
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 11,
+  "takeoff": [
+   91.6,
+   -564.0,
+   296.0
+  ],
+  "landing": [
+   136.6,
+   -669.5,
+   339.9
+  ],
+  "air_ticks": 25,
+  "air_s": 0.35,
+  "gap_u": 122.8,
+  "rise_u": 43.9,
+  "takeoff_speed_ups": 422.8,
+  "peak_speed_ups": 422.8,
+  "walk_u": 141.4,
+  "shortcut_u": 18.6,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 0.0,
+  "plain_reach_u": 285.4
+ },
+ {
+  "route": "tunnel_to_ra",
+  "index": 12,
+  "takeoff": [
+   136.6,
+   -669.5,
+   339.9
+  ],
+  "landing": [
+   202.5,
+   -687.2,
+   328.0
+  ],
+  "air_ticks": 12,
+  "air_s": 0.168,
+  "gap_u": 69.3,
+  "rise_u": -11.9,
+  "takeoff_speed_ups": 399.8,
+  "peak_speed_ups": 403.3,
+  "walk_u": 70.1,
+  "shortcut_u": 0.9,
+  "critical": false,
+  "kind": "jump",
+  "demands": [],
+  "air_gain_ups": 3.5,
+  "plain_reach_u": 269.9
+ }
+]

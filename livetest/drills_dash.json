@@ -1,0 +1,70 @@
+[
+ {
+  "id": "suite_x-32-r1",
+  "kind": "corridor",
+  "from_xyz": [
+   -32.0,
+   -2100.0,
+   24.0
+  ],
+  "to_xyz": [
+   -32.0,
+   3500.0,
+   24.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "dump_traj": true
+ },
+ {
+  "id": "suite_x-32-r2",
+  "kind": "corridor",
+  "from_xyz": [
+   -32.0,
+   -2100.0,
+   24.0
+  ],
+  "to_xyz": [
+   -32.0,
+   3500.0,
+   24.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "dump_traj": false
+ },
+ {
+  "id": "agents_x224-r1",
+  "kind": "corridor",
+  "from_xyz": [
+   224.0,
+   -1408.0,
+   32.0
+  ],
+  "to_xyz": [
+   224.0,
+   2900.0,
+   32.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "dump_traj": true
+ },
+ {
+  "id": "agents_x224-r2",
+  "kind": "corridor",
+  "from_xyz": [
+   224.0,
+   -1408.0,
+   32.0
+  ],
+  "to_xyz": [
+   224.0,
+   2900.0,
+   32.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "dump_traj": false
+ }
+]

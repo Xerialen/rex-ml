@@ -1,0 +1,34 @@
+{
+  "n_rows": 200000,
+  "source": "S.npy[SP==2] (held-out test split, never seen by train_disc)",
+  "seed": 0,
+  "depth": 3,
+  "nh": 512,
+  "thresholds": {
+    "fmove_agreement": 1.0,
+    "smove_agreement": 1.0,
+    "jump_agreement": 1.0,
+    "dyaw_max_abs_diff": 1e-05,
+    "logit_max_abs_diff": 0.001
+  },
+  "measured": {
+    "fmove_agreement": 1.0,
+    "smove_agreement": 1.0,
+    "jump_agreement": 1.0,
+    "dyaw_max_abs_diff": 1.8998980522155762e-07,
+    "logit_max_abs_diff": 1.9073486328125e-05
+  },
+  "passed": {
+    "fmove_agreement": true,
+    "smove_agreement": true,
+    "jump_agreement": true,
+    "dyaw_max_abs_diff": true,
+    "logit_max_abs_diff": true
+  },
+  "all_passed": true,
+  "f_head_argmax_ties": 0,
+  "s_head_argmax_ties": 0,
+  "rust_binary": "/home/benjamin-adm/rex-ml/rtx/target/release/nav_policy_parity_3x512",
+  "rust_wall_s": 50.149,
+  "ckpt": "/home/benjamin-adm/rex-ml/pipeline/out/policy/actor_disc_3x512.pt"
+}

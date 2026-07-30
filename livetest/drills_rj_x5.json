@@ -1,0 +1,92 @@
+[
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r1",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r2",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r3",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r4",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454
+ },
+ {
+  "id": "rj-pent-to-lifts-to-window-to-quad-r5",
+  "kind": "route",
+  "rj_allowed": true,
+  "from_xyz": [
+   958,
+   788,
+   -296
+  ],
+  "to_xyz": [
+   908,
+   312,
+   97
+  ],
+  "human_secs": 4.909,
+  "human_path": 2231,
+  "human_mean": 454
+ }
+]

@@ -1,0 +1,187 @@
+cohort for 'sngspawn-to-mega' not materialized; building (minutes on the full corpus)...
+{
+  "route": {
+    "name": "sngspawn-to-mega",
+    "label": "SNG-spawn \u2192 SNG-mega",
+    "start": "SNG-tele spawns",
+    "target": "SNG mega",
+    "max_s": 30.0
+  },
+  "filters": {
+    "player": null,
+    "no_combat": false
+  },
+  "stats": {
+    "all": {
+      "route": "sngspawn-to-mega",
+      "player_filter": null,
+      "no_combat": false,
+      "sample_n": 875,
+      "distinct_demos": 566,
+      "min_s": 6.108,
+      "p10_s": 7.635199999999999,
+      "median_s": 10.491,
+      "p90_s": 22.9042,
+      "max_s": 29.932
+    },
+    "no_combat": {
+      "route": "sngspawn-to-mega",
+      "player_filter": null,
+      "no_combat": true,
+      "sample_n": 744,
+      "distinct_demos": 512,
+      "min_s": 6.108,
+      "p10_s": 7.5613,
+      "median_s": 9.9845,
+      "p90_s": 21.0331,
+      "max_s": 29.932
+    }
+  },
+  "median_run": {
+    "name": "LocKtar",
+    "duration_s": 10.491,
+    "combat_involved": false,
+    "demo_id": "6be52020b1af62c8588f391d77df5606dad0ae7d5d722554a305bb5df8ef4ea6",
+    "orig_name": "4on4_gg_vs_tot[dm3]20260526-1932.mvd",
+    "slot": 5,
+    "source_spawn_t": 1077976,
+    "pickup_t": 1088467,
+    "trigger": "partial",
+    "date": "2026-05-26T19:53:08Z",
+    "availability": {
+      "hub_file": "4on4-gg-vs-tot-dm3-20260526-1932.mvd",
+      "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-gg-vs-tot-dm3-20260526-1932.mvd",
+      "on_hub": false,
+      "hub_http_status": 0
+    },
+    "commands": {
+      "label": "SNG-spawn \u2192 SNG-mega \u00b7 LocKtar 10.491 s",
+      "route_id": "manual-locktar-sngspawn-to-mega",
+      "deeplink": "uv run dm3-deeplink --sha 6be52020b1af62c8588f391d77df5606dad0ae7d5d722554a305bb5df8ef4ea6 --name '4on4_gg_vs_tot[dm3]20260526-1932.mvd' --at 1078.0 --track 'LocKtar'",
+      "catalog": "uv run dm3-viewer-catalog add --demo-sha 6be52020b1af62c8588f391d77df5606dad0ae7d5d722554a305bb5df8ef4ea6 --slot 5 --t0 1077976 --t1 1088467 --label 'SNG-spawn \u2192 SNG-mega \u00b7 LocKtar 10.491 s' --route-id manual-locktar-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+    }
+  },
+  "fastest_runs": [
+    {
+      "name": "shazam",
+      "duration_s": 6.108,
+      "combat_involved": false,
+      "demo_id": "cd749046db3df24fe5c65c993bf7de7d252516df07ba678d1e8351ef7fb460c6",
+      "orig_name": "4on4_blue_vs_red[dm3]20260530-2220.mvd",
+      "slot": 0,
+      "source_spawn_t": 73685,
+      "pickup_t": 79793,
+      "trigger": "partial",
+      "date": "2026-05-30T20:40:12Z",
+      "availability": {
+        "hub_file": "4on4-blue-vs-red-dm3-20260530-2220.mvd",
+        "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-blue-vs-red-dm3-20260530-2220.mvd",
+        "on_hub": false,
+        "hub_http_status": 0
+      },
+      "commands": {
+        "label": "SNG-spawn \u2192 SNG-mega \u00b7 shazam 6.108 s",
+        "route_id": "manual-shazam-sngspawn-to-mega",
+        "deeplink": "uv run dm3-deeplink --sha cd749046db3df24fe5c65c993bf7de7d252516df07ba678d1e8351ef7fb460c6 --name '4on4_blue_vs_red[dm3]20260530-2220.mvd' --at 73.7 --track 'shazam'",
+        "catalog": "uv run dm3-viewer-catalog add --demo-sha cd749046db3df24fe5c65c993bf7de7d252516df07ba678d1e8351ef7fb460c6 --slot 0 --t0 73685 --t1 79793 --label 'SNG-spawn \u2192 SNG-mega \u00b7 shazam 6.108 s' --route-id manual-shazam-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+      }
+    },
+    {
+      "name": ". zero",
+      "duration_s": 6.237,
+      "combat_involved": false,
+      "demo_id": "e2042cd346252972b8bfc9e6c5380be7672c3f775587afbdc4103c29b82ac5f3",
+      "orig_name": "4on4_ass_vs_zhk[dm3]20250606-1841.mvd",
+      "slot": 6,
+      "source_spawn_t": 237061,
+      "pickup_t": 243298,
+      "trigger": "frag",
+      "date": "2025-06-06T19:01:16Z",
+      "availability": {
+        "hub_file": "4on4-ass-vs-zhk-dm3-20250606-1841.mvd",
+        "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-ass-vs-zhk-dm3-20250606-1841.mvd",
+        "on_hub": false,
+        "hub_http_status": 0
+      },
+      "commands": {
+        "label": "SNG-spawn \u2192 SNG-mega \u00b7 . zero 6.237 s",
+        "route_id": "manual-zero-sngspawn-to-mega",
+        "deeplink": "uv run dm3-deeplink --sha e2042cd346252972b8bfc9e6c5380be7672c3f775587afbdc4103c29b82ac5f3 --name '4on4_ass_vs_zhk[dm3]20250606-1841.mvd' --at 237.1 --track '. zero'",
+        "catalog": "uv run dm3-viewer-catalog add --demo-sha e2042cd346252972b8bfc9e6c5380be7672c3f775587afbdc4103c29b82ac5f3 --slot 6 --t0 237061 --t1 243298 --label 'SNG-spawn \u2192 SNG-mega \u00b7 . zero 6.237 s' --route-id manual-zero-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+      }
+    },
+    {
+      "name": "martin",
+      "duration_s": 6.34,
+      "combat_involved": false,
+      "demo_id": "a8c033d99f6de36cbaba369a442b2538ce29bd4f2ad53134047294c23f7953a6",
+      "orig_name": "4on4_oeks_vs_com[dm3]20240111-1659.mvd",
+      "slot": 3,
+      "source_spawn_t": 259205,
+      "pickup_t": 265545,
+      "trigger": "frag",
+      "date": "2024-01-11T16:19:31Z",
+      "availability": {
+        "hub_file": "4on4-oeks-vs-com-dm3-20240111-1659.mvd",
+        "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-oeks-vs-com-dm3-20240111-1659.mvd",
+        "on_hub": false,
+        "hub_http_status": 0
+      },
+      "commands": {
+        "label": "SNG-spawn \u2192 SNG-mega \u00b7 martin 6.340 s",
+        "route_id": "manual-martin-sngspawn-to-mega",
+        "deeplink": "uv run dm3-deeplink --sha a8c033d99f6de36cbaba369a442b2538ce29bd4f2ad53134047294c23f7953a6 --name '4on4_oeks_vs_com[dm3]20240111-1659.mvd' --at 259.2 --track 'martin'",
+        "catalog": "uv run dm3-viewer-catalog add --demo-sha a8c033d99f6de36cbaba369a442b2538ce29bd4f2ad53134047294c23f7953a6 --slot 3 --t0 259205 --t1 265545 --label 'SNG-spawn \u2192 SNG-mega \u00b7 martin 6.340 s' --route-id manual-martin-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+      }
+    },
+    {
+      "name": "pooll.dc",
+      "duration_s": 6.545,
+      "combat_involved": false,
+      "demo_id": "f74cc2026112ce3cac83ef3c57f81223eb6d88aff3e60917ebbb37545f16315b",
+      "orig_name": "4on4_thug_vs_dc[dm3]20231111-0041.mvd",
+      "slot": 1,
+      "source_spawn_t": 643647,
+      "pickup_t": 650192,
+      "trigger": "frag",
+      "date": "2023-11-11T01:01:39Z",
+      "availability": {
+        "hub_file": "4on4-thug-vs-dc-dm3-20231111-0041.mvd",
+        "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-thug-vs-dc-dm3-20231111-0041.mvd",
+        "on_hub": false,
+        "hub_http_status": 0
+      },
+      "commands": {
+        "label": "SNG-spawn \u2192 SNG-mega \u00b7 pooll.dc 6.545 s",
+        "route_id": "manual-pooll.dc-sngspawn-to-mega",
+        "deeplink": "uv run dm3-deeplink --sha f74cc2026112ce3cac83ef3c57f81223eb6d88aff3e60917ebbb37545f16315b --name '4on4_thug_vs_dc[dm3]20231111-0041.mvd' --at 643.6 --track 'pooll.dc'",
+        "catalog": "uv run dm3-viewer-catalog add --demo-sha f74cc2026112ce3cac83ef3c57f81223eb6d88aff3e60917ebbb37545f16315b --slot 1 --t0 643647 --t1 650192 --label 'SNG-spawn \u2192 SNG-mega \u00b7 pooll.dc 6.545 s' --route-id manual-pooll.dc-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+      }
+    },
+    {
+      "name": "ven",
+      "duration_s": 6.569,
+      "combat_involved": false,
+      "demo_id": "63c65aa9af67233294aee2c8e6aa0600f54affc921fc9ab6d070f1797c909cba",
+      "orig_name": "4on4_ak_vs_red[dm3]20260524-1509.mvd",
+      "slot": 3,
+      "source_spawn_t": 1187233,
+      "pickup_t": 1193802,
+      "trigger": "frag",
+      "date": "2026-05-24T05:59:44Z",
+      "availability": {
+        "hub_file": "4on4-ak-vs-red-dm3-20260524-1509.mvd",
+        "hub_url": "http://192.168.86.33:8095/demos/files/non-games/lab/rtx/dm3/4on4-ak-vs-red-dm3-20260524-1509.mvd",
+        "on_hub": false,
+        "hub_http_status": 0
+      },
+      "commands": {
+        "label": "SNG-spawn \u2192 SNG-mega \u00b7 ven 6.569 s",
+        "route_id": "manual-ven-sngspawn-to-mega",
+        "deeplink": "uv run dm3-deeplink --sha 63c65aa9af67233294aee2c8e6aa0600f54affc921fc9ab6d070f1797c909cba --name '4on4_ak_vs_red[dm3]20260524-1509.mvd' --at 1187.2 --track 'ven'",
+        "catalog": "uv run dm3-viewer-catalog add --demo-sha 63c65aa9af67233294aee2c8e6aa0600f54affc921fc9ab6d070f1797c909cba --slot 3 --t0 1187233 --t1 1193802 --label 'SNG-spawn \u2192 SNG-mega \u00b7 ven 6.569 s' --route-id manual-ven-sngspawn-to-mega --from-label 'SNG-tele spawns' --to-label 'SNG mega'"
+      }
+    }
+  ],
+  "caveat": "no_combat means frag-free at obituary level; the corpus has no damage table, so damage without a frag is invisible"
+}

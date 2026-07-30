@@ -1,0 +1,306 @@
+{
+ "window_to_rl": {
+  "approaches": 1,
+  "routes": 20,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     1824.0,
+     416.0,
+     -88.0
+    ],
+    "routes": 20,
+    "share": 1.0
+   }
+  ]
+ },
+ "sngspawn_a_to_quad": {
+  "approaches": 2,
+  "routes": 17,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     1248.0,
+     322.0,
+     56.0
+    ],
+    "routes": 16,
+    "share": 0.941
+   },
+   {
+    "centre": [
+     1184.0,
+     512.0,
+     56.0
+    ],
+    "routes": 1,
+    "share": 0.059
+   }
+  ]
+ },
+ "sngspawn_b_to_quad": {
+  "approaches": 2,
+  "routes": 17,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     1248.0,
+     322.0,
+     56.0
+    ],
+    "routes": 16,
+    "share": 0.941
+   },
+   {
+    "centre": [
+     1184.0,
+     512.0,
+     56.0
+    ],
+    "routes": 1,
+    "share": 0.059
+   }
+  ]
+ },
+ "ralow_to_ratop": {
+  "approaches": 3,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "routes": 19,
+    "share": 0.905
+   },
+   {
+    "centre": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   },
+   {
+    "centre": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   }
+  ]
+ },
+ "lifts_to_sng_mega": {
+  "approaches": 4,
+  "routes": 21,
+  "tested_index": 1,
+  "centres": [
+   {
+    "centre": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "routes": 14,
+    "share": 0.667
+   },
+   {
+    "centre": [
+     -501.3,
+     265.3,
+     154.7
+    ],
+    "routes": 3,
+    "share": 0.143
+   },
+   {
+    "centre": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "routes": 3,
+    "share": 0.143
+   }
+  ]
+ },
+ "quad_to_ra": {
+  "approaches": 3,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "routes": 19,
+    "share": 0.905
+   },
+   {
+    "centre": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   },
+   {
+    "centre": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   }
+  ]
+ },
+ "ring_to_ratop": {
+  "approaches": 3,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "routes": 19,
+    "share": 0.905
+   },
+   {
+    "centre": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   },
+   {
+    "centre": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   }
+  ]
+ },
+ "sngspawn_a_to_mega": {
+  "approaches": 4,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "routes": 14,
+    "share": 0.667
+   },
+   {
+    "centre": [
+     -501.3,
+     265.3,
+     154.7
+    ],
+    "routes": 3,
+    "share": 0.143
+   },
+   {
+    "centre": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "routes": 3,
+    "share": 0.143
+   }
+  ]
+ },
+ "sngspawn_b_to_mega": {
+  "approaches": 4,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     -832.0,
+     -128.0,
+     -16.0
+    ],
+    "routes": 14,
+    "share": 0.667
+   },
+   {
+    "centre": [
+     -501.3,
+     265.3,
+     154.7
+    ],
+    "routes": 3,
+    "share": 0.143
+   },
+   {
+    "centre": [
+     -829.3,
+     362.7,
+     184.0
+    ],
+    "routes": 3,
+    "share": 0.143
+   }
+  ]
+ },
+ "tunnel_to_ra": {
+  "approaches": 3,
+  "routes": 21,
+  "tested_index": 0,
+  "centres": [
+   {
+    "centre": [
+     345.3,
+     -562.9,
+     59.4
+    ],
+    "routes": 19,
+    "share": 0.905
+   },
+   {
+    "centre": [
+     371.5,
+     -813.0,
+     264.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   },
+   {
+    "centre": [
+     32.0,
+     -844.0,
+     152.0
+    ],
+    "routes": 1,
+    "share": 0.048
+   }
+  ]
+ }
+}

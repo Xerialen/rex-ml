@@ -1,0 +1,143 @@
+[
+ {
+  "page": "dm3-replay.html",
+  "checks": [
+   {
+    "check": "laddar utan uncaught exception",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "laddtid 3.0 s",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "WebGL-kontext skapad",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "banor och f\u00f6rs\u00f6k i listan",
+    "pass": true,
+    "detail": "10 rutter, 127 poster"
+   },
+   {
+    "check": "geometri avkodad",
+    "pass": true,
+    "detail": "9255 trianglar"
+   },
+   {
+    "check": "bildrutor avkodade",
+    "pass": true,
+    "detail": "77482 tick totalt"
+   },
+   {
+    "check": "ett f\u00f6rs\u00f6k \u00e4r valt vid start",
+    "pass": true,
+    "detail": "{'n': 311, 'route': 'window_to_rl'}"
+   },
+   {
+    "check": "n\u00e5got ritas i vyn (inte blank)",
+    "pass": true,
+    "detail": "65 distinkta pixelv\u00e4rden"
+   },
+   {
+    "check": "uppspelning 1:1 (\u00b18 %)",
+    "pass": true,
+    "detail": "3.02 s speltid p\u00e5 3.04 s v\u00e4ggtid = 0.994x"
+   },
+   {
+    "check": "luftsegment renderas f\u00f6r varje k\u00f6rning som har dem",
+    "pass": true,
+    "detail": "126/126 k\u00f6rningar, 0 med fel antal knappar"
+   },
+   {
+    "check": "klick p\u00e5 ett luftsegment flyttar uppspelningen dit",
+    "pass": true,
+    "detail": "{'tick': 581, 'want': 581, 'scrub': 581}"
+   },
+   {
+    "check": "varje post i listan g\u00e5r att v\u00e4lja och spela",
+    "pass": true,
+    "detail": "127 poster, 0 trasiga"
+   },
+   {
+    "check": "varje post har en k\u00e4lla (du / ML / analytisk)",
+    "pass": true,
+    "detail": "{'analytic': 1, 'ml': 24, 'owner': 8}"
+   },
+   {
+    "check": "k\u00e4llm\u00e4rket i vyn f\u00f6ljer valet",
+    "pass": true,
+    "detail": "{'cls': 'owner', 'text': 'DIN INSPELNING'}"
+   },
+   {
+    "check": "fallv\u00e4ljaren listar varje rutt och byter fall",
+    "pass": true,
+    "detail": "{'n_routes': 10, 'want': 10, 'before': 0, 'after': 32, 'route_now': 'tunnel_to_ra', 'target': 'tunnel_to_ra'}"
+   },
+   {
+    "check": "utan fragment landar sidan p\u00e5 ruttarbetet, inte korridoren",
+    "pass": true,
+    "detail": "{'route': 'window_to_rl', 'map': 'dm3', 'dec': 'race_v7 ing.0'}"
+   },
+   {
+    "check": "djupl\u00e4nk landar p\u00e5 r\u00e4tt k\u00f6rning, tick och kamera",
+    "pass": true,
+    "detail": "bad {'rt': 'window_to_rl', 'dec': 'reference', 'run': 0, 't': 197} fick {'rt': 'window_to_rl', 'dec': 'reference', 'run': 0, 't': 197, 'cam': 'first'}"
+   },
+   {
+    "check": "3D-vyn har verklig h\u00f6jd (>= 300 px)",
+    "pass": true,
+    "detail": "957x437 px"
+   },
+   {
+    "check": "alla tre kameral\u00e4gen renderar",
+    "pass": true,
+    "detail": "{'follow': 65, 'first': 65, 'top': 65}"
+   },
+   {
+    "check": "kameral\u00e4gena visar olika bilder",
+    "pass": true,
+    "detail": "{'follow': 'f25d641e08fc', 'first': 'd871cc233b34', 'top': '9ca786ca88fa'}"
+   },
+   {
+    "check": "takh\u00f6jdsreglaget p\u00e5verkar bilden",
+    "pass": true,
+    "detail": "65 -> 65"
+   },
+   {
+    "check": "b\u00e5da teman renderar",
+    "pass": true,
+    "detail": "{'light': 65, 'dark': 65}"
+   },
+   {
+    "check": "ingen horisontell sidscroll",
+    "pass": true,
+    "detail": "0 px"
+   },
+   {
+    "check": "inga console-fel",
+    "pass": true,
+    "detail": ""
+   }
+  ],
+  "errors": [
+   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ],
+  "info": {
+   "gl": true,
+   "attempts": 127,
+   "routes": 10,
+   "meshTris": 9255,
+   "frames": 77482,
+   "tick": 0.012987012987012988,
+   "total": "4.04"
+  },
+  "passed": true
+ }
+]

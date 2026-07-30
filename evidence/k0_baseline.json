@@ -1,0 +1,24 @@
+{
+ "files": 97,
+ "dt_window_ms": [
+  8,
+  40
+ ],
+ "tol_ms": 25,
+ "horizons": {
+  "300": {
+   "n": 40445973,
+   "still_median_u": 97.4,
+   "still_p90_u": 143.8,
+   "linear_median_u": 44.7,
+   "linear_p90_u": 106.4
+  },
+  "600": {
+   "n": 38950130,
+   "still_median_u": 168.5,
+   "still_p90_u": 272.0,
+   "linear_median_u": 126.9,
+   "linear_p90_u": 281.4
+  }
+ }
+}

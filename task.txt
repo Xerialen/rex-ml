@@ -1,0 +1,7 @@
+Read ~/rex-ml/BRIEF.md. Then work autonomously through this, writing artifacts to disk as you go so nothing is lost if the session restarts.
+
+TASK A (first, bounded): audit demo-derived data already on this box so we do not re-parse 161 GB of .mvd from scratch. Inspect ~/qwd-miner-movement-bundle, ~/dm3-extract, ~/qw-corpus-build, ~/mvd-corpus, ~/qwd-corpus. For each: format, schema/columns, does it contain per-tick usercmds (buttons + mouse deltas) AND player state (pos, vel, angles, health, ground_contact), what tickrate, DM3-filtered or not. Write the result as a table to ~/rex-ml/AUDIT.md with a clear recommendation: reuse which artifact, or parse fresh, and why.
+
+TASK B (after A): implement BRIEF step 1 based on that recommendation - the SE(2)-invariant transform and the trims/maneuvers segmentation on ground_contact + weapon-fire flags. Write code under ~/rex-ml/pipeline/. Validate on a small sample first and report real numbers (rows, segments found, distribution) before running at full scale.
+
+Rules: append a dated entry to ~/rex-ml/PROGRESS.md after each milestone - what you did, what you measured, what is next. Run anything long-running in the tmux window 'jobs' (tmux send-keys -t rexml:jobs), never blocking in your own context. Disk is the binding constraint: 187 GB free, corpora are irreplaceable and write-protected - state disk cost before any job that writes more than 5 GB. Report measurements, never claims.

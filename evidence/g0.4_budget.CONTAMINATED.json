@@ -1,0 +1,103 @@
+{
+  "machine": {
+    "cpu_model": "INTEL(R) XEON(R) GOLD 6526Y",
+    "logical_cpus": 64,
+    "cpufreq_governor": "unavailable: no /sys/devices/system/cpu/cpu*/cpufreq entries exposed in this environment",
+    "turbo_state": "unavailable: same reason as governor",
+    "binary_pinned_with": "taskset -c <core> (single logical core; recommended invocation, see file header)",
+    "rustc_version": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+    "profile": "release (lto=thin, codegen-units=1, per workspace Cargo.toml)"
+  },
+  "methodology": {
+    "iterations_per_point_per_repeat": 40000,
+    "warmup_iterations": 2000,
+    "repeats": 3,
+    "timer": "std::time::Instant, one timestamp pair per tick (not amortised)",
+    "threads": 1,
+    "measures": "Dmp::step + (Mlp|Mlp3)::forward + decode + TrackingGuard::check, i.e. ManeuverAutomaton::tick's Mode::Maneuver arm, the same 'complete path' bench_per_tick_budget names",
+    "nin_nout_fixed": "NIN=14, NOUT=8 per SPEC G0.2's shipped contract; only hidden width/depth vary",
+    "timer_overhead_caveat": "each sample pays two Instant::now() calls (~tens of ns); included in, not subtracted from, the reported numbers"
+  },
+  "sweep": [
+    {
+      "depth": 2,
+      "width": 256,
+      "params": 71688,
+      "repeats_us": [{"p50": 26.858, "p99": 30.601, "max": 3047.094}, {"p50": 26.870, "p99": 30.121, "max": 3034.198}, {"p50": 26.882, "p99": 30.655, "max": 3044.069}],
+      "p50_us_range": [26.858, 26.882],
+      "p99_us_range": [30.121, 30.655],
+      "max_us_range": [3034.198, 3047.094]
+    },
+    {
+      "depth": 2,
+      "width": 512,
+      "params": 274440,
+      "repeats_us": [{"p50": 122.476, "p99": 3126.594, "max": 4129.629}, {"p50": 122.472, "p99": 3126.544, "max": 4129.402}, {"p50": 122.469, "p99": 3126.564, "max": 4128.973}],
+      "p50_us_range": [122.469, 122.476],
+      "p99_us_range": [3126.544, 3126.594],
+      "max_us_range": [4128.973, 4129.629]
+    },
+    {
+      "depth": 2,
+      "width": 1024,
+      "params": 1073160,
+      "repeats_us": [{"p50": 518.097, "p99": 3521.591, "max": 5519.345}, {"p50": 518.280, "p99": 3521.969, "max": 5522.522}, {"p50": 518.264, "p99": 3521.798, "max": 5520.220}],
+      "p50_us_range": [518.097, 518.280],
+      "p99_us_range": [3521.591, 3521.969],
+      "max_us_range": [5519.345, 5522.522]
+    },
+    {
+      "depth": 2,
+      "width": 2048,
+      "params": 4243464,
+      "repeats_us": [{"p50": 5122.071, "p99": 5171.498, "max": 8142.602}, {"p50": 5119.997, "p99": 5143.037, "max": 8363.994}, {"p50": 5119.814, "p99": 5143.273, "max": 8385.055}],
+      "p50_us_range": [5119.814, 5122.071],
+      "p99_us_range": [5143.037, 5171.498],
+      "max_us_range": [8142.602, 8385.055]
+    },
+    {
+      "depth": 3,
+      "width": 256,
+      "params": 137480,
+      "repeats_us": [{"p50": 52.088, "p99": 3056.682, "max": 3266.616}, {"p50": 52.080, "p99": 3057.525, "max": 6057.193}, {"p50": 52.085, "p99": 3058.016, "max": 3266.869}],
+      "p50_us_range": [52.080, 52.088],
+      "p99_us_range": [3056.682, 3058.016],
+      "max_us_range": [3266.616, 6057.193]
+    },
+    {
+      "depth": 3,
+      "width": 512,
+      "params": 537096,
+      "repeats_us": [{"p50": 240.539, "p99": 3246.866, "max": 5246.514}, {"p50": 240.558, "p99": 3246.725, "max": 5245.949}, {"p50": 240.555, "p99": 3246.631, "max": 4252.702}],
+      "p50_us_range": [240.539, 240.558],
+      "p99_us_range": [3246.631, 3246.866],
+      "max_us_range": [4252.702, 5246.514]
+    },
+    {
+      "depth": 3,
+      "width": 1024,
+      "params": 2122760,
+      "repeats_us": [{"p50": 1025.427, "p99": 4030.982, "max": 6031.996}, {"p50": 1025.304, "p99": 4031.296, "max": 7054.812}, {"p50": 1025.281, "p99": 4030.635, "max": 7035.602}],
+      "p50_us_range": [1025.281, 1025.427],
+      "p99_us_range": [4030.635, 4031.296],
+      "max_us_range": [6031.996, 7054.812]
+    },
+    {
+      "depth": 3,
+      "width": 2048,
+      "params": 8439816,
+      "repeats_us": [{"p50": 10589.716, "p99": 10677.255, "max": 13624.756}, {"p50": 10589.836, "p99": 10652.592, "max": 13639.177}, {"p50": 10592.855, "p99": 10842.543, "max": 13842.120}],
+      "p50_us_range": [10589.716, 10592.855],
+      "p99_us_range": [10652.592, 10842.543],
+      "max_us_range": [13624.756, 13842.120]
+    }
+  ],
+  "decision": {
+    "winner": {"depth": 2, "width": 256, "params": 71688, "p99_us_range": [30.121, 30.655]},
+    "depth2_crosses_250us_at_width": {"width": 512, "median_p99_us": 3126.564},
+    "depth2_crosses_500us_at_width": {"width": 512, "median_p99_us": 3126.564},
+    "depth3_crosses_250us_at_width": {"width": 256, "median_p99_us": 3057.525},
+    "depth3_crosses_500us_at_width": {"width": 256, "median_p99_us": 3057.525},
+    "_crossing_note": "null means the entire swept range (256..2048) stays at or under that threshold for that depth"
+  }
+}

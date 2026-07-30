@@ -1,0 +1,96 @@
+{
+  "conditions": {
+    "bot_ent": 1,
+    "other_bots_held": 0,
+    "pacifist": true,
+    "telemetry": true,
+    "timeout_floor_secs": 20.0
+  },
+  "demo": {
+    "name": "recsmoke.raw.mvd",
+    "recorded": true,
+    "wall_secs": 16.990188598632812
+  },
+  "kind": "movement_drills",
+  "result": {
+    "arrival_rate": 1.0,
+    "arrived": 1,
+    "arrived_below_speed_bar": 0,
+    "arrived_elapsed": null,
+    "arrived_over_time_target": 1,
+    "arrived_peak_speed": null,
+    "drills": [
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 170.392333984375
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "SpeedJump",
+            "reason": "speedjump_stall",
+            "speed": 470.83392333984375
+          }
+        ],
+        "budget_secs": 20.0,
+        "demo_from_s": 0.0,
+        "demo_t_s": 0.00002270500044687651,
+        "end_dist": 441.7936706542969,
+        "from_cell": 4294967295,
+        "goal": [
+          -512.0,
+          448.0,
+          120.0
+        ],
+        "id": "rec-smoke-r1",
+        "kind": "route",
+        "margin_secs": -10.369,
+        "metrics": {
+          "elapsed": 16.244709014892578,
+          "max_cross_track": 1200.987060546875,
+          "max_heading_deg": 179.46441650390625,
+          "max_yaw_step_deg": 166.9216766357422,
+          "max_z_gain": 70.1656494140625,
+          "mean_speed": 399.5998229980469,
+          "path_len": 6491.3828125,
+          "peak_progress": 1.1446492671966553,
+          "peak_speed": 494.30853271484375,
+          "reverse_frames": 227,
+          "samples": 786
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 13,
+        "planned_path_len": 713.2581787109375,
+        "settled_start": [
+          936.75,
+          335.875,
+          56.03125
+        ],
+        "snapped_goal": true,
+        "snapped_start": false,
+        "start": [
+          936.75,
+          336.0,
+          56.0
+        ],
+        "start_error": 0.12884704768657684,
+        "straight_dist": 1453.07275390625,
+        "target_secs": 5.876,
+        "time_ok": false,
+        "to_cell": 514,
+        "wall_secs": 15.975327491760254
+      }
+    ],
+    "errored": 0,
+    "pass_rate": 0.0,
+    "passed": 0,
+    "stalled": 0,
+    "status": "failed",
+    "total": 1
+  },
+  "tier": "T1"
+}

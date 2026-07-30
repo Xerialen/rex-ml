@@ -1,0 +1,5259 @@
+{
+  "conditions": {
+    "bot_ent": 1,
+    "other_bots_held": 3,
+    "pacifist": true
+  },
+  "kind": "movement_drills",
+  "result": {
+    "arrival_rate": 0.62,
+    "arrived": 93,
+    "arrived_elapsed": {
+      "max": 20.642822265625,
+      "mean": 10.185630880376344,
+      "min": 0.18804931640625,
+      "n": 93,
+      "p50": 9.8675537109375,
+      "p90": 16.802001953125
+    },
+    "arrived_peak_speed": {
+      "max": 560.9227905273438,
+      "mean": 498.9036290978873,
+      "min": 320.59625244140625,
+      "n": 93,
+      "p50": 495.2521667480469,
+      "p90": 540.2710571289062
+    },
+    "drills": [
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 20.45086669921875,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r002-RA-tunnel_spawn->RA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.62255859375,
+          "max_cross_track": 389.0508117675781,
+          "max_heading_deg": 178.3460235595703,
+          "max_yaw_step_deg": 167.0048828125,
+          "max_z_gain": 531.9800415039062,
+          "peak_progress": 0.8514741063117981,
+          "peak_speed": 487.4552307128906,
+          "reverse_frames": 136,
+          "samples": 408
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 29,
+        "planned_path_len": 1055.458984375,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 484.24786376953125,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 8.368776321411133
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 200.8778076171875,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r003-RA-tunnel_spawn->YA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 12.028564453125,
+          "max_cross_track": 1040.7359619140625,
+          "max_heading_deg": 176.46365356445312,
+          "max_yaw_step_deg": 132.0965576171875,
+          "max_z_gain": 195.9800262451172,
+          "peak_progress": 0.9479951858520508,
+          "peak_speed": 549.7636108398438,
+          "reverse_frames": 179,
+          "samples": 572
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 16,
+        "planned_path_len": 1108.02392578125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 1224.8101806640625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 11.775279998779297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 171.7755126953125,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r004-RA-tunnel_spawn->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 9.014404296875,
+          "max_cross_track": 576.4654541015625,
+          "max_heading_deg": 179.13815307617188,
+          "max_yaw_step_deg": 143.34127807617188,
+          "max_z_gain": 131.9800262451172,
+          "peak_progress": 0.9574094414710999,
+          "peak_speed": 550.2258911132812,
+          "reverse_frames": 78,
+          "samples": 430
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 15,
+        "planned_path_len": 1102.3232421875,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 1488.9459228515625,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 8.761804580688477
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 308.0874328613281,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r005-RA-tunnel_spawn->Quad",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 15.68011474609375,
+          "max_cross_track": 633.256591796875,
+          "max_heading_deg": 179.00436401367188,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 275.98004150390625,
+          "peak_progress": 0.14617514610290527,
+          "peak_speed": 513.2124633789062,
+          "reverse_frames": 234,
+          "samples": 742
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1049.75830078125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 923.0211181640625,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 15.426630020141602
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 117.65571594238281,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r006-RA-tunnel_spawn->Pent",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 12.8304443359375,
+          "max_cross_track": 689.727294921875,
+          "max_heading_deg": 179.5994415283203,
+          "max_yaw_step_deg": 152.78591918945312,
+          "max_z_gain": 51.980018615722656,
+          "peak_progress": 0.5234682559967041,
+          "peak_speed": 492.44805908203125,
+          "reverse_frames": 102,
+          "samples": 609
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 16,
+        "planned_path_len": 1108.02392578125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 1299.4521484375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 12.577387809753418
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 20.52455711364746,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r007-RA-tunnel_spawn->Ring",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 7.3643798828125,
+          "max_cross_track": 372.3175964355469,
+          "max_heading_deg": 177.7772674560547,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 275.98004150390625,
+          "peak_progress": 0.8969098925590515,
+          "peak_speed": 533.27001953125,
+          "reverse_frames": 161,
+          "samples": 351
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1049.75830078125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 194.64840698242188,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 7.1121649742126465
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 22.453054428100586,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r008-RA-tunnel_spawn->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 1.7181396484375,
+          "max_cross_track": 134.01644897460938,
+          "max_heading_deg": 54.91853332519531,
+          "max_yaw_step_deg": 17.415525436401367,
+          "max_z_gain": 43.96562194824219,
+          "peak_progress": 0.6157066822052002,
+          "peak_speed": 441.77679443359375,
+          "reverse_frames": 0,
+          "samples": 83
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 14,
+        "planned_path_len": 536.354736328125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 416.0,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 1.466884970664978
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 94.74127960205078,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r009-RA-tunnel_spawn->SNG_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.36920166015625,
+          "max_cross_track": 688.3096923828125,
+          "max_heading_deg": 177.9457550048828,
+          "max_yaw_step_deg": 171.72579956054688,
+          "max_z_gain": 315.1951904296875,
+          "peak_progress": 1.0968729257583618,
+          "peak_speed": 495.14300537109375,
+          "reverse_frames": 95,
+          "samples": 399
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1087.458984375,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 981.6231689453125,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 8.116523742675781
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 144.605224609375,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r010-RA-tunnel_spawn->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 7.7484130859375,
+          "max_cross_track": 198.23974609375,
+          "max_heading_deg": 177.9401397705078,
+          "max_yaw_step_deg": 99.6897201538086,
+          "max_z_gain": 51.980018615722656,
+          "peak_progress": 1.1663792133331299,
+          "peak_speed": 461.9100036621094,
+          "reverse_frames": 63,
+          "samples": 371
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 15,
+        "planned_path_len": 1102.3232421875,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 1344.380859375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 7.49670934677124
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r011-RL-spawn->RA",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 28,
+        "planned_path_len": 1000.0518188476562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 1676.873291015625,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.00008773803711
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 94.01460266113281,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r012-RL-spawn->YA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 7.95068359375,
+          "max_cross_track": 609.855224609375,
+          "max_heading_deg": 134.6626434326172,
+          "max_yaw_step_deg": 86.7030258178711,
+          "max_z_gain": 107.96562957763672,
+          "peak_progress": 0.636691689491272,
+          "peak_speed": 522.35888671875,
+          "reverse_frames": 88,
+          "samples": 379
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 27,
+        "planned_path_len": 962.2041625976562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 1343.2379150390625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 7.699021816253662
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.275419235229492,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r013-RL-spawn->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 0.18804931640625,
+          "max_cross_track": 1.5283203125,
+          "max_heading_deg": 4.514013290405273,
+          "max_yaw_step_deg": 1.1051756143569946,
+          "max_z_gain": 0.03125,
+          "peak_progress": 0.6371064186096191,
+          "peak_speed": 320.59625244140625,
+          "reverse_frames": 0,
+          "samples": 10
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 0,
+        "planned_path_len": 0.0,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 64.0,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 9.030000001075678e-7
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 333.04022216796875,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r014-RL-spawn->Quad",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 9.8675537109375,
+          "max_cross_track": 951.439697265625,
+          "max_heading_deg": 179.97203063964844,
+          "max_yaw_step_deg": 74.24864196777344,
+          "max_z_gain": 187.96563720703125,
+          "peak_progress": 0.9850161075592041,
+          "peak_speed": 516.551025390625,
+          "reverse_frames": 126,
+          "samples": 471
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 27,
+        "planned_path_len": 962.2041625976562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 558.85595703125,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 9.615580558776855
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.58258628845215,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r015-RL-spawn->Pent",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 11.40802001953125,
+          "max_cross_track": 375.59320068359375,
+          "max_heading_deg": 179.67979431152344,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.98003005981445,
+          "peak_progress": -0.758651614189148,
+          "peak_speed": 495.2521667480469,
+          "reverse_frames": 125,
+          "samples": 543
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1000.0518188476562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 640.0,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 11.15595531463623
+      },
+      {
+        "best_dist": 1075.0081787109375,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1665.1917724609375,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r016-RL-spawn->Ring",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 17.840087890625,
+          "max_cross_track": 981.7288818359375,
+          "max_heading_deg": 178.8242950439453,
+          "max_yaw_step_deg": 176.87425231933594,
+          "max_z_gain": 107.98002624511719,
+          "peak_progress": 0.09726724773645401,
+          "peak_speed": 542.1773681640625,
+          "reverse_frames": 283,
+          "samples": 851
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 27,
+        "planned_path_len": 962.2041625976562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 1356.1357421875,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 17.587303161621094
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 20.673625946044922,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r017-RL-spawn->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 9.25634765625,
+          "max_cross_track": 563.958740234375,
+          "max_heading_deg": 179.2201690673828,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.98003005981445,
+          "peak_progress": 0.4990863800048828,
+          "peak_speed": 516.7940673828125,
+          "reverse_frames": 91,
+          "samples": 441
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 29,
+        "planned_path_len": 1005.7523803710938,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 1044.7889404296875,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 9.004437446594238
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r018-RL-spawn->SNG_Mega",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 27,
+        "planned_path_len": 962.2041625976562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 2262.74169921875,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 20.000057220458984
+      },
+      {
+        "best_dist": 6.586637020111084,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 0.15639148652553558,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r019-RL-spawn->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.48614501953125,
+          "max_cross_track": 452.51873779296875,
+          "max_heading_deg": 155.27267456054688,
+          "max_yaw_step_deg": 87.45185852050781,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.12247031927108765,
+          "peak_speed": 493.91827392578125,
+          "reverse_frames": 51,
+          "samples": 404
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1005.7523803710938,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 608.841552734375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 8.232649803161621
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 21.455896377563477,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r020-SNG-tele_spawn_A->RA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.860595703125,
+          "max_cross_track": 344.670166015625,
+          "max_heading_deg": 177.89633178710938,
+          "max_yaw_step_deg": 34.810367584228516,
+          "max_z_gain": 355.96563720703125,
+          "peak_progress": 0.26778537034988403,
+          "peak_speed": 493.89666748046875,
+          "reverse_frames": 79,
+          "samples": 418
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 59,
+        "planned_path_len": 2162.5849609375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 1248.0,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 8.605063438415527
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 24.272642135620117,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r021-SNG-tele_spawn_A->YA",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 82,
+        "planned_path_len": 2912.717041015625,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 2216.33203125,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 24.272796630859375
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 22.327861785888672,
+        "end_dist": 269.1210021972656,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r022-SNG-tele_spawn_A->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 14.63995361328125,
+          "max_cross_track": 730.7064208984375,
+          "max_heading_deg": 178.74681091308594,
+          "max_yaw_step_deg": 80.10284423828125,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 1.1334415674209595,
+          "peak_speed": 532.3085327148438,
+          "reverse_frames": 166,
+          "samples": 697
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 72,
+        "planned_path_len": 2679.343505859375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 2501.123046875,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 14.385252952575684
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 24.272642135620117,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r023-SNG-tele_spawn_A->Quad",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 82,
+        "planned_path_len": 2912.717041015625,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 1925.325927734375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 24.272750854492188
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 24.272642135620117,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r024-SNG-tele_spawn_A->Pent",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 82,
+        "planned_path_len": 2912.717041015625,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 2147.8173828125,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 24.272729873657227
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 22.855907440185547,
+        "end_dist": 98.01496887207031,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r025-SNG-tele_spawn_A->Ring",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 11.890380859375,
+          "max_cross_track": 819.239501953125,
+          "max_heading_deg": 178.8781280517578,
+          "max_yaw_step_deg": 119.1849136352539,
+          "max_z_gain": 115.96562957763672,
+          "peak_progress": 1.0326476097106934,
+          "peak_speed": 527.1033325195312,
+          "reverse_frames": 164,
+          "samples": 564
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 63,
+        "planned_path_len": 2742.708984375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 1136.3380126953125,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 11.636001586914062
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 22.479143142700195,
+        "end_dist": 20.391969680786133,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r026-SNG-tele_spawn_A->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.34259033203125,
+          "max_cross_track": 510.1651611328125,
+          "max_heading_deg": 179.6666259765625,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.22768789529800415,
+          "peak_speed": 495.9640197753906,
+          "reverse_frames": 75,
+          "samples": 398
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 73,
+        "planned_path_len": 2697.4970703125,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 1480.670166015625,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 8.089076042175293
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 95.9796371459961,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r027-SNG-tele_spawn_A->SNG_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 4.09393310546875,
+          "max_cross_track": 129.02455139160156,
+          "max_heading_deg": 178.9806671142578,
+          "max_yaw_step_deg": 167.78048706054688,
+          "max_z_gain": 208.61557006835938,
+          "peak_progress": 0.7677582502365112,
+          "peak_speed": 354.519287109375,
+          "reverse_frames": 16,
+          "samples": 196
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 7,
+        "planned_path_len": 444.5008239746094,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 357.7708740234375,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 3.842012882232666
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 22.327861785888672,
+        "end_dist": 61.59495544433594,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r028-SNG-tele_spawn_A->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 13.410888671875,
+          "max_cross_track": 532.2781982421875,
+          "max_heading_deg": 179.56344604492188,
+          "max_yaw_step_deg": 164.65093994140625,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.65534508228302,
+          "peak_speed": 518.6017456054688,
+          "reverse_frames": 146,
+          "samples": 639
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 72,
+        "planned_path_len": 2679.343505859375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 2432.21044921875,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 13.155153274536133
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 20.4439697265625,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r029-SNG-tele_spawn_B->RA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 7.34027099609375,
+          "max_cross_track": 169.45187377929688,
+          "max_heading_deg": 179.24826049804688,
+          "max_yaw_step_deg": 96.73764038085938,
+          "max_z_gain": 355.96563720703125,
+          "peak_progress": 0.26811036467552185,
+          "peak_speed": 464.1325988769531,
+          "reverse_frames": 73,
+          "samples": 346
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 42,
+        "planned_path_len": 1575.04541015625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 896.5712280273438,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 7.086490631103516
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.11341667175293,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r030-SNG-tele_spawn_B->YA",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 65,
+        "planned_path_len": 2413.610107421875,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1869.4683837890625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 20.113536834716797
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.28244972229004,
+        "end_dist": 179.58682250976562,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r031-SNG-tele_spawn_B->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 13.15020751953125,
+          "max_cross_track": 573.9203491210938,
+          "max_heading_deg": 178.71641540527344,
+          "max_yaw_step_deg": 147.8852996826172,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 1.0663533210754395,
+          "peak_speed": 516.4718017578125,
+          "reverse_frames": 100,
+          "samples": 626
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 55,
+        "planned_path_len": 2101.535400390625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 2433.89404296875,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 12.896044731140137
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.2752628326416,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r032-SNG-tele_spawn_B->Quad",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 65,
+        "planned_path_len": 2433.031494140625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1865.9046630859375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 20.275312423706055
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.22597312927246,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r033-SNG-tele_spawn_B->Pent",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 54,
+        "planned_path_len": 2427.11669921875,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 2197.7734375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 20.226093292236328
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r034-SNG-tele_spawn_B->Ring",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 47,
+        "planned_path_len": 2170.60107421875,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1075.218994140625,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 20.00009536743164
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 24.88307762145996,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r035-SNG-tele_spawn_B->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 7.69036865234375,
+          "max_cross_track": 190.24832153320312,
+          "max_heading_deg": 178.09567260742188,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.8034310936927795,
+          "peak_speed": 487.75048828125,
+          "reverse_frames": 65,
+          "samples": 367
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 57,
+        "planned_path_len": 2125.3896484375,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1359.529296875,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 7.437889099121094
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 96.7598876953125,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r036-SNG-tele_spawn_B->SNG_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 5.06414794921875,
+          "max_cross_track": 203.05599975585938,
+          "max_heading_deg": 162.4170379638672,
+          "max_yaw_step_deg": 148.5655975341797,
+          "max_z_gain": 154.6650390625,
+          "peak_progress": 0.8095635771751404,
+          "peak_speed": 494.8211975097656,
+          "reverse_frames": 20,
+          "samples": 241
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 983.0104370117188,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 773.9767456054688,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 4.811715126037598
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 80.4435806274414,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r037-SNG-tele_spawn_B->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 12.05816650390625,
+          "max_cross_track": 431.27716064453125,
+          "max_heading_deg": 179.31558227539062,
+          "max_yaw_step_deg": 75.21094512939453,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.432637482881546,
+          "peak_speed": 493.6221618652344,
+          "reverse_frames": 129,
+          "samples": 575
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 55,
+        "planned_path_len": 2101.535400390625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 2228.312255859375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 11.804492950439453
+      },
+      {
+        "best_dist": 904.466796875,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1024.3760986328125,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r038-YA-box_spawn->RA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 15.0010986328125,
+          "max_cross_track": 891.1212768554688,
+          "max_heading_deg": 135.40374755859375,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.2818240821361542,
+          "peak_speed": 532.3442993164062,
+          "reverse_frames": 38,
+          "samples": 715
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1236.45947265625,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 14.747747421264648
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 21.368165969848633,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r039-YA-box_spawn->YA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 1.2987060546875,
+          "max_cross_track": 23.769912719726562,
+          "max_heading_deg": 18.177684783935547,
+          "max_yaw_step_deg": 19.346675872802734,
+          "max_z_gain": 39.96875,
+          "peak_progress": 0.4271552264690399,
+          "peak_speed": 394.9882507324219,
+          "reverse_frames": 0,
+          "samples": 63
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 8,
+        "planned_path_len": 298.2475891113281,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 257.99224853515625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 1.047743320465088
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 91.5845718383789,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r040-YA-box_spawn->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 6.701416015625,
+          "max_cross_track": 490.8907775878906,
+          "max_heading_deg": 178.72482299804688,
+          "max_yaw_step_deg": 173.69374084472656,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 1.005677580833435,
+          "peak_speed": 520.978759765625,
+          "reverse_frames": 27,
+          "samples": 318
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 1198.032470703125,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1408.3636474609375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 6.447285175323486
+      },
+      {
+        "best_dist": 428.2755126953125,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1004.2974243164062,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r041-YA-box_spawn->Quad",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 17.87451171875,
+          "max_cross_track": 758.5206298828125,
+          "max_heading_deg": 179.07337951660156,
+          "max_yaw_step_deg": 177.8598175048828,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.5073472261428833,
+          "peak_speed": 555.8643188476562,
+          "reverse_frames": 309,
+          "samples": 852
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1319.393798828125,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 17.621891021728516
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 133.22537231445312,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r042-YA-box_spawn->Pent",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 6.33544921875,
+          "max_cross_track": 227.90191650390625,
+          "max_heading_deg": 145.9220428466797,
+          "max_yaw_step_deg": 139.69686889648438,
+          "max_z_gain": 123.98002624511719,
+          "peak_progress": 0.2778482735157013,
+          "peak_speed": 499.75372314453125,
+          "reverse_frames": 15,
+          "samples": 303
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 29,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1793.427978515625,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 6.083054542541504
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 16.964223861694336,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r043-YA-box_spawn->Ring",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 16.7109375,
+          "max_cross_track": 952.0260009765625,
+          "max_heading_deg": 179.08743286132812,
+          "max_yaw_step_deg": 164.47772216796875,
+          "max_z_gain": 123.98002624511719,
+          "peak_progress": 0.37532341480255127,
+          "peak_speed": 530.9672241210938,
+          "reverse_frames": 275,
+          "samples": 795
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1536.333251953125,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 16.457992553710938
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 22.471981048583984,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r044-YA-box_spawn->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 5.25537109375,
+          "max_cross_track": 459.0980224609375,
+          "max_heading_deg": 168.93084716796875,
+          "max_yaw_step_deg": 67.2986068725586,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.654223620891571,
+          "peak_speed": 544.9957275390625,
+          "reverse_frames": 26,
+          "samples": 251
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 1077.590576171875,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1244.713623046875,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 5.003271579742432
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.28244972229004,
+        "end_dist": 97.12702941894531,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r045-YA-box_spawn->SNG_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 17.8349609375,
+          "max_cross_track": 1101.57861328125,
+          "max_heading_deg": 179.34747314453125,
+          "max_yaw_step_deg": 144.87550354003906,
+          "max_z_gain": 160.93441772460938,
+          "peak_progress": 0.19985507428646088,
+          "peak_speed": 531.3035888671875,
+          "reverse_frames": 167,
+          "samples": 847
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 2433.89404296875,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 17.581279754638672
+      },
+      {
+        "best_dist": 6.938753604888916,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 0.47462043166160583,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r046-YA-box_spawn->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.0968017578125,
+          "max_cross_track": 328.7514343261719,
+          "max_heading_deg": 91.8662338256836,
+          "max_yaw_step_deg": 174.64231872558594,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.9291250109672546,
+          "peak_speed": 524.2239990234375,
+          "reverse_frames": 10,
+          "samples": 387
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 25,
+        "planned_path_len": 1282.2076416015625,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 738.77734375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 7.844236850738525
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 94.92279815673828,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r047-Lifts_spawn->RA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 12.352294921875,
+          "max_cross_track": 486.4285888671875,
+          "max_heading_deg": 179.25506591796875,
+          "max_yaw_step_deg": 179.8321533203125,
+          "max_z_gain": 123.98004150390625,
+          "peak_progress": 0.7025037407875061,
+          "peak_speed": 514.2852172851562,
+          "reverse_frames": 159,
+          "samples": 585
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 1022.553466796875,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1494.0950927734375,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 12.098625183105469
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 119.54489135742188,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r048-Lifts_spawn->YA",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 11.68701171875,
+          "max_cross_track": 989.8106079101562,
+          "max_heading_deg": 176.8529052734375,
+          "max_yaw_step_deg": 139.5924835205078,
+          "max_z_gain": 39.96875,
+          "peak_progress": 0.6945200562477112,
+          "peak_speed": 548.3084716796875,
+          "reverse_frames": 96,
+          "samples": 554
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 20,
+        "planned_path_len": 802.63623046875,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1806.7960205078125,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 11.433269500732422
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 499.4011535644531,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r049-Lifts_spawn->RL",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 12.322265625,
+          "max_cross_track": 846.2554931640625,
+          "max_heading_deg": 179.72235107421875,
+          "max_yaw_step_deg": 90.56056213378906,
+          "max_z_gain": 39.96875,
+          "peak_progress": 1.3473140001296997,
+          "peak_speed": 549.8339233398438,
+          "reverse_frames": 174,
+          "samples": 586
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 14,
+        "planned_path_len": 1018.6661376953125,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1032.9608154296875,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 12.067323684692383
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 18.882667541503906,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r050-Lifts_spawn->Quad",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 10.5859375,
+          "max_cross_track": 508.4029541015625,
+          "max_heading_deg": 179.9557647705078,
+          "max_yaw_step_deg": 75.31423950195312,
+          "max_z_gain": 39.853546142578125,
+          "peak_progress": 0.8604607582092285,
+          "peak_speed": 499.1721496582031,
+          "reverse_frames": 150,
+          "samples": 505
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 20,
+        "planned_path_len": 802.63623046875,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 656.5850830078125,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 10.334009170532227
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 39.05858612060547,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r051-Lifts_spawn->Pent",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 5.5823974609375,
+          "max_cross_track": 300.1212158203125,
+          "max_heading_deg": 179.5638885498047,
+          "max_yaw_step_deg": 125.95071411132812,
+          "max_z_gain": 0.03125,
+          "peak_progress": 0.11897331476211548,
+          "peak_speed": 471.5807800292969,
+          "reverse_frames": 51,
+          "samples": 265
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 8,
+        "planned_path_len": 438.2510986328125,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 481.06549072265625,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 5.311349391937256
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 14.696441650390625,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r052-Lifts_spawn->Ring",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 2.7635498046875,
+          "max_cross_track": 114.61019134521484,
+          "max_heading_deg": 41.98325729370117,
+          "max_yaw_step_deg": 8.456192016601562,
+          "max_z_gain": 39.96875,
+          "peak_progress": 0.8370848298072815,
+          "peak_speed": 523.7976684570312,
+          "reverse_frames": 0,
+          "samples": 133
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 1022.553466796875,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 850.2611083984375,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 2.511568069458008
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 50.57647705078125,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r053-Lifts_spawn->Hill_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 5.3466796875,
+          "max_cross_track": 227.1978302001953,
+          "max_heading_deg": 178.07745361328125,
+          "max_yaw_step_deg": 30.65261459350586,
+          "max_z_gain": 39.96875,
+          "peak_progress": 1.000497579574585,
+          "peak_speed": 489.4906921386719,
+          "reverse_frames": 43,
+          "samples": 256
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 18,
+        "planned_path_len": 754.9140625,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 834.4578857421875,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 5.093513011932373
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 112.06554412841797,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r054-Lifts_spawn->SNG_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 10.1575927734375,
+          "max_cross_track": 544.1940307617188,
+          "max_heading_deg": 178.1029815673828,
+          "max_yaw_step_deg": 107.20474243164062,
+          "max_z_gain": 39.96875,
+          "peak_progress": 0.30454155802726746,
+          "peak_speed": 481.2512512207031,
+          "reverse_frames": 51,
+          "samples": 482
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 20,
+        "planned_path_len": 818.7361450195312,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1417.4229736328125,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 9.90375804901123
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 35.05634689331055,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r055-Lifts_spawn->LG",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 11.991455078125,
+          "max_cross_track": 576.7943725585938,
+          "max_heading_deg": 178.99789428710938,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 39.96875,
+          "peak_progress": 0.7178528904914856,
+          "peak_speed": 494.25604248046875,
+          "reverse_frames": 131,
+          "samples": 573
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 15,
+        "planned_path_len": 1024.3668212890625,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1403.629638671875,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 11.738239288330078
+      },
+      {
+        "best_dist": 934.0675048828125,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 996.201904296875,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r056-RA->YA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.9249267578125,
+          "max_cross_track": 176.4721221923828,
+          "max_heading_deg": 179.73606872558594,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.96563720703125,
+          "peak_progress": -0.029653053730726242,
+          "peak_speed": 346.1600646972656,
+          "reverse_frames": 171,
+          "samples": 762
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 979.01171875,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 15.66781234741211
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r057-RA->RL",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1720.279052734375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 20.000112533569336
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r058-RA->Quad",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 766.7734375,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1216.4210205078125,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 20.000133514404297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 241.10691833496094,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r059-RA->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 12.7891845703125,
+          "max_cross_track": 382.7812805175781,
+          "max_heading_deg": 177.99493408203125,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 0.03125,
+          "peak_progress": 0.44361603260040283,
+          "peak_speed": 494.78179931640625,
+          "reverse_frames": 120,
+          "samples": 609
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1674.4288330078125,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 12.520577430725098
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r060-RA->Ring",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 672.761474609375,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 20.000104904174805
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 27.658214569091797,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r061-RA->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 6.0330810546875,
+          "max_cross_track": 604.8668823242188,
+          "max_heading_deg": 178.7560577392578,
+          "max_yaw_step_deg": 164.5190887451172,
+          "max_z_gain": 0.03125,
+          "peak_progress": 0.5212075114250183,
+          "peak_speed": 498.48358154296875,
+          "reverse_frames": 76,
+          "samples": 287
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 12,
+        "planned_path_len": 778.8080444335938,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 715.541748046875,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 5.759910583496094
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 94.72367858886719,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r062-RA->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 8.5849609375,
+          "max_cross_track": 543.8853759765625,
+          "max_heading_deg": 178.70608520507812,
+          "max_yaw_step_deg": 166.71351623535156,
+          "max_z_gain": 43.98004150390625,
+          "peak_progress": 1.0089877843856812,
+          "peak_speed": 495.08154296875,
+          "reverse_frames": 45,
+          "samples": 408
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 14,
+        "planned_path_len": 807.4315795898438,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1274.3876953125,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 8.3314847946167
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 153.40280151367188,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r063-RA->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 11.33251953125,
+          "max_cross_track": 621.5997924804688,
+          "max_heading_deg": 178.18145751953125,
+          "max_yaw_step_deg": 148.0647735595703,
+          "max_z_gain": 0.03125,
+          "peak_progress": 0.1583544760942459,
+          "peak_speed": 493.8606872558594,
+          "reverse_frames": 196,
+          "samples": 543
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1378.6021728515625,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 11.072071075439453
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 179.733642578125,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r064-YA->RA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 14.3590087890625,
+          "max_cross_track": 900.579833984375,
+          "max_heading_deg": 179.63577270507812,
+          "max_yaw_step_deg": 101.69292449951172,
+          "max_z_gain": 304.03125,
+          "peak_progress": 0.11383195966482162,
+          "peak_speed": 532.4528198242188,
+          "reverse_frames": 280,
+          "samples": 680
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 979.01171875,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 14.106148719787598
+      },
+      {
+        "best_dist": 509.3573303222656,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 576.7317504882812,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r065-YA->RL",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.478271484375,
+          "max_cross_track": 435.0234680175781,
+          "max_heading_deg": 179.87806701660156,
+          "max_yaw_step_deg": 178.4882049560547,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.763511061668396,
+          "peak_speed": 572.6868896484375,
+          "reverse_frames": 117,
+          "samples": 740
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1061.3104248046875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1405.8165283203125,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 15.226034164428711
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 144.3689727783203,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r066-YA->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 5.0938720703125,
+          "max_cross_track": 353.60540771484375,
+          "max_heading_deg": 177.741455078125,
+          "max_yaw_step_deg": 96.70349884033203,
+          "max_z_gain": 123.96562957763672,
+          "peak_progress": 0.8043871521949768,
+          "peak_speed": 524.9456176757812,
+          "reverse_frames": 42,
+          "samples": 243
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1211.359619140625,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 4.841893196105957
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 19.321020126342773,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r067-YA->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 12.8070068359375,
+          "max_cross_track": 337.99334716796875,
+          "max_heading_deg": 179.4280242919922,
+          "max_yaw_step_deg": 175.14517211914062,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.3931359052658081,
+          "peak_speed": 536.4556274414062,
+          "reverse_frames": 66,
+          "samples": 610
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1710.728515625,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 12.554476737976074
+      },
+      {
+        "best_dist": 832.06005859375,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 832.0037231445312,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r068-YA->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.5377197265625,
+          "max_cross_track": 642.1370849609375,
+          "max_heading_deg": 173.33767700195312,
+          "max_yaw_step_deg": 125.73816680908203,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.3293602168560028,
+          "peak_speed": 534.4043579101562,
+          "reverse_frames": 91,
+          "samples": 742
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1315.5074462890625,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 15.28531551361084
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 22.694185256958008,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r069-YA->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 6.33447265625,
+          "max_cross_track": 481.2934875488281,
+          "max_heading_deg": 175.1842803955078,
+          "max_yaw_step_deg": 145.25238037109375,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.29867950081825256,
+          "peak_speed": 494.153564453125,
+          "reverse_frames": 86,
+          "samples": 299
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 29,
+        "planned_path_len": 1258.8189697265625,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1049.6781005859375,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 6.082174777984619
+      },
+      {
+        "best_dist": 1797.244140625,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1796.556396484375,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r070-YA->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 14.2083740234375,
+          "max_cross_track": 831.6316528320312,
+          "max_heading_deg": 175.9774627685547,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.13358978927135468,
+          "peak_speed": 534.9718017578125,
+          "reverse_frames": 107,
+          "samples": 677
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 2189.6044921875,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 13.955482482910156
+      },
+      {
+        "best_dist": 3.8240129947662354,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 0.2489052414894104,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r071-YA->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 9.311767578125,
+          "max_cross_track": 216.2954559326172,
+          "max_heading_deg": 177.4656524658203,
+          "max_yaw_step_deg": 179.05313110351562,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 1.129072904586792,
+          "peak_speed": 535.8236694335938,
+          "reverse_frames": 75,
+          "samples": 446
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1086.5965576171875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 773.31494140625,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 9.059595108032227
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 126.2724838256836,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r072-RL->RA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 16.9403076171875,
+          "max_cross_track": 622.3529052734375,
+          "max_heading_deg": 179.98020935058594,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 443.98004150390625,
+          "peak_progress": -0.11715579032897949,
+          "peak_speed": 493.0362548828125,
+          "reverse_frames": 244,
+          "samples": 804
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1051.00732421875,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 1720.279052734375,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 16.687366485595703
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 91.10230255126953,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r073-RL->YA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.9390869140625,
+          "max_cross_track": 616.4067993164062,
+          "max_heading_deg": 170.65655517578125,
+          "max_yaw_step_deg": 79.06781005859375,
+          "max_z_gain": 107.98002624511719,
+          "peak_progress": 0.6425303816795349,
+          "peak_speed": 525.688720703125,
+          "reverse_frames": 88,
+          "samples": 378
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 27,
+        "planned_path_len": 967.90478515625,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 1405.8165283203125,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 7.687136650085449
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 227.57901000976562,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r074-RL->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 10.275390625,
+          "max_cross_track": 1039.779541015625,
+          "max_heading_deg": 179.40553283691406,
+          "max_yaw_step_deg": 75.98491668701172,
+          "max_z_gain": 187.9800262451172,
+          "peak_progress": 0.8921735882759094,
+          "peak_speed": 509.3059387207031,
+          "reverse_frames": 159,
+          "samples": 490
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 27,
+        "planned_path_len": 967.90478515625,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 576.88818359375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 10.02299976348877
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 17.89406394958496,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r075-RL->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 11.9158935546875,
+          "max_cross_track": 425.6814270019531,
+          "max_heading_deg": 179.58692932128906,
+          "max_yaw_step_deg": 73.89392852783203,
+          "max_z_gain": 43.98003005981445,
+          "peak_progress": -0.877899706363678,
+          "peak_speed": 494.7325439453125,
+          "reverse_frames": 114,
+          "samples": 568
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 28,
+        "planned_path_len": 1005.7523803710938,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 603.7747802734375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 11.663628578186035
+      },
+      {
+        "best_dist": 1072.3858642578125,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1665.201171875,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r076-RL->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 18.7745361328125,
+          "max_cross_track": 1039.963623046875,
+          "max_heading_deg": 179.39573669433594,
+          "max_yaw_step_deg": 177.20579528808594,
+          "max_z_gain": 107.98002624511719,
+          "peak_progress": 0.12605436146259308,
+          "peak_speed": 537.7583618164062,
+          "reverse_frames": 302,
+          "samples": 896
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1013.1596069335938,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 1378.6021728515625,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 18.522247314453125
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 19.854618072509766,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r077-RL->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.400634765625,
+          "max_cross_track": 606.3035888671875,
+          "max_heading_deg": 178.48638916015625,
+          "max_yaw_step_deg": 34.37302780151367,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": -0.2802344262599945,
+          "peak_speed": 494.2064514160156,
+          "reverse_frames": 122,
+          "samples": 353
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1051.00732421875,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 1075.695068359375,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 7.148585796356201
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r078-RL->SNG_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1013.1596069335938,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 2272.676025390625,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 20.000106811523438
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.51030921936035,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r079-RL->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 6.27978515625,
+          "max_cross_track": 520.2938842773438,
+          "max_heading_deg": 176.7947235107422,
+          "max_yaw_step_deg": 120.87276458740234,
+          "max_z_gain": 43.98003005981445,
+          "peak_progress": 0.3742072284221649,
+          "peak_speed": 490.92974853515625,
+          "reverse_frames": 75,
+          "samples": 300
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1051.00732421875,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 672.761474609375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 6.028512001037598
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r080-Quad->RA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 17,
+        "planned_path_len": 855.1315307617188,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 1216.4210205078125,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.0001277923584
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 110.99185180664062,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r081-Quad->YA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 11.6798095703125,
+          "max_cross_track": 894.8063354492188,
+          "max_heading_deg": 179.41583251953125,
+          "max_yaw_step_deg": 73.65778350830078,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.6985334157943726,
+          "peak_speed": 524.3218994140625,
+          "reverse_frames": 174,
+          "samples": 556
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 13,
+        "planned_path_len": 972.7837524414062,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 1211.359619140625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 11.426610946655273
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 188.34979248046875,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r082-Quad->RL",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.87939453125,
+          "max_cross_track": 537.5645141601562,
+          "max_heading_deg": 177.51461791992188,
+          "max_yaw_step_deg": 105.71405029296875,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 1.1349362134933472,
+          "peak_speed": 550.5234375,
+          "reverse_frames": 143,
+          "samples": 376
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 9,
+        "planned_path_len": 782.8114013671875,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 576.88818359375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 7.627566814422607
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 250.9597625732422,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r083-Quad->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 4.563232421875,
+          "max_cross_track": 361.2203674316406,
+          "max_heading_deg": 117.46145629882812,
+          "max_yaw_step_deg": 81.1462631225586,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.2263181060552597,
+          "peak_speed": 491.55078125,
+          "reverse_frames": 59,
+          "samples": 218
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 1310.35107421875,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 512.9990234375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 4.311388969421387
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 22.83782958984375,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r084-Quad->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 2.6165771484375,
+          "max_cross_track": 71.31822204589844,
+          "max_heading_deg": 54.2890510559082,
+          "max_yaw_step_deg": 16.768802642822266,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.9815173149108887,
+          "peak_speed": 450.6897277832031,
+          "reverse_frames": 0,
+          "samples": 125
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 17,
+        "planned_path_len": 855.1315307617188,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 802.555908203125,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 2.3651371002197266
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 21.207439422607422,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r085-Quad->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 5.51611328125,
+          "max_cross_track": 359.8334655761719,
+          "max_heading_deg": 179.77444458007812,
+          "max_yaw_step_deg": 61.33649444580078,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.6061355471611023,
+          "peak_speed": 540.2710571289062,
+          "reverse_frames": 87,
+          "samples": 264
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 6,
+        "planned_path_len": 650.6357421875,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 520.9222412109375,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 5.263682842254639
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 112.79194641113281,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r086-Quad->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.1121826171875,
+          "max_cross_track": 965.0801391601562,
+          "max_heading_deg": 179.30592346191406,
+          "max_yaw_step_deg": 177.41941833496094,
+          "max_z_gain": 82.6158447265625,
+          "peak_progress": 0.2676539421081543,
+          "peak_speed": 495.3168640136719,
+          "reverse_frames": 232,
+          "samples": 720
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 14,
+        "planned_path_len": 714.2933959960938,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 1706.8333740234375,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 14.859270095825195
+      },
+      {
+        "best_dist": 8.719372749328613,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 0.15321119129657745,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r087-Quad->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 10.1453857421875,
+          "max_cross_track": 262.8362731933594,
+          "max_heading_deg": 178.7010955810547,
+          "max_yaw_step_deg": 94.78795623779297,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.1040809229016304,
+          "peak_speed": 525.0062866210938,
+          "reverse_frames": 75,
+          "samples": 481
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 29,
+        "planned_path_len": 1033.828369140625,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 749.7839965820312,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 9.892095565795898
+      },
+      {
+        "best_dist": 1434.7001953125,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1661.0472412109375,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r088-Pent->RA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 10.3128662109375,
+          "max_cross_track": 553.136962890625,
+          "max_heading_deg": 178.2478790283203,
+          "max_yaw_step_deg": 174.36367797851562,
+          "max_z_gain": 416.5420837402344,
+          "peak_progress": -0.03323086351156235,
+          "peak_speed": 487.3860778808594,
+          "reverse_frames": 94,
+          "samples": 491
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 583.9551391601562,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 1674.4288330078125,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 10.058536529541016
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r089-Pent->YA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 1710.728515625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 20.00014877319336
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 628.0975952148438,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r090-Pent->RL",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 17.158203125,
+          "max_cross_track": 973.4761962890625,
+          "max_heading_deg": 179.98020935058594,
+          "max_yaw_step_deg": 179.49681091308594,
+          "max_z_gain": 512.03125,
+          "peak_progress": 1.9537203311920166,
+          "peak_speed": 560.9227905273438,
+          "reverse_frames": 280,
+          "samples": 816
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 603.7747802734375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 16.90511131286621
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 88.40377807617188,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r091-Pent->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 18.8050537109375,
+          "max_cross_track": 518.8204345703125,
+          "max_heading_deg": 179.98020935058594,
+          "max_yaw_step_deg": 178.91465759277344,
+          "max_z_gain": 512.03125,
+          "peak_progress": 0.7374186515808105,
+          "peak_speed": 515.2940673828125,
+          "reverse_frames": 330,
+          "samples": 892
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 512.9990234375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 18.551794052124023
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 18.391420364379883,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r092-Pent->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 10.1912841796875,
+          "max_cross_track": 531.46875,
+          "max_heading_deg": 180.0,
+          "max_yaw_step_deg": 175.00314331054688,
+          "max_z_gain": 512.03125,
+          "peak_progress": 0.9862688183784485,
+          "peak_speed": 515.7732543945312,
+          "reverse_frames": 87,
+          "samples": 484
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 1132.275634765625,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 9.938387870788574
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 73.57177734375,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r093-Pent->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 11.0025634765625,
+          "max_cross_track": 545.6015014648438,
+          "max_heading_deg": 177.89430236816406,
+          "max_yaw_step_deg": 172.49844360351562,
+          "max_z_gain": 512.03125,
+          "peak_progress": 0.05747217684984207,
+          "peak_speed": 485.7123718261719,
+          "reverse_frames": 90,
+          "samples": 521
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 958.9327392578125,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 10.749658584594727
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 116.23754119873047,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r094-Pent->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 16.6585693359375,
+          "max_cross_track": 590.186767578125,
+          "max_heading_deg": 175.17208862304688,
+          "max_yaw_step_deg": 177.5344696044922,
+          "max_z_gain": 523.9800415039062,
+          "peak_progress": 0.2149672955274582,
+          "peak_speed": 485.753662109375,
+          "reverse_frames": 131,
+          "samples": 789
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 11,
+        "planned_path_len": 573.6558227539062,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 1865.9046630859375,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 16.404993057250977
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 22.785390853881836,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r095-Pent->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.4466552734375,
+          "max_cross_track": 243.2082977294922,
+          "max_heading_deg": 87.71976470947266,
+          "max_yaw_step_deg": 58.9659538269043,
+          "max_z_gain": 43.98004150390625,
+          "peak_progress": 0.18916922807693481,
+          "peak_speed": 478.408935546875,
+          "reverse_frames": 0,
+          "samples": 356
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 25,
+        "planned_path_len": 853.1395263671875,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 1131.370849609375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 7.19447135925293
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r096-Ring->RA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 27,
+        "planned_path_len": 996.5812377929688,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 672.761474609375,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.00012969970703
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 194.8159637451172,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r097-Ring->YA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 14.62353515625,
+          "max_cross_track": 1061.787109375,
+          "max_heading_deg": 179.15652465820312,
+          "max_yaw_step_deg": 178.6218719482422,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.902411937713623,
+          "peak_speed": 547.8262939453125,
+          "reverse_frames": 180,
+          "samples": 696
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 9,
+        "planned_path_len": 575.7774658203125,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 1315.5074462890625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 14.370576858520508
+      },
+      {
+        "best_dist": 479.54071044921875,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 614.557861328125,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r098-Ring->RL",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 18.07666015625,
+          "max_cross_track": 592.0682373046875,
+          "max_heading_deg": 177.09457397460938,
+          "max_yaw_step_deg": 138.8179931640625,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.3463175296783447,
+          "peak_speed": 484.6976013183594,
+          "reverse_frames": 63,
+          "samples": 863
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 17,
+        "planned_path_len": 861.677734375,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 1378.6021728515625,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 17.823619842529297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 333.8804626464844,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r099-Ring->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 6.75,
+          "max_cross_track": 418.82275390625,
+          "max_heading_deg": 179.2804412841797,
+          "max_yaw_step_deg": 145.656982421875,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.8996689319610596,
+          "peak_speed": 494.14215087890625,
+          "reverse_frames": 54,
+          "samples": 322
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 9,
+        "planned_path_len": 575.7774658203125,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 802.555908203125,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 6.498105049133301
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 121.92235565185547,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r100-Ring->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 14.3486328125,
+          "max_cross_track": 768.0222778320312,
+          "max_heading_deg": 179.11973571777344,
+          "max_yaw_step_deg": 135.94908142089844,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.49555161595344543,
+          "peak_speed": 493.44866943359375,
+          "reverse_frames": 63,
+          "samples": 681
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 10,
+        "planned_path_len": 619.7415771484375,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 1132.275634765625,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 14.09584903717041
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.733728408813477,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r101-Ring->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 2.6575927734375,
+          "max_cross_track": 78.92686462402344,
+          "max_heading_deg": 84.80557250976562,
+          "max_yaw_step_deg": 52.00129318237305,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.6269408464431763,
+          "peak_speed": 331.4976806640625,
+          "reverse_frames": 0,
+          "samples": 127
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 12,
+        "planned_path_len": 632.168701171875,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 353.4515380859375,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 2.4041340351104736
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 158.5106201171875,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r102-Ring->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 10.270751953125,
+          "max_cross_track": 781.3268432617188,
+          "max_heading_deg": 176.26976013183594,
+          "max_yaw_step_deg": 85.66341400146484,
+          "max_z_gain": 164.20404052734375,
+          "peak_progress": 0.05119087174534798,
+          "peak_speed": 504.0810546875,
+          "reverse_frames": 171,
+          "samples": 489
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 26,
+        "planned_path_len": 924.7837524414062,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 968.4957275390625,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 10.017882347106934
+      },
+      {
+        "best_dist": 2.807969331741333,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 0.15376313030719757,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r103-Ring->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 9.9852294921875,
+          "max_cross_track": 158.8257293701172,
+          "max_heading_deg": 115.15681457519531,
+          "max_yaw_step_deg": 172.02951049804688,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.5274917483329773,
+          "peak_speed": 494.387451171875,
+          "reverse_frames": 25,
+          "samples": 476
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 17,
+        "planned_path_len": 861.677734375,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 1321.7200927734375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 9.732551574707031
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 93.4034652709961,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r104-Hill_Mega->RA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 9.65966796875,
+          "max_cross_track": 585.8479614257812,
+          "max_heading_deg": 179.2845458984375,
+          "max_yaw_step_deg": 158.3626251220703,
+          "max_z_gain": 523.9656372070312,
+          "peak_progress": 1.103384256362915,
+          "peak_speed": 487.5884704589844,
+          "reverse_frames": 150,
+          "samples": 458
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 924.8827514648438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 715.541748046875,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 9.40684700012207
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 160.78704833984375,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r105-Hill_Mega->YA",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 9.6884765625,
+          "max_cross_track": 1071.77587890625,
+          "max_heading_deg": 163.26028442382812,
+          "max_yaw_step_deg": 167.74237060546875,
+          "max_z_gain": 187.9656219482422,
+          "peak_progress": 0.8155151605606079,
+          "peak_speed": 529.4794921875,
+          "reverse_frames": 132,
+          "samples": 462
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 913.1806030273438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 1049.6781005859375,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 9.436333656311035
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 164.2912139892578,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r106-Hill_Mega->RL",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 6.7010498046875,
+          "max_cross_track": 585.0169067382812,
+          "max_heading_deg": 173.5707550048828,
+          "max_yaw_step_deg": 176.36277770996094,
+          "max_z_gain": 123.98002624511719,
+          "peak_progress": 1.126015543937683,
+          "peak_speed": 517.9932250976562,
+          "reverse_frames": 61,
+          "samples": 320
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 937.1806030273438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 1075.695068359375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 6.449444770812988
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 262.1470031738281,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r107-Hill_Mega->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.050537109375,
+          "max_cross_track": 427.31402587890625,
+          "max_heading_deg": 179.7906494140625,
+          "max_yaw_step_deg": 146.80845642089844,
+          "max_z_gain": 253.92564392089844,
+          "peak_progress": 1.4687122106552124,
+          "peak_speed": 495.5423583984375,
+          "reverse_frames": 75,
+          "samples": 337
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 19,
+        "planned_path_len": 1038.5361328125,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 520.9222412109375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 6.798245429992676
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 104.19403839111328,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r108-Hill_Mega->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 11.74658203125,
+          "max_cross_track": 596.3364868164062,
+          "max_heading_deg": 179.15536499023438,
+          "max_yaw_step_deg": 169.73065185546875,
+          "max_z_gain": 43.980018615722656,
+          "peak_progress": 0.37898680567741394,
+          "peak_speed": 494.86431884765625,
+          "reverse_frames": 108,
+          "samples": 557
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 910.5510864257812,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 958.9327392578125,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 11.49355697631836
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 15.226076126098633,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r109-Hill_Mega->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 9.9091796875,
+          "max_cross_track": 809.2786865234375,
+          "max_heading_deg": 179.06581115722656,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 267.98004150390625,
+          "peak_progress": 0.7938143014907837,
+          "peak_speed": 514.0205688476562,
+          "reverse_frames": 168,
+          "samples": 473
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 924.8827514648438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 353.4515380859375,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 9.657269477844238
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 97.11457061767578,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r110-Hill_Mega->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.6785888671875,
+          "max_cross_track": 830.8824462890625,
+          "max_heading_deg": 179.5729522705078,
+          "max_yaw_step_deg": 128.36624145507812,
+          "max_z_gain": 306.7115478515625,
+          "peak_progress": 1.107704997062683,
+          "peak_speed": 494.8181457519531,
+          "reverse_frames": 239,
+          "samples": 746
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 924.8827514648438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 1321.7200927734375,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 15.425670623779297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 38.50653076171875,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r111-Hill_Mega->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 5.4996337890625,
+          "max_cross_track": 321.5198974609375,
+          "max_heading_deg": 179.73094177246094,
+          "max_yaw_step_deg": 167.51614379882812,
+          "max_z_gain": 43.96562194824219,
+          "peak_progress": 0.3630504906177521,
+          "peak_speed": 494.8548278808594,
+          "reverse_frames": 36,
+          "samples": 263
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 913.1806030273438,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 968.4957275390625,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 5.246561527252197
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r112-SNG_Mega->RA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 1,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 1274.3876953125,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.000106811523438
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r113-SNG_Mega->YA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 2189.6044921875,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 20.000112533569336
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r114-SNG_Mega->RL",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 2272.676025390625,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 20.000102996826172
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r115-SNG_Mega->Quad",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 1,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 1706.8333740234375,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 20.000133514404297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r116-SNG_Mega->Pent",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 1865.9046630859375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 20.000099182128906
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r117-SNG_Mega->Ring",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 1,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 968.4957275390625,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 20.000102996826172
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r118-SNG_Mega->Hill_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 1321.7200927734375,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 20.00010871887207
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r119-SNG_Mega->LG",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 2290.1806640625,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 20.000137329101562
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r120-LG->RA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 1378.6021728515625,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.000097274780273
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r121-LG->YA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 773.31494140625,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 20.000125885009766
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r122-LG->RL",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 672.761474609375,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 20.000125885009766
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 534.521484375,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r123-LG->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 16.569580078125,
+          "max_cross_track": 603.2695922851562,
+          "max_heading_deg": 179.60633850097656,
+          "max_yaw_step_deg": 174.04220581054688,
+          "max_z_gain": 647.96875,
+          "peak_progress": 2.0460147857666016,
+          "peak_speed": 485.6512145996094,
+          "reverse_frames": 115,
+          "samples": 787
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 749.7839965820312,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 16.31686019897461
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 18.837141036987305,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r124-LG->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 7.729248046875,
+          "max_cross_track": 270.74737548828125,
+          "max_heading_deg": 92.76054382324219,
+          "max_yaw_step_deg": 14.798433303833008,
+          "max_z_gain": 139.98004150390625,
+          "peak_progress": 1.0010366439819336,
+          "peak_speed": 440.74017333984375,
+          "reverse_frames": 3,
+          "samples": 369
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 1131.370849609375,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 7.476280689239502
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 20.021350860595703,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r125-LG->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 18.61962890625,
+          "max_cross_track": 1137.759765625,
+          "max_heading_deg": 176.6222381591797,
+          "max_yaw_step_deg": 177.6246337890625,
+          "max_z_gain": 647.853515625,
+          "peak_progress": 0.8353527784347534,
+          "peak_speed": 487.23175048828125,
+          "reverse_frames": 132,
+          "samples": 884
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 1321.7200927734375,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 18.36578369140625
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 65.32523345947266,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r126-LG->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 18.61767578125,
+          "max_cross_track": 1126.2288818359375,
+          "max_heading_deg": 177.1112060546875,
+          "max_yaw_step_deg": 178.54116821289062,
+          "max_z_gain": 647.96875,
+          "peak_progress": 1.1432790756225586,
+          "peak_speed": 484.3658447265625,
+          "reverse_frames": 189,
+          "samples": 884
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 968.4957275390625,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 18.364757537841797
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r127-LG->SNG_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 2290.1806640625,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 20.00012969970703
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1281,
+        "from_name": "RA-tunnel spawn",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r128-RA-tunnel_spawn->Pent_Mega",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 16,
+        "planned_path_len": 1108.02392578125,
+        "start": [
+          192.0,
+          -224.0,
+          -176.0
+        ],
+        "straight_dist": 1831.8427734375,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.0001163482666
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3742,
+        "from_name": "RL-spawn",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r129-RL-spawn->Pent_Mega",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 28,
+        "planned_path_len": 1000.0518188476562,
+        "start": [
+          1504.0,
+          416.0,
+          -88.0
+        ],
+        "straight_dist": 373.180908203125,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.00010108947754
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 24.272642135620117,
+        "from_cell": 67,
+        "from_name": "SNG-tele spawn A",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r130-SNG-tele_spawn_A->Pent_Mega",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 82,
+        "planned_path_len": 2912.717041015625,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 2844.40234375,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 24.272754669189453
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 23.13861656188965,
+        "from_cell": 362,
+        "from_name": "SNG-tele spawn B",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r131-SNG-tele_spawn_B->Pent_Mega",
+        "kind": "spawn",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 64,
+        "planned_path_len": 2427.330810546875,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 2776.634033203125,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 23.13872718811035
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 316.3210754394531,
+        "from_cell": 3643,
+        "from_name": "YA-box spawn",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r132-YA-box_spawn->Pent_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 8.103515625,
+          "max_cross_track": 767.5545043945312,
+          "max_heading_deg": 139.438720703125,
+          "max_yaw_step_deg": 48.01191329956055,
+          "max_z_gain": 123.96562957763672,
+          "peak_progress": 0.6288129091262817,
+          "peak_speed": 516.7897338867188,
+          "reverse_frames": 65,
+          "samples": 386
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 29,
+        "planned_path_len": 1007.5289916992188,
+        "start": [
+          1472.0,
+          -928.0,
+          -24.0
+        ],
+        "straight_dist": 1575.8172607421875,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 7.850857734680176
+      },
+      {
+        "best_dist": 1321.7200927734375,
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 1321.7200927734375,
+        "from_cell": 1834,
+        "from_name": "Lifts spawn",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r133-Lifts_spawn->Pent_Mega",
+        "kind": "spawn",
+        "metrics": {
+          "elapsed": 4.010986328125,
+          "max_cross_track": 0.0,
+          "max_heading_deg": 0.0,
+          "max_yaw_step_deg": 0.0,
+          "max_z_gain": 1.0,
+          "peak_progress": 0.0,
+          "peak_speed": 0.0,
+          "reverse_frames": 0,
+          "samples": 192
+        },
+        "outcome": "stalled",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 525.4393310546875,
+        "start": [
+          512.0,
+          768.0,
+          216.0
+        ],
+        "straight_dist": 1321.7200927734375,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 3.7582662105560303
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1372,
+        "from_name": "RA",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r134-RA->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 2044.4969482421875,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.000133514404297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 241.48876953125,
+        "from_cell": 2984,
+        "from_name": "YA",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r135-YA->Pent_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 17.97265625,
+          "max_cross_track": 748.4267578125,
+          "max_heading_deg": 177.27523803710938,
+          "max_yaw_step_deg": 179.01165771484375,
+          "max_z_gain": 43.96562957763672,
+          "peak_progress": 0.4929282069206238,
+          "peak_speed": 535.2987060546875,
+          "reverse_frames": 174,
+          "samples": 857
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1028.75732421875,
+        "start": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "straight_dist": 1622.245361328125,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 17.72001075744629
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 3744,
+        "from_name": "RL",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r136-RL->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 30,
+        "planned_path_len": 1051.00732421875,
+        "start": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "straight_dist": 344.6505432128906,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.000104904174805
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 2544,
+        "from_name": "Quad",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r137-Quad->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 28,
+        "planned_path_len": 1001.8283081054688,
+        "start": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "straight_dist": 921.3555297851562,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.00012969970703
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.832721710205078,
+        "from_cell": 2621,
+        "from_name": "Pent",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r138-Pent->Pent_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 5.990234375,
+          "max_cross_track": 375.4824523925781,
+          "max_heading_deg": 176.59130859375,
+          "max_yaw_step_deg": 179.96043395996094,
+          "max_z_gain": 126.98002624511719,
+          "peak_progress": 0.47708582878112793,
+          "peak_speed": 492.3515319824219,
+          "reverse_frames": 51,
+          "samples": 286
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 22,
+        "planned_path_len": 844.9967041015625,
+        "start": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "straight_dist": 853.8665161132812,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 5.737936019897461
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1346,
+        "from_name": "Ring",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r139-Ring->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 9,
+        "planned_path_len": 575.7774658203125,
+        "start": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "straight_dist": 1723.252685546875,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.000133514404297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 1896,
+        "from_name": "Hill Mega",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r140-Hill_Mega->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 23,
+        "planned_path_len": 910.91650390625,
+        "start": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "straight_dist": 1417.4229736328125,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 20.000123977661133
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 21.755817413330078,
+        "from_cell": 264,
+        "from_name": "SNG Mega",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r141-SNG_Mega->Pent_Mega",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 2,
+        "planned_path_len": 64.0,
+        "start": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "straight_dist": 2610.697998046875,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 21.75592041015625
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 269.5143737792969,
+        "from_cell": 3787,
+        "from_name": "LG",
+        "goal": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "id": "r142-LG->Pent_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 16.802001953125,
+          "max_cross_track": 705.4312744140625,
+          "max_heading_deg": 178.90640258789062,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 222.9800262451172,
+          "peak_progress": 1.1560280323028564,
+          "peak_speed": 484.5426940917969,
+          "reverse_frames": 221,
+          "samples": 802
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 23,
+        "planned_path_len": 828.7838134765625,
+        "start": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "straight_dist": 850.2611083984375,
+        "to_cell": 4399,
+        "to_name": "Pent Mega",
+        "wall_secs": 16.550172805786133
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "id": "r143-Pent_Mega->RA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 16,
+        "planned_path_len": 1107.35400390625,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 2044.4969482421875,
+        "to_cell": 1372,
+        "to_name": "RA",
+        "wall_secs": 20.000133514404297
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          1216.0,
+          -896.0,
+          -24.0
+        ],
+        "id": "r144-Pent_Mega->YA",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 16,
+        "planned_path_len": 1107.35400390625,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 1622.245361328125,
+        "to_cell": 2984,
+        "to_name": "YA",
+        "wall_secs": 20.000106811523438
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          1504.0,
+          480.0,
+          -88.0
+        ],
+        "id": "r145-Pent_Mega->RL",
+        "kind": "prox",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 17,
+        "planned_path_len": 1111.001953125,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 344.6505432128906,
+        "to_cell": 3744,
+        "to_name": "RL",
+        "wall_secs": 20.000110626220703
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 500.75299072265625,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          960.0,
+          288.0,
+          56.0
+        ],
+        "id": "r146-Pent_Mega->Quad",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 17.30078125,
+          "max_cross_track": 878.2069091796875,
+          "max_heading_deg": 179.49024963378906,
+          "max_yaw_step_deg": 178.9228057861328,
+          "max_z_gain": 435.8535461425781,
+          "peak_progress": 0.7021444439888,
+          "peak_speed": 553.1284790039062,
+          "reverse_frames": 241,
+          "samples": 821
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 17,
+        "planned_path_len": 1111.001953125,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 921.3555297851562,
+        "to_cell": 2544,
+        "to_name": "Quad",
+        "wall_secs": 17.04685401916504
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 19.241737365722656,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          992.0,
+          800.0,
+          -296.0
+        ],
+        "id": "r147-Pent_Mega->Pent",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 3.49169921875,
+          "max_cross_track": 232.2562255859375,
+          "max_heading_deg": 76.28987884521484,
+          "max_yaw_step_deg": 18.680395126342773,
+          "max_z_gain": 43.98002624511719,
+          "peak_progress": 0.9823225736618042,
+          "peak_speed": 468.9081115722656,
+          "reverse_frames": 0,
+          "samples": 167
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 17,
+        "planned_path_len": 1111.001953125,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 853.8665161132812,
+        "to_cell": 2621,
+        "to_name": "Pent",
+        "wall_secs": 3.2379555702209473
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 19.58417320251465,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          224.0,
+          -32.0,
+          56.0
+        ],
+        "id": "r148-Pent_Mega->Ring",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 15.537841796875,
+          "max_cross_track": 907.0906372070312,
+          "max_heading_deg": 177.880859375,
+          "max_yaw_step_deg": 175.74673461914062,
+          "max_z_gain": 435.96875,
+          "peak_progress": 0.4343651533126831,
+          "peak_speed": 524.6390991210938,
+          "reverse_frames": 177,
+          "samples": 738
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 17,
+        "planned_path_len": 1111.001953125,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 1723.252685546875,
+        "to_cell": 1346,
+        "to_name": "Ring",
+        "wall_secs": 15.284475326538086
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 68.521484375,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          576.0,
+          -64.0,
+          -168.0
+        ],
+        "id": "r149-Pent_Mega->Hill_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 14.844482421875,
+          "max_cross_track": 1009.84619140625,
+          "max_heading_deg": 178.9849090576172,
+          "max_yaw_step_deg": 178.46112060546875,
+          "max_z_gain": 435.8535461425781,
+          "peak_progress": 0.548022985458374,
+          "peak_speed": 505.33734130859375,
+          "reverse_frames": 149,
+          "samples": 704
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 17,
+        "planned_path_len": 1111.001953125,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 1417.4229736328125,
+        "to_cell": 1896,
+        "to_name": "Hill Mega",
+        "wall_secs": 14.590680122375488
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 21.755817413330078,
+        "end_dist": 127.24687957763672,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          -736.0,
+          96.0,
+          184.0
+        ],
+        "id": "r150-Pent_Mega->SNG_Mega",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 20.642822265625,
+          "max_cross_track": 701.3355712890625,
+          "max_heading_deg": 178.14585876464844,
+          "max_yaw_step_deg": 179.2246856689453,
+          "max_z_gain": 435.96875,
+          "peak_progress": 0.31571152806282043,
+          "peak_speed": 493.35589599609375,
+          "reverse_frames": 187,
+          "samples": 980
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 16,
+        "planned_path_len": 1107.35400390625,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 2610.697998046875,
+        "to_cell": 264,
+        "to_name": "SNG Mega",
+        "wall_secs": 20.388683319091797
+      },
+      {
+        "bot_stalls": [],
+        "budget_secs": 20.0,
+        "end_dist": 23.13249397277832,
+        "from_cell": 4399,
+        "from_name": "Pent Mega",
+        "goal": [
+          1536.0,
+          -192.0,
+          -392.0
+        ],
+        "id": "r151-Pent_Mega->LG",
+        "kind": "prox",
+        "metrics": {
+          "elapsed": 8.22802734375,
+          "max_cross_track": 436.6575622558594,
+          "max_heading_deg": 162.4524383544922,
+          "max_yaw_step_deg": 124.44286346435547,
+          "max_z_gain": 43.96562194824219,
+          "peak_progress": -0.034653276205062866,
+          "peak_speed": 481.97314453125,
+          "reverse_frames": 51,
+          "samples": 392
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 24,
+        "planned_path_len": 1005.9089965820312,
+        "start": [
+          1824.0,
+          608.0,
+          -180.0
+        ],
+        "straight_dist": 850.2611083984375,
+        "to_cell": 3787,
+        "to_name": "LG",
+        "wall_secs": 7.97614860534668
+      }
+    ],
+    "errored": 41,
+    "stalled": 16,
+    "status": "failed",
+    "total": 150
+  },
+  "tier": "T1"
+}

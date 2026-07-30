@@ -1,0 +1,542 @@
+{
+ "schema": "rex-drills/1",
+ "not_": "rtx-testflow/1 \u2014 the lab suite was unreachable; see livetest/README.md",
+ "tier": "T1",
+ "kind": "movement_drills",
+ "status": "failed",
+ "generated_at": "2026-07-28T09:02:02+0300",
+ "machine": {
+  "host": "bisapps001",
+  "kernel": "6.8.0-136-generic",
+  "arch": "x86_64",
+  "cpus": 64
+ },
+ "build": {
+  "engine_binary": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/mvdsv",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/mvdsv",
+   "md5": "5775a2af1fdc0b9f77a90c3bf660fabb",
+   "bytes": 769344
+  },
+  "game_module": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "build_output": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "game_module_matches_build_output": true,
+  "map": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/maps/dm3.bsp",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/id1/maps/dm3.bsp",
+   "md5": "e48f522b498c5b43583303527e7df1fe",
+   "bytes": 950200
+  },
+  "repo": {
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb6d0da57f494b246eeb00844ee87c48fd",
+   "describe": "f4d607c-dirty",
+   "dirty": true
+  }
+ },
+ "notes": [
+  "Same corridor, 10 reps, with AGENTS.md's documented acceptance bar declared in the spec: min_peak_speed 800 u/s ('bots should hold 800+ ups on the 100m runway'). Fails: peak tops out at ~772 u/s."
+ ],
+ "conditions": {
+  "bot_ent": 1,
+  "other_bots_held": 0,
+  "pacifist": true,
+  "telemetry": true,
+  "timeout_floor_secs": 60.0
+ },
+ "result": {
+  "arrival_rate": 1.0,
+  "arrived": 10,
+  "arrived_below_speed_bar": 10,
+  "arrived_elapsed": null,
+  "arrived_peak_speed": null,
+  "drills": [
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.76211547851562
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 62.18241500854492,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep01",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.228363037109375,
+     "max_cross_track": 172.35574340820312,
+     "max_heading_deg": 30.733444213867188,
+     "max_yaw_step_deg": 10.99676513671875,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 1.0003128051757812,
+     "peak_speed": 773.0211181640625,
+     "reverse_frames": 0,
+     "samples": 400
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.9749298095703125
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.79006958007812
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 11.53341007232666,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep02",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.2264404296875,
+     "max_cross_track": 200.53546142578125,
+     "max_heading_deg": 31.36651039123535,
+     "max_yaw_step_deg": 10.949615478515625,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.998329758644104,
+     "peak_speed": 771.5859375,
+     "reverse_frames": 0,
+     "samples": 398
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.95548677444458
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.7518310546875
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 16.823911666870117,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep03",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.173126220703125,
+     "max_cross_track": 45.88421630859375,
+     "max_heading_deg": 33.7518424987793,
+     "max_yaw_step_deg": 20.358461380004883,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9963035583496094,
+     "peak_speed": 771.5286254882812,
+     "reverse_frames": 0,
+     "samples": 396
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.902228355407715
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 228.97702026367188
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 26.69055938720703,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep04",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.180511474609375,
+     "max_cross_track": 66.468505859375,
+     "max_heading_deg": 32.20014572143555,
+     "max_yaw_step_deg": 9.649746894836426,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 1.00144362449646,
+     "peak_speed": 771.2335815429688,
+     "reverse_frames": 0,
+     "samples": 396
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.909341812133789
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.76901245117188
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 23.787696838378906,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep05",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.2091064453125,
+     "max_cross_track": 173.35745239257812,
+     "max_heading_deg": 30.95393180847168,
+     "max_yaw_step_deg": 19.36704444885254,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9980489015579224,
+     "peak_speed": 771.9970092773438,
+     "reverse_frames": 0,
+     "samples": 398
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.938119411468506
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.74777221679688
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 10.289752006530762,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep06",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.18658447265625,
+     "max_cross_track": 65.7950439453125,
+     "max_heading_deg": 33.82541275024414,
+     "max_yaw_step_deg": 20.427595138549805,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9985132217407227,
+     "peak_speed": 773.6220703125,
+     "reverse_frames": 0,
+     "samples": 397
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.915801048278809
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 229.0029754638672
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 24.839832305908203,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep07",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.178436279296875,
+     "max_cross_track": 86.68447875976562,
+     "max_heading_deg": 32.110958099365234,
+     "max_yaw_step_deg": 9.647525787353516,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 1.001246690750122,
+     "peak_speed": 771.937255859375,
+     "reverse_frames": 0,
+     "samples": 396
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.907602787017822
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 200.77468872070312
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 13.121160507202148,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep08",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.197418212890625,
+     "max_cross_track": 146.04840087890625,
+     "max_heading_deg": 31.548954010009766,
+     "max_yaw_step_deg": 10.984136581420898,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9972928762435913,
+     "peak_speed": 770.7278442382812,
+     "reverse_frames": 0,
+     "samples": 397
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.926479339599609
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 228.8981170654297
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 19.944124221801758,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep09",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.1466064453125,
+     "max_cross_track": 150.07473754882812,
+     "max_heading_deg": 30.2263126373291,
+     "max_yaw_step_deg": 9.655388832092285,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9954376220703125,
+     "peak_speed": 771.0380859375,
+     "reverse_frames": 0,
+     "samples": 395
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.875672340393066
+   },
+   {
+    "bot_stalls": [
+     {
+      "action": "force_jump",
+      "link_kind": "Walk",
+      "reason": "displacement",
+      "speed": 228.9303436279297
+     }
+    ],
+    "budget_secs": 60.0,
+    "end_dist": 20.861469268798828,
+    "from_cell": 2534,
+    "from_name": "100m start",
+    "goal": [
+     224.0,
+     2912.0,
+     24.0
+    ],
+    "id": "100m-corridor-rep10",
+    "kind": "corridor",
+    "metrics": {
+     "elapsed": 8.168121337890625,
+     "max_cross_track": 169.9625244140625,
+     "max_heading_deg": 31.987329483032227,
+     "max_yaw_step_deg": 9.656100273132324,
+     "max_z_gain": 43.980010986328125,
+     "peak_progress": 0.9952785968780518,
+     "peak_speed": 770.3472900390625,
+     "reverse_frames": 0,
+     "samples": 396
+    },
+    "min_peak_speed": 800.0,
+    "outcome": "arrived_slow",
+    "pass": false,
+    "peak_speed_ok": false,
+    "planned_legs": 35,
+    "planned_path_len": 1159.7645263671875,
+    "start": [
+     224.0,
+     -1408.0,
+     24.0
+    ],
+    "straight_dist": 4320.0,
+    "to_cell": 2669,
+    "to_name": "100m finish",
+    "wall_secs": 7.897124290466309
+   }
+  ],
+  "errored": 0,
+  "pass_rate": 0.0,
+  "passed": 0,
+  "stalled": 0,
+  "status": "failed",
+  "total": 10
+ }
+}

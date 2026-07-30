@@ -1,0 +1,30 @@
+[
+ {
+  "id": "rec-smoke-r1",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "item_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "human_closest_u": 26.4,
+  "owner_reach_s": 5.247,
+  "owner_bar_s": 5.876,
+  "rj_allowed": false,
+  "goal_airborne": true
+ }
+]

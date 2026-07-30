@@ -1,0 +1,513 @@
+{
+ "what": "RTX analytic baseline on the T1 suite scenarios, live server, pooled over 3 runs",
+ "source_files": [
+  "t1-20260728T124806Z-f4d607cb.json",
+  "t1-20260728T130252Z-f4d607cb.json",
+  "t1-20260728T133942Z-f4d607cb.json"
+ ],
+ "runs": [
+  {
+   "run_id": "t1-20260728T124806Z-f4d607cb",
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb",
+   "dirty": true,
+   "regime": "quick",
+   "verdict": "FAIL",
+   "started": "2026-07-28T12:48:06Z"
+  },
+  {
+   "run_id": "t1-20260728T130252Z-f4d607cb",
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb",
+   "dirty": true,
+   "regime": "quick",
+   "verdict": "FAIL",
+   "started": "2026-07-28T13:02:52Z"
+  },
+  {
+   "run_id": "t1-20260728T133942Z-f4d607cb",
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb",
+   "dirty": true,
+   "regime": "quick",
+   "verdict": "FAIL",
+   "started": "2026-07-28T13:39:42Z"
+  }
+ ],
+ "caveat": "regime_note=quick (3 attempts per scenario, not the acceptance 5) and the build was dirty. Preliminary baseline, not acceptance-grade.",
+ "n_scenarios": 24,
+ "n_with_any_arrival": 8,
+ "scenarios": [
+  {
+   "name": "cell_503_194",
+   "place": "SNG-hyllan \u2192 mega (SNG MH)",
+   "category": "cellprov",
+   "attempts": 9,
+   "arrivals": 8,
+   "times_s": [
+    5.36,
+    5.36,
+    5.33,
+    5.35,
+    5.27,
+    5.34,
+    14.22,
+    5.33
+   ],
+   "verdicts": [
+    "FAIL",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 0.889,
+   "best_s": 5.27,
+   "median_s": 5.345,
+   "worst_s": 14.22
+  },
+  {
+   "name": "cell_724_503",
+   "place": "SNG-l\u00e5g \u2192 SNG-hyllan",
+   "category": "cellprov",
+   "attempts": 9,
+   "arrivals": 9,
+   "times_s": [
+    2.85,
+    2.95,
+    3.1,
+    2.86,
+    2.85,
+    2.95,
+    2.85,
+    2.95,
+    2.93
+   ],
+   "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 1.0,
+   "best_s": 2.85,
+   "median_s": 2.93,
+   "worst_s": 3.1
+  },
+  {
+   "name": "hex_quad_to_sng",
+   "place": "quad \u2192 SNG",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "hex_ratop_to_ssg",
+   "place": "RA \u2192 YA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "hex_sng_to_quad",
+   "place": "SNG \u2192 quad",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "hex_ssg_to_ratop",
+   "place": "YA \u2192 RA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "hexagon_sod_tur",
+   "place": "ring \u2192 quad, \u00f6ver hexagon-gropen (s\u00f6dra rutten)",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "highbridge_to_rl",
+   "place": "bridge h\u00f6g \u2192 RL",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "lg_to_pent_to_pentmega",
+   "place": "water LG \u2192 pent",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "lifts_or_ring_to_sngmega",
+   "place": "lifts \u2192 SNG mega",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "ra_climb",
+   "place": "RA-ing\u00e5ngen \u2192 RA-plattan (uppf\u00f6r trapporna)",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 9,
+   "times_s": [
+    7.76,
+    7.75,
+    7.76,
+    7.67,
+    7.75,
+    7.75,
+    7.78,
+    7.76,
+    7.73
+   ],
+   "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 1.0,
+   "best_s": 7.67,
+   "median_s": 7.75,
+   "worst_s": 7.78
+  },
+  {
+   "name": "ralow_to_ratop",
+   "place": "RA l\u00e5g \u2192 RA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 2,
+   "times_s": [
+    6.15,
+    6.16
+   ],
+   "verdicts": [
+    "FAIL",
+    "PASS",
+    "FAIL"
+   ],
+   "arrival_rate": 0.222,
+   "best_s": 6.15,
+   "median_s": 6.155,
+   "worst_s": 6.16
+  },
+  {
+   "name": "ring_to_ratop",
+   "place": "RA ing\u00e5ngen \u2192 RA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 9,
+   "times_s": [
+    8.17,
+    7.65,
+    8.1,
+    8.27,
+    7.64,
+    8.12,
+    8.11,
+    8.1,
+    7.66
+   ],
+   "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 1.0,
+   "best_s": 7.64,
+   "median_s": 8.1,
+   "worst_s": 8.27
+  },
+  {
+   "name": "ring_to_rl",
+   "place": "ring \u2192 RL",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "rj_pent_to_lifts_to_window_to_quad",
+   "place": "pent \u2192 quad",
+   "category": "grunddrill",
+   "attempts": 6,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "rj_pent_window",
+   "place": "pent \u2192 lifts \u2192 window \u2192 quad",
+   "category": "grunddrill",
+   "attempts": 6,
+   "arrivals": 2,
+   "times_s": [
+    23.59,
+    19.74
+   ],
+   "verdicts": [
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.333,
+   "best_s": 19.74,
+   "median_s": 21.665,
+   "worst_s": 23.59
+  },
+  {
+   "name": "sng_mega",
+   "place": "SNG \u2192 mega (SNG MH) \u00f6ver hyllan",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 9,
+   "times_s": [
+    4.7,
+    4.69,
+    4.7,
+    4.7,
+    4.69,
+    4.69,
+    4.7,
+    4.7,
+    4.7
+   ],
+   "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 1.0,
+   "best_s": 4.69,
+   "median_s": 4.7,
+   "worst_s": 4.7
+  },
+  {
+   "name": "sngspawns_to_sngmega",
+   "place": "SNG tele \u2192 SNG mega",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "spawn_lift_to_pent_to_pentmega",
+   "place": "lifts \u2192 pent",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 9,
+   "times_s": [
+    6.68,
+    6.69,
+    6.69,
+    6.67,
+    6.78,
+    6.7,
+    6.67,
+    6.67,
+    6.67
+   ],
+   "verdicts": [
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "arrival_rate": 1.0,
+   "best_s": 6.67,
+   "median_s": 6.68,
+   "worst_s": 6.78
+  },
+  {
+   "name": "spawn_ra_tunnel_to_lg",
+   "place": "RA tunneln \u2192 water LG",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "spawn_rarox_to_quad",
+   "place": "SNG tele \u2192 quad",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "spawn_rl_to_ratop_xer",
+   "place": "RL \u2192 RA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "spawn_sngspawn_to_ring_to_ratop",
+   "place": "SNG tele \u2192 RA",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  },
+  {
+   "name": "window_to_rl",
+   "place": "window \u2192 RL",
+   "category": "grunddrill",
+   "attempts": 9,
+   "arrivals": 0,
+   "times_s": [],
+   "verdicts": [
+    "FAIL",
+    "FAIL",
+    "FAIL"
+   ],
+   "arrival_rate": 0.0,
+   "best_s": null,
+   "median_s": null,
+   "worst_s": null
+  }
+ ]
+}

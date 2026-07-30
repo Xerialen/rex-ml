@@ -1,0 +1,21 @@
+{
+ "claim": "the movement policy cannot rocket-jump",
+ "structural": {
+  "Cmd_fields": [
+   "view_yaw",
+   "forward",
+   "side",
+   "jump"
+  ],
+  "attack_weapon_projectile_occurrences_in_pmove_strafe_rexenv": 0,
+  "corpus_filter": "human runs gaining >95 u height in any 0.5 s window are rejected before restart states are built; 573 runs rejected as rocket_jump"
+ },
+ "empirical": [
+  {
+   "ckpt": "race_v7",
+   "max_vz_ups": 259.6,
+   "max_rise_per_half_s_u": 121.5,
+   "ticks_measured": 120336
+  }
+ ]
+}

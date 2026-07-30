@@ -1,0 +1,124 @@
+{
+ "question": "do human takeoffs sit at ground edges the observation cannot see?",
+ "method": {
+  "edge_drop_u": 48.0,
+  "probe_max_u": 320.0,
+  "probe_step_u": 8.0,
+  "moving_ups": 100.0
+ },
+ "overall": {
+  "n_takeoffs": 1622,
+  "n_other": 35601,
+  "takeoff_frac_edge_within_48u": 0.0993,
+  "other_frac_edge_within_48u": 0.041,
+  "takeoff_median_edge_u": 320.0,
+  "other_median_edge_u": 320.0
+ },
+ "at_edge_conditional": {
+  "note": "of moving samples with an edge within 48 u ahead, the share already airborne or taking off within 6 samples",
+  "n": 1621,
+  "committed_frac": 0.9815,
+  "per_route": [
+   {
+    "route": "window_to_rl",
+    "n_at_edge": 79,
+    "committed_frac": 1.0
+   },
+   {
+    "route": "ralow_to_ratop",
+    "n_at_edge": 141,
+    "committed_frac": 0.9574
+   },
+   {
+    "route": "lifts_to_sng_mega",
+    "n_at_edge": 240,
+    "committed_frac": 0.9958
+   },
+   {
+    "route": "ring_to_ratop",
+    "n_at_edge": 89,
+    "committed_frac": 1.0
+   },
+   {
+    "route": "sngspawn_a_to_mega",
+    "n_at_edge": 485,
+    "committed_frac": 0.9814
+   },
+   {
+    "route": "sngspawn_b_to_mega",
+    "n_at_edge": 485,
+    "committed_frac": 0.9814
+   },
+   {
+    "route": "tunnel_to_ra",
+    "n_at_edge": 102,
+    "committed_frac": 0.951
+   }
+  ]
+ },
+ "routes": [
+  {
+   "route": "window_to_rl",
+   "n_takeoffs": 50,
+   "n_other": 2484,
+   "takeoff_frac_edge_within_48u": 0.3,
+   "other_frac_edge_within_48u": 0.0258,
+   "takeoff_median_edge_u": 100.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "ralow_to_ratop",
+   "n_takeoffs": 262,
+   "n_other": 3149,
+   "takeoff_frac_edge_within_48u": 0.1794,
+   "other_frac_edge_within_48u": 0.0299,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "lifts_to_sng_mega",
+   "n_takeoffs": 191,
+   "n_other": 3900,
+   "takeoff_frac_edge_within_48u": 0.0995,
+   "other_frac_edge_within_48u": 0.0567,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "ring_to_ratop",
+   "n_takeoffs": 199,
+   "n_other": 3075,
+   "takeoff_frac_edge_within_48u": 0.1558,
+   "other_frac_edge_within_48u": 0.0189,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "sngspawn_a_to_mega",
+   "n_takeoffs": 343,
+   "n_other": 9714,
+   "takeoff_frac_edge_within_48u": 0.0496,
+   "other_frac_edge_within_48u": 0.0482,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "sngspawn_b_to_mega",
+   "n_takeoffs": 343,
+   "n_other": 9714,
+   "takeoff_frac_edge_within_48u": 0.0496,
+   "other_frac_edge_within_48u": 0.0482,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  },
+  {
+   "route": "tunnel_to_ra",
+   "n_takeoffs": 234,
+   "n_other": 3565,
+   "takeoff_frac_edge_within_48u": 0.0641,
+   "other_frac_edge_within_48u": 0.0244,
+   "takeoff_median_edge_u": 320.0,
+   "other_median_edge_u": 320.0
+  }
+ ]
+}

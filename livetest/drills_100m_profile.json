@@ -1,0 +1,226 @@
+[
+ {
+  "id": "100m-gate-0400-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=-400",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   -400,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate-0400-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=-400",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   -400,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+0200-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=200",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   200,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+0200-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=200",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   200,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+0800-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=800",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   800,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+0800-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=800",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   800,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+1400-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=1400",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   1400,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+1400-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=1400",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   1400,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2000-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2000",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2000,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2000-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2000",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2000,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2500-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2500",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2500,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2500-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2500",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2500,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2900-rep1",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2900",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ]
+ },
+ {
+  "id": "100m-gate+2900-rep2",
+  "kind": "corridor",
+  "from": "100m start",
+  "to": "y=2900",
+  "from_xyz": [
+   224,
+   -1408,
+   32
+  ],
+  "to_xyz": [
+   224,
+   2900,
+   32
+  ]
+ }
+]

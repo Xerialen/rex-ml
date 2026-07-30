@@ -1,0 +1,1126 @@
+<title>dm3 — ML-policyns rörelse, tick för tick</title>
+
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:        #eef1f3;
+    --panel:     #ffffff;
+    --panel-2:   #f6f8f9;
+    --line:      #d6dde2;
+    --ink:       #171d22;
+    --ink-dim:   #5f6d78;
+    --ink-faint: #8d9aa4;
+    --accent:    #b06a12;
+    --cool:      #3d7a97;
+    --good:      #2f7d4c;
+    --bad:       #b03d2e;
+    --viewport:  #c9d2d7;
+    --shadow:    0 1px 0 rgba(23,29,34,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #101418;
+      --panel:     #161b21;
+      --panel-2:   #1b2128;
+      --line:      #262e36;
+      --ink:       #dde5ec;
+      --ink-dim:   #8c99a5;
+      --ink-faint: #64717d;
+      --accent:    #e0952f;
+      --cool:      #6ba4c0;
+      --good:      #5aa672;
+      --bad:       #cd5f4f;
+      --viewport:  #0b0e11;
+      --shadow:    none;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:#eef1f3; --panel:#ffffff; --panel-2:#f6f8f9; --line:#d6dde2;
+    --ink:#171d22; --ink-dim:#5f6d78; --ink-faint:#8d9aa4;
+    --accent:#b06a12; --cool:#3d7a97; --good:#2f7d4c; --bad:#b03d2e;
+    --viewport:#c9d2d7; --shadow:0 1px 0 rgba(23,29,34,.05);
+  }
+  :root[data-theme="dark"] {
+    --bg:#101418; --panel:#161b21; --panel-2:#1b2128; --line:#262e36;
+    --ink:#dde5ec; --ink-dim:#8c99a5; --ink-faint:#64717d;
+    --accent:#e0952f; --cool:#6ba4c0; --good:#5aa672; --bad:#cd5f4f;
+    --viewport:#0b0e11; --shadow:none;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 13px/1.5 ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Airborne stretches of the selected run. Each one is a button: the claim "it cleared the jump"
+     should be checkable by going to the tick it happened on, not read off a caption. */
+  #segs { grid-column: 1/-1; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+  #segs:empty { display: none; }
+  #segs button {
+    display: flex; flex-direction: column; gap: 1px; align-items: flex-start;
+    font: inherit; font-size: 11px; line-height: 1.35; text-align: left; cursor: pointer;
+    background: var(--panel-2); color: var(--ink); border: 1px solid var(--line);
+    border-radius: 5px; padding: 4px 7px;
+  }
+  #segs button:hover { border-color: var(--ink-faint); }
+  #segs button[aria-current="true"] { border-color: var(--accent); background: var(--panel); }
+  #segs b { font-variant-numeric: tabular-nums; font-weight: 600; }
+  #segs small { color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+  #segs .k { text-transform: uppercase; letter-spacing: .06em; font-size: 9.5px; font-weight: 600; }
+  #segs .k.gap_up  { color: var(--bad); }
+  #segs .k.gap     { color: var(--accent); }
+  #segs .k.carried { color: var(--good); }
+  #segs .k.descent { color: var(--cool); }
+  #segs .k.hop     { color: var(--ink-faint); }
+  /* A crossing over a void is the only kind whose failure is unrecoverable, so it is the only one
+     that gets weight in the strip. */
+  #segs button.void { border-color: var(--accent); }
+  #segs button.void .k.gap_up { letter-spacing: .08em; }
+
+  /* Picking a case must not depend on the URL. A published artifact can be shown inside a frame,
+     and a framed page never sees the parent's `#fragment` — so a deep link silently falls back to
+     whatever record sorts first. The selector is the primary way in; the hash is a convenience. */
+  #picker {
+    grid-area: pick;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--line);
+    padding: 7px 16px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 11.5px;
+  }
+  #picker label { color: var(--ink-dim); text-transform: uppercase; letter-spacing: .06em; font-size: 10px; }
+  #picker select {
+    font: inherit; font-size: 11.5px;
+    background: var(--panel); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 4px; padding: 4px 7px;
+    max-width: 42ch;
+  }
+  #picker select:focus-visible, #picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #picker button {
+    font: inherit; font-size: 11px; cursor: pointer;
+    background: var(--panel); color: var(--ink-dim);
+    border: 1px solid var(--line); border-radius: 4px; padding: 4px 9px;
+  }
+  #picker button:hover { color: var(--ink); border-color: var(--ink-faint); }
+
+  /* The graded result, first thing in the rail. Without it the ML attempts sit five rows down among
+     reference cuts, and the owner reported not finding them at all. */
+  #summary { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 11px;
+             font-variant-numeric: tabular-nums; }
+  #summary caption { text-align: left; padding: 0 0 5px; color: var(--ink-dim);
+                     font-family: system-ui, -apple-system, sans-serif; font-size: 10px;
+                     letter-spacing: .06em; text-transform: uppercase; }
+  #summary th { text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 9.5px;
+                letter-spacing: .05em; text-transform: uppercase; padding: 0 4px 3px 0; }
+  #summary td { padding: 3px 4px 3px 0; border-top: 1px solid var(--line); }
+  #summary tr.clickable { cursor: pointer; }
+  #summary tr.clickable:hover td { background: var(--panel-2); }
+  #summary .v { font-weight: 600; font-size: 9.5px; letter-spacing: .05em; }
+  #summary .v.pass { color: var(--good); }
+  #summary .v.fail { color: var(--bad); }
+  .prose { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+  #app {
+    display: grid;
+    grid-template-columns: 322px minmax(0, 1fr);
+    /* The 3D view is the subject of the page, so it gets a floor. With `minmax(0, 1fr)` the bar's
+       own content — the segment strip and the method note — grew until the viewport was a 150 px
+       strip and first person had nowhere to render. */
+    grid-template-rows: auto auto minmax(340px, 1fr) auto;
+    grid-template-areas: "head head" "pick pick" "rail view" "rail bar";
+    height: 100vh;
+    gap: 1px;
+    background: var(--line);
+  }
+
+  header {
+    grid-area: head;
+    background: var(--panel);
+    padding: 10px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  header h1 b { color: var(--accent); font-weight: 600; }
+  header .meta { color: var(--ink-dim); font-size: 11.5px; }
+  header .meta span + span::before { content: "·"; margin: 0 8px; color: var(--ink-faint); }
+
+  #rail {
+    grid-area: rail;
+    background: var(--panel);
+    overflow-y: auto;
+    padding-bottom: 24px;
+  }
+  .route {
+    border-bottom: 1px solid var(--line);
+  }
+  .route > h2 {
+    margin: 0;
+    padding: 9px 14px 7px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .verdict {
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+  }
+  .v-pass { color: var(--good); }
+  .v-fail { color: var(--bad); }
+  .route > .sub {
+    padding: 0 14px 8px;
+    color: var(--ink-dim);
+    font-size: 11px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .route > .sub b { color: var(--ink); font-weight: 600; }
+
+  .group-label {
+    padding: 5px 14px 3px;
+    font-size: 10px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .attempt {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-left: 3px solid transparent;
+    color: var(--ink-dim);
+    font: inherit;
+    padding: 4px 14px 4px 11px;
+    cursor: pointer;
+  }
+  .attempt:hover { background: var(--panel-2); color: var(--ink); }
+  .attempt:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .attempt[aria-current="true"] {
+    background: var(--panel-2);
+    border-left-color: var(--accent);
+    color: var(--ink);
+  }
+  .attempt .t { color: var(--ink); }
+  .attempt .flag { font-size: 10px; letter-spacing: .06em; }
+  .flag-arrived { color: var(--good); }
+  .flag-timeout { color: var(--bad); }
+  .flag-wall    { color: var(--accent); }
+
+  #view {
+    grid-area: view;
+    position: relative;
+    background: var(--viewport);
+    overflow: hidden;
+  }
+  #gl { display: block; width: 100%; height: 100%; }
+
+  #hud {
+    position: absolute;
+    left: 14px; top: 12px;
+    pointer-events: none;
+    font-size: 11.5px;
+    color: var(--ink);
+    text-shadow: 0 1px 3px rgba(0,0,0,.55);
+    display: grid;
+    gap: 2px;
+  }
+  #hud .big { font-size: 26px; line-height: 1.05; letter-spacing: -.02em; }
+  #hud .big em { font-style: normal; font-size: 12px; color: var(--ink-dim); }
+  #hud .air { color: var(--accent); }
+  #hud .ground { color: var(--ink-dim); }
+  /* Whose run this is, stated in the view itself so it cannot be lost by scrolling the rail away. */
+  #h-src {
+    margin-top: 5px; display: inline-block; padding: 2px 7px; border-radius: 3px;
+    font-size: 10px; font-weight: 600; letter-spacing: .08em;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  #h-src.owner    { background: var(--cool);   color: #0b0e11; }
+  #h-src.ml       { background: var(--accent); color: #14181c; }
+  #h-src.analytic { background: var(--good);   color: #0b0e11; }
+
+  #cams {
+    position: absolute;
+    right: 12px; top: 12px;
+    display: flex;
+    gap: 1px;
+    background: var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  #cams button, .ctl {
+    background: var(--panel);
+    border: 0;
+    color: var(--ink-dim);
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 5px 11px;
+    cursor: pointer;
+  }
+  #cams button[aria-pressed="true"] { background: var(--accent); color: #14181c; }
+  #cams button:focus-visible, .ctl:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  #cutwrap {
+    position: absolute;
+    right: 12px; top: 44px;
+    background: var(--panel);
+    border-radius: 3px;
+    padding: 6px 10px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+  #cutwrap.on { display: flex; }
+  #cut { width: 130px; accent-color: var(--accent); }
+
+  #bar {
+    grid-area: bar;
+    background: var(--panel);
+    padding: 8px 16px 10px;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+  /* The method note is reference material, not something read on every scrub, so it folds away and
+     leaves its height to the view. */
+  #note[open] > summary { margin-bottom: 4px; }
+  #note > summary {
+    cursor: pointer; font-size: 11px; color: var(--ink-dim);
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  #note > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #play {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--ink);
+    font-size: 13px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  #play:hover { border-color: var(--accent); color: var(--accent); }
+  #play:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #clock { font-size: 15px; min-width: 128px; }
+  #clock small { color: var(--ink-dim); font-size: 11px; }
+  #scrub { width: 100%; accent-color: var(--accent); }
+  #rate { display: flex; gap: 1px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  #rate button[aria-pressed="true"] { background: var(--accent); color: #14181c; }
+
+  #note {
+    grid-column: 1 / -1;
+    color: var(--ink-faint);
+    font-size: 11px;
+    padding-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    #app { grid-template-columns: 1fr; grid-template-areas: "head" "view" "bar" "rail"; }
+    #rail { max-height: 46vh; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div id="app">
+  <header>
+    <h1>dm3 — <b>ML-policyns rörelse</b>, tick för tick</h1>
+    <div class="meta prose">
+      <span id="m-ckpt"></span>
+      <span id="m-tick"></span>
+      <span id="m-gate"></span>
+      <span id="m-count"></span>
+    </div>
+  </header>
+
+  <div id="picker">
+    <label for="p-route">Rutt</label>
+    <select id="p-route"></select>
+    <label for="p-case">Fall</label>
+    <select id="p-case"></select>
+    <button id="p-link" type="button" title="Kopiera länk till detta fall">Kopiera länk</button>
+  </div>
+  <nav id="rail" aria-label="Försök"><table id="summary"></table></nav>
+
+  <div id="view">
+    <canvas id="gl"></canvas>
+    <div id="hud">
+      <div class="big"><span id="h-speed">0</span> <em>u/s</em></div>
+      <div><span id="h-state" class="ground">MARK</span> <span id="h-jump"></span></div>
+      <div id="h-pos" style="color:var(--ink-dim)"></div>
+      <div id="h-src"></div>
+    </div>
+    <div id="cams" role="group" aria-label="Kameraläge">
+      <button type="button" data-cam="follow" aria-pressed="true">Följ</button>
+      <button type="button" data-cam="first" aria-pressed="false">1:a person</button>
+      <button type="button" data-cam="top" aria-pressed="false">Ovanifrån</button>
+    </div>
+    <div id="cutwrap"><label for="cut">Takhöjd</label><input id="cut" type="range" min="-500" max="900" value="900"><span id="cutval">av</span></div>
+  </div>
+
+  <div id="bar">
+    <button id="play" type="button" aria-label="Spela">▶</button>
+    <div id="clock"><span id="c-now">0.00</span><small> / <span id="c-tot">0.00</span> s</small></div>
+    <input id="scrub" type="range" min="0" max="100" value="0" step="1" aria-label="Tidslinje">
+    <div id="rate" role="group" aria-label="Uppspelningshastighet">
+      <button class="ctl" type="button" data-rate="0.25" aria-pressed="false">¼×</button>
+      <button class="ctl" type="button" data-rate="1" aria-pressed="true">1×</button>
+      <button class="ctl" type="button" data-rate="2" aria-pressed="false">2×</button>
+    </div>
+    <div id="runstats" class="prose" style="grid-column:1/-1;color:var(--ink-dim);font-size:11.5px;padding-top:2px"></div>
+    <div id="segs" class="prose" aria-label="Luftsegment"></div>
+    <details id="note" class="prose"><summary>Om mätningen</summary><p id="note-body"></p></details>
+  </div>
+</div>
+
+<script id="index-data" type="application/json">__INDEX_JSON__</script>
+<script id="geo-data" type="text/plain">__GEO_B64__</script>
+<script id="geo2-data" type="text/plain">__GEO2_B64__</script>
+<script id="frames-data" type="text/plain">__FRAMES_B64__</script>
+
+<script>
+"use strict";
+
+/* ---------- data ---------- */
+function b64(id) {
+  const s = document.getElementById(id).textContent.trim();
+  const bin = atob(s);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+const INDEX  = JSON.parse(document.getElementById("index-data").textContent);
+const GEO    = b64("geo-data");
+const FRAMES = b64("frames-data");
+const FV = new DataView(FRAMES.buffer, FRAMES.byteOffset, FRAMES.byteLength);
+const FRAME_BYTES = INDEX.frame_bytes;   // x,y,z,yaw f32 | flags u8 | speed f32 | [pitch f32]
+const HAS_PITCH = !!INDEX.has_pitch;
+const TICK = INDEX.tick_dt;
+const PEAK_GATE_UPS = INDEX.peak_gate_ups || 790;
+
+function frameAt(offset, i) {
+  const b = offset + i * FRAME_BYTES;
+  const fl = FV.getUint8(b + 16);
+  return {
+    x: FV.getFloat32(b, true), y: FV.getFloat32(b + 4, true), z: FV.getFloat32(b + 8, true),
+    yaw: FV.getFloat32(b + 12, true),
+    ground: (fl & 1) !== 0, jump: (fl & 2) !== 0,
+    speed: FV.getFloat32(b + 17, true),
+    pitch: HAS_PITCH ? FV.getFloat32(b + 21, true) : 0
+  };
+}
+
+/* ---------- geometry ---------- */
+function decodeGeo(u8) {
+  const dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
+  const nV = dv.getUint32(0, true), nT = dv.getUint32(4, true);
+  let o = 8;
+  const pos = new Float32Array(u8.buffer, u8.byteOffset + o, nV * 3); o += nV * 12;
+  const idx = new Uint32Array(u8.buffer.slice(u8.byteOffset + o, u8.byteOffset + o + nT * 12)); o += nT * 12;
+  const knd = new Uint8Array(u8.buffer, u8.byteOffset + o, nT);
+  return { pos, idx, knd, nT };
+}
+/* One page, more than one map. The corridor test runs on `100m` and the route work on `dm3`, and
+   they are the same measurement machinery pointed at different geometry — so both are embedded and
+   the mesh is swapped when the selected record changes map, rather than split across two pages. */
+const GEO2_RAW = (document.getElementById("geo2-data") || {}).textContent || "";
+const GEOS = {};
+GEOS[INDEX.geo_map] = decodeGeo(GEO);
+if (GEO2_RAW.trim()) GEOS[INDEX.geo2_map] = decodeGeo(b64("geo2-data"));
+const G = GEOS[INDEX.geo_map];
+
+/* Expand to a non-indexed buffer with one flat normal per triangle. Sky brushes are dropped —
+   they are the sealed outer shell of the map and would enclose the camera in a box. Liquids are
+   kept and marked, because the bot moves through them. */
+function buildMesh(g) {
+  const keep = [];
+  for (let t = 0; t < g.nT; t++) if (g.knd[t] !== 1) keep.push(t);
+  const n = keep.length;
+  const P = new Float32Array(n * 9), N = new Float32Array(n * 9), K = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const t = keep[i];
+    const a = g.idx[t * 3] * 3, b = g.idx[t * 3 + 1] * 3, c = g.idx[t * 3 + 2] * 3;
+    const ax = g.pos[a], ay = g.pos[a + 1], az = g.pos[a + 2];
+    const bx = g.pos[b], by = g.pos[b + 1], bz = g.pos[b + 2];
+    const cx = g.pos[c], cy = g.pos[c + 1], cz = g.pos[c + 2];
+    const ux = bx - ax, uy = by - ay, uz = bz - az;
+    const vx = cx - ax, vy = cy - ay, vz = cz - az;
+    let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+    const L = Math.hypot(nx, ny, nz) || 1; nx /= L; ny /= L; nz /= L;
+    const o = i * 9;
+    P[o] = ax; P[o+1] = ay; P[o+2] = az;
+    P[o+3] = bx; P[o+4] = by; P[o+5] = bz;
+    P[o+6] = cx; P[o+7] = cy; P[o+8] = cz;
+    for (let k = 0; k < 3; k++) { N[o+k*3] = nx; N[o+k*3+1] = ny; N[o+k*3+2] = nz; }
+    const kk = g.knd[t] === 2 ? 1 : 0;
+    K[i*3] = kk; K[i*3+1] = kk; K[i*3+2] = kk;
+  }
+  return { P, N, K, count: n * 3 };
+}
+const MESHES = {};
+for (const k in GEOS) MESHES[k] = buildMesh(GEOS[k]);
+let MESH = MESHES[INDEX.geo_map];
+
+/* ---------- tiny mat4 (column-major, Z-up world) ---------- */
+function mul(a, b) {
+  const o = new Float32Array(16);
+  for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) {
+    o[c*4+r] = a[r]*b[c*4] + a[4+r]*b[c*4+1] + a[8+r]*b[c*4+2] + a[12+r]*b[c*4+3];
+  }
+  return o;
+}
+function perspective(fovy, aspect, near, far) {
+  const f = 1 / Math.tan(fovy / 2), o = new Float32Array(16);
+  o[0] = f / aspect; o[5] = f; o[10] = (far + near) / (near - far);
+  o[11] = -1; o[14] = 2 * far * near / (near - far);
+  return o;
+}
+function lookAt(eye, at, up) {
+  let zx = eye[0]-at[0], zy = eye[1]-at[1], zz = eye[2]-at[2];
+  let L = Math.hypot(zx, zy, zz) || 1; zx/=L; zy/=L; zz/=L;
+  let xx = up[1]*zz - up[2]*zy, xy = up[2]*zx - up[0]*zz, xz = up[0]*zy - up[1]*zx;
+  L = Math.hypot(xx, xy, xz) || 1; xx/=L; xy/=L; xz/=L;
+  const yx = zy*xz - zz*xy, yy = zz*xx - zx*xz, yz = zx*xy - zy*xx;
+  return new Float32Array([
+    xx, yx, zx, 0,
+    xy, yy, zy, 0,
+    xz, yz, zz, 0,
+    -(xx*eye[0]+xy*eye[1]+xz*eye[2]),
+    -(yx*eye[0]+yy*eye[1]+yz*eye[2]),
+    -(zx*eye[0]+zy*eye[1]+zz*eye[2]), 1
+  ]);
+}
+
+/* ---------- GL ---------- */
+const canvas = document.getElementById("gl");
+const gl = canvas.getContext("webgl", { antialias: true, alpha: false });
+if (!gl) { document.getElementById("view").textContent = "WebGL saknas i den här webbläsaren."; }
+
+function sh(type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src); gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+function prog(vs, fs) {
+  const p = gl.createProgram();
+  gl.attachShader(p, sh(gl.VERTEX_SHADER, vs));
+  gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  return p;
+}
+
+const PWORLD = prog(`
+  attribute vec3 aPos; attribute vec3 aNrm; attribute float aKind;
+  uniform mat4 uVP;
+  varying vec3 vN; varying float vK; varying float vZ; varying vec3 vP;
+  void main(){ vN = aNrm; vK = aKind; vZ = aPos.z; vP = aPos;
+    gl_Position = uVP * vec4(aPos, 1.0); }
+`, `
+  precision mediump float;
+  varying vec3 vN; varying float vK; varying float vZ; varying vec3 vP;
+  uniform float uCut; uniform vec3 uEye;
+  uniform vec3 uWall; uniform vec3 uLiquid; uniform vec3 uFog;
+  void main(){
+    if (vZ > uCut) discard;
+    vec3 L = normalize(vec3(0.35, 0.22, 0.91));
+    float d = abs(dot(normalize(vN), L));
+    float up = clamp(normalize(vN).z, 0.0, 1.0);
+    vec3 base = mix(uWall, uLiquid, vK);
+    vec3 col = base * (0.34 + 0.52 * d + 0.16 * up);
+    float dist = length(vP - uEye);
+    col = mix(col, uFog, clamp((dist - 700.0) / 2600.0, 0.0, 0.72));
+    gl_FragColor = vec4(col, vK > 0.5 ? 0.55 : 1.0);
+  }
+`);
+const PLINE = prog(`
+  attribute vec3 aPos; uniform mat4 uVP;
+  void main(){ gl_Position = uVP * vec4(aPos, 1.0); gl_PointSize = 4.0; }
+`, `
+  precision mediump float; uniform vec4 uCol;
+  void main(){ gl_FragColor = uCol; }
+`);
+
+function buf(data, target) {
+  const b = gl.createBuffer();
+  gl.bindBuffer(target || gl.ARRAY_BUFFER, b);
+  gl.bufferData(target || gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+  return b;
+}
+let bPos = buf(MESH.P), bNrm = buf(MESH.N), bKind = buf(MESH.K);
+let MESH_MAP = INDEX.geo_map;
+
+/** Point the world buffers at another map's mesh. No-op when the map has not changed, so this can
+ *  be called on every selection without re-uploading a megabyte of triangles each time. */
+function useMap(name) {
+  if (!name || name === MESH_MAP || !MESHES[name]) return;
+  MESH = MESHES[name];
+  MESH_MAP = name;
+  gl.deleteBuffer(bPos); gl.deleteBuffer(bNrm); gl.deleteBuffer(bKind);
+  bPos = buf(MESH.P); bNrm = buf(MESH.N); bKind = buf(MESH.K);
+}
+const bDyn = gl.createBuffer();
+
+const aP = gl.getAttribLocation(PWORLD, "aPos");
+const aN = gl.getAttribLocation(PWORLD, "aNrm");
+const aK = gl.getAttribLocation(PWORLD, "aKind");
+const uVP = gl.getUniformLocation(PWORLD, "uVP");
+const uCut = gl.getUniformLocation(PWORLD, "uCut");
+const uEye = gl.getUniformLocation(PWORLD, "uEye");
+const uWall = gl.getUniformLocation(PWORLD, "uWall");
+const uLiquid = gl.getUniformLocation(PWORLD, "uLiquid");
+const uFog = gl.getUniformLocation(PWORLD, "uFog");
+const lP = gl.getAttribLocation(PLINE, "aPos");
+const lVP = gl.getUniformLocation(PLINE, "uVP");
+const lCol = gl.getUniformLocation(PLINE, "uCol");
+
+function css(v) {
+  const s = getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const m = s.match(/^#([0-9a-f]{6})$/i);
+  if (!m) return [0.5, 0.5, 0.5];
+  const n = parseInt(m[1], 16);
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+}
+
+/* ---------- state ---------- */
+const state = {
+  rec: null, run: null, tick: 0, playing: false, rate: 1,
+  cam: "follow", orbYaw: 2.2, orbPitch: 0.42, orbDist: 620, cut: 900, acc: 0, last: 0
+};
+
+/* ---------- rail ---------- */
+const rail = document.getElementById("rail");
+const byRoute = new Map();
+INDEX.records.forEach((rec, ri) => {
+  if (!byRoute.has(rec.route)) byRoute.set(rec.route, []);
+  byRoute.get(rec.route).push({ rec, ri });
+});
+
+let totalAttempts = 0;
+for (const [route, list] of byRoute) {
+  const g = (list.find(l => l.rec.decode === "greedy") || list[0]).rec;
+  const el = document.createElement("section");
+  el.className = "route";
+  // Not every group is judged on time. The 100m corridor's gate is a peak speed, and it carries no
+  // gate_s/pass_s at all — a header that assumed those existed threw on the first such record and
+  // took the whole rail down with it, leaving a blank page that still passed every other check.
+  const timed = g.gate_s !== null && g.gate_s !== undefined;
+  const inBand = timed
+    ? (g.median_s !== null && g.median_s <= g.pass_s && g.arrival_rate >= 1)
+    : (g.peak_speed_ups !== undefined && g.peak_speed_ups >= PEAK_GATE_UPS);
+  const d = (timed && g.median_s !== null) ? (g.median_s - g.gate_s) : null;
+  const sub = timed
+    ? ('<span>gate <b>' + g.gate_s.toFixed(2) + '</b> s</span>' +
+       '<span>pass ≤ <b>' + g.pass_s.toFixed(2) + '</b> s</span>' +
+       (g.median_s === null ? '<span>ingen ankomst</span>'
+         : '<span>median <b>' + g.median_s.toFixed(2) + '</b> s</span><span>' +
+           (d < 0 ? '<b style="color:var(--good)">' + d.toFixed(2) + '</b>' :
+                    '<b style="color:var(--bad)">+' + d.toFixed(2) + '</b>') + ' s</span>') +
+       (g.owner_s ? '<span>din tid ' + g.owner_s.toFixed(2) + ' s</span>' : ''))
+    : ('<span>grind <b>' + PEAK_GATE_UPS + '</b> u/s topp</span>' +
+       '<span>bäst <b>' + (g.peak_speed_ups || 0).toFixed(0) + '</b> u/s</span>');
+  el.innerHTML =
+    '<h2>' + route + '<span class="verdict ' + (inBand ? "v-pass" : "v-fail") + '">' +
+      (inBand ? (timed ? "i bandet" : "klarar") : (timed ? "utanför" : "klarar inte")) +
+      '</span></h2>' +
+    '<div class="sub">' + sub + '</div>';
+  for (const { rec, ri } of list) {
+    const lab = document.createElement("div");
+    lab.className = "group-label";
+    lab.textContent = rec.group_label ? rec.group_label
+      : (rec.decode === "greedy"
+        ? "greedy — " + rec.attempts + " försök, " + rec.distinct_trajectories + " unik bana"
+        : "sampled — " + rec.attempts + " försök, " + rec.distinct_trajectories + " unika banor");
+    el.appendChild(lab);
+    rec.runs.forEach((run, k) => {
+      totalAttempts += run.count;
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "attempt";
+      b.dataset.ri = ri; b.dataset.k = k;
+      const name = run.label ? run.label
+        : (run.count > 1 ? "×" + run.count + " identiska" : "#" + (run.attempt_ids[0] + 1));
+      b.innerHTML =
+        '<span>' + name + '</span>' +
+        '<span class="t">' + run.time_s.toFixed(2) + ' s</span>' +
+        '<span class="flag ' + (run.outcome === "arrived" ? "flag-arrived" : "flag-timeout") + '">' +
+          (run.outcome === "arrived" ? "MÅL" : "TIMEOUT") +
+          (run.wall_contact ? ' <span class="flag-wall">▪</span>' : '') + '</span>';
+      if (run.note) b.title = run.note;
+      b.addEventListener("click", () => select(ri, k));
+      el.appendChild(b);
+    });
+  }
+  rail.appendChild(el);
+}
+
+document.getElementById("m-ckpt").textContent = (INDEX.source ? "källa " : "checkpoint ") + INDEX.ckpt;
+document.getElementById("m-tick").textContent = (INDEX.tick_dt * 1000).toFixed(0) + " ms/tick, uppspelning 1:1";
+document.getElementById("m-gate").textContent = "målruta " + INDEX.arrive_box + " u i plan, " + INDEX.arrive_z + " u i höjd";
+document.getElementById("m-count").textContent = totalAttempts + " försök";
+document.getElementById("note-body").textContent = INDEX.note ||
+  ("Positionerna är miljöns egna, float32, en rad per servertick — ingen utjämning och ingen interpolation. " +
+   "Greedy är beslutsregeln som betygsätts och är deterministisk från en fast start, så alla 64 försök blir en enda bana. " +
+   "Sampled drar ur policyns egen fördelning och är där spridningen finns. ▪ = väggkontakt någon gång under försöket.");
+
+/* ---------- selection & playback ---------- */
+
+/** The run's airborne stretches, each labelled by what it actually did.
+ *
+ *  `carried` means the stretch covered more ground than the takeoff speed would carry through a
+ *  plain jump's 0.675 s hang — the takeoff did work. `descent` means it lost more height than a
+ *  jump gains, so gravity supplied the distance. `hop` is an ordinary jump. The distinction is the
+ *  whole point: a long airborne stretch is not evidence of a jump if the floor fell away underneath.
+ */
+function renderSegments() {
+  const host = document.getElementById("segs");
+  host.textContent = "";
+  const segs = state.run.segments || [];
+  const NAME = { gap_up: "gaphopp uppför", gap: "gaphopp", carried: "buren", descent: "fall",
+                 hop: "hopp" };
+  for (const [i, sg] of segs.entries()) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.seg = String(i);
+    if (sg.kind === "gap" || sg.kind === "gap_up") b.classList.add("void");
+    const k = document.createElement("span");
+    k.className = "k " + sg.kind;
+    k.textContent = NAME[sg.kind] || sg.kind;
+    const head = document.createElement("b");
+    head.textContent = Math.round(sg.gap_u) + " u  ·  " + sg.air_s.toFixed(2) + " s";
+    const sub = document.createElement("small");
+    sub.textContent = "avstamp " + Math.round(sg.takeoff_ups) + " u/s · "
+      + (sg.dz_u >= 0 ? "+" : "") + Math.round(sg.dz_u) + " u"
+      + (sg.void_u >= 96 ? " · " + Math.round(sg.void_u) + " u tomrum under"
+                         : " · räckvidd " + Math.round(sg.plain_reach_u) + " u");
+    b.append(k, head, sub);
+    b.addEventListener("click", () => {
+      state.tick = sg.a; state.acc = 0;
+      document.getElementById("scrub").value = String(sg.a);
+      setPlaying(true);
+      writeHash();
+    });
+    host.append(b);
+  }
+}
+
+/** Mark whichever stretch the playhead is inside, so the label and the picture agree. */
+function markSegment() {
+  const segs = state.run && state.run.segments;
+  if (!segs || !segs.length) return;
+  const host = document.getElementById("segs");
+  for (const b of host.children) {
+    const sg = segs[+b.dataset.seg];
+    b.setAttribute("aria-current", String(state.tick >= sg.a && state.tick <= sg.b));
+  }
+}
+
+/* ---------- deep links ----------
+   A moment in a run is the unit people actually want to send each other — "the jump onto the
+   window ledge, in first person" — so it is addressable. The hash names the record by route and
+   decode rather than by array index, because indices move whenever the page is rebuilt and a link
+   that silently lands on a different run is worse than one that fails. */
+function findRecord(route, decode) {
+  for (let i = 0; i < INDEX.records.length; i++) {
+    const r = INDEX.records[i];
+    if (r.route === route && (!decode || r.decode === decode)) return i;
+  }
+  return -1;
+}
+
+// Set while a link is being applied: clicking the camera button fires the same handler a user
+// would, and that handler rewrites the hash — which would stamp t=0 over the tick we are about to
+// seek to, leaving the address bar disagreeing with the screen.
+let applying = false;
+
+function writeHash() {
+  if (applying) return;
+  const r = state.rec;
+  const k = r.runs.indexOf(state.run);
+  const q = "rt=" + encodeURIComponent(r.route) + "&dec=" + encodeURIComponent(r.decode)
+          + "&run=" + k + "&t=" + state.tick + "&cam=" + state.cam;
+  history.replaceState(null, "", "#" + q);
+}
+
+function applyHash() {
+  const h = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const rt = h.get("rt");
+  if (!rt) return false;
+  const ri = findRecord(rt, h.get("dec"));
+  if (ri < 0) return false;
+  applying = true;
+  const rec = INDEX.records[ri];
+  const k = Math.min(Math.max(parseInt(h.get("run") || "0", 10) || 0, 0), rec.runs.length - 1);
+  select(ri, k);
+  const cam = h.get("cam");
+  if (cam) {
+    const btn = document.querySelector("#cams button[data-cam='" + cam + "']");
+    if (btn) btn.click();
+  }
+  const t = parseInt(h.get("t") || "0", 10);
+  if (t > 0) {
+    // Paused, not playing. A link that names a tick should show that tick — left running it drifts
+    // a hundred frames past the thing it was sent to point at before anyone can look at it.
+    setPlaying(false);
+    state.tick = Math.min(Math.max(t, 0), state.run.n_frames - 1);
+    state.acc = 0;
+    document.getElementById("scrub").value = String(state.tick);
+  }
+  applying = false;
+  writeHash();
+  return true;
+}
+
+/* ---------- case picker ----------
+   Two selects: the route, then the case within it (reference cut, policy approach, corridor run).
+   Rebuilt from INDEX so it cannot drift from what is actually in the page. */
+/** The graded verdict per route, from the race_v7 records only — the ML attempt, not the demos.
+ *  A route counts as passing only if every one of its tested approaches passes. */
+function buildSummary() {
+  const t = document.getElementById("summary");
+  if (!t) return;
+  const by = new Map();
+  INDEX.records.forEach((r, ri) => {
+    if (!/^race_v7/.test(r.decode || "")) return;
+    if (!by.has(r.route)) by.set(r.route, []);
+    by.get(r.route).push({r, ri});
+  });
+  if (!by.size) return;
+  let html = "<caption>ML-policyns resultat, strikt prov</caption>"
+    + "<tr><th>rutt</th><th>median</th><th>pass</th><th>ingångar</th><th></th></tr>";
+  for (const [route, list] of by) {
+    const meds = list.map(x => x.r.median_s).filter(v => v !== null);
+    const worst = meds.length ? Math.max(...meds) : null;
+    const nPass = list.filter(x => x.r.passes_strict).length;
+    const all = nPass === list.length;
+    html += `<tr class="clickable" data-ri="${list[0].ri}">`
+      + `<td>${route}</td>`
+      + `<td>${worst === null ? "—" : worst.toFixed(2) + " s"}</td>`
+      + `<td>${list[0].r.pass_s ? list[0].r.pass_s.toFixed(2) + " s" : "—"}</td>`
+      + `<td>${nPass}/${list.length}</td>`
+      + `<td class="v ${all ? "pass" : "fail"}">${all ? "GODKÄND" : "EJ"}</td></tr>`;
+  }
+  t.innerHTML = html;
+  t.querySelectorAll("tr.clickable").forEach(tr =>
+    tr.addEventListener("click", () => select(+tr.dataset.ri, 0)));
+}
+
+function buildPicker() {
+  const rsel = document.getElementById("p-route");
+  const csel = document.getElementById("p-case");
+  const routes = [];
+  for (const r of INDEX.records) if (!routes.includes(r.route)) routes.push(r.route);
+  rsel.textContent = "";
+  for (const rt of routes) {
+    const o = document.createElement("option");
+    o.value = rt; o.textContent = rt;
+    rsel.append(o);
+  }
+
+  function fillCases(rt, want) {
+    csel.textContent = "";
+    INDEX.records.forEach((rec, ri) => {
+      if (rec.route !== rt) return;
+      const o = document.createElement("option");
+      o.value = String(ri);
+      const pct = rec.arrival_rate === undefined ? "" :
+        "  ·  " + (rec.arrival_rate * 100).toFixed(1) + " % ankomst";
+      const med = rec.median_s ? "  ·  " + rec.median_s.toFixed(2) + " s" : "";
+      const verdict = rec.passes_strict === true ? "  ·  GODKÄND"
+                    : rec.passes_strict === false ? "" : "";
+      o.textContent = (rec.source_label || "") + " · " + rec.decode + pct + med + verdict;
+      csel.append(o);
+    });
+    if (want !== undefined) csel.value = String(want);
+  }
+
+  rsel.addEventListener("change", () => {
+    fillCases(rsel.value);
+    select(+csel.value, 0);
+  });
+  csel.addEventListener("change", () => select(+csel.value, 0));
+
+  document.getElementById("p-link").addEventListener("click", async () => {
+    const btn = document.getElementById("p-link");
+    const url = location.href.split("#")[0] + location.hash;
+    try { await navigator.clipboard.writeText(url); btn.textContent = "Kopierad"; }
+    catch { btn.textContent = location.hash; }
+    setTimeout(() => { btn.textContent = "Kopiera länk"; }, 1600);
+  });
+
+  return { rsel, csel, fillCases };
+}
+
+let PICKER = null;
+
+/** Keep the two selects showing whatever is actually on screen. */
+function syncPicker() {
+  if (!PICKER || !state.rec) return;
+  const ri = INDEX.records.indexOf(state.rec);
+  if (PICKER.rsel.value !== state.rec.route) {
+    PICKER.rsel.value = state.rec.route;
+    PICKER.fillCases(state.rec.route, ri);
+  } else {
+    PICKER.csel.value = String(ri);
+  }
+}
+
+function select(ri, k) {
+  state.rec = INDEX.records[ri];
+  useMap(state.rec.map || INDEX.geo_map);
+  state.run = state.rec.runs[k];
+  state.tick = 0; state.acc = 0;
+  document.querySelectorAll(".attempt").forEach(b =>
+    b.setAttribute("aria-current", String(+b.dataset.ri === ri && +b.dataset.k === k)));
+  const pts = [];
+  for (const p of state.rec.path) pts.push(p[0], p[1], p[2]);
+  state.pathBuf = new Float32Array(pts);
+  const tr = [];
+  for (let i = 0; i < state.run.n_frames; i++) {
+    const f = frameAt(state.run.offset, i);
+    tr.push(f.x, f.y, f.z);
+  }
+  state.traceBuf = new Float32Array(tr);
+  document.getElementById("c-tot").textContent = state.run.time_s.toFixed(2);
+  const st = [];
+  if (state.run.median_speed_ups !== undefined) st.push("medianfart " + state.run.median_speed_ups + " u/s");
+  if (state.run.peak_speed_ups !== undefined) st.push("topp " + state.run.peak_speed_ups + " u/s");
+  if (state.run.frac_above_320 !== undefined) st.push((state.run.frac_above_320 * 100).toFixed(0) + " % över 320");
+  if (state.run.frac_airborne !== undefined) st.push((state.run.frac_airborne * 100).toFixed(0) + " % i luften");
+  if (state.run.jump_presses !== undefined) st.push(state.run.jump_presses + " hopptryck");
+  document.getElementById("runstats").textContent = st.join("  ·  ");
+  const srcEl = document.getElementById("h-src");
+  srcEl.className = state.rec.source || "ml";
+  srcEl.textContent = state.rec.source_label || "";
+  srcEl.title = state.rec.source_note || "";
+  renderSegments();
+  syncPicker();
+  document.getElementById("scrub").max = String(state.run.n_frames - 1);
+  document.getElementById("scrub").value = "0";
+  setPlaying(true);
+}
+
+function setPlaying(p) {
+  state.playing = p;
+  const b = document.getElementById("play");
+  b.textContent = p ? "❚❚" : "▶";
+  b.setAttribute("aria-label", p ? "Pausa" : "Spela");
+}
+document.getElementById("play").addEventListener("click", () => setPlaying(!state.playing));
+document.getElementById("scrub").addEventListener("input", e => {
+  state.tick = +e.target.value; state.acc = 0;
+});
+document.querySelectorAll("#rate button").forEach(b => b.addEventListener("click", () => {
+  state.rate = +b.dataset.rate;
+  document.querySelectorAll("#rate button").forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+}));
+document.querySelectorAll("#cams button").forEach(b => b.addEventListener("click", () => {
+  state.cam = b.dataset.cam;
+  document.querySelectorAll("#cams button").forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+  document.getElementById("cutwrap").classList.toggle("on", state.cam === "top");
+  writeHash();
+}));
+const cutEl = document.getElementById("cut");
+cutEl.addEventListener("input", () => {
+  state.cut = +cutEl.value;
+  document.getElementById("cutval").textContent = state.cut >= 900 ? "av" : state.cut + " u";
+});
+
+let drag = null;
+canvas.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener("pointerup", e => { drag = null; });
+canvas.addEventListener("pointermove", e => {
+  if (!drag) return;
+  state.orbYaw -= (e.clientX - drag.x) * 0.006;
+  state.orbPitch = Math.max(-1.4, Math.min(1.4, state.orbPitch + (e.clientY - drag.y) * 0.005));
+  drag = { x: e.clientX, y: e.clientY };
+});
+canvas.addEventListener("wheel", e => {
+  e.preventDefault();
+  state.orbDist = Math.max(90, Math.min(4000, state.orbDist * (1 + Math.sign(e.deltaY) * 0.12)));
+}, { passive: false });
+window.addEventListener("keydown", e => {
+  if (e.code === "Space") { e.preventDefault(); setPlaying(!state.playing); }
+});
+
+/* ---------- render ---------- */
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
+    canvas.width = w * dpr; canvas.height = h * dpr;
+  }
+}
+
+function drawDyn(data, mode, col, vp) {
+  gl.useProgram(PLINE);
+  gl.bindBuffer(gl.ARRAY_BUFFER, bDyn);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.DYNAMIC_DRAW);
+  gl.enableVertexAttribArray(lP);
+  gl.vertexAttribPointer(lP, 3, gl.FLOAT, false, 0, 0);
+  gl.uniformMatrix4fv(lVP, false, vp);
+  gl.uniform4fv(lCol, col);
+  gl.drawArrays(mode, 0, data.length / 3);
+}
+
+const HULL = [-16, 16];
+function boxLines(x, y, z) {
+  const o = [], lo = z - 24, hi = z + 32;
+  const c = [[HULL[0], HULL[0]], [HULL[1], HULL[0]], [HULL[1], HULL[1]], [HULL[0], HULL[1]]];
+  for (let i = 0; i < 4; i++) {
+    const a = c[i], b = c[(i + 1) % 4];
+    o.push(x+a[0], y+a[1], lo, x+b[0], y+b[1], lo);
+    o.push(x+a[0], y+a[1], hi, x+b[0], y+b[1], hi);
+    o.push(x+a[0], y+a[1], lo, x+a[0], y+a[1], hi);
+  }
+  return new Float32Array(o);
+}
+
+function frame(ts) {
+  requestAnimationFrame(frame);
+  if (!state.run) return;
+  const dt = state.last ? Math.min((ts - state.last) / 1000, 0.25) : 0;
+  state.last = ts;
+  if (state.playing) {
+    state.acc += dt * state.rate;
+    while (state.acc >= TICK) {
+      state.acc -= TICK;
+      state.tick++;
+      if (state.tick >= state.run.n_frames) { state.tick = 0; }
+    }
+    document.getElementById("scrub").value = String(state.tick);
+  }
+  const f = frameAt(state.run.offset, Math.min(state.tick, state.run.n_frames - 1));
+
+  document.getElementById("c-now").textContent = (state.tick * TICK).toFixed(2);
+  markSegment();
+  document.getElementById("h-speed").textContent = f.speed.toFixed(0);
+  const st = document.getElementById("h-state");
+  st.textContent = (f.ground ? "MARK" : "LUFT") + (INDEX.ground_is_derived ? "*" : "");
+  st.className = f.ground ? "ground" : "air";
+  document.getElementById("h-jump").textContent = f.jump ? "· HOPP" : "";
+  document.getElementById("h-pos").textContent =
+    f.x.toFixed(0) + ", " + f.y.toFixed(0) + ", " + f.z.toFixed(0) +
+    (HAS_PITCH ? "   pitch " + f.pitch.toFixed(1) + "°" : "");
+
+  resize();
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  const bgc = css("--viewport");
+  gl.clearColor(bgc[0], bgc[1], bgc[2], 1);
+  gl.enable(gl.DEPTH_TEST);
+  gl.disable(gl.CULL_FACE);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  const aspect = canvas.width / Math.max(canvas.height, 1);
+  let eye, at, fov = 1.15, cut = 100000;
+  const yr = f.yaw * Math.PI / 180;
+  if (state.cam === "first") {
+    // Quake's pitch is positive-downward on the wire, so the sign is flipped to point the camera
+    // where the player was actually looking. Without pitch (the ML policy has no view control in
+    // that axis) this is level, which is what that policy actually does.
+    const pr = -f.pitch * Math.PI / 180;
+    eye = [f.x, f.y, f.z + 22];
+    at = [f.x + Math.cos(yr) * Math.cos(pr) * 100,
+          f.y + Math.sin(yr) * Math.cos(pr) * 100,
+          f.z + 22 + Math.sin(pr) * 100];
+    fov = 1.60;
+  } else if (state.cam === "top") {
+    eye = [f.x - Math.cos(state.orbYaw) * state.orbDist,
+           f.y - Math.sin(state.orbYaw) * state.orbDist,
+           f.z + state.orbDist * 0.9];
+    at = [f.x, f.y, f.z];
+    cut = state.cut >= 900 ? 100000 : state.cut;
+  } else {
+    const cp = Math.cos(state.orbPitch);
+    eye = [f.x - Math.cos(state.orbYaw) * state.orbDist * cp,
+           f.y - Math.sin(state.orbYaw) * state.orbDist * cp,
+           f.z + state.orbDist * Math.sin(state.orbPitch) + 40];
+    at = [f.x, f.y, f.z + 10];
+  }
+  const vp = mul(perspective(fov, aspect, 4, 9000), lookAt(eye, at, [0, 0, 1]));
+
+  gl.useProgram(PWORLD);
+  gl.uniformMatrix4fv(uVP, false, vp);
+  gl.uniform1f(uCut, cut);
+  gl.uniform3fv(uEye, new Float32Array(eye));
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches
+    || document.documentElement.dataset.theme === "dark";
+  gl.uniform3fv(uWall, new Float32Array(dark ? [0.50, 0.52, 0.56] : [0.72, 0.74, 0.77]));
+  gl.uniform3fv(uLiquid, new Float32Array(css("--cool")));
+  gl.uniform3fv(uFog, new Float32Array(bgc));
+  for (const [b, loc, size] of [[bPos, aP, 3], [bNrm, aN, 3], [bKind, aK, 1]]) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+  }
+  gl.drawArrays(gl.TRIANGLES, 0, MESH.count);
+
+  gl.disable(gl.DEPTH_TEST);
+  const acc = css("--accent"), cool = css("--cool"), good = css("--good");
+  drawDyn(state.pathBuf, gl.LINE_STRIP, new Float32Array([0.55, 0.58, 0.62, 0.35]), vp);
+  // The travelled line takes the source's own colour, so a glance at the picture already says
+  // whether this is the owner's recording or a policy's attempt.
+  const sc = state.rec.source === "owner" ? cool : state.rec.source === "analytic" ? good : acc;
+  drawDyn(state.traceBuf.subarray(0, (state.tick + 1) * 3), gl.LINE_STRIP,
+          new Float32Array([sc[0], sc[1], sc[2], 0.95]), vp);
+  const g = state.rec.goal;
+  drawDyn(boxLines(g[0], g[1], g[2] + 24), gl.LINES,
+          new Float32Array([good[0], good[1], good[2], 0.85]), vp);
+  if (state.cam !== "first") {
+    drawDyn(boxLines(f.x, f.y, f.z), gl.LINES,
+            new Float32Array([acc[0], acc[1], acc[2], 1]), vp);
+  }
+}
+
+buildSummary();
+PICKER = buildPicker();
+PICKER.fillCases(PICKER.rsel.value);
+if (!applyHash()) {
+  // Land on the graded route work, not on the corridor. The corridor sorts first because it is the
+  // speed gate, but it is not what most visits are about.
+  let start = INDEX.records.findIndex(r => r.map !== "100m" && /ing\.0$/.test(r.decode || ""));
+  if (start < 0) start = 0;
+  select(start, 0);
+}
+window.addEventListener("hashchange", applyHash);
+requestAnimationFrame(frame);
+</script>

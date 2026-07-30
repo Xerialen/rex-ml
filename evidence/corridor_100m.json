@@ -1,0 +1,48 @@
+{
+ "map": "/home/benjamin-adm/rex-ml/rtx/playground/qw/maps/100m.bsp",
+ "start": [
+  224.0,
+  -1408.0,
+  32.0
+ ],
+ "end": [
+  224.0,
+  2900.0,
+  32.0
+ ],
+ "peak_gate_ups": 790.0,
+ "runs": [
+  {
+   "n": 8,
+   "greedy": true,
+   "peak_max": 470.9,
+   "peak_median": 470.9,
+   "peak_p10": 470.9,
+   "arrival_rate": 1.0,
+   "median_time_s": 10.29,
+   "median_speed_ups": 448.8,
+   "frac_above_320": 0.948,
+   "frac_above_790": 0.0,
+   "max_cross_track_u": 48.9,
+   "reverse_frames": 72,
+   "passes_peak_gate": false,
+   "ckpt": "pipeline/out/race/race_v5.pt"
+  },
+  {
+   "n": 64,
+   "greedy": false,
+   "peak_max": 472.3,
+   "peak_median": 471.2,
+   "peak_p10": 470.8,
+   "arrival_rate": 1.0,
+   "median_time_s": 10.08,
+   "median_speed_ups": 447.5,
+   "frac_above_320": 0.964,
+   "frac_above_790": 0.0,
+   "max_cross_track_u": 65.4,
+   "reverse_frames": 271,
+   "passes_peak_gate": false,
+   "ckpt": "pipeline/out/race/race_v5.pt"
+  }
+ ]
+}

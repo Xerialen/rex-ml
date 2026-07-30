@@ -1,0 +1,173 @@
+[
+ {
+  "id": "q2s-from25-r1",
+  "kind": "route",
+  "from_xyz": [
+   571.5,
+   120.38,
+   99.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.935,
+  "max_secs": 4.408,
+  "dump_traj": true
+ },
+ {
+  "id": "q2s-from25-r2",
+  "kind": "route",
+  "from_xyz": [
+   571.5,
+   120.38,
+   99.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.935,
+  "max_secs": 4.408,
+  "dump_traj": false
+ },
+ {
+  "id": "q2s-from25-r3",
+  "kind": "route",
+  "from_xyz": [
+   571.5,
+   120.38,
+   99.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.935,
+  "max_secs": 4.408,
+  "dump_traj": false
+ },
+ {
+  "id": "q2s-from50-r1",
+  "kind": "route",
+  "from_xyz": [
+   313.0,
+   525.38,
+   99.88
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.624,
+  "max_secs": 2.939,
+  "dump_traj": true
+ },
+ {
+  "id": "q2s-from50-r2",
+  "kind": "route",
+  "from_xyz": [
+   313.0,
+   525.38,
+   99.88
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.624,
+  "max_secs": 2.939,
+  "dump_traj": false
+ },
+ {
+  "id": "q2s-from50-r3",
+  "kind": "route",
+  "from_xyz": [
+   313.0,
+   525.38,
+   99.88
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.624,
+  "max_secs": 2.939,
+  "dump_traj": false
+ },
+ {
+  "id": "q2s-from75-r1",
+  "kind": "route",
+  "from_xyz": [
+   -157.25,
+   757.62,
+   132.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 1.312,
+  "max_secs": 1.47,
+  "dump_traj": true
+ },
+ {
+  "id": "q2s-from75-r2",
+  "kind": "route",
+  "from_xyz": [
+   -157.25,
+   757.62,
+   132.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 1.312,
+  "max_secs": 1.47,
+  "dump_traj": false
+ },
+ {
+  "id": "q2s-from75-r3",
+  "kind": "route",
+  "from_xyz": [
+   -157.25,
+   757.62,
+   132.75
+  ],
+  "to_xyz": [
+   -522.75,
+   450.25,
+   120.0
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 1.312,
+  "max_secs": 1.47,
+  "dump_traj": false
+ }
+]

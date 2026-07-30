@@ -1,0 +1,166 @@
+{
+ "schema": "rex-drills/1",
+ "not_": "rtx-testflow/1 \u2014 the lab suite was unreachable; see livetest/README.md",
+ "tier": "T0",
+ "kind": "preflight",
+ "status": "passed",
+ "generated_at": "2026-07-28T04:50:31+0300",
+ "machine": {
+  "host": "bisapps001",
+  "kernel": "6.8.0-136-generic",
+  "arch": "x86_64",
+  "cpus": 64
+ },
+ "build": {
+  "engine_binary": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/mvdsv",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/mvdsv",
+   "md5": "5775a2af1fdc0b9f77a90c3bf660fabb",
+   "bytes": 769344
+  },
+  "game_module": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "build_output": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "game_module_matches_build_output": true,
+  "map": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/maps/dm3.bsp",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/id1/maps/dm3.bsp",
+   "md5": "e48f522b498c5b43583303527e7df1fe",
+   "bytes": 950200
+  },
+  "repo": {
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb6d0da57f494b246eeb00844ee87c48fd",
+   "describe": "f4d607c",
+   "dirty": true
+  }
+ },
+ "notes": [
+  "T0 rig preflight against the ML build's staged qwprogs.so on a local dm3 server (control port 27700)."
+ ],
+ "result": {
+  "checks": [
+   {
+    "check": "control_channel",
+    "detail": "Status answered",
+    "pass": true
+   },
+   {
+    "check": "map_loaded",
+    "detail": "map=dm3",
+    "pass": true
+   },
+   {
+    "check": "navmesh_ready",
+    "detail": "navmesh=ready",
+    "pass": true
+   },
+   {
+    "check": "navmesh_cells",
+    "detail": "cells=4634",
+    "pass": true
+   },
+   {
+    "check": "navmesh_links",
+    "detail": "links=36956",
+    "pass": true
+   },
+   {
+    "check": "navmesh_rj_links",
+    "detail": "rj_links=2021",
+    "pass": true
+   },
+   {
+    "check": "movevar_sv_gravity",
+    "detail": "sv_gravity=800 want=800",
+    "pass": true
+   },
+   {
+    "check": "movevar_sv_maxspeed",
+    "detail": "sv_maxspeed=320 want=320",
+    "pass": true
+   },
+   {
+    "check": "movevar_sv_accelerate",
+    "detail": "sv_accelerate=10 want=10",
+    "pass": true
+   },
+   {
+    "check": "movevar_sv_friction",
+    "detail": "sv_friction=4 want=4",
+    "pass": true
+   },
+   {
+    "check": "movevar_sv_stopspeed",
+    "detail": "sv_stopspeed=100 want=100",
+    "pass": true
+   },
+   {
+    "check": "verb_maps",
+    "detail": "1 maps, current map listed",
+    "pass": true
+   },
+   {
+    "check": "verb_items",
+    "detail": "45 items",
+    "pass": true
+   },
+   {
+    "check": "verb_links",
+    "detail": "2021 rj links",
+    "pass": true
+   },
+   {
+    "check": "bots_present",
+    "detail": "4 bots on the roster",
+    "pass": true
+   },
+   {
+    "check": "bot_alive",
+    "detail": "bot ent=1 is alive",
+    "pass": true
+   },
+   {
+    "check": "verb_cell",
+    "detail": "cell 771 under bot, 7 outgoing links",
+    "pass": true
+   },
+   {
+    "check": "verb_route",
+    "detail": "route query answered",
+    "pass": true
+   },
+   {
+    "check": "puppet_teleport",
+    "detail": "landed 1.00u from the requested point",
+    "pass": true
+   },
+   {
+    "check": "puppet_hold",
+    "detail": "bot parked",
+    "pass": true
+   }
+  ],
+  "observed": {
+   "bots": 4,
+   "cells": 4634,
+   "links": 36956,
+   "map": "dm3",
+   "navmesh": "ready",
+   "rj_links": 2021,
+   "server_time": 286.88726806640625
+  },
+  "passed": 20,
+  "status": "passed",
+  "total": 20
+ }
+}

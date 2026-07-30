@@ -1,0 +1,108 @@
+T1 drills: 85 declared, puppeting bot ent=1, pacifist=true
+[1/85] (hex)quad-to-sng-r1
+       ARRIVED 14.6s vs 5.88s (-8.68)  peak 509 u/s  drift 1170u  rev 193
+[2/85] (hex)ratop-to-ssg-r1
+       ARRIVED 16.1s vs 7.91s (-8.21)  peak 496 u/s  drift 836u  rev 236
+[3/85] (hex)sng-to-quad-r1
+       TIMEOUT after 30.0s with no terminal event
+[4/85] (hex)ssg-to-ratop-r1
+       ARRIVED 23.7s vs 11.58s (-12.12)  peak 499 u/s  drift 862u  rev 488
+[5/85] (spawn)lift-to-pent-to-pentmega-r1
+       ARRIVED 17.1s vs 7.72s (-9.33)  peak 488 u/s  drift 417u  rev 256
+[6/85] (spawn)ra-tunnel-to-lg-r1
+       STALLED at 0u (best 4u) after 9.9s
+[7/85] (spawn)rarox-to-quad-r1
+       TIMEOUT after 30.0s with no terminal event
+[8/85] (spawn)rl-to-ratop-xer-r1
+       ARRIVED 21.4s vs 15.86s (-5.52)  peak 493 u/s  drift 646u  rev 372
+[9/85] (spawn)sngspawn-to-ring-to-ratop-r1
+       ARRIVED 25.0s vs 9.56s (-15.44)  peak 495 u/s  drift 317u  rev 507
+[10/85] highbridge-to-rl-r1
+       STALLED at 552u (best 536u) after 14.3s
+[11/85] lg-to-pent-to-pentmega-r1
+       ARRIVED 16.7s vs 11.77s (-4.91)  peak 487 u/s  drift 771u  rev 202
+[12/85] lifts-or-ring-to-sngmega-r1
+       ARRIVED 18.8s vs 8.39s (-10.40)  peak 491 u/s  drift 568u  rev 189
+[13/85] ralow-to-ratop-r1
+       ARRIVED 14.0s vs 8.38s (-5.60)  peak 481 u/s  drift 306u  rev 294
+[14/85] ring-to-ratop-r1
+       ARRIVED 7.4s vs 7.81s (+0.45)  peak 481 u/s  drift 421u  rev 117
+[15/85] ring-to-rl-r1
+       ARRIVED 8.5s vs 6.23s (-2.23)  peak 514 u/s  drift 563u  rev 48
+[16/85] sngspawns-to-sngmega-r1
+       ARRIVED 5.0s vs 8.03s (+3.01)  peak 452 u/s  drift 428u  rev 26
+[17/85] window-to-rl-r1
+       TIMEOUT after 30.0s with no terminal event
+[18/85] (hex)quad-to-sng-r2
+       ARRIVED 8.3s vs 5.88s (-2.41)  peak 547 u/s  drift 392u  rev 101
+[19/85] (hex)ratop-to-ssg-r2
+       ARRIVED 14.4s vs 7.91s (-6.52)  peak 515 u/s  drift 833u  rev 216
+[20/85] (hex)sng-to-quad-r2
+       TIMEOUT after 30.0s with no terminal event
+[21/85] (hex)ssg-to-ratop-r2
+       ARRIVED 24.9s vs 11.58s (-13.31)  peak 501 u/s  drift 864u  rev 490
+[22/85] (spawn)lift-to-pent-to-pentmega-r2
+       ARRIVED 7.4s vs 7.72s (+0.32)  peak 491 u/s  drift 397u  rev 65
+[23/85] (spawn)ra-tunnel-to-lg-r2
+       STALLED at 0u (best 4u) after 11.8s
+[24/85] (spawn)rarox-to-quad-r2
+       TIMEOUT after 30.0s with no terminal event
+[25/85] (spawn)rl-to-ratop-xer-r2
+       TIMEOUT after 30.0s with no terminal event
+[26/85] (spawn)sngspawn-to-ring-to-ratop-r2
+       ARRIVED 20.6s vs 9.56s (-11.03)  peak 493 u/s  drift 319u  rev 366
+[27/85] highbridge-to-rl-r2
+       STALLED at 551u (best 536u) after 14.0s
+[28/85] lg-to-pent-to-pentmega-r2
+       TIMEOUT after 30.0s with no terminal event
+[29/85] lifts-or-ring-to-sngmega-r2
+       ARRIVED 9.9s vs 8.39s (-1.49)  peak 488 u/s  drift 550u  rev 24
+[30/85] ralow-to-ratop-r2
+       ARRIVED 13.5s vs 8.38s (-5.08)  peak 499 u/s  drift 326u  rev 284
+[31/85] ring-to-ratop-r2
+       ARRIVED 17.8s vs 7.81s (-10.03)  peak 499 u/s  drift 428u  rev 362
+[32/85] ring-to-rl-r2
+       ARRIVED 8.6s vs 6.23s (-2.35)  peak 517 u/s  drift 558u  rev 54
+[33/85] sngspawns-to-sngmega-r2
+       ARRIVED 4.7s vs 8.03s (+3.28)  peak 482 u/s  drift 428u  rev 26
+[34/85] window-to-rl-r2
+       ARRIVED 4.4s vs 2.79s (-1.64)  peak 492 u/s  drift 538u  rev 60
+[35/85] (hex)quad-to-sng-r3
+       ARRIVED 18.5s vs 5.88s (-12.59)  peak 495 u/s  drift 1212u  rev 288
+[36/85] (hex)ratop-to-ssg-r3
+       ARRIVED 14.5s vs 7.91s (-6.59)  peak 520 u/s  drift 826u  rev 225
+[37/85] (hex)sng-to-quad-r3
+       TIMEOUT after 30.0s with no terminal event
+[38/85] (hex)ssg-to-ratop-r3
+       ARRIVED 24.7s vs 11.58s (-13.15)  peak 499 u/s  drift 986u  rev 492
+[39/85] (spawn)lift-to-pent-to-pentmega-r3
+       ARRIVED 13.2s vs 7.72s (-5.48)  peak 488 u/s  drift 414u  rev 194
+[40/85] (spawn)ra-tunnel-to-lg-r3
+       ARRIVED 7.6s vs 5.24s (-2.37)  peak 452 u/s  drift 187u  rev 59
+[41/85] (spawn)rarox-to-quad-r3
+       TIMEOUT after 30.0s with no terminal event
+[42/85] (spawn)rl-to-ratop-xer-r3
+       ARRIVED 20.9s vs 15.86s (-5.00)  peak 553 u/s  drift 683u  rev 392
+[43/85] (spawn)sngspawn-to-ring-to-ratop-r3
+       ARRIVED 17.2s vs 9.56s (-7.61)  peak 525 u/s  drift 311u  rev 326
+[44/85] highbridge-to-rl-r3
+       STALLED at 552u (best 542u) after 14.0s
+[45/85] lg-to-pent-to-pentmega-r3
+       TIMEOUT after 30.0s with no terminal event
+[46/85] lifts-or-ring-to-sngmega-r3
+       ARRIVED 10.0s vs 8.39s (-1.61)  peak 478 u/s  drift 560u  rev 29
+[47/85] ralow-to-ratop-r3
+       ARRIVED 13.9s vs 8.38s (-5.53)  peak 481 u/s  drift 306u  rev 294
+[48/85] ring-to-ratop-r3
+       ARRIVED 17.8s vs 7.81s (-9.97)  peak 503 u/s  drift 425u  rev 363
+[49/85] ring-to-rl-r3
+       ARRIVED 8.4s vs 6.23s (-2.20)  peak 519 u/s  drift 559u  rev 60
+[50/85] sngspawns-to-sngmega-r3
+       ARRIVED 5.1s vs 8.03s (+2.98)  peak 452 u/s  drift 429u  rev 28
+[51/85] window-to-rl-r3
+       ARRIVED 7.9s vs 2.79s (-5.11)  peak 491 u/s  drift 671u  rev 105
+[52/85] (hex)quad-to-sng-r4
+       ARRIVED 16.5s vs 5.88s (-10.66)  peak 509 u/s  drift 1214u  rev 257
+[53/85] (hex)ratop-to-ssg-r4
+       ARRIVED 19.7s vs 7.91s (-11.81)  peak 547 u/s  drift 960u  rev 359
+[54/85] (hex)sng-to-quad-r4

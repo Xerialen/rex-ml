@@ -1,0 +1,105 @@
+T1 drills: 51 declared, puppeting bot ent=1, pacifist=true
+[1/51] (hex)quad-to-sng-r1
+       ARRIVED 13.8s vs 5.88s (-7.92)  peak 493 u/s  drift 1168u  rev 132
+[2/51] (hex)ratop-to-ssg-r1
+       STALLED at 584u (best 502u) after 23.2s
+[3/51] (hex)sng-to-quad-r1
+       ARRIVED 24.8s vs 5.99s (-18.79)  peak 554 u/s  drift 721u  rev 610
+[4/51] (hex)ssg-to-ratop-r1
+       ARRIVED 20.1s vs 11.58s (-8.55)  peak 538 u/s  drift 672u  rev 357
+[5/51] (spawn)lift-to-pent-to-pentmega-r1
+       ARRIVED 13.0s vs 7.72s (-5.24)  peak 491 u/s  drift 394u  rev 164
+[6/51] (spawn)ra-tunnel-to-lg-r1
+       STALLED at 0u (best 6u) after 11.7s
+[7/51] (spawn)rarox-to-quad-r1
+       ARRIVED 24.6s vs 3.88s (-20.72)  peak 552 u/s  drift 863u  rev 430
+[8/51] (spawn)rl-to-ratop-xer-r1
+       ARRIVED 24.8s vs 15.86s (-8.95)  peak 537 u/s  drift 641u  rev 476
+[9/51] (spawn)sngspawn-to-ring-to-ratop-r1
+       ARRIVED 23.9s vs 9.56s (-14.32)  peak 493 u/s  drift 320u  rev 449
+[10/51] highbridge-to-rl-r1
+       ARRIVED 5.2s vs 3.04s (-2.13)  peak 523 u/s  drift 639u  rev 47
+[11/51] lg-to-pent-to-pentmega-r1
+       ARRIVED 12.4s vs 11.77s (-0.60)  peak 488 u/s  drift 737u  rev 132
+[12/51] lifts-or-ring-to-sngmega-r1
+       ARRIVED 13.1s vs 8.39s (-4.74)  peak 480 u/s  drift 563u  rev 97
+[13/51] ralow-to-ratop-r1
+       ARRIVED 11.1s vs 8.38s (-2.70)  peak 482 u/s  drift 305u  rev 221
+[14/51] ring-to-ratop-r1
+       ARRIVED 17.9s vs 7.81s (-10.10)  peak 481 u/s  drift 428u  rev 356
+[15/51] ring-to-rl-r1
+       ARRIVED 9.2s vs 6.23s (-2.94)  peak 551 u/s  drift 548u  rev 68
+[16/51] sngspawns-to-sngmega-r1
+       ARRIVED 5.8s vs 8.03s (+2.25)  peak 482 u/s  drift 443u  rev 65
+[17/51] window-to-rl-r1
+       ARRIVED 5.2s vs 2.79s (-2.38)  peak 490 u/s  drift 475u  rev 58
+[18/51] (hex)quad-to-sng-r2
+       ARRIVED 14.5s vs 5.88s (-8.62)  peak 494 u/s  drift 1269u  rev 164
+[19/51] (hex)ratop-to-ssg-r2
+       STALLED at 584u (best 490u) after 20.5s
+[20/51] (hex)sng-to-quad-r2
+       ARRIVED 12.8s vs 5.99s (-6.84)  peak 522 u/s  drift 603u  rev 155
+[21/51] (hex)ssg-to-ratop-r2
+       ARRIVED 21.4s vs 11.58s (-9.86)  peak 527 u/s  drift 749u  rev 396
+[22/51] (spawn)lift-to-pent-to-pentmega-r2
+       ARRIVED 7.4s vs 7.72s (+0.34)  peak 486 u/s  drift 390u  rev 61
+[23/51] (spawn)ra-tunnel-to-lg-r2
+       STALLED at 0u (best 4u) after 9.9s
+[24/51] (spawn)rarox-to-quad-r2
+       ARRIVED 15.6s vs 3.88s (-11.71)  peak 564 u/s  drift 1118u  rev 209
+[25/51] (spawn)rl-to-ratop-xer-r2
+       ARRIVED 24.9s vs 15.86s (-9.08)  peak 551 u/s  drift 638u  rev 501
+[26/51] (spawn)sngspawn-to-ring-to-ratop-r2
+       ARRIVED 23.8s vs 9.56s (-14.28)  peak 493 u/s  drift 328u  rev 451
+[27/51] highbridge-to-rl-r2
+       ARRIVED 5.2s vs 3.04s (-2.13)  peak 491 u/s  drift 606u  rev 58
+[28/51] lg-to-pent-to-pentmega-r2
+       ARRIVED 12.3s vs 11.77s (-0.58)  peak 488 u/s  drift 737u  rev 132
+[29/51] lifts-or-ring-to-sngmega-r2
+       ARRIVED 9.4s vs 8.39s (-1.01)  peak 482 u/s  drift 567u  rev 31
+[30/51] ralow-to-ratop-r2
+       ARRIVED 20.3s vs 8.38s (-11.96)  peak 482 u/s  drift 306u  rev 427
+[31/51] ring-to-ratop-r2
+       ARRIVED 17.9s vs 7.81s (-10.09)  peak 481 u/s  drift 428u  rev 372
+[32/51] ring-to-rl-r2
+       ARRIVED 9.1s vs 6.23s (-2.91)  peak 551 u/s  drift 549u  rev 71
+[33/51] sngspawns-to-sngmega-r2
+       ARRIVED 5.9s vs 8.03s (+2.12)  peak 447 u/s  drift 444u  rev 66
+[34/51] window-to-rl-r2
+       ARRIVED 5.7s vs 2.79s (-2.86)  peak 491 u/s  drift 476u  rev 64
+[35/51] (hex)quad-to-sng-r3
+       ARRIVED 13.6s vs 5.88s (-7.76)  peak 494 u/s  drift 1172u  rev 142
+[36/51] (hex)ratop-to-ssg-r3
+       STALLED at 584u (best 490u) after 19.7s
+[37/51] (hex)sng-to-quad-r3
+       ARRIVED 24.8s vs 5.99s (-18.82)  peak 548 u/s  drift 723u  rev 604
+[38/51] (hex)ssg-to-ratop-r3
+       ARRIVED 18.9s vs 11.58s (-7.36)  peak 512 u/s  drift 667u  rev 311
+[39/51] (spawn)lift-to-pent-to-pentmega-r3
+       ARRIVED 7.4s vs 7.72s (+0.33)  peak 486 u/s  drift 390u  rev 66
+[40/51] (spawn)ra-tunnel-to-lg-r3
+       STALLED at 0u (best 6u) after 9.9s
+[41/51] (spawn)rarox-to-quad-r3
+       ARRIVED 14.7s vs 3.88s (-10.80)  peak 527 u/s  drift 1116u  rev 180
+[42/51] (spawn)rl-to-ratop-xer-r3
+       ARRIVED 20.4s vs 15.86s (-4.53)  peak 551 u/s  drift 641u  rev 341
+[43/51] (spawn)sngspawn-to-ring-to-ratop-r3
+       ARRIVED 23.6s vs 9.56s (-14.02)  peak 492 u/s  drift 331u  rev 440
+[44/51] highbridge-to-rl-r3
+       ARRIVED 5.2s vs 3.04s (-2.16)  peak 491 u/s  drift 640u  rev 59
+[45/51] lg-to-pent-to-pentmega-r3
+       ARRIVED 14.7s vs 11.77s (-2.93)  peak 488 u/s  drift 728u  rev 205
+[46/51] lifts-or-ring-to-sngmega-r3
+       ARRIVED 13.1s vs 8.39s (-4.67)  peak 480 u/s  drift 564u  rev 95
+[47/51] ralow-to-ratop-r3
+       ARRIVED 24.1s vs 8.38s (-15.67)  peak 483 u/s  drift 306u  rev 502
+[48/51] ring-to-ratop-r3
+       ARRIVED 17.9s vs 7.81s (-10.08)  peak 483 u/s  drift 428u  rev 368
+[49/51] ring-to-rl-r3
+       ARRIVED 9.3s vs 6.23s (-3.03)  peak 555 u/s  drift 551u  rev 74
+[50/51] sngspawns-to-sngmega-r3
+       ARRIVED 5.9s vs 8.03s (+2.14)  peak 447 u/s  drift 444u  rev 65
+[51/51] window-to-rl-r3
+       ARRIVED 5.6s vs 2.79s (-2.81)  peak 491 u/s  drift 474u  rev 60
+--> evidence/t1_v1d_lodoff_bandoff.raw.json: failed
+failed

@@ -1,0 +1,12 @@
+{
+ "n": 8,
+ "tick_dt": 0.012987012987012988,
+ "peak_max": 821.4,
+ "peak_median": 821.4,
+ "launch_speed_median": 485.3,
+ "arrival_rate": 1.0,
+ "median_time_s": 7.94,
+ "frac_airborne": 0.8,
+ "max_cross_track_u": 150.7,
+ "passes_peak_gate": true
+}

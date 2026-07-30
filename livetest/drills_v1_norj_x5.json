@@ -1,0 +1,2042 @@
+[
+ {
+  "id": "(hex)quad-to-sng-r1",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "human_travel_secs": 5.948,
+  "human_closest_u": 26.394,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r1",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "human_travel_secs": 7.078,
+  "human_closest_u": 33.181,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r1",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "human_travel_secs": 6.299,
+  "human_closest_u": 17.602,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "human_travel_secs": 10.429,
+  "human_closest_u": 24.129,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "human_travel_secs": 9.169,
+  "human_closest_u": 80.605,
+  "target_status": "reached",
+  "ends_at_target": false,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r1",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "human_travel_secs": 5.052,
+  "human_closest_u": 24.108,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r1",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "human_travel_secs": 3.792,
+  "human_closest_u": 14.156,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r1",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "human_travel_secs": 14.507,
+  "human_closest_u": 28.419,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "human_travel_secs": 8.831,
+  "human_closest_u": 24.666,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "highbridge-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "human_travel_secs": 3.091,
+  "human_closest_u": 81.339,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "human_travel_secs": 10.65,
+  "human_closest_u": 34.124,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "human_travel_secs": 7.74,
+  "human_closest_u": 25.423,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ralow-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "human_travel_secs": 7.779,
+  "human_closest_u": 25.45,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-ratop-r1",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "human_travel_secs": 7.52,
+  "human_closest_u": 24.347,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "human_travel_secs": 5.805,
+  "human_closest_u": 24.891,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r1",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "human_travel_secs": 7.377,
+  "human_closest_u": 24.008,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "window-to-rl-r1",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "human_travel_secs": 3.117,
+  "human_closest_u": 117.778,
+  "target_status": "near",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)quad-to-sng-r2",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "human_travel_secs": 5.948,
+  "human_closest_u": 26.394,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r2",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "human_travel_secs": 7.078,
+  "human_closest_u": 33.181,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r2",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "human_travel_secs": 6.299,
+  "human_closest_u": 17.602,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "human_travel_secs": 10.429,
+  "human_closest_u": 24.129,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "human_travel_secs": 9.169,
+  "human_closest_u": 80.605,
+  "target_status": "reached",
+  "ends_at_target": false,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r2",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "human_travel_secs": 5.052,
+  "human_closest_u": 24.108,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r2",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "human_travel_secs": 3.792,
+  "human_closest_u": 14.156,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r2",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "human_travel_secs": 14.507,
+  "human_closest_u": 28.419,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "human_travel_secs": 8.831,
+  "human_closest_u": 24.666,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "highbridge-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "human_travel_secs": 3.091,
+  "human_closest_u": 81.339,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "human_travel_secs": 10.65,
+  "human_closest_u": 34.124,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "human_travel_secs": 7.74,
+  "human_closest_u": 25.423,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ralow-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "human_travel_secs": 7.779,
+  "human_closest_u": 25.45,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-ratop-r2",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "human_travel_secs": 7.52,
+  "human_closest_u": 24.347,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "human_travel_secs": 5.805,
+  "human_closest_u": 24.891,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r2",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "human_travel_secs": 7.377,
+  "human_closest_u": 24.008,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "window-to-rl-r2",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "human_travel_secs": 3.117,
+  "human_closest_u": 117.778,
+  "target_status": "near",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)quad-to-sng-r3",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "human_travel_secs": 5.948,
+  "human_closest_u": 26.394,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r3",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "human_travel_secs": 7.078,
+  "human_closest_u": 33.181,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r3",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "human_travel_secs": 6.299,
+  "human_closest_u": 17.602,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "human_travel_secs": 10.429,
+  "human_closest_u": 24.129,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "human_travel_secs": 9.169,
+  "human_closest_u": 80.605,
+  "target_status": "reached",
+  "ends_at_target": false,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r3",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "human_travel_secs": 5.052,
+  "human_closest_u": 24.108,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r3",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "human_travel_secs": 3.792,
+  "human_closest_u": 14.156,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r3",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "human_travel_secs": 14.507,
+  "human_closest_u": 28.419,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "human_travel_secs": 8.831,
+  "human_closest_u": 24.666,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "highbridge-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "human_travel_secs": 3.091,
+  "human_closest_u": 81.339,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "human_travel_secs": 10.65,
+  "human_closest_u": 34.124,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "human_travel_secs": 7.74,
+  "human_closest_u": 25.423,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ralow-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "human_travel_secs": 7.779,
+  "human_closest_u": 25.45,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-ratop-r3",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "human_travel_secs": 7.52,
+  "human_closest_u": 24.347,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "human_travel_secs": 5.805,
+  "human_closest_u": 24.891,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r3",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "human_travel_secs": 7.377,
+  "human_closest_u": 24.008,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "window-to-rl-r3",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "human_travel_secs": 3.117,
+  "human_closest_u": 117.778,
+  "target_status": "near",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)quad-to-sng-r4",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "human_travel_secs": 5.948,
+  "human_closest_u": 26.394,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r4",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "human_travel_secs": 7.078,
+  "human_closest_u": 33.181,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r4",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "human_travel_secs": 6.299,
+  "human_closest_u": 17.602,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r4",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "human_travel_secs": 10.429,
+  "human_closest_u": 24.129,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r4",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "human_travel_secs": 9.169,
+  "human_closest_u": 80.605,
+  "target_status": "reached",
+  "ends_at_target": false,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r4",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "human_travel_secs": 5.052,
+  "human_closest_u": 24.108,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r4",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "human_travel_secs": 3.792,
+  "human_closest_u": 14.156,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r4",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "human_travel_secs": 14.507,
+  "human_closest_u": 28.419,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r4",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "human_travel_secs": 8.831,
+  "human_closest_u": 24.666,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "highbridge-to-rl-r4",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "human_travel_secs": 3.091,
+  "human_closest_u": 81.339,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r4",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "human_travel_secs": 10.65,
+  "human_closest_u": 34.124,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r4",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "human_travel_secs": 7.74,
+  "human_closest_u": 25.423,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ralow-to-ratop-r4",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "human_travel_secs": 7.779,
+  "human_closest_u": 25.45,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-ratop-r4",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "human_travel_secs": 7.52,
+  "human_closest_u": 24.347,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-rl-r4",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "human_travel_secs": 5.805,
+  "human_closest_u": 24.891,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r4",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "human_travel_secs": 7.377,
+  "human_closest_u": 24.008,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "window-to-rl-r4",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "human_travel_secs": 3.117,
+  "human_closest_u": 117.778,
+  "target_status": "near",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)quad-to-sng-r5",
+  "kind": "route",
+  "from_xyz": [
+   936.75,
+   336.0,
+   56.0
+  ],
+  "to_xyz": [
+   -512,
+   448,
+   96
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.247,
+  "max_secs": 5.876,
+  "human_travel_secs": 5.948,
+  "human_closest_u": 26.394,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ratop-to-ssg-r5",
+  "kind": "route",
+  "from_xyz": [
+   263.625,
+   -691.625,
+   328.0
+  ],
+  "to_xyz": [
+   1776,
+   -656,
+   -48
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.064,
+  "max_secs": 7.912,
+  "human_travel_secs": 7.078,
+  "human_closest_u": 33.181,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)sng-to-quad-r5",
+  "kind": "route",
+  "from_xyz": [
+   -518.625,
+   493.625,
+   120.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.351,
+  "max_secs": 5.993,
+  "human_travel_secs": 6.299,
+  "human_closest_u": 17.602,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(hex)ssg-to-ratop-r5",
+  "kind": "route",
+  "from_xyz": [
+   1777.0,
+   -672.0,
+   -24.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.338,
+  "max_secs": 11.578,
+  "human_travel_secs": 10.429,
+  "human_closest_u": 24.129,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)lift-to-pent-to-pentmega-r5",
+  "kind": "route",
+  "from_xyz": [
+   511.375,
+   740.0,
+   216.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.896,
+  "max_secs": 7.724,
+  "human_travel_secs": 9.169,
+  "human_closest_u": 80.605,
+  "target_status": "reached",
+  "ends_at_target": false,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)ra-tunnel-to-lg-r5",
+  "kind": "route",
+  "from_xyz": [
+   192.0,
+   -207.0,
+   -176.0
+  ],
+  "to_xyz": [
+   1544,
+   -192,
+   -416
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 4.675,
+  "max_secs": 5.237,
+  "human_travel_secs": 5.052,
+  "human_closest_u": 24.108,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rarox-to-quad-r5",
+  "kind": "route",
+  "from_xyz": [
+   -632.0,
+   -680.5,
+   -16.0
+  ],
+  "to_xyz": [
+   952,
+   296,
+   56
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 3.467,
+  "max_secs": 3.883,
+  "human_travel_secs": 3.792,
+  "human_closest_u": 14.156,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)rl-to-ratop-xer-r5",
+  "kind": "route",
+  "from_xyz": [
+   1488.0,
+   436.625,
+   -88.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 14.156,
+  "max_secs": 15.855,
+  "human_travel_secs": 14.507,
+  "human_closest_u": 28.419,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "(spawn)sngspawn-to-ring-to-ratop-r5",
+  "kind": "route",
+  "from_xyz": [
+   -877.0,
+   -232.25,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 8.533,
+  "max_secs": 9.557,
+  "human_travel_secs": 8.831,
+  "human_closest_u": 24.666,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "highbridge-to-rl-r5",
+  "kind": "route",
+  "from_xyz": [
+   1358.875,
+   -347.75,
+   -24.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.715,
+  "max_secs": 3.04,
+  "human_travel_secs": 3.091,
+  "human_closest_u": 81.339,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lg-to-pent-to-pentmega-r5",
+  "kind": "route",
+  "from_xyz": [
+   1551.125,
+   -194.125,
+   -392.0
+  ],
+  "to_xyz": [
+   1840,
+   624,
+   -204
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 10.506,
+  "max_secs": 11.767,
+  "human_travel_secs": 10.65,
+  "human_closest_u": 34.124,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "lifts-or-ring-to-sngmega-r5",
+  "kind": "route",
+  "from_xyz": [
+   514.375,
+   759.625,
+   216.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.494,
+  "max_secs": 8.393,
+  "human_travel_secs": 7.74,
+  "human_closest_u": 25.423,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ralow-to-ratop-r5",
+  "kind": "route",
+  "from_xyz": [
+   -12.5,
+   -574.125,
+   -16.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.481,
+  "max_secs": 8.378,
+  "human_travel_secs": 7.779,
+  "human_closest_u": 25.45,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-ratop-r5",
+  "kind": "route",
+  "from_xyz": [
+   494.25,
+   -384.625,
+   56.0
+  ],
+  "to_xyz": [
+   256,
+   -704,
+   304
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 6.974,
+  "max_secs": 7.811,
+  "human_travel_secs": 7.52,
+  "human_closest_u": 24.347,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "ring-to-rl-r5",
+  "kind": "route",
+  "from_xyz": [
+   188.125,
+   -44.875,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 5.559,
+  "max_secs": 6.226,
+  "human_travel_secs": 5.805,
+  "human_closest_u": 24.891,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "sngspawns-to-sngmega-r5",
+  "kind": "route",
+  "from_xyz": [
+   -880.0,
+   -232.0,
+   -16.0
+  ],
+  "to_xyz": [
+   -720,
+   80,
+   160
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 7.169,
+  "max_secs": 8.03,
+  "human_travel_secs": 7.377,
+  "human_closest_u": 24.008,
+  "target_status": "reached",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ },
+ {
+  "id": "window-to-rl-r5",
+  "kind": "route",
+  "from_xyz": [
+   1295.875,
+   445.5,
+   56.0
+  ],
+  "to_xyz": [
+   1520,
+   496,
+   -112
+  ],
+  "snap_start": false,
+  "snap_goal": true,
+  "human_secs": 2.493,
+  "max_secs": 2.793,
+  "human_travel_secs": 3.117,
+  "human_closest_u": 117.778,
+  "target_status": "near",
+  "ends_at_target": true,
+  "straight": 0,
+  "rj_allowed": false
+ }
+]

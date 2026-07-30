@@ -1,0 +1,309 @@
+{
+ "schema": "rex-drills/1",
+ "not_": "rtx-testflow/1 \u2014 the lab suite was unreachable; see livetest/README.md",
+ "tier": "T1",
+ "kind": "movement_drills",
+ "status": "passed",
+ "generated_at": "2026-07-28T04:53:35+0300",
+ "machine": {
+  "host": "bisapps001",
+  "kernel": "6.8.0-136-generic",
+  "arch": "x86_64",
+  "cpus": 64
+ },
+ "build": {
+  "engine_binary": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/mvdsv",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/mvdsv",
+   "md5": "5775a2af1fdc0b9f77a90c3bf660fabb",
+   "bytes": 769344
+  },
+  "game_module": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/playground/qw/qwprogs.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "build_output": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "realpath": "/home/benjamin-adm/rex-ml/rtx/target/release/librtx.so",
+   "md5": "29bc1259ecddb6b449bc3b77c275eeac",
+   "bytes": 2975440
+  },
+  "game_module_matches_build_output": true,
+  "map": {
+   "path": "/home/benjamin-adm/rex-ml/rtx/playground/qw/maps/dm3.bsp",
+   "realpath": "/home/benjamin-adm/mlx/qwserver/serverdir/id1/maps/dm3.bsp",
+   "md5": "e48f522b498c5b43583303527e7df1fe",
+   "bytes": 950200
+  },
+  "repo": {
+   "branch": "rex-ml/step3-cvar",
+   "commit": "f4d607cb6d0da57f494b246eeb00844ee87c48fd",
+   "describe": "f4d607c",
+   "dirty": true
+  }
+ },
+ "notes": [
+  "Smoke run, first 6 drills, used to prove the rig before the full set."
+ ],
+ "conditions": {
+  "bot_ent": 1,
+  "other_bots_held": 3,
+  "pacifist": true
+ },
+ "result": {
+  "arrival_rate": 1.0,
+  "arrived": 6,
+  "arrived_elapsed": {
+   "max": 16.451080322265625,
+   "mean": 10.837514241536459,
+   "min": 7.662841796875,
+   "n": 6,
+   "p50": 11.503875732421875,
+   "p90": 16.451080322265625
+  },
+  "arrived_peak_speed": {
+   "max": 548.4645385742188,
+   "mean": 509.4287974039714,
+   "min": 477.135009765625,
+   "n": 6,
+   "p50": 515.8844604492188,
+   "p90": 548.4645385742188
+  },
+  "drills": [
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 17.11536407470703,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     256.0,
+     -704.0,
+     328.0
+    ],
+    "id": "r002-RA-tunnel_spawn->RA",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 8.4742431640625,
+     "max_cross_track": 392.7967529296875,
+     "max_heading_deg": 178.71824645996094,
+     "max_yaw_step_deg": 143.20272827148438,
+     "max_z_gain": 531.9800415039062,
+     "peak_progress": 0.4627041816711426,
+     "peak_speed": 477.135009765625,
+     "reverse_frames": 136,
+     "samples": 402
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 28,
+    "planned_path_len": 1049.75830078125,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 484.24786376953125,
+    "to_cell": 1372,
+    "to_name": "RA",
+    "wall_secs": 8.222729682922363
+   },
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 203.37030029296875,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     1216.0,
+     -896.0,
+     -24.0
+    ],
+    "id": "r003-RA-tunnel_spawn->YA",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 11.503875732421875,
+     "max_cross_track": 1070.86865234375,
+     "max_heading_deg": 179.56478881835938,
+     "max_yaw_step_deg": 174.07765197753906,
+     "max_z_gain": 195.9800262451172,
+     "peak_progress": 1.0779916048049927,
+     "peak_speed": 548.4645385742188,
+     "reverse_frames": 156,
+     "samples": 551
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 15,
+    "planned_path_len": 1102.3232421875,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 1224.8101806640625,
+    "to_cell": 2984,
+    "to_name": "YA",
+    "wall_secs": 11.252091407775879
+   },
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 179.37562561035156,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     1504.0,
+     480.0,
+     -88.0
+    ],
+    "id": "r004-RA-tunnel_spawn->RL",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 8.56207275390625,
+     "max_cross_track": 578.227294921875,
+     "max_heading_deg": 178.317626953125,
+     "max_yaw_step_deg": 102.03876495361328,
+     "max_z_gain": 131.96563720703125,
+     "peak_progress": 1.1130099296569824,
+     "peak_speed": 519.1057739257812,
+     "reverse_frames": 59,
+     "samples": 411
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 15,
+    "planned_path_len": 1102.3232421875,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 1488.9459228515625,
+    "to_cell": 3744,
+    "to_name": "RL",
+    "wall_secs": 8.310503959655762
+   },
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 320.6781005859375,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     960.0,
+     288.0,
+     56.0
+    ],
+    "id": "r005-RA-tunnel_spawn->Quad",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 16.451080322265625,
+     "max_cross_track": 632.4072265625,
+     "max_heading_deg": 179.37567138671875,
+     "max_yaw_step_deg": 180.0,
+     "max_z_gain": 275.98004150390625,
+     "peak_progress": 0.14625345170497894,
+     "peak_speed": 513.9002075195312,
+     "reverse_frames": 260,
+     "samples": 785
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 28,
+    "planned_path_len": 1049.75830078125,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 923.0211181640625,
+    "to_cell": 2544,
+    "to_name": "Quad",
+    "wall_secs": 16.199995040893555
+   },
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 119.8774185180664,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     992.0,
+     800.0,
+     -296.0
+    ],
+    "id": "r006-RA-tunnel_spawn->Pent",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 12.3709716796875,
+     "max_cross_track": 692.8815307617188,
+     "max_heading_deg": 175.72079467773438,
+     "max_yaw_step_deg": 176.58494567871094,
+     "max_z_gain": 51.980018615722656,
+     "peak_progress": 1.076286792755127,
+     "peak_speed": 482.0827941894531,
+     "reverse_frames": 75,
+     "samples": 589
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 15,
+    "planned_path_len": 1102.3232421875,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 1299.4521484375,
+    "to_cell": 2621,
+    "to_name": "Pent",
+    "wall_secs": 12.1184720993042
+   },
+   {
+    "bot_stalls": [],
+    "budget_secs": 20.0,
+    "end_dist": 15.72602653503418,
+    "from_cell": 1281,
+    "from_name": "RA-tunnel spawn",
+    "goal": [
+     224.0,
+     -32.0,
+     56.0
+    ],
+    "id": "r007-RA-tunnel_spawn->Ring",
+    "kind": "spawn",
+    "metrics": {
+     "elapsed": 7.662841796875,
+     "max_cross_track": 374.6589660644531,
+     "max_heading_deg": 179.4762420654297,
+     "max_yaw_step_deg": 146.1974639892578,
+     "max_z_gain": 275.98004150390625,
+     "peak_progress": 0.3460480272769928,
+     "peak_speed": 515.8844604492188,
+     "reverse_frames": 149,
+     "samples": 365
+    },
+    "outcome": "arrived",
+    "pass": true,
+    "planned_legs": 30,
+    "planned_path_len": 1087.458984375,
+    "start": [
+     192.0,
+     -224.0,
+     -176.0
+    ],
+    "straight_dist": 194.64840698242188,
+    "to_cell": 1346,
+    "to_name": "Ring",
+    "wall_secs": 7.410608768463135
+   }
+  ],
+  "errored": 0,
+  "stalled": 0,
+  "status": "passed",
+  "total": 6
+ }
+}

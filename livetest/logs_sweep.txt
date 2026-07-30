@@ -1,0 +1,34 @@
+== lod_off : rtx_bot_lod 0
+rtx_bot_lod = 0 (0) ok
+   passed 2/14  arrived 12  sum of median margins -64.7s over 7 drills  total path 38344u
+== hazardk_0 : rtx_bot_hazard_k 0
+rtx_bot_hazard_k = 0 (0) ok
+   passed 0/14  arrived 11  sum of median margins -75.5s over 7 drills  total path 43736u
+== bandplan_off : rtx_bot_bandplan 0
+rtx_bot_bandplan = 0 (0) ok
+   passed 1/14  arrived 11  sum of median margins -44.3s over 6 drills  total path 29022u
+== magnet_off : rtx_bot_magnet 0
+rtx_bot_magnet = 0 (0) ok
+   passed 1/14  arrived 11  sum of median margins -42.8s over 6 drills  total path 30749u
+== greed_off : rtx_bot_greed 0
+rtx_bot_greed = 0 (0) ok
+   passed 1/14  arrived 10  sum of median margins -65.5s over 6 drills  total path 37694u
+== hazard_health_off : rtx_bot_hazard_health 0
+rtx_bot_hazard_health = 0 (0) ok
+   passed 1/14  arrived 10  sum of median margins -25.4s over 5 drills  total path 22032u
+== lod_off_hazardk_0 : rtx_bot_lod 0 rtx_bot_hazard_k 0
+rtx_bot_lod = 0 (0) ok
+rtx_bot_hazard_k = 0 (0) ok
+   passed 0/14  arrived 13  sum of median margins -72.4s over 7 drills  total path 41323u
+== lod_off_bandplan_off : rtx_bot_lod 0 rtx_bot_bandplan 0
+rtx_bot_lod = 0 (0) ok
+rtx_bot_bandplan = 0 (0) ok
+   passed 0/14  arrived 11  sum of median margins -84.0s over 7 drills  total path 43567u
+== turnrate_2000 : rtx_bot_turnrate 2000
+rtx_bot_turnrate = 2000 (2000) ok
+   passed 1/14  arrived 12  sum of median margins -49.1s over 6 drills  total path 31786u
+== skill_4 : rtx_bot_skill 4
+rtx_bot_skill = 4 (4) ok
+   passed 1/14  arrived 11  sum of median margins -61.4s over 6 drills  total path 36145u
+== nearfield_off : rtx_bot_nearfield 0
+rtx_bot_nearfield = 0 (0) ok

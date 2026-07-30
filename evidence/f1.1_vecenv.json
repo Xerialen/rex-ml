@@ -1,0 +1,84 @@
+{
+  "spec": "F1.1-vector-env",
+  "date": "2026-07-28",
+  "machine": {
+    "nproc": 64,
+    "load_average_at_measurement": [2.89, 2.54, 1.61]
+  },
+  "native_reference": {
+    "description": "rex-env-bench (crates/rex-env/src/bin/bench.rs), release build, dm3.bsp, the same start/goal pair used throughout this evidence file, deterministic pseudo-random policy (hold-forward + view sweep + jump pulses).",
+    "command": "./target/release/rex-env-bench playground/qw/maps/dm3.bsp 64 2000000",
+    "spec_stated_steps_per_s": 139500000,
+    "remeasured_today": {
+      "one_thread_steps_per_s": 3420000,
+      "sixty_four_thread_steps_per_s_runs": [143900000, 137200000, 140850000],
+      "sixty_four_thread_steps_per_s_median": 140850000,
+      "note": "Median of 3 repeats today (140.85 M/s) is within 1% of the spec's stated 139.5 M/s figure; used the spec's 139.5 M/s as the comparison baseline below since that is the number the spec names, with today's remeasurement recorded here as independent confirmation it still holds."
+    }
+  },
+  "python_boundary": {
+    "description": "PyVecEnv.step() through the full PyO3 + numpy boundary: dm3.bsp, Route::planned(start, goal) (a real navmesh route, not Route::new's straight line), a trivial random policy (uniform noise over (fwd, side, dyaw, jump), regenerated fresh every single step() call so numpy's own generation cost is inside the timed loop) -- the environment plus the boundary and nothing else, no torch, no learned policy.",
+    "start": [-880.0, -232.0, -16.0],
+    "goal": [-720.0, -232.0, -16.0],
+    "script": "rtx/crates/rex-env/python/pybench.py",
+    "command": "/home/benjamin-adm/rex-ml/.venv/bin/python rtx/crates/rex-env/python/pybench.py",
+    "methodology": "5 repeats per N, each repeat: warmup calls (~10% of the timed count, to pay for rayon thread-pool spin-up once, off the clock) then a timed loop of step() calls with a freshly-generated (N,4) float32 action array each call; reported rate is env-steps (N * calls) / wall time. Median of 5 repeats reported below; full per-repeat spread in raw_results.",
+    "raw_results": [
+      {
+        "n": 1024,
+        "steps_per_call": 7812,
+        "repeats": 5,
+        "rates_steps_per_s": [2328926.68, 2479334.46, 3001667.33, 3384986.90, 3657678.35],
+        "median_steps_per_s": 3001667.33
+      },
+      {
+        "n": 4096,
+        "steps_per_call": 1953,
+        "repeats": 5,
+        "rates_steps_per_s": [6006322.35, 6025961.65, 6422449.59, 6849363.53, 6965526.31],
+        "median_steps_per_s": 6422449.59
+      },
+      {
+        "n": 16384,
+        "steps_per_call": 488,
+        "repeats": 5,
+        "rates_steps_per_s": [5169975.40, 5495836.09, 6848730.55, 6882897.17, 8200663.18],
+        "median_steps_per_s": 6848730.55
+      }
+    ]
+  },
+  "throughput_table": {
+    "native_steps_per_s": 139500000,
+    "rows": [
+      {
+        "n": 1024,
+        "python_steps_per_s_median": 3001667.33,
+        "python_M_steps_per_s": 3.00,
+        "retained_fraction_of_native": 0.02152,
+        "retained_pct": "2.15%"
+      },
+      {
+        "n": 4096,
+        "python_steps_per_s_median": 6422449.59,
+        "python_M_steps_per_s": 6.42,
+        "retained_fraction_of_native": 0.04604,
+        "retained_pct": "4.60%"
+      },
+      {
+        "n": 16384,
+        "python_steps_per_s_median": 6848730.55,
+        "python_M_steps_per_s": 6.85,
+        "retained_fraction_of_native": 0.04910,
+        "retained_pct": "4.91%"
+      }
+    ]
+  },
+  "finding": "The retained fraction is poor -- 2.15% at N=1024, plateauing around 4.6-4.9% by N=4096-16384 -- and does not recover materially with more N in this range, unlike a per-step-FFI-call design (which the spec already rules out) where batching alone would be expected to keep buying throughput roughly linearly with N. Isolating the cost (env.step() called with a PRE-generated action array, i.e. excluding numpy's own random-generation cost, at N=16384: ~2.06ms/call versus a pure-compute estimate of ~117us if 16384 env-steps split evenly across 64 threads at the native per-step cost) shows the gap is dominated by per-call parallel-dispatch overhead, not environment or array-marshalling cost: VecEnv::step() opens a fresh rayon par_iter_mut() region on every single Python-level step() call, so every call pays for waking/redistributing work across the (idle between calls) thread pool and joining at the end, rather than rayon's worker threads ever running in a tight loop the way rex-env-bench's threads do (each of rex-env-bench's 64 std::thread::spawn threads loops millions of ticks internally and is never parked between them). That per-call wake/join tax does not shrink as N grows, so it dominates at these batch sizes and the retained fraction stays in the low single-digit percent instead of approaching 100%. This is reported as a design finding per the spec's instruction, not quietly tuned around: the two fixes the spec names are a bigger N (partial relief only -- the fraction is already flattening out by N=16384) or moving the policy into Rust so the per-tick loop never crosses the Python boundary at all (this is what rex-selfplay / a live rollout loop would do for real training throughput; PyVecEnv is for phase-1 debugging/inspection from Python, not for burning through tens of millions of RL steps).",
+  "build_and_import": {
+    "build_command": "cargo build --release -p rex-env --features python",
+    "artifact": "rtx/target/release/librex_env.so",
+    "why_a_feature_flag": "pyo3/numpy are optional deps gated behind the `python` Cargo feature so a plain `cargo build`/`cargo test -p rex-env` (and every other crate in the workspace) never needs a Python interpreter or pulls in pyo3.",
+    "import_setup": "CPython resolves an extension module by exact filename (module name + `sysconfig.get_config_var('EXT_SUFFIX')`), so the cdylib is exposed to the target venv by symlinking it under that name into the venv's site-packages: ln -sf $(pwd)/rtx/target/release/librex_env.so /home/benjamin-adm/rex-ml/.venv/lib/python3.12/site-packages/rex_env.cpython-312-x86_64-linux-gnu.so -- a symlink rather than a copy so a rebuild is picked up without re-copying. No maturin/pip involved (neither is installed in that venv); this venv's python (a uv-managed venv) is the same /usr/bin/python3.12 pyo3's build script auto-detected, so no ABI mismatch.",
+    "verified_import": "/home/benjamin-adm/rex-ml/.venv/bin/python -c \"import rex_env; env = rex_env.PyVecEnv(bsp_path, start, goal, n); obs = env.reset(); obs, parts, dones = env.step(actions)\""
+  }
+}

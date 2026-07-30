@@ -1,0 +1,781 @@
+{
+  "conditions": {
+    "bot_ent": 1,
+    "other_bots_held": 0,
+    "pacifist": true,
+    "telemetry": true,
+    "timeout_floor_secs": 30.0
+  },
+  "kind": "movement_drills",
+  "result": {
+    "arrival_rate": 0.8571428571428571,
+    "arrived": 12,
+    "arrived_below_speed_bar": 0,
+    "arrived_elapsed": {
+      "max": 4.26806640625,
+      "mean": 4.26806640625,
+      "min": 4.26806640625,
+      "n": 1,
+      "p50": 4.26806640625,
+      "p90": 4.26806640625
+    },
+    "arrived_over_time_target": 11,
+    "arrived_peak_speed": {
+      "max": 477.4462585449219,
+      "mean": 477.4462585449219,
+      "min": 477.4462585449219,
+      "n": 1,
+      "p50": 477.4462585449219,
+      "p90": 477.4462585449219
+    },
+    "drills": [
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.2802276611328
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 30.108705520629883
+          }
+        ],
+        "budget_secs": 30.0,
+        "from_cell": 515,
+        "goal": [
+          896.0,
+          320.0,
+          56.0
+        ],
+        "id": "sng-to-quad-r1",
+        "kind": "route",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 20,
+        "planned_path_len": 785.1599731445312,
+        "start": [
+          -512.0,
+          480.0,
+          120.0
+        ],
+        "straight_dist": 1417.061767578125,
+        "to_cell": 2412,
+        "wall_secs": 30.00010871887207
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.8699493408203
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 139.83456420898438
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 207.59933471679688
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 411.1817321777344
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 19.18999481201172,
+        "from_cell": 362,
+        "goal": [
+          960.0,
+          256.0,
+          56.0
+        ],
+        "id": "spawn-rarox-to-quad-r1",
+        "kind": "route",
+        "margin_secs": -21.133,
+        "metrics": {
+          "elapsed": 24.49560546875,
+          "max_cross_track": 675.254638671875,
+          "max_heading_deg": 179.5859832763672,
+          "max_yaw_step_deg": 180.0,
+          "max_z_gain": 115.98002624511719,
+          "mean_speed": 361.0185546875,
+          "path_len": 8843.3681640625,
+          "peak_progress": 0.5884917378425598,
+          "peak_speed": 511.5265808105469,
+          "reverse_frames": 370,
+          "samples": 1182
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 65,
+        "planned_path_len": 2433.031494140625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1849.644287109375,
+        "target_secs": 3.363,
+        "time_ok": false,
+        "to_cell": 2543,
+        "wall_secs": 24.225196838378906
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.7620849609375
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 169.8022918701172
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 152.0296173095703
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 136.55039978027344,
+        "from_cell": 4292,
+        "goal": [
+          192.0,
+          -704.0,
+          328.0
+        ],
+        "id": "ssg-to-ratop-r1",
+        "kind": "route",
+        "margin_secs": -14.689,
+        "metrics": {
+          "elapsed": 24.8583984375,
+          "max_cross_track": 971.1729125976562,
+          "max_heading_deg": 180.0,
+          "max_yaw_step_deg": 151.74398803710938,
+          "max_z_gain": 354.8072509765625,
+          "mean_speed": 360.80694580078125,
+          "path_len": 8969.0830078125,
+          "peak_progress": 0.6086268424987793,
+          "peak_speed": 500.4688720703125,
+          "reverse_frames": 458,
+          "samples": 1194
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 27,
+        "planned_path_len": 1481.4002685546875,
+        "start": [
+          1792.0,
+          -672.0,
+          -24.0
+        ],
+        "straight_dist": 1600.3199462890625,
+        "target_secs": 10.169,
+        "time_ok": false,
+        "to_cell": 1267,
+        "wall_secs": 24.588056564331055
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.86984252929688
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "SpeedJump",
+            "reason": "prestrafe_deficit",
+            "speed": 298.0909729003906
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 23.157772064208984,
+        "from_cell": 1372,
+        "goal": [
+          1760.0,
+          -672.0,
+          -24.0
+        ],
+        "id": "ratop-to-ssg-r1",
+        "kind": "route",
+        "margin_secs": -7.152,
+        "metrics": {
+          "elapsed": 13.2822265625,
+          "max_cross_track": 847.3253784179688,
+          "max_heading_deg": 179.31414794921875,
+          "max_yaw_step_deg": 179.73533630371094,
+          "max_z_gain": 43.96563720703125,
+          "mean_speed": 365.81121826171875,
+          "path_len": 4858.78759765625,
+          "peak_progress": 0.07509265840053558,
+          "peak_speed": 507.7702331542969,
+          "reverse_frames": 191,
+          "samples": 640
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1504.34033203125,
+        "target_secs": 6.13,
+        "time_ok": false,
+        "to_cell": 4228,
+        "wall_secs": 13.03069019317627
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.8642120361328
+          },
+          {
+            "action": "force_jump",
+            "link_kind": "SpeedJump",
+            "reason": "displacement",
+            "speed": 16.851621627807617
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "SpeedJump",
+            "reason": "speedjump_stall",
+            "speed": 349.19378662109375
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 455.3443603515625,
+        "from_cell": 2478,
+        "goal": [
+          -481.39129638671875,
+          481.0434875488281,
+          120.0
+        ],
+        "id": "quad-to-sng-r1",
+        "kind": "route",
+        "margin_secs": -9.803,
+        "metrics": {
+          "elapsed": 14.82763671875,
+          "max_cross_track": 1194.7022705078125,
+          "max_heading_deg": 179.13702392578125,
+          "max_yaw_step_deg": 178.10781860351562,
+          "max_z_gain": 64.03125,
+          "mean_speed": 357.93402099609375,
+          "path_len": 5307.3154296875,
+          "peak_progress": 1.145719289779663,
+          "peak_speed": 494.18157958984375,
+          "reverse_frames": 157,
+          "samples": 715
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 13,
+        "planned_path_len": 695.5482177734375,
+        "start": [
+          928.0,
+          320.0,
+          56.0
+        ],
+        "straight_dist": 1418.562255859375,
+        "target_secs": 5.025,
+        "time_ok": false,
+        "to_cell": 539,
+        "wall_secs": 14.557767868041992
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 229.62876892089844
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 738.6477661132812,
+        "from_cell": 67,
+        "goal": [
+          -768.0,
+          96.0,
+          184.0
+        ],
+        "id": "sngspawns-to-sngmega-r1",
+        "kind": "route",
+        "margin_secs": 2.719,
+        "metrics": {
+          "elapsed": 4.26806640625,
+          "max_cross_track": 320.65533447265625,
+          "max_heading_deg": 102.66258239746094,
+          "max_yaw_step_deg": 33.94624710083008,
+          "max_z_gain": 179.9800262451172,
+          "mean_speed": 355.5545654296875,
+          "path_len": 1517.530517578125,
+          "peak_progress": 3.053394317626953,
+          "peak_speed": 477.4462585449219,
+          "reverse_frames": 7,
+          "samples": 206
+        },
+        "outcome": "arrived",
+        "pass": true,
+        "planned_legs": 30,
+        "planned_path_len": 1004.4564208984375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 344.6505432128906,
+        "target_secs": 6.987,
+        "time_ok": true,
+        "to_cell": 232,
+        "wall_secs": 3.9984793663024902
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.56480407714844
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 202.79348754882812
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 95.87760925292969,
+        "from_cell": 1743,
+        "goal": [
+          192.0,
+          -704.0,
+          328.0
+        ],
+        "id": "ring-to-ratop-r1",
+        "kind": "route",
+        "margin_secs": -6.183,
+        "metrics": {
+          "elapsed": 12.48193359375,
+          "max_cross_track": 358.3034362792969,
+          "max_heading_deg": 179.9259796142578,
+          "max_yaw_step_deg": 118.11363220214844,
+          "max_z_gain": 299.96563720703125,
+          "mean_speed": 347.84454345703125,
+          "path_len": 4341.7724609375,
+          "peak_progress": 1.3808259963989258,
+          "peak_speed": 485.3713073730469,
+          "reverse_frames": 234,
+          "samples": 597
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 25,
+        "planned_path_len": 1041.925537109375,
+        "start": [
+          480.0,
+          -384.0,
+          56.0
+        ],
+        "straight_dist": 430.5159606933594,
+        "target_secs": 6.299,
+        "time_ok": false,
+        "to_cell": 1267,
+        "wall_secs": 12.212418556213379
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 229.05117797851562
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 196.98057556152344
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 230.05865478515625
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 194.59249877929688
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 329.05548095703125
+          }
+        ],
+        "budget_secs": 30.0,
+        "from_cell": 515,
+        "goal": [
+          896.0,
+          320.0,
+          56.0
+        ],
+        "id": "sng-to-quad-r2",
+        "kind": "route",
+        "outcome": "timeout",
+        "pass": false,
+        "planned_legs": 20,
+        "planned_path_len": 785.1599731445312,
+        "start": [
+          -512.0,
+          480.0,
+          120.0
+        ],
+        "straight_dist": 1417.061767578125,
+        "to_cell": 2412,
+        "wall_secs": 30.00008201599121
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 229.620849609375
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 29.999998092651367
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 21.300527572631836,
+        "from_cell": 362,
+        "goal": [
+          960.0,
+          256.0,
+          56.0
+        ],
+        "id": "spawn-rarox-to-quad-r2",
+        "kind": "route",
+        "margin_secs": -9.196,
+        "metrics": {
+          "elapsed": 12.558837890625,
+          "max_cross_track": 664.58837890625,
+          "max_heading_deg": 179.69674682617188,
+          "max_yaw_step_deg": 155.99534606933594,
+          "max_z_gain": 115.98002624511719,
+          "mean_speed": 389.6951904296875,
+          "path_len": 4894.11865234375,
+          "peak_progress": 0.5846181511878967,
+          "peak_speed": 510.4560546875,
+          "reverse_frames": 133,
+          "samples": 606
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 65,
+        "planned_path_len": 2433.031494140625,
+        "start": [
+          -640.0,
+          -672.0,
+          -16.0
+        ],
+        "straight_dist": 1849.644287109375,
+        "target_secs": 3.363,
+        "time_ok": false,
+        "to_cell": 2543,
+        "wall_secs": 12.288473129272461
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.66554260253906
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 139.19761657714844,
+        "from_cell": 4292,
+        "goal": [
+          192.0,
+          -704.0,
+          328.0
+        ],
+        "id": "ssg-to-ratop-r2",
+        "kind": "route",
+        "margin_secs": -5.299,
+        "metrics": {
+          "elapsed": 15.46826171875,
+          "max_cross_track": 852.104736328125,
+          "max_heading_deg": 179.79345703125,
+          "max_yaw_step_deg": 60.689361572265625,
+          "max_z_gain": 348.06805419921875,
+          "mean_speed": 386.1248779296875,
+          "path_len": 5972.6806640625,
+          "peak_progress": 0.9658127427101135,
+          "peak_speed": 497.8983459472656,
+          "reverse_frames": 241,
+          "samples": 741
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 27,
+        "planned_path_len": 1481.4002685546875,
+        "start": [
+          1792.0,
+          -672.0,
+          -24.0
+        ],
+        "straight_dist": 1600.3199462890625,
+        "target_secs": 10.169,
+        "time_ok": false,
+        "to_cell": 1267,
+        "wall_secs": 15.198180198669434
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.86944580078125
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 19.43740463256836,
+        "from_cell": 1372,
+        "goal": [
+          1760.0,
+          -672.0,
+          -24.0
+        ],
+        "id": "ratop-to-ssg-r2",
+        "kind": "route",
+        "margin_secs": -6.939,
+        "metrics": {
+          "elapsed": 13.069091796875,
+          "max_cross_track": 847.895263671875,
+          "max_heading_deg": 179.17433166503906,
+          "max_yaw_step_deg": 178.46226501464844,
+          "max_z_gain": 43.96563720703125,
+          "mean_speed": 372.7853088378906,
+          "path_len": 4871.96533203125,
+          "peak_progress": 0.0757892057299614,
+          "peak_speed": 510.2503967285156,
+          "reverse_frames": 188,
+          "samples": 631
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 11,
+        "planned_path_len": 742.275390625,
+        "start": [
+          256.0,
+          -704.0,
+          328.0
+        ],
+        "straight_dist": 1504.34033203125,
+        "target_secs": 6.13,
+        "time_ok": false,
+        "to_cell": 4228,
+        "wall_secs": 12.817358016967773
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.8619842529297
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 113.51451110839844,
+        "from_cell": 2478,
+        "goal": [
+          -481.39129638671875,
+          481.0434875488281,
+          120.0
+        ],
+        "id": "quad-to-sng-r2",
+        "kind": "route",
+        "margin_secs": -4.405,
+        "metrics": {
+          "elapsed": 9.430419921875,
+          "max_cross_track": 373.09490966796875,
+          "max_heading_deg": 175.65333557128906,
+          "max_yaw_step_deg": 179.82196044921875,
+          "max_z_gain": 107.98002624511719,
+          "mean_speed": 341.34002685546875,
+          "path_len": 3218.979736328125,
+          "peak_progress": 0.5499826669692993,
+          "peak_speed": 530.65576171875,
+          "reverse_frames": 101,
+          "samples": 454
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 13,
+        "planned_path_len": 695.5482177734375,
+        "start": [
+          928.0,
+          320.0,
+          56.0
+        ],
+        "straight_dist": 1418.562255859375,
+        "target_secs": 5.025,
+        "time_ok": false,
+        "to_cell": 539,
+        "wall_secs": 9.160771369934082
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 229.623046875
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 745.5665283203125,
+        "from_cell": 67,
+        "goal": [
+          -768.0,
+          96.0,
+          184.0
+        ],
+        "id": "sngspawns-to-sngmega-r2",
+        "kind": "route",
+        "margin_secs": -10.5,
+        "metrics": {
+          "elapsed": 17.486572265625,
+          "max_cross_track": 326.7350158691406,
+          "max_heading_deg": 179.94766235351562,
+          "max_yaw_step_deg": 110.63137817382812,
+          "max_z_gain": 179.9800262451172,
+          "mean_speed": 365.9214172363281,
+          "path_len": 6398.71142578125,
+          "peak_progress": 2.328738212585449,
+          "peak_speed": 497.4216613769531,
+          "reverse_frames": 280,
+          "samples": 845
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 30,
+        "planned_path_len": 1004.4564208984375,
+        "start": [
+          -896.0,
+          -224.0,
+          -16.0
+        ],
+        "straight_dist": 344.6505432128906,
+        "target_secs": 6.987,
+        "time_ok": false,
+        "to_cell": 232,
+        "wall_secs": 17.216344833374023
+      },
+      {
+        "bot_stalls": [
+          {
+            "action": "force_jump",
+            "link_kind": "Walk",
+            "reason": "displacement",
+            "speed": 200.56568908691406
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "JumpGap",
+            "reason": "air_commit_off",
+            "speed": 202.97438049316406
+          },
+          {
+            "action": "penalize+repath",
+            "link_kind": "SpeedJump",
+            "reason": "prestrafe_deficit",
+            "speed": 333.46783447265625
+          }
+        ],
+        "budget_secs": 30.0,
+        "end_dist": 99.21173858642578,
+        "from_cell": 1743,
+        "goal": [
+          192.0,
+          -704.0,
+          328.0
+        ],
+        "id": "ring-to-ratop-r2",
+        "kind": "route",
+        "margin_secs": -5.695,
+        "metrics": {
+          "elapsed": 11.994384765625,
+          "max_cross_track": 349.691650390625,
+          "max_heading_deg": 179.83448791503906,
+          "max_yaw_step_deg": 125.9020004272461,
+          "max_z_gain": 283.2312316894531,
+          "mean_speed": 364.981689453125,
+          "path_len": 4377.73095703125,
+          "peak_progress": 1.3791446685791016,
+          "peak_speed": 501.44232177734375,
+          "reverse_frames": 229,
+          "samples": 575
+        },
+        "outcome": "arrived_late",
+        "pass": false,
+        "planned_legs": 25,
+        "planned_path_len": 1041.925537109375,
+        "start": [
+          480.0,
+          -384.0,
+          56.0
+        ],
+        "straight_dist": 430.5159606933594,
+        "target_secs": 6.299,
+        "time_ok": false,
+        "to_cell": 1267,
+        "wall_secs": 11.724773406982422
+      }
+    ],
+    "errored": 2,
+    "pass_rate": 0.07142857142857142,
+    "passed": 1,
+    "stalled": 0,
+    "status": "failed",
+    "total": 14
+  },
+  "tier": "T1"
+}
