@@ -5092,3 +5092,19 @@ strafe, ingen buggexploit) men VIKTIG DEFINITIONSFRÅGA journalförd: ägarens k
 SERVERPROTOKOLLET STARTAT: 30 körningar à 15 s (färsk server per körning), bakgrund.
 Träning fortsätter (44k FPS, 330M frames) — 850-submålet kan redan vara internt slaget
 (958 i sim); servern avgör.
+
+## 2026-07-30 21:58 — ★ GATE 1-SERVERBEVISET KLART: 30/30, best 984,0 / median 983,4 / p10 967,8 ★
+evidence/gate1_server_runs.json: 30 av 30 körningar OK på RIKTIGA mvdsv (sluten loop,
+greedy, färsk server per körning, 15 s), kandidat = skördade checkpoint 77359
+(sha 12770c495c15, 316,9M frames). gate_820_passed=true, subgoal_850_reached=true —
+BÅDA passerade med ~130+ marginal. Servern ÖVERTRÄFFAR simmen (984 vs 958 — längre
+effektiv accelerationstid i serverkörningen). MVD-demos: rtx/playground/qw/demos/
+gate1_ev_*.mvd. Bevissidan uppdaterad med slutresultaten (samma URL).
+Skripthärdning på vägen: set -e åt tysta förväntade-fel (tmux kill-window/pkill/grep-
+vakter) — vaktade med || true/if; tredje körningen gick 30/30 felfritt.
+KVAR FÖRE GATE 1 FORMELLT STÄNGD: (1) validering av bevissidan + MVD-demonas spelbarhet
+(bevisregeln); (2) ÄGARFRÅGA ÖPPEN: orbit-beteendet (kandidaten fullbordar inte
+korridoren — kravet "peak 820" är uppfyllt som formulerat; målgång-i-fart vore hårdare
+definition). (3) demos bör kopieras in i rex-ml/demos/ + committas.
+DÄREFTER: Gate 2 (fas 2) — dm3 fritt strövande; verktygskedjan står klar (train_gate2,
+zonraster, GateScore, eval_gate2). REPORT.md skrivs FÖRST när BÅDA gates håller.
