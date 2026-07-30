@@ -4980,3 +4980,14 @@ Parity-variabeln INBYGGD i eval_gate1/diag_gate1 (os.environ.setdefault före SF
 PRÖVNINGEN EJ GODKÄND ÄN (780 < 820) ⇒ träningen fortsätter; greedy re-evalueras
 periodiskt; vid ≥820 körs SERVERPROTOKOLLET (bryggan redo). Om greedy platåar medan
 samplat ≥780: sista annealingsteget (entropi → ~0.0005) övervägs, loggas då.
+
+## 2026-07-30 20:15 — Checkpoint-skördaren sjösatt; 850-slutsatsen under verifiering
+Greedy-volatilitet uppmätt (703→780→703 mellan checkpoints) medan SF roterar bort saves
+varannan minut ⇒ bra ögonblick raderades. rl/harvest_best.py sjösatt i tmux jobs:0:
+greedy-evaluerar varje ny save (träningsparitet), behåller bäst-hittills i
+harvest/best.pth, avslutar själv vid ≥820 ("kandidaten säkrad — kör serverprotokollet").
+850-SÖKNINGEN: slutsatsfältet påstår 924 ärligt@77Hz MEN delresultaten motsäger
+(C/E max=496.8=uppskjutsnivå, B-tabellen tom, p12<baslinjen) — misstänkt aggregatbugg
+och/eller overrun-peak (bortom mål) felmärkt. Agenten återsänd med verifieringskrav:
+reproducera 924 fristående med per-tick-bevis att peaken sker FÖRE mål-y 2900 @77Hz,
+laga aggregeringen, skriv md:n. Journalförs INTE förrän verifierad.
