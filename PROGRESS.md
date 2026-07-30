@@ -4761,3 +4761,16 @@ ingen cfg-flagga finns; dokumenterad i sim/STACK.md, återapplicera vid venv-omb
 (ren utklämpning, inga parameterändringar) ⇒ resume fungerar.
 Verifierat: env-varan styr (1.0 med, 10000 utan). Utlöses vid 19:20-väckningen om
 p50<500. Framgångsmått oförändrat: p50 480+ stigande, flips/s ned mot 2-4.
+
+## 2026-07-30 19:00 — INTERVENTION UTLÖST (tidigarelagd — strukturell patologi, inte platåfråga)
+Beslut (eget, loggat): väntan till 19:20 hade inget informationsvärde — entropifarmningen
+är strukturell (består oavsett om p50 kryper förbi 500, och steg 4 kräver teknik som
+kollapsad dyaw-std inte kan utforska fram). Omstart NU med SF_STDDEV_MAX=1.0 +
+--exploration_loss_coeff=0.01, resume från senaste checkpoint (~62 M frames).
+MISSÖDE + LÄRDOM: pkill -f "rl.train_gate1.*gate1_v1" matchade sitt eget skal och
+MONITORNS pgrep-rad ⇒ monitorn dog (exit 144) och första relanseringen försvann in i
+den döende teens stdin. Åtgärd: C-c i panelen, omstart skickad, bakgrundsvaktare väntar
+på "Loading state from checkpoint". Monitorn återarmeras efter bekräftad uppstart.
+Framtida processdöd: använd PID, inte mönster som förekommer i åskådares kommandorader.
+19:20-väckningen står kvar — blir första efter-interventionsavläsningen (~15 min efter
+resume). Framgångsmått: p50 480+ stigande, flips/s 21→2-4, dyaw-std upp från 0.074.
