@@ -12,3 +12,6 @@ pipeline/out/step1_state_runs/
 pipeline/out/smoke_ticks/
 pipeline/out/smoke_segments/
 demos/**/*.zip
+
+# RL-stackens venv (5 GB, återskapas med uv + sim/STACK.md)
+sim/.venv-sf/
