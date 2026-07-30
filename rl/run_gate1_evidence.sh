@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 CKPT_DIR="${1:-pipeline/out/rl/train_dir/gate1_v1/harvest/eval_dir}"
 N="${2:-30}"
 DUR="${3:-12}"
-ONNX=pipeline/out/rl/gate1_candidate.onnx
+ONNX="$PWD/pipeline/out/rl/gate1_candidate.onnx"   # ABSOLUT: servern (cwd playground) öppnar filen
 SCRATCH=/tmp/claude-1001/-home-benjamin-adm-rex-ml/003dd697-8855-417d-9d80-53960851ebcf/scratchpad
 TICKDIR="$SCRATCH/gate1_server_runs"
 mkdir -p "$TICKDIR"
