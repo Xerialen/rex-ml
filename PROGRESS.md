@@ -4413,3 +4413,14 @@ MÄTT: 8/8 enhetstester gröna (huvud-venv, pytest installerat via uv);
 SF-smoke i .venv-sf: obs (97,), 200 slumpsteg, register_env OK.
 KVAR I FAS 0: agent A (gate2-zoner) och agent B (libqwsim) arbetar; sedan
 rl/qwsim_backend.py + träningsstart steg 1.
+
+## 2026-07-30 — Fas 0: APPO-kedjan bevisad ände-till-ände (stub-backend)
+rl/train_gate1.py (SF-entré, --qw_backend-flagga) + fix: env-fabrik på modulnivå (SF
+picklar till spawnade processer, lambda kraschade) + sf_env.step hanterar SF:s PLATTA
+Tuple-actionformat [box0,box1,fwd,side,jump] (STACK.md rad 62) utöver äkta tuples.
+MÄTT: 61 440 env-steg, FPS 4513.6, --use_rnn på GPU, 8 workers × 8 envs, ren avslutning.
+Train-dir: pipeline/out/rl/train_dir/smoke_stub_e2e. Stubben är python-långsam (env_step
+dominerar profilen) — med qwsim-C++-steget och fler workers (64 kärnor) skalar detta.
+Agent A (gate2-zoner) väcktes ur passiv väntan på sitt statistikjobb (samma felmönster
+som inspelningsagenten tidigare) — instruerad att övervaka aktivt och slutföra leverabler.
+NÄSTA: rl/qwsim_backend.py när agent B levererar API:t; sedan riktig steg 1-träning.

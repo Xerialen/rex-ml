@@ -45,7 +45,13 @@ class QWGate1Env(gym.Env):
         return self.core.reset().astype(np.float32), {}
 
     def step(self, action):
-        box, fwd, side, jump = action
+        # SF levererar Tuple-actions som PLATT array [box0,box1,fwd,side,jump]
+        # (STACK.md rad 62); gymnasium-sampling ger en äkta 4-tuple. Stöd båda.
+        if isinstance(action, (tuple, list)) and len(action) == 4:
+            box, fwd, side, jump = action
+        else:
+            a = np.asarray(action).ravel()
+            box, fwd, side, jump = a[0:2], a[2], a[3], a[4]
         obs, r, done, info = self.core.step(np.asarray(box, dtype=np.float32),
                                             int(fwd), int(side), int(jump))
         # SF/gymnasium: terminated (mål/krash) vs truncated (tidsgräns)
