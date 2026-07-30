@@ -4785,3 +4785,13 @@ tyst laddat gamla vikter. Flyttade till checkpoint_p0/pre-intervention/ (inget r
 FPS 41k→17,6k — troligen bryggagentens cargo-byggen på kärnorna; bevakas, åtgärdas ej.
 Monitorn återarmerad (pgrep-säkert mönster). Väntar: nästa nya checkpoint-save
 (bakgrundsvakt), 19:20-avläsningen (först efter-intervention), daemonen kör orörd.
+
+## 2026-07-30 19:10 — FPS-tappets rotorsak: 35 föräldralösa gamla workers; avlivade
+pkill:en 18:59 tog bara runnern — 35 workers (gamla familjen 977xxx/978xxx) överlevde
+som föräldralösa (ppid=1) på 80-97 % CPU och halverade nya körningens FPS (41k→17,6k).
+Verifierat per ålder (alla >33 min; nya körningens workers har levande förälder 1226486),
+avlivade via explicit PID-lista. FPS 17,6k→25,8k inom sekunder och stigande (rustc från
+bryggbygget tar fortfarande kärnor — legitimt). Episodförorening 18:59-19:10: godartad —
+de föräldralösa körde SAMMA vikter som nya körningen resumade från, samma stage.
+LÄRDOM (kompletterar pkill-lärdomen): döda hela processGRUPPEN (kill -- -PGID) eller
+föräldern med barn — aldrig bara mönstermatchade huvudprocessen.
