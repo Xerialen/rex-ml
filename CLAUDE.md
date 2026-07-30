@@ -1,57 +1,62 @@
-# rex-ml — ALWAYS-LOADED MISSION ANCHOR
+# rex-ml — ALLTID-LADDAT MISSIONSANKARE (Grundlag v3: Manifestet, 2026-07-30)
 
-This file is re-injected into context automatically, including after autocompact.
-If you are reading this after a compaction: **you are mid-mission, not starting fresh.**
+Denna fil återinjiceras automatiskt, även efter autocompact.
+Läser du detta efter en kompaktion: **du är mitt i missionen, inte vid en nystart.**
 
-## Resume ritual (do this FIRST after any compaction)
-1. Read `~/rex-ml/PROGRESS.md` — the last entry tells you exactly where you are.
-2. Read `~/rex-ml/BRIEF.md` — the full spec, steps 1-5.
-3. Determine the current step. Continue it. Do not ask what to do.
+## Resume-ritual (gör FÖRST efter varje kompaktion)
+1. Läs `~/rex-ml/PROGRESS.md` — sista posten säger exakt var du är.
+2. Läs `~/rex-ml/BRIEF.md` — hela specen (Grundlag v3, faser 0–3).
+3. Avgör aktuell fas. Fortsätt den. Fråga inte vad du ska göra.
 
-## Standing mandate
-Work continuously through BRIEF steps 2 -> 5. When a step finishes, append to PROGRESS.md
-and **immediately begin the next one**. "I finished what was asked and await your call" is
-a FAILURE MODE. The ask is the whole mission.
+## Missionen (ägarens manifest 2026-07-30, med ratificerade amendments)
+Träna en autonom rörelseagent med **ren djup förstärkningsinlärning (PPO)** — inga rutter,
+inga waypoints, ingen navmesh, ingen mänsklig-linje-BC i policyn. Rumsperception (raycast)
++ rekurrent minne + intrinsisk motivation. Den gamla rutt-/A/B-missionen är ARKIVERAD
+(`docs/phase-archive/`) och får inte återupptas.
 
-Stop and ask ONLY for: deleting/overwriting data, a job needing >20 GB or >4h, a measurement
-that invalidates the architecture, or a judgement no measurement can settle. Otherwise decide
-yourself, record the assumption in PROGRESS.md, keep moving.
+## Terminerande mål — missionen är KLAR när BÅDA gates är passerade MED BEVIS
+**Gate 1 — Kinetisk dominans:** median-peak ≥ **800 UPS** på `100m.bsp` över ≥30 körningar,
+uppmätt på RIKTIGA mvdsv-servern (inte träningssimmen). Uppmätt fysiktak: 821,4 UPS —
+gaten är möjlig men kräver nära nog perfekt strafe.
+**Gate 2 — Spatial dominans:** fritt strövande på dm3 från slumpade startpunkter, ≥30
+körningar × 60 s på riktiga servern: medelhastighet > **500 UPS** inom inkluderade zoner
+(`evidence/gate2_zones.json` — evidensbaserat härledda; vatten/hiss/tele exkluderade,
+geometriskt takade zoner enligt zondokumentets gate-formel), **noll fastnade episoder**.
+Bevisregeln (stående, ägarens): en gate/runda rapporteras ALDRIG klar förrän replay-bevisen
+är inspelade på riktiga servern, validerade och publicerade i bevisartefakten.
+När båda gates håller: skriv `~/rex-ml/REPORT.md` med bevisen, sedan stopp.
+REPORT.md:s existens är den ENDA klarsignalen.
 
-## The terminating goal — the mission is DONE when BOTH hold
+## Ratificerad arkitektur (ägarbeslut 2026-07-30 — ändra inte utan nytt ägarbeslut)
+- **Miljö:** `sim/` libqwsim — bespoke C++-vektoriserad sim kring mvdsv:s RIKTIGA
+  `pmove.c` (bit-exakt, validerad mot QWD usercmds+replay_ticks), pybind11, trådpool,
+  GIL-fri batchstegning. INTE EnvPool-ramverket (idén hedras, ramverket skippas).
+- **Träning:** Sample Factory (asynkron PPO/APPO) på H100. Endast PPO.
+- **Handlingsrum:** kontinuerlig Gaussisk yaw/pitch + diskreta knappar (W/A/D/hopp).
+- **Observationer:** raycast mot BSP + kinetiskt tillstånd; LSTM/GRU-minne.
+- **Nätstorlek FRI under träning** (ägarbeslut: 0,5 ms/tick-invarianten SLÄPPT under
+  träning; destillering/optimering mot tick-budget är en SEPARAT fas EFTER Gate 2).
+- **Curriculum:** Gate 1 steg 1–4, Gate 2 steg A–D enligt BRIEF. Intrinsisk motivation:
+  voxelnyhet skalad med passagehastighet, kollisionsimpuls-straff, kinetisk multiplikator.
+- **Korpusen** (908 M sampel) är utvärderings-/härledningsmaterial (baslinjer, zontak) —
+  ALDRIG träningsdata för policyn.
 
-**A/B design: combat is held IDENTICAL to the RTX baseline. Only the movement layer differs,
-so any measured delta is causally attributable to movement.** Do not touch `bot/combat/`,
-`bot/goals.rs`, `bot/grenade.rs` or `bot/perception.rs`.
+## Stående mandat: operatörsisolering
+Arbeta kontinuerligt genom faserna. Ägaren kontaktas ENBART vid: hårdvarukollaps,
+jobb som skriver >20 GB, radering/överskrivning av data, eller matematiskt påvisbar
+olöslighet inom systemresurserna. Policykollaps, stagnation och katastrofal glömska är
+FÖRVÄNTADE fenomen — felsök och justera belöningsvikter/hyperparametrar själv, logga
+beslutet i PROGRESS.md. Långa träningar (>4 h) är normen: kör i tmux-fönstret `jobs`
+med checkpoints, vänta aldrig blockerande i egen kontext.
 
-1. **Faster routes.** Candidate beats the RTX baseline on route completion time over a fixed
-   DM3 route set (`~/route-sheet-search/routes.json`) — median over >= 30 runs per route,
-   with a 95 % CI that excludes zero improvement. **First establish the RTX baseline times**;
-   you cannot gate on beating a number you have not measured.
-2. **Never stuck.** Zero stuck episodes across the validation run — the Tracking Guard
-   disengages at >32 units tracking error every time and the analytic fallback recovers.
+## Checkpoint-disciplin (det som gör kompaktion överlevbar)
+PROGRESS.md ska alltid räcka för att en färsk kontext ska kunna återuppta ensam.
+Skriv efter varje milstolpe: vad gjordes, vad MÄTTES (siffror, inte adjektiv), vad är
+nästa, vilka antaganden du själv beslutade. Skriv INNAN långa jobb startar, inte efter.
 
-When both are measured and hold: write `~/rex-ml/REPORT.md` with the evidence, then stop.
-REPORT.md existing is the ONLY signal that the mission is over.
-
-### Hard constraint (not a gate — an invariant)
-**p99 CPU per game tick < 0.5 ms** for the full per-tick path (DMP integration + MLP forward +
-tracking guard); amortised planner counted separately. This was an absolute requirement in the
-original brief. Any candidate that violates it is REJECTED during development, not shipped and
-excused later. Measure it continuously, not once at the end.
-
-### Measure and report, but do NOT gate on
-- Rocket-jump landing accuracy on held-out demonstrations.
-- Self-play win rate vs the RTX baseline. Winning DM3 depends heavily on aim and combat, which
-  we are deliberately not changing — so win rate is evidence, never the finish line.
-
-## Checkpoint discipline (this is what makes compaction survivable)
-PROGRESS.md must always be current enough that a fresh context can resume from it alone.
-Append after every milestone: what you did, what you MEASURED (numbers, not adjectives),
-what is next, and any assumption you decided yourself. Write it BEFORE starting long jobs,
-not after — a compaction mid-job must not lose the plan.
-
-## Guardrails
-- Disk is the only scarce resource (~186 GB). State cost before any job writing >5 GB.
-- Corpora are irreplaceable and write-protected. `rm`/`rmdir`/`shred`/`dd`/`git clean` DENIED.
-- Long jobs go in tmux window `jobs`, never blocking your own context.
-- Measurements, never claims. "Done" requires evidence.
+## Skyddsräcken
+- Disk är enda knappa resursen (~168 GB fritt). Ange kostnad före jobb som skriver >5 GB.
+- Korpora är oersättliga och skrivskyddade. `rm`/`rmdir`/`shred`/`dd`/`git clean` NEKAS.
+- `vendor/` modifieras aldrig — extrahera genom att kopiera ut.
+- Mätningar, aldrig påståenden. "Klart" kräver bevis, inspelade på riktiga servern.
+- Allt arbete pushas till https://github.com/Xerialen/rex-ml (main).

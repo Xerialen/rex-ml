@@ -1,77 +1,114 @@
-# rex-ml — MISSION (v2, 2026-07-28). Standing mandate: do not stop between steps.
+# BRIEF — Grundlag v3: Manifestet för Kognitiv Acceleration (2026-07-30)
 
-## The goal
-Beat RTX. Build a hybrid, risk-aware, hierarchical movement architecture giving human
-movement quality + superhuman efficiency. **Hard budget: < 0.5 ms CPU per frame.**
+Källa: ägarens manifest (arkiverad kopia: `docs/phase-archive/MANIFEST-2026-07-30.md`),
+modifierad av fyra ratificerade ägarbeslut från invändningsrundan 2026-07-30.
+Ersätter Grundlag v2 (rutt-/A/B-missionen, arkiverad i `docs/phase-archive/`).
 
-**Definition of done for the whole mission:** a bot that beats the current RTX baseline
-in headless DM3 self-play by a statistically meaningful margin, with per-tick CPU proven
-under 0.5 ms, and a Tracking Guard that demonstrably never leaves the bot stuck.
+## 0. Ratificerade amendments (invändningsrundan)
 
-## STANDING MANDATE — read this twice
-You are NOT waiting for instructions between steps. Work continuously through steps 2->5.
-When a step is done, append to PROGRESS.md and **immediately start the next one**.
+| # | Fråga | Ägarens utslag |
+|---|-------|----------------|
+| 1 | Träningsmiljö | **Bespoke pmove-sim**: pybind11 + C++-trådpool kring riktiga `pmove.c`/`pmovetst.c`, bit-exakt, validerad mot QWD usercmds+replay_ticks. Sample Factory behålls som träningsramverk. EnvPool-ramverket skippas (en-nods-maskin, 64 kärnor — inte klustret manifestet antog). |
+| 2 | Gate 2-zoner | **Jag härleder zonerna själv** ur BSP, korpus, bilder/demos/locs — evidensbaserat. Leverans: `evidence/gate2_zones.json` + `.md` med gate-formel. |
+| 3 | Tick-budget | **0,5 ms/tick SLÄPPT under träning.** Stora nät tillåtna i forskningsfasen; destillering/optimering mot serverbudgeten är en separat fas EFTER Gate 2. |
+| 4 | Grundlag | **CLAUDE.md/BRIEF.md omskrivna nu**; gamla missionen parkerad i `docs/phase-archive/`, inget raderat. |
 
-Stop and ask ONLY if: (a) an action would delete or overwrite data, (b) a job needs
->20 GB disk or >4h wall-clock, (c) a measurement contradicts the architecture badly enough
-that continuing would waste days, or (d) you need a human judgement call that no measurement
-can settle. Everything else: decide it yourself, write down the assumption, keep moving.
+Oförändrat överlevande regler: bevisregeln (replay på riktiga servern före rapport),
+korpusskydd, disk-disciplin, PROGRESS.md-checkpointing, GitHub-push av allt.
 
-"I finished what was asked and await your call" is a FAILURE MODE here. The ask is the
-whole mission, not the current step.
+## 1. Missionen
 
-## Established facts (measured — do not re-derive, do not contradict without new evidence)
-- **RTX is RUST.** `~/rex-ml/rtx` = `qw-ctf/rtx` main @ 5df7da8. Crates: `rtx-nav` (navmesh+A*),
-  `rtx-game`, `navview`, `rjmcp`. There is no C code to modify — the original brief was wrong.
-- **Data source is `~/dm3-extract/store-dm3`.** NOT the .mvd corpus — MVD is a server entity
-  stream and carries no usercmds at any parse cost. See AUDIT.md.
-- **Step 1 is DONE** (`~/rex-ml/pipeline/out/`): 27,934,383 ticks x 47 cols; 2,171,131 segments;
-  205,157 trim_air + 421,568 trim_ground; 1,759 maneuver_rocket_jump; splits train 24.25M /
-  val 1.75M / test 1.93M. SE(2) invariance 1.6e-4; gravity 785.7 vs 800 u/s².
-- **Only 487 demos carry usercmds** (one slot each — the recorder). Opponent state exists as
-  trajectories only, never as control signals. Protocol limit, not a data gap.
-- Env: `~/rex-ml/.venv` (uv, py3.12), torch 2.13.0+cu130, H100 NVL 96 GB. No sudo.
-- Disk is the only scarce resource: ~186 GB free. Corpora are write-protected and irreplaceable.
-  `rm`/`rmdir`/`shred`/`dd`/`git clean` are DENIED — ask instead of retrying.
+Träna en autonom rörelseagent för QuakeWorld med ren DRL (PPO). Förbjudet i policyn:
+fördefinierade rutter, waypoints, navmesh, mänsklig-linje-BC. Tillåtet: rumsperception
+(raycast/djup), rekurrent minne, intrinsisk motivation, curriculum. Korpusen används
+enbart för utvärdering och härledning (baslinjer, zontak, valideringsdata för simmen).
 
-## Architecture constraint (derived — prove or refute it with measurement)
-MeshA* with velocity-extended cells + CVaR does NOT fit in 0.5 ms per tick. Run the planner
-on a replan trigger and amortise it. The per-tick path may contain only: DMP integration,
-MLP forward, tracking guard. **Measure this early** — if it refutes the design, say so loudly.
+**Varför pivoten är rätt även enligt våra egna mätningar:** race_v9:s strikta prov gav 0/8
+med diagnosen geometri-överanpassning — policyn följde tränade linjer, inte rummet.
+Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats.
 
-## STEP 2 — local control policies
-**2a. First action: measure demonstration density per start/goal region** for the 1,759 rocket
-jumps. That count may be too thin for DMP regression on W. If it is, widen from the all-maps
-staging (`~/qw-corpus-build/task10-42926d4/staging`, 4.1x more replay_ticks, identical schema)
-rather than re-parsing anything. Decide this yourself on the measurement.
-**2b. Ground (bhop/strafe):** compact fast MLP for continuous control. Use TD3+BC to bound
-out-of-distribution error; fall back to plain BC only if you can show demonstration density
-justifies it. Report held-out action error, not training loss.
-**2c. Air (rocket jumps):** linear regression on the segmented maneuvers to extract DMP weights W.
-Encode as Transformation System + Canonical System. Prove landing accuracy on held-out jumps.
+## 2. Gates (terminerande mål)
 
-## STEP 3 — planner (in rtx-nav)
-MeshA* over **extended cells** = navmesh cell x quantised velocity vector, so the planner
-never proposes a jump the bot lacks speed for. Integrate **CVaR** into the cost function:
-high risk threshold (safe routes) when the bot leads or has health; low threshold (short,
-dangerous, rocket-jump routes) when behind. Report search time and node counts.
+### Gate 1 — Kinetisk dominans (100m.bsp)
+- **Krav:** median-peak-hastighet ≥ 800 UPS över ≥30 körningar, på riktiga mvdsv-servern.
+- **Uppmätt tak:** 821,4 UPS (analytisk strafe, `evidence/strafe_ceiling_100m.json`,
+  dt=1/77). Marginalen är ~21 UPS ⇒ gaten kräver nära-perfekt half-beat-strafe.
+- **Bevis:** inspelade demos + hastighetskurvor i bevisartefakten, före rapport.
+- Referens: race_v5 (gamla arkitekturen) nådde 472 UPS på samma korridor.
 
-## STEP 4 — integration
-Maneuver automaton linking the discrete MeshA* route to continuous control: exact transitions
-DMP <-> policy. **Tracking Guard:** continuously measure tracking error between desired and
-actual position; if it exceeds **32 units**, immediately disengage neural control and DMPs,
-and hand to an analytic fallback that brakes and navigates to the nearest known navmesh polygon.
+### Gate 2 — Spatial dominans (dm3, ingen navmesh)
+- **Krav:** fritt strövande från slumpade startpunkter/riktningar, ≥30 körningar × 60 s
+  på riktiga servern: (a) medelhastighet > 500 UPS **inom inkluderade zoner** enligt
+  `evidence/gate2_zones.json`; (b) **noll fastnade episoder** (definition i zondokumentet,
+  utgångspunkt: >2 s under 50 UPS utanför exkluderad zon = fastnad); (c) ingen rutt-,
+  waypoint- eller navmesh-information i policyns input.
+- **Zoner:** vatten, hisschakt och teleporterplattor exkluderas; geometriskt takade
+  torrzoner hanteras enligt zondokumentets gate-formel (härleds i fas 0, evidensbaserat).
+- **Bevis:** inspelade fri-strövnings-demos + per-zon-hastighetsstatistik i artefakten.
 
-## STEP 5 — validation
-Headless DM3 self-play vs previous bot versions, thousands of iterations. Prove CPU/tick
-< 0.5 ms. Prove the Tracking Guard prevents stalls. Auto-tune CVaR weights on win-rate.
-Write the final report to ~/rex-ml/REPORT.md.
+När båda gates håller med bevis: skriv `REPORT.md`. Dess existens = klarsignalen.
 
-## Working rules
-- Append to PROGRESS.md after every milestone: what you did, what you MEASURED, what's next.
-- Long jobs go in tmux window `jobs` (`tmux send-keys -t rexml:jobs`), never blocking your context.
-- State disk cost before any job writing >5 GB.
-- Report measurements, never claims. "Done" requires evidence.
-- Human corpus data is calibration evidence only — never feed raw trajectories/usercmds
-  straight into bot code.
-- Keep the rtx working tree on a branch; don't push anywhere.
+## 3. Arkitektur
+
+### 3.1 Miljö: `sim/` libqwsim
+- Extraherad `pmove.c` + `pmovetst.c` + `cmodel.c` (BSP-hull-tracing) ur `vendor/mvdsv-src`
+  — fysiken byte-identisk, varje avvikelse loggad i `sim/EXTRACTION-NOTES.md`.
+- N oberoende spelarslots, batchsteg i C++-trådpool (OpenMP), pybind11-modul `qwsim`
+  med numpy-I/O, GIL släppt. Statisk värld (hissar är server-entiteter utanför pmove —
+  acceptabelt, hisschakt är exkluderade zoner).
+- Movevars låsta till riktiga serverns värden (testsuite-konfigen), dt = 1/77.
+- **Bit-exakthetsvalidering:** QWD-delmängden i storen har usercmds (29,9 M) +
+  replay_ticks — inspelade inputs spelas genom simmen, position/vel jämförs per tick.
+  Legitima divergenspunkter (hiss, tele, vattenhopp, knockback) klipps och redovisas.
+  Resultat: `evidence/libqwsim_bitexact.json`. Simmen är inte godkänd förrän felet är
+  på flyttalsbrusnivå på klippta segment.
+- Throughput mäts (`evidence/libqwsim_throughput.json`) — milstolpe 0 är en SIFFRA.
+
+### 3.2 Träning: Sample Factory (APPO)
+- Asynkron PPO på H100; miljöer på CPU-trådpoolen, nätet på GPU. Endast PPO.
+- Klipp-surrogat med ε≈0,2 initialt, entropibonus mot lokala optima, γ högt (långa
+  momentum-uppbyggnader), lr-schema över träningen. Hyperparametrar justeras autonomt
+  vid stagnation/kollaps — loggas i PROGRESS.md, ägaren tillfrågas inte.
+
+### 3.3 Nät
+- Handlingsrum: Gaussisk kontinuerlig Δyaw (+Δpitch) med lärd std + diskreta knappar
+  (framåt, vänster, höger, hopp) — fristående W-hantering (QW-bunny släpper W).
+- Observationer: raycast-fält mot BSP (typ Lidar; antal/mönster bestäms empiriskt i
+  fas 0-smoke) + kinetiskt tillstånd (vel, onground, jump-fas). Inga pixlar/texturer.
+- Temporal kärna: LSTM/GRU. Nätstorlek fri under träning (amendment 3).
+
+### 3.4 Belöningar (Gate 2)
+- Kinetisk multiplikator: skalar med hastighet linjerad bort från närliggande hinder.
+- Kollisionsimpuls-straff: massivt negativt för ofrivilliga hastighetsförluster.
+- Global topologisk nyfikenhet: voxelraster (endast i belöningskalkylatorn, dolt för
+  agenten); engångsbonus per ny voxel, proportionell mot passagehastigheten.
+  Voxelrastret återanvänder fas 0-zonarbetets format (`pipeline/out/gate2/`).
+
+## 4. Curriculum
+
+**Gate 1:** (1) framdrivning → konvergens ~310 UPS; (2) momentumbevarande — frikton
+straffas/lufttid belönas, hopprytm; (3) vektoracceleration — exponentiell belöning
+>320 UPS, circle jump; (4) half-beat-strafe — väggstraff tvingar alternering, mål 800.
+**Gate 2:** (A) öppen-rums-dominans (atrium, luft-strafe utan kollision);
+(B) korridorer/hörn i höghastighet; (C) vertikalitet — trappor/drop utan inbromsning;
+(D) global frigörelse — slumpade starter över hela dm3, medel >500 UPS i inkluderade zoner.
+Fasväxling är automatisk på konvergenskriterier (skriptad i träningsövervakningen),
+kriterierna loggas i PROGRESS.md när de fastställs.
+
+## 5. Faser och milstolpar
+
+- **Fas 0 — Fundament (pågår):** grundlag omskriven ✓; Gate 2-zonhärledning (agent);
+  libqwsim byggd + bit-exakt + throughput-mätt (agent); Sample Factory-stack verifierad
+  (agent); därefter: env-adapter (qwsim ↔ Sample Factory), obs/action-space-smoke.
+- **Fas 1 — Gate 1:** curriculum 1–4 på 100m.bsp; kontinuerlig mätning; gate-bevis på
+  riktiga servern (testsuite/route-lab-verktygen återanvänds för inspelning).
+- **Fas 2 — Gate 2:** curriculum A–D på dm3; zonbaserad gate; fri-strövnings-bevis.
+- **Fas 3 — Efterfas (utanför gates):** destillering/optimering mot 0,5 ms/tick-budgeten
+  för skeppning i servern; mäts då, inte under träning.
+
+## 6. Drift
+
+- Långa träningar i tmux `jobs`, checkpointade; PROGRESS.md skrivs FÖRE start.
+- Disk: ange kostnad före >5 GB-skrivningar; on-policy PPO behöver ingen stor buffer.
+- Ägaren kontaktas endast per operatörsisoleringsregeln (CLAUDE.md).
+- Allt pushas till https://github.com/Xerialen/rex-ml.

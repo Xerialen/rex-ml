@@ -4336,3 +4336,49 @@ AUDIT-rättelse pushad: storen har replay_ticks + usercmds för QWD-delen ⇒ BC
 FAS 1-DOKUMENT (27-28/7, före denna missionsbåge); REPORT säger själv "done is not met".
 https://github.com/Xerialen/rex-ml-rtx skapat men push ger 403 — fine-grained-tokenen
 omfattar inte nya repot. Väntar på ägaren.
+
+## 2026-07-30 — ÄGARENS MANIFEST: "SVÄNG OM SKUTAN" (pivotorder mottagen)
+Ägaren laddade upp "Manifest för Kognitiv Acceleration" (uploads/ba3413b2-text.txt) och bad om
+EN invändningsrunda innan autonom exekvering. Manifestets kärna:
+- FÖRKASTA rutt-/navmesh-arkitekturen. Ren DRL (PPO), curriculum, intrinsisk motivation.
+- Gate 1: 800 UPS topphastighet på 100m.bsp (strafe/bunny). Gate 2: obehindrad höghastighets-
+  navigering på dm3 UTAN rutter/waypoints/navmesh, medelhastighet >500 UPS fritt strövande.
+- Arkitektur: C++-vektoriserad miljö (EnvPool-idén), Sample Factory-stil asynkron PPO,
+  CNN/raycast + LSTM, Gaussisk kontinuerlig yaw/pitch. Total operatörsisolering.
+Verifierat före invändningsrundan: pmove.c/pmovetst.c finns i vendor/mvdsv-src (exakt fysik
+kan extraheras till batchad C++-sim); 100m.bsp ligger redan i serverdir; maskinen är EN nod
+(H100 NVL 96G, 64 kärnor, 1T RAM, 168G disk ledig) — ingen kluster-superdator.
+Relevanta gamla mätningar: strafe_ceiling_100m.json peak 821.4 UPS (analytiskt tak nås på
+kartan, 800-gaten är fysiskt möjlig med ~21 UPS marginal); race_v5 nådde bara 472 UPS där.
+Line-follower-overfittingen (race_v9 0/8) är i sak samma diagnos som manifestets motiv —
+pivoten adresserar vårt uppmätta rotproblem.
+INVÄNDNINGSRUNDAN (levererad till ägaren, väntar på svar innan autonom start):
+ 1. "Superdatorn" är vmonster ensam ⇒ bygg bespoke pybind11 vec-env kring RIKTIGA pmove.c
+    (bit-exakt, valideras mot QWD usercmds+replay_ticks) i stället för EnvPool/Bazel-ramverket.
+    Sample Factory (APPO) behålls som träningsramverk. Ingen rendering behövs (raycast mot BSP).
+ 2. Gate 2 "500 UPS överallt" är fysiskt omöjlig i vatten/hissar/trånga tunnlar — föreslå
+    zonjusterade trösklar mätta ur korpusens hastighetsfördelningar per voxel, alt. exkludera
+    vatten/hiss-zoner. Mät taket FÖRST (grundlagens princip: etablera baslinje före gate).
+ 3. p99 < 0,5 ms/tick-invarianten (gamla grundlagen) föreslås BEHÅLLAS ⇒ raycast+LSTM (små
+    nät), ej djupbuffert-CNN. Manifestet är tyst om detta; policyn ska kunna skeppas i servern.
+ 4. Gamla terminerande målet (A/B vs RTX, ruttider, REPORT.md) är oförenligt med manifestet ⇒
+    föreslå att CLAUDE.md/BRIEF.md skrivs om till ny grundlag (Gate 1+2), gamla missionen
+    parkeras som fas-2-arkiv i repot. Nödvändigt för kompaktionsöverlevnad.
+ 5. Bevisregeln (replay före rapport) och korpusskyddet BEHÅLLS. Gate anses passerad först när
+    den är inspelad på RIKTIGA mvdsv-servern, inte i träningssimmen.
+
+## 2026-07-30 — INVÄNDNINGSRUNDAN AVGJORD: fyra ägarbeslut ratificerade, autonom fas inledd
+1. Sim-motor: BESPOKE pmove-sim (pybind11+trådpool kring riktiga pmove.c, bit-exakt,
+   validerad mot QWD usercmds+replay_ticks). EnvPool-ramverket skippas. Sample Factory kvar.
+2. Gate 2-zoner: JAG härleder dem själv ur BSP/korpus/demos/locs — evidensbaserat.
+3. Tick-budget: 0,5 ms/tick SLÄPPT under träning (ägarens ord: "Släpp den under träning").
+   Stora nät ok; destillering mot budgeten = separat fas EFTER Gate 2.
+4. Grundlag: CLAUDE.md + BRIEF.md OMSKRIVNA till Grundlag v3 (Manifestet). Gamla dokument
+   flyttade (git mv, inget raderat) till docs/phase-archive/: BRIEF-phase2-routes.md,
+   CLAUDE-phase2-routes.md, REPORT-phase1.md, AUDIT-phase1.md. Manifestet arkiverat som
+   docs/phase-archive/MANIFEST-2026-07-30.md. REPORT.md-platsen är åter ledig = klarsignal.
+TRE SUBAGENTER STARTADE (bakgrund):
+ A) Gate2-zonhärledning → evidence/gate2_zones.{json,md} + pipeline/out/gate2/-raster.
+ B) libqwsim-bygget → sim/ + evidence/libqwsim_bitexact.json + libqwsim_throughput.json.
+ C) Träningsstack → sample-factory-install, torch/CUDA-verifiering, sim/STACK.md.
+NÄSTA (när agenterna landar): env-adapter qwsim↔Sample Factory, obs/action-smoke, fas 1.
