@@ -5071,3 +5071,10 @@ GAP ~2-6 u/s. UPPREPADE PolicyDrive-sessioner mot samma server ger 0-fart (per-b
 Skriptet uppdaterat (snapshot + server-per-run + rätt summarynycklar).
 LÄGE: 790,4 uppmätt på riktig server, 29,6 från 820-kravet. Träningen (väv-marginal)
 jagar resten; skördaren fångar. Kvarflagga: inferens p50 1,7 ms under load — fas 3.
+
+## 2026-07-30 21:12 — Väv-eran levererar: skörd 800,7, trend brant uppåt
+Efter marginalbytets väntade dipp (615) har ratchen passerat gamla toppen: 792,3 →
+794,1 → 799,4 → 800,7 (checkpoint 61719, 252,8M frames). Samplat medel 787,3 / max
+807,2. Träning 42k FPS. 19,3 u/s till 820-KRAVET; 820-väckningen armerad (skördarens
+självavslut vid mål). Serverbeviset är verifierat vid 790-nivån (sim2real-gap 2-6 u/s)
+— när skörden når 820 väntas servern följa med.
