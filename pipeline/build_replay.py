@@ -98,8 +98,8 @@ def render_only() -> Path:
     index["records"] = [r for r in index["records"]
                         if not (r.get("map") != "100m" and r.get("decode") in ("greedy", "sampled"))]
     print(f"tog bort {before - len(index['records'])} föråldrade race_v5-poster (fel tickfrekvens)")
-    index["ckpt"] = ("dina referensdemon + race_v7 (strikt prov, 1/77) "
-                     "+ race_v5 (endast 100m-kontrasten)")
+    # index["ckpt"] is kept as stored: the recorded index already names its checkpoint and date,
+    # and a re-render must not restamp it with another build's description.
     annotate_source(index["records"])
     blob = (OUT / "frames_all.bin").read_bytes()
     geo = base64.b64encode((OUT / "dm3_geo.bin").read_bytes()).decode()
@@ -148,37 +148,23 @@ def main():
         records.append(rec)
         print(f"referens {demo_name:38s} -> {route:22s} {rec['runs'][0]['n_frames']:4d} tick")
 
-    # --- the policy's attempts ---------------------------------------------------------------
-    midx = json.loads((OUT / "index_v5.json").read_text())
-    mblob = (OUT / "frames_v5.bin").read_bytes()
-    approaches: dict[tuple, dict] = {}
-    for rec in midx["records"]:
-        b, runs = widen(mblob, rec["runs"])
-        rec = dict(rec, runs=[dict(r, offset=r["offset"] + len(blob)) for r in runs])
-        blob += b
-        r = C.BY_NAME[rec["route"]]
-        key = tuple(r.target)
-        if key not in approaches:
-            approaches[key] = CV.mesh_approaches(race.MAP, r.target, n_probes=2500, seed=1)
-        CV.attach(rec, attempts=rec["attempts"], distinct=rec["distinct_trajectories"],
-                  approaches_modelled=approaches[key]["approaches"], approaches_tested=1,
-                  note="one start point per route")
-        rec["group_label"] = (
-            f"POLICY {rec['decode']} — {rec['attempts']} försök, "
-            f"{rec['distinct_trajectories']} unika banor, "
-            f"1 av {approaches[key]['approaches']} ingångar testad")
-        records.append(rec)
-        print(f"policy   {rec['route']:22s} {rec['decode']:8s} {rec['attempts']:3d} försök, "
-              f"{rec['distinct_trajectories']:3d} unika")
-
-    # --- the strict protocol on race_v7, which is what the reported numbers are ------------------
-    print("\nstrikt prov, race_v7:")
-    sblob, srecs = RS.build(len(blob), "pipeline/out/race/race_v7.pt", n=48)
+    # --- the strict protocol on race_v9, which is what the reported numbers are ------------------
+    # The stale race_v5 dm3 attempts (index_v5.json, greedy/sampled, recorded at the wrong tick
+    # rate) are deliberately NOT carried over: only the current checkpoint's records belong next to
+    # the reference demos. Verdicts come from the canonical strict eval JSON, whose gate also
+    # includes the manoeuvre and envelope columns this recorder does not measure.
+    strict_json = json.loads(Path(
+        "/home/benjamin-adm/rex-ml/pipeline/out/strict/strict_race_v9.json").read_text())
+    verdicts = {r["name"]: bool(r["passes_strict"]) for r in strict_json["routes"]}
+    print(f"\nstrikt prov, race_v9 (ruttdomar ur strict_race_v9.json: "
+          f"{sum(verdicts.values())}/{len(verdicts)} godkända):")
+    sblob, srecs = RS.build(len(blob), "/home/benjamin-adm/rex-ml/pipeline/out/race/race_v9.pt",
+                            n=48, route_verdicts=verdicts)
     blob += sblob
     records += srecs
 
     # --- the 100m corridor: the owner's speed gate, on its own map ------------------------------
-    cblob, crecs = CR.build(len(blob), "pipeline/out/race/race_v5.pt", n=8)
+    cblob, crecs = CR.build(len(blob), "/home/benjamin-adm/rex-ml/pipeline/out/race/race_v9.pt", n=8)
     blob += cblob
     for rec in crecs:
         CV.attach(rec, attempts=rec["attempts"], distinct=rec["distinct_trajectories"],
@@ -195,7 +181,8 @@ def main():
                                 0 if r["decode"] == "reference" else 1, r["decode"]))
 
     index = {
-        "ckpt": "referensdemos + race_v5.pt",
+        "ckpt": ("dina referensdemon + race_v9 — strikt prov 2026-07-30, "
+                 f"{sum(verdicts.values())}/{len(verdicts)} rutter godkända"),
         "tick_dt": C.TICK_DT,
         "arrive_box": C.ARRIVE_BOX,
         "arrive_z": C.ARRIVE_Z,
@@ -212,8 +199,11 @@ def main():
                  "MARK* är härlett för referensen (QuakeWorld sänder ingen markflagga; vz = 0 "
                  "används, vilket håller på 71,5 % av tickarna mot 74,5 % i korpusen) och avläst för "
                  "policyn. Policyn har ingen pitch — miljön har ingen blickstyrning i den axeln — så "
-                 "dess förstapersonsvy är vågrät. ▪ = väggkontakt. Greedy är deterministisk från fast "
-                 "start: 64 försök ger EN bana, vilket står i gruppetiketten. "
+                 "dess förstapersonsvy är vågrät. ▪ = väggkontakt. Policyposterna är det STRIKTA "
+                 "provets egna körningar (race_v9): samplad avkodning, 48 episoder per ingång, "
+                 "varav ett urval sparas som bildrutor — statistiken i gruppetiketten kommer från "
+                 "alla 48, och GODKÄND/ej godkänd är strict_race_v9.json:s ruttdom, vars grind "
+                 "också räknar manöver- och höljeskolumnerna. "
                  "LUFTSEGMENTEN under tidslinjen är körningens sammanhängande sträckor utan "
                  "markkontakt, klickbara till det tick avstampet sker. Klassningen frågar först vad "
                  "som finns UNDER flykten: GAPHOPP = golvet längs banan ligger mer än 96 u under den "

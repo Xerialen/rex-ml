@@ -121,7 +121,8 @@ def record_approach(actor, route: C.CohortRoute, start: tuple, n: int, band: flo
 
 
 def build(base: int, ckpt: str, n: int = 48, dev: str = "cuda",
-          keep: int = KEEP_PER_APPROACH) -> tuple[bytes, list[dict]]:
+          keep: int = KEEP_PER_APPROACH,
+          route_verdicts: dict[str, bool] | None = None) -> tuple[bytes, list[dict]]:
     """The strict protocol, recorded. Returns the frame blob and one record per route+approach."""
     import struct
 
@@ -175,6 +176,16 @@ def build(base: int, ckpt: str, n: int = 48, dev: str = "cuda",
             inside = res["scrape_median"] is not None and b is not None and res["scrape_median"] <= b
             passes = res["arrival_rate"] >= 1.0 and res["median_s"] is not None \
                 and res["median_s"] <= r.pass_s and inside
+            # This recorder's own line measures arrival, median and scrape only. The reported
+            # strict verdict (strict_eval) additionally gates the manoeuvre and corridor envelope,
+            # so when the caller hands over those canonical per-route verdicts they override:
+            # a "GODKÄND" the strict JSON contradicts must never appear on the page.
+            if route_verdicts is not None and r.name in route_verdicts:
+                passes = bool(route_verdicts[r.name])
+                verdict = ("GODKÄND i strikta provet" if passes
+                           else "ej godkänd i strikta provet (ruttdom, inkl. manöver/hölje)")
+            else:
+                verdict = "GODKÄND" if passes else "ej godkänd"
             rec = {
                 "route": r.name, "map": "dm3", "decode": f"{tag} ing.{k}",
                 "geometry": f"strikt prov, ingång {k}, start {res['start']}",
@@ -192,7 +203,7 @@ def build(base: int, ckpt: str, n: int = 48, dev: str = "cuda",
                        if res["median_s"] is not None else ", ingen ankomst")
                     + (f", skrap {res['scrape_median'] * 100:.1f} % mot bandets {b * 100:.1f} %"
                        if res["scrape_median"] is not None and b is not None else "")
-                    + f" — {'GODKÄND' if passes else 'ej godkänd'}"),
+                    + f" — {verdict}"),
                 "runs": runs,
             }
             CV.attach(rec, attempts=n, distinct=len(runs),
@@ -201,5 +212,5 @@ def build(base: int, ckpt: str, n: int = 48, dev: str = "cuda",
             records.append(rec)
             print(f"  {r.name:22s} ing.{k}  {res['arrival_rate'] * 100:5.1f} %  "
                   f"{str(res['median_s']):>7} s  skrap {res['scrape_median']}  "
-                  f"{'GODKÄND' if passes else ''}", flush=True)
+                  f"{verdict if passes else ''}", flush=True)
     return bytes(blob), records

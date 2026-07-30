@@ -4267,3 +4267,53 @@ filterrader loggade, probe-baslinje it 1 (v8: window 38 %, allt annat 0 % strict
 gate-tiden är onåbar där men ankomst inom timeout är inte utesluten, och rutten är inte i
 `_teleport_dependent()`. (b) Probens n=16 är billig (~1-2 min var 100:e iter) och skriver
 inga checkpoints. (c) Röktestets checkpoint `race_smoke_v9fix.pt` lämnad kvar (inget raderas).
+
+### STÅENDE REGEL FRÅN ÄGAREN (2026-07-30, sparad i minnet)
+Inspelade replay-bevis FÖRE rapport, ALLTID: en runda är inte "klar" förrän strict-
+inspelningarna + referenser + korridor är inspelade mot samma checkpoint, validerade och
+publicerade i replay-artefakten. Ordningen efter race_v9: strict_eval → record_strict +
+build_replay (ny DEMO_ROUTE, manöver-/höljeskolumner) → validate_replay (läs skärmdumpar)
+→ publicera → FÖRST DÅ rapportera.
+
+## 2026-07-30 — Replay-bevis för race_v9 inspelade, validerade (24/24 gröna)
+
+**Vad som spelades in** (allt mot `pipeline/out/race/race_v9.pt`, sida byggd av
+`pipeline.build_replay`, logg `pipeline/out/replay/build_v9.log`):
+- **Referensdemon: 8 poster, 23 utsnitt** — nya korrigerade `DEMO_ROUTE` inkl.
+  `sng-to-quad.qwd` → sng_to_quad (629 tick, NY); den felmappade quad_to_ra-referensen
+  är borta (quad_to_ra har därmed ingen referenspost, korrekt).
+- **Strikt prov: 26 poster** (8 rutter × ingångar; lifts/sngspawn a/b ing.2 går ej att
+  bygga, hoppade precis som i strict_eval), **48 episoder per ingång = 1248 mätta
+  episoder**, 78 körningar sparade som bildrutor (snabbast/median/långsammast/fel per ingång).
+- **100m-korridoren: 2 poster, 16 körningar** — analytisk topp 822 u/s (klarar grinden 790),
+  policy race_v9 topp 473 u/s (klarar inte).
+- Föråldrade race_v5-poster (greedy/sampled, fel tickfrekvens) är INTE med längre;
+  gamla v7-indexet bevarat som `pipeline/out/replay/index_all_v7.json` + `frames_all_v7.bin`.
+
+**Etikettfix (minimal, i `pipeline/record_strict.py`):** `build()` tar nu
+`route_verdicts` — kanoniska ruttdomar ur `pipeline/out/strict/strict_race_v9.json`
+(vars grind även räknar manöver- och höljeskolumnerna som inspelarens egen rad saknar).
+Utan detta hade t.ex. window_to_rl ing.1 (100 % ankomst, 0,90 s, skrap 0 %) fått
+"GODKÄND" fast strikta provet säger 0/8. Nu: 26/26 strikta poster märkta
+"ej godkänd i strikta provet (ruttdom, inkl. manöver/hölje)", 0 "GODKÄND" — konsistent
+med `strict_race_v9.json`. `render_only` (--reuse) stämplar inte längre över ckpt-texten.
+
+**Validering:** `pipeline.validate_replay` mot sidan — **ALLA 24 kontroller GRÖNA**
+(117 poster spelbara, 91 393 tick avkodade, uppspelning 0,997x, djuplänk, källmärken,
+3 kameror olika, båda teman, inga console-fel). Rapport:
+`evidence/replay_page_validation.json`. Skärmdumpar (lästa, sidan ser rätt ut):
+`evidence/replay_v9_screens/01..07_*.png`.
+
+**Sidan:** `/tmp/claude-1001/-home-benjamin-adm-rex-ml/003dd697-8855-417d-9d80-53960851ebcf/scratchpad/dm3-replay.html`
+(4,07 MB, samma sökväg som förut så artefakt-URL:en består). Rubrik:
+"checkpoint dina referensdemon + race_v9 — strikt prov 2026-07-30, 0/8 rutter godkända".
+EJ publicerad — huvudsessionen publicerar.
+
+## RACE_V9-RUNDAN KOMPLETT RAPPORTERAD (bevis före rapport, enligt regeln)
+Bevissidan ompublicerad: https://claude.ai/code/artifact/77217a49-a785-452e-9f42-d12522a4e0a6
+36 records / 117 spelbara körningar / 1248 mätta episoder; validatorn 24/24 GRÖN;
+skärmdumpar LÄSTA (rubrik race_v9 0/8, 1:a person ok, gaphoppssegment ok, korridor 822 vs 473).
+OBS publiceringskonflikt: annan session hade återpublicerat GAMLA v7-sidan tidigare idag —
+verifierade via WebFetch att live-innehållet var v7-eran, skrev över med force (ägarens
+uttryckliga beställning). record_strict fick route_verdicts-param så sidans etiketter följer
+strict-domen (annars hade window ing.1 visat GODKÄND mot provets 0/8).

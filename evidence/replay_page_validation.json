@@ -20,7 +20,7 @@
    {
     "check": "banor och f\u00f6rs\u00f6k i listan",
     "pass": true,
-    "detail": "10 rutter, 127 poster"
+    "detail": "10 rutter, 117 poster"
    },
    {
     "check": "geometri avkodad",
@@ -30,12 +30,12 @@
    {
     "check": "bildrutor avkodade",
     "pass": true,
-    "detail": "77482 tick totalt"
+    "detail": "91393 tick totalt"
    },
    {
     "check": "ett f\u00f6rs\u00f6k \u00e4r valt vid start",
     "pass": true,
-    "detail": "{'n': 311, 'route': 'window_to_rl'}"
+    "detail": "{'n': 381, 'route': 'window_to_rl'}"
    },
    {
     "check": "n\u00e5got ritas i vyn (inte blank)",
@@ -45,12 +45,12 @@
    {
     "check": "uppspelning 1:1 (\u00b18 %)",
     "pass": true,
-    "detail": "3.02 s speltid p\u00e5 3.04 s v\u00e4ggtid = 0.994x"
+    "detail": "3.01 s speltid p\u00e5 3.02 s v\u00e4ggtid = 0.997x"
    },
    {
     "check": "luftsegment renderas f\u00f6r varje k\u00f6rning som har dem",
     "pass": true,
-    "detail": "126/126 k\u00f6rningar, 0 med fel antal knappar"
+    "detail": "117/117 k\u00f6rningar, 0 med fel antal knappar"
    },
    {
     "check": "klick p\u00e5 ett luftsegment flyttar uppspelningen dit",
@@ -60,12 +60,12 @@
    {
     "check": "varje post i listan g\u00e5r att v\u00e4lja och spela",
     "pass": true,
-    "detail": "127 poster, 0 trasiga"
+    "detail": "117 poster, 0 trasiga"
    },
    {
     "check": "varje post har en k\u00e4lla (du / ML / analytisk)",
     "pass": true,
-    "detail": "{'analytic': 1, 'ml': 24, 'owner': 8}"
+    "detail": "{'analytic': 1, 'ml': 27, 'owner': 8}"
    },
    {
     "check": "k\u00e4llm\u00e4rket i vyn f\u00f6ljer valet",
@@ -75,12 +75,12 @@
    {
     "check": "fallv\u00e4ljaren listar varje rutt och byter fall",
     "pass": true,
-    "detail": "{'n_routes': 10, 'want': 10, 'before': 0, 'after': 32, 'route_now': 'tunnel_to_ra', 'target': 'tunnel_to_ra'}"
+    "detail": "{'n_routes': 10, 'want': 10, 'before': 0, 'after': 35, 'route_now': 'sng_to_quad', 'target': 'sng_to_quad'}"
    },
    {
     "check": "utan fragment landar sidan p\u00e5 ruttarbetet, inte korridoren",
     "pass": true,
-    "detail": "{'route': 'window_to_rl', 'map': 'dm3', 'dec': 'race_v7 ing.0'}"
+    "detail": "{'route': 'window_to_rl', 'map': 'dm3', 'dec': 'race_v9 ing.0'}"
    },
    {
     "check": "djupl\u00e4nk landar p\u00e5 r\u00e4tt k\u00f6rning, tick och kamera",
@@ -124,19 +124,19 @@
    }
   ],
   "errors": [
-   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
-   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
-   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
-   "console.warning: [.WebGL-0x2c5c00160800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+   "console.warning: [.WebGL-0xf540015c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0xf540015c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0xf540015c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "console.warning: [.WebGL-0xf540015c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
   ],
   "info": {
    "gl": true,
-   "attempts": 127,
+   "attempts": 117,
    "routes": 10,
    "meshTris": 9255,
-   "frames": 77482,
+   "frames": 91393,
    "tick": 0.012987012987012988,
-   "total": "4.04"
+   "total": "4.95"
   },
   "passed": true
  }
