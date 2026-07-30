@@ -1,0 +1,68 @@
+{
+  "what": "Gate 1 evidence bridge: the trained RL policy (gate1_v1 checkpoint, NOT fully trained) driving a bot CLOSED-LOOP on a real mvdsv server — obs built from live entity state, ONNX inference in-process, greedy usercmd through set_bot_cmd/SV_RunCmd. Proves the loop, not the speed.",
+  "date": "2026-07-30",
+  "rtx_commit": "180448a (branch rex-ml/step3-cvar)",
+  "artifacts": {
+    "onnx": "pipeline/out/rl/gate1_v1_live.onnx (contract gate1_v1_live.json, contract_version 1, obs[1,97] raw f32, rnn[1,512] GRU, action_params[1,11], opset 17, tract-onnx 0.21.10)",
+    "fixtures": "pipeline/out/rl/obs_fixtures_100m.npz (400 ticks) -> obs_fixtures_100m.bin via rtx/crates/rex-policy/tools/npz_to_bin.py",
+    "tick_log": "evidence/policy_bridge_smoke_ticks.jsonl (2319 rows, one per server tick)",
+    "mvd_demo": "demos/policy_bridge_smoke.mvd (35 KB; server-side `record` worked out of the box on this mvdsv build)",
+    "new_crate": "rtx/crates/rex-policy (spec/obs/policy/fixtures + bins), driver rtx/crates/rtx-game/src/bot/policy.rs, ctlproto Cmd::PolicyDrive"
+  },
+
+  "step1_obs_parity": {
+    "gate": "max |diff| < 1e-3 per component, Rust builder vs training-env obs, 400 ticks x 97 comps on 100m.bsp",
+    "max_abs_diff_sphere_rays_0_75": 0.0,
+    "max_abs_diff_floor_probes_down_up_75_81": 0.0,
+    "max_abs_diff_kinetic_81_97": 0.0,
+    "verdict": "EXACT (bit-identical): rtx-nav hull0_trace is the same CM_HullTrace port the training sim's cmodel runs; f64 trig cast to f32 at the numpy cast points reproduces the vectors bit-for-bit"
+  },
+
+  "step2_onnx_inprocess": {
+    "runtime": "tract-onnx 0.21.10 (pure Rust, CPU) — GRU-512 graph loads and optimizes in 65.6 ms",
+    "non_finite_params_over_400_fixture_ticks": 0,
+    "greedy_over_fixtures": "fwd=1: 0/400, side none/left/right 97/65/238, jump=1: 400/400 (checkpoint is mid-training; constant-jump is its current habit)",
+    "bench_latency_us_under_training_load": { "mean": 494.8, "p50": 394.3, "p99": 1464.7, "max": 1713.8 }
+  },
+
+  "step4_smoke_on_real_server": {
+    "server": "mvdsv 1.20-dev, playground/qw/server_100m.cfg (map 100m, rtx_bot_count 1, control port 27700), module librtx.so from commit 180448a",
+    "route": "teleport (224,-1408,32), PolicyDrive yaw=90, 30 s wall clock",
+    "ticks": 2319,
+    "tick_rate_hz": 77.3,
+    "msec13_fraction": 1.0,
+    "peak_speed_ups": 327.6,
+    "mean_speed_ups": 17.9,
+    "prev_run_peak_ups": 346.2,
+    "jump_pressed_ticks": 2319,
+    "net_displacement": "first (224,-1408,24.01) -> last (-96.7,-1718.1,24.03)",
+    "obs_build_us": { "p50": 89.3, "p99": 116.4, "max": 156.3 },
+    "inference_us": { "p50": 1788.1, "p99": 2098.4, "max": 6988.7 },
+    "interpretation": "LOOP PROVEN: obs->inference->usercmd->server->new obs closes at the server's own 77 Hz for the full 30 s, zero errors, and peak >320 means the policy exercised real air-acceleration on the live server. Speeds are low because the checkpoint is not done training (it holds jump every tick and never presses forward) — expected, and explicitly not what this smoke gates on."
+  },
+
+  "budget_flag_p99_tick_cpu": {
+    "constraint": "p99 CPU per game tick < 0.5 ms (hard invariant, full per-tick path)",
+    "status": "VIOLATED AS MEASURED, measurement contaminated",
+    "detail": "obs build is fine (p99 116 us). tract inference p50 1.79 ms / p99 2.10 ms measured while the gate1_v1 GPU training run had the box at loadavg 40 on 64 cores; the quieter earlier bench on the same box saw p50 394 us / p99 1465 us. Must be re-measured on a quiet machine before any candidate ships; if still over, options are tract concurrency pinning, a distilled/smaller head, f16/quantization, or ort. Logged as open work, not excused."
+  },
+
+  "deviations_and_assumptions": [
+    "jump_held is not readable from the game module (engine keeps it per client); the driver mirrors PM_CheckJump's rule: !jump->false; jump while swimming/airborne->unchanged; grounded jump press->true. Exact on the corridor (no water); corner case: waterjump.",
+    "msec: the existing bot host truncates frametime*1000 (f32 12.999->12). The policy bridge rounds instead and sent msec=13 on 100% of ticks; the rest of the bot host was left as-is (measured fact worth its own fix, out of scope here).",
+    "view yaw/pitch are integrated in the driver (yaw += dyaw, pitch clamped [-70,80]) and never read back from the entity, exactly as the training env holds them.",
+    "PolicyDrive loads the ONNX on the engine thread at order issue (~66 ms one-time hitch) — never in the tick loop.",
+    "obs timer and inference timer are separate fields (obs_us, infer_us) in the tick log."
+  ],
+
+  "repro": [
+    "cd ~/rex-ml/rtx && cargo build --release -p rex-policy -p rtx-game",
+    "~/rex-ml/.venv/bin/python crates/rex-policy/tools/npz_to_bin.py ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.npz ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.bin",
+    "./target/release/rex-policy-obs-parity ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.bin playground/qw/maps/100m.bsp",
+    "./target/release/rex-policy-onnx-check ~/rex-ml/pipeline/out/rl/gate1_v1_live.onnx ~/rex-ml/pipeline/out/rl/obs_fixtures_100m.bin",
+    "cp target/release/librtx.so playground/qw/qwprogs.so",
+    "(cd playground && ./mvdsv +exec server_100m.cfg)  # tmux window jobs:policy-smoke",
+    "./target/release/rex-policy-smoke 27700 ~/rex-ml/pipeline/out/rl/gate1_v1_live.onnx ~/rex-ml/rtx/playground/policy_drive_smoke.jsonl 30 224 -1408 32 90 policy_bridge_smoke",
+    "# summary JSON on stdout; per-tick log at the given path; MVD in playground/qw/demos/"
+  ]
+}

@@ -4811,3 +4811,51 @@ tele-genomfart per teleporter, fartverktyg vs ompositionering, och konkret regel
 hur Gate 2-mätningen på riktiga servern ska behandla tele (sim-tränad policy har aldrig
 sett fungerande tele). Leverans: evidence/tele_speed_analysis.md. Stänger ägarens
 teleporter-flagg med mätningar i stället för antagande.
+
+## 2026-07-30 — BEVISBRYGGAN KLAR: policyn kör SLUTET-LOOP på riktiga mvdsv (rtx 180448a)
+Alla fem stegen genomförda; evidence/policy_bridge_smoke.json + policy_bridge_smoke_ticks.jsonl
++ demos/policy_bridge_smoke.mvd. Committat i rtx (branch rex-ml/step3-cvar, 180448a; push
+blockerad på token — lokal commit).
+**1. Obs-paritet: EXAKT 0.0** (400 ticks × 97 komponenter, alla tre grupperna) — rtx-nav
+hull0_trace är samma CM_HullTrace-port som simmens cmodel; f64-trig kastad till f32 på numpys
+cast-punkter ⇒ bitidentisk obs. Ny crate rtx/crates/rex-policy (spec/obs/policy + parity/check/
+smoke-bins, npz→bin-konverterare).
+**2. ONNX in-process:** tract-onnx 0.21.10 kör GRU-512-grafen (load 66 ms), 0 icke-finita
+params över fixturerna. Greedy på fixtur-obs: jump 400/400, fwd 0/400 — checkpointen är
+halvtränad, väntat.
+**3. PolicyDrive i rtx-game:** ctlproto Cmd::PolicyDrive{bot,onnx,log,yaw}; ControlOrder::Policy
+avbryter HELA steer/combat-pipelinen (intercept före objective); driver håller yaw/pitch/
+last_action/jump_held (PM_CheckJump-spegel); Stop släpper drivern. Kombatfilerna orörda,
+cargo fmt EJ körd. 278 rtx-game-tester + nya spec/ctlproto-tester gröna.
+**4. Smoke på RIKTIG server (mvdsv 1.20-dev, 100m):** 2319 ticks/30 s = 77,3 Hz slutet loop,
+0 fel, msec=13 på 100 % (BUGGFYND: övriga bot-värden trunkerar frametime→msec 12 — bryggan
+avrundar; resten av boten lämnad orörd, värt egen fix). Peak 327,6 u/s (föreg. körning 346,2)
+>320-marktaket ⇒ luftacceleration exekverad live. Medel 17,9 — checkpointen hoppar på stället,
+väntat. MVD inspelad serverside med `record` (funkade direkt).
+**5. Budget-FLAGGA:** obs-bygge p99 116 µs OK; tract-inferens p50 1,79 ms/p99 2,10 ms uppmätt
+under loadavg 40/64 (träningen kör) — 0,5 ms-invarianten är BRUTEN som uppmätt men mätningen
+är kontaminerad; kräver ren-maskin-mätning + ev. distillering/kvantisering/ort. Öppen punkt,
+inte ursäktad.
+NÄSTA: träningen fortsätter mot GATE1_KANDIDAT; när daemonen flaggar → exportera om ONNX,
+kör bryggan ≥30 körningar per bevisprotokollet (RUNBOOK), mät på tyst CPU.
+
+## 2026-07-30 19:20 — DUBBELT GENOMBROTT: interventionen verkar + bevisbryggan KLAR
+(1) 19:20-avläsningen: p50 489.7, max 503.4 (n=5120) — dippen (445 @19:14) återhämtad,
+459-platån BRUTEN, 500-tröskeln inom räckhåll. Steg B (flip-kostnad) behövs inte.
+Daemonen växlar till steg 4 när rullande medel ≥500.
+(2) AGENT D KLAR — bevisbryggan bevisad på RIKTIGA mvdsv:
+- Obs-paritet EXAKT 0.0 (400 ticks × 97 komponenter, bitidentisk — rtx-nav::hull0_trace
+  är samma CM_HullTrace-port; f64-trig kastad till f32 på numpys cast-punkter).
+- tract-onnx in-process (CPU): GRU-512-grafen, load 66 ms, 0 icke-finita.
+- SLUTEN LOOP LIVE: 2319 ticks @ 77,3 Hz, 0 fel, msec=13 100 %; peak 327,6 u/s > 320-
+  marktaket ⇒ LUFTACCELERATION EXEKVERAD PÅ RIKTIGA SERVERN (halvtränad checkpoint,
+  farten är inte poängen — loopen är). MVD inspelad serverside: demos/policy_bridge_smoke.mvd.
+- Cmd::PolicyDrive i ctlproto; ControlOrder::Policy kringgår steer/combat; kombatfiler
+  orörda; 278+ tester gröna. rtx-commit 180448a (lokal; remote-push tokenblockerad).
+- FYND: (a) bot-värdens frametime-trunkering ger msec 12 (f32 12,999) — bryggan avrundar
+  rätt, botens egen bugg lämnad för separat fix; (b) tract-inferens p50 1,79 ms/p99 2,10
+  BRYTER 0,5 ms-invarianten som uppmätt — MEN mätt under loadavg 40 (träning pågick) och
+  invarianten är per ägarbeslut en FAS 3-fråga (destillering/kvantisering/ort). Öppen
+  punkt, redovisad, inte ursäktad.
+HELA BEVISKEDJAN FUNGERAR: träna → exportera → paritet → sluten loop på riktig server →
+MVD. Kandidatprotokollet är nu tryckknapp när träningen når 750-signalen.
