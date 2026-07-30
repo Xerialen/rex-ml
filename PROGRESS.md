@@ -4424,3 +4424,15 @@ dominerar profilen) — med qwsim-C++-steget och fler workers (64 kärnor) skala
 Agent A (gate2-zoner) väcktes ur passiv väntan på sitt statistikjobb (samma felmönster
 som inspelningsagenten tidigare) — instruerad att övervaka aktivt och slutföra leverabler.
 NÄSTA: rl/qwsim_backend.py när agent B levererar API:t; sedan riktig steg 1-träning.
+
+## 2026-07-30 — Fas 0: Gate 2-belöningarna implementerade (12/12 tester gröna)
+rl/rewards_gate2.py: kinetisk multiplikator (fart × linjering; rörelse mot nära hinder
+straffas via strålprojektion — återanvänder observationens strålar), kollisionsimpuls-
+straff (förlust/150), VoxelNovelty (32u-raster, per-episod, DOLT för agenten, bonus ∝
+passagehastighet enligt manifestet). Antagande beslutat själv: nyfikenheten är
+PER-EPISOD (reset nollar) så geometrin, inte besökshistoriken, bär beteendet — global
+ackumulering hade låtit policyn memorera ett besöksschema. rl/tests 12/12 gröna.
+Fynd vid skaning av bevisbryggan: rex_env.PyVecEnv (gamla Rust/C++-simmen) finns och
+driver pipeline/corridor.py — men dess fysiktrohet är ovaliderad, vilket är exakt varför
+libqwsim byggs med bit-exakthetsbevis. Riktiga-server-bryggan för gatebevis =
+record_strict/validate_replay-kedjan (LD_LIBRARY_PATH-kravet), återanvänds i fas 1.
