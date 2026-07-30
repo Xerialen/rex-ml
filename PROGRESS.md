@@ -4624,3 +4624,12 @@ i EXTRACTION-NOTES (matchar zonrastrets exkluderingar).
 TRÄNING gate1_v1 LIVE i tmux rexml:jobs: 41 369 FPS (10s-fönster), 6,0 M frames på
 ~2,5 min, policy uppdaterar, snittreward stigande (19,4). Daemon i jobs:0.
 .gitignore: sim/build, .so, pycache.
+
+## 2026-07-30 — gate1_v1: curriculum GÅR — steg 3 nått på <10 min
+Verifierat flöde: 12 117 episoder i episodes/*.jsonl, daemonen växlar globalt.
+curriculum_log.jsonl: steg 1→2 vid medel-peak 384.4 (234 ep), steg 2→3 vid 420.4
+(214 ep). Färska episoder ~440 u/s, kollisionsförlust 0.0. Policyn hittade
+luftaccelerationen redan i steg 1 (384 > 320 kräver den). Snittreward 21.1 och
+stigande, 41 k FPS stabilt. Nästa tröskel: steg 3→4 vid medel-peak 500; slutmål
+steg 4: 800 + koll<150 ⇒ GATE1_KANDIDAT ⇒ bevisprotokoll på riktiga servern.
+Daemonen kör i tmux jobs:0 (ägarens gamla session — flyttas ej, den arbetar).
