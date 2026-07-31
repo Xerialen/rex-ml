@@ -22,3 +22,5 @@ rl/__pycache__/
 pipeline/out/rl/train_dir/
 pipeline/out/rl/*.onnx
 .keepgoing_count
+__pycache__/
+*.pyc
