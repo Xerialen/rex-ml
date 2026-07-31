@@ -5575,3 +5575,21 @@ möjlig. Bottens 5,5 %/alla-OPEN ≈ ~15 % mot nåbara. 25/25 tester gröna.
 ring→quad-hoppet (görbart? använt?) och mega-SNG-besök. Banredump kör
 (rl/dump_trajectories.py, instrumenterar båda frågorna); atlas-pipelinens
 geometri/mall (scratchpad) återanvänds.
+
+## 2026-08-01 07:15 — 3D-ARTEFAKT publicerad: REX på dm3 (ägarbeställning)
+https://claude.ai/code/artifact/c32e9f16-567a-4450-abea-a449165e68f1
+10 greedy-banor (aktuell v2-checkpoint) i atlasens 3D-röntgenvy: fartgradient
+(blå 0→cyan 320→bärnsten 500→vit 800), hopplager (gap-bågar/fall), mänsklig
+korpustrafik som jämförelselager, ruttflödestabell, ring→quad- och mega-SNG-
+paneler. Skärmdump LÄST: allt renderar; ops-notis: chromium borta, ersatt av
+playwright headless-shell (~/.cache/ms-playwright/...chrome-headless-shell)
++ libasound ur scratchpad-deb:ens root — samma swiftshader-flaggor.
+MÄTSVAR (rl/dump_trajectories.py, utökad med golvdjupsklassade luftsegment):
+* Episodsnitt 431-770 (!), aggregat ~633 — quad-episoder 770, window 712-720.
+* 565 speedhopp >240 u på 10 min (~57/episod) — tekniken总 konstant bruk.
+* ÄKTA gap-hopp: 0. Ring→quad: 0. Mega-SNG-besök: 0/10. Fall >64u: 0.
+* Rutter: window↔pent (26+13), quad↔ringen (19+?), mega→quad 19 — orbitar.
+Bilden i 3D: fyra tighta velodromer (pent/quad, SNG, RA/mega-mitten, NG-rummet).
+Botten har farten och tekniken men ingen genvägsanvändning — förväntat: gap-hopp
+uppstår först när utforskningen tvingar ruttbyten (nyhetsjakten är per-episod
+och loopar betalar fortfarande). Täckningsdrivets nästa fönster avgör.
