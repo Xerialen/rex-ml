@@ -5486,3 +5486,10 @@ Nyhetsbonusen (0,6/voxel, per-episod) ska trycka mot spridning — mäts framåt
 riskjämvikten är tillbaka i ny form — kandidatåtgärd: höj nyhetsbonusen eller
 gör den global-persistent över N episoder (mot manifestets per-episod-princip —
 i så fall journalförd avvägning, ej ägarfråga; geometrin bär fortfarande).
+
+## 2026-07-31 22:25 — v2-fönster 2 (~247M tränade): registerraset bromsat
+Register 452,1 (958→461→452): stabiliserar kring ~455, ÖVER v1:s band 380-435.
+Träningsbelöning 868→1530 (nyhet+fart betalar — konsistent med spridande orbit
+eller växande täckning; avgörs av 30-körningsevalen som fortfarande kör, ~70
+min pga CPU-konkurrens, buffrad utdata). Nästa fönster journalförs när unionen
+är mätt.
