@@ -36,10 +36,17 @@ echo "=== 3/4 $N körningar à ${DUR}s (FÄRSK SERVER PER KÖRNING — upprepade
 echo "    PolicyDrive-sessioner mot samma server ger 0-fart; oberoende körningar) ==="
 SRVLOG="$SCRATCH/gate1srv.log"
 for i in $(seq 1 "$N"); do
-  tmux kill-window -t rexml:gate1srv 2>/dev/null; : > "$SRVLOG"
+  tmux kill-window -t rexml:gate1srv 2>/dev/null || true
+  pkill -x mvdsv 2>/dev/null || true; sleep 1   # fönsterdöd dödar inte processen — porten måste släppas
+  : > "$SRVLOG"
   tmux new-window -d -t rexml -n gate1srv \
     "cd ~/rex-ml/rtx/playground && ./mvdsv +exec server_100m.cfg 2>&1 | tee -a $SRVLOG"
-  until grep -q "Server spawned" "$SRVLOG" 2>/dev/null; do sleep 1; done
+  T0=$(date +%s)
+  until grep -q "Server spawned" "$SRVLOG" 2>/dev/null; do
+    sleep 1
+    if grep -q "Address already in use" "$SRVLOG" 2>/dev/null; then pkill -x mvdsv || true; sleep 2; : > "$SRVLOG"; tmux kill-window -t rexml:gate1srv 2>/dev/null || true; tmux new-window -d -t rexml -n gate1srv "cd ~/rex-ml/rtx/playground && ./mvdsv +exec server_100m.cfg 2>&1 | tee -a $SRVLOG"; fi
+    if [ $(( $(date +%s) - T0 )) -gt 60 ]; then echo "  server-timeout run $i" >> "$TICKDIR/errors.log"; break; fi
+  done
   sleep 2
   rtx/target/release/rex-policy-smoke 27700 "$ONNX" "$TICKDIR/run_$i.jsonl" "$DUR" \
     224 -1408 32 90 "gate1_ev_$i" > "$TICKDIR/summary_$i.json" 2>>"$TICKDIR/errors.log" \
