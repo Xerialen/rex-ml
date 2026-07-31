@@ -5166,3 +5166,12 @@ verkar), MEN fart 28→37 — exp-termen betalar först ÖVER 320 medan policyn 
 brygga; dm3 saknar den). ÅTGÄRD: linjär fartterm 0.02·sp/320 upp till 320 som möter
 exp-kurvan. 25/25 tester. Omstart, resume verifierad. Framgångsmått: fart 100+ och
 växande täckning vid nästa eval (~30-45 min).
+
+## 2026-07-31 04:05 — Fartgradienten VERKAR: 37→118,7 u/s (mål 100+), reward −3,8→+22,9
+Eval (samplat, n=10, 601M frames): OPEN-medelfart 118,7 (3,2× på 53M frames), fastnad
+0/10, score 0,101→0,240. Linjärtermen bar hela vägen — beteendehorisonten nådd och
+exp-regimen väntar vid 320. NÄSTA FLASKHALS (identifierad, ej åtgärdad än): täckningen
+står still (0,72→0,73 %) — policyn öker farten lokalt men strövar inte brett.
+Kandidatspakar OM den inte lossnar med farten själv (mer fart ⇒ mer karta per episod):
+(a) nyhetsbonus med global komponent, (b) längre episoder, (c) spawn-region-rotation.
+Mäts vid nästa eval; ingen ändring nu (en spak i taget, farten stiger fortfarande).
