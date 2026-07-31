@@ -1,0 +1,103 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate2_v1",
+ "episodes": 10,
+ "ticks": 46200,
+ "speed_mean": 416.7456850005315,
+ "speed_p50": 423.3347905858617,
+ "speed_p99": 460.7518289511957,
+ "peak": 536.7559234474307,
+ "frac_ticks_over450": 0.028181818181818183,
+ "frac_ticks_over500": 0.0008658008658008658,
+ "frac_airborne": 0.787077922077922,
+ "frac_airborne_over400": 0.8192811636013944,
+ "jumps_per_s": 3.866133866133866,
+ "landing_dv_median_u": 0.0,
+ "landing_dv_p10_u": 0.0,
+ "human_ref_over450": {
+  "frac_airborne": 0.93,
+  "jumps_per_s": 1.0,
+  "landing_dv_median_u": -13.5
+ },
+ "episodes_detail": [
+  {
+   "mean_speed": 430.5307491666667,
+   "peak": 454.0323038989414,
+   "frac_airborne": 0.8939393939393939,
+   "frac_airborne_over400": 0.9047090182141271,
+   "frac_ticks_over450": 0.03225108225108225,
+   "stuck": false
+  },
+  {
+   "mean_speed": 417.12056260149046,
+   "peak": 467.2983336917187,
+   "frac_airborne": 0.8396103896103896,
+   "frac_airborne_over400": 0.8828143570240076,
+   "frac_ticks_over450": 0.016883116883116882,
+   "stuck": false
+  },
+  {
+   "mean_speed": 432.22777152739354,
+   "peak": 452.1806028707445,
+   "frac_airborne": 0.9051948051948052,
+   "frac_airborne_over400": 0.9131882770870338,
+   "frac_ticks_over450": 0.004978354978354979,
+   "stuck": false
+  },
+  {
+   "mean_speed": 398.2158080889249,
+   "peak": 468.087561570681,
+   "frac_airborne": 0.8235930735930735,
+   "frac_airborne_over400": 0.8538884524744698,
+   "frac_ticks_over450": 0.030303030303030304,
+   "stuck": false
+  },
+  {
+   "mean_speed": 400.8542003801918,
+   "peak": 433.8247719425715,
+   "frac_airborne": 0.7584415584415585,
+   "frac_airborne_over400": 0.7915077548944826,
+   "frac_ticks_over450": 0.0,
+   "stuck": false
+  },
+  {
+   "mean_speed": 424.6543024574028,
+   "peak": 536.7559234474307,
+   "frac_airborne": 0.854978354978355,
+   "frac_airborne_over400": 0.8754406580493537,
+   "frac_ticks_over450": 0.03354978354978355,
+   "stuck": false
+  },
+  {
+   "mean_speed": 424.68811271712104,
+   "peak": 452.5670935404789,
+   "frac_airborne": 0.8435064935064935,
+   "frac_airborne_over400": 0.8595152603231598,
+   "frac_ticks_over450": 0.005627705627705628,
+   "stuck": false
+  },
+  {
+   "mean_speed": 408.48455665905846,
+   "peak": 438.3870792708743,
+   "frac_airborne": 0.7829004329004329,
+   "frac_airborne_over400": 0.8268199233716476,
+   "frac_ticks_over450": 0.0,
+   "stuck": false
+  },
+  {
+   "mean_speed": 430.22007069572004,
+   "peak": 485.743293743563,
+   "frac_airborne": 0.8562770562770563,
+   "frac_airborne_over400": 0.8707940780619112,
+   "frac_ticks_over450": 0.1582251082251082,
+   "stuck": false
+  },
+  {
+   "mean_speed": 400.4607157113457,
+   "peak": 442.54573048722455,
+   "frac_airborne": 0.31233766233766236,
+   "frac_airborne_over400": 0.31866892272983643,
+   "frac_ticks_over450": 0.0,
+   "stuck": false
+  }
+ ]
+}

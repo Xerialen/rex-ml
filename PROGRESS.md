@@ -5319,3 +5319,31 @@ ens mänskligt demonstrerat? p95=496 är per TICK), (3) fastnad-geografin. Åtg�
 analystagent NU utsänd med fyra frågor (uthållna 60s-fönster, var-heatmap, teknik-
 karakterisering, takbedömning). Svaret avgör om stoppvillkorsfrågan om 500-formeln
 behöver lyftas MED underlag, och kan ge curriculum-frön (fartkorridorer, drops).
+
+## 2026-07-31 13:20 — BESLUT: mixandel 6→10 (fönster 3 stängde bevakningen)
+Fönster 3 (1,91 Md): greedy 414,1 (score 0,828), register 401,3. Tre fönster:
+greedy 419,3→414,4→418,7→414,1 (platt, lutning ~0), register 426→391→401 (platt).
+Bevakningsnotens premiss (register växer mot 700) FALSIFIERAD under mix=6.
+
+NYA UNDERLAG (båda i evidence/):
+* human_sustained_speed_dm3.md (analystrapport): INGEN människa har nått 60s-OPEN-
+  snitt >500 (0/7,4M fönster, max 464,8) — men taket för REN rörelseavsikt är
+  ~500-535 (25,9s @ 535 demonstrerat, luftandel 0,96). Gaten är alltså INTE
+  påvisbart olöslig ⇒ ingen ägareskalering; 500-kravet står. Recept: ≥0,93 luft-
+  andel, ~1 hopp/s, förlustfria landningar; över ~450 finns bara luftvägen.
+  Fartkorridorer: RL↔window (71-75 % >450-täthet), RA→YA, ring/quad-övre.
+* diag_gate2_platafas.json (nytt verktyg rl/diag_gate2.py): policyn bunnyhoppar
+  REDAN på dm3 — luftandel 0,79 (0,82 över 400), landningar förlustfria (median
+  0,0), p99 461, peak 537. Tekniken finns men DEGRADERAD: registret gör 391-401
+  på rak 100m där samma nät gjorde 984. Flaskhalsen är luftstrafens verkningsgrad
+  (vinst/lufttick), inte navigation eller landningsförluster.
+
+BESLUT (operatörsisolering, en variabel i taget): --qw_gate1_mix_workers 6→10
+(19→31 % av samplen på steg 4-repetitionen) — dm3-gradienten dominerar och drar
+ner registret; större andel ger strafe-kärnan gradientvikt. Entropi kvar på 0,003.
+Samtidigt: --train_for_env_steps 2e9→4e9 (gamla taket hade terminerat inom ~30 min).
+Omstart med resume (learner-patchen verifierad; kontrollera "Loading state" +
+fortsatt framecounter). Mätplan: 3 nya fönster; framgång = register klättrar mot
+600+ UTAN att greedy gate2 tappar >10; misslyckas registret ändå ⇒ nästa variabel
+är entropi 0,003→0,01 (bryta bassängen), därefter ev. riktade spawns i fart-
+korridorerna (curriculum-frö ur analystens heatmap).
