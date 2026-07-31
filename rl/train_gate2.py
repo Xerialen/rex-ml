@@ -26,6 +26,8 @@ def main(argv=None):
     parser, _ = parse_sf_args(argv=argv)
     parser.add_argument("--qw_backend", default="qwsim", choices=["qwsim", "stub"],
                         help="qwsim = libqwsim (riktig fysik); stub = endast smoke")
+    parser.add_argument("--qw_gate1_mix_workers", type=int, default=6,
+                        help="workers < N kör 100m-repetition (extremfart-registret)")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

@@ -133,4 +133,18 @@ def make_env(full_env_name, cfg=None, env_config=None, render_mode=None):
 
 
 def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
+    # INTERLEAVED 100m-REPETITION (2026-07-31 09:50, mätgrundat): gate2-policyn
+    # fastnade i enhetlig kryssvana ~410 (fördelningsdiagnos: p99 431, >500 bara
+    # 0,1 % — teknikregistret från gate1 [984 bevisat] TAPPAT under navigations-
+    # inlärningen). En delmängd workers kör 100m-korridoren med steg 4-belöningen
+    # så extremfarten förblir i policyns register; resten tränar dm3-navigation.
+    # En karta per process ⇒ split per WORKER (rummen är identiska).
+    mix = getattr(cfg, "qw_gate1_mix_workers", 6) if cfg is not None else 0
+    widx = env_config.get("worker_index", 99) if env_config is not None else 99
+    if widx < mix:
+        env = QWGate1Env(full_env_name, cfg, env_config, render_mode)
+        cur = Curriculum()              # lokal (fildrivna klientens stage är read-only)
+        cur.stage = 3                   # steg 4: exp-fart + väggstraff (repetition)
+        env.core.cur = cur
+        return env
     return QWGate2Env(full_env_name, cfg, env_config, render_mode)

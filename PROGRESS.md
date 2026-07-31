@@ -5239,3 +5239,13 @@ Fysik friad: svängradie @500 ≈ 108u (rymligt); kedjor friktionsfria. Reward @
 till; om p50 <420 vid nästa eval ⇒ strukturdrag (kandidater: entropipuls för teknik-
 upptäckt, alt. interleaved 100m-repetition mot glömd extremteknik — gate1-policyn KUNDE
 800+; gate2-varianten har tappat den registern).
+
+## 2026-07-31 09:55 — STRUKTURDRAG: interleaved 100m-repetition (6/32 workers)
+Beslutsfönstret föll (403 efter extra tau-fönster — vanetaket står). Implementerat:
+make_env_gate2 delar per worker_index — workers 0-5 kör 100m-korridoren med Gate 1
+steg 4-belöning (lokal Curriculum, stage=3; fildrivna klientens stage är read-only),
+26 kör dm3. Samma policy tränar båda ⇒ 984-teknikregistret hålls levande medan
+navigationen består. En karta per process gjorde worker-split till rena lösningen.
+--qw_gate1_mix_workers=6 (19 %). Smoke grönt (stub, mixad). 25/25 tester. Omstart,
+resume @1,44Md. Framgångsmått: dm3-p50 bryter 430+ inom 2-3 fönster (tekniken läcker
+över); korridorworkers ska snabbt återfinna 700+ (transfern fanns där).
