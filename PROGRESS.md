@@ -5257,3 +5257,32 @@ Facetmätning @1,56Md (119M efter mix): dm3-samplat 404 (oförändrat), korridor
 greedy!). Gate 1:s slutspelsrecept tillämpat: entropi 0,01→0,003 (mixen kvar).
 Blindfläck stängd i metodiken: gate2-evaler körs hädanefter i BÅDA lägena;
 greedy är evidensmåttet. Omstart, resume @1,56Md.
+
+## 2026-07-31 11:45 — KOMPAKTIONSCHECKPOINT (fullständigt nuläge för färsk kontext)
+=== GATE 1: SAK-KLAR. Serverbevisad 30/30 (best 984,0 / median 983,4 / p10 967,8),
+krav 820 ✓ submål 850 ✓. Kandidat: gate1_v1/harvest/best.pth (sha 12770c495c15).
+MVD-demos: demos/gate1-serverbevis/ (30 st). Artefakter: träningssida e0cb9492-...,
+FP-replay 42720e05-... ÖPPEN ÄGARFRÅGA: orbit-beteendet (policyn kretsar, fullbordar ej
+korridoren — "peak 820" uppfyllt som formulerat; målgång-i-fart = hårdare def, ägaren
+avgör om omträning krävs). Gamla gate1-checkpoints i pre-intervention/ & pre-annealing/.
+=== GATE 2: TRÄNAS, gate2_v1 i tmux rexml:jobs @~1,64Md frames. NULÄGE (greedy =
+EVIDENSMÅTTET): OPEN-medelfart 417,5 / score 0,835 / täckning ~10 % / fastnad 0.
+Gatekrav (BRIEF §2): score ≥1,0 + OPEN-medel >500 + 70 % täckning (union ≥30 körn.) +
+0 fastnade. Konsolideringsfas pågår (entropi 0,003) + interleaved 100m-repetition
+(workers 0-5 kör korridor steg 4-belöning via --qw_gate1_mix_workers=6; register 426,
+återbyggs). Belöningshistorik med all mätgrund: rl/rewards_gate2.py-kommentarerna.
+Åtta jämviktsbrytningar journalförda ovan (lat-optimum→smyg→kryp→pacing→hemlåda→
+kryssfart→tau→mix+konsolidering).
+=== KLART OCH VÄNTAR: dm3-obs-paritet Rust-bryggan OK (5,4e-7); serverbevis-tryckknapp
+rl/run_gate1_evidence.sh (härdd: snapshot-frys, server-per-körning, set-e-vaktad, pkill
+-x mvdsv); för Gate 2-beviset behövs dm3-variant av skriptet (server_dm3-cfg? kolla
+rtx/playground; PolicyDrive är kartagnostisk) + eval_gate2-formeln på servertickar.
+=== DRIFT: träning körs via tmux-panelen; ANKRAT kill-mönster:
+pgrep -f "^sim/.venv-sf/bin/python -m rl\.train_gate2" (ALDRIG oankrad — självmatch!),
+kill hela PGID. Monitor b9n7uer9o (30-min hjärtslag). Evaler: SF_STDDEV_MAX=1.0
+obligatorisk (träningsparitet, inbyggd i verktygen), GREEDY = evidensläge.
+Resume FUNGERAR (learner.py-patch weights_only=False i .venv-sf, se sim/STACK.md —
+ÅTERAPPLICERA patcharna vid venv-ombygge: STACK.md listar båda).
+=== EFTER BÅDA GATES: bevissida per bevisregeln, REPORT.md (enda klarsignalen).
+Fas 3 (efter gates): 0,5 ms-destillering (tract-inferens 1,7 ms uppmätt under last).
+rex-ml-rtx-push väntar fortfarande på ägarens token-rättighet.
