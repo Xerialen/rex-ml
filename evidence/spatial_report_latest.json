@@ -1,0 +1,422 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate2_v2",
+ "episodes": 10,
+ "zoner": [
+  {
+   "zon": "VATTNET",
+   "tidsandel_pct": 32.8,
+   "medelfart": 71.1,
+   "tvekan_pct": 74.3
+  },
+  {
+   "zon": "vid SNG",
+   "tidsandel_pct": 18.1,
+   "medelfart": 458.5,
+   "tvekan_pct": 0.7
+  },
+  {
+   "zon": "vid pent",
+   "tidsandel_pct": 11.9,
+   "medelfart": 623.7,
+   "tvekan_pct": 0.0
+  },
+  {
+   "zon": "vid YA/SSG",
+   "tidsandel_pct": 11.8,
+   "medelfart": 480.7,
+   "tvekan_pct": 2.9
+  },
+  {
+   "zon": "vid window",
+   "tidsandel_pct": 7.6,
+   "medelfart": 612.0,
+   "tvekan_pct": 0.0
+  },
+  {
+   "zon": "vid RA-toppen",
+   "tidsandel_pct": 5.4,
+   "medelfart": 643.1,
+   "tvekan_pct": 0.1
+  },
+  {
+   "zon": "vid mega",
+   "tidsandel_pct": 4.5,
+   "medelfart": 366.5,
+   "tvekan_pct": 10.1
+  },
+  {
+   "zon": "vid tele",
+   "tidsandel_pct": 3.3,
+   "medelfart": 655.0,
+   "tvekan_pct": 0.1
+  },
+  {
+   "zon": "vid RA-nedre/NG-tunneln",
+   "tidsandel_pct": 2.2,
+   "medelfart": 594.6,
+   "tvekan_pct": 0.2
+  },
+  {
+   "zon": "vid RL",
+   "tidsandel_pct": 1.7,
+   "medelfart": 343.9,
+   "tvekan_pct": 18.2
+  },
+  {
+   "zon": "vid quad",
+   "tidsandel_pct": 0.6,
+   "medelfart": 734.0,
+   "tvekan_pct": 0.0
+  }
+ ],
+ "episoder": [
+  {
+   "spawn": [
+    1296,
+    -176,
+    -24
+   ],
+   "spawn_zone": "vid mega",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 359.0,
+   "distinct_zones": 4,
+   "route_zones": [
+    "vid mega",
+    "vid YA/SSG",
+    "vid mega",
+    "vid RL",
+    "vid mega",
+    "VATTNET",
+    "vid mega",
+    "VATTNET"
+   ]
+  },
+  {
+   "spawn": [
+    1360,
+    16,
+    -24
+   ],
+   "spawn_zone": "vid mega",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 343.0,
+   "distinct_zones": 5,
+   "route_zones": [
+    "vid mega",
+    "vid YA/SSG",
+    "vid mega",
+    "vid YA",
+    "vid YA/SSG",
+    "vid RL",
+    "VATTNET",
+    "vid RL",
+    "vid YA/SSG",
+    "vid mega",
+    "VATTNET",
+    "vid mega",
+    "VATTNET",
+    "vid mega",
+    "VATTNET",
+    "vid mega",
+    "vid YA/SSG",
+    "vid RL",
+    "VATTNET",
+    "vid RL",
+    "vid YA/SSG",
+    "vid RL",
+    "vid mega",
+    "vid RL",
+    "vid mega",
+    "vid RL",
+    "VATTNET",
+    "vid RL",
+    "vid YA/SSG",
+    "vid RL",
+    "vid mega",
+    "VATTNET"
+   ]
+  },
+  {
+   "spawn": [
+    -336,
+    272,
+    120
+   ],
+   "spawn_zone": "vid SNG",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 485.5,
+   "distinct_zones": 1,
+   "route_zones": [
+    "vid SNG"
+   ]
+  },
+  {
+   "spawn": [
+    881,
+    944,
+    -292
+   ],
+   "spawn_zone": "vid pent",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 589.5,
+   "distinct_zones": 3,
+   "route_zones": [
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent"
+   ]
+  },
+  {
+   "spawn": [
+    -848,
+    144,
+    -16
+   ],
+   "spawn_zone": "vid mega",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 423.8,
+   "distinct_zones": 4,
+   "route_zones": [
+    "vid mega",
+    "vid tele",
+    "vid RA-nedre/NG-tunneln",
+    "vid tele",
+    "vid RA-nedre/NG-tunneln",
+    "vid tele",
+    "vid mega",
+    "vid SNG",
+    "vid mega",
+    "vid SNG"
+   ]
+  },
+  {
+   "spawn": [
+    336,
+    -560,
+    264
+   ],
+   "spawn_zone": "vid RA-toppen",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 655.3,
+   "distinct_zones": 3,
+   "route_zones": [
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln",
+    "vid RA-toppen",
+    "vid tele",
+    "vid RA-toppen",
+    "vid RA-nedre/NG-tunneln"
+   ]
+  },
+  {
+   "spawn": [
+    1455,
+    1104,
+    -233
+   ],
+   "spawn_zone": "vid pent",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 654.1,
+   "distinct_zones": 3,
+   "route_zones": [
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid quad",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid window",
+    "vid pent",
+    "vid quad"
+   ]
+  },
+  {
+   "spawn": [
+    816,
+    -304,
+    -184
+   ],
+   "spawn_zone": "vid mega",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 359.2,
+   "distinct_zones": 4,
+   "route_zones": [
+    "vid mega",
+    "vid YA/SSG",
+    "vid RL",
+    "vid mega",
+    "VATTNET",
+    "vid YA/SSG",
+    "vid RL",
+    "vid YA/SSG",
+    "vid RL",
+    "vid mega",
+    "VATTNET"
+   ]
+  },
+  {
+   "spawn": [
+    1840,
+    464,
+    -88
+   ],
+   "spawn_zone": "vid mega",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 355.3,
+   "distinct_zones": 4,
+   "route_zones": [
+    "vid mega",
+    "vid RL",
+    "VATTNET",
+    "vid RL",
+    "vid YA/SSG",
+    "vid mega",
+    "VATTNET",
+    "vid YA/SSG",
+    "vid mega",
+    "VATTNET"
+   ]
+  },
+  {
+   "spawn": [
+    1232,
+    -816,
+    -24
+   ],
+   "spawn_zone": "vid YA",
+   "stuck": false,
+   "stuck_pos": null,
+   "stuck_zone": null,
+   "mean_speed": 504.2,
+   "distinct_zones": 2,
+   "route_zones": [
+    "vid YA",
+    "vid YA/SSG",
+    "vid YA",
+    "vid YA/SSG",
+    "vid YA",
+    "vid YA/SSG"
+   ]
+  }
+ ]
+}

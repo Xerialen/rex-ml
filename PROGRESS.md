@@ -5539,3 +5539,21 @@ förd avvägning mot manifestets per-episod-princip i så fall).
 Spatialt (första rapporten, grov namngivning): orbitgårdar i 620-710; kämpar
 vid RL-området (~370, studsig rutt); ~4 % av tiden i VATTNET i fart 31 (ramlar
 i, paddlar alltid upp — aldrig fastnad). Landmärkesversion av rapporten kör.
+
+## 2026-08-01 01:50 — SPATIALT FYND: dykaren — nyhet betalas nu bara i räknade voxlar
+Landmärkesrapporten (spatial_report, aktuell checkpoint) ger geografin:
+* Östra velodromen pent↔window↔quad: ren orbit 590-655 (quad-celler 734).
+* RA-gården (RA-toppen↔tele-ingången): 643-655. SNG-rummet: egen sluten loop
+  (en episod lämnade ALDRIG rummet, 485).
+* Västra kretsen mega↔YA/SSG↔RL: BRUTEN — alla mega-spawns (343-359) cyklar
+  dit och ramlar i vattnet gång på gång.
+* **32,8 % av ALL tid i VATTNET, fart 71, tvekan 74 %.** Mekanism: vatten-
+  volymen är enda platsen med garanterat färska voxlar varje episod (land-
+  loopar uttömda efter varv 1) och nyhet 1,5 betalar undervattensvoxlar —
+  jag skapade en dykare. MITT FEL i formuleringen: vatten är exkluderat ur
+  gate-mätningen men var inte exkluderat ur nyhetsbelöningen.
+FIX (env_gate2.step + reward_gate2): novelty betalas och registreras ENDAST
+när ticken är counted (icke-exkluderad). 25/25 tester gröna (pytest via uv i
+venv-sf — venv saknade pip). Omstart med resume; nyhet15-mätserien fortsätter
+med fixen aktiv (fönsterkriteriet oförändrat: täckning mot 15 %+, fart ≥490 —
+notera att fart 652 ger enorm marginal).

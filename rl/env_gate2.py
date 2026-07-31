@@ -141,10 +141,15 @@ class QWGate2Core:
         st = StepState(pos=self.pos, vel=self.vel, prev_vel=prev_vel,
                        onground=self.onground, prev_onground=prev_og,
                        jumped_this_tick=(prev_og and not self.onground))
-        r = reward_gate2(st, self._last_ray_fracs, self._last_ray_dirs, self.novelty)
-
+        # Nyhet betalas ENDAST i räknade (icke-exkluderade) voxlar (2026-08-01,
+        # mätgrundat): med bonus 1,5 blev vattenvolymen policyns nyhetsgruva —
+        # 32,8 % av tiden i VATTNET i fart 71 (spatial_report). Vatten/hiss/tele
+        # är exkluderade ur gate-mätningen; kuriositeten ska rikta sig mot
+        # terräng som räknas.
         sp = _speed_h(self.vel)
         counted = not (self.is_excluded and self.is_excluded(self.pos))
+        r = reward_gate2(st, self._last_ray_fracs, self._last_ray_dirs,
+                         self.novelty if counted else None)
         if counted:
             self.speed_sum += sp
             self.speed_n += 1

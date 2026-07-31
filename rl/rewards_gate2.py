@@ -77,7 +77,9 @@ def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
 
 
 def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
-                 novelty: VoxelNovelty) -> float:
+                 novelty: VoxelNovelty | None) -> float:
+    """novelty=None ⇒ ticken är i exkluderad zon (vatten/hiss/tele): ingen
+    nyhetsutbetalning, voxeln registreras inte heller som sedd."""
     r = kinetic_multiplier(s, ray_fracs, ray_dirs)
     # Fartgradient i TVÅ regimer (2026-07-31, båda mätgrundade):
     # (1) LINJÄR 0→320: första exp-varianten betalade först över 320 medan
@@ -100,5 +102,6 @@ def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
     loss = _collision_loss(s)
     if loss > 0.0:
         r -= loss / 150.0        # impulskollision: massivt negativt (BRIEF §3.4)
-    r += novelty.step(s.pos, _speed_h(s.vel))
+    if novelty is not None:
+        r += novelty.step(s.pos, _speed_h(s.vel))
     return r
