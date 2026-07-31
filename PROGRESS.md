@@ -5458,3 +5458,16 @@ gate2_v1:s bana 28→118→364→415 över ~1Md — nu 50k FPS). gate2_v1 STOPPA
 checkpoints kvar som fallback-linje); FALLBACK om v2 misslyckas: större nät.
 Kostnad: ~23MB/checkpoint, försumbart. gate2_v1:s slutläge: greedy 404,6
 (vaktmått under fas), register 399,7.
+
+## 2026-07-31 20:45 — gate2_v2 IGÅNG: registerbaslinje 958,2 (ympning bevisad)
+gate2_v2 laddade kandidat-checkpointen (log: "Loading state from ...
+checkpoint_000077359_316862464.pth", frames fortsätter från 316,9M) och
+register-baslinjen mätte **958,2** — exakt kandidatens sim-peak. Bevarandetestet
+är live: mix=15/48 från tick 0, entropi 0,01, 4e9-tak. Monitor bytt till
+gate2_v2/console.log (borkn020r; gamla bw4euwuvs stoppad — den vaktade v1).
+Mätplan per fönster: register (bevarandemåttet — håller ≥700?) + dm3-greedy
+(inlärningsmåttet — jfr v1:s bana 28→118→364→415 över ~1Md frames).
+Ägarfrågan om speedhopp BESVARAD med mätning (evidence/gapjump_analysis.json):
+teknik JA (506 fartgrindade hopp/10 ep, 503 platta), ruttförståelse NEJ
+(3 äkta gap-korsningar, 0 upprepade) — genvägsanvändning blir spårbar kurva
+via rl/analyze_gapjumps.py på varje ny policy.
