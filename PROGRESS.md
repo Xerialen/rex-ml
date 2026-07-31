@@ -5369,3 +5369,13 @@ att kosta dm3-navigation. 2 fönster kvar enligt mätplanen (mål: register mot
 CPU-load 29/64 — flaskhalsen är Python-miljölagret (simmen kan 16,5M steg/s,
 träningen tar ut 40k). Plan: 48 workers + mix 15 vid nästa naturliga omstart;
 batchad vektormiljö (step_batch) endast om experimenttakten blir bindande.
+
+## 2026-07-31 15:25 — Mix10-fönster 2 (2,21 Md): register är BRUS kring 400
+Greedy gate2 **417,6** (score 0,836, täckning 11,6 %, 0 fastnade) — svag positiv
+drift (413,6→417,6, täckning +1,2pp). Register **380,4** — ner från 415,1.
+Serie 426→391→401→415→380: brus kring ~400 utan trend; fönster 1-uppgången var
+inte signal. Notera mätmetodens svaghet: registret är EN deterministisk episod
+från SENASTE checkpointen (rotationsvolatilitet, jfr gate1-harvesterns motiv).
+Fönster 3 avgör: om registret fortfarande saknar trend ⇒ nästa variabel enligt
+plan: entropi 0,003→0,01 (konsolideringen kan vara det som hindrar policyn att
+lämna 400-bassängen — utforskningen behövs för att återfinna vävtekniken).
