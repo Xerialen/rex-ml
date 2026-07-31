@@ -5624,7 +5624,7 @@ verifierade (denna post 01:00 EEST är korrekt).
 fulla episoder ännu) — nästa hjärtslag ger äkta nivå; förväntan ~3-6k. Vid ny
 kollaps: stabilisator som nästa variabel (sänkt lr ELLER entropi 0,01→0,003).
 
-## 2026-08-01 02:35 (EEST) — Återhämtning KLAR + första täckningsökningen
+## 2026-08-01 02:13 (EEST) — Återhämtning KLAR + första täckningsökningen
 Fönster efter återställning (1,34 Md, ~151M post-restore): open-mean 616,4
 (score 1,233), täckning **12,6 %** (10,4→12,6 — första uppmätta ökningen sedan
 nåbara-baslinjen), 0 fastnade. Kollapsen kostade netto ~1 h och upprepades
