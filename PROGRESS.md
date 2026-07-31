@@ -5404,3 +5404,9 @@ hypotesen att 0,003-entropin höll policyn i 400-bassängen. 2 fönster kvar;
 kriteriet står (register mot 600+, greedy ej under ~395). Ops: gate2-evalen
 tog >10 min pga CPU-konkurrens med 48 workers — evals körs hädanefter med
 timeout-marginal (bakgrund är OK, monitorn täcker).
+
+## 2026-07-31 17:15 — Entropi01-fönster 2 (2,44 Md): trenden håller
+Greedy gate2 **426,7** (score 0,853, 0 fastnade) — ny serietopp (424,4→426,7).
+Register **427,0** (434,6→427,0) — kvar på nya nivån, tydligt över gamla
+brusbandet 380-415. Täckning dippade 11,0→7,9 % (10-runs-mått; gate-kravet är
+UNION över 30 — bevakas men oroar inte ensamt). Fönster 3 avgör regimdomen.
