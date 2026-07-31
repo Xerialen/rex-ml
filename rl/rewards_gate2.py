@@ -30,7 +30,14 @@ class VoxelNovelty:
     # riskjämvikt: färsk-strövande gav ~0,5/s nyhet mot 1,4/s ren fartinkomst,
     # så pacing förlorade bara 1/3 av inkomsten men slapp kollisions-/
     # termineringsrisken. 0,6/voxel gör strövande STRIKT dominant (~2,2/s).
-    def __init__(self, bonus_per_voxel: float = 0.6):
+    # 0.6→1.5 (2026-07-31 23:30, mätgrundat, gate2_v2): policyn ORBITERAR i hög
+    # fart (open-mean 497-527, täckning platt 5-6 %/10 runs över 240M frames,
+    # belöningsplatå ~1540). Jämvikten: exp-termen vid 527 ger 0,35/tick — att
+    # korsa trång transitterräng mot ny mark kostar sekunder av den inkomsten,
+    # och 0,6/voxel (~0,9 i fartskala) kompenserar inte. Med 1,5 (2,25 i fart-
+    # skala) betalar nyupptäckt i fart ~36/s mot orbitens ~27/s ⇒ svepande
+    # banor strikt dominanta. Fartkravet har marginal (527 > 500 @ 30 runs).
+    def __init__(self, bonus_per_voxel: float = 1.5):
         self.bonus = bonus_per_voxel
         self.seen: set[tuple[int, int, int]] = set()
 

@@ -5506,3 +5506,14 @@ Nästa: täckningstrend över kommande fönster (nuvarande policy är 130M frame
 längre fram; belöningen 868→1530 kan VARA täckningstillväxt); om platt ~10 %
 efter ~3 fönster ⇒ journalförd nyhetsjustering (koeff eller N-episods-persistens).
 Fastnad-episoden: enstaka, slumpspawn — övervakas, åtgärd först om mönster.
+
+## 2026-07-31 23:30 — v2-fönster 3 + BESLUT: nyhetsbonus 0,6→1,5 (orbitjämvikten)
+Fönster 3 (~338M tränade): open-mean 496,9 (score 0,994), täckning 5,2 %,
+0 fastnade; register 455,8 (958→461→452→456: stabilt ~455, över v1:s band).
+TREND ETABLERAD över ~240M: fart stabil ~497-527, täckning PLATT 5-6 %
+(30-run-union 10,0 %), belöningsplatå ~1540. Jämviktsdiagnos (kalkyl i
+rewards_gate2.py-kommentaren): exp-inkomsten vid 527 (0,35/tick) gör
+utforskning av trång terräng till förlustaffär mot 0,6/voxel-nyheten — samma
+riskjämviktsklass som v1:s pacing. ÅTGÄRD (en variabel): bonus_per_voxel
+0,6→1,5. Kriterium ~3 fönster: täckning/10-run mot 15 %+ med open-mean ≥490.
+Fartmarginalen (527@30) tål utforskningskostnaden. Omstart med resume.
