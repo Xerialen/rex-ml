@@ -5410,3 +5410,22 @@ Greedy gate2 **426,7** (score 0,853, 0 fastnade) — ny serietopp (424,4→426,7
 Register **427,0** (434,6→427,0) — kvar på nya nivån, tydligt över gamla
 brusbandet 380-415. Täckning dippade 11,0→7,9 % (10-runs-mått; gate-kravet är
 UNION över 30 — bevakas men oroar inte ensamt). Fönster 3 avgör regimdomen.
+
+## 2026-07-31 18:05 — Entropi01-DOM (fönster 3) + REVIDERAD plan: registeråterbyggnadsfas
+Fönster 3 (2,51 Md): greedy 419,9 (score 0,840), register 433,8.
+Regimdom: entropi 0,01 gav ETT bassänghopp (greedy ~415→~425, register ~395→~430)
+och ny platå — 600-kriteriet ej nått. Mönster över två interventioner: engångs-
+hopp, sedan platå.
+DIAGNOSREVISION: facettpariteten (420 vs 434) betyder att dm3-snittet redan går
+i policyns TEKNIKTAK — på rak bana utan hinder är max 434. Då hjälper inte
+riktade spawns (tidigare journalförd nästa åtgärd): tätare högfartsmiljö höjer
+inte taket. Hävstången är registret självt.
+BESLUT: registeråterbyggnadsfas — mix 15→36 (75 % korridorrepetition), entropi
+kvar 0,01, övrigt oförändrat. Mål: register mot 600+ (mäts per fönster som
+förut). gate2-greedy FÅR förfalla transient (förväntat, fasen är temporär) men
+bevakas; golv ~395 ⇒ fasen kortas. När registret nått målet: mix tillbaka till
+15 och mät (a) dm3-återhämtning, (b) om registret HÅLLER högre (hysteres-
+hypotesen: återfunnen vävteknik ligger kvar i vikterna). Misslyckas fasen
+(register platt trots 75 %) är det ett KAPACITETS-/interferensbevis — då är
+nästa steg större nät (grundlagen: nätstorlek fri) med omträning, en väsentligt
+dyrare väg som i så fall motiveras separat i journalen.
