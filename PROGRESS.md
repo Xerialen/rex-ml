@@ -5286,3 +5286,12 @@ Resume FUNGERAR (learner.py-patch weights_only=False i .venv-sf, se sim/STACK.md
 === EFTER BÅDA GATES: bevissida per bevisregeln, REPORT.md (enda klarsignalen).
 Fas 3 (efter gates): 0,5 ms-destillering (tract-inferens 1,7 ms uppmätt under last).
 rex-ml-rtx-push väntar fortfarande på ägarens token-rättighet.
+
+## 2026-07-31 12:15 — Trendpunkt före kompaktion: greedy 419,3 (score 0,839)
+Konsolideringen kryper +2/fönster (413→417,5→419,3), fastnad 0. Korridorregistret
+återbyggs ännu (<700 — läckaget till dm3 väntas först när repetitionen närmar sig
+sitt gamla register). BEVAKNINGSNOT till nästa kontext: om greedy-lutningen ligger
+kvar <+5/fönster i ytterligare ~3 fönster medan registret nått 700+, överväg höjd
+mixandel (6→10 workers) eller registrets direktverktyg: init om policyns korridor-
+del från gate1-kandidaten är EJ möjligt (samma nät) — då är alternativet längre
+konsolidering eller omprövning av 500-formeln mot ägaren (stoppvillkorsfråga).
