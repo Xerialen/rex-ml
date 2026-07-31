@@ -5623,3 +5623,10 @@ verifierade (denna post 01:00 EEST är korrekt).
 1 194M, 44-46k FPS. Belöningssiffran de första minuterna är artefakt (inga
 fulla episoder ännu) — nästa hjärtslag ger äkta nivå; förväntan ~3-6k. Vid ny
 kollaps: stabilisator som nästa variabel (sänkt lr ELLER entropi 0,01→0,003).
+
+## 2026-08-01 02:35 (EEST) — Återhämtning KLAR + första täckningsökningen
+Fönster efter återställning (1,34 Md, ~151M post-restore): open-mean 616,4
+(score 1,233), täckning **12,6 %** (10,4→12,6 — första uppmätta ökningen sedan
+nåbara-baslinjen), 0 fastnade. Kollapsen kostade netto ~1 h och upprepades
+inte vid genomkörningen av samma frame-region. Bevakning fortsätter: täckning
+per fönster mot 70 %-unionen (30 runs); fart har stor marginal (616 vs 500).
