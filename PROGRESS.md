@@ -5307,3 +5307,15 @@ fönster till är situationen en gemensam ~400-bassäng, inte ett facettproblem,
 då är kandidataåtgärderna: (a) mix 6→10 TROTS oregeln (ge registret större
 gradientandel), (b) tillfälligt höjd entropi (0,003→0,01) för att bryta bassängen,
 (c) stoppvillkorsfrågan om 500-formeln till ägaren. Inget beslut ännu — mäter vidare.
+
+## 2026-07-31 12:45 — Fönster 2 (1,84 Md frames) + analystfråga om platån
+Greedy gate2: **418,7** (score 0,838, täckning 9,8 %, 0 fastnade). Trend 417,5 →
+419,3 → 414,4 → 418,7: platt ~415-420, lutning <+5/fönster (fönster 2 av ~3).
+Träningsbelöningen hoppade 198→311 utan greedy-effekt (nyhetsbonus/episodmix).
+ÄGARFRÅGA i sessionen: hur mycket jag använt analyst — ärligt svar: 2 ggr (tele-
+analysen, zonstatistiken); MISSAR: (1) 400-platån är en "hur spelar människor"-
+fråga jag aldrig ställt, (2) 500-formelns uthållbarhet (är 60s-OPEN-snitt >500
+ens mänskligt demonstrerat? p95=496 är per TICK), (3) fastnad-geografin. Åtgärd:
+analystagent NU utsänd med fyra frågor (uthållna 60s-fönster, var-heatmap, teknik-
+karakterisering, takbedömning). Svaret avgör om stoppvillkorsfrågan om 500-formeln
+behöver lyftas MED underlag, och kan ge curriculum-frön (fartkorridorer, drops).
