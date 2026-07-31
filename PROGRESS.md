@@ -5175,3 +5175,9 @@ står still (0,72→0,73 %) — policyn öker farten lokalt men strövar inte br
 Kandidatspakar OM den inte lossnar med farten själv (mer fart ⇒ mer karta per episod):
 (a) nyhetsbonus med global komponent, (b) längre episoder, (c) spawn-region-rotation.
 Mäts vid nästa eval; ingen ändring nu (en spak i taget, farten stiger fortfarande).
+
+## 2026-07-31 04:32 — 0,6-nyheten live (resume 699M); pgrep-självmatch åter — ankrat mönster
+Relanseringen avbröts först av pgrep-självmatch (mitt skal innehöll mönstret via
+send-keys-texten — samma fälla som pkill-lärdomen fast via pgrep+kill). Löst permanent:
+mönster ankrat i radbörjan ("^sim/.venv-sf/bin/python -m rl\.train_gate2") kan bara
+träffa träningsprocessen. Träningen resumad från 699M med nyhetsbonus 0,6.
