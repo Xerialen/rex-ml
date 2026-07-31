@@ -5200,3 +5200,12 @@ upp FARTEN också — strövande över öppna ytor låter strafe-kärnan arbeta;
 branta — ingen ny spak; träningen får mala. evidence/eval_gate2_stageD.json.
 Not för bevisprotokollet: gate-täckningen (70 % OPEN) mäts över ≥30 körningar à 60 s
 med slumpstarter — unionen växer snabbt med antal körningar när starterna är spridda.
+
+## 2026-07-31 06:05 — EXP-REGIMEN TÄND (fart 364, score 0,73) + dm3-paritet AVBOCKAD
+Eval @878M: OPEN-medelfart 236→363,9 (ÖVER 320-motorgränsen — uthållig luftstrafe under
+strövande), score 0,47→0,73, täckning 1,79→7,50 % (4×), fastnad 0/10, reward 36,6→207,6
+(exp-termen ackumulerar). Alla kurvor exponentiella — inga spakar, träningen mal.
+SERVERBEVIS-FÖRBEREDELSE KLAR: dm3-obs-fixturer dumpade (400 ticks, gate2-env, qwsim)
+→ Rust-paritetskontrollen: max|diff| 5,4e-7 (strålar), 2,6e-7 (kinetik) — PARITY OK.
+Bryggan bevisat kartagnostisk; dm3-serverprotokollet kan riggas när sim-gaten passeras
+(score ≥1,0 och OPEN-medel >500). evidence/eval_gate2_exp_regime.json.
