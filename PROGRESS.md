@@ -5593,3 +5593,11 @@ Bilden i 3D: fyra tighta velodromer (pent/quad, SNG, RA/mega-mitten, NG-rummet).
 Botten har farten och tekniken men ingen genvägsanvändning — förväntat: gap-hopp
 uppstår först när utforskningen tvingar ruttbyten (nyhetsjakten är per-episod
 och loopar betalar fortfarande). Täckningsdrivets nästa fönster avgör.
+
+## 2026-08-01 08:00 — Dykarfix-fönster 2 (1,17 Md): NY TÄCKNINGSBASLINJE 10,4 %
+Första mätningen mot nåbara-nämnaren (12 012 voxlar): open-mean 510,0 (score
+1,020), täckning **10,4 %**/10-run-union, 0 fastnade. Detta är ny baslinje —
+gamla %-siffror hade fel nämnare (alla OPEN inkl. onåbar luft). Kravet: 70 %
+union över 30 körningar. Farten håller >500 stabilt över tre fönster (545→652→
+510; checkpointvolatilitet). Bevakning: täckningstrend per fönster; artefaktens
+hopppanel är genvägsmätaren (0 gap-hopp ännu — väntas följa täckningen).
