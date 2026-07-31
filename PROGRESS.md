@@ -5617,3 +5617,9 @@ sänkt lr eller entropi 0,01→0,003). Detektionsnätet: monitorns hjärtslag +
 best-checkpoint-mekanismen gör en upprepning billig (~30-60 min förlust).
 Journaltidsstämplar: drivit från maskintid tidigare i natt — hädanefter date-
 verifierade (denna post 01:00 EEST är korrekt).
+
+## 2026-08-01 01:07 (EEST) — Återställning VERIFIERAD
+"Loading state from ... checkpoint_000291305_1193185280.pth", frames fortsätter
+1 194M, 44-46k FPS. Belöningssiffran de första minuterna är artefakt (inga
+fulla episoder ännu) — nästa hjärtslag ger äkta nivå; förväntan ~3-6k. Vid ny
+kollaps: stabilisator som nästa variabel (sänkt lr ELLER entropi 0,01→0,003).
