@@ -5347,3 +5347,10 @@ fortsatt framecounter). Mätplan: 3 nya fönster; framgång = register klättrar
 600+ UTAN att greedy gate2 tappar >10; misslyckas registret ändå ⇒ nästa variabel
 är entropi 0,003→0,01 (bryta bassängen), därefter ev. riktade spawns i fart-
 korridorerna (curriculum-frö ur analystens heatmap).
+
+## 2026-07-31 13:30 — Omstart VERIFIERAD: mix=10, tak 4e9, resume OK
+Framräknare fortsätter på 1,948 Md (>1,91 — ingen from-scratch), policy_version
+475k löper, ~37k FPS. OBS: avg episode reward blandar nu fler 100m-episoder
+(10/32 workers) — nivåskiften i den serien är förväntade och betyder inget ensamt.
+Mätning från nästa hjärtslag: greedy gate2 + register per fönster, framgångs-
+kriteriet i föregående post gäller.
