@@ -69,10 +69,14 @@ def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
 def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
                  novelty: VoxelNovelty) -> float:
     r = kinetic_multiplier(s, ray_fracs, ray_dirs)
-    # Gate 1-receptet (bevisat fartdrivande): exponentiell utdelning ÖVER motor-
-    # gränsen 320. Tillagt 2026-07-31 mot uppmätt lat-optimum (smyga undan
-    # fastnad-straffet i 28 u/s). Utan denna term saknar farten egen gradient.
+    # Fartgradient i TVÅ regimer (2026-07-31, båda mätgrundade):
+    # (1) LINJÄR 0→320: första exp-varianten betalade först över 320 medan
+    #     policyn rörde sig i 28-37 u/s — gradienten låg bortom beteende-
+    #     horisonten (uppmätt: +32 % fart på 55M frames, långt under målet).
+    #     Gate 1 hade korridorframdriften som brygga dit; dm3 behöver denna.
+    # (2) EXP över 320 (Gate 1-receptet, bevisat mot taket).
     sp = _speed_h(s.vel)
+    r += 0.02 * min(sp, 320.0) / 320.0
     if sp > 320.0:
         r += float(np.expm1((sp - 320.0) / 160.0)) * 0.01
     loss = _collision_loss(s)

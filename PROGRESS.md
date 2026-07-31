@@ -5158,3 +5158,11 @@ formen som bevisat driver mot taket) ympad i reward_gate2; (2) nyhetsbonus 0.05�
 25/25 tester gröna. Omstart med RIKTIG resume (checkpoint 116342, 476,5M frames, ingen
 scratch). Mäts om vid nästa hjärtslag + eval: framgång = OPEN-medelfart klättrar mot
 100+ inom ~30 min, täckning växer.
+
+## 2026-07-31 03:25 — Fartgradientens hål täppt (linjär 0→320-term); omstart med resume
+Eftermätning av exp-fixen (55M frames): fastnad 0/10, täckning 0,17→0,72 % (nyhet-x3
+verkar), MEN fart 28→37 — exp-termen betalar först ÖVER 320 medan policyn rör sig i
+30-40: gradienten låg bortom beteendehorisonten (Gate 1 hade korridorframdrift som
+brygga; dm3 saknar den). ÅTGÄRD: linjär fartterm 0.02·sp/320 upp till 320 som möter
+exp-kurvan. 25/25 tester. Omstart, resume verifierad. Framgångsmått: fart 100+ och
+växande täckning vid nästa eval (~30-45 min).
