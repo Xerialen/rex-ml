@@ -5354,3 +5354,18 @@ Framräknare fortsätter på 1,948 Md (>1,91 — ingen from-scratch), policy_ver
 (10/32 workers) — nivåskiften i den serien är förväntade och betyder inget ensamt.
 Mätning från nästa hjärtslag: greedy gate2 + register per fönster, framgångs-
 kriteriet i föregående post gäller.
+
+## 2026-07-31 14:50 — Mix10-fönster 1: register vänder UPP (415,1); monitor lagad
+Monitorhaveri upptäckt via tre identiska hjärtslag: gamla monitorn följde
+scratchpadens gate2_v1.log men omstarten skrev till train_dir/console.log —
+källan frös. Ny monitor (bw4euwuvs) på RÄTT logg + stillastående-/krasch-vakt
+(offsetspårad felskanning; tystnad kan inte längre se ut som framgång).
+Under tiden 174M frames mix=10. Fönster 1: greedy gate2 **413,6** (score 0,827,
+täckning 10,4 %, 0 fastnade — ingen förlust, gräns var −10); register **415,1**
+— UPP från 401,3/391,5, första positiva registerrörelsen sedan mätserien
+började. Tidigt men rätt riktning: mix=10 ger strafe-kärnan gradientvikt utan
+att kosta dm3-navigation. 2 fönster kvar enligt mätplanen (mål: register mot
+600+). Hårdvarufråga från ägaren besvarad med mätning: GPU 43 %/104W av 400W,
+CPU-load 29/64 — flaskhalsen är Python-miljölagret (simmen kan 16,5M steg/s,
+träningen tar ut 40k). Plan: 48 workers + mix 15 vid nästa naturliga omstart;
+batchad vektormiljö (step_batch) endast om experimenttakten blir bindande.
