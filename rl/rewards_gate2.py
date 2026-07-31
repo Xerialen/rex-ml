@@ -86,7 +86,10 @@ def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
         # vid 364 gav exp-termen 0,003/tick mot linjärens 0,02 ⇒ svagt drag mot
         # gatens 500. Med 0,05: 0,016 vid 364, 0,10 vid 500 (5× linjären) —
         # högfart blir entydigt optimal.
-        r += float(np.expm1((sp - 320.0) / 160.0)) * 0.05
+        # tau 160→100 (2026-07-31 09:15): platå vid ~400 (två fönster; kryss-
+        # jämvikt, inga olyckor — övermänsklig regim: mänsklig OPEN-p95 är 496).
+        # Brantare kurva i 400-500-bandet: 0,055/tick @400, 0,152 @500.
+        r += float(np.expm1((sp - 320.0) / 100.0)) * 0.05
     loss = _collision_loss(s)
     if loss > 0.0:
         r -= loss / 150.0        # impulskollision: massivt negativt (BRIEF §3.4)

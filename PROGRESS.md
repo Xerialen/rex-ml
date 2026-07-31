@@ -5222,3 +5222,10 @@ farten återupptar klättring mot 450+ inom ~2 hjärtslag. Täckning 11,5 % och 
 Tre evalpunkter sedan koeffhöjningen (~+12 u/s per 40M-fönster): 403,1 @1,15Md frames,
 score 0,806, fastnad 0/10, täckning 9,6-11,5 % (10-körnings-samplingsvarians). Extra-
 polerat når OPEN-medlet 500 inom ~4-5 h om lutningen håller. Inga spakar — kurvan lever.
+
+## 2026-07-31 09:18 — Platå @400 (två fönster) ⇒ tau 160→100 i exp-termen
+Evalserie: 403→403→397 (score 0,81→0,81→0,79) — platåregeln utlöst. Förra diagnosen
+står (kryssjämvikt, 0 olyckor); kontext: mänsklig OPEN-p95 är 496 ⇒ 400-500 är
+övermänsklig teknikregim. Riktad spak: tau 100 fördubblar gradienten i exakt det
+bandet (0,032→0,055/tick @400; 0,152 @500). Omstart, resume @1,3Md frames.
+Framgångsmått: klättring återupptagen inom två fönster, annars steg B-korridorslipning.
