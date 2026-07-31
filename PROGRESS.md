@@ -5471,3 +5471,18 @@ Mätplan per fönster: register (bevarandemåttet — håller ≥700?) + dm3-gre
 teknik JA (506 fartgrindade hopp/10 ep, 503 platta), ruttförståelse NEJ
 (3 äkta gap-korsningar, 0 upprepade) — genvägsanvändning blir spårbar kurva
 via rl/analyze_gapjumps.py på varje ny policy.
+
+## 2026-07-31 21:20 — v2-fönster 1 (~100M tränade): GENOMBROTT PÅ FART, orbit-problem på täckning
+Register: 461,3 (958→461 på ett fönster TROTS mix från tick 0 — stark bevarande-
+hypotes ≥700 ser falsifierad ut; dock ÖVER v1:s hela sena tak ~435; kurvan
+958→461→? avgör). MEN dm3-greedy: **open-mean 498,9, score 1,0004, 0 fastnade,
+täckning 6,0 %**. Jämför v1: ~1Md frames till 415, aldrig över ~430. Transfern
+gav farten nästan gratis — beteendet är ORBIT (kandidatens cirkelvana i dm3:s
+gårdar): score/fart löst, täckning 6 % långt under gate-kravets 70 %-union.
+Utmaningen har BYTT AXEL: v1 hade täckning utan fart; v2 har fart utan täckning.
+Nyhetsbonusen (0,6/voxel, per-episod) ska trycka mot spridning — mäts framåt.
+30-körningars eval (riktiga gate-kriteriet, union) startad. Nästa fönster:
+(a) stabiliserar registret >450? (b) växer unionen? Om orbit består: pacing-
+riskjämvikten är tillbaka i ny form — kandidatåtgärd: höj nyhetsbonusen eller
+gör den global-persistent över N episoder (mot manifestets per-episod-princip —
+i så fall journalförd avvägning, ej ägarfråga; geometrin bär fortfarande).
