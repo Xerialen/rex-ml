@@ -5639,3 +5639,22 @@ BESLUT enligt journalförd plan: entropi 0,01→0,003 (dess bassängbrytarjobb �
 gjort; nyhet 1,5 bär utforskningen). Ops-nät: --keep_checkpoints=8 (rotationen
 åt åter alla friska checkpoints; endast best_000291788@1195M/reward 10414 kvar
 — återställningspunkt, kostar ~200M frames inkl. 12,6 %-mätpunkten).
+
+## 2026-08-01 02:50 EEST — Plan: vertikala/trick-rewards (ägarfråga, beslutad trappa)
+Status: entropi 0.003-regimen frisk (55k FPS, 1255M frames, reward 1.4k–5.3k, inga klippor).
+Ägaren vill att botten upptäcker trickhopp/vertikal rörelse (RA-botten→RA-toppen, SNG-mega,
+highbridge→RL-boxen via fönstret, rjump pent→window, rjump mid→ring/quad). Rjumps SIST (ägarens ord).
+Beslutad trappa — EN variabel i taget, mätstyrda triggrar:
+- **Nu: inga nya rewards.** Stabilisatorn måste få en ren avläsning. Trigger för nästa steg:
+  täckning återtar 12.6 % och planar ut (<1 pp förbättring över 3 eval-fönster à 10 runs).
+- **V1 — vertikal noveltyviktning:** skala voxelnovelty med z-nivå/zonsällsynthet + klimbonus
+  för höjdvinst utan hiss/tele. Generisk (inga namngivna mål = manifestsäkert). Täcker RA-klättring.
+- **V2 — gap-crossing-bonus:** onlineversion av gapklassificeraren (span>240, floor_depth>96,
+  3-punkts raycast — redan byggd i analyze_gapjumps): engångsbonus vid landning skalad med span.
+  Täcker SNG→mega, highbridge→RL-fönstret, ring↔quad-flygningar.
+- **V3 (SIST) — rjumps:** kräver simutbyggnad — libqwsim är ren pmove (inga raketer/knockback/
+  fire-knapp). Arbete: extrahera knockbackmodellen ur mvdsv (T_RadiusDamage-impuls), validera
+  bit-exakt mot QWD-rjumpsampel ur korpusen, utöka handlingsrummet med +attack + reload-cooldown.
+  Ingen ny reward behövs — V1/V2 betalar redan för rjump-utfall. Täcker pent→window, mid→ring/quad.
+Manifestkoll: generisk geometrisk shaping (z-vinst, gap, novelty) ligger inom ratificerad intrinsisk
+motivation; zonnamngivna bonusar vore waypoints-i-förklädnad och undviks.
