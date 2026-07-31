@@ -1,0 +1,65 @@
+{
+ "experiment": "pipeline/out/rl/train_dir/gate2_v1",
+ "n": 10,
+ "backend": "qwsim",
+ "mode": "sample",
+ "stuck_episodes": 0,
+ "gate": {
+  "score": 0.4716381561200188,
+  "open_mean_speed": 236.2319934045758,
+  "open_coverage": 0.0178912139126083
+ },
+ "gate_passed_sim": false,
+ "episodes": [
+  {
+   "stuck": false,
+   "mean_speed_counted": 127.9,
+   "novel_voxels": 40
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 121.5,
+   "novel_voxels": 12
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 328.3,
+   "novel_voxels": 199
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 342.9,
+   "novel_voxels": 172
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 120.8,
+   "novel_voxels": 17
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 333.8,
+   "novel_voxels": 175
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 331.1,
+   "novel_voxels": 217
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 118.0,
+   "novel_voxels": 54
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 122.5,
+   "novel_voxels": 18
+  },
+  {
+   "stuck": false,
+   "mean_speed_counted": 341.2,
+   "novel_voxels": 168
+  }
+ ]
+}

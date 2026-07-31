@@ -5191,3 +5191,12 @@ omförsök vid luftvoxel; verifierat på qwsim: spawns över hela kartan, z −2
 Hemlåde-mönstret blir OLÄRBART — varje episod ny terräng ⇒ generaliserad lokomotion
 + täckning över episoder. Fasta spawns kvar som "fixed"-läge (tester). 25/25 gröna.
 Omstart, resume från ~740M. Framgångsmått: täckning ska nu VÄXA per eval (>3 % nästa).
+
+## 2026-07-31 05:30 — STEG D-GENOMBROTT: allt dubblat samtidigt (fart 236, score 0,47)
+Eval @808M (48M efter slumpspawn): OPEN-medelfart 118,7→236,2 (2×), score 0,24→0,47
+(2×), täckning 0,74→1,79 % (2,4×), fastnad 0/10, reward 26,4→36,6. Slumpspawn låste
+upp FARTEN också — strövande över öppna ytor låter strafe-kärnan arbeta; exp-regimen
+(>320) är nu inom beteendehorisonten. Täckning under 3 %-målet än men ALLA kurvor
+branta — ingen ny spak; träningen får mala. evidence/eval_gate2_stageD.json.
+Not för bevisprotokollet: gate-täckningen (70 % OPEN) mäts över ≥30 körningar à 60 s
+med slumpstarter — unionen växer snabbt med antal körningar när starterna är spridda.
