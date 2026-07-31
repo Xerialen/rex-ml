@@ -5379,3 +5379,18 @@ från SENASTE checkpointen (rotationsvolatilitet, jfr gate1-harvesterns motiv).
 Fönster 3 avgör: om registret fortfarande saknar trend ⇒ nästa variabel enligt
 plan: entropi 0,003→0,01 (konsolideringen kan vara det som hindrar policyn att
 lämna 400-bassängen — utforskningen behövs för att återfinna vävtekniken).
+
+## 2026-07-31 15:55 — Mix10-DOM + BESLUT: entropi 0,01 + 48 workers (fönster 3)
+Fönster 3 (2,28 Md): greedy 415,0 (score 0,830), register 382,6.
+Mix=10-serien komplett (~330M frames): greedy 413,6→417,6→415,0 (platt ~415),
+register 415→380→383 (brus ~395). SLUTSATS: höjd mixandel ensam bygger INTE
+tillbaka registret — konsolideringsentropin 0,003 hypotetiseras hålla policyn
+kvar i 400-bassängen (vävtekniken kräver utforskning för att återfinnas).
+BESLUT (enligt journalförd plan + ägarens hårdvarufråga):
+* --exploration_loss_coeff 0,003→0,01 (INLÄRNINGSVARIABELN som mäts;
+  entropy-farming-skyddet SF_STDDEV_MAX=1.0 står kvar).
+* --num_workers 32→48, mix 10→15 (oförändrad 31 %-andel) — throughputskalning
+  utlovad ägaren "vid nästa naturliga omstart"; CPU-load 29/64 har marginal.
+Framgångskriterium: register mot 600+ inom ~3 fönster; gate2-greedy får dippa
+transient (utforskningsfas) men ej under ~395. Misslyckas även detta ⇒ riktade
+spawns i analystens fartkorridorer (RL↔window m.fl.) som curriculum-frö.
