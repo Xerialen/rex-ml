@@ -86,16 +86,28 @@ def main(argv=None):
             elif air_start is not None and og:
                 t0, v0 = air_start[0], air_start[1]
                 span = float(np.hypot(pos[0] - t0[0], pos[1] - t0[1]))
+                # golvdjup under kordan: skiljer ÄKTA gap (tomrum under banan)
+                # från platta bunnyhopp (vid 420 u/s spänner varje hopp ~280 u)
+                zref = min(float(t0[2]), float(pos[2])) + 8.0
+                pts = np.array([[t0[0] + (pos[0] - t0[0]) * f,
+                                 t0[1] + (pos[1] - t0[1]) * f, zref]
+                                for f in (0.3, 0.5, 0.7)], dtype=np.float32)
+                down = np.tile(np.array([[0.0, 0.0, -1.0]], dtype=np.float32), (3, 1))
+                fr = np.asarray(c.b.trace_rays(pts, down, 320.0),
+                                dtype=np.float32).ravel()[:3]
                 segs.append({"ep": ep, "takeoff": [round(x, 1) for x in t0],
                              "land": [round(x, 1) for x in pos],
                              "span": round(span, 1), "dz": round(float(pos[2] - t0[2]), 1),
-                             "v_takeoff": round(v0, 1)})
+                             "v_takeoff": round(v0, 1),
+                             "floor_depth": round(float(fr.max() * 320.0), 1)})
                 air_start = None
             prev = (pos, sp, og)
             done = term or trunc
 
     name = _zone_lookup()
-    gated = [s for s in segs if s["span"] > SPEED_GATED_SPAN and s["dz"] > LEVEL_DZ]
+    long_hops = [s for s in segs if s["span"] > SPEED_GATED_SPAN and s["dz"] > LEVEL_DZ]
+    gated = [s for s in long_hops if s["floor_depth"] > 96.0]     # äkta gap under banan
+    flat_hops = [s for s in long_hops if s["floor_depth"] <= 96.0]
     drops = [s for s in segs if s["span"] > SPEED_GATED_SPAN and s["dz"] <= LEVEL_DZ]
     cells = Counter((int(s["takeoff"][0] // 64), int(s["takeoff"][1] // 64)) for s in gated)
     clusters = []
@@ -112,8 +124,10 @@ def main(argv=None):
     res = {
         "experiment": str(args.exp_dir), "episodes": args.n,
         "air_segments": len(segs),
-        "speed_gated_jumps": len(gated),
-        "speed_gated_per_episode": round(len(gated) / args.n, 2),
+        "long_hops_over_240u": len(long_hops),
+        "flat_bunny_hops": len(flat_hops),
+        "gap_jumps_true": len(gated),
+        "gap_jumps_per_episode": round(len(gated) / args.n, 2),
         "long_drops": len(drops),
         "distinct_takeoff_cells": len(cells),
         "repeated_cells": sum(1 for v in cells.values() if v >= 3),
