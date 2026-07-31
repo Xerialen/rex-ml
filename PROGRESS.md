@@ -5429,3 +5429,14 @@ hypotesen: återfunnen vävteknik ligger kvar i vikterna). Misslyckas fasen
 (register platt trots 75 %) är det ett KAPACITETS-/interferensbevis — då är
 nästa steg större nät (grundlagen: nätstorlek fri) med omträning, en väsentligt
 dyrare väg som i så fall motiveras separat i journalen.
+
+## 2026-07-31 19:10 — Återbyggnadsfas fönster 1-2: register 430,4 → 382,7 (brus)
+75 %-mixen aktiv (träningsbelöning ~20 = korridordominerad, väntat). Register:
+430,4 (f1, ~70M frames) → 382,7 (f2, ~140M) — inom gamla brusbandet 380-435,
+INGEN återbyggnadseffekt ännu åt något håll. Reservationer: (a) bara ~105M
+korridorframes ackumulerade, ursprungliga gate1-uppbyggnaden tog längre;
+(b) registermåttet är 1 deterministisk episod/checkpoint (rotationsvolatilitet).
+Fönster 3 avgör fasdomen. Om platt: kapacitets-/interferensbeviset stärks ⇒
+större nät-spåret motiveras (separat journalpost i så fall). Speedhoppsanalys
+(ägarfråga) omstartad efter zonuppslagsbugg; gate2-vaktmått f1 CPU-svultet,
+inväntas.
