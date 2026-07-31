@@ -5517,3 +5517,9 @@ utforskning av trång terräng till förlustaffär mot 0,6/voxel-nyheten — sam
 riskjämviktsklass som v1:s pacing. ÅTGÄRD (en variabel): bonus_per_voxel
 0,6→1,5. Kriterium ~3 fönster: täckning/10-run mot 15 %+ med open-mean ≥490.
 Fartmarginalen (527@30) tål utforskningskostnaden. Omstart med resume.
+
+## 2026-08-01 00:15 — Nyhet15-fönster 1 (~29M): transient dipp båda axlar
+Greedy: open-mean 465,5 (↓ från 497), täckning 3,4 % (↓ från 5,2), score 0,937,
+0 fastnade. Träningsbelöning 3357 (mekanik ~2215 vid oförändrat beteende ⇒
+samplat beteende hittar redan ~2× fler nya voxlar). Tolkning: omställnings-
+transient, greedy släpar samplat. Ingen åtgärd; fönster 2-3 avgör.
