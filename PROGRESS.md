@@ -5523,3 +5523,19 @@ Greedy: open-mean 465,5 (↓ från 497), täckning 3,4 % (↓ från 5,2), score 
 0 fastnade. Träningsbelöning 3357 (mekanik ~2215 vid oförändrat beteende ⇒
 samplat beteende hittar redan ~2× fler nya voxlar). Tolkning: omställnings-
 transient, greedy släpar samplat. Ingen åtgärd; fönster 2-3 avgör.
+
+## 2026-08-01 01:20 — Nyhet15-fönster 2 (~178M): FART 652,7 (!), täckning står still
+Greedy: open-mean **652,7** (score 1,305), täckning 5,4 %, 0 fastnade. Oberoende
+korroborering: spatial_report (annan checkpoint, annat verktyg) mäter episod-
+snitt 616-707 — siffran är äkta (ren pmove; libqwsim HAR inga teleportrar, så
+tele-artefakter är uteslutna i sim). Mekanism: nyhetstrycket förstorade orbit-
+radien → mindre väggnärhet → högre jämviktsfart. Serie sedan nyhet 1,5:
+fart 465→653, täckning 3,4→5,4 (tillbaka till baslinjen ~5, INTE genombrott).
+Fartmarginalen mot 500-kravet är nu enorm (+150) — utforskningskostnad är
+gratis i praktiken. Fönster 3 fäller nyhet15-domen: om täckningen står ~5-6 %
+⇒ eskalera nyheten hårt (1,5→3,0; marginalen motiverar aggressivitet) eller
+angrip loop-strukturen direkt (t.ex. nyhetsminne över N>1 episoder — journal-
+förd avvägning mot manifestets per-episod-princip i så fall).
+Spatialt (första rapporten, grov namngivning): orbitgårdar i 620-710; kämpar
+vid RL-området (~370, studsig rutt); ~4 % av tiden i VATTNET i fart 31 (ramlar
+i, paddlar alltid upp — aldrig fastnad). Landmärkesversion av rapporten kör.
