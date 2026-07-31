@@ -19,6 +19,13 @@ CLS_WATER, CLS_LIFT, CLS_TELE, CLS_OPEN, CLS_CONSTRAINED, CLS_LOWDATA = 1, 2, 3,
 EXCLUDED = {CLS_WATER, CLS_LIFT, CLS_TELE}
 OPEN_TARGET = 500.0
 CONSTRAINED_FACTOR = 0.8
+# Täckningens universum = NÅBARA OPEN-voxlar: ≤ REACHABLE_LEVELS voxlar över
+# närmaste solida golv (2026-08-01, mätgrundat): OPEN-rastret är 3D och 62 %
+# av voxlarna ligger >96 u upp i rummens luftvolymer — onåbara för en löpande/
+# hoppande spelare (hopp-apex ~45 u). 70 %-unionen mot ALLA OPEN var därmed
+# fysiskt omöjlig; mot nåbara (12 012 voxlar) är den nåbar och bär samma
+# intention (besök hela kartan). Fördelning: nivå 0-2 = 37,6 % av OPEN.
+REACHABLE_LEVELS = 3
 
 
 class ZoneRaster:
@@ -35,6 +42,18 @@ class ZoneRaster:
             int(k): (int(c), float(t)) for k, c, t in zip(key, cls, target)
         }
         self.n_open = int(np.sum(cls == CLS_OPEN))
+        # nåbara OPEN-voxlar (se REACHABLE_LEVELS ovan)
+        occ = set(zip(d["ix"].tolist(), d["iy"].tolist(), d["iz"].tolist()))
+        m = cls == CLS_OPEN
+        self.reachable_open: set[int] = set()
+        for x, y, z in zip(d["ix"][m].tolist(), d["iy"][m].tolist(), d["iz"][m].tolist()):
+            k = 0
+            while (x, y, z - 1 - k) in occ and k < REACHABLE_LEVELS:
+                k += 1
+            if k < REACHABLE_LEVELS:
+                self.reachable_open.add(
+                    (x << 32) ^ ((y & 0xFFFF) << 16) ^ (z & 0xFFFF))
+        self.n_open_reachable = len(self.reachable_open)
 
     @staticmethod
     def _key(pos) -> int:
@@ -71,13 +90,15 @@ class GateScore:
         if cls == CLS_OPEN:
             self.open_speed_sum += speed_h
             self.open_n += 1
-            self.open_visited.add(self.r._key(pos))
+            k = self.r._key(pos)
+            if k in self.r.reachable_open:
+                self.open_visited.add(k)
 
     def summary(self) -> dict:
         return {
             "score": self.ratio_sum / max(self.ratio_n, 1),
             "open_mean_speed": self.open_speed_sum / max(self.open_n, 1),
-            "open_coverage": len(self.open_visited) / max(self.r.n_open, 1),
+            "open_coverage": len(self.open_visited) / max(self.r.n_open_reachable, 1),
         }
 
     def passed(self) -> bool:

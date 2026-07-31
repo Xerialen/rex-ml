@@ -5557,3 +5557,21 @@ när ticken är counted (icke-exkluderad). 25/25 tester gröna (pytest via uv i
 venv-sf — venv saknade pip). Omstart med resume; nyhet15-mätserien fortsätter
 med fixen aktiv (fönsterkriteriet oförändrat: täckning mot 15 %+, fart ≥490 —
 notera att fart 652 ger enorm marginal).
+
+## 2026-08-01 03:05 — Dykarfix-fönster 1 + OMKALIBRERING av täckningsuniversum
+Dykarfixen verkade omedelbart (~48-80M frames): VATTNET 32,8 %→4,0 % av tiden;
+geografin utjämnad (window 25 %, pent 14 %, RA-toppen 13 %, SNG 10 %, RL 10 %);
+längre kretsar (quad→ringen→RA-toppen→mega @748); västkretsen fungerar (RL↔mega
+393 utan drunkning). Kvar: SNG-rummet sluten fälla, YA-hörnet snurrar. Gate-eval:
+open-mean 545,6 (score 1,090), täckning 5,5 %/10 runs, 0 fastnade. Tränings-
+belöning 4866→5981 (landnyhet i fart).
+KRITISKT MÄTFYND: 70 %-täckningsunion mot ALLA OPEN-voxlar är FYSISKT OMÖJLIG —
+62,4 % av OPEN ligger >96 u över golv (rummens luftvolymer; hopp-apex ~45 u).
+Uppmätt fördelning: nivå 0-2 = 37,6 % = 12 012 voxlar. OMKALIBRERING (rl/zones.py):
+täckningen räknas nu mot NÅBARA OPEN (≤3 voxelnivåer över solidgolv), täljare
+och nämnare. Intentionen (besök hela kartan) oförändrad; mätningen fysiskt
+möjlig. Bottens 5,5 %/alla-OPEN ≈ ~15 % mot nåbara. 25/25 tester gröna.
+ÄGARBESTÄLLNING (pågår): 3D-artefakt av dm3 med bottens banor; specifikt
+ring→quad-hoppet (görbart? använt?) och mega-SNG-besök. Banredump kör
+(rl/dump_trajectories.py, instrumenterar båda frågorna); atlas-pipelinens
+geometri/mall (scratchpad) återanvänds.
