@@ -5295,3 +5295,15 @@ kvar <+5/fönster i ytterligare ~3 fönster medan registret nått 700+, övervä
 mixandel (6→10 workers) eller registrets direktverktyg: init om policyns korridor-
 del från gate1-kandidaten är EJ möjligt (samma nät) — då är alternativet längre
 konsolidering eller omprövning av 500-formeln mot ägaren (stoppvillkorsfråga).
+
+## 2026-07-31 12:20 — Mätfönster efter kompaktion (1,77 Md frames)
+Greedy gate2: **414,4** (score 0,829, täckning 10,3 %, 0 fastnade) — ned från 419,3.
+Korridorregister (greedy 100m på gate2_v1): **391,5 peak** — ned från 426.
+Lutning <+5/fönster (fönster 1 av ~3 i bevakningsnoten). Registervillkoret (700+)
+är LÅNGT ifrån uppfyllt och registret klättrar inte under mix=6 + entropi 0,003 —
+noterar att bevakningsnotens premiss (register växer medan gate2 står still) hittills
+INTE stämmer: båda facetterna står stilla kring ~400. Om detta håller i sig två
+fönster till är situationen en gemensam ~400-bassäng, inte ett facettproblem, och
+då är kandidataåtgärderna: (a) mix 6→10 TROTS oregeln (ge registret större
+gradientandel), (b) tillfälligt höjd entropi (0,003→0,01) för att bryta bassängen,
+(c) stoppvillkorsfrågan om 500-formeln till ägaren. Inget beslut ännu — mäter vidare.
