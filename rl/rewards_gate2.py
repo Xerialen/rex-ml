@@ -25,9 +25,12 @@ VOXEL_U = 32.0
 class VoxelNovelty:
     """Endast i belöningskalkylatorn — aldrig i observationerna."""
 
-    # 0.05→0.15 (2026-07-31, mätgrundat): lat-optimum uppmätt vid 462M frames —
-    # samplat kryper i 28 u/s, 0,17 % täckning; nyheten måste väga tyngre.
-    def __init__(self, bonus_per_voxel: float = 0.15):
+    # 0.05→0.15→0.6 (2026-07-31, mätgrundat i två steg): vid 695M frames trampar
+    # policyn på stället i ~119 u/s VID ALLA SEX spawns (spann 40-160u) — en
+    # riskjämvikt: färsk-strövande gav ~0,5/s nyhet mot 1,4/s ren fartinkomst,
+    # så pacing förlorade bara 1/3 av inkomsten men slapp kollisions-/
+    # termineringsrisken. 0,6/voxel gör strövande STRIKT dominant (~2,2/s).
+    def __init__(self, bonus_per_voxel: float = 0.6):
         self.bonus = bonus_per_voxel
         self.seen: set[tuple[int, int, int]] = set()
 
