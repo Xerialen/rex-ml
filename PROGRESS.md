@@ -5229,3 +5229,13 @@ står (kryssjämvikt, 0 olyckor); kontext: mänsklig OPEN-p95 är 496 ⇒ 400-50
 övermänsklig teknikregim. Riktad spak: tau 100 fördubblar gradienten i exakt det
 bandet (0,032→0,055/tick @400; 0,152 @500). Omstart, resume @1,3Md frames.
 Framgångsmått: klättring återupptagen inom två fönster, annars steg B-korridorslipning.
+
+## 2026-07-31 09:35 — Fördelningsdiagnos: platt teknikvana-tak ~410, inte geometri/fysik
+13 860 ticks, 3 ep: p25 388 / p50 405 / p90 419 / p99 431 / max 538; >500 endast 0,1 %
+(en burst à 0,21 s); ingen uppvärmningseffekt (394 vs 395 efter tick 300). INTE bursts-
+med-övergångsförluster — en ENHETLIG kryssvana överallt, även i atriet (600+ möjligt).
+Fysik friad: svängradie @500 ≈ 108u (rymligt); kedjor friktionsfria. Reward @1,36Md: 591
+(mest tau-skalinflation). BESLUT: tau-gradienten (48M frames gammal) får ETT fönster
+till; om p50 <420 vid nästa eval ⇒ strukturdrag (kandidater: entropipuls för teknik-
+upptäckt, alt. interleaved 100m-repetition mot glömd extremteknik — gate1-policyn KUNDE
+800+; gate2-varianten har tappat den registern).
