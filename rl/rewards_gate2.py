@@ -81,7 +81,12 @@ def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
     sp = _speed_h(s.vel)
     r += 0.02 * min(sp, 320.0) / 320.0
     if sp > 320.0:
-        r += float(np.expm1((sp - 320.0) / 160.0)) * 0.01
+        # koeff 0.01→0.05 (2026-07-31 06:55, mätgrundat): policyn KRYSSAR stabilt
+        # på 364 (98,5 % OPEN-tid, 0,1 % kedjebrott — inte olycksbegränsad) för
+        # vid 364 gav exp-termen 0,003/tick mot linjärens 0,02 ⇒ svagt drag mot
+        # gatens 500. Med 0,05: 0,016 vid 364, 0,10 vid 500 (5× linjären) —
+        # högfart blir entydigt optimal.
+        r += float(np.expm1((sp - 320.0) / 160.0)) * 0.05
     loss = _collision_loss(s)
     if loss > 0.0:
         r -= loss / 150.0        # impulskollision: massivt negativt (BRIEF §3.4)

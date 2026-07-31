@@ -5209,3 +5209,11 @@ SERVERBEVIS-FÖRBEREDELSE KLAR: dm3-obs-fixturer dumpade (400 ticks, gate2-env, 
 → Rust-paritetskontrollen: max|diff| 5,4e-7 (strålar), 2,6e-7 (kinetik) — PARITY OK.
 Bryggan bevisat kartagnostisk; dm3-serverprotokollet kan riggas när sim-gaten passeras
 (score ≥1,0 och OPEN-medel >500). evidence/eval_gate2_exp_regime.json.
+
+## 2026-07-31 06:58 — Kryssfarts-jämvikten diagnostiserad; exp-koeff 0,01→0,05
+Zonklassdiagnos (3 ep, 13 860 ticks): 98,5 % OPEN-tid @363,7, kedjebrott 0,1 %, 18
+fartfall totalt — 364 är VALD kryssfart, inte olycksgräns. Belöningsmatte: exp-termen
+gav 0,003/tick vid 364 mot linjärens 0,02 ⇒ inget ekonomiskt drag mot 500. Koeff 5×:a
+d (0,10/tick vid 500 = 5× linjären). Omstart, resume @1,03Md frames. Framgångsmått:
+farten återupptar klättring mot 450+ inom ~2 hjärtslag. Täckning 11,5 % och växande
+(unionen över 30 bevisko rningar blir betydligt större).
