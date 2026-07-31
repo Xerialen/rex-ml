@@ -5440,3 +5440,21 @@ Fönster 3 avgör fasdomen. Om platt: kapacitets-/interferensbeviset stärks ⇒
 större nät-spåret motiveras (separat journalpost i så fall). Speedhoppsanalys
 (ägarfråga) omstartad efter zonuppslagsbugg; gate2-vaktmått f1 CPU-svultet,
 inväntas.
+
+## 2026-07-31 20:15 — FASDOM: återuppbyggnad OMÖJLIG i praktiken ⇒ gate2_v2 (bevarandetest)
+Fönster 3 (2,73 Md): register 399,7. Fasserie 430→383→400 över ~215M frames med
+75 % korridorandel: PLATT. Sammanlagd evidens över fyra regimer (mix 6/10/15/36,
+entropi 0,003/0,01): registret pendlar 380-435 oavsett — ÅTERUPPBYGGNAD av
+984-tekniken i det samtränade nätet sker inte inom rimlig frame-budget.
+OMTOLKNING före dyraste vägen (större nät): registret raserades TIDIGT i
+gate2_v1, INNAN mixen fanns (mix lades till efterå). Bevarande ≠ återhämtning —
+katastrofal glömska är ofta lätt att förebygga, svår att vända (asymmetrin är
+välkänd). TEST: gate2_v2 initieras från Gate 1-KANDIDATEN (harvest/best.pth,
+sim-peak 958, env_steps 316,9M) med mix=15/48 aktiv från TICK 0, entropi 0,01,
+övriga hyperparametrar som gate2_v1. Mäts: (1) register-baslinje direkt efter
+init (förväntat ~950 — beviset att ympningen tog), (2) håller registret ≥700
+medan dm3-navigationen lärs om, (3) dm3-greedy-progression (fräsch start, jfr
+gate2_v1:s bana 28→118→364→415 över ~1Md — nu 50k FPS). gate2_v1 STOPPAS (dess
+checkpoints kvar som fallback-linje); FALLBACK om v2 misslyckas: större nät.
+Kostnad: ~23MB/checkpoint, försumbart. gate2_v1:s slutläge: greedy 404,6
+(vaktmått under fas), register 399,7.
