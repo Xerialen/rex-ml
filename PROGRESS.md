@@ -5217,3 +5217,8 @@ gav 0,003/tick vid 364 mot linjärens 0,02 ⇒ inget ekonomiskt drag mot 500. Ko
 d (0,10/tick vid 500 = 5× linjären). Omstart, resume @1,03Md frames. Framgångsmått:
 farten återupptar klättring mot 450+ inom ~2 hjärtslag. Täckning 11,5 % och växande
 (unionen över 30 bevisko rningar blir betydligt större).
+
+## 2026-07-31 08:10 — Fartklättring stabil efter 5×-spaken: 369→391→403, score 0,81
+Tre evalpunkter sedan koeffhöjningen (~+12 u/s per 40M-fönster): 403,1 @1,15Md frames,
+score 0,806, fastnad 0/10, täckning 9,6-11,5 % (10-körnings-samplingsvarians). Extra-
+polerat når OPEN-medlet 500 inom ~4-5 h om lutningen håller. Inga spakar — kurvan lever.
