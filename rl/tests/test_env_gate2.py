@@ -5,7 +5,10 @@ from rl.env_gate2 import QWGate2Core, Gate2Config, STUCK_TICKS, load_spawns
 
 
 def make_env(**kw):
-    return QWGate2Core(StubBackend(), cfg=Gate2Config(**kw),
+    kw.setdefault("spawn_mode", "fixed")
+    b = StubBackend()
+    b.X_WALL = 1e6          # dm3-spawns ligger utanför stubbens korridorväggar
+    return QWGate2Core(b, cfg=Gate2Config(**kw),
                        rng=np.random.default_rng(7))
 
 
@@ -51,7 +54,7 @@ def test_spawn_region_filters():
     b = StubBackend()
     b.X_WALL = 1e6          # stubbens korridorväggar clampar annars dm3-spawnens x
     env = QWGate2Core(b,
-                      cfg=Gate2Config(spawn_region=((-1000, -400, -50), (-500, 0, 50))),
+                      cfg=Gate2Config(spawn_mode="fixed", spawn_region=((-1000, -400, -50), (-500, 0, 50))),
                       rng=np.random.default_rng(3))
     for _ in range(10):
         env.reset()

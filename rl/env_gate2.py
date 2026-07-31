@@ -39,6 +39,11 @@ def load_spawns(path: Path = DM3_SPAWNS) -> list[tuple[np.ndarray, float]]:
 class Gate2Config:
     max_ticks: int = 77 * 60            # 60 s, gatens mätfönster
     spawn_region: tuple | None = None   # (min_xyz, max_xyz) för steg A–C; None = alla
+    # "random_open" = manifestets steg D ordagrant ("helt slumpmässiga koordinater"):
+    # spawn i slumpad OPEN-voxel ur zonrastret. Infört 2026-07-31 efter uppmätt
+    # hemlåde-jämvikt (6 fasta spawns ⇒ policyn lärde sig pacea sin startkammare
+    # vid ALLA sex; slumpstart över kartan gör mönstret olärbart).
+    spawn_mode: str = "random_open"
 
 
 class QWGate2Core:
@@ -51,10 +56,27 @@ class QWGate2Core:
         self.rng = rng or np.random.default_rng()
         self.is_excluded = is_excluded
         self.spawns = load_spawns()
+        self._open_centers = None
+        if self.cfg.spawn_mode == "random_open":
+            try:
+                from .zones import RASTER, CLS_OPEN
+                d = np.load(RASTER)
+                m = d["cls"] == CLS_OPEN
+                self._open_centers = np.stack(
+                    [d["ix"][m] * 32.0 + 16, d["iy"][m] * 32.0 + 16,
+                     d["iz"][m] * 32.0 + 16], axis=1).astype(float)
+            except FileNotFoundError:
+                pass                     # faller tillbaka på fasta spawns
         self.novelty = VoxelNovelty()
         self._reset_state(self.spawns[0])
 
     def _pick_spawn(self):
+        if self._open_centers is not None and self.cfg.spawn_region is None \
+                and self.cfg.spawn_mode == "random_open":
+            i = int(self.rng.integers(len(self._open_centers)))
+            pos = self._open_centers[i].copy()
+            pos[2] += 8.0                # strax över voxelcentrum; settling tar golvet
+            return pos, float(self.rng.uniform(0.0, 360.0))
         cands = self.spawns
         if self.cfg.spawn_region is not None:
             lo, hi = (np.array(x, dtype=float) for x in self.cfg.spawn_region)
@@ -83,13 +105,16 @@ class QWGate2Core:
         self._last_ray_dirs = None
 
     def reset(self) -> np.ndarray:
-        self._reset_state(self._pick_spawn())
-        self.novelty.reset()
-        self.b.reset(self.pos, self.vel, self.yaw)
-        # settla på golvet (entity-origins svävar; se rl/env.py reset)
-        for _ in range(20):
-            self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
-                self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+        # random_open-voxlar kan sakna golv rakt under (luftvoxlar) — pröva om
+        for _attempt in range(6):
+            self._reset_state(self._pick_spawn())
+            self.novelty.reset()
+            self.b.reset(self.pos, self.vel, self.yaw)
+            for _ in range(90):
+                self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
+                    self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+                if self.onground:
+                    break
             if self.onground:
                 break
         return self._obs()

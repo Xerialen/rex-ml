@@ -5181,3 +5181,13 @@ Relanseringen avbröts först av pgrep-självmatch (mitt skal innehöll mönstre
 send-keys-texten — samma fälla som pkill-lärdomen fast via pgrep+kill). Löst permanent:
 mönster ankrat i radbörjan ("^sim/.venv-sf/bin/python -m rl\.train_gate2") kan bara
 träffa träningsprocessen. Träningen resumad från 699M med nyhetsbonus 0,6.
+
+## 2026-07-31 04:55 — MANIFESTETS STEG D PÅ RIKTIGT: slumpspawn ur OPEN-voxlar live
+0,6-nyheten räckte inte (41M frames: täckning kvar 0,74 % — per-episod-reset låter
+hemlådan återbetala varje episod). STRUKTURFIXEN jag genat förbi: manifestet föreskriver
+"helt slumpmässiga koordinater" (steg D) — inte 6 fasta spawns. Implementerat:
+spawn_mode="random_open" ur zonrastrets 31 971 OPEN-voxlar (+settling 90 ticks, 6
+omförsök vid luftvoxel; verifierat på qwsim: spawns över hela kartan, z −219→+121).
+Hemlåde-mönstret blir OLÄRBART — varje episod ny terräng ⇒ generaliserad lokomotion
++ täckning över episoder. Fasta spawns kvar som "fixed"-läge (tester). 25/25 gröna.
+Omstart, resume från ~740M. Framgångsmått: täckning ska nu VÄXA per eval (>3 % nästa).
