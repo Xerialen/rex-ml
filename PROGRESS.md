@@ -5394,3 +5394,13 @@ BESLUT (enligt journalförd plan + ägarens hårdvarufråga):
 Framgångskriterium: register mot 600+ inom ~3 fönster; gate2-greedy får dippa
 transient (utforskningsfas) men ej under ~395. Misslyckas även detta ⇒ riktade
 spawns i analystens fartkorridorer (RL↔window m.fl.) som curriculum-frö.
+
+## 2026-07-31 16:40 — Entropi01-fönster 1 (2,36 Md): BÅDA facetterna på serietopp
+Efter omstart (entropi 0,01, 48 workers/mix 15; FPS 40k→50k, +25 %):
+greedy gate2 **424,4** (score 0,849, täckning 11,0 %, 0 fastnade) — högsta i
+serien (förra toppen 419,3). Register **434,6** — högsta i serien (spann
+380-426). Båda facetterna upp SAMTIDIGT i första fönstret: förenligt med
+hypotesen att 0,003-entropin höll policyn i 400-bassängen. 2 fönster kvar;
+kriteriet står (register mot 600+, greedy ej under ~395). Ops: gate2-evalen
+tog >10 min pga CPU-konkurrens med 48 workers — evals körs hädanefter med
+timeout-marginal (bakgrund är OK, monitorn täcker).
