@@ -5493,3 +5493,16 @@ Träningsbelöning 868→1530 (nyhet+fart betalar — konsistent med spridande o
 eller växande täckning; avgörs av 30-körningsevalen som fortfarande kör, ~70
 min pga CPU-konkurrens, buffrad utdata). Nästa fönster journalförs när unionen
 är mätt.
+
+## 2026-07-31 22:50 — MILSTOLPE: 30-körnings-eval passerar FARTKRITERIET i sim
+30 körningar (policy ~117M tränade frames, checkpoint från evalstart 19:42):
+**open-mean 527,0** (krav >500 ✓), **score 1,054** (krav ≥1,0 ✓),
+täckningsunion 10,0 % (krav 70 % ✗), fastnade 1/30 (krav 0 ✗).
+527 ligger ÖVER människans bästa uppmätta 60s-fönster (464,8) — den övermänskliga
+regimen är nådd i sim på gate-formelns två fartaxlar. Återstår: utforskning
+(orbit→spridning) och fastnad-elimineringen. OBS bevisregeln: sim-passage är
+INTE gate-passage — riktiga servern gäller när alla fyra kriterier håller i sim.
+Nästa: täckningstrend över kommande fönster (nuvarande policy är 130M frames
+längre fram; belöningen 868→1530 kan VARA täckningstillväxt); om platt ~10 %
+efter ~3 fönster ⇒ journalförd nyhetsjustering (koeff eller N-episods-persistens).
+Fastnad-episoden: enstaka, slumpspawn — övervakas, åtgärd först om mönster.
