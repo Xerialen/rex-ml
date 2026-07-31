@@ -5631,7 +5631,7 @@ nåbara-baslinjen), 0 fastnade. Kollapsen kostade netto ~1 h och upprepades
 inte vid genomkörningen av samma frame-region. Bevakning fortsätter: täckning
 per fönster mot 70 %-unionen (30 runs); fart har stor marginal (616 vs 500).
 
-## 2026-08-01 02:30 (EEST) — ANDRA KOLLAPSEN ⇒ stabilisator: entropi 0,003
+## 2026-08-01 02:26 (EEST) — ANDRA KOLLAPSEN ⇒ stabilisator: entropi 0,003
 Ny klippa 02:07→02:08 (3073→109), ~55 min efter återställning, ANNAN frame-
 region ⇒ mekanismen är träningsdynamiken (enorma returskalor + entropi 0,01),
 inte datat. Partiell självåterhämtning observerad (109→324) men otillräcklig.
