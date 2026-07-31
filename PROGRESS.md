@@ -5249,3 +5249,11 @@ navigationen består. En karta per process gjorde worker-split till rena lösnin
 --qw_gate1_mix_workers=6 (19 %). Smoke grönt (stub, mixad). 25/25 tester. Omstart,
 resume @1,44Md. Framgångsmått: dm3-p50 bryter 430+ inom 2-3 fönster (tekniken läcker
 över); korridorworkers ska snabbt återfinna 700+ (transfern fanns där).
+
+## 2026-07-31 11:05 — GREEDY > SAMPLAT (413 vs 404) ⇒ konsolideringsfasen inledd
+Facetmätning @1,56Md (119M efter mix): dm3-samplat 404 (oförändrat), korridorregister
+426 (återbygget långsamt från noll — 19 % andel), MEN dm3-GREEDY 413,3 / score 0,827 /
+0 fastnade — policyn har mognat förbi sitt utforskningsbrus (bevisprotokollet kör
+greedy!). Gate 1:s slutspelsrecept tillämpat: entropi 0,01→0,003 (mixen kvar).
+Blindfläck stängd i metodiken: gate2-evaler körs hädanefter i BÅDA lägena;
+greedy är evidensmåttet. Omstart, resume @1,56Md.
