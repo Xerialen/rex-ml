@@ -5601,3 +5601,19 @@ gamla %-siffror hade fel nämnare (alla OPEN inkl. onåbar luft). Kravet: 70 %
 union över 30 körningar. Farten håller >500 stabilt över tre fönster (545→652→
 510; checkpointvolatilitet). Bevakning: täckningstrend per fönster; artefaktens
 hopppanel är genvägsmätaren (0 gap-hopp ännu — väntas följa täckningen).
+
+## 2026-08-01 01:00 (EEST) — POLICYKOLLAPS + ÅTERSTÄLLNING från best-checkpoint
+KLIPPA i träningsbelöningen 00:44→00:48 (5290→41; ingen omstart/kodändring
+träffade processen — zones-omkalibreringen påverkar endast eval). Greedy-diagnos
+BEKRÄFTAR äkta kollaps: open-mean 337,8 (från 510-652), täckning 2,9 %, 1/5
+FASTNAD. Mekanism (hypotes): destruktiv PPO-uppdatering under enorma
+returskalor (episodbelöning 5-9k efter nyhet 1,5) + entropi 0,01.
+Rotationen åt pre-kollaps-checkpointsen MEN SF:s best_000291305_1193185280
+(reward 9485, FÖRE klippan) överlevde — räddningskopia säkrad (scratchpad +
+train_dir/rescue/). ÅTGÄRD: stoppa; karantänflytta post-kollaps-checkpoints
+(mv, ej rm); installera best som enda checkpoint; omstart OFÖRÄNDRADE
+hyperparametrar (en variabel i taget — vid ny kollaps är stabilisatorn nästa:
+sänkt lr eller entropi 0,01→0,003). Detektionsnätet: monitorns hjärtslag +
+best-checkpoint-mekanismen gör en upprepning billig (~30-60 min förlust).
+Journaltidsstämplar: drivit från maskintid tidigare i natt — hädanefter date-
+verifierade (denna post 01:00 EEST är korrekt).
