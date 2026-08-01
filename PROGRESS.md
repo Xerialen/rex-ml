@@ -6016,7 +6016,7 @@ Kvar att ladda upp (ägarhand pga spärr): ~/preserve-20260801 (18 G) + ~/dm3-ex
 Därefter är ALLT oersättligt redundant utanför vmonster (mvd-huvudmassan fanns redan).
 Träning frisk: 3 800.7 M frames, 40.5k FPS, climb_coef 0.5 aktiv.
 
-## 2026-08-01 18:45 EEST — Mätpunkt 3.6G: täckning 26.8 %, 1 FASTNAD, första V1a-data, 1 RA-försök under review
+## 2026-08-01 18:39 EEST — Mätpunkt 3.6G: täckning 26.8 %, 1 FASTNAD, första V1a-data, 1 RA-försök under review
 n=30 @ 3.6G-checkpointen (mestadels FÖRE climb_coef-höjningen): open-mean 601.7,
 täckning 26.8 % (28.0 → 26.8, inom brus), **stuck 1/30 — första fastnade på länge**
 (zon okänd, eval rapporterar inte position; bevakas nästa punkt), score 1.20.
