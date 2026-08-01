@@ -6015,3 +6015,16 @@ Kvar att ladda upp (ägarhand pga spärr): ~/preserve-20260801 (18 G) + ~/dm3-ex
 (8.5 G) + ~/qw-corpus-build/qw-corpus-db (184 M) ⇒ totalt ~26 G till Xerial/qw-demos-mined-db.
 Därefter är ALLT oersättligt redundant utanför vmonster (mvd-huvudmassan fanns redan).
 Träning frisk: 3 800.7 M frames, 40.5k FPS, climb_coef 0.5 aktiv.
+
+## 2026-08-01 18:45 EEST — Mätpunkt 3.6G: täckning 26.8 %, 1 FASTNAD, första V1a-data, 1 RA-försök under review
+n=30 @ 3.6G-checkpointen (mestadels FÖRE climb_coef-höjningen): open-mean 601.7,
+täckning 26.8 % (28.0 → 26.8, inom brus), **stuck 1/30 — första fastnade på länge**
+(zon okänd, eval rapporterar inte position; bevakas nästa punkt), score 1.20.
+**V1a-mätarens första avläsning (dump @ ~3.75G, ~100M in i coef 0.5): 240 klätterlandningar/
+30 min, 16/30 episoder, rise p50 32.0 (mänsklig profil 32.8!), max 48** — bonusen betalas
+redan på avsatser i gårvarven (kluster ~(1000,1090,-264), spann 240-341 @ 567-852 UPS),
+men inga kedjade trappuppstigningar än. Gate-hopp: fem nollor (godkänd detektor) +
+**RA-tagningen 1 försök/0** — skickad till analysten per vetoregeln; artefaktens hopppanel
+PRELIMINÄR-märkt tills verdikt. Metrics-historik + artefakt ompublicerad (trendpilar:
+täckning/fart/fastnade nedåtpilar denna punkt — mätt på gamla regimen; nästa punkt är
+första rena avläsningen av coef 0.5).
