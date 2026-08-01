@@ -5966,7 +5966,7 @@ trappa (Z-mask-hypotesen mäts, inte antas); (c) spawn-bias mot trappbottnar om 
 ej uppstår inom ~500M frames därefter. Fartkriteriets marginal (629 vs 500) sätter taket
 för hur mycket klättertid policyn får köpa.
 
-## 2026-08-01 17:45 EEST — DEADLINE: ~48 h kvar på H100-maskinen; klätterbalans aktiveras NU
+## 2026-08-01 17:34 EEST — DEADLINE: ~48 h kvar på H100-maskinen; klätterbalans aktiveras NU
 Ägarbesked: idag+imorgon kvar på denna maskin (64 kärnor, H100); därefter flytt till
 "pinnacle" (4090, 7800X3D?, 64 GB) — väntad FPS-nedgång ~5-8× (CPU-flaskhals). Beslut:
 frames är färskvara ⇒ (1) omstart NU med **--qw_climb_coef 0.5** (ägarmandatets balansering;
