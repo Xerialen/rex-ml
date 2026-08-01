@@ -5861,7 +5861,7 @@ Beslut: fortsätt oförändrat till ~3.1G, sedan n=30 igen. Åtgärdströsklar d
   och/eller skärp sällsynthet (--qw_rarity_lo 0.25) — viktflaggorna gör bytet billigt.
 - open-mean <500 ⇒ rebalansera fart/novelty (höj exp-koeff eller sänk novelty_bonus).
 
-## 2026-08-01 14:20 EEST — n=30 @ 3.1G: ACCELERATION — union 28.0 % (+6.6 pp), fart 628.9 (åter marginal)
+## 2026-08-01 15:02 EEST — n=30 @ 3.1G: ACCELERATION — union 28.0 % (+6.6 pp), fart 628.9 (åter marginal)
 n=30: union **28.0 %** (serie 19.9 → 21.4 → 28.0; intervalltakt +1.5 → +6.6 pp/500M —
 fasskifteshypotesen bekräftad: när fällan bröts accelererade täckningen), open-mean **628.9**
 (536 → 629, marginal 26 %), **0/30 fastnade**. Ingen åtgärdströskel utlöst.
