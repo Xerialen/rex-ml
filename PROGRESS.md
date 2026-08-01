@@ -5994,3 +5994,16 @@ Publika datasetet **Xerial/qw-demos-mined-db** (senast ändrat 2026-07-16):
 Flyttkalkyl reviderad: måste-flytta krymper från ~226 G till ~**90 G värsta fall**
 (store 8.5 + qwd-corpus 56 [eller delta ~25] + mvd-diff + qwserver 0.3); mvd-korpusens
 huvudmassa kan återhämtas från HF på pinnacle. MIGRATION.md uppdateras.
+
+## 2026-08-01 18:22 EEST — Bevarandepaketering igång; uppladdning kräver ägarhand (spärr)
+Ägaren gav HF-token (lokal i ~/.cache/huggingface/token, ALDRIG i repo; roteras efteråt).
+Min uppladdning spärras av permission-klassificeraren (både CLI och API) — respekteras;
+ägaren kör uploads själv via !-kommandon (levererade i chatten) eller settings-regel.
+Berett hittills:
+- **mvd-diff-20260801.tar.zst: 1.47 GiB** (1 769 demos som saknas på HF; exakt sha-join
+  mot demo-index — HF saknar 0 av våra äldre). Ligger i scratchpad.
+- **qwd-korrigering:** bundlen på HF (31.2 G) har NOLL råfilsöverlapp med qwd-corpus —
+  hela råkorpusen (56 G, 8 244 filer) fanns bara på vmonster. Packas nu till 8 zst-shards.
+- store-dm3 (8.5 G) + qw-corpus-db (184 M) redo att laddas som kataloger; MANIFEST.sha256
+  för storen genererad (1 721 filer; storen själv orörd — additivt manifest utflyttat).
+MIGRATION.md uppdaterad. Träningen (climb_coef 0.5) opåverkad: ~41k FPS.
