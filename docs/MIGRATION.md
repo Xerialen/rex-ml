@@ -9,9 +9,9 @@ Syfte: att en färsk kontext på pinnacle kan återuppta utan förlust.
 |---|---|---|---|
 | rex-ml-repot | ~grunt | ✓ pushat kontinuerligt | github.com/Xerialen/rex-ml (main; lokal branch `master`) |
 | gate2_v2-checkpoints | 196 M (hela) | **train_dir/ är GITIGNORERAD** | snapshot i `pipeline/out/rl/gate2_snapshot_20260801/` (senaste + best, 44 M, committad). Slutsnapshot görs som SISTA åtgärd före flytt. |
-| mvd-corpus | **161 G** | ⚠ ÄGARLOGISTIK | oersättlig, skrivskyddad — destination krävs |
-| qwd-corpus | **56 G** | ⚠ ÄGARLOGISTIK | oersättlig |
-| dm3-extract/store-dm3 | 8.5 G | ⚠ ÄGARLOGISTIK | härledd (duckdb/parquet, 908 M sampel) — dyr att återskapa; analystens arbetsmaterial |
+| mvd-corpus | **161 G** | ~96 % på HF (Xerial/qw-demos-mined-db, 55.7 G zst, 49 183 av ~50 952 demos per index 2026-07-16) | flytta DIFFEN (~1.8k demos + post-16-juli) eller ladda upp den (kräver ägar-token) |
+| qwd-corpus | **56 G** | bundlen (31.2 G) på HF; resten ~25 G BARA lokalt | flytta delta eller hela |
+| dm3-extract/store-dm3 | 8.5 G | INTE på HF (parquet/staging-v1 tomt — uploaden fullföljdes aldrig) | flytta eller ladda upp; analystens arbetsmaterial |
 | ~/mlx/qwserver | 335 M | flyttbar (tar) | RIKTIGA mvdsv-servern — krävs för Gate 2-serverbevis (bevisregeln) |
 | ~/mvd_analyzer | liten (git-klon) | omklonas | analystens verktyg |
 | ~/rex-ml-rtx | ? | push blockerad (PAT-scope) | bothost-repot — lös PAT eller tar:a |

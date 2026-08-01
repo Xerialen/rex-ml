@@ -5979,3 +5979,18 @@ inte dö med maskinen; destination behövs.
 Sprintmål 48 h (frame-hungrigt först): täckning 28→så långt exp-motorn orkar (~3 G frames
 möjliga), klätterförsök >0, gate-hoppens försöksräknare igång. Efter flytt: serverbevis
 (qwserver 335 M är flyttbar), analys, långsam träning.
+
+## 2026-08-01 18:05 EEST — HF-inventering (ägarfråga): vad av vmonster finns redan uppladdat
+Publika datasetet **Xerial/qw-demos-mined-db** (senast ändrat 2026-07-16):
+- mvd/results-schema58-dedbb59: 16 zst-shards, **55.7 GB** + manifest/demo-index/provenance.
+  Demo-index: **49 183 demos** mot lokala mvd-corpus ~**50 952** mvd-filer (159k filer totalt
+  inkl sidecars) ⇒ upp till ~1.8k demos + allt efter 16 juli finns BARA lokalt. Exakt diff
+  (namn-join mot demo-index) körbar vid behov.
+- qwd/movement-bundle-2026-07-15: **31.2 GB** ≈ lokala ~/qwd-miner-movement-bundle (30 G).
+- **parquet/staging-v1: TOMT** — upload_parquet.py-planen (qw-corpus-build/code/publish/)
+  fullföljdes aldrig ⇒ store-dm3 (8.5 G, analystens duckdb/parquet) finns BARA på vmonster.
+- qwd-corpus-resten (~25 G utöver bundlen) finns BARA lokalt.
+- INGEN HF-token på maskinen — uppladdningar kräver ägarauth.
+Flyttkalkyl reviderad: måste-flytta krymper från ~226 G till ~**90 G värsta fall**
+(store 8.5 + qwd-corpus 56 [eller delta ~25] + mvd-diff + qwserver 0.3); mvd-korpusens
+huvudmassa kan återhämtas från HF på pinnacle. MIGRATION.md uppdateras.
