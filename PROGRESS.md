@@ -5934,7 +5934,7 @@ Nästa på hoppfronten: gate-hoppen kräver plattformstoppspel (0-11 s/30 min id
 om sällsynthetstrycket når topparna organiskt; annars journalförd kandidat: spawn-bias
 mot plattformarna (curriculum-verktyg, ratificerat) eller riktad rarity.
 
-## 2026-08-01 17:20 EEST — Repo-städning på ägarens fråga: allt committat och pushat
+## 2026-08-01 16:59 EEST — Repo-städning på ägarens fråga: allt committat och pushat
 Luckor åtgärdade: analystens re-review-appendix committad; otrackad pipeline-utdata
 (gate1_candidate + snapshot, bridge_diag, obs-fixtures, ~51 MB) incheckad per repo-
 konventionen; **artefakt-verktygskedjan beständiggjord i tools/rex3d/** (byggscript,
