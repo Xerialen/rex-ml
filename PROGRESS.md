@@ -5784,7 +5784,7 @@ spatial_report + analyze_gapjumps (10 runs) efter genombrottsfönstret (17.0 %):
 Fortsatt träning oförändrad; nästa fönster efter ~2 hjärtslag. Artefakten uppdateras nu
 (nya rutter + hoppet är precis det ägaren bad att få se).
 
-## 2026-08-01 07:40 EEST — Artefakt ompublicerad @ ~2000M: 5 äkta gap-hopp på kartan
+## 2026-08-01 07:38 EEST — Artefakt ompublicerad @ ~2000M: 5 äkta gap-hopp på kartan
 Färsk dump (10 ep) till 3D-artefakten (samma URL): snitt 596 u/s, 0/10 fastnade, 410 speed-
 hopp, **5 äkta gap-hopp** (GL→LG 331 u, RA→NG 275 u, NG→RA 263 u, RA→NG 262 u, RA→RA 255 u)
 + 3 djupa fall — mot 0 i alla dumpar före V1/V2. YA-episoder uppträder nu (720/759 u/s).
