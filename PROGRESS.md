@@ -5844,3 +5844,19 @@ rummet via spawn_region-curriculum (ratificerat manifestverktyg).
   konditionering = manifestförbjuden waypoint.
 - Diskretiserad yaw: avböjd med mätbevis — strider mot ratificerad kontinuerlig Gaussisk
   styrning som redan ligger på analytiska taket (8/8 >820 mot optimum 833.4; 984 på servern).
+
+## 2026-08-01 12:05 EEST — n=30 @ 2.6G: SNG-FÄLLAN BRUTEN; täckning 21.4 %, fart 536 (marginal krymper)
+n=30: union **21.4 %** (19.9 → 21.4, +1.5 pp/500M), open-mean **536.0** (684.3 → 536.0),
+**0/30 fastnade**. Spatial (10 ep): **NOLL enrumsepisoder** — båda SNG-spawnsen lämnar nu
+rummet via mega/tele-vägarna (5 zoner vardera; var 2-4/10 fast förra mätningen). Alla
+episoder besöker 3-7 zoner. Nya rutter går genom långsam terräng: RA-toppen 478, SNG 437,
+tele 444, RA-nedre/NG 464 UPS — det är därför snittet föll 148 enheter; precis den
+fartkostnad analysten kvantifierade. Gårdscirkuiten kvar i topp (mega/quad/ringen 707-750).
+RA-toppen-tvekan 4.9 % (upp) — bevakas.
+Bedömning: båda målen rör sig åt rätt håll men (1) +1.5 pp/500M är för långsamt för 70 %
+(≈16G frames i den takten — dock mättes takten över fasskiftet där fällan bröts, kan
+accelerera nu när alla episoder strövar), (2) fartmarginalen 36 enheter är tunn.
+Beslut: fortsätt oförändrat till ~3.1G, sedan n=30 igen. Åtgärdströsklar då:
+- union-ökning <3 pp ⇒ presentera PBT-beslut för ägaren (aktivering kräver ägarbeslut)
+  och/eller skärp sällsynthet (--qw_rarity_lo 0.25) — viktflaggorna gör bytet billigt.
+- open-mean <500 ⇒ rebalansera fart/novelty (höj exp-koeff eller sänk novelty_bonus).
