@@ -6029,7 +6029,7 @@ PRELIMINÄR-märkt tills verdikt. Metrics-historik + artefakt ompublicerad (tren
 täckning/fart/fastnade nedåtpilar denna punkt — mätt på gamla regimen; nästa punkt är
 första rena avläsningen av coef 0.5).
 
-## 2026-08-01 18:55 EEST — Review 3: RA-försöket UNDERKÄNT (disjunkta villkor); samtidighetskrav infört
+## 2026-08-01 18:43 EEST — Review 3: RA-försöket UNDERKÄNT (disjunkta villkor); samtidighetskrav infört
 Analystens verdikt: ep23 cirklade RA-nedre-golvet (z=-16, d2_min 70.9 nådd 320 u UNDER
 armorn) och studsade 0.2 s på en låg avsats (z-max 67.8 @ d2 126) — 0/254 samples uppfyllde
 klättring ∧ närhet SAMTIDIGT. Fix per analystens förslag: climbed_near = ett och samma
