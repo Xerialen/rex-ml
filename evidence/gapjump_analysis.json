@@ -1,98 +1,16 @@
 {
- "experiment": "pipeline/out/rl/train_dir/gate2_v1",
+ "experiment": "pipeline/out/rl/train_dir/gate2_v2",
  "episodes": 10,
- "air_segments": 657,
- "long_hops_over_240u": 506,
- "flat_bunny_hops": 503,
- "gap_jumps_true": 3,
- "gap_jumps_per_episode": 0.3,
- "long_drops": 4,
- "distinct_takeoff_cells": 3,
+ "air_segments": 369,
+ "long_hops_over_240u": 332,
+ "flat_bunny_hops": 332,
+ "gap_jumps_true": 0,
+ "gap_jumps_per_episode": 0.0,
+ "long_drops": 0,
+ "distinct_takeoff_cells": 0,
  "repeated_cells": 0,
  "repeated_across_episodes": 0,
- "span_p50": 248.0,
- "span_max": 265.3,
- "clusters_top": [
-  {
-   "cell_xy": [
-    -192,
-    -576
-   ],
-   "count": 1,
-   "episodes": [
-    0
-   ],
-   "zone_from": "constrained-misc",
-   "zone_to": "constrained-misc",
-   "max_span": 248.0,
-   "dz": 0.0,
-   "v_takeoff": 420.5,
-   "example": {
-    "takeoff": [
-     -148.1,
-     -540.8,
-     -16.0
-    ],
-    "land": [
-     -353.1,
-     -680.4,
-     -16.0
-    ]
-   }
-  },
-  {
-   "cell_xy": [
-    1792,
-    832
-   ],
-   "count": 1,
-   "episodes": [
-    3
-   ],
-   "zone_from": "mega-pent-2",
-   "zone_to": "constrained-misc",
-   "max_span": 265.3,
-   "dz": 0.0,
-   "v_takeoff": 401.4,
-   "example": {
-    "takeoff": [
-     1830.1,
-     882.3,
-     -213.0
-    ],
-    "land": [
-     1612.3,
-     1033.8,
-     -213.0
-    ]
-   }
-  },
-  {
-   "cell_xy": [
-    1664,
-    960
-   ],
-   "count": 1,
-   "episodes": [
-    6
-   ],
-   "zone_from": "constrained-misc",
-   "zone_to": "mega-pent-2",
-   "max_span": 241.3,
-   "dz": 8.6,
-   "v_takeoff": 391.5,
-   "example": {
-    "takeoff": [
-     1673.9,
-     1005.2,
-     -213.0
-    ],
-    "land": [
-     1812.3,
-     807.4,
-     -204.4
-    ]
-   }
-  }
- ]
+ "span_p50": null,
+ "span_max": 0.0,
+ "clusters_top": []
 }

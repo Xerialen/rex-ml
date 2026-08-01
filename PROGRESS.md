@@ -5742,3 +5742,23 @@ kort mot tidigare interventioners 100-300M; (b) bonusexploatering — klätter-/
 betala en snabb loop bättre än strövande. Geografi- och hoppanalys startad (spatial_report +
 analyze_gapjumps, 10 runs) för att skilja hypoteserna: n_gap>0 + oförändrade rutter ⇒ (b);
 diffusa rutter i flux ⇒ (a). Beslut väntar på den + nästa fönster.
+
+## 2026-08-01 05:47 EEST — Geografidiagnos @ 1610M: SNG-FÄLLAN förklarar täckningsfallet
+spatial_report + analyze_gapjumps (10 runs, evidence/spatial_report_latest.json +
+gapjump_analysis.json):
+- **SNG-fällan (huvudfyndet):** 4/10 episoder spawnade vid SNG och LÄMNADE ALDRIG rummet
+  (distinct_zones=1, hela 60 s i ~460 UPS enrumsorbit). 40 % av all tid ligger vid SNG.
+  Inte "stuck" per 50-UPS-kriteriet — spatialt fast i full fart. Detta ensamt förklarar
+  täckningen 8.5 %: nästan halva unionen är ett enda rum.
+- Gamla favoriterna kvar: pent↔window-pingis (22.4+16.5 % av tiden, 637-661 UPS),
+  window↔quad-studsar, RA-toppen↔tele-loop. Gårlocken (YA 1.0 %, mega 4.7 %, ringen 1.7 %)
+  fortfarande undersittna — V1b har INTE hunnit uttryckas i greedy-beteendet (180M frames).
+- **0 äkta gap-hopp** (332 platta bunnyhopp, 0 över djup >96) — V2 ej uttryckt ännu.
+- Problemytor: YA/SSG tvekan 9.2 % @ 349 UPS (sämsta öppna ytan), VATTNET 48 % tvekan
+  (bara 0.9 % tid — dykfixen håller).
+Tolkning: adaptionen är för färsk för slutsats om V1/V2:s effekt; SNG-fällan är dock ett
+strukturfynd oavsett — rummet betalar nog episodnovelty + fart för att aldrig motivera exit.
+Beslut: 2 hjärtslag till träning (~+150M), sedan fönster 2. Om SNG-enrumsepisoder kvarstår
+⇒ skärp rarity-dämpningen (lo 0.5→0.25) så översittna celler betalar kvartsnovelty, och/eller
+höj REF_SHARE. Rjump-notering: SNG-rummets tak är lågt; exit sker via dörrar/tele — inget
+rjump-beroende, detta ska ren utforskning klara.
