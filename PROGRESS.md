@@ -6008,7 +6008,7 @@ Berett hittills:
   för storen genererad (1 721 filer; storen själv orörd — additivt manifest utflyttat).
 MIGRATION.md uppdaterad. Träningen (climb_coef 0.5) opåverkad: ~41k FPS.
 
-## 2026-08-01 18:37 EEST — Bevarandearkiven kompletta i ~/preserve-20260801/ (18 G, checksummade)
+## 2026-08-01 18:26 EEST — Bevarandearkiven kompletta i ~/preserve-20260801/ (18 G, checksummade)
 qwd-corpus: 56 G → 17.25 G i 8 zst-shards (28-29 %); mvd-diff 1.47 G; ARCHIVES.sha256;
 fil-listor. Flyttade från /tmp-scratchpad till hemkatalog (överlever omstart).
 Kvar att ladda upp (ägarhand pga spärr): ~/preserve-20260801 (18 G) + ~/dm3-extract/store-dm3
