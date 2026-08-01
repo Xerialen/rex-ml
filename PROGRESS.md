@@ -5871,7 +5871,7 @@ YA/SSG-komplexet besöks nu (ruttexempel mega>RL>YA>vatten>YA>RL). Vatten 0.7 % 
 Beslut: fortsätt oförändrat till ~3.6G, samma trösklar (<+3 pp ⇒ PBT-fråga/skärpt rarity;
 <500 fart ⇒ rebalans). Om >30 % @ 3.6G: uppdatera 3D-artefakten.
 
-## 2026-08-01 16:35 EEST — ÄGARBESLUT: gate-hoppens mognadsstege (BRIEF-amendment) + mätinfra
+## 2026-08-01 15:40 EEST — ÄGARBESLUT: gate-hoppens mognadsstege (BRIEF-amendment) + mätinfra
 Ägaren (vaken, interaktiv): Gate 2 utökas med trickhoppskrav i sim FÖRE MVD-tester.
 Stege per hopp: 0 inga försök / 1 försöker / 2 lyckas ibland / 3 ≥5 försök 100 %.
 Gate-hopp (alla ska till nivå 3): ring↔quad ×4 (hexagonens NV+SO-ledger, båda riktningar,
