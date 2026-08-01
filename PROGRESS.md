@@ -5980,7 +5980,7 @@ Sprintmål 48 h (frame-hungrigt först): täckning 28→så långt exp-motorn or
 möjliga), klätterförsök >0, gate-hoppens försöksräknare igång. Efter flytt: serverbevis
 (qwserver 335 M är flyttbar), analys, långsam träning.
 
-## 2026-08-01 18:05 EEST — HF-inventering (ägarfråga): vad av vmonster finns redan uppladdat
+## 2026-08-01 17:47 EEST — HF-inventering (ägarfråga): vad av vmonster finns redan uppladdat
 Publika datasetet **Xerial/qw-demos-mined-db** (senast ändrat 2026-07-16):
 - mvd/results-schema58-dedbb59: 16 zst-shards, **55.7 GB** + manifest/demo-index/provenance.
   Demo-index: **49 183 demos** mot lokala mvd-corpus ~**50 952** mvd-filer (159k filer totalt
