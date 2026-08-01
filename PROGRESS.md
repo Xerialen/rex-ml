@@ -6076,7 +6076,7 @@ belöningsändring. BESLUT: håll kursen till ~4.6G. Trösklar där: täckning <
 <520 OCH climb_landings ej växande ⇒ coef 0.5→0.25 (bonusen köper inget då); täckning ≥26 %
 eller klätterlandningar växande ⇒ fortsätt. Sprintklocka: ~34 h H100 kvar.
 
-## 2026-08-01 22:00 EEST — ÄGARDESIGN: höjdviktad fartinkomst ("highground alltid") — aktiveras NU
+## 2026-08-01 21:46 EEST — ÄGARDESIGN: höjdviktad fartinkomst ("highground alltid") — aktiveras NU
 Ägaren formulerade principen: highground är ALLTID fördelaktigt på dm3 (YA-trappan, high
 bridge, window/lifts, RA-toppen, mega-ansatsen, quad/ring) och snabbaste vägen dit låses
 nästan alltid upp av ett trickhopp. Generisk översättning (manifestsäker, inga zonnamn):
