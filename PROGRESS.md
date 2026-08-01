@@ -6044,7 +6044,7 @@ korpusens 8 shards + mvd-diffen + checksummor) → parquet/store-dm3-v1 (8.5 G) 
 MANIFEST → parquet/staging-v1 (qw-corpus-db 184 M). Verifiering mot ARCHIVES.sha256 +
 remote-listning när klart. Vid timeout: omkörning per del (xet-dedup gör omstart billig).
 
-## 2026-08-01 20:00 EEST — BEVARANDET KLART: allt oersättligt sha-verifierat på HF
+## 2026-08-01 19:54 EEST — BEVARANDET KLART: allt oersättligt sha-verifierat på HF
 Uppladdning + fjärrverifiering klar (Xerial/qw-demos-mined-db):
 - preserve-20260801: 13 filer, 18.83 GB — alla 9 tar.zst-arkiv (qwd-korpusens 8 shards +
   mvd-diffen) LFS-sha256-IDENTISKA med lokala ARCHIVES.sha256 (9/9).
