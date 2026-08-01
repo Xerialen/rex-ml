@@ -5725,7 +5725,7 @@ protokoll (best-checkpoint, karantän) och stegvis aktivering en flagga i taget.
 Förväntade mätutslag: täckning >12.6 % inom 2-3 fönster; n_gap > 0 i eval-info; window-
 andelen (25.1 %) ska SJUNKA mot gårdarna (YA/mega/quad-övre/ringen) i nästa spatialrapport.
 
-## 2026-08-01 04:00 EEST — Omstart med V1a/V1b/V2 AKTIVA — verifierad
+## 2026-08-01 03:58 EEST — Omstart med V1a/V1b/V2 AKTIVA — verifierad
 Laddade checkpoint_000349109_1429950464 (ingen frameförlust), 45-47k FPS, reward 3.9k-9.1k
 (högre topp väntad: rarity-mult ger upp till 4× novelty i sällan besökta celler). Kommando =
 tidigare + --qw_vertical_rewards --qw_cell_rarity. Monitor borkn020r vaktar samma logg.
