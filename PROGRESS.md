@@ -5919,7 +5919,7 @@ Träningsimplikation (journalförd risk): gate-hoppen kräver plattformstoppspel
 i princip aldrig utför (0-11 s/30 min) — sällsynthetstrycket kan behöva riktas mot
 plattformsnivåerna om de inte upptäcks organiskt.
 
-## 2026-08-01 17:15 EEST — Slutverdikt: detektor GODKÄND, alla gater nivå 0; ÄGARBESLUT nivå 3 = 90 %
+## 2026-08-01 16:52 EEST — Slutverdikt: detektor GODKÄND, alla gater nivå 0; ÄGARBESLUT nivå 3 = 90 %
 Analystens re-review: (a) korrigeringarna korrekt implementerade, oberoende återkörning
 reproducerar siffrorna exakt; (b) det enda RA-"försöket" (ep29) falsk positiv — klättrade
 trappan MOT TELE, d till RA ökade 157→299 under höjdvinsten ⇒ nytt krav d2_min<120
