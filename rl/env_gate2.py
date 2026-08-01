@@ -88,10 +88,19 @@ class QWGate2Core:
         self._reset_state(self.spawns[0])
 
     def _pick_spawn(self):
-        if self._open_centers is not None and self.cfg.spawn_region is None \
-                and self.cfg.spawn_mode == "random_open":
-            i = int(self.rng.integers(len(self._open_centers)))
-            pos = self._open_centers[i].copy()
+        if self._open_centers is not None and self.cfg.spawn_mode == "random_open":
+            cs = self._open_centers
+            if self.cfg.spawn_region is not None:
+                # curriculum-spawn (BRIEF §4 A-C-verktyget): slumpad OPEN-voxel
+                # INOM regionen (2026-08-01: hexagonplatåerna — botten hade 0
+                # samples på ringnivån av 30 min; episoder som börjar uppe ger
+                # höjd/novelty från tick 0 och ledge-hoppen inom räckhåll)
+                lo, hi = (np.array(x, dtype=float) for x in self.cfg.spawn_region)
+                m = np.all((cs >= lo) & (cs <= hi), axis=1)
+                if m.any():
+                    cs = cs[m]
+            i = int(self.rng.integers(len(cs)))
+            pos = cs[i].copy()
             pos[2] += 8.0                # strax över voxelcentrum; settling tar golvet
             return pos, float(self.rng.uniform(0.0, 360.0))
         cands = self.spawns
@@ -141,6 +150,11 @@ class QWGate2Core:
                 if self.onground:
                     break
             if self.onground:
+                # curriculum-spawn: settling som föll UR regionen (t.ex. ned i
+                # gropen från en kantvoxel) räknas som misslyckat försök
+                if self.cfg.spawn_region is not None and \
+                        self.pos[2] < float(self.cfg.spawn_region[0][2]) - 24.0:
+                    continue
                 break
         return self._obs()
 

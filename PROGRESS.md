@@ -6092,3 +6092,16 @@ vilja; ~33 h H100 kvar. Mätare: z-viktad tidsandel (RA-toppen/window-andel ska 
 spatialrapporten), täckning (höga massorna = nya voxlar), climb_landings, n_gap, fart >500.
 Riskvakt: returskala växer (~+2.7/tick på höjd) — klipprotokollet gäller; fart <520 två
 punkter i rad ⇒ sänk coef till 1.0.
+
+## 2026-08-01 22:20 EEST — ÄGARDIREKTIV: ring↔quad-hoppen — hexagon-curriculum aktiveras
+Ägaren: "de ska börja göra hoppen från och till ring/quad". Saknad förutsättning uppmätt
+(analystens fynd): 0 samples på ringnivån av 30 min ⇒ generiska maskinen (höjd+rarity+gap)
+får aldrig chansen där uppe. Ratificerat verktyg: **curriculum-spawn** — _pick_spawn
+filtrerar nu OPEN-voxelspawns mot spawn_region (steg A-C-mekaniken äntligen implementerad
+för random_open), och workers [15, 15+N) spawnar i hexagonplatåboxen ((-50,-450,20)-
+(1250,750,220): ring/quad-plattformar + sidoledger; gropen -192 och gårgolven -264
+uteslutna; settling som faller ur regionen prövas om — 16/16 platåspawns verifierade).
+Flagga --qw_hex_spawn_workers. Policyns input oförändrad = ingen waypoint.
+Omstart med +--qw_hex_spawn_workers=6 (≈18 % av dm3-träningen börjar uppe). Mätare:
+tid-på-platånivå (spatial), hoppgaternas försöksräknare (analystvetot gäller nollskilda
+claims), n_gap. 31/31 tester.

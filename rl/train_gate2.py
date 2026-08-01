@@ -44,6 +44,8 @@ def main(argv=None):
                         help="V2: basbonus för gap-hopp (skalas med span, x2 vid djup>141)")
     parser.add_argument("--qw_height_coef", type=float, default=0.0,
                         help="höjdviktad fartinkomst: coef*z_norm*fart*rarity (0=av)")
+    parser.add_argument("--qw_hex_spawn_workers", type=int, default=0,
+                        help="antal workers (efter mix) som spawnar på hexagonplatåerna")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

@@ -86,13 +86,15 @@ class QWGate2Env(gym.Env):
     """Fritt strövande dm3 (Gate 2). Samma obs/action-rum som Gate 1;
     zonrastret används för fastnad-undantag (vatten/hiss/tele)."""
 
-    def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None):
+    def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None,
+                 spawn_region=None):
         from rl.env_gate2 import Gate2Config, QWGate2Core
         from rl.zones import RASTER, ZoneRaster
         self.name = full_env_name
         self.render_mode = render_mode
         is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
         g2cfg = Gate2Config(
+            spawn_region=spawn_region,
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
             novelty_bonus=float(getattr(cfg, "qw_novelty_bonus", 1.5)),
@@ -156,4 +158,13 @@ def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
         cur.stage = 3                   # steg 4: exp-fart + väggstraff (repetition)
         env.core.cur = cur
         return env
+    # HEXAGON-CURRICULUM (ägaren 2026-08-01 ~22:15: "de ska börja göra hoppen
+    # från och till ring/quad"): workers [mix, mix+N) spawnar på hexagonens
+    # PLATÅNIVÅ (box kring ring/quad-plattformarna + sidoledgerna, z 20-220 —
+    # utesluter gropen -192 och gårgolven -264). Ratificerat curriculum-verktyg;
+    # policyns input är oförändrad.
+    hexn = getattr(cfg, "qw_hex_spawn_workers", 0) if cfg is not None else 0
+    if widx < mix + hexn:
+        return QWGate2Env(full_env_name, cfg, env_config, render_mode,
+                          spawn_region=((-50.0, -450.0, 20.0), (1250.0, 750.0, 220.0)))
     return QWGate2Env(full_env_name, cfg, env_config, render_mode)
