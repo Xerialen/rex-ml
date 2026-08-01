@@ -5941,3 +5941,15 @@ konventionen; **artefakt-verktygskedjan beständiggjord i tools/rex3d/** (byggsc
 mall, atlas-geometri/heat — låg tidigare enbart i sessions-scratchpad = förlustrisk)
 och analystens verifieringsscript i evidence/repro/. Arbetsträdet rent, allt på
 github.com/Xerialen/rex-ml (main).
+
+## 2026-08-01 17:50 EEST — V1a-mätare byggd (ägarfråga: "mäter vi klätterbonusen?" — svaret var NEJ)
+Erkänd lucka: V1b mäts via täckning/rutter, V2 via gapanalys+hopppanel, men V1a
+(klätterbonusen) saknade egen mätare — och indicierna pekar på svag effekt (RA-närmandens
+z-max p50 44 u; RA-toppen-tillväxten kom via tele-loopen, inte klättring).
+Byggt: dump_trajectories registrerar nu **climb_landings** = alla landningar med rise ≥24 u
+(exakt bonusens utlösningsvillkor, oavsett spann) med rise/spann/avfyrningsfart/position.
+Mätplan: nivå + trend per dump framåt; referens = mänsklig klätterprofil (rise p50 32.8/hopp,
+RA-klättring 51 u/s @ 382) och RA-gatens klätterstarter. Ingen ren pre-V1a-baslinje finns
+(gamla dumpar filtrerade spann >200) — trenden bär bevisbördan. Hinner med i pågående svit
+(dump-steget ej startat). Om climb_landings/min ligger nära noll efter nästa mätpunkt är
+bonusen overksam ⇒ kandidater: höj --qw_climb_coef, eller rikta rarity mot toppnivåer.

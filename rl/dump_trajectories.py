@@ -75,6 +75,7 @@ def main(argv=None):
     episodes = []
     ring_quad_flights = []
     air_segments = []                 # alla hopp/fall span>200: klassas i byggsteget
+    climb_landings = []               # V1a-mätaren: landningar med rise>=24 (bonusvillkoret)
     for ep in range(args.n):
         obs, _ = env.reset()
         rnn = torch.zeros([1, get_rnn_size(cfg)])
@@ -115,6 +116,16 @@ def main(argv=None):
                 a0, v0 = air_start
                 a1 = c.pos
                 span = float(np.hypot(a1[0] - a0[0], a1[1] - a0[1]))
+                # V1a-mätaren (2026-08-01, ägarfråga "mäter vi klätterbonusen?"):
+                # landningar med höjdvinst ≥24 u = exakt bonusens utlösningsvillkor;
+                # mänsklig RA-klättring har rise p50 32.8/hopp. Oberoende av span.
+                rise = float(a1[2] - a0[2])
+                if rise >= 24.0:
+                    climb_landings.append({
+                        "ep": ep, "rise": round(rise, 1), "span": round(span, 1),
+                        "v_takeoff": round(v0),
+                        "pos": [round(float(v), 1) for v in a1],
+                    })
                 if span > 200.0:
                     # golvdjup under kordan (jfr analyze_gapjumps): skiljer
                     # gap-hopp från platta bunnyhopp
@@ -162,6 +173,7 @@ def main(argv=None):
            "ring_quad_flights": ring_quad_flights,
            "mega_sng_visits": sum(1 for e in episodes if e["mega_sng_s"] > 0.2),
            "air_segments": air_segments,
+           "climb_landings": climb_landings,
            "episodes": episodes}
     json.dump(res, open(args.out, "w"))
     print(json.dumps({k: v for k, v in res.items() if k != "episodes"}, indent=1,
