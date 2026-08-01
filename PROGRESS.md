@@ -5798,7 +5798,7 @@ Variansen styrs av spawnsammansättningen (SNG-enrumsepisoder sänker unionen kr
 Gate-måttet är dock 30-run-UNION — n=30-eval startad för första riktiga baslinjen mot 70 %
 (kostar 1-2 h CPU-kontention, ~20 % FPS-tapp accepterat). Träningen fortsätter parallellt.
 
-## 2026-08-01 09:30 EEST — FÖRSTA RIKTIGA GATE-BASLINJEN (n=30): 19.9 % union, 684 UPS, 0/30
+## 2026-08-01 08:50 EEST — FÖRSTA RIKTIGA GATE-BASLINJEN (n=30): 19.9 % union, 684 UPS, 0/30
 30-run greedy @ ~2100M frames (~700M under V1/V2): open_mean **684.3** (krav >500 ✓ med 37 %
 marginal), **0/30 fastnade** (krav ✓), täckningsunion **19.9 %** (krav 70 % — enda gapet).
 10-run-fönstren (8.5-17.0 %) underskattade som väntat unionen. Läget: Gate 2:s sim-sida är
