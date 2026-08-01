@@ -5659,7 +5659,7 @@ Beslutad trappa — EN variabel i taget, mätstyrda triggrar:
 Manifestkoll: generisk geometrisk shaping (z-vinst, gap, novelty) ligger inom ratificerad intrinsisk
 motivation; zonnamngivna bonusar vore waypoints-i-förklädnad och undviks.
 
-## 2026-08-01 03:20 EEST — Eval-fönster 1 efter stabilisatorn: fart upp, täckning ner
+## 2026-08-01 03:13 EEST — Eval-fönster 1 efter stabilisatorn: fart upp, täckning ner
 10-run greedy @ ~1280M frames (entropi 0.003): open-mean **683.8** (nytt max; 616.4 förra
 fönstret), täckning **9.0 %** (ner från 12.6 %), 0 fastnade. Mönster: fartmaximering äter
 utforskning — potentiellt samma orbitjämvikt som före noveltyhöjningen (exp-farttermen betalar
