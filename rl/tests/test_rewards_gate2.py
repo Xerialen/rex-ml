@@ -92,3 +92,32 @@ def test_novelty_mult_scales_payment():
     base = reward_gate2(s, fracs, dirs, VoxelNovelty(), novelty_mult=1.0)
     boosted = reward_gate2(s, fracs, dirs, VoxelNovelty(), novelty_mult=4.0)
     assert boosted > base
+
+
+def test_jump_gate_ring_quad_detection():
+    from rl.jump_gates import analyze, RING, QUAD, PIT_Z
+    def seg(a, b, n, z=56.0):
+        return [[a[0]+(b[0]-a[0])*t/n, a[1]+(b[1]-a[1])*t/n, z, 500] for t in range(n)]
+    mid_nv = [520.0, 400.0]     # NV om ring→quad-axeln, utanför plattformarna
+    # lyckat: ring → ledge NV → quad på plattformsnivå
+    ok = seg(RING, mid_nv, 30) + seg(mid_nv, QUAD, 30) + [[QUAD[0], QUAD[1], 56, 500]]*5
+    # ramla: ring → ledge NV → ner i gropen
+    fall = seg(RING, mid_nv, 30) + [[560, 20, PIT_Z-50, 300]]*5
+    dump = {"episodes": [{"path": ok}, {"path": fall}]}
+    res = analyze(dump)
+    g = res["gates"]["ring→quad NV"]
+    assert g["försök"] == 2 and g["lyckade"] == 1 and g["ramla"] == 1
+    assert g["nivå"] == 2
+    assert res["gates"]["quad→ring SO"]["nivå"] == 0
+
+
+def test_jump_gate_item_ladder():
+    from rl.jump_gates import analyze, RA
+    # RA: närmar sig nerifrån (z<150) och når pickup
+    up = [[RA[0], RA[1]-200, 40, 300]]*5 + \
+         [[RA[0], RA[1]-100+i*10, 40+i*30, 300] for i in range(10)] + \
+         [[RA[0], RA[1], 304, 300]]*3
+    dump = {"episodes": [{"path": up}]}
+    res = analyze(dump)
+    assert res["gates"]["RA-tagningen"]["försök"] == 1
+    assert res["gates"]["RA-tagningen"]["lyckade"] == 1

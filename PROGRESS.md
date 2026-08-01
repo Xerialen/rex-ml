@@ -5870,3 +5870,19 @@ SNG-spawns strövade ut). RA-toppen förbättrad: 515 UPS (från 478), tvekan 4.
 YA/SSG-komplexet besöks nu (ruttexempel mega>RL>YA>vatten>YA>RL). Vatten 0.7 % (försumbart).
 Beslut: fortsätt oförändrat till ~3.6G, samma trösklar (<+3 pp ⇒ PBT-fråga/skärpt rarity;
 <500 fart ⇒ rebalans). Om >30 % @ 3.6G: uppdatera 3D-artefakten.
+
+## 2026-08-01 16:35 EEST — ÄGARBESLUT: gate-hoppens mognadsstege (BRIEF-amendment) + mätinfra
+Ägaren (vaken, interaktiv): Gate 2 utökas med trickhoppskrav i sim FÖRE MVD-tester.
+Stege per hopp: 0 inga försök / 1 försöker / 2 lyckas ibland / 3 ≥5 försök 100 %.
+Gate-hopp (alla ska till nivå 3): ring↔quad ×4 (hexagonens NV+SO-ledger, båda riktningar,
+utan att ramla i MH-gropen (564,-48,-192; plattformar z=56)), RA-tagningen (256,-704,304),
+SNG-mega (-720,80,160). Rjump pent→window UPPSKJUTEN (V3). Ratificerat i BRIEF §2.
+Byggt: **rl/jump_gates.py** (transitdetektor ring↔quad med sidoklassning via kryssprodukt
+mot ring→quad-axeln, gropfalls-/retreat-utfall, item-gates med approach/pickup; 30/30
+tester), **evidence/gate_metrics_history.json** (n=30-serien för trendpilar),
+artefaktpaneler "Gate 2-metrics mot targets" (pil ↑/↓ per mått sedan förra mätningen)
++ "Gate-hopp mognadsstege". Standing direktiv (memory jump-gate-reporting): varje
+uppdatering = hoppmetrics + gate-mått + ompublicerad artefakt.
+Baslinje på gammal dump (2.0G): quad→ring SO nivå 1 (1 försök, föll i gropen),
+RA-tagningen nivå 1 (111 närmanden, 0 pickups), övriga nivå 0. Färsk 30-ep-dump @ 3.4G
+kör; artefakt ompubliceras när den landar.

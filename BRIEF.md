@@ -58,6 +58,18 @@ Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats
     OPEN-voxlarna besökta** (anti-loop: en bunny-slinga får inte maxa medlet).
   - **noll fastnade episoder** (>2 s under 50 UPS utanför EXCLUDED-zon), och ingen
     rutt-, waypoint- eller navmesh-information i policyns input.
+- **AMENDMENT (ägarbeslut 2026-08-01 ~16:00) — gate-hoppens mognadsstege.** Botten ska
+  KUNNA de kritiska trickhoppen i sim INNAN MVD-tester påbörjas. Mognadsnivåer per hopp:
+  0 inga försök; 1 försöker (uppvisad medvetenhet om hoppet som genväg); 2 lyckas ibland;
+  3 ≥5 försök med 100 % framgång. **Krav för MVD-övergång: nivå 3 på samtliga:**
+  - ring↔quad över hexagonens BÅDA sidoledger — 4 hopp (NV/SO × båda riktningar),
+    utan att ramla ner i MH-gropen,
+  - RA-tagningen (uppklättring till item_armorInv),
+  - SNG-mega (hoppnavigering fram till megan).
+  Rjump pent/lift→window: UPPSKJUTEN av ägaren (kräver V3/raketsim); övriga hopp
+  ej gate-kritiska. Mätning: `rl/jump_gates.py` på trajektoriedumpar; varje
+  lägesuppdatering ska inkludera dessa metrics + befintliga gate-mått, och
+  3D-artefakten ska hållas uppdaterad med metrics/targets + trendindikatorer.
 - Platt "500 överallt utom vatten/hiss/tele" FÖRKASTAD med mätstöd: 6,6 % av trafiken
   är torra zoner med mänskligt tak under 500 — en platt gate lär agenten UNDVIKA dem.
 - **Bevis:** inspelade fri-strövnings-demos + per-zon-hastighetsstatistik i artefakten.
