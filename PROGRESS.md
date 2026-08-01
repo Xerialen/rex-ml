@@ -5668,3 +5668,23 @@ Beslut: INGEN åtgärd ännu — ett fönster är brus (n=10-varians är känd).
 om täckningen ligger under 12.6 % även i fönster 2–3 medan farten ≥650 ⇒ orbitdiagnos bekräftad;
 då är kandidaterna (a) höjd novelty-per-voxel igen, (b) V1 (z-/sällsynthetsviktning) i förtid —
 analystens review (pågår) informerar valet. Träning frisk: 48k FPS, reward 5.8k, inga klippor.
+
+## 2026-08-01 03:19 EEST — Analyst-review av rewardtrappan: trösklar felkalibrerade, axeln är horisontell
+Rapport: evidence/analyst_review_vertical_rewards.md (826.4M sampel; 63.6k RA-klättringar,
+57.6k SNG→mega, 125k fönsterbesök). Fem fynd, tre beslut:
+1. **V2-trösklar OMKALIBRERADE:** span>240∧djup>96 missar ALLA tre målhopp (SNG→mega span p50
+   182/max 332, endast 4.5 % >240; fönsterinflygning 0/29 klarar). Ny definition: **span>150 ∧
+   golvdjup>56** (platt bunnyhopp når max ~44 u ⇒ 56 utesluter platta), förstärkt nivå djup>141
+   (100 % av mega-hoppen, noll platta). Skalas med span som förut.
+2. **V1 OMDEFINIERAD:** (a) klätterbonus per LANDNING med höjdvinst rise≥24 u (mänsklig RA-
+   klättring = trappserie: rise p50 32.8 u/hopp, 51 u/s @ 382 UPS — gap-logik träffar den aldrig);
+   (b) zonsällsynthet BÄR viktningen, inte z-nivå: bottens underskott är HORISONTELLT — mest
+   undersittna vs människor är YA-gården (0.16×), mega/hill-gården (0.23×), quad-övre (0.32×),
+   ringen (0.53×); översittna: window 9.4× (25.1 % vs 2.7 %), pent 5.6×.
+3. **Fartrisk kvantifierad, hanterbar:** −21/−11/−12 UPS per vertikal passage på 60s-snitt vid
+   baslinje 616; ~5 passager/min tål marginalen. Gårdarna är människors SNABBASTE ytor (35 % av
+   alla >500-tickar) ⇒ täckning dit hotar inte fartkriteriet. V3 (rjump) bekräftad sist: människans
+   enda snabba vertikal är raketen (höjdvinst/s p99 113.6 vs p50 51.1).
+Fönsterfyndet: 91 % av mänskliga fönsterbesök är strid, inte transit (bron 2.48 s vs fönstret
+4.83 s till RL) — bottens 25 % window-tid är dubbelt onaturlig; sällsynthetsviktningen ska
+naturligt straffa den. Eval-fönster 2 startat.
