@@ -26,6 +26,13 @@ QUAD = np.array([952.0, 296.0, 56.0])
 PIT_2D = np.array([564.0, -48.0])     # MH-gropen mellan plattformarna
 PIT_Z = -100.0                        # under detta = nere i gropen ("ramla ner")
 PLAT_R = 260.0                        # 2D-radie plattformsregion
+# Analyst-korrigeringar (evidence/analyst_jumpgate_review.md, 2026-08-01):
+# v1-detektorn underkändes — plattformsregionen utan z-band gjorde korridor-
+# passager på golvet (z=56 exakt) till "försök", och grop-cirkulationen
+# quad→MH→ring-nedre till "ramla". Korrigerat:
+PLAT_ZBAND = (40.0, 130.0)            # plattformsNIVÅN, inte volymen över gropen
+PROGRESS_D = 350.0                    # försök kräver närmande: d(dst) < 350 någon gång
+SIDE_DEADZONE = 100.0                 # |perp| < 100 u räknas inte i sidoklassningen
 LEDGE_Z = -20.0                       # ledgenivå: över detta ute vid sidorna
 HEX_R = 800.0                         # lokalitet kring gropen
 MAX_TRANSIT_PTS = int(4.0 / 0.026)    # 4 s
@@ -33,7 +40,11 @@ MAX_TRANSIT_PTS = int(4.0 / 0.026)    # 4 s
 RA = np.array([256.0, -704.0, 304.0])
 MEGA_SNG = np.array([-720.0, 80.0, 160.0])
 PICKUP_2D = 60.0
-PICKUP_DZ = 56.0
+# dz-fönster (−32,+80): 88 % av 4 000 mänskliga RA-pickups inom boxen; dz p50
+# +24, max +79.8 = QW:s touch-tak (analyst-mätt)
+PICKUP_DZ_LO = -32.0
+PICKUP_DZ_HI = 80.0
+CLIMB_GAIN = 80.0                     # försök = klättring påbörjad: z_entry+80 nådd
 
 _AXIS = (QUAD - RING)[:2]
 
@@ -43,12 +54,17 @@ def _d2(p, c):
 
 
 def _side(p) -> float:
-    """Tecken på kryssprodukten mot ring→quad-axeln: >0 = NV-ledgen, <0 = SO."""
+    """Signerat vinkelrätt avstånd (u) från ring→quad-axeln: >0 = NV, <0 = SO.
+    Punkter inom SIDE_DEADZONE från axeln exkluderas av anroparen (brus)."""
     v = np.array([p[0], p[1]]) - RING[:2]
-    return float(_AXIS[0] * v[1] - _AXIS[1] * v[0])
+    return float((_AXIS[0] * v[1] - _AXIS[1] * v[0]) / np.hypot(*_AXIS))
 
 
 def _plat(p):
+    """Plattformsregion = 2D-radie OCH plattformsnivån (z-band 40-130).
+    Utan z-bandet räknades gropcirkulation under plattformarna som besök."""
+    if not (PLAT_ZBAND[0] < p[2] < PLAT_ZBAND[1]):
+        return None
     if _d2(p, RING) < PLAT_R:
         return "ring"
     if _d2(p, QUAD) < PLAT_R:
@@ -77,7 +93,9 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
         seg = [path[t0]]
         outcome = None
         onto_ledge = False
+        progressed = False               # d(dst) < PROGRESS_D någon gång (analystkrav)
         side_acc = 0.0
+        dst_c = QUAD if cur == "ring" else RING
         j = i
         while j < len(path) and j - t0 <= MAX_TRANSIT_PTS:
             q = path[j]
@@ -91,7 +109,11 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
             qp = _plat(q)
             if qp is None and q[2] > LEDGE_Z:
                 onto_ledge = True
-                side_acc += _side(q)
+                s = _side(q)
+                if abs(s) > SIDE_DEADZONE:
+                    side_acc += s
+                if _d2(q, dst_c) < PROGRESS_D:
+                    progressed = True
             if qp == cur:
                 outcome = "retreat"
                 break
@@ -101,7 +123,9 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
             j += 1
         if outcome is None:
             outcome = "lämnade"              # timeout utan att nå fram
-        if onto_ledge and outcome in ("lyckat", "ramla", "retreat"):
+        if outcome == "lyckat":
+            progressed = True                # nådde fram ⇒ per definition
+        if onto_ledge and progressed and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
             events.append({
                 "hopp": f"{cur}→{dst} {'NV' if side_acc > 0 else 'SO'}",
@@ -114,25 +138,34 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
 
 
 def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
-                 attempt_pred) -> tuple[int, int]:
-    """(försök, lyckade) för item-gates: besöksintervall inom approach_r;
-    försök om attempt_pred uppfylls i intervallet, lyckat om pickup nås."""
+                 low_pred) -> tuple[int, int]:
+    """(försök, lyckade) för item-gates. Analyst-korrigerat (v1 räknade all
+    korridortrafik som "försök", 95/96 RA-intervall var tele↔RA-nedre-passager):
+    försök = besöksintervall som börjar lågt (low_pred) OCH där klättring
+    PÅBÖRJAS (z stiger ≥ CLIMB_GAIN över intervallets entré-z);
+    lyckat = pickupboxen nås (2D<60, dz i (−32,+80) = mänskligt touch-fönster)."""
     attempts = successes = 0
     inside = False
-    att = suc = False
+    low = climbed = suc = False
+    z_entry = 0.0
     for p in path:
         if _d2(p, item) < approach_r:
-            inside = True
-            if attempt_pred(p):
-                att = True
-            if _d2(p, item) < PICKUP_2D and abs(p[2] - item[2]) < PICKUP_DZ:
+            if not inside:
+                inside = True
+                z_entry = p[2]
+            if low_pred(p):
+                low = True
+            if p[2] >= z_entry + CLIMB_GAIN:
+                climbed = True
+            if _d2(p, item) < PICKUP_2D and \
+                    PICKUP_DZ_LO < p[2] - item[2] < PICKUP_DZ_HI:
                 suc = True
         elif inside:
-            if att:
+            if low and climbed:
                 attempts += 1
                 successes += int(suc)
-            inside, att, suc = False, False, False
-    if inside and att:
+            inside, low, climbed, suc = False, False, False, False
+    if inside and low and climbed:
         attempts += 1
         successes += int(suc)
     return attempts, successes
@@ -163,7 +196,7 @@ def analyze(dump: dict) -> dict:
             g["retreat"] += int(ev["utfall"] == "retreat")
         a, s = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0)
         ra_att += a; ra_suc += s
-        a, s = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] > 100.0)
+        a, s = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0)
         mega_att += a; mega_suc += s
     for name, g in rq.items():
         gates[name] = {**g, "nivå": _level(g["försök"], g["lyckade"])}

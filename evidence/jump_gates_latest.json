@@ -1,0 +1,44 @@
+{
+ "episodes": 30,
+ "gates": {
+  "ring→quad NV": {
+   "försök": 0,
+   "lyckade": 0,
+   "ramla": 0,
+   "retreat": 0,
+   "nivå": 0
+  },
+  "ring→quad SO": {
+   "försök": 0,
+   "lyckade": 0,
+   "ramla": 0,
+   "retreat": 0,
+   "nivå": 0
+  },
+  "quad→ring NV": {
+   "försök": 0,
+   "lyckade": 0,
+   "ramla": 0,
+   "retreat": 0,
+   "nivå": 0
+  },
+  "quad→ring SO": {
+   "försök": 0,
+   "lyckade": 0,
+   "ramla": 0,
+   "retreat": 0,
+   "nivå": 0
+  },
+  "RA-tagningen": {
+   "försök": 1,
+   "lyckade": 0,
+   "nivå": 1
+  },
+  "SNG-mega": {
+   "försök": 0,
+   "lyckade": 0,
+   "nivå": 0
+  }
+ },
+ "min_nivå": 0
+}

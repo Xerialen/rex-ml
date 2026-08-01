@@ -5894,3 +5894,27 @@ dump → rl/jump_gates.py → analyst-review (verifiera lyckat/ramla/sidoklassni
 geometri) → först därefter presentation + artefaktpublicering av hoppsiffrorna.
 Retroaktiv notering: baslinjesiffrorna från 2.0G-dumpen (quad→ring SO nivå 1, RA 111/0)
 är OGRANSKADE och behandlas som preliminära tills analysten reviewat färska dumpen.
+
+## 2026-08-01 17:00 EEST — Analyst UNDERKÄNDE hopp-claimsen; detektor korrigerad; sann status nivå 0
+Vetoregeln gjorde sitt jobb första dagen. Analystens review (evidence/analyst_jumpgate_review.md):
+- **quad→ring 12 "försök" UNDERKÄNDA:** korridorpassager på sammanhängande golv (z=56, ramp
+  till 99.8) direkt SV om quad-randen; nådde aldrig närmare ringcentrum än 388-563 u.
+  4 "ramla" = ordinarie quad→grop→ring-nedre-cirkulation. 3/12 sidoetiketter var axelbrus.
+- **Hårdaste sanningen:** botten har 0 samples på RINGPLATTFORMSNIVÅN (z>-20) på 30×60 s —
+  140.8 s i gropen UNDER den; quad-plattformsnivån bara 11.2 s. "Ringen"-zontiden i
+  spatialrapporterna är gropcirkulation, inte plattformsspel.
+- **Detektorbias uteslutet:** samma kod på 60 mänskliga demos ger 6 915 ring→quad +
+  8 698 quad→ring äkta försök. Asymmetrin/nollan är beteende.
+- **RA 95/0:** boxen geometriskt riktig (88 % av 4 000 mänskliga pickups; dz-fönster
+  vidgat till −32..+80 = QW:s touch-tak). "Försöken" var tele↔RA-nedre-trafik; bottens
+  z_max i intervallen p50 43.8 mot krävda ~304 — klättringen påbörjas aldrig.
+- **SNG-mega godkänd** (99.9 % mänsklig pickup-täckning); de 2 "försöken" var höga inträden.
+- **Nivå 3-varning:** eliten mäter 8-44 % lyckandegrad genom samma detektor — 100 %-kravet
+  är övermänskligt. ÄGARFRÅGA (olöst): behålla ägarens "lyckas alltid" eller mänsklig baslinje.
+Korrigeringar implementerade per analystens spec (z-band 40-130, progression d<350, sido-
+dödzon 100 u, klätterkrav z_entry+80, dz-fönster): 30/30 tester. Korrigerat utfall på samma
+dump: ring↔quad 0/0/0/0 försök, RA 1 försök (äkta klätterstart)/0, SNG-mega 0 ⇒ **min-nivå 0,
+allt utom RA nivå 0.** Skickat till analysten för slutverdikt innan presentation/artefakt.
+Träningsimplikation (journalförd risk): gate-hoppen kräver plattformstoppspel som policyn
+i princip aldrig utför (0-11 s/30 min) — sällsynthetstrycket kan behöva riktas mot
+plattformsnivåerna om de inte upptäcks organiskt.

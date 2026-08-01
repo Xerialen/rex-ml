@@ -101,8 +101,9 @@ def test_jump_gate_ring_quad_detection():
     mid_nv = [520.0, 400.0]     # NV om ring→quad-axeln, utanför plattformarna
     # lyckat: ring → ledge NV → quad på plattformsnivå
     ok = seg(RING, mid_nv, 30) + seg(mid_nv, QUAD, 30) + [[QUAD[0], QUAD[1], 56, 500]]*5
-    # ramla: ring → ledge NV → ner i gropen
-    fall = seg(RING, mid_nv, 30) + [[560, 20, PIT_Z-50, 300]]*5
+    # ramla: ring → ledge NV med progression mot quad (d<350) → ner i gropen
+    near_q = [650.0, 320.0]     # NV-ledge, 303 u från quad-centrum
+    fall = seg(RING, mid_nv, 20) + seg(mid_nv, near_q, 15) + [[620, 120, PIT_Z-50, 300]]*5
     dump = {"episodes": [{"path": ok}, {"path": fall}]}
     res = analyze(dump)
     g = res["gates"]["ring→quad NV"]
