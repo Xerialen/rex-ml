@@ -5770,7 +5770,7 @@ high; serien 11.4 → 8.5 → 17.0), 0 fastnade. Platån ~12 % är BRUTEN — s�
 Geografianalys startad: består SNG-enrumsorbiten? n_gap? Fortsatt träning, nästa fönster
 efter ~2 hjärtslag.
 
-## 2026-08-01 07:12 EEST — Geografi @ 1850M: gårlocken tagna, FÖRSTA ÄKTA GAP-HOPPET
+## 2026-08-01 07:21 EEST — Geografi @ 1850M: gårlocken tagna, FÖRSTA ÄKTA GAP-HOPPET
 spatial_report + analyze_gapjumps (10 runs) efter genombrottsfönstret (17.0 %):
 - **Gårdarna dominerar nu:** ringen 17.7 % + quad 16.5 % + mega 15.6 % = 49.8 % av tiden
   (var 8.8 % före V1/V2) i 716-749 UPS — ring→mega→quad-varv är nya standardrutten.
