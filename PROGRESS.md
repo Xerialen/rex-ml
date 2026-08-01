@@ -5942,7 +5942,7 @@ mall, atlas-geometri/heat — låg tidigare enbart i sessions-scratchpad = förl
 och analystens verifieringsscript i evidence/repro/. Arbetsträdet rent, allt på
 github.com/Xerialen/rex-ml (main).
 
-## 2026-08-01 17:50 EEST — V1a-mätare byggd (ägarfråga: "mäter vi klätterbonusen?" — svaret var NEJ)
+## 2026-08-01 17:08 EEST — V1a-mätare byggd (ägarfråga: "mäter vi klätterbonusen?" — svaret var NEJ)
 Erkänd lucka: V1b mäts via täckning/rutter, V2 via gapanalys+hopppanel, men V1a
 (klätterbonusen) saknade egen mätare — och indicierna pekar på svag effekt (RA-närmandens
 z-max p50 44 u; RA-toppen-tillväxten kom via tele-loopen, inte klättring).
