@@ -6028,3 +6028,12 @@ men inga kedjade trappuppstigningar än. Gate-hopp: fem nollor (godkänd detekto
 PRELIMINÄR-märkt tills verdikt. Metrics-historik + artefakt ompublicerad (trendpilar:
 täckning/fart/fastnade nedåtpilar denna punkt — mätt på gamla regimen; nästa punkt är
 första rena avläsningen av coef 0.5).
+
+## 2026-08-01 18:55 EEST — Review 3: RA-försöket UNDERKÄNT (disjunkta villkor); samtidighetskrav infört
+Analystens verdikt: ep23 cirklade RA-nedre-golvet (z=-16, d2_min 70.9 nådd 320 u UNDER
+armorn) och studsade 0.2 s på en låg avsats (z-max 67.8 @ d2 126) — 0/254 samples uppfyllde
+klättring ∧ närhet SAMTIDIGT. Fix per analystens förslag: climbed_near = ett och samma
+sample med z ≥ z_entry+80 ∧ d2 < 120. Omkört: **alla sex gater 0/0 nivå 0** — godkänd
+status för 3.6G-punkten. Repro (verify_ra_attempt.py) i evidence/repro/. 30/30 tester.
+Artefakt ompublicerad utan PRELIMINÄR-banner. Tre falska positiva fällda av vetot hittills
+(korridorpassager, tele-klättring, disjunkt golv+studs) — detektorn härdas för varje runda.

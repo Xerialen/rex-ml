@@ -30,9 +30,9 @@
    "nivå": 0
   },
   "RA-tagningen": {
-   "försök": 1,
+   "försök": 0,
    "lyckade": 0,
-   "nivå": 1
+   "nivå": 0
   },
   "SNG-mega": {
    "försök": 0,
@@ -41,6 +41,6 @@
   }
  },
  "min_nivå": 0,
- "review": "RA-försöket (1) UNDER ANALYST-REVIEW; övriga nollor = godkänd detektor",
- "review_godkand": false
+ "review": "GODKÄND (analyst-review 3): samtidighetskrav infört; alla sex gater 0/0 nivå 0",
+ "review_godkand": true
 }

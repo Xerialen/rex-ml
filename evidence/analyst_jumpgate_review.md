@@ -169,3 +169,38 @@ trivialt (pickup-d2 p99 = 61,7).
 - Detektorn i övrigt: godkänd som mätinstrument för fortsatt curriculum-spårning,
   med påminnelsen att nivå 3-definitionen (100 % av ≥5) fortfarande ska rekalibreras
   mot mänsklig lyckandegrad när botten väl börjar registrera riktiga försök.
+
+---
+
+## Review 3 (2026-08-01, DM3-analytikern): RA-försöket i färsk 30-ep-dump (ckpt ~3.75G, klätterbonus 0.5)
+
+**Fråga:** jump_gates.py (med d2_min<120-filtret) rapporterar RA 1 försök / 0 lyckade;
+övriga fem gater 0 försök. Verifiera det enda RA-försöket.
+
+**Repro:** detektorlogiken återimplementerad mot
+`scratchpad/rex_trajectories.json` (experiment `pipeline/out/rl/train_dir/gate2_v2`,
+30 ep) — exakt 1 kvalificerande intervall återfanns: **ep23** (spawn "vid RA-toppen",
+route pendlar RA-toppen↔RA-nedre/NG-tunneln hela episoden), i 1867–2120,
+t = 48,5–55,1 s (6,6 s), z_entry = −16,0, d2_min = 70,9, success = False.
+
+**Uppmätt förlopp:** botten cirklar på RA-nedre-GOLVET i stora slingor (radie ~100–150 u)
+runt/under armorn: 3,93 av 6,6 s på z ≤ 0, konstant z = −16 med hoppstuds till ~27.
+All närhet (115 punkter d2 < 120, min 70,9 vid (252,−775,−16)) uppnås på golvnivå,
+z-spann −16…+47 — armorn ligger på z = 304, dvs. ≥ 257 u ovanför. Klättervillkoret
+(z ≥ z_entry+80 = 64) triggas av EN studs upp på en låg avsats öster om RA:
+8 samples (0,2 s), z-max 67,8 vid (346,−793) — d2 126–129 hela tiden, tillbaka på
+golvet z = −16 inom 0,5 s. Höjdvinsten stannar **236 u UNDER itemet**.
+
+**Falsifiering av "äkta klätterstart":** noll (0) samples uppfyller klättring OCH
+närhet samtidigt (z≥64 ∧ d2<120 ⇒ 0 av 254). Kriterierna satisfieras av DISJUNKTA
+delsegment — golvcirkulation under armorn (d2_min) + en tangentiell avsatsstuds
+(klättring) — inte av någon bana mot armorn. Ingen tele-utgång, inget fall från ovan:
+ren golvcirkulation med hoppspam.
+
+**Verdikt: UNDERKÄND** — ny falsk positiv (mekanism 3: konjunktiva kriterier
+uppfyllda av olika delar av samma långa besöksintervall). Korrekt siffra att
+presentera: **nivå 0 på samtliga sex gater** även för denna checkpoint.
+**Detektorkorrigering (förslag):** kräv samtidighet/koppling — t.ex. d2 < 120 uppnådd
+vid en punkt med z ≥ z_entry+80, eller klätterkravet höjt till absolut nivå
+(z ≥ RA_z − 160 = 144, över golvstudshöjd) — mänskliga klättrare passerar trivialt
+(pickup-dz p50 +24). Konfidens: hög (direkta koordinater ur dumpen, deterministisk repro).

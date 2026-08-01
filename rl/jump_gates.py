@@ -150,9 +150,8 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
     lyckat = pickupboxen nås (2D<60, dz i (−32,+80) = mänskligt touch-fönster)."""
     attempts = successes = 0
     inside = False
-    low = climbed = suc = False
+    low = climbed_near = suc = False
     z_entry = 0.0
-    d2_min = np.inf
     for p in path:
         d = _d2(p, item)
         if d < approach_r:
@@ -160,19 +159,21 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
                 inside = True
                 z_entry = p[2]
                 low = bool(low_pred(p))      # bedöms vid ENTRÉN (analystnotering)
-            d2_min = min(d2_min, d)
-            if p[2] >= z_entry + CLIMB_GAIN:
-                climbed = True
+            # SAMTIDIGHET (analyst-review 3, 2026-08-01): klättring och närhet
+            # måste hållas i SAMMA sample — disjunkta delsegment (golvcirkulation
+            # med d2_min 70.9 på z=-16 + avsatsstuds z 67.8 på d2 126) gav falsk
+            # positiv när villkoren ackumulerades separat.
+            if p[2] >= z_entry + CLIMB_GAIN and d < APPROACH_MIN:
+                climbed_near = True
             if d < PICKUP_2D and \
                     PICKUP_DZ_LO < p[2] - item[2] < PICKUP_DZ_HI:
                 suc = True
         elif inside:
-            if low and climbed and d2_min < APPROACH_MIN:
+            if low and climbed_near:
                 attempts += 1
                 successes += int(suc)
-            inside, low, climbed, suc = False, False, False, False
-            d2_min = np.inf
-    if inside and low and climbed and d2_min < APPROACH_MIN:
+            inside, low, climbed_near, suc = False, False, False, False
+    if inside and low and climbed_near:
         attempts += 1
         successes += int(suc)
     return attempts, successes
