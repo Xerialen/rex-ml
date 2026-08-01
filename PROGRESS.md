@@ -5733,3 +5733,12 @@ Mätplan: första eval-fönstret efter ~2 hjärtslag (~1 h adaption); mätare t�
 n_climb/n_gap i eval-info (V1a/V2), nästa spatialrapport för window-andel vs gårdarna.
 Riskvakt: returskalan har ökat — vid klippa (reward → tvåsiffrigt) gäller räddningsprotokollet
 + omaktivering en flagga i taget.
+
+## 2026-08-01 05:15 EEST — Eval-fönster 1 under V1/V2: fart 715.7 (rekord), täckning 8.5 %
+10-run greedy @ ~1610M frames (180M under nya regimen): open-mean **715.7**, täckning
+**8.5 %**, 0 fastnade. Täckningen gick FEL håll (11.4 → 8.5) men farten slog rekord.
+Tolkningshypoteser (oavgjort): (a) adaptionsbrus — policyn är mitt i omviktningen, 180M är
+kort mot tidigare interventioners 100-300M; (b) bonusexploatering — klätter-/gapbonus kan
+betala en snabb loop bättre än strövande. Geografi- och hoppanalys startad (spatial_report +
+analyze_gapjumps, 10 runs) för att skilja hypoteserna: n_gap>0 + oförändrade rutter ⇒ (b);
+diffusa rutter i flux ⇒ (a). Beslut väntar på den + nästa fönster.
