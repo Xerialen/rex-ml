@@ -6054,3 +6054,11 @@ Uppladdning + fjärrverifiering klar (Xerial/qw-demos-mined-db):
 redundant utanför vmonster. Kvar i flyttlistan: qwserver-tar, slutcheckpoint-snapshot,
 rex-ml-rtx (PAT), korpora-nedhämtning på pinnacle. Ägaren roterar HF-tokenen när vi är
 klara (ägarens plan). MIGRATION.md avbockad.
+
+## 2026-08-01 19:58 EEST — 4G-taket nått (train_for_env_steps) — omstart med tak 12G
+Träningen självterminerade 19:35 vid 3 999 961 088 frames (4G-taket satt före Gate 2-eran);
+monitorns stillastående-larm fångade det, ~20 min H100-stillestånd. Omstart 19:56 med
+--train_for_env_steps=12000000000 (bortom sprintens slut), övriga flaggor oförändrade
+(climb_coef 0.5 osv). Verifierat: frames fortsätter 4000.0M→, FPS rampar 30-35k.
+4.0G-slutcheckpointen = mätpunkten: full svit startad (n=30 + dump + jump_gates) —
+första RENA avläsningen av klätterregimen (~320M frames under coef 0.5).
