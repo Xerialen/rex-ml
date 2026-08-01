@@ -6007,3 +6007,11 @@ Berett hittills:
 - store-dm3 (8.5 G) + qw-corpus-db (184 M) redo att laddas som kataloger; MANIFEST.sha256
   för storen genererad (1 721 filer; storen själv orörd — additivt manifest utflyttat).
 MIGRATION.md uppdaterad. Träningen (climb_coef 0.5) opåverkad: ~41k FPS.
+
+## 2026-08-01 18:37 EEST — Bevarandearkiven kompletta i ~/preserve-20260801/ (18 G, checksummade)
+qwd-corpus: 56 G → 17.25 G i 8 zst-shards (28-29 %); mvd-diff 1.47 G; ARCHIVES.sha256;
+fil-listor. Flyttade från /tmp-scratchpad till hemkatalog (överlever omstart).
+Kvar att ladda upp (ägarhand pga spärr): ~/preserve-20260801 (18 G) + ~/dm3-extract/store-dm3
+(8.5 G) + ~/qw-corpus-build/qw-corpus-db (184 M) ⇒ totalt ~26 G till Xerial/qw-demos-mined-db.
+Därefter är ALLT oersättligt redundant utanför vmonster (mvd-huvudmassan fanns redan).
+Träning frisk: 3 800.7 M frames, 40.5k FPS, climb_coef 0.5 aktiv.
