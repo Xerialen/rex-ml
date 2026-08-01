@@ -5806,3 +5806,26 @@ numera ETT problem — täckning. Trenden under V1/V2 pekar uppåt (platån 12 %
 Nästa: analyst på (1) SNG-rummets exitvägar hos människor (fällan är största enskilda
 täckningsläckan), (2) var människornas voxlar ligger som botten aldrig ser — de återstående
 50 pp:s geografi. Träning fortsätter; nästa n=30 vid ~2.6-2.8G frames.
+
+## 2026-08-01 09:15 EEST — Analyst: SNG-exits, 50-pp-geografin, 70 %-kravet är ~21 SD övermänskligt
+Rapport: evidence/analyst_sng_coverage.md (907.98M rader, 229k SNG-exits, 200 unionreplikat,
+universum verifierat identiskt med rl/zones.py: 12 012 voxlar). Fem fynd:
+1. **SNG-fällan är ett exitbeslutsproblem, inte fart:** människor lämnar rummet på 2.6 s
+   median (p90 7.5 s; >60 s-vistelse = 1 på 4 200). Agentens 460-orbit är SNABBARE än
+   mänsklig p75 i rummet. Fyra exitvägar, ingen kräver sim/tele: S-korridoren 39.4 %,
+   N-övre 25.7 %, E-nedre dörrarna 20.1 % (bara 100-130° krök), E-övre ledgen 14.9 %
+   (hoppexit 470 UPS = ägarens sng→quad-rutt).
+2. **Gårdarna är bara 31.4 % av universumet** — 70 % KAN inte nås där. Saknade massor:
+   SNG-komplexet 16.2 %, östra YA-komplexet 14.7 % (platt, bästa skörden 10.6 vox/s),
+   pent-sänkan 14.6 % (fall + trappretur), RA-låg/NG 7.9 %. Vatten bara 2.0 % — ignorerbart.
+3. **34.9 % av voxlarna ligger på nivå 2 (64-96 u över golv)** — skördas via hopp under
+   löpning ⇒ landningsbonusarna är rätt mekanism, behåll/förstärk.
+4. **70 %-kravet är ~21 SD över mänsklig nivå:** mänsklig 30×60s-union 40.0 % ± 1.4;
+   människor behöver ~3.7 h för 70 %; korpusens totalunion 87.6 %. Nåbart men kräver
+   täckningssökning som mänskligt spel aldrig uppvisar. Ingen ägareskalering (ej olösligt).
+   Agentens 19.9 % ≈ mänsklig 8-12-fönsterunion.
+5. Metodnot: trajectory_samples-kolumnen `h` är HÖJD ÖVER GOLV, inte hastighet.
+BESLUT: fortsätt träna till ~2.6G (trenden positiv: fällan halverad 4/10→2/10 på 240M),
+sedan n=30 + spatialkoll. Om SNG-enrumsepisoder består då: omstart med rarity lo 0.5→0.25
+(kvartsnovelty i översittna celler). I reserv (en variabel i taget): spawn-bias mot SNG-
+rummet via spawn_region-curriculum (ratificerat manifestverktyg).
