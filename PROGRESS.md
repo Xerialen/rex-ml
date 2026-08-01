@@ -6037,3 +6037,9 @@ sample med z ≥ z_entry+80 ∧ d2 < 120. Omkört: **alla sex gater 0/0 nivå 0*
 status för 3.6G-punkten. Repro (verify_ra_attempt.py) i evidence/repro/. 30/30 tester.
 Artefakt ompublicerad utan PRELIMINÄR-banner. Tre falska positiva fällda av vetot hittills
 (korridorpassager, tele-klättring, disjunkt golv+studs) — detektorn härdas för varje runda.
+
+## 2026-08-01 19:45 EEST — Ägaren auktoriserade uppladdning; ~26 G → HF igång
+Explicit ägarauktorisering hävde spärren. Kör i bakgrund: preserve-20260801 (18 G: qwd-
+korpusens 8 shards + mvd-diffen + checksummor) → parquet/store-dm3-v1 (8.5 G) → dess
+MANIFEST → parquet/staging-v1 (qw-corpus-db 184 M). Verifiering mot ARCHIVES.sha256 +
+remote-listning när klart. Vid timeout: omkörning per del (xet-dedup gör omstart billig).
