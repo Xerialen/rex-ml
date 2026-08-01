@@ -5954,7 +5954,7 @@ RA-klättring 51 u/s @ 382) och RA-gatens klätterstarter. Ingen ren pre-V1a-bas
 (dump-steget ej startat). Om climb_landings/min ligger nära noll efter nästa mätpunkt är
 bonusen overksam ⇒ kandidater: höj --qw_climb_coef, eller rikta rarity mot toppnivåer.
 
-## 2026-08-01 17:25 EEST — ÄGARMANDAT: balansera fram trappklättring med befintliga viktflaggor
+## 2026-08-01 17:18 EEST — ÄGARMANDAT: balansera fram trappklättring med befintliga viktflaggor
 Ägaren (efter NotebookLM-triage med alternativkostnadskalkylen): "jag litar på dig att vi
 kan balansera fram detta med befintliga värden." Ingen PBT, ingen arkitekturändring, inget
 action-maskande. Kalkylen som styr (journalförd i svaret): exp-termens alternativkostnad
