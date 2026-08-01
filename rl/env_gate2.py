@@ -21,7 +21,7 @@ import numpy as np
 from . import spec as S
 from .env import Backend
 from .rewards_gate1 import StepState, _collision_loss, _speed_h
-from .rewards_gate2 import VoxelNovelty, reward_gate2
+from .rewards_gate2 import AirLandingBonus, CellRarity, VoxelNovelty, reward_gate2
 
 DM3_SPAWNS = Path(__file__).parent / "data" / "dm3_spawns.json"
 
@@ -44,6 +44,10 @@ class Gate2Config:
     # hemlåde-jämvikt (6 fasta spawns ⇒ policyn lärde sig pacea sin startkammare
     # vid ALLA sex; slumpstart över kartan gör mönstret olärbart).
     spawn_mode: str = "random_open"
+    # V1/V2 (rewardtrappan, PROGRESS 2026-08-01 03:19): AVSTÄNGDA tills
+    # täckningstriggern slår — aktiveras via train_gate2-flaggorna.
+    vertical_rewards: bool = False   # V1a klätterbonus + V2 gap-crossing
+    cell_rarity: bool = False        # V1b sällsynthetsviktad novelty
 
 
 class QWGate2Core:
@@ -68,6 +72,9 @@ class QWGate2Core:
             except FileNotFoundError:
                 pass                     # faller tillbaka på fasta spawns
         self.novelty = VoxelNovelty()
+        self.air_bonus = AirLandingBonus() if self.cfg.vertical_rewards else None
+        # CellRarity lever ÖVER episoder (EMA) — skapas en gång per env-instans
+        self.rarity = CellRarity() if self.cfg.cell_rarity else None
         self._reset_state(self.spawns[0])
 
     def _pick_spawn(self):
@@ -103,8 +110,16 @@ class QWGate2Core:
         self.speed_n = 0
         self._last_ray_fracs = None
         self._last_ray_dirs = None
+        # luftsegment (V1a/V2): takeoff-pos + samplade luftpositioner;
+        # None = inget aktivt segment (avbryts av vatten/exkluderad takeoff)
+        self._air_takeoff = None
+        self._air_buf: list[np.ndarray] = []
+        self.n_climb = 0
+        self.n_gap = 0
 
     def reset(self) -> np.ndarray:
+        if self.rarity is not None:
+            self.rarity.end_episode()
         # random_open-voxlar kan sakna golv rakt under (luftvoxlar) — pröva om
         for _attempt in range(6):
             self._reset_state(self._pick_spawn())
@@ -130,6 +145,49 @@ class QWGate2Core:
                                     self.waterlevel, self.jump_held, self.last_action)
         return np.concatenate([self._last_ray_fracs, kin])
 
+    def _air_segment(self, prev_og: bool, counted: bool) -> float:
+        """V1a/V2: spåra luftsegment, betala klätter-/gapbonus vid landning.
+        Vatten avbryter (simning är inte hopp); segment kräver räknad takeoff
+        OCH räknad landning så att hiss-/tele-utfall aldrig betalas."""
+        if self.waterlevel > 0:
+            self._air_takeoff = None
+            self._air_buf.clear()
+            return 0.0
+        if prev_og and not self.onground:                 # takeoff
+            self._air_takeoff = self.pos.copy() if counted else None
+            self._air_buf.clear()
+            return 0.0
+        if not self.onground:                             # i luften
+            if self._air_takeoff is not None and self.tick % 3 == 0:
+                self._air_buf.append(self.pos.copy())
+            return 0.0
+        if prev_og or self._air_takeoff is None:          # på marken/inget segment
+            return 0.0
+        takeoff, self._air_takeoff = self._air_takeoff, None   # landning
+        if not counted:
+            self._air_buf.clear()
+            return 0.0
+        span = float(np.linalg.norm((self.pos - takeoff)[:2]))
+        rise = float(self.pos[2] - takeoff[2])
+        max_depth = 0.0
+        if span >= self.air_bonus.GAP_MIN_SPAN and len(self._air_buf) >= 3:
+            # 3-punkts golvdjup under banan (25/50/75 %), samma klassificerare
+            # som analyze_gapjumps fast online; 512 u räcker för dm3:s schakt
+            idx = [len(self._air_buf) // 4, len(self._air_buf) // 2,
+                   (3 * len(self._air_buf)) // 4]
+            origins = np.stack([self._air_buf[i] for i in idx]).astype(np.float32)
+            down = np.tile(np.array([0.0, 0.0, -1.0], dtype=np.float32), (3, 1))
+            fracs = np.asarray(self.b.trace_rays(origins, down, 512.0))
+            max_depth = float(np.max(fracs) * 512.0)
+        self._air_buf.clear()
+        bonus = self.air_bonus.landing(span, rise, max_depth)
+        if rise >= self.air_bonus.CLIMB_MIN_RISE:
+            self.n_climb += 1
+        if bonus > 0.0 and span >= self.air_bonus.GAP_MIN_SPAN \
+                and max_depth > self.air_bonus.GAP_MIN_DEPTH:
+            self.n_gap += 1
+        return bonus
+
     def step(self, box: np.ndarray, fwd: int, side: int, jump: int):
         self.yaw, self.pitch, fm, sm, jb = S.action_to_usercmd(
             box, fwd, side, jump, self.yaw, self.pitch)
@@ -148,8 +206,14 @@ class QWGate2Core:
         # terräng som räknas.
         sp = _speed_h(self.vel)
         counted = not (self.is_excluded and self.is_excluded(self.pos))
+        nov_mult = 1.0
+        if self.rarity is not None:
+            self.rarity.note(self.pos)
+            nov_mult = self.rarity.mult(self.pos)
         r = reward_gate2(st, self._last_ray_fracs, self._last_ray_dirs,
-                         self.novelty if counted else None)
+                         self.novelty if counted else None, nov_mult)
+        if self.air_bonus is not None:
+            r += self._air_segment(prev_og, counted)
         if counted:
             self.speed_sum += sp
             self.speed_n += 1
@@ -168,4 +232,5 @@ class QWGate2Core:
         return self._obs(), float(r), done, {
             "stuck": self.stuck, "mean_speed_counted": mean_speed,
             "novel_voxels": len(self.novelty.seen),
+            "n_climb": self.n_climb, "n_gap": self.n_gap,
         }

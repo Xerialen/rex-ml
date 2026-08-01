@@ -4,9 +4,11 @@
         pipeline/out/rl/train_dir/<experiment> --n 10 --out <fil.json>
 
 Per episod: bana (var 2:e tick: x,y,z,fart), spawn, medelfart (counted),
-zonsekvens (landmärken). Global analys: ring↔quad-direktflygningar (luft-
-segment mellan plattformarna utan mellanlandning) och mega-SNG-besök —
-ägarens två specifika frågor 2026-08-01.
+zonsekvens (landmärken). Global analys (ägarens frågor 2026-08-01, utvidgade
+till ALLA hopp/rutter): varje luftsegment med span >200 u registreras med
+golvdjup under kordan (3-punkts nedåt-raycast, samma metod som
+analyze_gapjumps) så äkta gap-hopp (tomrum under banan) skiljs från platta
+bunnyhopp; ring↔quad-direktflygningar; mega-SNG-besök.
 """
 from __future__ import annotations
 
@@ -72,6 +74,7 @@ def main(argv=None):
 
     episodes = []
     ring_quad_flights = []
+    air_segments = []                 # alla hopp/fall span>200: klassas i byggsteget
     for ep in range(args.n):
         obs, _ = env.reset()
         rnn = torch.zeros([1, get_rnn_size(cfg)])
@@ -107,16 +110,37 @@ def main(argv=None):
             if near2d(c.pos, items["mega_sng"], 120.0):
                 mega_sng_ticks += 1
             if air_start is None and prev_og and not c.onground:
-                air_start = prev_pos.copy()
+                air_start = (prev_pos.copy(), sp)
             elif air_start is not None and c.onground:
-                a0, a1 = air_start, c.pos
+                a0, v0 = air_start
+                a1 = c.pos
+                span = float(np.hypot(a1[0] - a0[0], a1[1] - a0[1]))
+                if span > 200.0:
+                    # golvdjup under kordan (jfr analyze_gapjumps): skiljer
+                    # gap-hopp från platta bunnyhopp
+                    zref = min(float(a0[2]), float(a1[2])) + 8.0
+                    pts3 = np.array([[a0[0] + (a1[0] - a0[0]) * f,
+                                      a0[1] + (a1[1] - a0[1]) * f, zref]
+                                     for f in (0.3, 0.5, 0.7)], dtype=np.float32)
+                    down = np.tile(np.array([[0.0, 0.0, -1.0]], dtype=np.float32), (3, 1))
+                    fr = np.asarray(c.b.trace_rays(pts3, down, 320.0),
+                                    dtype=np.float32).ravel()[:3]
+                    air_segments.append({
+                        "ep": ep,
+                        "takeoff": [round(float(v), 1) for v in a0],
+                        "land": [round(float(v), 1) for v in a1],
+                        "span": round(span, 1),
+                        "dz": round(float(a1[2] - a0[2]), 1),
+                        "v_takeoff": round(v0),
+                        "floor_depth": round(float(fr.max() * 320.0), 1),
+                    })
                 for src, dst in (("ring", "quad"), ("quad", "ring")):
                     if near2d(a0, items[src]) and near2d(a1, items[dst]):
                         ring_quad_flights.append({
                             "ep": ep, "riktning": f"{src}→{dst}",
                             "takeoff": [round(float(v), 1) for v in a0],
                             "land": [round(float(v), 1) for v in a1],
-                            "span": round(float(np.hypot(a1[0] - a0[0], a1[1] - a0[1])), 1),
+                            "span": round(span, 1),
                         })
                 air_start = None
             prev_og = c.onground
@@ -137,6 +161,7 @@ def main(argv=None):
                      for k, v in items.items() if k != "megas"},
            "ring_quad_flights": ring_quad_flights,
            "mega_sng_visits": sum(1 for e in episodes if e["mega_sng_s"] > 0.2),
+           "air_segments": air_segments,
            "episodes": episodes}
     json.dump(res, open(args.out, "w"))
     print(json.dumps({k: v for k, v in res.items() if k != "episodes"}, indent=1,

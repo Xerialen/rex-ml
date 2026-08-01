@@ -92,7 +92,10 @@ class QWGate2Env(gym.Env):
         self.name = full_env_name
         self.render_mode = render_mode
         is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
-        self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=Gate2Config(),
+        g2cfg = Gate2Config(
+            vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
+            cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)))
+        self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=g2cfg,
                                 is_excluded=is_excluded)
         n_obs = self.core.obs_spec.n_obs
         self.observation_space = gym.spaces.Box(-4.0, 4.0, shape=(n_obs,), dtype=np.float32)

@@ -54,6 +54,84 @@ class VoxelNovelty:
         return self.bonus * min(speed_h / SPEED_NORM, 1.5)
 
 
+class AirLandingBonus:
+    """V1a (klätterbonus) + V2 (gap-crossing) — betalas vid LANDNING, aldrig per tick.
+
+    Trösklar kalibrerade mot mänskliga korpusen (evidence/analyst_review_
+    vertical_rewards.md, 2026-08-01): SNG→mega span p50 182/max 332 u och
+    fönsterinflygning span p50 150-191 u gjorde ursprungsförslaget span>240
+    värdelöst (4.5 % resp. 0/29 träffar). Platt bunnyhopp når apex ~44 u ⇒
+    golvdjup>56 utesluter alla platta hopp; djup>141 fångar 100 % av mega-
+    hoppen (golvdjup där: 244 u) utan en enda platt träff. Mänsklig RA-
+    klättring är trappserie med rise p50 32.8 u/hopp ⇒ klättertröskel 24 u.
+    Bonusstorlekarna är startestimat (novelty betalar ~2.25/voxel i fartskala;
+    ett fullt gap-hopp ska väga som en handfull nya voxlar) — justeras efter
+    mätning, inte antagande."""
+
+    CLIMB_MIN_RISE = 24.0
+    CLIMB_COEF = 0.08          # 0.08*rise: typiskt klätterhopp (32.8 u) ⇒ ~2.6
+    CLIMB_RISE_CAP = 96.0
+    GAP_MIN_SPAN = 150.0
+    GAP_MIN_DEPTH = 56.0
+    GAP_DEEP_DEPTH = 141.0
+    GAP_BASE = 3.0             # skalas med span; djup nivå ×2 ⇒ SNG→mega ~7.3
+    GAP_SPAN_CAP = 2.5
+
+    def landing(self, span: float, rise: float, max_floor_depth: float) -> float:
+        r = 0.0
+        if rise >= self.CLIMB_MIN_RISE:
+            r += self.CLIMB_COEF * min(rise, self.CLIMB_RISE_CAP)
+        if span >= self.GAP_MIN_SPAN and max_floor_depth > self.GAP_MIN_DEPTH:
+            r += self.GAP_BASE * min(span / self.GAP_MIN_SPAN, self.GAP_SPAN_CAP) \
+                 * (2.0 if max_floor_depth > self.GAP_DEEP_DEPTH else 1.0)
+        return r
+
+
+class CellRarity:
+    """V1b: zonsällsynthetsviktning av voxelnyheten — självrefererande
+    (bottens EGEN besökshistorik per 256u-cell, EMA över episoder i denna
+    env-instans), INTE mänskliga zonandelar: korpusdata i rewarden vore
+    rutt-prior i förklädnad. Motiv (analyst-review 2026-08-01): bottens
+    täckningsunderskott är horisontellt — window översitts 9.4× (25.1 % av
+    tiden mot människors 2.7 %) medan YA-gården/mega-gården/quad-övre/ringen
+    undersitts 0.16-0.53×. Multiplikatorn gör nyhet i sällan besökta celler
+    upp till 4× värd och i översittna celler 0.5×. Endast i belönings-
+    kalkylatorn, aldrig i observationerna (samma regel som noveltyn)."""
+
+    CELL_U = 256.0
+    REF_SHARE = 0.02           # ~uniform andel över de ~50 celler en bana rör
+
+    def __init__(self, alpha: float = 0.03, lo: float = 0.5, hi: float = 4.0):
+        self.alpha, self.lo, self.hi = alpha, lo, hi
+        self.ema: dict[tuple[int, int, int], float] = {}
+        self._ep: dict[tuple[int, int, int], int] = {}
+        self._ep_ticks = 0
+
+    @staticmethod
+    def _key(pos: np.ndarray) -> tuple[int, int, int]:
+        c = CellRarity.CELL_U
+        return (int(pos[0] // c), int(pos[1] // c), int(pos[2] // c))
+
+    def note(self, pos: np.ndarray):
+        k = self._key(pos)
+        self._ep[k] = self._ep.get(k, 0) + 1
+        self._ep_ticks += 1
+
+    def end_episode(self):
+        if self._ep_ticks == 0:
+            return
+        shares = {k: n / self._ep_ticks for k, n in self._ep.items()}
+        for k in set(self.ema) | set(shares):
+            self.ema[k] = (1 - self.alpha) * self.ema.get(k, 0.0) \
+                          + self.alpha * shares.get(k, 0.0)
+        self._ep.clear()
+        self._ep_ticks = 0
+
+    def mult(self, pos: np.ndarray) -> float:
+        share = self.ema.get(self._key(pos), 0.0)
+        return float(np.clip(self.REF_SHARE / (share + 0.005), self.lo, self.hi))
+
+
 def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
                        ray_dirs: np.ndarray) -> float:
     """Fart × linjering bort från hinder. ray_fracs/dirs är samma strålar som
@@ -77,9 +155,10 @@ def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
 
 
 def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
-                 novelty: VoxelNovelty | None) -> float:
+                 novelty: VoxelNovelty | None, novelty_mult: float = 1.0) -> float:
     """novelty=None ⇒ ticken är i exkluderad zon (vatten/hiss/tele): ingen
-    nyhetsutbetalning, voxeln registreras inte heller som sedd."""
+    nyhetsutbetalning, voxeln registreras inte heller som sedd.
+    novelty_mult: CellRarity-viktning (V1b); 1.0 = avstängd."""
     r = kinetic_multiplier(s, ray_fracs, ray_dirs)
     # Fartgradient i TVÅ regimer (2026-07-31, båda mätgrundade):
     # (1) LINJÄR 0→320: första exp-varianten betalade först över 320 medan
@@ -103,5 +182,5 @@ def reward_gate2(s: StepState, ray_fracs: np.ndarray, ray_dirs: np.ndarray,
     if loss > 0.0:
         r -= loss / 150.0        # impulskollision: massivt negativt (BRIEF §3.4)
     if novelty is not None:
-        r += novelty.step(s.pos, _speed_h(s.vel))
+        r += novelty_mult * novelty.step(s.pos, _speed_h(s.vel))
     return r

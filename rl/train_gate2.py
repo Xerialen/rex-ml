@@ -28,6 +28,10 @@ def main(argv=None):
                         help="qwsim = libqwsim (riktig fysik); stub = endast smoke")
     parser.add_argument("--qw_gate1_mix_workers", type=int, default=6,
                         help="workers < N kör 100m-repetition (extremfart-registret)")
+    parser.add_argument("--qw_vertical_rewards", action="store_true",
+                        help="V1a+V2: klätterbonus per landning + gap-crossing-bonus")
+    parser.add_argument("--qw_cell_rarity", action="store_true",
+                        help="V1b: voxelnovelty viktad med bottens egen cellsällsynthet")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

@@ -5688,3 +5688,19 @@ Rapport: evidence/analyst_review_vertical_rewards.md (826.4M sampel; 63.6k RA-kl
 Fönsterfyndet: 91 % av mänskliga fönsterbesök är strid, inte transit (bron 2.48 s vs fönstret
 4.83 s till RL) — bottens 25 % window-tid är dubbelt onaturlig; sällsynthetsviktningen ska
 naturligt straffa den. Eval-fönster 2 startat.
+
+## 2026-08-01 03:40 EEST — V1/V2 implementerade bakom AVSTÄNGDA flaggor (redo för trigger)
+Kod på plats, inaktiv tills täckningstriggern slår (kräver omstart med flagga för aktivering):
+- rl/rewards_gate2.py: **AirLandingBonus** (V1a klätterbonus rise≥24 u, 0.08/u; V2 gapbonus
+  span≥150 ∧ golvdjup>56, ×2 vid djup>141, skalad med span — analyst-kalibrerade trösklar) +
+  **CellRarity** (V1b: novelty-multiplikator 0.5-4.0× från bottens EGEN 256u-cellhistorik,
+  EMA över episoder — självrefererande, ingen korpusdata i rewarden = ingen rutt-prior).
+- rl/env_gate2.py: luftsegmentspårning (takeoff/landning, vatten avbryter, exkluderade zoner
+  betalas aldrig), 3-punkts nedåt-raycast (25/50/75 % av banan, 512 u) vid landning ≥150 u —
+  onlineversion av analyze_gapjumps-klassificeraren. Info: n_climb/n_gap-räknare.
+- Flaggor: --qw_vertical_rewards, --qw_cell_rarity (train_gate2 → sf_env → Gate2Config).
+Verifierat: 28/28 tester (3 nya: korpuströsklar, sällsynthet, mult-skalning); röktest qwsim
+med flaggor PÅ: slumpagent fick 1 klätter- + 1 gapbonus på 3×20 s, rarity-EMA fylls; flaggor
+AV = exakt gammal kodväg (körande gate2_v2 opåverkad).
+Aktiveringsplan oförändrad: fönster 2-3 avgör orbitdiagnosen; vid bekräftelse aktiveras V1b
+(+ ev. V1a/V2) vid nästa omstart. n_gap-räknaren blir mätaren på att gap-hopp uppstår.
