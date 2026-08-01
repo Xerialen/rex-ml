@@ -5965,3 +5965,17 @@ Plan (mätstyrd): (a) V1a-avläsning ur pågående svit (climb_landings förvän
 trappa (Z-mask-hypotesen mäts, inte antas); (c) spawn-bias mot trappbottnar om klättring
 ej uppstår inom ~500M frames därefter. Fartkriteriets marginal (629 vs 500) sätter taket
 för hur mycket klättertid policyn får köpa.
+
+## 2026-08-01 17:45 EEST — DEADLINE: ~48 h kvar på H100-maskinen; klätterbalans aktiveras NU
+Ägarbesked: idag+imorgon kvar på denna maskin (64 kärnor, H100); därefter flytt till
+"pinnacle" (4090, 7800X3D?, 64 GB) — väntad FPS-nedgång ~5-8× (CPU-flaskhals). Beslut:
+frames är färskvara ⇒ (1) omstart NU med **--qw_climb_coef 0.5** (ägarmandatets balansering;
+kalkyl 890-vs-22, mål ~137/RA-klättring, farmingsäkert 25/s << orbitens 169/s) — väntar inte
+på svitens V1a-formalitet (analystbelagt: klättring påbörjas aldrig; sviten fortsätter
+opåverkad och levererar avläsningen ändå); (2) checkpoint-snapshot till git-synlig path
+(train_dir är GITIGNORERAD — flyttrisk); (3) docs/MIGRATION.md; (4) ÄGARFRÅGA: korpora-
+logistik — mvd-corpus 161 G + qwd-corpus 56 G + store-dm3 8.5 G är oersättliga och får
+inte dö med maskinen; destination behövs.
+Sprintmål 48 h (frame-hungrigt först): täckning 28→så långt exp-motorn orkar (~3 G frames
+möjliga), klätterförsök >0, gate-hoppens försöksräknare igång. Efter flytt: serverbevis
+(qwserver 335 M är flyttbar), analys, långsam träning.
