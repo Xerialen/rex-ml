@@ -5711,7 +5711,7 @@ Serie sedan stabilisatorn: 683.8/9.0 % → 625.7/11.6 %. Täckningen klättrar t
 12.6 %-märket och farten föll under 650-villkoret ⇒ fönster 1 ser ut som n=10-brus, inte
 bekräftad orbit. Fönster 3 startat (avgör). Ingen åtgärd; V1/V2 ligger redo bakom flaggor.
 
-## 2026-08-01 03:58 EEST — TRIGGER SLAGEN: täckningsplatå ~11.5 % ⇒ aktiverar V1a/V1b/V2
+## 2026-08-01 03:55 EEST — TRIGGER SLAGEN: täckningsplatå ~11.5 % ⇒ aktiverar V1a/V1b/V2
 Fönster 3 @ ~1430M: open-mean 576.7, täckning 11.4 %, 0 fastnade. Fullständig serie:
 12.6 % (1255M, före kollaps 2) → 9.0 → 11.6 → 11.4 — flat inom brus över ~250M frames.
 Orbitdiagnosen AVFÄRDAD (fartvillkoret ≥650 föll), platådiagnosen BEKRÄFTAD: ren voxelnovelty
