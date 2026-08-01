@@ -5829,3 +5829,18 @@ BESLUT: fortsätt träna till ~2.6G (trenden positiv: fällan halverad 4/10→2/
 sedan n=30 + spatialkoll. Om SNG-enrumsepisoder består då: omstart med rarity lo 0.5→0.25
 (kvartsnovelty i översittna celler). I reserv (en variabel i taget): spawn-bias mot SNG-
 rummet via spawn_region-curriculum (ratificerat manifestverktyg).
+
+## 2026-08-01 10:02 EEST — NotebookLM-feedback triagerad med ägaren; viktflaggor exponerade
+Ägaren gav 5 forskningsförslag (PBT, ICM, två-tidsskale-RNN, HER, diskretiserad yaw). Triage:
+- **PBT: förberedd, EJ aktiverad — ägarbeslut krävs för aktivering (ägarens ord 10:00:
+  "Vi avvaktar med det. Mitt beslut krävs"). INGEN automatisk trigger.** Förberedelsen =
+  alla belöningsvikter nu CLI-flaggor: --qw_novelty_bonus (1.5), --qw_rarity_lo (0.5),
+  --qw_rarity_hi (4.0), --qw_climb_coef (0.08), --qw_gap_base (3.0). 28/28 tester gröna.
+  Defaults oförändrade ⇒ körande träning opåverkad, ingen omstart behövs.
+- ICM: reserv om cellsällsyntheten mättas (V2-bonusarna gör redan ICM:s trickhoppsjobb).
+- Två-tidsskale-RNN: reserv för Fas 3 (arkitekturbyte kasserar 2.3G frames; kreditproblemet
+  syns inte i mätdata — gap-hopp uppstår, rutter diversifieras).
+- HER: avböjd — tekniskt oapplicerbar (APPO on-policy, ingen replaybuffer) och kräver mål-
+  konditionering = manifestförbjuden waypoint.
+- Diskretiserad yaw: avböjd med mätbevis — strider mot ratificerad kontinuerlig Gaussisk
+  styrning som redan ligger på analytiska taket (8/8 >820 mot optimum 833.4; 984 på servern).

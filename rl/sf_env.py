@@ -94,7 +94,12 @@ class QWGate2Env(gym.Env):
         is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
         g2cfg = Gate2Config(
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
-            cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)))
+            cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
+            novelty_bonus=float(getattr(cfg, "qw_novelty_bonus", 1.5)),
+            rarity_lo=float(getattr(cfg, "qw_rarity_lo", 0.5)),
+            rarity_hi=float(getattr(cfg, "qw_rarity_hi", 4.0)),
+            climb_coef=float(getattr(cfg, "qw_climb_coef", 0.08)),
+            gap_base=float(getattr(cfg, "qw_gap_base", 3.0)))
         self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=g2cfg,
                                 is_excluded=is_excluded)
         n_obs = self.core.obs_spec.n_obs

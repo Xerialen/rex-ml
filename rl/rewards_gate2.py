@@ -69,20 +69,25 @@ class AirLandingBonus:
     mätning, inte antagande."""
 
     CLIMB_MIN_RISE = 24.0
-    CLIMB_COEF = 0.08          # 0.08*rise: typiskt klätterhopp (32.8 u) ⇒ ~2.6
     CLIMB_RISE_CAP = 96.0
     GAP_MIN_SPAN = 150.0
     GAP_MIN_DEPTH = 56.0
     GAP_DEEP_DEPTH = 141.0
-    GAP_BASE = 3.0             # skalas med span; djup nivå ×2 ⇒ SNG→mega ~7.3
     GAP_SPAN_CAP = 2.5
+
+    # koefficienterna är instansparametrar (flaggexponerade 2026-08-01 för
+    # billig justering utan kodändring; PBT-förberedelse — aktivering av PBT
+    # kräver ägarbeslut). Trösklarna ovan är korpusmätta konstanter.
+    def __init__(self, climb_coef: float = 0.08, gap_base: float = 3.0):
+        self.climb_coef = climb_coef   # 0.08*rise: typiskt klätterhopp (32.8 u) ⇒ ~2.6
+        self.gap_base = gap_base       # skalas med span; djup nivå ×2 ⇒ SNG→mega ~7.3
 
     def landing(self, span: float, rise: float, max_floor_depth: float) -> float:
         r = 0.0
         if rise >= self.CLIMB_MIN_RISE:
-            r += self.CLIMB_COEF * min(rise, self.CLIMB_RISE_CAP)
+            r += self.climb_coef * min(rise, self.CLIMB_RISE_CAP)
         if span >= self.GAP_MIN_SPAN and max_floor_depth > self.GAP_MIN_DEPTH:
-            r += self.GAP_BASE * min(span / self.GAP_MIN_SPAN, self.GAP_SPAN_CAP) \
+            r += self.gap_base * min(span / self.GAP_MIN_SPAN, self.GAP_SPAN_CAP) \
                  * (2.0 if max_floor_depth > self.GAP_DEEP_DEPTH else 1.0)
         return r
 

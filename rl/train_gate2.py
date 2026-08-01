@@ -32,6 +32,16 @@ def main(argv=None):
                         help="V1a+V2: klätterbonus per landning + gap-crossing-bonus")
     parser.add_argument("--qw_cell_rarity", action="store_true",
                         help="V1b: voxelnovelty viktad med bottens egen cellsällsynthet")
+    parser.add_argument("--qw_novelty_bonus", type=float, default=1.5,
+                        help="poäng per ny voxel (fartskalad)")
+    parser.add_argument("--qw_rarity_lo", type=float, default=0.5,
+                        help="min-multiplikator för novelty i översittna celler")
+    parser.add_argument("--qw_rarity_hi", type=float, default=4.0,
+                        help="max-multiplikator för novelty i sällan besökta celler")
+    parser.add_argument("--qw_climb_coef", type=float, default=0.08,
+                        help="V1a: poäng per unit höjdvinst vid landning (rise>=24)")
+    parser.add_argument("--qw_gap_base", type=float, default=3.0,
+                        help="V2: basbonus för gap-hopp (skalas med span, x2 vid djup>141)")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

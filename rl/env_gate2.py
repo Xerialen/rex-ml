@@ -48,6 +48,12 @@ class Gate2Config:
     # täckningstriggern slår — aktiveras via train_gate2-flaggorna.
     vertical_rewards: bool = False   # V1a klätterbonus + V2 gap-crossing
     cell_rarity: bool = False        # V1b sällsynthetsviktad novelty
+    # viktflaggor (2026-08-01): omstartsbillig justering + PBT-förberedelse
+    novelty_bonus: float = 1.5
+    rarity_lo: float = 0.5
+    rarity_hi: float = 4.0
+    climb_coef: float = 0.08
+    gap_base: float = 3.0
 
 
 class QWGate2Core:
@@ -71,10 +77,12 @@ class QWGate2Core:
                      d["iz"][m] * 32.0 + 16], axis=1).astype(float)
             except FileNotFoundError:
                 pass                     # faller tillbaka på fasta spawns
-        self.novelty = VoxelNovelty()
-        self.air_bonus = AirLandingBonus() if self.cfg.vertical_rewards else None
+        self.novelty = VoxelNovelty(self.cfg.novelty_bonus)
+        self.air_bonus = AirLandingBonus(self.cfg.climb_coef, self.cfg.gap_base) \
+            if self.cfg.vertical_rewards else None
         # CellRarity lever ÖVER episoder (EMA) — skapas en gång per env-instans
-        self.rarity = CellRarity() if self.cfg.cell_rarity else None
+        self.rarity = CellRarity(lo=self.cfg.rarity_lo, hi=self.cfg.rarity_hi) \
+            if self.cfg.cell_rarity else None
         self._reset_state(self.spawns[0])
 
     def _pick_spawn(self):
