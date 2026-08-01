@@ -7,10 +7,12 @@
   * SNG-mega: hoppnavigering fram till megan (-720,80,160).
   (rjump pent/lift→window: uppskjuten av ägaren, kräver V3.)
 
-Mognadsstegen (ägarens tre steg + nolla):
+Mognadsstegen (ägarens tre steg + nolla; nivå 3-tröskeln satt av ägaren
+2026-08-01 ~17:05 till 90 % efter analystens mätning att eliten når 8-44 %
+genom samma detektor — 100 % vore omätbart strängt även för botten):
   0 = inga försök; 1 = försöker (uppvisad medvetenhet om hoppet som genväg);
-  2 = lyckas ibland (≥1 lyckat, men <5 försök eller <100 %);
-  3 = ≥5 försök och 100 % lyckade.
+  2 = lyckas ibland (≥1 lyckat, men <5 försök eller <90 %);
+  3 = ≥5 försök och ≥90 % lyckade.
 
 Mäter på dump_trajectories-JSON (path = var 2:e tick ⇒ 26 ms mellan punkter).
 """
@@ -45,6 +47,10 @@ PICKUP_2D = 60.0
 PICKUP_DZ_LO = -32.0
 PICKUP_DZ_HI = 80.0
 CLIMB_GAIN = 80.0                     # försök = klättring påbörjad: z_entry+80 nådd
+# re-review-fix (analyst): klättring i intervallet räcker inte — ep29 klättrade
+# trappan MOT TELE (d till RA ökade 157→299 under höjdvinsten). Försök kräver
+# närmande: d2_min < 120 (mänskliga RA-pickups har d2 p99 = 61.7)
+APPROACH_MIN = 120.0
 
 _AXIS = (QUAD - RING)[:2]
 
@@ -127,10 +133,8 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
             progressed = True                # nådde fram ⇒ per definition
         if onto_ledge and progressed and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
-            events.append({
-                "hopp": f"{cur}→{dst} {'NV' if side_acc > 0 else 'SO'}",
-                "utfall": outcome,
-            })
+            side = "NV" if side_acc > 0 else ("SO" if side_acc < 0 else "obestämd")
+            events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome})
         cur = _plat(path[j]) if j < len(path) else None
         t0 = j
         i = j + 1
@@ -148,24 +152,27 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
     inside = False
     low = climbed = suc = False
     z_entry = 0.0
+    d2_min = np.inf
     for p in path:
-        if _d2(p, item) < approach_r:
+        d = _d2(p, item)
+        if d < approach_r:
             if not inside:
                 inside = True
                 z_entry = p[2]
-            if low_pred(p):
-                low = True
+                low = bool(low_pred(p))      # bedöms vid ENTRÉN (analystnotering)
+            d2_min = min(d2_min, d)
             if p[2] >= z_entry + CLIMB_GAIN:
                 climbed = True
-            if _d2(p, item) < PICKUP_2D and \
+            if d < PICKUP_2D and \
                     PICKUP_DZ_LO < p[2] - item[2] < PICKUP_DZ_HI:
                 suc = True
         elif inside:
-            if low and climbed:
+            if low and climbed and d2_min < APPROACH_MIN:
                 attempts += 1
                 successes += int(suc)
             inside, low, climbed, suc = False, False, False, False
-    if inside and low and climbed:
+            d2_min = np.inf
+    if inside and low and climbed and d2_min < APPROACH_MIN:
         attempts += 1
         successes += int(suc)
     return attempts, successes
@@ -176,7 +183,7 @@ def _level(attempts: int, successes: int) -> int:
         return 0
     if successes == 0:
         return 1
-    if attempts >= 5 and successes == attempts:
+    if attempts >= 5 and successes / attempts >= 0.90:
         return 3
     return 2
 

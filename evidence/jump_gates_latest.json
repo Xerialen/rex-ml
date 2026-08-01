@@ -30,9 +30,9 @@
    "nivå": 0
   },
   "RA-tagningen": {
-   "försök": 1,
+   "försök": 0,
    "lyckade": 0,
-   "nivå": 1
+   "nivå": 0
   },
   "SNG-mega": {
    "försök": 0,
@@ -40,5 +40,7 @@
    "nivå": 0
   }
  },
- "min_nivå": 0
+ "min_nivå": 0,
+ "review": "GODKÄND av dm3-analysten 2026-08-01 (evidence/analyst_jumpgate_review.md, re-review inkl d2_min-filtret); nivå 3-tröskel 90 % (ägarbeslut ~17:05)",
+ "review_godkand": true
 }

@@ -5918,3 +5918,18 @@ allt utom RA nivå 0.** Skickat till analysten för slutverdikt innan presentati
 Träningsimplikation (journalförd risk): gate-hoppen kräver plattformstoppspel som policyn
 i princip aldrig utför (0-11 s/30 min) — sällsynthetstrycket kan behöva riktas mot
 plattformsnivåerna om de inte upptäcks organiskt.
+
+## 2026-08-01 17:15 EEST — Slutverdikt: detektor GODKÄND, alla gater nivå 0; ÄGARBESLUT nivå 3 = 90 %
+Analystens re-review: (a) korrigeringarna korrekt implementerade, oberoende återkörning
+reproducerar siffrorna exakt; (b) det enda RA-"försöket" (ep29) falsk positiv — klättrade
+trappan MOT TELE, d till RA ökade 157→299 under höjdvinsten ⇒ nytt krav d2_min<120
+(mänskliga RA-pickups d2 p99=61.7) implementerat, RA → 0; (c) restnoteringar fixade
+(low_pred vid entrén, sidoklassning 'obestämd' i stället för falsk SO-default).
+**GODKÄNT UTFALL (30 ep @ 3.45G): 0/0 nivå 0 på samtliga sex gater.**
+ÄGARBESLUT (~17:05): nivå 3-tröskeln = **≥90 % lyckandegrad** vid ≥5 försök (ersätter 100 %;
+analystens elitmätning 8-44 % gjorde 100 % omätbart strängt). BRIEF, jump_gates.py, artefakt-
+mall och memory uppdaterade. Artefakten ompublicerad med analyst-godkänd hopppanel (utan
+PRELIMINÄR-banner) + metrics/trendpilar. 30/30 tester.
+Nästa på hoppfronten: gate-hoppen kräver plattformstoppspel (0-11 s/30 min idag) — bevaka
+om sällsynthetstrycket når topparna organiskt; annars journalförd kandidat: spawn-bias
+mot plattformarna (curriculum-verktyg, ratificerat) eller riktad rarity.
