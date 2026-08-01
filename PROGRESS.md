@@ -5658,3 +5658,13 @@ Beslutad trappa — EN variabel i taget, mätstyrda triggrar:
   Ingen ny reward behövs — V1/V2 betalar redan för rjump-utfall. Täcker pent→window, mid→ring/quad.
 Manifestkoll: generisk geometrisk shaping (z-vinst, gap, novelty) ligger inom ratificerad intrinsisk
 motivation; zonnamngivna bonusar vore waypoints-i-förklädnad och undviks.
+
+## 2026-08-01 03:20 EEST — Eval-fönster 1 efter stabilisatorn: fart upp, täckning ner
+10-run greedy @ ~1280M frames (entropi 0.003): open-mean **683.8** (nytt max; 616.4 förra
+fönstret), täckning **9.0 %** (ner från 12.6 %), 0 fastnade. Mönster: fartmaximering äter
+utforskning — potentiellt samma orbitjämvikt som före noveltyhöjningen (exp-farttermen betalar
+mer per tick vid 683 än vid 527; noveltyn 1.5/voxel kan vara underprissatt igen vid denna fart).
+Beslut: INGEN åtgärd ännu — ett fönster är brus (n=10-varians är känd). Kriterium journalfört:
+om täckningen ligger under 12.6 % även i fönster 2–3 medan farten ≥650 ⇒ orbitdiagnos bekräftad;
+då är kandidaterna (a) höjd novelty-per-voxel igen, (b) V1 (z-/sällsynthetsviktning) i förtid —
+analystens review (pågår) informerar valet. Träning frisk: 48k FPS, reward 5.8k, inga klippor.
