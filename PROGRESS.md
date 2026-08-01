@@ -6062,3 +6062,16 @@ monitorns stillastående-larm fångade det, ~20 min H100-stillestånd. Omstart 1
 (climb_coef 0.5 osv). Verifierat: frames fortsätter 4000.0M→, FPS rampar 30-35k.
 4.0G-slutcheckpointen = mätpunkten: full svit startad (n=30 + dump + jump_gates) —
 första RENA avläsningen av klätterregimen (~320M frames under coef 0.5).
+
+## 2026-08-01 21:38 EEST — Mätpunkt 4.0G (första rena klätterregimen): övergångsdipp, farming avfärdad
+n=30: fart 567.4 (serie 629→602→567), täckning **22.1 %** (28.0→26.8→22.1), **0 fastnade**,
+score 1.13. Dump (30 ep): climb_landings **93** (ned från 240 — bonusen farmas INTE; 68/93
+på en enda avsats vid ~(1152,1152)), rise p50 32.0; episodfart p50 466 (ned brett);
+zondiversitet frisk (p50 4 zoner/ep, 1 enzonare); mega_sng_visits 0 (var 4); gate-hopp
+0/0 på samtliga (godkänd detektor — nollor kräver ej review). Metrics-historik + artefakt
+uppdaterade (trendpilar visar nedgången ärligt).
+DIAGNOS: farming avfärdad (klätterlandningar MINSKADE). Mönstret matchar övergångsdippen
+efter V1/V2-aktiveringen (8.5 % → 17.0 %-genombrott): värdefunktionen omkalibreras efter
+belöningsändring. BESLUT: håll kursen till ~4.6G. Trösklar där: täckning <25 % ELLER fart
+<520 OCH climb_landings ej växande ⇒ coef 0.5→0.25 (bonusen köper inget då); täckning ≥26 %
+eller klätterlandningar växande ⇒ fortsätt. Sprintklocka: ~34 h H100 kvar.
