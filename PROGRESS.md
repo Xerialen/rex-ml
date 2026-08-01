@@ -5807,7 +5807,7 @@ Nästa: analyst på (1) SNG-rummets exitvägar hos människor (fällan är stör
 täckningsläckan), (2) var människornas voxlar ligger som botten aldrig ser — de återstående
 50 pp:s geografi. Träning fortsätter; nästa n=30 vid ~2.6-2.8G frames.
 
-## 2026-08-01 09:15 EEST — Analyst: SNG-exits, 50-pp-geografin, 70 %-kravet är ~21 SD övermänskligt
+## 2026-08-01 09:10 EEST — Analyst: SNG-exits, 50-pp-geografin, 70 %-kravet är ~21 SD övermänskligt
 Rapport: evidence/analyst_sng_coverage.md (907.98M rader, 229k SNG-exits, 200 unionreplikat,
 universum verifierat identiskt med rl/zones.py: 12 012 voxlar). Fem fynd:
 1. **SNG-fällan är ett exitbeslutsproblem, inte fart:** människor lämnar rummet på 2.6 s
