@@ -5792,7 +5792,7 @@ Ring→quad direkt: fortfarande NEJ (kräver sannolikt rjump, V3). Mega-SNG-när
 Ruttflöde toppas av quad→ringen ×23, mega→quad ×22. Skärmdump verifierad (rex3d_check2.png).
 Eval-fönster 3 under V1/V2 startat.
 
-## 2026-08-01 08:26 EEST — Eval-fönster 3: 688.7/12.0 % — spawnlotteri dominerar n=10
+## 2026-08-01 07:57 EEST — Eval-fönster 3: 688.7/12.0 % — spawnlotteri dominerar n=10
 Serie under V1/V2: 8.5 → 17.0 → 12.0 % (fart 715.7 → 626.5 → 688.7, 0 fastnade genomgående).
 Variansen styrs av spawnsammansättningen (SNG-enrumsepisoder sänker unionen kraftigt).
 Gate-måttet är dock 30-run-UNION — n=30-eval startad för första riktiga baslinjen mot 70 %
