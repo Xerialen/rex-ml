@@ -6043,3 +6043,14 @@ Explicit ägarauktorisering hävde spärren. Kör i bakgrund: preserve-20260801 
 korpusens 8 shards + mvd-diffen + checksummor) → parquet/store-dm3-v1 (8.5 G) → dess
 MANIFEST → parquet/staging-v1 (qw-corpus-db 184 M). Verifiering mot ARCHIVES.sha256 +
 remote-listning när klart. Vid timeout: omkörning per del (xet-dedup gör omstart billig).
+
+## 2026-08-01 20:00 EEST — BEVARANDET KLART: allt oersättligt sha-verifierat på HF
+Uppladdning + fjärrverifiering klar (Xerial/qw-demos-mined-db):
+- preserve-20260801: 13 filer, 18.83 GB — alla 9 tar.zst-arkiv (qwd-korpusens 8 shards +
+  mvd-diffen) LFS-sha256-IDENTISKA med lokala ARCHIVES.sha256 (9/9).
+- parquet/store-dm3-v1: 1721/1721 filer (9.07 GB) + MANIFEST.sha256.
+- parquet/staging-v1: 205/205 filer (192 MB) — ursprungliga publiceringsplanen fullbordad.
+⇒ mvd-korpus (shards+diff), qwd-korpus, store-dm3, qw-corpus-db: ALLT oersättligt är nu
+redundant utanför vmonster. Kvar i flyttlistan: qwserver-tar, slutcheckpoint-snapshot,
+rex-ml-rtx (PAT), korpora-nedhämtning på pinnacle. Ägaren roterar HF-tokenen när vi är
+klara (ägarens plan). MIGRATION.md avbockad.
