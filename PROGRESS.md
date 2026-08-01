@@ -5895,7 +5895,7 @@ geometri) → först därefter presentation + artefaktpublicering av hoppsiffror
 Retroaktiv notering: baslinjesiffrorna från 2.0G-dumpen (quad→ring SO nivå 1, RA 111/0)
 är OGRANSKADE och behandlas som preliminära tills analysten reviewat färska dumpen.
 
-## 2026-08-01 17:00 EEST — Analyst UNDERKÄNDE hopp-claimsen; detektor korrigerad; sann status nivå 0
+## 2026-08-01 16:48 EEST — Analyst UNDERKÄNDE hopp-claimsen; detektor korrigerad; sann status nivå 0
 Vetoregeln gjorde sitt jobb första dagen. Analystens review (evidence/analyst_jumpgate_review.md):
 - **quad→ring 12 "försök" UNDERKÄNDA:** korridorpassager på sammanhängande golv (z=56, ramp
   till 99.8) direkt SV om quad-randen; nådde aldrig närmare ringcentrum än 388-563 u.
