@@ -1,0 +1,745 @@
+<title>REX på dm3 · botens banor i 3D</title>
+<style>
+  :root{
+    --bg:#f2f3f6; --rail:#ffffff; --ink:#1a2230; --mut:#5c6779; --line:#dcdfe6;
+    --acc:#c98a1e; --ok:#2e9e5b; --korpus:#3b71c9; --varn:#cc4a38; --chipbg:#eef0f4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b0f17; --rail:#111726; --ink:#dbe2ee; --mut:#8a94a8; --line:#232b3d;
+           --acc:#eab54d; --ok:#4cbf74; --korpus:#6b9be0; --varn:#e0674f; --chipbg:#1a2233; }
+  }
+  :root[data-theme="dark"]{ --bg:#0b0f17; --rail:#111726; --ink:#dbe2ee; --mut:#8a94a8;
+    --line:#232b3d; --acc:#eab54d; --ok:#4cbf74; --korpus:#6b9be0; --varn:#e0674f; --chipbg:#1a2233; }
+  :root[data-theme="light"]{ --bg:#f2f3f6; --rail:#ffffff; --ink:#1a2230; --mut:#5c6779;
+    --line:#dcdfe6; --acc:#c98a1e; --ok:#2e9e5b; --korpus:#3b71c9; --varn:#cc4a38; --chipbg:#eef0f4; }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+       font-variant-numeric:tabular-nums}
+
+  #app{display:grid;grid-template-columns:minmax(300px,370px) 1fr;height:100vh}
+  @media (max-width:760px){ #app{grid-template-columns:1fr;grid-template-rows:46vh 54vh} }
+
+  #rail{background:var(--rail);border-right:1px solid var(--line);overflow-y:auto;
+        display:flex;flex-direction:column}
+  header{padding:16px 16px 12px;border-bottom:1px solid var(--line)}
+  header h1{margin:0 0 2px;font-size:17px;letter-spacing:.01em}
+  header p{margin:0;color:var(--mut);font-size:12.5px}
+  #cover{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line)}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--chipbg);
+        border-radius:999px;padding:3px 10px;font-size:12px;white-space:nowrap}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none}
+
+  .qa{margin:10px 16px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px}
+  .qa h3{margin:0 0 4px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+  .qa p{margin:0;font-size:12.5px}
+  .qa .svar{font-weight:600}
+  .qa .ja{color:var(--ok)} .qa .nej{color:var(--varn)} .qa .delvis{color:var(--acc)}
+
+  .grp>h2{margin:0;padding:14px 16px 6px;font-size:11px;letter-spacing:.09em;
+          text-transform:uppercase;color:var(--mut)}
+  .route{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);
+         font:inherit;padding:7px 16px;cursor:pointer;border-left:3px solid transparent}
+  .route:hover{background:var(--chipbg)}
+  .route:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+  .route.sel{background:var(--chipbg);border-left-color:var(--acc)}
+  .route .t{display:flex;align-items:center;gap:8px}
+  .route .st{margin-left:auto;font-size:11px;color:var(--mut)}
+  .route .fakta{display:none;color:var(--mut);font-size:12px;margin:4px 0 2px 16px}
+  .route.sel .fakta{display:block}
+
+  footer{margin-top:auto;padding:10px 16px 14px;border-top:1px solid var(--line);
+         color:var(--mut);font-size:11.5px}
+
+  #scene{position:relative;overflow:hidden;background:#070a12}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+  #labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .lbl{position:absolute;transform:translate(-50%,-130%);font-size:10.5px;padding:1px 6px;
+       border-radius:3px;background:rgba(7,10,18,.72);white-space:nowrap;
+       font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.03em}
+  .lbl.big{font-size:12px;font-weight:600}
+  #hud{position:absolute;left:12px;bottom:10px;display:flex;gap:14px;flex-wrap:wrap;
+       color:#8a94a8;font-size:11.5px;background:rgba(7,10,18,.6);
+       padding:6px 10px;border-radius:6px}
+  #hud label{display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:#aeb8cc}
+  #hud input{accent-color:#eab54d;margin:0}
+  #legend{position:absolute;right:12px;top:10px;color:#aeb8cc;font-size:11px;
+          background:rgba(7,10,18,.6);padding:8px 10px;border-radius:6px;line-height:1.7}
+  #legend .dot{display:inline-block;margin-right:6px;vertical-align:-1px}
+  #hint{position:absolute;left:12px;top:10px;color:#68738a;font-size:11px;
+        background:rgba(7,10,18,.5);padding:4px 8px;border-radius:6px}
+</style>
+
+<div id="app">
+<aside id="rail">
+  <header>
+    <h1>REX på dm3 · botens banor</h1>
+    <p>30 greedy-episoder à 60 s ur gate2_v2 (ren djup-RL, inga rutter). Banorna
+       färgas efter horisontell fart. Slå på korpustrafiken för att jämföra med
+       var människor rör sig.</p>
+  </header>
+  <div id="cover"></div>
+  <div id="gatemetrics" class="qa"></div>
+  <div id="gatehopp" class="qa"></div>
+  <div id="qa-hopp" class="qa"></div>
+  <div id="qa-ringquad" class="qa"></div>
+  <div id="qa-megasng" class="qa"></div>
+  <div id="rutter" class="qa"></div>
+  <nav id="list"></nav>
+  <footer>Dra = rotera · hjul = zooma · högerklick/skift-dra = panorera.
+    Väggarna är röntgen-genomskinliga. Klicka en episod så ramas den in;
+    klicka igen för hela kartan.</footer>
+</aside>
+<div id="scene">
+  <canvas id="gl"></canvas>
+  <div id="labels"></div>
+  <div id="hint">klicka en episod i listan</div>
+  <div id="legend"></div>
+  <div id="hud">
+    <label><input type="checkbox" id="tgl-traj" checked> botens banor</label>
+    <label><input type="checkbox" id="tgl-hopp" checked> gap-hopp &amp; fall</label>
+    <label><input type="checkbox" id="tgl-heat"> mänsklig trafik</label>
+    <label><input type="checkbox" id="tgl-items" checked> vapen &amp; items</label>
+    <label><input type="checkbox" id="tgl-spawns"> spawns</label>
+    <label><input type="checkbox" id="tgl-tele" checked> teleportrar</label>
+    <label><input type="checkbox" id="tgl-lifts" checked> hissar</label>
+    <label><input type="checkbox" id="tgl-lbl" checked> etiketter</label>
+  </div>
+</div>
+</div>
+
+<script id="atlas-data" type="application/json">__DATA__</script>
+<script id="geo-data" type="text/plain">__GEO__</script>
+<script id="heat-data" type="text/plain">__HEAT__</script>
+
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("atlas-data").textContent);
+const TRAJ = DATA.traj;
+
+function b64buf(id){
+  const s = atob(document.getElementById(id).textContent.trim());
+  const a = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) a[i] = s.charCodeAt(i);
+  return a.buffer;
+}
+const gbuf = b64buf("geo-data");
+const gdv = new DataView(gbuf);
+const NV = gdv.getUint32(0, true), NT = gdv.getUint32(4, true);
+const POS = new Float32Array(gbuf, 8, NV * 3);
+const IDX = new Uint32Array(gbuf, 8 + NV * 12, NT * 3);
+const KND = new Uint8Array(gbuf, 8 + NV * 12 + NT * 12, NT);
+
+const hbuf = b64buf("heat-data");
+const hdv = new DataView(hbuf);
+const HEAT_VOX = hdv.getFloat32(0, true), NH = hdv.getUint32(4, true);
+const heatPos = new Float32Array(NH * 3), heatInt = new Float32Array(NH);
+for (let i = 0; i < NH; i++){
+  const o = 8 + i * 7;
+  heatPos[i*3]   = (hdv.getInt16(o, true) + 0.5) * HEAT_VOX;
+  heatPos[i*3+1] = (hdv.getInt16(o+2, true) + 0.5) * HEAT_VOX;
+  heatPos[i*3+2] = (hdv.getInt16(o+4, true) + 0.5) * HEAT_VOX;
+  heatInt[i] = hdv.getUint8(o+6) / 255;
+}
+
+const cv = document.getElementById("gl");
+const gl = cv.getContext("webgl", {antialias: true, alpha: false});
+function sh(type, src){
+  const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(s);
+  return s;
+}
+function prog(vs, fs){
+  const p = gl.createProgram();
+  gl.attachShader(p, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw gl.getProgramInfoLog(p);
+  return p;
+}
+const P_MAP = prog(
+  `attribute vec3 p; attribute float k; uniform mat4 M; varying float vk;
+   void main(){ vk=k; gl_Position = M*vec4(p,1.0); }`,
+  `precision mediump float; varying float vk; uniform float amp;
+   void main(){
+     vec3 c = vec3(0.34,0.44,0.62);
+     if (vk > 1.5) c = vec3(0.16,0.62,0.66);
+     gl_FragColor = vec4(c*amp, 1.0);
+   }`);
+const P_LINE = prog(
+  `attribute vec3 p; uniform mat4 M; void main(){ gl_Position = M*vec4(p,1.0); }`,
+  `precision mediump float; uniform vec4 col; void main(){ gl_FragColor = col; }`);
+/* botbana: per-vertex fart -> färg (blå 0, cyan 320, bärnsten 500, vit 800) */
+const P_TRAJ = prog(
+  `attribute vec3 p; attribute float s; uniform mat4 M; varying float vs_;
+   void main(){ vs_=s; gl_Position = M*vec4(p,1.0); }`,
+  `precision mediump float; varying float vs_; uniform float alpha;
+   void main(){
+     float t = clamp(vs_/800.0, 0.0, 1.0);
+     vec3 c;
+     if (t < 0.4)      c = mix(vec3(0.18,0.32,0.72), vec3(0.20,0.75,0.80), t/0.4);
+     else if (t < 0.63) c = mix(vec3(0.20,0.75,0.80), vec3(0.92,0.71,0.19), (t-0.4)/0.23);
+     else               c = mix(vec3(0.92,0.71,0.19), vec3(1.0,0.98,0.92), (t-0.63)/0.37);
+     gl_FragColor = vec4(c, alpha);
+   }`);
+const P_HEAT = prog(
+  `attribute vec3 p; attribute float q; uniform mat4 M; varying float vq;
+   void main(){ vq=q; gl_Position = M*vec4(p,1.0);
+     gl_PointSize = min(26.0, 30000.0/gl_Position.w); }`,
+  `precision mediump float; varying float vq;
+   void main(){
+     vec2 d = gl_PointCoord - vec2(0.5);
+     float r = length(d);
+     if (r > 0.5) discard;
+     float fall = smoothstep(0.5, 0.12, r);
+     vec3 a = vec3(0.06,0.03,0.28), b = vec3(0.85,0.20,0.25), c = vec3(1.0,0.92,0.38);
+     vec3 col = vq < 0.5 ? mix(a, b, vq*2.0) : mix(b, c, (vq-0.5)*2.0);
+     gl_FragColor = vec4(col * (0.030 + 0.20*vq*vq) * fall, 1.0);
+   }`);
+const P_PT = prog(
+  `attribute vec3 p; attribute float sz; uniform mat4 M;
+   void main(){ gl_Position = M*vec4(p,1.0); gl_PointSize = min(40.0, sz*2400.0/gl_Position.w); }`,
+  `precision mediump float; uniform vec4 col;
+   void main(){
+     vec2 d = gl_PointCoord - vec2(0.5);
+     float r = length(d);
+     if (r > 0.5) discard;
+     float a = smoothstep(0.5, 0.32, r);
+     gl_FragColor = vec4(col.rgb, col.a*a);
+   }`);
+
+function buf(arr, target){
+  const b = gl.createBuffer(); const t = target || gl.ARRAY_BUFFER;
+  gl.bindBuffer(t, b); gl.bufferData(t, arr, gl.STATIC_DRAW); return b;
+}
+const keep = [];
+for (let t = 0; t < NT; t++) if (KND[t] !== 1) keep.push(t);
+const mpos = new Float32Array(keep.length * 9);
+const mk = new Float32Array(keep.length * 3);
+for (let j = 0; j < keep.length; j++){
+  const t = keep[j];
+  for (let c = 0; c < 3; c++){
+    const v = IDX[t*3 + c];
+    mpos.set([POS[v*3], POS[v*3+1], POS[v*3+2]], j*9 + c*3);
+    mk[j*3 + c] = KND[t];
+  }
+}
+const B_MPOS = buf(mpos), B_MK = buf(mk);
+const N_MVERT = keep.length * 3;
+const B_HPOS = buf(heatPos), B_HINT = buf(heatInt);
+
+/* botbanor -> buffertar */
+const epBufs = TRAJ.episodes.map(ep => {
+  const n = ep.path.length;
+  const p = new Float32Array(n*3), s = new Float32Array(n);
+  ep.path.forEach((q, i) => { p.set([q[0], q[1], q[2]], i*3); s[i] = q[3]; });
+  return {pos: buf(p), spd: buf(s), n};
+});
+
+function mat_mul(a, b){
+  const o = new Float32Array(16);
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++){
+    let s = 0; for (let k = 0; k < 4; k++) s += a[k*4+r]*b[c*4+k];
+    o[c*4+r] = s;
+  }
+  return o;
+}
+function persp(fov, asp, n, f){
+  const t = 1/Math.tan(fov/2);
+  return new Float32Array([t/asp,0,0,0, 0,t,0,0, 0,0,(f+n)/(n-f),-1, 0,0,2*f*n/(n-f),0]);
+}
+function lookAt(eye, at){
+  const up = [0,0,1];
+  let z = [eye[0]-at[0], eye[1]-at[1], eye[2]-at[2]];
+  const zl = Math.hypot(...z); z = z.map(v => v/zl);
+  let x = [up[1]*z[2]-up[2]*z[1], up[2]*z[0]-up[0]*z[2], up[0]*z[1]-up[1]*z[0]];
+  const xl = Math.hypot(...x) || 1; x = x.map(v => v/xl);
+  const y = [z[1]*x[2]-z[2]*x[1], z[2]*x[0]-z[0]*x[2], z[0]*x[1]-z[1]*x[0]];
+  return new Float32Array([
+    x[0],y[0],z[0],0, x[1],y[1],z[1],0, x[2],y[2],z[2],0,
+    -(x[0]*eye[0]+x[1]*eye[1]+x[2]*eye[2]),
+    -(y[0]*eye[0]+y[1]*eye[1]+y[2]*eye[2]),
+    -(z[0]*eye[0]+z[1]*eye[1]+z[2]*eye[2]), 1]);
+}
+
+const HOME = {yaw: -2.3, pitch: 0.55, dist: 2600, at: [620, -60, -40]};
+const cam = {...HOME, at: [...HOME.at]};
+let VP = null;
+function view(){
+  const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+  const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+  const eye = [cam.at[0] + cam.dist*cp*cy, cam.at[1] + cam.dist*cp*sy, cam.at[2] + cam.dist*sp];
+  const asp = cv.width / Math.max(1, cv.height);
+  VP = mat_mul(persp(1.0, asp, 8, 20000), lookAt(eye, cam.at));
+  return VP;
+}
+function project(p){
+  const m = VP;
+  const w = m[3]*p[0] + m[7]*p[1] + m[11]*p[2] + m[15];
+  if (w <= 0) return null;
+  const x = (m[0]*p[0] + m[4]*p[1] + m[8]*p[2] + m[12]) / w;
+  const y = (m[1]*p[0] + m[5]*p[1] + m[9]*p[2] + m[13]) / w;
+  return [(x*0.5 + 0.5) * cv.clientWidth, (0.5 - y*0.5) * cv.clientHeight];
+}
+
+const COLORS = {
+  weapon: [0.94,0.58,0.24,0.95], armor_RA: [0.90,0.34,0.26,0.95], armor_YA: [0.88,0.78,0.22,0.95],
+  power: [0.35,0.80,0.88,0.95], mega: [0.55,0.90,0.93,0.95], spawn: [1,1,1,0.95],
+  tele: [0.86,0.36,0.76,0.95],
+};
+function markerColor(it){
+  if (it.kind === "armor") return it.name === "RA" ? COLORS.armor_RA : COLORS.armor_YA;
+  return COLORS[it.kind] || COLORS.weapon;
+}
+function ptBuf(list, size){
+  const p = new Float32Array(list.length*3), s = new Float32Array(list.length);
+  list.forEach((it, i) => { p.set(it.pos, i*3); s[i] = size; });
+  return {pos: buf(p), sz: buf(s), n: list.length};
+}
+const grpItems = {};
+for (const it of DATA.items){
+  const key = it.kind === "armor" ? "armor_" + it.name : it.kind;
+  (grpItems[key] = grpItems[key] || []).push(it);
+}
+const PT_SETS = Object.entries(grpItems).map(([key, list]) =>
+  ({...ptBuf(list, key === "power" || key.startsWith("armor") ? 13 : 10),
+    col: markerColor(list[0]), tag: "items"}));
+PT_SETS.push({...ptBuf(DATA.spawns, 11), col: COLORS.spawn, tag: "spawns"});
+PT_SETS.push({...ptBuf(DATA.teles.flatMap(t => [{pos: t.from}, {pos: t.to}]), 9),
+              col: COLORS.tele, tag: "tele"});
+
+function dashed(a, b, on, off){
+  const d = [b[0]-a[0], b[1]-a[1], b[2]-a[2]];
+  const L = Math.hypot(...d); const u = d.map(v => v/L);
+  const seg = [];
+  for (let s = 0; s < L; s += on + off){
+    const e = Math.min(s + on, L);
+    seg.push(a[0]+u[0]*s, a[1]+u[1]*s, a[2]+u[2]*s, a[0]+u[0]*e, a[1]+u[1]*e, a[2]+u[2]*e);
+  }
+  return seg;
+}
+const teleSeg = [];
+for (const t of DATA.teles) teleSeg.push(...dashed(t.from, t.to, 26, 20));
+const B_TELE = buf(new Float32Array(teleSeg)); const N_TELE = teleSeg.length/3;
+
+const liftSeg = [];
+for (const l of DATA.lifts){
+  const [a, b] = [l.mins, l.maxs];
+  const c = [[a[0],a[1],a[2]],[b[0],a[1],a[2]],[b[0],b[1],a[2]],[a[0],b[1],a[2]],
+             [a[0],a[1],b[2]],[b[0],a[1],b[2]],[b[0],b[1],b[2]],[a[0],b[1],b[2]]];
+  for (const [i,j] of [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]])
+    liftSeg.push(...c[i], ...c[j]);
+}
+const B_LIFT = buf(new Float32Array(liftSeg)); const N_LIFT = liftSeg.length/3;
+
+/* ---------- hoppklassning (samma kriterier som analyze_gapjumps) ---------- */
+function nearestItem(p){
+  let best = "?", bd = 1e18;
+  for (const it of DATA.items){
+    const d = (p[0]-it.pos[0])**2 + (p[1]-it.pos[1])**2 + 0.3*(p[2]-it.pos[2])**2;
+    if (d < bd){ bd = d; best = it.name; }
+  }
+  return best;
+}
+const SEGS = TRAJ.air_segments || [];
+const GAPS  = SEGS.filter(s => s.span > 240 && s.dz > -64 && s.floor_depth > 96);
+const DROPS = SEGS.filter(s => s.span > 240 && s.dz <= -64);
+const FLAT  = SEGS.filter(s => s.span > 240 && s.dz > -64 && s.floor_depth <= 96);
+function arcPts(s){                       /* kvadratisk båge takeoff->land */
+  const a = s.takeoff, b = s.land, n = 12;
+  const apex = Math.max(a[2], b[2]) + Math.min(70, s.span * 0.16);
+  const out = [];
+  for (let i = 0; i <= n; i++){
+    const t = i / n;
+    const z = (1-t)*(1-t)*a[2] + 2*(1-t)*t*apex + t*t*b[2];
+    out.push(a[0] + (b[0]-a[0])*t, a[1] + (b[1]-a[1])*t, z);
+  }
+  return out;
+}
+function segBufs(list){
+  return list.map(s => { const p = new Float32Array(arcPts(s)); return {b: buf(p), n: p.length/3, s}; });
+}
+const GAP_BUFS = segBufs(GAPS), DROP_BUFS = segBufs(DROPS);
+/* kluster för etiketter: gap-hopp per 96u-cell med antal */
+const gapClusters = {};
+for (const s of GAPS){
+  const k = Math.round(s.takeoff[0]/96) + "," + Math.round(s.takeoff[1]/96);
+  (gapClusters[k] = gapClusters[k] || []).push(s);
+}
+
+let sel = -1;                     // vald episod (-1 = ingen)
+let needsDraw = false;
+function draw(){
+  needsDraw = false;
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const w = Math.round(cv.clientWidth*dpr), h = Math.round(cv.clientHeight*dpr);
+  if (cv.width !== w || cv.height !== h){ cv.width = w; cv.height = h; }
+  gl.viewport(0, 0, w, h);
+  gl.clearColor(0.027, 0.039, 0.070, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.disable(gl.DEPTH_TEST);
+  gl.enable(gl.BLEND);
+  const M = view();
+
+  gl.blendFunc(gl.ONE, gl.ONE);
+  gl.useProgram(P_MAP);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P_MAP, "M"), false, M);
+  gl.uniform1f(gl.getUniformLocation(P_MAP, "amp"), 0.052);
+  const aP = gl.getAttribLocation(P_MAP, "p"), aK = gl.getAttribLocation(P_MAP, "k");
+  gl.bindBuffer(gl.ARRAY_BUFFER, B_MPOS);
+  gl.enableVertexAttribArray(aP); gl.vertexAttribPointer(aP, 3, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, B_MK);
+  gl.enableVertexAttribArray(aK); gl.vertexAttribPointer(aK, 1, gl.FLOAT, false, 0, 0);
+  gl.drawArrays(gl.TRIANGLES, 0, N_MVERT);
+
+  if (tgl("heat")){
+    gl.useProgram(P_HEAT);
+    gl.uniformMatrix4fv(gl.getUniformLocation(P_HEAT, "M"), false, M);
+    const hp = gl.getAttribLocation(P_HEAT, "p"), hq = gl.getAttribLocation(P_HEAT, "q");
+    gl.bindBuffer(gl.ARRAY_BUFFER, B_HPOS);
+    gl.enableVertexAttribArray(hp); gl.vertexAttribPointer(hp, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, B_HINT);
+    gl.enableVertexAttribArray(hq); gl.vertexAttribPointer(hq, 1, gl.FLOAT, false, 0, 0);
+    gl.drawArrays(gl.POINTS, 0, NH);
+  }
+
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  if (tgl("traj")){
+    gl.useProgram(P_TRAJ);
+    gl.uniformMatrix4fv(gl.getUniformLocation(P_TRAJ, "M"), false, M);
+    const tp = gl.getAttribLocation(P_TRAJ, "p"), ts = gl.getAttribLocation(P_TRAJ, "s");
+    gl.enableVertexAttribArray(tp); gl.enableVertexAttribArray(ts);
+    const aU = gl.getUniformLocation(P_TRAJ, "alpha");
+    epBufs.forEach((b, i) => {
+      if (sel >= 0 && i === sel) return;      /* vald ritas sist, ovanpå */
+      gl.bindBuffer(gl.ARRAY_BUFFER, b.pos); gl.vertexAttribPointer(tp, 3, gl.FLOAT, false, 0, 0);
+      gl.bindBuffer(gl.ARRAY_BUFFER, b.spd); gl.vertexAttribPointer(ts, 1, gl.FLOAT, false, 0, 0);
+      gl.uniform1f(aU, sel >= 0 ? 0.10 : 0.42);
+      gl.drawArrays(gl.LINE_STRIP, 0, b.n);
+    });
+    if (sel >= 0){
+      const b = epBufs[sel];
+      gl.bindBuffer(gl.ARRAY_BUFFER, b.pos); gl.vertexAttribPointer(tp, 3, gl.FLOAT, false, 0, 0);
+      gl.bindBuffer(gl.ARRAY_BUFFER, b.spd); gl.vertexAttribPointer(ts, 1, gl.FLOAT, false, 0, 0);
+      gl.uniform1f(aU, 0.96);
+      gl.drawArrays(gl.LINE_STRIP, 0, b.n);
+    }
+  }
+
+  gl.useProgram(P_LINE);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P_LINE, "M"), false, M);
+  const lp = gl.getAttribLocation(P_LINE, "p");
+  gl.enableVertexAttribArray(lp);
+  const colU = gl.getUniformLocation(P_LINE, "col");
+  function lines(b, n, col){
+    gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.vertexAttribPointer(lp, 3, gl.FLOAT, false, 0, 0);
+    gl.uniform4fv(colU, col);
+    gl.drawArrays(gl.LINES, 0, n);
+  }
+  if (tgl("tele")) lines(B_TELE, N_TELE, [0.86,0.36,0.76,0.75]);
+  if (tgl("lifts")) lines(B_LIFT, N_LIFT, [0.42,0.55,0.75,0.55]);
+  if (tgl("hopp")){
+    function strip(b, n, col){
+      gl.bindBuffer(gl.ARRAY_BUFFER, b);
+      gl.vertexAttribPointer(lp, 3, gl.FLOAT, false, 0, 0);
+      gl.uniform4fv(colU, col);
+      gl.drawArrays(gl.LINE_STRIP, 0, n);
+    }
+    for (const g of GAP_BUFS)  strip(g.b, g.n, [0.35,0.92,0.55, sel >= 0 && g.s.ep !== sel ? 0.25 : 0.95]);
+    for (const d of DROP_BUFS) strip(d.b, d.n, [0.94,0.58,0.24, sel >= 0 && d.s.ep !== sel ? 0.15 : 0.55]);
+  }
+
+  gl.useProgram(P_PT);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P_PT, "M"), false, M);
+  const pp = gl.getAttribLocation(P_PT, "p"), ps = gl.getAttribLocation(P_PT, "sz");
+  gl.enableVertexAttribArray(pp); gl.enableVertexAttribArray(ps);
+  const pcol = gl.getUniformLocation(P_PT, "col");
+  for (const s of PT_SETS){
+    if (!tgl(s.tag)) continue;
+    gl.bindBuffer(gl.ARRAY_BUFFER, s.pos); gl.vertexAttribPointer(pp, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, s.sz);  gl.vertexAttribPointer(ps, 1, gl.FLOAT, false, 0, 0);
+    gl.uniform4fv(pcol, s.col);
+    gl.drawArrays(gl.POINTS, 0, s.n);
+  }
+  labels();
+}
+function tgl(id){ const e = document.getElementById("tgl-" + id); return !e || e.checked; }
+
+const labelBox = document.getElementById("labels");
+function esc(s){ return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+function labels(){
+  if (!tgl("lbl")){ labelBox.innerHTML = ""; return; }
+  const out = [];
+  function put(pos, text, colorCss, big){
+    const q = project(pos);
+    if (!q || q[0] < -40 || q[0] > cv.clientWidth + 40 || q[1] < 0 || q[1] > cv.clientHeight) return;
+    out.push(`<div class="lbl${big ? " big" : ""}" style="left:${q[0].toFixed(0)}px;` +
+             `top:${q[1].toFixed(0)}px;color:${colorCss}">${esc(text)}</div>`);
+  }
+  function css(c){ return `rgb(${(c[0]*255)|0},${(c[1]*255)|0},${(c[2]*255)|0})`; }
+  if (tgl("items")) for (const it of DATA.items) put(it.pos, it.name, css(markerColor(it)));
+  if (tgl("spawns")) for (const s of DATA.spawns) put(s.pos, s.name, "#e8ecf4");
+  if (tgl("tele")) for (const t of DATA.teles){
+    put(t.from, t.name + " in", css(COLORS.tele)); put(t.to, t.name + " ut", css(COLORS.tele));
+  }
+  if (tgl("hopp")){
+    for (const k in gapClusters){
+      const c = gapClusters[k];
+      const s = c[0];
+      const mid = [(s.takeoff[0]+s.land[0])/2, (s.takeoff[1]+s.land[1])/2,
+                   Math.max(s.takeoff[2], s.land[2]) + 70];
+      put(mid, `gap ×${c.length}`, "#59eb8c");
+    }
+  }
+  if (sel >= 0){
+    const p = TRAJ.episodes[sel].path;
+    put(p[0].slice(0,3), "SPAWN", "#eab54d", true);
+    put(p[p.length-1].slice(0,3), "60 s", "#eab54d", true);
+  }
+  labelBox.innerHTML = out.join("");
+}
+
+function req(){ if (!needsDraw){ needsDraw = true; requestAnimationFrame(draw); } }
+let drag = null;
+cv.addEventListener("pointerdown", e => {
+  drag = {x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey};
+  cv.setPointerCapture(e.pointerId);
+});
+cv.addEventListener("contextmenu", e => e.preventDefault());
+cv.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  drag.x = e.clientX; drag.y = e.clientY;
+  if (drag.pan){
+    const s = cam.dist / 900;
+    const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+    const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+    const rt = [-sy, cy, 0];
+    const up = [-cy*sp, -sy*sp, cp];
+    cam.at[0] += (-dx*rt[0] + dy*up[0]) * s;
+    cam.at[1] += (-dx*rt[1] + dy*up[1]) * s;
+    cam.at[2] += (-dx*rt[2] + dy*up[2]) * s;
+  } else {
+    cam.yaw -= dx * 0.006;
+    cam.pitch = Math.min(1.5, Math.max(-0.3, cam.pitch + dy * 0.005));
+  }
+  req();
+});
+cv.addEventListener("pointerup", () => { drag = null; });
+cv.addEventListener("wheel", e => {
+  e.preventDefault();
+  cam.dist = Math.min(9000, Math.max(300, cam.dist * (e.deltaY > 0 ? 1.12 : 0.89)));
+  req();
+}, {passive: false});
+window.addEventListener("resize", req);
+
+function fitEp(i){
+  const pts = TRAJ.episodes[i].path;
+  let lo = [1e9,1e9,1e9], hi = [-1e9,-1e9,-1e9];
+  for (const p of pts) for (let k = 0; k < 3; k++){
+    lo[k] = Math.min(lo[k], p[k]); hi[k] = Math.max(hi[k], p[k]);
+  }
+  cam.at = [(lo[0]+hi[0])/2, (lo[1]+hi[1])/2, (lo[2]+hi[2])/2];
+  cam.dist = Math.max(900, Math.hypot(hi[0]-lo[0], hi[1]-lo[1], hi[2]-lo[2]) * 1.35);
+  req();
+}
+
+/* ---------- lista ---------- */
+const listEl = document.getElementById("list");
+const grp = document.createElement("div");
+grp.className = "grp";
+grp.innerHTML = `<h2>Episoder · ${TRAJ.episodes.length} × 60 s</h2>`;
+TRAJ.episodes.forEach((ep, i) => {
+  const b = document.createElement("button");
+  b.className = "route"; b.id = "ep-" + i;
+  const extra = [];
+  if (ep.mega_sng_s > 0.2) extra.push(`mega-SNG ${ep.mega_sng_s.toFixed(1).replace(".", ",")} s`);
+  if (ep.route.includes("VATTNET")) extra.push("i vattnet");
+  if (ep.stuck) extra.push("FASTNADE");
+  b.innerHTML = `<span class="t"><span class="dot" style="background:${
+      ep.mean_speed >= 500 ? "var(--ok)" : ep.mean_speed >= 400 ? "var(--acc)" : "var(--varn)"
+    }"></span><span>${esc(ep.spawn_zone.replace("vid ", "spawn "))}</span>` +
+    `<span class="st num">${Math.round(ep.mean_speed)} u/s</span></span>` +
+    `<span class="fakta">${esc(ep.route.slice(0, 9).join(" → "))}` +
+    `${extra.length ? " · " + esc(extra.join(" · ")) : ""}</span>`;
+  b.addEventListener("click", () => select(i));
+  grp.appendChild(b);
+});
+listEl.appendChild(grp);
+function select(i){
+  if (sel === i){                       /* avmarkera -> helkarta */
+    sel = -1;
+    document.querySelectorAll(".route.sel").forEach(e => e.classList.remove("sel"));
+    Object.assign(cam, {...HOME, at: [...HOME.at]});
+    document.getElementById("hint").textContent = "klicka en episod i listan";
+    req(); return;
+  }
+  sel = i;
+  document.querySelectorAll(".route.sel").forEach(e => e.classList.remove("sel"));
+  document.getElementById("ep-" + i).classList.add("sel");
+  const ep = TRAJ.episodes[i];
+  document.getElementById("hint").textContent =
+    `episod ${i} — ${ep.spawn_zone} — snitt ${Math.round(ep.mean_speed)} u/s`;
+  fitEp(i);
+}
+
+/* ---------- chips, frågor, legend ---------- */
+const eps = TRAJ.episodes;
+const meanAll = eps.reduce((a, e) => a + e.mean_speed, 0) / eps.length;
+const nStuck = eps.filter(e => e.stuck).length;
+document.getElementById("cover").innerHTML =
+  `<span class="chip"><span class="dot" style="background:var(--ok)"></span>` +
+  `snitt <b class="num">&nbsp;${Math.round(meanAll)} u/s</b></span>` +
+  `<span class="chip"><span class="dot" style="background:${nStuck ? "var(--varn)" : "var(--ok)"}"></span>` +
+  `fastnade <b class="num">&nbsp;${nStuck}/${eps.length}</b></span>` +
+  `<span class="chip"><span class="dot" style="background:var(--korpus)"></span>` +
+  `policy <b class="num">&nbsp;gate2_v2</b></span>`;
+
+/* ---------- gate-metrics mot targets, med trendpilar (n=30-serien) ---------- */
+(function(){
+  const M = DATA.metrics;
+  if (!M || !M.punkter || !M.punkter.length) return;
+  const cur = M.punkter[M.punkter.length - 1];
+  const prev = M.punkter.length > 1 ? M.punkter[M.punkter.length - 2] : null;
+  const T = M.targets;
+  function arrow(now, before, higherIsBetter){
+    if (before === null || before === undefined) return ["→", "var(--mut)"];
+    const d = now - before;
+    if (Math.abs(d) < 1e-9) return ["→", "var(--mut)"];
+    const improved = higherIsBetter ? d > 0 : d < 0;
+    return [d > 0 ? "↑" : "↓", improved ? "var(--ok)" : "var(--varn)"];
+  }
+  const rows = [
+    ["fart (OPEN)", Math.round(cur.open_mean_speed) + " u/s", "&gt;" + T.open_mean_speed,
+     cur.open_mean_speed > T.open_mean_speed,
+     arrow(cur.open_mean_speed, prev && prev.open_mean_speed, true)],
+    ["täckning (union)", (100 * cur.open_coverage).toFixed(1) + " %", "≥70 %",
+     cur.open_coverage >= T.open_coverage,
+     arrow(cur.open_coverage, prev && prev.open_coverage, true)],
+    ["fastnade", cur.stuck + "/30", "0", cur.stuck === 0,
+     arrow(cur.stuck, prev && prev.stuck, false)],
+    ["zon-score", cur.score.toFixed(2), "≥1.0", cur.score >= T.score,
+     arrow(cur.score, prev && prev.score, true)],
+  ];
+  if (cur.jump_min_niva !== undefined){
+    const pj = prev && prev.jump_min_niva;
+    rows.push(["gate-hopp min-nivå", String(cur.jump_min_niva), "3",
+               cur.jump_min_niva >= 3,
+               arrow(cur.jump_min_niva, pj === undefined ? null : pj, true)]);
+  }
+  document.getElementById("gatemetrics").innerHTML =
+    `<h3>Gate 2-metrics · ${cur.frames_g} G frames (n=30, qwsim)</h3>` +
+    `<table style="width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums">` +
+    rows.map(([n, v, t, met, [ar, col]]) =>
+      `<tr><td style="padding:2px 0;color:var(--mut)">${n}</td>` +
+      `<td style="text-align:right"><b>${v}</b></td>` +
+      `<td style="text-align:right;color:${met ? "var(--ok)" : "var(--mut)"};padding:0 6px">${t} ${met ? "✓" : ""}</td>` +
+      `<td style="text-align:right;color:${col};font-weight:700">${ar}</td></tr>`).join("") +
+    `</table><p style="margin-top:4px">Pil = riktning sedan förra n=30-mätningen ` +
+    `(${prev ? prev.frames_g + " G" : "—"}). Grönt = rätt håll.</p>`;
+})();
+
+/* ---------- gate-hoppens mognadsstege (ägarens kriterium: alla nivå 3 före MVD) ---------- */
+(function(){
+  const J = DATA.jumpgates;
+  if (!J || !J.gates) return;
+  const LVL_COL = ["var(--mut)", "#d29922", "#58a6ff", "var(--ok)"];
+  const LVL_TXT = ["inga försök", "försöker", "lyckas ibland", "lyckas alltid"];
+  const order = ["ring→quad NV", "quad→ring NV", "ring→quad SO", "quad→ring SO",
+                 "RA-tagningen", "SNG-mega"];
+  document.getElementById("gatehopp").innerHTML =
+    `<h3>Gate-hopp · mognadsstege (mål: alla nivå 3)</h3>` +
+    (J.review_godkand ? "" :
+      `<p style="color:var(--varn)"><b>PRELIMINÄR</b> — analyst-review av claimsen pågår; ` +
+      `siffrorna är detektorutfall, ännu ej verifierade.</p>`) +
+    `<table style="width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums">` +
+    order.filter(k => J.gates[k]).map(k => {
+      const g = J.gates[k];
+      return `<tr><td style="padding:2px 0;color:var(--mut)">${k}</td>` +
+        `<td style="text-align:right">${g["lyckade"]}/${g["försök"]}` +
+        (g["ramla"] ? ` <span style="color:var(--varn)">(${g["ramla"]} föll)</span>` : "") + `</td>` +
+        `<td style="text-align:right;padding-left:6px"><b style="color:${LVL_COL[g["nivå"]]}">` +
+        `nivå ${g["nivå"]}</b> <span style="color:var(--mut)">${LVL_TXT[g["nivå"]]}</span></td></tr>`;
+    }).join("") +
+    `</table><p style="margin-top:4px">Nivåer: 0 inga försök · 1 försöker (medvetenhet) · ` +
+    `2 lyckas ibland · 3 ≥5 försök, ≥90 %. Rjump pent→window: uppskjuten (kräver raketsim).</p>`;
+})();
+
+/* hopppanel: teknik (platta speedhopp) + genvägar (gap-hopp) + fall */
+const hoppEl = document.getElementById("qa-hopp");
+{
+  const perEp = (FLAT.length / eps.length).toFixed(0);
+  const gapTxt = GAPS.length
+    ? GAPS.map(s => `${esc(nearestItem(s.takeoff))}→${esc(nearestItem(s.land))} ` +
+                    `(${Math.round(s.span)} u)`).join(" · ")
+    : "inga";
+  hoppEl.innerHTML = `<h3>Speedhopp</h3><p>` +
+    `<span class="svar">${FLAT.length + GAPS.length} hopp &gt;240 u på 10 min</span> ` +
+    `(~${perEp}/episod) — alla kräver fart över markens 320-tak (räckvidd ~216 u). ` +
+    `<br>Äkta <b>gap-hopp</b> (tomrum under banan): ` +
+    `<span class="svar ${GAPS.length ? "ja" : "nej"}">${GAPS.length}</span> — ${gapTxt}. ` +
+    `Fall &gt;64 u i fart: ${DROPS.length}. Gröna bågar = gap-hopp, orange = fall.</p>`;
+}
+
+/* ruttflöden: landmärke->landmärke med antal, ur episodernas zonsekvenser */
+{
+  const flows = {};
+  for (const ep of eps){
+    for (let i = 1; i < ep.route.length; i++){
+      const a = ep.route[i-1].replace("vid ", ""), b = ep.route[i].replace("vid ", "");
+      if (a === b) continue;
+      const k = a + " → " + b;
+      flows[k] = (flows[k] || 0) + 1;
+    }
+  }
+  const top = Object.entries(flows).sort((x, y) => y[1] - x[1]).slice(0, 12);
+  document.getElementById("rutter").innerHTML =
+    `<h3>Rutter (zonbyten, 10 episoder)</h3><p>` +
+    top.map(([k, n]) => `${esc(k)} <b class="num">×${n}</b>`).join("<br>") + `</p>`;
+}
+
+const rq = TRAJ.ring_quad_flights || [];
+const rqEl = document.getElementById("qa-ringquad");
+rqEl.innerHTML = `<h3>Hoppar den ring → quad?</h3><p>` + (rq.length
+  ? `<span class="svar ja">JA — ${rq.length} direktflygning${rq.length > 1 ? "ar" : ""}.</span> ` +
+    rq.map(f => `${esc(f.riktning)} (${Math.round(f.span)} u, ep ${f.ep})`).join(" · ") +
+    `. Luftsegment mellan plattformarna utan mellanlandning.`
+  : `<span class="svar nej">NEJ — inte i dessa 10 episoder.</span> Ingen luftbana ` +
+    `mellan ring- och quadplattformen utan mellanlandning registrerades. ` +
+    `(Kriterium: lyft &lt;180 u från ena plattformen, landning &lt;180 u från andra.)`) + `</p>`;
+
+const ms = TRAJ.mega_sng_visits || 0;
+const msEl = document.getElementById("qa-megasng");
+msEl.innerHTML = `<h3>Tar den sig till mega-SNG?</h3><p>` + (ms
+  ? `<span class="svar ${ms >= 5 ? "ja" : "delvis"}">${ms >= 5 ? "JA" : "IBLAND"} — ` +
+    `${ms} av ${eps.length} episoder</span> passerar megan vid SNG (&lt;120 u). ` +
+    `Se sekunder per episod i listan.`
+  : `<span class="svar nej">NEJ — 0 av ${eps.length} episoder</span> kom inom 120 u ` +
+    `från megan vid SNG.`) + `</p>`;
+
+document.getElementById("legend").innerHTML =
+  `<span style="background:linear-gradient(90deg,#2e52b8,#33bfcc,#ebb530,#fffae8);` +
+  `display:inline-block;width:64px;height:8px;border-radius:4px;margin-right:6px;` +
+  `vertical-align:-1px"></span>botens fart 0→800 u/s<br>` +
+  `<span class="dot" style="background:#f09443"></span>vapen · ` +
+  `<span class="dot" style="background:#e6573f"></span>RA · ` +
+  `<span class="dot" style="background:#e0c637"></span>YA<br>` +
+  `<span class="dot" style="background:#59ccdf"></span>quad/pent/ring · ` +
+  `<span class="dot" style="background:#8ce5ec"></span>mega<br>` +
+  `<span class="dot" style="background:#dc5cc2"></span>tele · ` +
+  `<span class="dot" style="background:#fff"></span>spawn<br>` +
+  `<span style="background:#59eb8c;display:inline-block;width:20px;height:3px;` +
+  `border-radius:2px;margin-right:6px;vertical-align:2px"></span>gap-hopp · ` +
+  `<span style="background:#f09443;display:inline-block;width:20px;height:3px;` +
+  `border-radius:2px;margin-right:6px;vertical-align:2px"></span>fall<br>` +
+  `<span style="background:linear-gradient(90deg,#100747,#d93340,#ffeb61);` +
+  `display:inline-block;width:52px;height:8px;border-radius:4px;margin-right:6px;` +
+  `vertical-align:-1px"></span>mänsklig trafik (908 M samples)`;
+
+document.querySelectorAll("#hud input").forEach(e => e.addEventListener("change", req));
+req();
+</script>

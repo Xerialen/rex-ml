@@ -132,3 +132,40 @@ mänsklig korpus genom identisk detektorkod, itemevents + trajectory_samples).
 `scratchpad/vet_jumpgates.py` (bot, exakt detektorlogik, full segmentlogg),
 `scratchpad/human_detector.py 60` (människa, seed via hash(demo_key)),
 pickup-join: item_events taken × trajectory_samples ±80 ms, n = 4 000 per item.
+
+---
+
+## Appendix: Re-review av korrigerad detektor (2026-08-01, andra passet)
+
+Koordinatorn implementerade punkt 1–5 i `rl/jump_gates.py`; nya utfall på samma dump:
+alla ring↔quad-gater 0 försök, SNG-mega 0 försök, RA 1 försök/0 lyckade (nivå 1).
+
+**(a) Kodgranskning: implementationen följer specen.** z-band (40,130) i `_plat`,
+progressionskrav d(dst)<350 på ledgepunkter (lyckat ⇒ progressed per definition — OK),
+normerad sidodödzon ±100 u, klätterkrav z ≥ z_entry+80, pickup-dz (−32,+80). Två
+restnoteringar utan påverkan på dagens siffror: (i) om alla ledgepunkter ligger i
+dödzonen blir side_acc = 0 → etiketten defaultar till "SO"; bör bli "obestämd" den dag
+events åter registreras. (ii) `low` sätts av valfri punkt i intervallet, inte entrén —
+ofarligt nu, men ett högt inträde som droppar och studsar +80 över entré-z kan i
+teorin räknas.
+
+**(b) Det kvarvarande RA-försöket är en falsk positiv.** Uppmätt (ep29, i 0–71, 1,85 s,
+spawn "vid RA-toppen"-zonen): botten går från (432,−848,56) norrut och klättrar sedan
+**trappan västerut mot tele** — klättervillkoret triggas vid (205.6,−528,136) medan
+2D-avståndet till RA *ökar* (min 157,3 u vid i=41, därefter 157→299 under själva
+klättringen; utträde på z=152 mot tele, helt i linje med ruttloggen RA-toppen↔tele).
+Äkta höjdvinst (+96), fel riktning: ingen klätterstart mot armorn. En mänsklig
+RA-klättring når per nödvändighet 2D < ~50.
+**Korrigering:** kräv dessutom `d2_min < 120` i intervallet för RA-försök (dagens
+intervall: 157,3 → bortfiltrerat ⇒ RA 0 försök, nivå 0). Mänskliga klättrare passerar
+trivialt (pickup-d2 p99 = 61,7).
+
+**(c) Verdikt:**
+- Nollorna (ring↔quad 4 × 0, SNG-mega 0): **GODKÄNDA** att presenteras som
+  analyst-granskade. De speglar uppmätt beteende korrekt.
+- "RA-tagningen nivå 1 (försöker)": **UNDERKÄND** — den enda försökssignalen är en
+  tele-trappa i fel riktning. Presentera **nivå 0 på samtliga sex gater**, alternativt
+  inför d2_min-filtret ovan och kör om (ger 0/0 mekaniskt).
+- Detektorn i övrigt: godkänd som mätinstrument för fortsatt curriculum-spårning,
+  med påminnelsen att nivå 3-definitionen (100 % av ≥5) fortfarande ska rekalibreras
+  mot mänsklig lyckandegrad när botten väl börjar registrera riktiga försök.

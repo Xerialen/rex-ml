@@ -1,0 +1,255 @@
+{
+ "quad->ratop": {
+  "cand": 120,
+  "ok": 21,
+  "reasons": {
+   "rocket_jump": 99
+  },
+  "ok_fastest_s": 6.71,
+  "ok_median_s": 7.4,
+  "ok_durations": [
+   6.71,
+   6.96,
+   7.04,
+   7.08,
+   7.09,
+   7.21,
+   7.25,
+   7.27,
+   7.27,
+   7.29,
+   7.4,
+   7.45,
+   7.46,
+   7.47,
+   7.51,
+   7.53,
+   7.54,
+   7.56,
+   7.56,
+   7.6,
+   7.61
+  ]
+ },
+ "quad->sng": {
+  "cand": 120,
+  "ok": 118,
+  "reasons": {
+   "rocket_jump": 2
+  },
+  "ok_fastest_s": 4.21,
+  "ok_median_s": 5.94,
+  "ok_durations": [
+   4.21,
+   4.59,
+   4.64,
+   4.68,
+   4.73,
+   4.84,
+   5.03,
+   5.09,
+   5.16,
+   5.16,
+   5.18,
+   5.2,
+   5.27,
+   5.28,
+   5.3,
+   5.32,
+   5.42,
+   5.43,
+   5.48,
+   5.48,
+   5.5,
+   5.5,
+   5.51,
+   5.52,
+   5.54,
+   5.54,
+   5.55,
+   5.55,
+   5.57,
+   5.58
+  ]
+ },
+ "ralow_ng->ratop": {
+  "cand": 120,
+  "ok": 5,
+  "reasons": {
+   "rocket_jump": 115
+  },
+  "ok_fastest_s": 5.35,
+  "ok_median_s": 5.63,
+  "ok_durations": [
+   5.35,
+   5.62,
+   5.63,
+   5.76,
+   5.78
+  ]
+ },
+ "ratop->ssg_ya": {
+  "cand": 120,
+  "ok": 120,
+  "reasons": {},
+  "ok_fastest_s": 5.38,
+  "ok_median_s": 6.01,
+  "ok_durations": [
+   5.38,
+   5.43,
+   5.46,
+   5.48,
+   5.48,
+   5.51,
+   5.54,
+   5.58,
+   5.58,
+   5.6,
+   5.63,
+   5.63,
+   5.67,
+   5.68,
+   5.68,
+   5.71,
+   5.71,
+   5.72,
+   5.73,
+   5.74,
+   5.74,
+   5.74,
+   5.75,
+   5.75,
+   5.75,
+   5.75,
+   5.76,
+   5.76,
+   5.76,
+   5.76
+  ]
+ },
+ "ring->rl": {
+  "cand": 14,
+  "ok": 11,
+  "reasons": {
+   "gap": 1,
+   "rocket_jump": 2
+  },
+  "ok_fastest_s": 6.97,
+  "ok_median_s": 7.92,
+  "ok_durations": [
+   6.97,
+   7.09,
+   7.48,
+   7.75,
+   7.83,
+   7.92,
+   8.66,
+   9.93,
+   10.42,
+   11.23,
+   14.89
+  ]
+ },
+ "rl->ratop": {
+  "cand": 11,
+  "ok": 0,
+  "reasons": {
+   "gap": 2,
+   "rocket_jump": 9
+  },
+  "ok_fastest_s": null,
+  "ok_median_s": null,
+  "ok_durations": []
+ },
+ "sng->quad": {
+  "cand": 8,
+  "ok": 4,
+  "reasons": {
+   "gap": 4
+  },
+  "ok_fastest_s": 5.27,
+  "ok_median_s": 6.04,
+  "ok_durations": [
+   5.27,
+   5.43,
+   6.04,
+   6.49
+  ]
+ },
+ "ssg_ya->ratop": {
+  "cand": 52,
+  "ok": 4,
+  "reasons": {
+   "rocket_jump": 37,
+   "gap": 11
+  },
+  "ok_fastest_s": 10.46,
+  "ok_median_s": 11.91,
+  "ok_durations": [
+   10.46,
+   11.19,
+   11.91,
+   12.71
+  ]
+ },
+ "ya->ratop": {
+  "cand": 50,
+  "ok": 0,
+  "reasons": {
+   "gap": 49,
+   "rocket_jump": 1
+  },
+  "ok_fastest_s": null,
+  "ok_median_s": null,
+  "ok_durations": []
+ },
+ "ya->rl": {
+  "cand": 120,
+  "ok": 0,
+  "reasons": {
+   "gap": 120
+  },
+  "ok_fastest_s": null,
+  "ok_median_s": null,
+  "ok_durations": []
+ },
+ "ya->ssg_ya": {
+  "cand": 120,
+  "ok": 120,
+  "reasons": {},
+  "ok_fastest_s": 1.36,
+  "ok_median_s": 1.54,
+  "ok_durations": [
+   1.36,
+   1.38,
+   1.42,
+   1.43,
+   1.43,
+   1.44,
+   1.45,
+   1.45,
+   1.46,
+   1.46,
+   1.46,
+   1.47,
+   1.47,
+   1.47,
+   1.48,
+   1.48,
+   1.48,
+   1.48,
+   1.49,
+   1.49,
+   1.49,
+   1.49,
+   1.49,
+   1.49,
+   1.49,
+   1.5,
+   1.5,
+   1.5,
+   1.5,
+   1.5
+  ]
+ }
+}

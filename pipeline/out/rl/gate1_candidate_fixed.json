@@ -1,0 +1,32 @@
+{
+ "contract_version": 1,
+ "n_obs": 97,
+ "rnn_size": 512,
+ "n_action_params": 11,
+ "param_layout": [
+  "box_mean_dyaw",
+  "box_mean_dpitch",
+  "box_logstd_dyaw",
+  "box_logstd_dpitch",
+  "fwd_logit_0",
+  "fwd_logit_1",
+  "side_logit_none",
+  "side_logit_left",
+  "side_logit_right",
+  "jump_logit_0",
+  "jump_logit_1"
+ ],
+ "spec": {
+  "tick_dt": 0.013,
+  "max_dyaw_deg": 20.0,
+  "max_dpitch_deg": 10.0,
+  "forwardmove": 508.0,
+  "sidemove": 508.0,
+  "speed_norm": 800.0,
+  "pitch_min": -70.0,
+  "pitch_max": 80.0,
+  "n_rays": 81,
+  "ray_max_dist": 2048.0
+ },
+ "source_experiment": "pipeline/out/rl/bridge_diag/eval_snapshot"
+}
