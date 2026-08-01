@@ -5886,3 +5886,11 @@ uppdatering = hoppmetrics + gate-mått + ompublicerad artefakt.
 Baslinje på gammal dump (2.0G): quad→ring SO nivå 1 (1 försök, föll i gropen),
 RA-tagningen nivå 1 (111 närmanden, 0 pickups), övriga nivå 0. Färsk 30-ep-dump @ 3.4G
 kör; artefakt ompubliceras när den landar.
+
+## 2026-08-01 15:47 EEST — ÄGARDIREKTIV: analyst-review av hopp-claims före presentation
+Stående regel (memory jump-gate-reporting uppdaterad): gate-hoppens detektorutfall är
+PÅSTÅENDEN tills dm3-analysten verifierat dem mot trajektorier/korpus. Arbetsflöde:
+dump → rl/jump_gates.py → analyst-review (verifiera lyckat/ramla/sidoklassning, RA-pickup-
+geometri) → först därefter presentation + artefaktpublicering av hoppsiffrorna.
+Retroaktiv notering: baslinjesiffrorna från 2.0G-dumpen (quad→ring SO nivå 1, RA 111/0)
+är OGRANSKADE och behandlas som preliminära tills analysten reviewat färska dumpen.
