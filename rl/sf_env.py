@@ -99,7 +99,8 @@ class QWGate2Env(gym.Env):
             rarity_lo=float(getattr(cfg, "qw_rarity_lo", 0.5)),
             rarity_hi=float(getattr(cfg, "qw_rarity_hi", 4.0)),
             climb_coef=float(getattr(cfg, "qw_climb_coef", 0.08)),
-            gap_base=float(getattr(cfg, "qw_gap_base", 3.0)))
+            gap_base=float(getattr(cfg, "qw_gap_base", 3.0)),
+            height_coef=float(getattr(cfg, "qw_height_coef", 0.0)))
         self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=g2cfg,
                                 is_excluded=is_excluded)
         n_obs = self.core.obs_spec.n_obs

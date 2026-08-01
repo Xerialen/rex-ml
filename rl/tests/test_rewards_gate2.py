@@ -122,3 +122,16 @@ def test_jump_gate_item_ladder():
     res = analyze(dump)
     assert res["gates"]["RA-tagningen"]["försök"] == 1
     assert res["gates"]["RA-tagningen"]["lyckade"] == 1
+
+
+def test_height_reward_speed_scaled_and_bounded():
+    from rl.rewards_gate2 import height_reward, HEIGHT_Z_MIN, HEIGHT_Z_MAX
+    # stillastående på RA-toppen betalar noll (anti-camping)
+    assert height_reward(304.0, 0.0, 2.0) == 0.0
+    hi = height_reward(304.0, 550.0, 2.0)          # högt och snabbt
+    lo = height_reward(-264.0, 750.0, 2.0)         # gårgolv, snabbare
+    assert hi > lo * 5                              # höjden dominerar golvet
+    # rarity-dämpning halverar campad höjd
+    assert height_reward(304.0, 550.0, 2.0, mult=0.5) < hi
+    # utanför spannet klipps
+    assert height_reward(HEIGHT_Z_MAX + 500, 550.0, 2.0) == height_reward(HEIGHT_Z_MAX, 550.0, 2.0)

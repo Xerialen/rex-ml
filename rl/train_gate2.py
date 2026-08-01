@@ -42,6 +42,8 @@ def main(argv=None):
                         help="V1a: poäng per unit höjdvinst vid landning (rise>=24)")
     parser.add_argument("--qw_gap_base", type=float, default=3.0,
                         help="V2: basbonus för gap-hopp (skalas med span, x2 vid djup>141)")
+    parser.add_argument("--qw_height_coef", type=float, default=0.0,
+                        help="höjdviktad fartinkomst: coef*z_norm*fart*rarity (0=av)")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

@@ -6075,3 +6075,20 @@ efter V1/V2-aktiveringen (8.5 % → 17.0 %-genombrott): värdefunktionen omkalib
 belöningsändring. BESLUT: håll kursen till ~4.6G. Trösklar där: täckning <25 % ELLER fart
 <520 OCH climb_landings ej växande ⇒ coef 0.5→0.25 (bonusen köper inget då); täckning ≥26 %
 eller klätterlandningar växande ⇒ fortsätt. Sprintklocka: ~34 h H100 kvar.
+
+## 2026-08-01 22:00 EEST — ÄGARDESIGN: höjdviktad fartinkomst ("highground alltid") — aktiveras NU
+Ägaren formulerade principen: highground är ALLTID fördelaktigt på dm3 (YA-trappan, high
+bridge, window/lifts, RA-toppen, mega-ansatsen, quad/ring) och snabbaste vägen dit låses
+nästan alltid upp av ett trickhopp. Generisk översättning (manifestsäker, inga zonnamn):
+**height_reward = coef × z_norm × min(fart/320, 1.5) × CellRarity-mult**, z_norm mot
+nåbara spannets -304..368 (uppmätt; RA-topp 0.90, window 0.70, mega-hylla 0.69, quad/ring
+0.54, gårgolv 0.06). Fartskalad ⇒ camping betalar 0; rarity-viktad ⇒ campad höjd halveras,
+orörd fyrdubblas ⇒ cirkulation MELLAN höjder via snabbaste (trick-)vägen som V1a/V2 betalar.
+Kalibrering (kalkyl): coef 2.0 ger RA/window-linje @550 ≈ 2.9/tick > gropvarv @700 ≈ 2.3.
+Implementerat bakom --qw_height_coef (default 0), 31/31 tester.
+BESLUT: omstart NU med coef 2.0 (i stället för 4.6G-trösklarna): värdefunktionen är redan
+i klätterbonus-omställning — EN sammanslagen övergång billigare än två; ägarens uttryckliga
+vilja; ~33 h H100 kvar. Mätare: z-viktad tidsandel (RA-toppen/window-andel ska UPP i
+spatialrapporten), täckning (höga massorna = nya voxlar), climb_landings, n_gap, fart >500.
+Riskvakt: returskala växer (~+2.7/tick på höjd) — klipprotokollet gäller; fart <520 två
+punkter i rad ⇒ sänk coef till 1.0.

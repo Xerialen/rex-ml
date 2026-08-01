@@ -137,6 +137,27 @@ class CellRarity:
         return float(np.clip(self.REF_SHARE / (share + 0.005), self.lo, self.hi))
 
 
+# Höjdviktad fartinkomst (ägardesign 2026-08-01 ~21:50: "ALLTID är highground
+# viktigast" — YA-trappan, high bridge, window/lifts, RA-toppen, mega-ansatsen,
+# quad/ring). Generisk översättning: absolut z normerad mot NÅBARA voxlarnas
+# spann (uppmätt ur zonrastret: -304..368; RA-topp 0.90, window 0.70, mega-
+# hylla 0.69, quad/ring 0.54, gårdgolv 0.06). FARTSKALAD (stillastående på
+# höjd = 0 ⇒ ingen camping) och tänkt att multipliceras med CellRarity-multen
+# (översitten höjd halveras, orörd fyrdubblas ⇒ cirkulation mellan höjderna;
+# snabbaste vägen dit är trickhoppen som V1a/V2 betalar).
+# Koef ~2.0 (kalkyl): RA/window-linje @550 ≈ 2.9/tick slår gropvarv @700 ≈ 2.3.
+HEIGHT_Z_MIN = -304.0
+HEIGHT_Z_MAX = 368.0
+
+
+def height_reward(z: float, speed_h: float, coef: float, mult: float = 1.0) -> float:
+    if coef <= 0.0:
+        return 0.0
+    zn = (z - HEIGHT_Z_MIN) / (HEIGHT_Z_MAX - HEIGHT_Z_MIN)
+    zn = min(max(zn, 0.0), 1.0)
+    return coef * zn * min(speed_h / SPEED_NORM, 1.5) * mult
+
+
 def kinetic_multiplier(s: StepState, ray_fracs: np.ndarray,
                        ray_dirs: np.ndarray) -> float:
     """Fart × linjering bort från hinder. ray_fracs/dirs är samma strålar som

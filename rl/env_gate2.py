@@ -21,7 +21,8 @@ import numpy as np
 from . import spec as S
 from .env import Backend
 from .rewards_gate1 import StepState, _collision_loss, _speed_h
-from .rewards_gate2 import AirLandingBonus, CellRarity, VoxelNovelty, reward_gate2
+from .rewards_gate2 import (AirLandingBonus, CellRarity, VoxelNovelty,
+                            height_reward, reward_gate2)
 
 DM3_SPAWNS = Path(__file__).parent / "data" / "dm3_spawns.json"
 
@@ -54,6 +55,7 @@ class Gate2Config:
     rarity_hi: float = 4.0
     climb_coef: float = 0.08
     gap_base: float = 3.0
+    height_coef: float = 0.0         # höjdviktad fartinkomst (0 = av)
 
 
 class QWGate2Core:
@@ -220,6 +222,8 @@ class QWGate2Core:
             nov_mult = self.rarity.mult(self.pos)
         r = reward_gate2(st, self._last_ray_fracs, self._last_ray_dirs,
                          self.novelty if counted else None, nov_mult)
+        if counted and self.cfg.height_coef > 0.0:
+            r += height_reward(float(self.pos[2]), sp, self.cfg.height_coef, nov_mult)
         if self.air_bonus is not None:
             r += self._air_segment(prev_og, counted)
         if counted:
