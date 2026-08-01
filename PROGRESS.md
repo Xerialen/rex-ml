@@ -5704,3 +5704,9 @@ med flaggor PÅ: slumpagent fick 1 klätter- + 1 gapbonus på 3×20 s, rarity-EM
 AV = exakt gammal kodväg (körande gate2_v2 opåverkad).
 Aktiveringsplan oförändrad: fönster 2-3 avgör orbitdiagnosen; vid bekräftelse aktiveras V1b
 (+ ev. V1a/V2) vid nästa omstart. n_gap-räknaren blir mätaren på att gap-hopp uppstår.
+
+## 2026-08-01 03:37 EEST — Eval-fönster 2: återhämtning, orbitdiagnos EJ bekräftad
+10-run greedy @ ~1360M frames: open-mean **625.7**, täckning **11.6 %**, 0 fastnade.
+Serie sedan stabilisatorn: 683.8/9.0 % → 625.7/11.6 %. Täckningen klättrar tillbaka mot
+12.6 %-märket och farten föll under 650-villkoret ⇒ fönster 1 ser ut som n=10-brus, inte
+bekräftad orbit. Fönster 3 startat (avgör). Ingen åtgärd; V1/V2 ligger redo bakom flaggor.
