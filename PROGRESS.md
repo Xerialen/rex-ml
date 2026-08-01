@@ -5689,7 +5689,7 @@ Fönsterfyndet: 91 % av mänskliga fönsterbesök är strid, inte transit (bron 
 4.83 s till RL) — bottens 25 % window-tid är dubbelt onaturlig; sällsynthetsviktningen ska
 naturligt straffa den. Eval-fönster 2 startat.
 
-## 2026-08-01 03:40 EEST — V1/V2 implementerade bakom AVSTÄNGDA flaggor (redo för trigger)
+## 2026-08-01 03:26 EEST — V1/V2 implementerade bakom AVSTÄNGDA flaggor (redo för trigger)
 Kod på plats, inaktiv tills täckningstriggern slår (kräver omstart med flagga för aktivering):
 - rl/rewards_gate2.py: **AirLandingBonus** (V1a klätterbonus rise≥24 u, 0.08/u; V2 gapbonus
   span≥150 ∧ golvdjup>56, ×2 vid djup>141, skalad med span — analyst-kalibrerade trösklar) +
