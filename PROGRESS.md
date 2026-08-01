@@ -5762,3 +5762,10 @@ Beslut: 2 hjärtslag till träning (~+150M), sedan fönster 2. Om SNG-enrumsepis
 ⇒ skärp rarity-dämpningen (lo 0.5→0.25) så översittna celler betalar kvartsnovelty, och/eller
 höj REF_SHARE. Rjump-notering: SNG-rummets tak är lågt; exit sker via dörrar/tele — inget
 rjump-beroende, detta ska ren utforskning klara.
+
+## 2026-08-01 07:25 EEST — GENOMBROTT: täckning 17.0 % (nytt rekord) @ ~1850M
+10-run greedy, 417M frames under V1/V2: open-mean **626.5**, täckning **17.0 %** (all-time-
+high; serien 11.4 → 8.5 → 17.0), 0 fastnade. Platån ~12 % är BRUTEN — sällsynthetsviktningen
++ landningsbonusarna gör vad de kalibrerades för. Fartkriteriet har fortsatt stor marginal.
+Geografianalys startad: består SNG-enrumsorbiten? n_gap? Fortsatt träning, nästa fönster
+efter ~2 hjärtslag.
