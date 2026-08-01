@@ -1,16 +1,44 @@
 {
  "experiment": "pipeline/out/rl/train_dir/gate2_v2",
  "episodes": 10,
- "air_segments": 369,
- "long_hops_over_240u": 332,
- "flat_bunny_hops": 332,
- "gap_jumps_true": 0,
- "gap_jumps_per_episode": 0.0,
- "long_drops": 0,
- "distinct_takeoff_cells": 0,
+ "air_segments": 807,
+ "long_hops_over_240u": 626,
+ "flat_bunny_hops": 625,
+ "gap_jumps_true": 1,
+ "gap_jumps_per_episode": 0.1,
+ "long_drops": 1,
+ "distinct_takeoff_cells": 1,
  "repeated_cells": 0,
  "repeated_across_episodes": 0,
- "span_p50": null,
- "span_max": 0.0,
- "clusters_top": []
+ "span_p50": 306.7,
+ "span_max": 306.7,
+ "clusters_top": [
+  {
+   "cell_xy": [
+    576,
+    -128
+   ],
+   "count": 1,
+   "episodes": [
+    5
+   ],
+   "zone_from": "constrained-misc",
+   "zone_to": "constrained-misc",
+   "max_span": 306.7,
+   "dz": -16.0,
+   "v_takeoff": 463.2,
+   "example": {
+    "takeoff": [
+     623.7,
+     -77.0,
+     -168.0
+    ],
+    "land": [
+     900.9,
+     -208.4,
+     -184.0
+    ]
+   }
+  }
+ ]
 }

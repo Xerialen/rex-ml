@@ -5769,3 +5769,17 @@ high; serien 11.4 → 8.5 → 17.0), 0 fastnade. Platån ~12 % är BRUTEN — s�
 + landningsbonusarna gör vad de kalibrerades för. Fartkriteriet har fortsatt stor marginal.
 Geografianalys startad: består SNG-enrumsorbiten? n_gap? Fortsatt träning, nästa fönster
 efter ~2 hjärtslag.
+
+## 2026-08-01 07:12 EEST — Geografi @ 1850M: gårlocken tagna, FÖRSTA ÄKTA GAP-HOPPET
+spatial_report + analyze_gapjumps (10 runs) efter genombrottsfönstret (17.0 %):
+- **Gårdarna dominerar nu:** ringen 17.7 % + quad 16.5 % + mega 15.6 % = 49.8 % av tiden
+  (var 8.8 % före V1/V2) i 716-749 UPS — ring→mega→quad-varv är nya standardrutten.
+  Window kollapsade 16.5→3.3 %, pent 22.4→5.8 % — pingisen BRUTEN, precis som analystens
+  översittsdiagnos (window 9.4×) föreskrev. Tvekan nära noll överallt (max 1.8 %).
+- **Första äkta gap-hoppet någonsin:** span 306.7 u, takeoff (624,-77,-168)→(901,-208,-184),
+  avfyrningsfart 463 UPS (mänskligt recept: p50 412) — n_gap 0→1 efter 3 800 h utan.
+- **SNG-fällan halverad men kvar:** 2/10 enrumsepisoder (var 4/10), ~460 UPS orbit.
+- Kvarvarande hål: YA-gården syns inte ens i topplistan längre (<1 %) — nästa
+  sällsynthetsmål; RA-toppen↔tele-loopen består (17.2 % RA-toppen är dock täckningsvinst).
+Fortsatt träning oförändrad; nästa fönster efter ~2 hjärtslag. Artefakten uppdateras nu
+(nya rutter + hoppet är precis det ägaren bad att få se).
