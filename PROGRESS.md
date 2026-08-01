@@ -6093,7 +6093,7 @@ spatialrapporten), täckning (höga massorna = nya voxlar), climb_landings, n_ga
 Riskvakt: returskala växer (~+2.7/tick på höjd) — klipprotokollet gäller; fart <520 två
 punkter i rad ⇒ sänk coef till 1.0.
 
-## 2026-08-01 22:20 EEST — ÄGARDIREKTIV: ring↔quad-hoppen — hexagon-curriculum aktiveras
+## 2026-08-01 22:03 EEST — ÄGARDIREKTIV: ring↔quad-hoppen — hexagon-curriculum aktiveras
 Ägaren: "de ska börja göra hoppen från och till ring/quad". Saknad förutsättning uppmätt
 (analystens fynd): 0 samples på ringnivån av 30 min ⇒ generiska maskinen (höjd+rarity+gap)
 får aldrig chansen där uppe. Ratificerat verktyg: **curriculum-spawn** — _pick_spawn
