@@ -5743,7 +5743,7 @@ betala en snabb loop bättre än strövande. Geografi- och hoppanalys startad (s
 analyze_gapjumps, 10 runs) för att skilja hypoteserna: n_gap>0 + oförändrade rutter ⇒ (b);
 diffusa rutter i flux ⇒ (a). Beslut väntar på den + nästa fönster.
 
-## 2026-08-01 05:47 EEST — Geografidiagnos @ 1610M: SNG-FÄLLAN förklarar täckningsfallet
+## 2026-08-01 05:50 EEST — Geografidiagnos @ 1610M: SNG-FÄLLAN förklarar täckningsfallet
 spatial_report + analyze_gapjumps (10 runs, evidence/spatial_report_latest.json +
 gapjump_analysis.json):
 - **SNG-fällan (huvudfyndet):** 4/10 episoder spawnade vid SNG och LÄMNADE ALDRIG rummet
