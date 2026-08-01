@@ -5710,3 +5710,17 @@ Aktiveringsplan oförändrad: fönster 2-3 avgör orbitdiagnosen; vid bekräftel
 Serie sedan stabilisatorn: 683.8/9.0 % → 625.7/11.6 %. Täckningen klättrar tillbaka mot
 12.6 %-märket och farten föll under 650-villkoret ⇒ fönster 1 ser ut som n=10-brus, inte
 bekräftad orbit. Fönster 3 startat (avgör). Ingen åtgärd; V1/V2 ligger redo bakom flaggor.
+
+## 2026-08-01 03:58 EEST — TRIGGER SLAGEN: täckningsplatå ~11.5 % ⇒ aktiverar V1a/V1b/V2
+Fönster 3 @ ~1430M: open-mean 576.7, täckning 11.4 %, 0 fastnade. Fullständig serie:
+12.6 % (1255M, före kollaps 2) → 9.0 → 11.6 → 11.4 — flat inom brus över ~250M frames.
+Orbitdiagnosen AVFÄRDAD (fartvillkoret ≥650 föll), platådiagnosen BEKRÄFTAD: ren voxelnovelty
+är mättad vid ~12 % täckning; 70 %-unionen kräver trappans nästa steg.
+BESLUT (operatörsmandat): omstart av gate2_v2 från senaste friska checkpoint med
+--qw_vertical_rewards --qw_cell_rarity. Båda samtidigt är medvetet: attribution bevaras av
+separata mätare (täckning/fönster = V1b:s mätare; n_climb/n_gap-räknarna = V1a/V2:s), och
+natten ska inte spillas på seriekörning av redan var-för-sig-granskade steg. Övrigt oförändrat
+(entropi 0.003, mix 15, batch 4096). Riskplan: vid ny belöningskollaps ⇒ samma räddnings-
+protokoll (best-checkpoint, karantän) och stegvis aktivering en flagga i taget.
+Förväntade mätutslag: täckning >12.6 % inom 2-3 fönster; n_gap > 0 i eval-info; window-
+andelen (25.1 %) ska SJUNKA mot gårdarna (YA/mega/quad-övre/ringen) i nästa spatialrapport.
