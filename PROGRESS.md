@@ -5783,3 +5783,11 @@ spatial_report + analyze_gapjumps (10 runs) efter genombrottsfönstret (17.0 %):
   sällsynthetsmål; RA-toppen↔tele-loopen består (17.2 % RA-toppen är dock täckningsvinst).
 Fortsatt träning oförändrad; nästa fönster efter ~2 hjärtslag. Artefakten uppdateras nu
 (nya rutter + hoppet är precis det ägaren bad att få se).
+
+## 2026-08-01 07:40 EEST — Artefakt ompublicerad @ ~2000M: 5 äkta gap-hopp på kartan
+Färsk dump (10 ep) till 3D-artefakten (samma URL): snitt 596 u/s, 0/10 fastnade, 410 speed-
+hopp, **5 äkta gap-hopp** (GL→LG 331 u, RA→NG 275 u, NG→RA 263 u, RA→NG 262 u, RA→RA 255 u)
++ 3 djupa fall — mot 0 i alla dumpar före V1/V2. YA-episoder uppträder nu (720/759 u/s).
+Ring→quad direkt: fortfarande NEJ (kräver sannolikt rjump, V3). Mega-SNG-närkontakt: 0/10.
+Ruttflöde toppas av quad→ringen ×23, mega→quad ×22. Skärmdump verifierad (rex3d_check2.png).
+Eval-fönster 3 under V1/V2 startat.
