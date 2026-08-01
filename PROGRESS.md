@@ -5933,3 +5933,11 @@ PRELIMINÄR-banner) + metrics/trendpilar. 30/30 tester.
 Nästa på hoppfronten: gate-hoppen kräver plattformstoppspel (0-11 s/30 min idag) — bevaka
 om sällsynthetstrycket når topparna organiskt; annars journalförd kandidat: spawn-bias
 mot plattformarna (curriculum-verktyg, ratificerat) eller riktad rarity.
+
+## 2026-08-01 17:20 EEST — Repo-städning på ägarens fråga: allt committat och pushat
+Luckor åtgärdade: analystens re-review-appendix committad; otrackad pipeline-utdata
+(gate1_candidate + snapshot, bridge_diag, obs-fixtures, ~51 MB) incheckad per repo-
+konventionen; **artefakt-verktygskedjan beständiggjord i tools/rex3d/** (byggscript,
+mall, atlas-geometri/heat — låg tidigare enbart i sessions-scratchpad = förlustrisk)
+och analystens verifieringsscript i evidence/repro/. Arbetsträdet rent, allt på
+github.com/Xerialen/rex-ml (main).
