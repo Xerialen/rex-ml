@@ -6444,7 +6444,7 @@ fartglidningen tillskrivs bantade gate1-mixen (15→10 vid riskomläggningen).
 Åtgärd: mix 10→13 (fria roamers 10→7, övriga spawnband orörda). Regel: nästa n=30
 (~7.0G) fart <475 ⇒ återställ klätter 0.8→0.5, gap 5→3. Omstart från ~7.0G-checkpoint.
 
-## 2026-08-02 22:05 EEST — Review 9: NV-retreatclaimsen UNDERKÄNDA ⇒ detektor v7.2
+## 2026-08-02 21:57 EEST — Review 9: NV-retreatclaimsen UNDERKÄNDA ⇒ detektor v7.2
 Analysten underkände BÅDA NV-retreat-claimsen: sidogolvscirkulation utan grop-
 exponering (min dPit 328 resp 310; alla genuina NV-korsningar har ≤192, human-
 retreatmax 305) — exakt den varningsklass de förvarnade om vid baslinjelåsningen.
