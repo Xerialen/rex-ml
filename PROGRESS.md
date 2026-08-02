@@ -6345,7 +6345,7 @@ repro). Kvarstående övervakningspunkter: bhop-underdetektion, källgrundsbias 
 Detektorn mäter nu ägarens gate-avsikt: GOLVFÖRANKRAD ledgeanvändning med
 observerbara misslyckanden på båda sidor. review_godkand=true.
 
-## 2026-08-02 17:47 EEST — 6.35G-svit: FÖRSTA nollskilda gate-utfallet genom driftgodkänd detektor (PRELIMINÄRT)
+## 2026-08-02 18:06 EEST — 6.35G-svit: FÖRSTA nollskilda gate-utfallet genom driftgodkänd detektor (PRELIMINÄRT)
 Snabbsvit @6.35G (riskregimen ~440M frames in), ALLT genom driftgodkända v6.1:
 - Fri eval n=10: fart 640.3 (nytt max i serien), score 1.277, 0 fastnade.
 - **FRI-STRÖVANDE-DUMPEN: "ring→quad SO": 2 försök, 1 LYCKAT (+1 ramla); axiala
