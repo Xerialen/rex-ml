@@ -6120,7 +6120,7 @@ hjärtslag + nere/stillastående-vakt); framtida dumpar skrivs till ~/dumps/ (re
 utanför git) i stället för /tmp-scratchpad — lärdomen från förlorat verifieringsunderlag.
 Sprintklocka: ~15 h kvar på vmonster (av ursprungliga 48).
 
-## 2026-08-02 09:25 EEST — Dashboard uppdaterad med 4.65G-punkten; redo för kompaktion
+## 2026-08-02 09:22 EEST — Dashboard uppdaterad med 4.65G-punkten; redo för kompaktion
 Metrics-historik + artefakt ompublicerad (samma URL): fart 477 ↓ (rött, under golvet —
 korrigering 1.5 aktiv i träningen), täckning 36.1 % ↑ (rekord), fastnade 1/30 ↑, score
 0.95 ↓, gate-hopp min-nivå 0 →. Färsk 10-ep-dump @ ~5.0G (till ~/dumps, rebootsäkert):
