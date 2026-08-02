@@ -6186,3 +6186,20 @@ Fria dm3-roamers 27→21 (täckningsrisken bevakas i nästa n=30). 31/31 test gr
 Omstart från senaste checkpoint (~5.61G); övriga flaggor oförändrade (höjd 1.5 hålls
 per 12:40-beslutet: 554.7/41.8 %/0 fastnade/1.108). Artefakten republicerad med
 5.3G-punkten + PRELIMINÄR-banner. Dashboard: fart ↑, täckning ↑, score ↑, hopp 0→.
+
+## 2026-08-02 13:34 EEST — Vetot verkade: mega-claimet UNDERKÄNT, detektor v4 (grundat-krav)
+dm3-analystens review 4 (evidence/analyst_megattempt_review.md + repro/verify_mega_attempt.py)
+underkände SNG-mega-försöket @5.3G: ep6 sampel 2248-2309 var två kedjade bunnyhop-bågar
+in i NO-hörnsväggen (apex z 67.8 LUFTBURET, gravitationsfit d²z=−0.541; max stödd z i
+intervallet = golvet −16). Fjärde falskpositivklassen detektorn fällts för. Nivå 1-claimet
+TILLBAKADRAGET — SNG-mega åter 0/0, min-nivå 0. Artefakten ombyggd/republicerad.
+**Fix (detektor v4, rl/jump_gates.py):** samtidighetssamplet måste vara GRUNDAT:
+z-stabil ±0.5 mot båda grannar OCH platt kurvatur |d²z|≤0.2 (gravitationsfit-negation —
+enbart dz-stabilitet räckte inte: bågapexen var kvasi-stabil dz 0.4/0.1 men behöll
+d²z −0.5; verifierat på exakta samplet). 2 nya regressionstest (syntetisk båge + exakta
+apex-samplen), 33/33 gröna. Omkörning båda dumpar: alla sex gates 0/0.
+Analystens återvalidering mot de 24 mänskliga låg-entré-positiva (prognos: 21/24 behålls)
+BESTÄLLD och pågår — detektor v4 är inte driftgodkänd förrän domen landar
+(jump_gates_latest.json: review_godkand=false, PRELIMINÄR-banner kvar).
+Träningen (hex 8 plattformsband + RA-gård 4) rullar sedan 13:12; reward åter 11 269
+efter resume från 5.62G — de nya spawnregionerna betalar höjd/novelty från tick 0.

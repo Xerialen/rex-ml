@@ -51,6 +51,16 @@ CLIMB_GAIN = 80.0                     # försök = klättring påbörjad: z_entr
 # trappan MOT TELE (d till RA ökade 157→299 under höjdvinsten). Försök kräver
 # närmande: d2_min < 120 (mänskliga RA-pickups har d2 p99 = 61.7)
 APPROACH_MIN = 120.0
+# review 4-fix (analyst 2026-08-02): klättringsvillkorets sample måste vara
+# STÖTT (grundat), inte luftburet mitt i en hoppbåge — annars räknas kedjade
+# bunnyhops mot vägg som "klättring" (underkända mega-claimet @5.3G).
+GROUND_DZ = 0.5                       # z-stabilitet ±0.5 u ...
+GROUND_RUN = 3                        # ... över ≥3 konsekutiva sampel
+# ... RÄCKER INTE ensamt: en hoppbåges APEX är kvasi-stabil (dz 0.4/0.1 vid
+# 26 ms-sampling) men behåller gravitationens andradifferens ≈ −0.54 u/sampel².
+# Grundat kräver därför även PLATT kurvatur (gravitationsfit-negation,
+# analystens alternativ i review 4): |d²z| ≤ GROUND_D2Z.
+GROUND_D2Z = 0.2
 
 _AXIS = (QUAD - RING)[:2]
 
@@ -141,6 +151,20 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
     return events
 
 
+def _grounded(path: np.ndarray) -> np.ndarray:
+    """Stödd/grundad per sample: z-stabil (±GROUND_DZ) mot BÅDA grannsamplen
+    OCH platt kurvatur (|d²z| ≤ GROUND_D2Z). Bågapexen klarar dz-testet
+    (dz 0.4/0.1 vid 26 ms) men inte kurvaturen — gravitationen ger d²z ≈ −0.54
+    även i apex (verifierat på underkända mega-claimets sampel 2282: −0.5)."""
+    z = path[:, 2]
+    dz_ok = np.abs(np.diff(z)) <= GROUND_DZ
+    g = np.zeros(len(path), dtype=bool)
+    if len(path) > 2:
+        flat = np.abs(z[2:] - 2.0 * z[1:-1] + z[:-2]) <= GROUND_D2Z
+        g[1:-1] = dz_ok[:-1] & dz_ok[1:] & flat
+    return g
+
+
 def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
                  low_pred) -> tuple[int, int]:
     """(försök, lyckade) för item-gates. Analyst-korrigerat (v1 räknade all
@@ -152,7 +176,8 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
     inside = False
     low = climbed_near = suc = False
     z_entry = 0.0
-    for p in path:
+    grounded = _grounded(path)
+    for i, p in enumerate(path):
         d = _d2(p, item)
         if d < approach_r:
             if not inside:
@@ -163,7 +188,13 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
             # måste hållas i SAMMA sample — disjunkta delsegment (golvcirkulation
             # med d2_min 70.9 på z=-16 + avsatsstuds z 67.8 på d2 126) gav falsk
             # positiv när villkoren ackumulerades separat.
-            if p[2] >= z_entry + CLIMB_GAIN and d < APPROACH_MIN:
+            # GRUNDAT-KRAV (analyst-review 4, 2026-08-02, underkände mega-claimet
+            # @5.3G): samtidighetssamplet måste dessutom vara STÖTT — ep6:s
+            # "klättring" var två kedjade bunnyhop-bågar in i NO-hörnsväggen
+            # (apex z 67.8 luftburet; max stödd z i intervallet = entré+0).
+            # Människornas nerifrån-väg ger stödda platåer på entré+104..+136,
+            # så grundat +80 behåller 21/24 mänskliga positiva (analyst-mätt).
+            if p[2] >= z_entry + CLIMB_GAIN and d < APPROACH_MIN and grounded[i]:
                 climbed_near = True
             if d < PICKUP_2D and \
                     PICKUP_DZ_LO < p[2] - item[2] < PICKUP_DZ_HI:

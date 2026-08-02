@@ -124,6 +124,38 @@ def test_jump_gate_item_ladder():
     assert res["gates"]["RA-tagningen"]["lyckade"] == 1
 
 
+def test_jump_gate_item_airborne_arc_not_attempt():
+    # review 4 (analyst 2026-08-02): luftburen hoppbåge som passerar
+    # entré+80 inom d2<120 är INTE klättring — samtidighetssamplet måste
+    # vara grundat (z-stabilt ±0.5 över ≥3 sampel). Underkända mega-claimet:
+    # kedjade bunnyhops in i väggen, apex z 67.8 luftburet, max stödd z = entré.
+    from rl.jump_gates import analyze, MEGA_SNG
+    x, y = float(MEGA_SNG[0]), float(MEGA_SNG[1])
+    ent = 40.0                                     # entré-z (< låg-tröskel 100)
+    arc = [[x, y - 250, ent, 300]] * 4 + \
+          [[x, y - 200 + i * 20, ent + (140.0 - 5.4 * (i - 5) ** 2), 300]
+           for i in range(10)] + \
+          [[x, y - 250, ent, 300]] * 4             # båge: apex ent+140 vid d2<120
+    res = analyze({"episodes": [{"path": arc}]})
+    assert res["gates"]["SNG-mega"]["försök"] == 0
+    assert res["gates"]["SNG-mega"]["nivå"] == 0
+
+
+def test_jump_gate_item_apex_quasi_stable_not_grounded():
+    # bågAPEX är kvasi-z-stabil (dz 0.4/0.1 @26 ms) men behåller gravitationens
+    # kurvatur d²z ≈ −0.5 — exakta samplen ur underkända mega-claimet (ep6,
+    # sample 2282: z 67.4/67.8/67.7 på d2 117). Får inte räknas som grundat.
+    from rl.jump_gates import analyze, MEGA_SNG
+    x, y = float(MEGA_SNG[0]), float(MEGA_SNG[1])
+    zs = [-16.0, -16.0, -16.0, 63.0, 65.0, 66.5, 67.4, 67.8, 67.7, 67.0,
+          65.8, 64.0, -16.0, -16.0]
+    ys = [y - 250, y - 250, y - 250, y - 135, y - 130, y - 126, y - 121,
+          y - 117, y - 113, y - 109, y - 105, y - 102, y - 250, y - 250]
+    path = [[x, yy, zz, 300] for yy, zz in zip(ys, zs)]
+    res = analyze({"episodes": [{"path": path}]})
+    assert res["gates"]["SNG-mega"]["försök"] == 0
+
+
 def test_height_reward_speed_scaled_and_bounded():
     from rl.rewards_gate2 import height_reward, HEIGHT_Z_MIN, HEIGHT_Z_MAX
     # stillastående på RA-toppen betalar noll (anti-camping)
