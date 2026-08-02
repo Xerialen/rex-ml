@@ -6146,3 +6146,21 @@ Vid svitens resultat: uppdatera gate_metrics_history + artefakt (tools/rex3d →
 libasound-libs återextraherade i scratchpad/libs), nollskilda hoppclaims ⇒ dm3-analyst-
 agenten (finns nu som riktig agenttyp). Sprintklocka: ~12 h kvar på vmonster; därefter
 MIGRATION.md-slutchecklistan (slutsnapshot av checkpoint → git, qwserver-tar, sista post).
+
+## 2026-08-02 12:40 EEST — 5.3G-mätpunkt: höjd 1.5 TRÄFFAR — tre av fyra sim-kriterier gröna
+n=30-evalen på 5.3G-checkpointen (höjdkoef 1.5-regimen, ~350M frames efter omstarten):
+**fart 554.7** (>500 ✓, upp från 476.6), **täckning 41.8 %** (rekord, upp från 36.1),
+**0 fastnade** (✓, från 1), **score 1.108** (≥1.0 ✓, från 0.953). Beslutslogiken
+(11:05-posten): fart ≥500 ∧ täckning ≥33 % ⇒ **HÅLL höjdkoef 1.5** — paritetskalibreringen
+höll: 2.0 gav täckning men åt farten (476.6), 1.5 ger båda. Ingen flaggändring; träningen
+rullar orörd (~41k FPS, ~5.55G nu, tak 12G).
+Spatial (10 ep, 12:14): mest tid vid mega 19.5 %, quad 13.9 %, SNG 9.5 %, RL 8.6 %,
+YA/SSG 7.7 %, **RA-toppen 7.3 %** (högplatåvistelse består), ringen 6.7 % (fart 551 där).
+Kvarvarande problemzon: VATTNET 6.8 % tidsandel med 61.6 % tvekan — vattnet är exkluderat
+ur gate-måtten men kostar utforskningstid; bevakas, ingen åtgärd nu (belöningsbalansen
+ägarlåst till befintliga vikter).
+30-ep-dumpen (~/dumps/traj_53G.json) kör sedan 12:14, därefter jump_gates → artefaktbygge.
+Hopp-gaterna väntas fortsatt 0/0 (5.0G-dumpens färska nollor är senaste godkända läget);
+nollskilda claims går till dm3-analyst FÖRE presentation (vetoregeln).
+Historik uppdaterad (evidence/gate_metrics_history.json, punkt 7). Kvar till sim-gate:
+täckning 41.8→70 %, hopp-gaternas min-nivå 0→3. Sprint: ~10 h kvar på vmonster.

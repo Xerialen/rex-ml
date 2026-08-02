@@ -59,6 +59,15 @@
    "stuck": 1,
    "score": 0.953,
    "jump_min_niva": 0
+  },
+  {
+   "ts": "2026-08-02 11:06",
+   "frames_g": 5.3,
+   "open_mean_speed": 554.7,
+   "open_coverage": 0.418,
+   "stuck": 0,
+   "score": 1.108,
+   "jump_min_niva": 0
   }
  ]
 }
