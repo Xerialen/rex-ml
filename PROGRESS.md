@@ -6360,3 +6360,21 @@ Snabbsvit @6.35G (riskregimen ~440M frames in), ALLT genom driftgodkända v6.1:
   episoder SLUTAR vid RA-toppen (fart 428-509) — höglandsvistelse etablerad i prob.
 Riskregimens kausalkedja ser ut att verka: ledge-spawnworkers → ledgetid i FRI roam
 ↑12x → första korsningsförsöken. Evidens uppdaterad som PRELIMINÄR (banner på).
+
+## 2026-08-02 18:45 EEST — GENOMBROTT VERIFIERAT: första gateförsöket (SO nivå 1) + förstapersonsläge
+Analystens granskning av 6.35G-claimen (evidence/analyst_breakthrough_review.md):
+**DELVIS GODKÄND** — nivå 2-claimet föll men **ep4 = FÖRSTA VERIFIERADE HEXAGON-
+GATEFÖRSÖKET: ring→quad SO 1 försök/1 ramla ⇒ NIVÅ 1 ("försöker"), analystgodkänt.**
+Grundad avfärd på SO-ledgen, spår i bandet hela vägen, upphopp vid d≈305, föll 10 u
+från gapets bortre kant — alla mått inom humanramlafördelningen. Ep1-"lyckat" var en
+RUNTOMRUTT på ytterkantsgolvet (omklassad axial lyckat); ep8-"lyckat" i substans ramla
+(dokumenterad detektorlucka: landningsbekräftelse saknas för lyckat-utfall — åtgärd
+kräver humanretentionsmätning först, 25 % av humanlyckade har 0 grundade masksampel).
+RA-nollan bekräftad korrekt (närhetsmätarens +202/64.5 var OLIKA besök — förbättrings-
+förslag: rapportera bästa gemensamma (zvinst,d2)-par per besök). Korrigerad bokföring
+i evidence/jump_gates_latest.json (review_godkand=true).
+**FÖRSTAPERSONSLÄGE i artefakten (ägarens begäran):** 4 uppspelningsbara klipp med
+analystens etiketter (ep4 VERIFIERAT FÖRSÖK huvudklipp; runtomrutten; 2 axiala),
+kamera i ögonhöjd längs banans riktning, flat geometri + svag 128u-grid, inga texturer;
+play/paus/scrub/halvfart, ?fp=N-autostart. Mall+bygge synkade till tools/rex3d.
+Publicerad på samma URL. Detektorn ger nu eventranges (i0/i1) för klippextraktion.
