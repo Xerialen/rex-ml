@@ -6427,7 +6427,7 @@ inflatera försöksnämnaren vid nivå 3-bedömning; gropcirkeln r 260 är model
 Officiellt läge: ring→quad SO nivå 2 (2/1/1), övriga fem gates 0. Detektorkedja
 v1→v7.1 komplett med 8 analystgranskningar och låst humanbaslinje.
 
-## 2026-08-02 21:47 EEST — 6.6G-cykel: täckningsrekord 47.6 % men fart 438.8 ⇒ mix 10→13
+## 2026-08-02 21:39 EEST — 6.6G-cykel: täckningsrekord 47.6 % men fart 438.8 ⇒ mix 10→13
 Full cykel @6.6G genom LÅSTA v7.1: n=30 fart 438.8 (<500, ned från 554.7), täckning
 **47.6 % (rekord, +5.8)**, 2 fastnade (upp), score 0.878. Fria dumpen (30 ep): gates
 0/0 men axiala gropförsök 4 (intentionen består); närhet: SNG-mega 161 låga besök
