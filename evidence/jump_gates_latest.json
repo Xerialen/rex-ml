@@ -1,5 +1,5 @@
 {
- "episodes": 30,
+ "episodes": 10,
  "gates": {
   "ring→quad NV": {
    "försök": 0,
@@ -41,6 +41,6 @@
   }
  },
  "min_nivå": 0,
- "review": "Nollor på samtliga sex (godkänd detektor, ingen review krävs)",
+ "review": "Nollor på samtliga sex (färsk dump 2026-08-02 09:35 @ ~5.0G, godkänd detektor); reboot-förlorade quad→ring-claimet ersatt av denna mätning",
  "review_godkand": true
 }

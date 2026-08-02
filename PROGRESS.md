@@ -6119,3 +6119,14 @@ beslutade korrigeringen) + övriga flaggor oförändrade; ny persistent monitor 
 hjärtslag + nere/stillastående-vakt); framtida dumpar skrivs till ~/dumps/ (rebootsäkert,
 utanför git) i stället för /tmp-scratchpad — lärdomen från förlorat verifieringsunderlag.
 Sprintklocka: ~15 h kvar på vmonster (av ursprungliga 48).
+
+## 2026-08-02 09:25 EEST — Dashboard uppdaterad med 4.65G-punkten; redo för kompaktion
+Metrics-historik + artefakt ompublicerad (samma URL): fart 477 ↓ (rött, under golvet —
+korrigering 1.5 aktiv i träningen), täckning 36.1 % ↑ (rekord), fastnade 1/30 ↑, score
+0.95 ↓, gate-hopp min-nivå 0 →. Färsk 10-ep-dump @ ~5.0G (till ~/dumps, rebootsäkert):
+alla sex hoppgater 0/0 (godkänd detektor) — reboot-förlorade quad→ring-claimet ersatt.
+Kartan visar tydligt fler gap-bågar (gap ×1/×2 spridda över hela kartan) och bredare
+ruttspridning än någonsin (täckningsrekordet syns). Screenshot verifierad (rex3d_check5,
+libasound återextraherad efter reboot). Träning: höjd 1.5-regimen kör från 4 951.6M,
+~36k FPS rampande. Nästa: n=30-svit @ ~5.2-5.3G avgör om 1.5 håller BÅDA målen
+(fart >500 OCH täckning ≥33 %); därefter slutspurt + migreringschecklistan.
