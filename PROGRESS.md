@@ -6130,3 +6130,19 @@ ruttspridning än någonsin (täckningsrekordet syns). Screenshot verifierad (re
 libasound återextraherad efter reboot). Träning: höjd 1.5-regimen kör från 4 951.6M,
 ~36k FPS rampande. Nästa: n=30-svit @ ~5.2-5.3G avgör om 1.5 håller BÅDA målen
 (fart >500 OCH täckning ≥33 %); därefter slutspurt + migreringschecklistan.
+
+## 2026-08-02 11:55 EEST — Kompaktionscheckpoint (läget för färsk kontext)
+Träning: gate2_v2 kör höjd 1.5-regimen (mix 15, hex 6, climb 0.5, height 1.5, rarity,
+entropi 0.003, tak 12G) från ~4 951.6M efter maskinreboot; nu ~5.4G, ~50k FPS, frisk.
+Persistent monitor aktiv (hjärtslag var 30:e min). **PÅGÅENDE: full mätsvit @ ~5.3G i
+bakgrunden** (n=30 → spatial → 30-ep-dump till ~/dumps/traj_53G.json → jump_gates) —
+AVGÖR om 1.5 håller båda målen. Beslutslogik journalförd 11:05-posten: fart ≥500 ∧
+täckning ≥33 % ⇒ håll; fart <500 ⇒ koef mot 1.2; täckning <~30 ⇒ koef mot 1.7.
+Färskaste fakta (5.0G-dump, mest 2.0-tränad policy): tidsandel z≥40 = **15.4 %** (från
+<1 % före höjdtermen), äkta gap-hopp **20/10 ep** (spann upp till 514 u, spridda över
+kartan; var 5/10 ep två dagar sedan), klätterlandningar 25/10 ep, gate-hoppen 0/0 (sex
+gater; reboot-förlorade quad→ring-claimet ersatt av färska nollor).
+Vid svitens resultat: uppdatera gate_metrics_history + artefakt (tools/rex3d → scratchpad,
+libasound-libs återextraherade i scratchpad/libs), nollskilda hoppclaims ⇒ dm3-analyst-
+agenten (finns nu som riktig agenttyp). Sprintklocka: ~12 h kvar på vmonster; därefter
+MIGRATION.md-slutchecklistan (slutsnapshot av checkpoint → git, qwserver-tar, sista post).
