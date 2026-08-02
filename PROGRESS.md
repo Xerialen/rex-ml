@@ -6313,7 +6313,7 @@ under stödd mask = öppen fråga till analysten (slutvalidering mot 67 band-ram
 presenterade gate-lägen opåverkade (nollor genom alla versioner).
 Träningen orörd genom hela detektorarbetet (riskregimen ~6.3G, ~52k FPS).
 
-## 2026-08-02 17:20 EEST — Review 7 ⇒ detektor v6.1 "förankrat fall"; slutvalidering beställd
+## 2026-08-02 17:06 EEST — Review 7 ⇒ detektor v6.1 "förankrat fall"; slutvalidering beställd
 Analystens v6-validering: krav a-c korrekt implementerade, men in-mask-progressionen
 förblindade misslyckandestatistiken på BÅDA sidor (ramla-retention NV 38 %/SO 19 % —
 fallen driver av maskkolumnerna före d<450; en detektor som missar 62-81 % av miss-
