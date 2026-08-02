@@ -6379,7 +6379,7 @@ kamera i ögonhöjd längs banans riktning, flat geometri + svag 128u-grid, inga
 play/paus/scrub/halvfart, ?fp=N-autostart. Mall+bygge synkade till tools/rex3d.
 Publicerad på samma URL. Detektorn ger nu eventranges (i0/i1) för klippextraktion.
 
-## 2026-08-02 18:52 EEST — ÄGARBESLUT: ny gate-definition ⇒ detektor v7, ring→quad SO NIVÅ 2
+## 2026-08-02 18:36 EEST — ÄGARBESLUT: ny gate-definition ⇒ detektor v7, ring→quad SO NIVÅ 2
 Ägaren såg ep1 i förstaperson och beslutade: "ep1 är ett 100% lyckat försök" /
 "om botten lyckas ta sig över är det lyckat". BRIEF-amendment tillagd: sidovägen =
 HELA sidogolvet inkl. ytterkanten (|perp| 100-460; SO-ytterkanten kontinuerlig över
