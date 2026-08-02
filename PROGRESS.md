@@ -6466,7 +6466,7 @@ tröskel (90 %) ligger därmed PÅ elitnivå för NV, över (46-83 %) för övri
 Behållna retreater max dPit 252 (8 u marginal). 41/41 test; alla botdumpar verifierade
 opåverkade. evidence/analyst_v72_baseline.md ersätter v7.1 som regressionsbaslinje.
 
-## 2026-08-02 22:44 EEST — KOMPAKTIONSCHECKPOINT (ägaren begärde compact)
+## 2026-08-02 23:16 EEST — KOMPAKTIONSCHECKPOINT (ägaren begärde compact)
 **Sprintläge:** sista H100-natten, deadline 08:00 (3 aug) då maskinen rensas — INGEN
 migrering utan ägarens uttryckliga order (stående regel). Ägarens riskmandat aktivt:
 genombrott på gate-hoppen prioriteras; 4090 ("pinnacle") finputsar efteråt.
@@ -6476,7 +6476,7 @@ genombrott på gate-hoppen prioriteras; 4090 ("pinnacle") finputsar efteråt.
 --qw_ledge_spawn_workers=8 --qw_mega_spawn_workers=4 (fria roamers 7), tak 12G.
 Nu ~7.27G, ~50-55k FPS. tmux rexml:jobs; monitor b93741a97 (sf_log + checkpointframes).
 Rollback-snapshot: pipeline/out/rl/gate2_snapshot_20260802_pre_risk (5.913G).
-**VÄNTANDE:** 7.3G-vakten (bsou578vk) slår ~22:55 ⇒ kör FULL mätcykel (mall: se
+**VÄNTANDE:** 7.3G-vakten (bsou578vk) slår strax (frames ~7.4G vid 23:16) ⇒ kör FULL mätcykel (mall: se
 21:00-cykeln): n=30 eval + spatial + 30-ep dump ~/dumps/traj_73G.json + jump_gates
 --out evidence/jump_gates_latest.json --clips $SCRATCH/rex_fp_events.json + proximity
 + ledge/RA-prober. OBS: jump_gates_latest är KUMULATIV — mall i nuvarande fil;
