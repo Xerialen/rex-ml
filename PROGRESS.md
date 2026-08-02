@@ -6344,3 +6344,19 @@ repro). Kvarstående övervakningspunkter: bhop-underdetektion, källgrundsbias 
 (51 ms-humandata, ej botrelevant), modellcirkeln r 260.
 Detektorn mäter nu ägarens gate-avsikt: GOLVFÖRANKRAD ledgeanvändning med
 observerbara misslyckanden på båda sidor. review_godkand=true.
+
+## 2026-08-02 17:47 EEST — 6.35G-svit: FÖRSTA nollskilda gate-utfallet genom driftgodkänd detektor (PRELIMINÄRT)
+Snabbsvit @6.35G (riskregimen ~440M frames in), ALLT genom driftgodkända v6.1:
+- Fri eval n=10: fart 640.3 (nytt max i serien), score 1.277, 0 fastnade.
+- **FRI-STRÖVANDE-DUMPEN: "ring→quad SO": 2 försök, 1 LYCKAT (+1 ramla); axiala
+  gropkorsningar 2 varav 1 LYCKAD. PRELIMINÄRT — vetogranskning pågår
+  (evidence/analyst_breakthrough_review.md väntas). Om godkänt: första verifierade
+  hexagon-gateförsöken + nivå 2 ("lyckas ibland") för den gaten.**
+- Närhetstrend (fri roam): hexagon-plattformstid 0.58→6.75 %, ledgetid 0.52→6.2 %,
+  ledgevistelser 3→41, bästa annalkande 431→260 (<350-kravet nått), annalkande<350:
+  0→1. RA: z-vinst max 43.8→202 (!), ≥80: 0→4, d2 64.5<120 — men RA-gaten 0
+  (analysten stickprovar varför: grundat-krav/entrévillkor/lucka). SNG-mega stabil.
+- Ledge-prob: sidogates 0 men axiala 3 ramla (intentionerna ökar); RA-prob: 8/10
+  episoder SLUTAR vid RA-toppen (fart 428-509) — höglandsvistelse etablerad i prob.
+Riskregimens kausalkedja ser ut att verka: ledge-spawnworkers → ledgetid i FRI roam
+↑12x → första korsningsförsöken. Evidens uppdaterad som PRELIMINÄR (banner på).

@@ -1,5 +1,5 @@
 {
- "episodes": 30,
+ "episodes": 10,
  "gates": {
   "ring→quad NV": {
    "försök": 0,
@@ -9,11 +9,11 @@
    "nivå": 0
   },
   "ring→quad SO": {
-   "försök": 0,
-   "lyckade": 0,
-   "ramla": 0,
+   "försök": 2,
+   "lyckade": 1,
+   "ramla": 1,
    "retreat": 0,
-   "nivå": 0
+   "nivå": 2
   },
   "quad→ring NV": {
    "försök": 0,
@@ -40,7 +40,13 @@
    "nivå": 0
   }
  },
+ "axiala_gropkorsningar": {
+  "försök": 2,
+  "lyckade": 1,
+  "ramla": 1,
+  "retreat": 0
+ },
  "min_nivå": 0,
- "review_godkand": true,
- "detektor_version": "v6.1 'förankrat fall' — DRIFTGODKÄND av analysten 2026-08-02 (evidence/analyst_v61_final.md; kedja v4→v6.1, baslinje 768/42-43/0)"
+ "review_godkand": false,
+ "detektor_version": "v6.1 driftgodkänd; ring→quad SO-claimet (2/1) PRELIMINÄRT — vetogranskning pågår (analyst_breakthrough_review.md)"
 }
