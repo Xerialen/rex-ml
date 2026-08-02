@@ -6165,7 +6165,7 @@ nollskilda claims går till dm3-analyst FÖRE presentation (vetoregeln).
 Historik uppdaterad (evidence/gate_metrics_history.json, punkt 7). Kvar till sim-gate:
 täckning 41.8→70 %, hopp-gaternas min-nivå 0→3. Sprint: ~10 h kvar på vmonster.
 
-## 2026-08-02 13:17 EEST — Närhetsmätning ⇒ kursändring: spawn-tryck på blockerarna (omstart @5.6G)
+## 2026-08-02 13:11 EEST — Närhetsmätning ⇒ kursändring: spawn-tryck på blockerarna (omstart @5.6G)
 Ägardirektiv: "utvärdera proaktivt om vi kommer närmare att bottarna börjar göra hexagon-
 och andra trickhopp ... och om inte vad kan vi ändra". INGEN migrering utan ägarorder
 (stående regel sparad). Nytt verktyg rl/jump_proximity.py (samma konstanter som analyst-
