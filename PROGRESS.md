@@ -6204,7 +6204,7 @@ BESTÄLLD och pågår — detektor v4 är inte driftgodkänd förrän domen land
 Träningen (hex 8 plattformsband + RA-gård 4) rullar sedan 13:12; reward åter 11 269
 efter resume från 5.62G — de nya spawnregionerna betalar höjd/novelty från tick 0.
 
-## 2026-08-02 13:38 EEST — Detektor v4 GODKÄND FÖR DRIFT (analystvalidering mot människodata)
+## 2026-08-02 13:27 EEST — Detektor v4 GODKÄND FÖR DRIFT (analystvalidering mot människodata)
 Analystens återvalidering (evidence/analyst_grounded_validation.md + repro/
 validate_grounded_humans.py): SNG-mega 2/2 mänskliga låg-entré-lyckanden behållna
 (100 %), RA 176/136 mot gamla 217/156 = 87 % retention av lyckade (≥ tröskeln 79 %);
