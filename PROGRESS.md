@@ -6106,7 +6106,7 @@ Omstart med +--qw_hex_spawn_workers=6 (≈18 % av dm3-träningen börjar uppe). 
 tid-på-platånivå (spatial), hoppgaternas försöksräknare (analystvetot gäller nollskilda
 claims), n_gap. 31/31 tester.
 
-## 2026-08-02 09:10 EEST — MASKINREBOOT ~02:03: 7 h H100-stillestånd; omstart med höjdkoef 1.5
+## 2026-08-02 09:05 EEST — MASKINREBOOT ~02:03: 7 h H100-stillestånd; omstart med höjdkoef 1.5
 Rekonstruktion: vid 01:15-beslutet (höjd 2.0→1.5 efter fart 476.6 < golvet) blockerades
 verkställandet av tillfälligt klassificeraravbrott; strax därefter REBOOTADE maskinen
 (uptime visar 02:03) — tmux/träning/monitor dog, /tmp-scratchpaden rensades. Sessionen
