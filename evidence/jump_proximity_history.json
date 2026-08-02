@@ -1,0 +1,40 @@
+{
+ "kommentar": "Ledande indikatorer for gate-hoppen (rl/jump_proximity.py); append per dump. Trosklar: hexagon-attempt kraver annalkande <350; item-attempt kraver zvinst >=80 samtidigt med d2<120.",
+ "punkter": [
+  {
+   "ts": "2026-08-02 09:07",
+   "frames_g": 5.0,
+   "dump": "traj_0907.json",
+   "episodes": 10,
+   "hexagon": {
+    "plattformstid_pct": 3.78,
+    "ledgetid_pct": 4.84,
+    "ledgevistelser": 28,
+    "ledgefall_i_grop": 0,
+    "annalkande_min_p50": 526.1,
+    "annalkande_min_best": 440.2,
+    "annalkande_under_350": 0
+   },
+   "RA": {
+    "regiontid_pct": 10.55,
+    "besök_låga": 42,
+    "zvinst_p50": 6.1,
+    "zvinst_max": 43.8,
+    "zvinst_over_40": 7,
+    "zvinst_over_80": 0,
+    "d2min_elev_best": 72.6,
+    "d2min_krav": 120.0
+   },
+   "SNG-mega": {
+    "regiontid_pct": 1.37,
+    "besök_låga": 5,
+    "zvinst_p50": 28.8,
+    "zvinst_max": 99.2,
+    "zvinst_over_40": 1,
+    "zvinst_over_80": 1,
+    "d2min_elev_best": 205.5,
+    "d2min_krav": 120.0
+   }
+  }
+ ]
+}
