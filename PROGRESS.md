@@ -6457,7 +6457,7 @@ NV-gates 0 (→ axial); 63G/66G opåverkade. Omlåsning av humanbaslinjen bestä
 Artefaktens klipp uppdaterade (NV-proberna märkta "underkänd som gate — cirkulation").
 Träningen: mix 13-regimen sedan 21:39 (@6.98G), nästa fulla cykel vid 7.3G-vakten.
 
-## 2026-08-02 22:20 EEST — v7.2-baslinjen LÅST (ersätter v7.1)
+## 2026-08-02 22:10 EEST — v7.2-baslinjen LÅST (ersätter v7.1)
 Analystens omlåsning: alla prognoser exakt bekräftade — lyckat 580 + ramla 133
 per-event-identiska, retreat 37→22 (7/7 SO, 15/30 NV; alla 15 fällda → axial-retreat,
 min dPit 260-305). **Ny låst tabell: 735 gate-event = 580 lyckat/133 ramla/22 retreat.**
