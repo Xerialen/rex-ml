@@ -1,0 +1,6 @@
+{"clips": [
+ {"ep": 4, "i0": 1098, "i1": 1142, "label": "ring→quad SO — VERIFIERAT FÖRSÖK (föll vid gapets bortre kant)", "verdict": "godkänd", "huvud": true},
+ {"ep": 1, "i0": 186, "i1": 249, "label": "runtomrutt till quad (underkänd som ledgekorsning; axial lyckat)", "verdict": "omklassad"},
+ {"ep": 1, "i0": 279, "i1": 315, "label": "axial gropkorsning — föll i MH-gropen", "verdict": "axial"},
+ {"ep": 8, "i0": 454, "i1": 476, "label": "axial mot ring — 'lyckat' i substans fall (detektorlucka)", "verdict": "artefakt"}
+]}

@@ -71,6 +71,23 @@
   #legend .dot{display:inline-block;margin-right:6px;vertical-align:-1px}
   #hint{position:absolute;left:12px;top:10px;color:#68738a;font-size:11px;
         background:rgba(7,10,18,.5);padding:4px 8px;border-radius:6px}
+  .fpclip{display:block;width:100%;text-align:left;border:1px solid var(--line);
+          border-radius:6px;background:none;color:var(--ink);font:inherit;font-size:12.5px;
+          padding:6px 8px;margin-top:6px;cursor:pointer}
+  .fpclip:hover{background:var(--chipbg)}
+  .fpclip.sel{border-color:var(--acc);background:var(--chipbg)}
+  .fpclip .vd{font-size:11px;color:var(--mut)}
+  #fphud{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:none;
+         align-items:center;gap:12px;color:#dbe2ee;font-size:12.5px;
+         background:rgba(7,10,18,.78);padding:8px 14px;border-radius:8px;white-space:nowrap}
+  #fphud button{border:1px solid #3a4763;background:#1a2233;color:#dbe2ee;border-radius:5px;
+                font:inherit;padding:2px 10px;cursor:pointer}
+  #fphud input[type=range]{width:180px;accent-color:#eab54d}
+  #fpcross{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px;
+           display:none;pointer-events:none;opacity:.7}
+  #fpcross::before,#fpcross::after{content:"";position:absolute;background:#eab54d}
+  #fpcross::before{left:6px;top:0;width:2px;height:14px}
+  #fpcross::after{left:0;top:6px;width:14px;height:2px}
 </style>
 
 <div id="app">
@@ -84,6 +101,7 @@
   <div id="cover"></div>
   <div id="gatemetrics" class="qa"></div>
   <div id="gatehopp" class="qa"></div>
+  <div id="fppanel" class="qa"></div>
   <div id="qa-hopp" class="qa"></div>
   <div id="qa-ringquad" class="qa"></div>
   <div id="qa-megasng" class="qa"></div>
@@ -97,6 +115,16 @@
   <canvas id="gl"></canvas>
   <div id="labels"></div>
   <div id="hint">klicka en episod i listan</div>
+  <div id="fpcross"></div>
+  <div id="fphud">
+    <span id="fp-label" style="max-width:340px;overflow:hidden;text-overflow:ellipsis"></span>
+    <button id="fp-play">⏸</button>
+    <input type="range" id="fp-scrub" min="0" max="1000" value="0">
+    <span class="num" id="fp-time"></span>
+    <span class="num" id="fp-speed"></span>
+    <button id="fp-slow">½×</button>
+    <button id="fp-exit">✕ ut</button>
+  </div>
   <div id="legend"></div>
   <div id="hud">
     <label><input type="checkbox" id="tgl-traj" checked> botens banor</label>
@@ -198,6 +226,24 @@ const P_HEAT = prog(
      vec3 col = vq < 0.5 ? mix(a, b, vq*2.0) : mix(b, c, (vq-0.5)*2.0);
      gl_FragColor = vec4(col * (0.030 + 0.20*vq*vq) * fall, 1.0);
    }`);
+/* förstaperson: flat karta utan texturer — kind-färg, höjdton, svag 128u-grid,
+   avståndsdis. Djuptest på (till skillnad från röntgenvyn). */
+const P_FP = prog(
+  `attribute vec3 p; attribute float k; uniform mat4 M; varying vec3 vp; varying float vk;
+   void main(){ vp=p; vk=k; gl_Position = M*vec4(p,1.0); }`,
+  `precision mediump float; varying vec3 vp; varying float vk; uniform vec3 eye;
+   void main(){
+     vec3 base = vk > 1.5 ? vec3(0.10,0.30,0.34) : vec3(0.30,0.35,0.46);
+     float hz = clamp((vp.z + 300.0) / 800.0, 0.0, 1.0);
+     base *= 0.75 + 0.5*hz;
+     vec2 g2 = abs(fract(vp.xy/128.0) - 0.5);
+     float gz = abs(fract(vp.z/128.0) - 0.5);
+     float gmin = min(min(g2.x, g2.y), gz);
+     float grid = smoothstep(0.03, 0.0, gmin) * 0.12;
+     float fog = clamp(distance(eye, vp) / 2600.0, 0.0, 1.0);
+     vec3 c = mix(base + vec3(grid), vec3(0.03,0.05,0.09), fog*fog*0.9 + fog*0.1);
+     gl_FragColor = vec4(c, 1.0);
+   }`);
 const P_PT = prog(
   `attribute vec3 p; attribute float sz; uniform mat4 M;
    void main(){ gl_Position = M*vec4(p,1.0); gl_PointSize = min(40.0, sz*2400.0/gl_Position.w); }`,
@@ -267,7 +313,24 @@ function lookAt(eye, at){
 const HOME = {yaw: -2.3, pitch: 0.55, dist: 2600, at: [620, -60, -40]};
 const cam = {...HOME, at: [...HOME.at]};
 let VP = null;
+const FP = {on: false, clip: null, path: null, dirs: null, t: 0, t0: 0, t1: 0,
+            playing: true, speed: 1, eye: [0,0,0], raf: 0, last: 0};
+function fpView(){
+  const n = FP.path.length;
+  const i = Math.min(n - 2, Math.floor(FP.t)), f = Math.min(1, FP.t - i);
+  const a = FP.path[i], b = FP.path[i+1];
+  const eye = [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f + 22];
+  const da = FP.dirs[i], db = FP.dirs[Math.min(n-1, i+1)];
+  let d = [da[0]+(db[0]-da[0])*f, da[1]+(db[1]-da[1])*f, (da[2]+(db[2]-da[2])*f)*0.55];
+  const dl = Math.hypot(...d) || 1; d = d.map(v => v/dl);
+  FP.eye = eye;
+  const asp = cv.width / Math.max(1, cv.height);
+  VP = mat_mul(persp(1.35, asp, 4, 20000),
+               lookAt(eye, [eye[0]+d[0], eye[1]+d[1], eye[2]+d[2]]));
+  return VP;
+}
 function view(){
+  if (FP.on) return fpView();
   const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
   const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
   const eye = [cam.at[0] + cam.dist*cp*cy, cam.at[1] + cam.dist*cp*sy, cam.at[2] + cam.dist*sp];
@@ -371,12 +434,46 @@ for (const s of GAPS){
 
 let sel = -1;                     // vald episod (-1 = ingen)
 let needsDraw = false;
+function drawFP(){
+  const M = fpView();
+  gl.enable(gl.DEPTH_TEST);
+  gl.disable(gl.BLEND);
+  gl.clearColor(0.016, 0.028, 0.055, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.useProgram(P_FP);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P_FP, "M"), false, M);
+  gl.uniform3fv(gl.getUniformLocation(P_FP, "eye"), FP.eye);
+  const aP = gl.getAttribLocation(P_FP, "p"), aK = gl.getAttribLocation(P_FP, "k");
+  gl.bindBuffer(gl.ARRAY_BUFFER, B_MPOS);
+  gl.enableVertexAttribArray(aP); gl.vertexAttribPointer(aP, 3, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, B_MK);
+  gl.enableVertexAttribArray(aK); gl.vertexAttribPointer(aK, 1, gl.FLOAT, false, 0, 0);
+  gl.drawArrays(gl.TRIANGLES, 0, N_MVERT);
+  /* items som djuptestade punkter — orienteringshjälp utan texturer */
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.useProgram(P_PT);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P_PT, "M"), false, M);
+  const pp = gl.getAttribLocation(P_PT, "p"), ps = gl.getAttribLocation(P_PT, "sz");
+  gl.enableVertexAttribArray(pp); gl.enableVertexAttribArray(ps);
+  const pcol = gl.getUniformLocation(P_PT, "col");
+  for (const s of PT_SETS){
+    if (s.tag !== "items") continue;
+    gl.bindBuffer(gl.ARRAY_BUFFER, s.pos); gl.vertexAttribPointer(pp, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, s.sz);  gl.vertexAttribPointer(ps, 1, gl.FLOAT, false, 0, 0);
+    gl.uniform4fv(pcol, s.col);
+    gl.drawArrays(gl.POINTS, 0, s.n);
+  }
+  gl.disable(gl.DEPTH_TEST);
+  labelBox.innerHTML = "";
+}
 function draw(){
   needsDraw = false;
   const dpr = Math.min(2, window.devicePixelRatio || 1);
   const w = Math.round(cv.clientWidth*dpr), h = Math.round(cv.clientHeight*dpr);
   if (cv.width !== w || cv.height !== h){ cv.width = w; cv.height = h; }
   gl.viewport(0, 0, w, h);
+  if (FP.on){ drawFP(); return; }
   gl.clearColor(0.027, 0.039, 0.070, 1);
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.disable(gl.DEPTH_TEST);
@@ -506,6 +603,7 @@ function labels(){
 function req(){ if (!needsDraw){ needsDraw = true; requestAnimationFrame(draw); } }
 let drag = null;
 cv.addEventListener("pointerdown", e => {
+  if (FP.on) return;
   drag = {x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey};
   cv.setPointerCapture(e.pointerId);
 });
@@ -532,6 +630,7 @@ cv.addEventListener("pointermove", e => {
 cv.addEventListener("pointerup", () => { drag = null; });
 cv.addEventListener("wheel", e => {
   e.preventDefault();
+  if (FP.on) return;
   cam.dist = Math.min(9000, Math.max(300, cam.dist * (e.deltaY > 0 ? 1.12 : 0.89)));
   req();
 }, {passive: false});
@@ -739,6 +838,111 @@ document.getElementById("legend").innerHTML =
   `<span style="background:linear-gradient(90deg,#100747,#d93340,#ffeb61);` +
   `display:inline-block;width:52px;height:8px;border-radius:4px;margin-right:6px;` +
   `vertical-align:-1px"></span>mänsklig trafik (908 M samples)`;
+
+/* ---------- förstaperson: genombrottshoppen (ägarens begäran 2026-08-02) ---------- */
+(function(){
+  const F = DATA.fp;
+  const el = document.getElementById("fppanel");
+  if (!F || !F.clips || !F.clips.length){ el.style.display = "none"; return; }
+  const DT = F.dt || 0.052;
+  const VD = {godkänd: ["var(--ok)", "ANALYSTGODKÄNT"], omklassad: ["var(--acc)", "omklassad"],
+              axial: ["var(--mut)", "axial"], artefakt: ["var(--varn)", "detektorlucka"]};
+  el.innerHTML = `<h3>Förstaperson · gropkorsningarna @6.35G</h3>` +
+    `<p style="color:var(--mut);font-size:12px;margin-bottom:2px">Kameran följer boten i ` +
+    `ögonhöjd; blickriktning = rörelseriktningen (dumpen saknar siktvinklar). ` +
+    `Flat geometri, inga texturer. Etiketter enligt analystens granskning.</p>`;
+  F.clips.forEach((c, k) => {
+    const [col, tag] = VD[c.verdict] || ["var(--mut)", c.verdict];
+    const b = document.createElement("button");
+    b.className = "fpclip"; b.id = "fpclip-" + k;
+    b.innerHTML = `<b style="color:${col}">▶ ep${c.ep}</b> ${esc(c.label)}` +
+      `<br><span class="vd" style="color:${col}">${tag}</span>` +
+      `<span class="vd"> · ${(((c.i1 - c.i0) * DT)).toFixed(1).replace(".", ",")} s + marginal</span>`;
+    b.addEventListener("click", () => FP.on && FP.clip === c ? exitFP() : enterFP(k));
+    el.appendChild(b);
+  });
+
+  const hud = document.getElementById("fphud"), cross = document.getElementById("fpcross");
+  const bPlay = document.getElementById("fp-play"), scrub = document.getElementById("fp-scrub");
+  const tTime = document.getElementById("fp-time"), tSpd = document.getElementById("fp-speed");
+  let savedCam = null;
+
+  function fpDirs(path){
+    const n = path.length, out = new Array(n);
+    for (let i = 0; i < n; i++){
+      let vx = 0, vy = 0, vz = 0;
+      for (let j = Math.max(0, i-3); j < Math.min(n-1, i+3); j++){
+        vx += path[j+1][0]-path[j][0]; vy += path[j+1][1]-path[j][1]; vz += path[j+1][2]-path[j][2];
+      }
+      const l = Math.hypot(vx, vy, vz);
+      out[i] = l > 1e-3 ? [vx/l, vy/l, vz/l] : (i ? out[i-1] : [1, 0, 0]);
+    }
+    return out;
+  }
+  window.enterFP = function(k){
+    const c = F.clips[k];
+    const path = TRAJ.episodes[c.ep].path;
+    FP.clip = c; FP.path = path; FP.dirs = fpDirs(path);
+    FP.t0 = Math.max(0, c.i0 - 38);                    /* ~2 s anlopp */
+    FP.t1 = Math.min(path.length - 2, c.i1 + 19);      /* ~1 s efterspel */
+    FP.t = FP.t0; FP.playing = true; FP.speed = 1; FP.on = true;
+    if (!savedCam) savedCam = {yaw: cam.yaw, pitch: cam.pitch, dist: cam.dist, at: [...cam.at]};
+    document.querySelectorAll(".fpclip.sel").forEach(e => e.classList.remove("sel"));
+    document.getElementById("fpclip-" + k).classList.add("sel");
+    document.getElementById("fp-label").textContent = `ep${c.ep} · ${c.label}`;
+    document.getElementById("hint").style.display = "none";
+    document.getElementById("hud").style.display = "none";
+    document.getElementById("legend").style.display = "none";
+    hud.style.display = "flex"; cross.style.display = "block";
+    bPlay.textContent = "⏸";
+    FP.last = performance.now();
+    cancelAnimationFrame(FP.raf);
+    FP.raf = requestAnimationFrame(tick);
+  };
+  window.exitFP = function(){
+    FP.on = false; cancelAnimationFrame(FP.raf);
+    hud.style.display = "none"; cross.style.display = "none";
+    document.getElementById("hint").style.display = "";
+    document.getElementById("hud").style.display = "";
+    document.getElementById("legend").style.display = "";
+    document.querySelectorAll(".fpclip.sel").forEach(e => e.classList.remove("sel"));
+    if (savedCam){ Object.assign(cam, {yaw: savedCam.yaw, pitch: savedCam.pitch,
+      dist: savedCam.dist}); cam.at = [...savedCam.at]; savedCam = null; }
+    req();
+  };
+  function tick(now){
+    if (!FP.on) return;
+    const dtms = Math.min(100, now - FP.last); FP.last = now;
+    if (FP.playing){
+      FP.t += (dtms / 1000) * FP.speed / DT;
+      if (FP.t >= FP.t1){ FP.t = FP.t0; }              /* loopa klippet */
+    }
+    const i = Math.floor(FP.t);
+    scrub.value = Math.round(1000 * (FP.t - FP.t0) / Math.max(1, FP.t1 - FP.t0));
+    tTime.textContent = ((FP.t - FP.t0) * DT).toFixed(1).replace(".", ",") + " s";
+    tSpd.textContent = Math.round(FP.path[i][3]) + " u/s";
+    draw();
+    FP.raf = requestAnimationFrame(tick);
+  }
+  bPlay.addEventListener("click", () => {
+    FP.playing = !FP.playing; bPlay.textContent = FP.playing ? "⏸" : "▶";
+  });
+  document.getElementById("fp-slow").addEventListener("click", function(){
+    FP.speed = FP.speed === 1 ? 0.5 : 1;
+    this.textContent = FP.speed === 1 ? "½×" : "1×";
+  });
+  document.getElementById("fp-exit").addEventListener("click", exitFP);
+  scrub.addEventListener("input", () => {
+    FP.t = FP.t0 + (scrub.value / 1000) * (FP.t1 - FP.t0);
+  });
+  window.addEventListener("keydown", e => {
+    if (!FP.on) return;
+    if (e.code === "Space"){ e.preventDefault(); bPlay.click(); }
+    if (e.code === "Escape") exitFP();
+  });
+  const q = new URLSearchParams(location.search).get("fp");
+  if (q !== null && F.clips[+q]) enterFP(+q);
+})();
 
 document.querySelectorAll("#hud input").forEach(e => e.addEventListener("change", req));
 req();

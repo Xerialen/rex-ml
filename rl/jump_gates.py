@@ -247,13 +247,15 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
             side = "NV" if side_acc > 0 else "SO"
-            events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome})
+            events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome,
+                           "i0": int(t0), "i1": int(min(j, len(path) - 1))})
         elif (raw_progressed or progressed) and outcome in ("lyckat", "ramla", "retreat"):
             # axial/okvalificerad gropkorsning — spåras separat (analyst-review 5/6:
             # gropkorsningsintention utan ledgekvalificering eller utan grundad
             # källplattformsvistelse). Räknas aldrig mot mognadsstegen.
             dst = "quad" if cur == "ring" else "ring"
-            events.append({"hopp": f"axial {cur}→{dst}", "utfall": outcome})
+            events.append({"hopp": f"axial {cur}→{dst}", "utfall": outcome,
+                           "i0": int(t0), "i1": int(min(j, len(path) - 1))})
         cur = _plat(path[j]) if j < len(path) else None
         cur_grounded = bool(cur is not None and j < len(path) and grounded[j])
         t0 = j

@@ -60,6 +60,15 @@ traj = json.load(open(SCRATCH / "rex_trajectories.json"))
 for ep in traj["episodes"]:
     ep["path"] = ep["path"][::2]          # var 4:e tick ≈ 28 u mellanrum — jämnt nog
 
+fp = None
+fpf = SCRATCH / "rex_fp_events.json"
+if fpf.exists():
+    fp = json.load(open(fpf))
+    for c in fp["clips"]:                 # dumpindex -> decimerat index (::2)
+        c["i0"] //= 2
+        c["i1"] //= 2
+    fp["dt"] = 0.052                      # s per decimerad sampel
+
 metrics = jumpgates = None
 mfile = Path.home() / "rex-ml" / "evidence" / "gate_metrics_history.json"
 jfile = Path.home() / "rex-ml" / "evidence" / "jump_gates_latest.json"
@@ -69,7 +78,7 @@ if jfile.exists():
     jumpgates = json.load(open(jfile))
 
 DATA = {"items": items, "spawns": spawns, "teles": teles, "lifts": lifts, "traj": traj,
-        "metrics": metrics, "jumpgates": jumpgates}
+        "metrics": metrics, "jumpgates": jumpgates, "fp": fp}
 
 html = (SCRATCH / "rex3d_template.html").read_text()
 html = html.replace("__DATA__", json.dumps(DATA, ensure_ascii=False))
