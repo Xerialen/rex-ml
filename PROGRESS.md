@@ -6398,7 +6398,7 @@ klipplistan automatiskt ur detektorns eventranges; artefakten visar nu 4 klipp
 (ep1 LYCKAT, ep4 försök, 2 axiala) och följer framtida dumpar automatiskt.
 Artefakten republicerad (stegen visar nivå 2). Träningen orörd (~6.7G).
 
-## 2026-08-02 19:00 EEST — v7-baslinje låst av analysten + v7.1 (två kalibreringsåtgärder)
+## 2026-08-02 18:46 EEST — v7-baslinje låst av analysten + v7.1 (två kalibreringsåtgärder)
 Analystens v7-omkalibrering klar (evidence/analyst_v7_baseline.md): ägardefinitionen
 införd i granskningskedjan, **ring→quad SO nivå 2 STÅR** (ep1 giltigt lyckat, ep4
 godkänd under båda semantikerna), probens ep5 = korrekt gate-ramla under ägar-
