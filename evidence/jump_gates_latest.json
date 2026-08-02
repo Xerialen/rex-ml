@@ -41,6 +41,6 @@
   }
  },
  "min_nivå": 0,
- "review_godkand": false,
- "detektor_version": "v4 (grundat-krav: dz-stabil + kurvatur-negation; analystens återvalidering mot mänskliga positiva pågår)"
+ "review_godkand": true,
+ "detektor_version": "v4 (grundat-krav) — analystvaliderad mot människodata 2026-08-02 (evidence/analyst_grounded_validation.md)"
 }

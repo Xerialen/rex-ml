@@ -6203,3 +6203,16 @@ BESTÄLLD och pågår — detektor v4 är inte driftgodkänd förrän domen land
 (jump_gates_latest.json: review_godkand=false, PRELIMINÄR-banner kvar).
 Träningen (hex 8 plattformsband + RA-gård 4) rullar sedan 13:12; reward åter 11 269
 efter resume från 5.62G — de nya spawnregionerna betalar höjd/novelty från tick 0.
+
+## 2026-08-02 13:38 EEST — Detektor v4 GODKÄND FÖR DRIFT (analystvalidering mot människodata)
+Analystens återvalidering (evidence/analyst_grounded_validation.md + repro/
+validate_grounded_humans.py): SNG-mega 2/2 mänskliga låg-entré-lyckanden behållna
+(100 %), RA 176/136 mot gamla 217/156 = 87 % retention av lyckade (≥ tröskeln 79 %);
+5/5 stickprovade RA-tapp var korrekta fällningar (luftgrepp i hoppbåge, d²z −0.6..−3).
+Prognosen "21/24" avsåg en bredare ad hoc-klassning — genom detektorns egen lins var
+bara 2/352 megatagningar låg-entré redan före fixen. dt-förbehåll (människor 34-51 ms
+mot botens 26 ms) verifierat i båda regimerna. Känd kvarvarande begränsning (ingen
+åtgärd): grip-utan-landning undermäts (13 % av mänskliga RA-lyckanden); ev. framtida
+fix `low and (climbed_near or suc)` kräver egen granskningsrunda.
+review_godkand=true, PRELIMINÄR-bannern släckt, artefakten republicerad.
+Aktuellt godkänt gate-läge: alla sex 0/0, min-nivå 0 (mål 3).

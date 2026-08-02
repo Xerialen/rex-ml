@@ -92,3 +92,11 @@ tas i bruk (jag har inte ändrat detektorn).
 Konfidens: **Hög** (bit-exakt trajektoria + gravitationsfit + 352 mänskliga
 pickups i samma koordinatsystem; alla siffror reproducerbara via kommandona
 ovan).
+
+## Addendum 2026-08-02: fixen implementerad och återvaliderad
+
+Grundat-kravet (`_grounded`: dz ±0.5 mot båda grannar + |d²z| ≤ 0.2)
+återvaliderat mot mänskliga positiva: mega 2/2 (100 %), RA 136/156 (87 %)
+behållna; botdumpar 6 gates × 0/0 själv-verifierade.
+Domslut GODKÄND FÖR DRIFT — se evidence/analyst_grounded_validation.md
+och evidence/repro/validate_grounded_humans.py.
