@@ -322,16 +322,19 @@ def _grounded(path: np.ndarray) -> np.ndarray:
 
 
 def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
-                 low_pred) -> tuple[int, int]:
-    """(försök, lyckade) för item-gates. Analyst-korrigerat (v1 räknade all
-    korridortrafik som "försök", 95/96 RA-intervall var tele↔RA-nedre-passager):
-    försök = besöksintervall som börjar lågt (low_pred) OCH där klättring
-    PÅBÖRJAS (z stiger ≥ CLIMB_GAIN över intervallets entré-z);
-    lyckat = pickupboxen nås (2D<60, dz i (−32,+80) = mänskligt touch-fönster)."""
+                 low_pred) -> tuple[int, int, list[dict]]:
+    """(försök, lyckade, events) för item-gates. Analyst-korrigerat (v1 räknade
+    all korridortrafik som "försök", 95/96 RA-intervall var tele↔RA-nedre-
+    passager): försök = besöksintervall som börjar lågt (low_pred) OCH där
+    klättring PÅBÖRJAS (z stiger ≥ CLIMB_GAIN över intervallets entré-z);
+    lyckat = pickupboxen nås (2D<60, dz i (−32,+80) = mänskligt touch-fönster).
+    events bär i0/i1 (besöksintervallet) för FP-klipp — räknelogiken orörd."""
     attempts = successes = 0
+    events: list[dict] = []
     inside = False
     low = climbed_near = suc = False
     z_entry = 0.0
+    i_enter = 0
     grounded = _grounded(path)
     for i, p in enumerate(path):
         d = _d2(p, item)
@@ -339,6 +342,7 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
             if not inside:
                 inside = True
                 z_entry = p[2]
+                i_enter = i
                 low = bool(low_pred(p))      # bedöms vid ENTRÉN (analystnotering)
             # SAMTIDIGHET (analyst-review 3, 2026-08-01): klättring och närhet
             # måste hållas i SAMMA sample — disjunkta delsegment (golvcirkulation
@@ -359,11 +363,13 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
             if low and climbed_near:
                 attempts += 1
                 successes += int(suc)
+                events.append({"i0": i_enter, "i1": i - 1, "lyckat": suc})
             inside, low, climbed_near, suc = False, False, False, False
     if inside and low and climbed_near:
         attempts += 1
         successes += int(suc)
-    return attempts, successes
+        events.append({"i0": i_enter, "i1": len(path) - 1, "lyckat": suc})
+    return attempts, successes, events
 
 
 def _level(attempts: int, successes: int) -> int:
@@ -391,9 +397,9 @@ def analyze(dump: dict, dt: float | None = None) -> dict:
             g["lyckade"] += int(ev["utfall"] == "lyckat")
             g["ramla"] += int(ev["utfall"] == "ramla")
             g["retreat"] += int(ev["utfall"] == "retreat")
-        a, s = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0)
+        a, s, _ = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0)
         ra_att += a; ra_suc += s
-        a, s = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0)
+        a, s, _ = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0)
         mega_att += a; mega_suc += s
     for name, g in rq.items():
         gates[name] = {**g, "nivå": _level(g["försök"], g["lyckade"])}
@@ -421,21 +427,32 @@ def main(argv=None):
         open(args.out, "w").write(txt + "\n")
     if args.clips:
         clips = []
+        def _add_clip(ei, path, i0, i1, label, verdict):
+            # klippet bär sin EGEN bana (2 s anlopp + 1 s efterspel) så
+            # artefaktens FP-uppspelning överlever dumpbyten
+            m0 = max(0, i0 - 76)
+            m1 = min(len(path) - 1, i1 + 38)
+            clips.append({
+                "ep": ei, "dt": SAMPLE_DT,
+                "path": [[round(float(v), 1) for v in q] for q in path[m0:m1 + 1]],
+                "label": label, "verdict": verdict,
+            })
+
         for ei, ep in enumerate(dump["episodes"]):
             path = np.asarray(ep["path"], dtype=float)
             for ev in _ring_quad_events(path):
                 ax = ev["hopp"].startswith("axial")
-                # klippet bär sin EGEN bana (2 s anlopp + 1 s efterspel) så
-                # artefaktens FP-uppspelning överlever dumpbyten
-                m0 = max(0, ev["i0"] - 76)
-                m1 = min(len(path) - 1, ev["i1"] + 38)
-                clips.append({
-                    "ep": ei, "dt": SAMPLE_DT,
-                    "path": [[round(float(v), 1) for v in q] for q in path[m0:m1 + 1]],
-                    "label": f"{ev['hopp']} — {ev['utfall']}",
-                    "verdict": "axial" if ax else
-                               ("godkänd" if ev["utfall"] == "lyckat" else "försök"),
-                })
+                _add_clip(ei, path, ev["i0"], ev["i1"],
+                          f"{ev['hopp']} — {ev['utfall']}",
+                          "axial" if ax else
+                          ("godkänd" if ev["utfall"] == "lyckat" else "försök"))
+            for name, item, low in (("RA-tagningen", RA, lambda p: p[2] < 150.0),
+                                    ("SNG-mega", MEGA_SNG, lambda p: p[2] < 100.0)):
+                for ev in _item_events(path, item, 300.0, low)[2]:
+                    utfall = "lyckat" if ev["lyckat"] else "misslyckat"
+                    _add_clip(ei, path, ev["i0"], ev["i1"],
+                              f"{name} — {utfall}",
+                              "godkänd" if ev["lyckat"] else "försök")
         open(args.clips, "w").write(
             json.dumps({"clips": clips}, ensure_ascii=False) + "\n")
     print(txt)
