@@ -46,6 +46,8 @@ def main(argv=None):
                         help="höjdviktad fartinkomst: coef*z_norm*fart*rarity (0=av)")
     parser.add_argument("--qw_hex_spawn_workers", type=int, default=0,
                         help="antal workers (efter mix) som spawnar på hexagonplatåerna")
+    parser.add_argument("--qw_ra_spawn_workers", type=int, default=0,
+                        help="antal workers (efter mix+hex) som spawnar i RA-gården/trappan")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

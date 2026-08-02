@@ -165,6 +165,18 @@ def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
     # policyns input är oförändrad.
     hexn = getattr(cfg, "qw_hex_spawn_workers", 0) if cfg is not None else 0
     if widx < mix + hexn:
+        # 2026-08-02 13:15 (närhetsmätning @5.3G, jump_proximity): plattformstid
+        # 3.8→1.4 %, bästa annalkande 389 mot kravet <350 — boxen snävad från
+        # platån (z 20-220) till PLATTFORMSBANDET z 40-130 (2513 OPEN-centers)
+        # så episoderna börjar på ring/quad-nivån där gropkorsningen presenteras.
         return QWGate2Env(full_env_name, cfg, env_config, render_mode,
-                          spawn_region=((-50.0, -450.0, 20.0), (1250.0, 750.0, 220.0)))
+                          spawn_region=((0.0, -350.0, 40.0), (1200.0, 600.0, 130.0)))
+    # RA-CURRICULUM (samma mätning): 55 låga besök men z-vinst max 51.7 av
+    # kravets +80 — trappklättringen påbörjas men fullföljs inte. Spawns i
+    # RA-gården+trappan (1184 OPEN-centers, z -48..240) multiplicerar
+    # klättertillfällena; klätterbonus 0.5 + höjdtermen betalar varje steg.
+    ran = getattr(cfg, "qw_ra_spawn_workers", 0) if cfg is not None else 0
+    if widx < mix + hexn + ran:
+        return QWGate2Env(full_env_name, cfg, env_config, render_mode,
+                          spawn_region=((0.0, -1000.0, -60.0), (520.0, -460.0, 240.0)))
     return QWGate2Env(full_env_name, cfg, env_config, render_mode)

@@ -6164,3 +6164,25 @@ Hopp-gaterna väntas fortsatt 0/0 (5.0G-dumpens färska nollor är senaste godk�
 nollskilda claims går till dm3-analyst FÖRE presentation (vetoregeln).
 Historik uppdaterad (evidence/gate_metrics_history.json, punkt 7). Kvar till sim-gate:
 täckning 41.8→70 %, hopp-gaternas min-nivå 0→3. Sprint: ~10 h kvar på vmonster.
+
+## 2026-08-02 13:17 EEST — Närhetsmätning ⇒ kursändring: spawn-tryck på blockerarna (omstart @5.6G)
+Ägardirektiv: "utvärdera proaktivt om vi kommer närmare att bottarna börjar göra hexagon-
+och andra trickhopp ... och om inte vad kan vi ändra". INGEN migrering utan ägarorder
+(stående regel sparad). Nytt verktyg rl/jump_proximity.py (samma konstanter som analyst-
+godkända detektorn) mäter FÖRSTADIERNA; historik i evidence/jump_proximity_history.json.
+**Trend 5.0G→5.3G (per dump, 10 resp 30 ep):**
+- SNG-mega: KONVERGERAR — z-vinst ≥80: 1→6, bästa d2 205→98 (<krav 120), och detektorn
+  gav **1 försök ⇒ nivå 1 (PRELIMINÄR — dm3-analystens vetogranskning pågår,
+  evidence/analyst_megattempt_review.md väntas)**. Första nollskilda claimet.
+- RA: klättringen påbörjas oftare (z-vinst≥40: 12 st; max 51.7) men fullföljs ALDRIG
+  (krav +80); närhet redan god (d2 73.6 < 120). Blockerare: klätterhöjd.
+- Hexagon: STAGNERAR — plattforms-/ledgetid 3.8/4.8 % → 1.4/1.4 %, bästa annalkande
+  440→389 (krav <350), 0 försök. Ledgerna besöks men korsningen påbörjas inte.
+**Åtgärd (ratificerat curriculum-verktyg, inga rewardändringar):** hex-spawnworkers 6→8
+med boxen snävad till plattformsbandet z 40-130 (2513 OPEN-centers) i st f platån
+z 20-220; NYA RA-spawnworkers ×4 i gården+trappan ((0,-1000,-60)-(520,-460,240),
+1184 centers) — ny flagga --qw_ra_spawn_workers. SNG-mega orörd (konvergerar själv).
+Fria dm3-roamers 27→21 (täckningsrisken bevakas i nästa n=30). 31/31 test gröna.
+Omstart från senaste checkpoint (~5.61G); övriga flaggor oförändrade (höjd 1.5 hålls
+per 12:40-beslutet: 554.7/41.8 %/0 fastnade/1.108). Artefakten republicerad med
+5.3G-punkten + PRELIMINÄR-banner. Dashboard: fart ↑, täckning ↑, score ↑, hopp 0→.

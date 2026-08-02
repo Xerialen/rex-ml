@@ -35,6 +35,41 @@
     "d2min_elev_best": 205.5,
     "d2min_krav": 120.0
    }
+  },
+  {
+   "ts": "2026-08-02 13:05",
+   "frames_g": 5.3,
+   "dump": "traj_53G.json",
+   "episodes": 30,
+   "hexagon": {
+    "plattformstid_pct": 1.37,
+    "ledgetid_pct": 1.37,
+    "ledgevistelser": 24,
+    "ledgefall_i_grop": 0,
+    "annalkande_min_p50": 533.2,
+    "annalkande_min_best": 388.8,
+    "annalkande_under_350": 0
+   },
+   "RA": {
+    "regiontid_pct": 4.18,
+    "besök_låga": 55,
+    "zvinst_p50": 0.0,
+    "zvinst_max": 51.7,
+    "zvinst_over_40": 12,
+    "zvinst_over_80": 0,
+    "d2min_elev_best": 73.6,
+    "d2min_krav": 120.0
+   },
+   "SNG-mega": {
+    "regiontid_pct": 1.65,
+    "besök_låga": 22,
+    "zvinst_p50": 35.8,
+    "zvinst_max": 116.6,
+    "zvinst_over_40": 10,
+    "zvinst_over_80": 6,
+    "d2min_elev_best": 98.3,
+    "d2min_krav": 120.0
+   }
   }
  ]
 }

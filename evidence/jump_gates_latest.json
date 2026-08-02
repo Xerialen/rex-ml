@@ -1,5 +1,5 @@
 {
- "episodes": 10,
+ "episodes": 30,
  "gates": {
   "ring→quad NV": {
    "försök": 0,
@@ -35,12 +35,11 @@
    "nivå": 0
   },
   "SNG-mega": {
-   "försök": 0,
+   "försök": 1,
    "lyckade": 0,
-   "nivå": 0
+   "nivå": 1
   }
  },
  "min_nivå": 0,
- "review": "Nollor på samtliga sex (färsk dump 2026-08-02 09:35 @ ~5.0G, godkänd detektor); reboot-förlorade quad→ring-claimet ersatt av denna mätning",
- "review_godkand": true
+ "review_godkand": false
 }
