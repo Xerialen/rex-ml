@@ -6413,7 +6413,7 @@ Botdumpar: 63G SO 2/1/1 oförändrat; 53G-axial 3→2 (en var ytterkantsnedhopp)
 40/40 test. Analystens slutlåsning av v7.1-baslinjen beställd. Träningen ~6.55G;
 nästa mätcykel (n=30 + prober + artefakt) vid 6.6G-vakten med låst detektor.
 
-## 2026-08-02 18:55 EEST — v7.1-baslinjen LÅST (slutlig detektorkalibrering)
+## 2026-08-02 18:52 EEST — v7.1-baslinjen LÅST (slutlig detektorkalibrering)
 Analystens slutkontroll (evidence/analyst_v71_baseline.md, trippelspårning
 v6.1/v7/v7.1): **LÅST.** 750 humana gate-event: 580 lyckat/133 ramla/37 retreat;
 axial 794; 0 grazers; retention 98.6 % av v6.1-lyckade; 95.9 % av v7:s felfällda
