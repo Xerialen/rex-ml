@@ -6330,3 +6330,17 @@ Botdumparna oförändrade (probe 0+2, 53G 0+3, 0907 0). Slutvalidering hos analy
 (driftvillkor: 662 event / 42 av 43 / 0 grazers / ≤1 insläpp). Kvarstående dokumen-
 terad risk: bhop-underdetektion (1-sampels nedslag) — övervakas, d²z-nedslagsdetektor
 som reserv. Träningen orörd (~6.4G).
+
+## 2026-08-02 17:26 EEST — Detektor v6.1 GODKÄND FÖR DRIFT (slutvalidering)
+Analystens slutdom: driftvillkoret håller — 42/43 golvförankrade genuina ramla, 0
+grazers, alla botregressioner gröna (probe 0+2 [ep5+ep8], 53G 0+3, 0907 0+0).
+Avvikelserna mot prognosen (768 event i st f 662, 5 "insläpp" i st f ≤1) utreddes av
+analysten själv: prognosPROXYN var felet, inte implementationen — de 104 extra är
+statistiskt oskiljbara från genuina (förankring/massa-fördelningar identiska) och de
+5 insläppen är äkta korta försök under maskesemantiken. NY LÅST REGRESSIONSBASLINJE
+(24-demoskohorten): 768 = 584 lyckat + 151 ramla (45 NV/106 SO) + 33 retreat;
+genuina lyckade 562/646. Granskningskedjan v4→v6.1 komplett i evidence/ (5 filer +
+repro). Kvarstående övervakningspunkter: bhop-underdetektion, källgrundsbias 11 %
+(51 ms-humandata, ej botrelevant), modellcirkeln r 260.
+Detektorn mäter nu ägarens gate-avsikt: GOLVFÖRANKRAD ledgeanvändning med
+observerbara misslyckanden på båda sidor. review_godkand=true.

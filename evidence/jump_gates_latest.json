@@ -42,5 +42,5 @@
  },
  "min_nivå": 0,
  "review_godkand": true,
- "detektor_version": "v4 (grundat-krav) — analystvaliderad mot människodata 2026-08-02 (evidence/analyst_grounded_validation.md)"
+ "detektor_version": "v6.1 'förankrat fall' — DRIFTGODKÄND av analysten 2026-08-02 (evidence/analyst_v61_final.md; kedja v4→v6.1, baslinje 768/42-43/0)"
 }
