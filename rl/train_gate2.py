@@ -48,6 +48,10 @@ def main(argv=None):
                         help="antal workers (efter mix) som spawnar på hexagonplatåerna")
     parser.add_argument("--qw_ra_spawn_workers", type=int, default=0,
                         help="antal workers (efter mix+hex) som spawnar i RA-gården/trappan")
+    parser.add_argument("--qw_ledge_spawn_workers", type=int, default=0,
+                        help="riskregim: workers som spawnar UTE på hexagonens sidoledger")
+    parser.add_argument("--qw_mega_spawn_workers", type=int, default=0,
+                        help="riskregim: workers som spawnar i SNG-mega-ansatsen")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 

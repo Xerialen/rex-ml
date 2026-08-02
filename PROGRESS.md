@@ -6216,3 +6216,24 @@ mot botens 26 ms) verifierat i båda regimerna. Känd kvarvarande begränsning (
 fix `low and (climbed_near or suc)` kräver egen granskningsrunda.
 review_godkand=true, PRELIMINÄR-bannern släckt, artefakten republicerad.
 Aktuellt godkänt gate-läge: alla sex 0/0, min-nivå 0 (mål 3).
+
+## 2026-08-02 15:03 EEST — RISKREGIM (ägarens genombrottsmandat: sista H100-natten, deadline 08:00)
+Ägaren: maskinen rensas i morgon; "beredd att ta risker nu"; 4090:n finputsar sedan.
+Riskbilden korrigerad mot ägaren: inget arbete kan gå förlorat (checkpoints/kod/bevis
+pushade, korpora på HF; 4090 fortsätter från checkpoint) — knappheten är H100-TIMMAR.
+Strategi: bränn dem på genombrottsförsök på gate-hoppen, finputs senare.
+**Rollback-säkring:** pipeline/out/rl/gate2_snapshot_20260802_pre_risk/ (5.913G-checkpoint).
+**Reverse curriculum (ny mekanism, spawn_centers):** env stödjer nu exakta spawn-punkter;
+ledge-workers startar PÅ hexagonens sidoledger (1031 OPEN-centers, |perp| 100-300 från
+ring→quad-axeln, axelprojektion -0.15..1.15, z 48-112; röktest: 12/12 resets settlar
+z=56, inga gropfall). Första gropkorsningen ligger då ~200 u från start.
+**Workerallokering 48:** gate1-mix 15→10 (mätbar risk mot fartregistret), hex-plattform 8,
+RA-gård 8 (4→8), ledge 8 (NY), SNG-mega-ansats 4 (NY, box (-1000,-150,-40)-(-450,350,140)),
+fria roamers 10. **Viktjustering (ägarens befintliga-värden-mandat):** klätterkoef
+0.5→0.8, gapbas 3→5; höjd 1.5 + entropi 0.003 orörda (stabilitetsbevisade).
+**Mätkadens:** snabbsvit (n=10 eval + 10-ep-dump + v4-detektor + närhetsindikatorer)
+var ~1.5 h; full n=30 när hoppförsök dyker upp; push efter varje punkt. 33/33 test gröna.
+NotebookLM-triage (ägaren bad om kommentar): punkt 1-2 (geometriska rewards, voxel-
+nyfikenhet) = vår befintliga design; Slow/Fast-RNN + ICM förblir RESERVER med trigger-
+kriterier: RNN-hierarki om långruttsplanering stagnerar EFTER gate-hoppen; ICM om
+täckningen platåar <50 % i >1G frames trots rarity. PBT fortsatt AV (ägarbeslut krävs).

@@ -87,7 +87,7 @@ class QWGate2Env(gym.Env):
     zonrastret används för fastnad-undantag (vatten/hiss/tele)."""
 
     def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None,
-                 spawn_region=None):
+                 spawn_region=None, spawn_centers=None):
         from rl.env_gate2 import Gate2Config, QWGate2Core
         from rl.zones import RASTER, ZoneRaster
         self.name = full_env_name
@@ -95,6 +95,7 @@ class QWGate2Env(gym.Env):
         is_excluded = ZoneRaster().is_excluded if RASTER.exists() else None
         g2cfg = Gate2Config(
             spawn_region=spawn_region,
+            spawn_centers=spawn_centers,
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
             novelty_bonus=float(getattr(cfg, "qw_novelty_bonus", 1.5)),
@@ -179,4 +180,44 @@ def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
     if widx < mix + hexn + ran:
         return QWGate2Env(full_env_name, cfg, env_config, render_mode,
                           spawn_region=((0.0, -1000.0, -60.0), (520.0, -460.0, 240.0)))
+    # RISKREGIMEN (ägaren 2026-08-02 ~15:00: sista H100-natten, "beredd att ta
+    # risker"): reverse curriculum — starta MITT I gate-uppgifterna.
+    # LEDGE-workers: exakta OPEN-voxelcentrum ute på hexagonens sidoledger
+    # (|perp|>100 från ring→quad-axeln, -20<z<130, d2(grop)<800) — boxar är
+    # för grova för smala ledger. Första lyckade gropkorsningen ligger då
+    # ~200 u bort och V2-djupbonusen (x2 vid djup>141) förstärker den direkt.
+    ledn = getattr(cfg, "qw_ledge_spawn_workers", 0) if cfg is not None else 0
+    if widx < mix + hexn + ran + ledn:
+        return QWGate2Env(full_env_name, cfg, env_config, render_mode,
+                          spawn_centers=_ledge_centers())
+    # MEGA-workers: SNG-rummets ansats mot megahyllan (-720,80,160).
+    megn = getattr(cfg, "qw_mega_spawn_workers", 0) if cfg is not None else 0
+    if widx < mix + hexn + ran + ledn + megn:
+        return QWGate2Env(full_env_name, cfg, env_config, render_mode,
+                          spawn_region=((-1000.0, -150.0, -40.0), (-450.0, 350.0, 140.0)))
     return QWGate2Env(full_env_name, cfg, env_config, render_mode)
+
+
+_LEDGE_CACHE = None
+
+
+def _ledge_centers():
+    """OPEN-voxelcentrum på hexagonens sidoledger (beräknas en gång per
+    workerprocess — fabriken körs i workern, inget pickling-behov)."""
+    global _LEDGE_CACHE
+    if _LEDGE_CACHE is None:
+        from rl.jump_gates import PIT_2D, QUAD, RING, _side
+        from rl.zones import CLS_OPEN, RASTER
+        d = np.load(RASTER)
+        m = d["cls"] == CLS_OPEN
+        cs = np.stack([d["ix"][m] * 32.0 + 16, d["iy"][m] * 32.0 + 16,
+                       d["iz"][m] * 32.0 + 16], axis=1)
+        hexm = (np.hypot(cs[:, 0] - PIT_2D[0], cs[:, 1] - PIT_2D[1]) < 800.0) \
+            & (cs[:, 2] > 40.0) & (cs[:, 2] < 130.0)
+        cs = cs[hexm]
+        side = np.abs(np.array([_side(p) for p in cs]))
+        ax = (QUAD - RING)[:2]
+        t = ((cs[:, :2] - RING[:2]) @ ax) / (ax @ ax)   # projektion ring→quad
+        _LEDGE_CACHE = cs[(side > 100.0) & (side < 300.0)
+                          & (t > -0.15) & (t < 1.15)]   # 1031 centers, z 48-112
+    return _LEDGE_CACHE

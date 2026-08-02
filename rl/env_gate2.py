@@ -40,6 +40,9 @@ def load_spawns(path: Path = DM3_SPAWNS) -> list[tuple[np.ndarray, float]]:
 class Gate2Config:
     max_ticks: int = 77 * 60            # 60 s, gatens mätfönster
     spawn_region: tuple | None = None   # (min_xyz, max_xyz) för steg A–C; None = alla
+    # riskregimen 2026-08-02 (ägarens genombrottsmandat): exakta spawn-punkter
+    # (N,3)-array — boxar är för grova för smala ledger. Har företräde före region.
+    spawn_centers: object = None
     # "random_open" = manifestets steg D ordagrant ("helt slumpmässiga koordinater"):
     # spawn i slumpad OPEN-voxel ur zonrastret. Infört 2026-07-31 efter uppmätt
     # hemlåde-jämvikt (6 fasta spawns ⇒ policyn lärde sig pacea sin startkammare
@@ -88,6 +91,12 @@ class QWGate2Core:
         self._reset_state(self.spawns[0])
 
     def _pick_spawn(self):
+        if self.cfg.spawn_centers is not None:
+            cs = np.asarray(self.cfg.spawn_centers, dtype=float)
+            i = int(self.rng.integers(len(cs)))
+            pos = cs[i].copy()
+            pos[2] += 8.0
+            return pos, float(self.rng.uniform(0.0, 360.0))
         if self._open_centers is not None and self.cfg.spawn_mode == "random_open":
             cs = self._open_centers
             if self.cfg.spawn_region is not None:
@@ -152,7 +161,11 @@ class QWGate2Core:
             if self.onground:
                 # curriculum-spawn: settling som föll UR regionen (t.ex. ned i
                 # gropen från en kantvoxel) räknas som misslyckat försök
-                if self.cfg.spawn_region is not None and \
+                if self.cfg.spawn_centers is not None:
+                    zmin = float(np.asarray(self.cfg.spawn_centers)[:, 2].min())
+                    if self.pos[2] < zmin - 24.0:
+                        continue        # settlade ur ledgenivån (t.ex. ner i gropen)
+                elif self.cfg.spawn_region is not None and \
                         self.pos[2] < float(self.cfg.spawn_region[0][2]) - 24.0:
                     continue
                 break
