@@ -232,6 +232,45 @@ def test_jump_gate_band_graze_low_mass_is_axial():
     assert res["axiala_gropkorsningar"]["försök"] == 1
 
 
+def test_jump_gate_anchored_midgap_fall_is_gate():
+    # v6.1 "förankrat fall" (analyst-review 7): grundad maskvandring på käll-
+    # kanten + luftbåge som når min-d < 450 UTANFÖR masken + grop ⇒ gate-ramla.
+    from rl.jump_gates import QUAD, RING, _d2, _side, analyze, ledge_centers
+    nv = [p for p in ledge_centers() if _side(p) > 0
+          and p[2] == 48.0 and _d2(p, RING) > 500.0 and _d2(p, QUAD) > 270.0]
+    nv.sort(key=lambda p: -_d2(p, RING))
+    walk = [[p[0], p[1], 56.0, 300] for p in nv[-8:]]    # de 8 NÄRMAST ringen
+                                                         # (konstant z ⇒ grundad)
+    edge = np.array(walk[-1][:2])
+    to_ring = (RING[:2] - edge) / np.linalg.norm(RING[:2] - edge)
+    arc = []
+    for k in range(1, 5):                                # luftbåge mot ring
+        pos2 = edge + to_ring * (45.0 * k)
+        arc.append([pos2[0], pos2[1], 56.0 + 30.0 - 9.0 * k * k, 300])
+    path = [[*QUAD[:2], 56.0, 300]] * 4 + walk + arc + \
+           [[arc[-1][0], arc[-1][1], -150.0, 300]]       # gropen
+    res = analyze({"episodes": [{"path": path}]})
+    assert any(_d2(np.array(q), RING) < 450.0 for q in arc)
+    g = res["gates"]["quad→ring NV"]
+    assert (g["försök"], g["ramla"]) == (1, 1)
+
+
+def test_jump_gate_airborne_overflight_is_axial():
+    # v6.1: ep5/ep23-klassen — enbart LUFTBUREN maskkontakt (z varierar över
+    # kolumnerna, aldrig grundad i transiten) + min-d < 450 + grop ⇒ axial.
+    from rl.jump_gates import QUAD, RING, _d2, _side, analyze, ledge_centers
+    nv = [p for p in ledge_centers() if _side(p) > 0
+          and 360.0 < _d2(p, RING) < 700.0 and _d2(p, QUAD) > 270.0]
+    nv.sort(key=lambda p: -_d2(p, RING))
+    fly = [[p[0], p[1], p[2] + 20.0 + 7.0 * (i % 5), 300]
+           for i, p in enumerate(nv[-10:])]              # närmast ringen; dz>0.5
+    path = [[*QUAD[:2], 56.0, 300]] * 4 + fly + \
+           [[fly[-1][0], fly[-1][1], -150.0, 300]]
+    res = analyze({"episodes": [{"path": path}]})
+    assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
+    assert res["axiala_gropkorsningar"]["försök"] == 1
+
+
 def test_jump_gate_item_apex_quasi_stable_not_grounded():
     # bågAPEX är kvasi-z-stabil (dz 0.4/0.1 @26 ms) men behåller gravitationens
     # kurvatur d²z ≈ −0.5 — exakta samplen ur underkända mega-claimet (ep6,

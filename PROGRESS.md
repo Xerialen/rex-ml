@@ -6312,3 +6312,21 @@ under stödd mask = öppen fråga till analysten (slutvalidering mot 67 band-ram
 646 lyckade pågår i deras miljö). v6 EJ driftsatt förrän domen landar. Alla tidigare
 presenterade gate-lägen opåverkade (nollor genom alla versioner).
 Träningen orörd genom hela detektorarbetet (riskregimen ~6.3G, ~52k FPS).
+
+## 2026-08-02 17:20 EEST — Review 7 ⇒ detektor v6.1 "förankrat fall"; slutvalidering beställd
+Analystens v6-validering: krav a-c korrekt implementerade, men in-mask-progressionen
+förblindade misslyckandestatistiken på BÅDA sidor (ramla-retention NV 38 %/SO 19 % —
+fallen driver av maskkolumnerna före d<450; en detektor som missar 62-81 % av miss-
+lyckandena kan inte skilja nivå 1 från 3). Beslut (falsifierat i två iterationer av
+analysten själv): "FÖRANKRAT FALL" — för ramla räknas progression som min-d över ALLA
+transitsampel < 450, GIVET ≥1 grundat masksampel i transiten. Utan förankringskravet
+återuppstår ep5/ep23 (ren luftöverflygning) som gate. Prognos: ramla-retention 17/67
+→ 42/67 (98 % av golvförankrade; resten är enligt geometrin inte ledgeanvändare),
+lyckade 562/646 (förlusten = 51 ms-humanbias, operativt irrelevant @26 ms), SO/NV
+balanserat 60/67 %. Rättelse: probens axialpar är ep5+ep8 (min "ep6" var felskrivet).
+**v6.1 implementerad:** anchored + min_d_all i transitspåret; ramla-regeln; 2 nya
+fixturer (förankrat mittgropsfall ⇒ gate; luftöverflygning ⇒ axial); 40/40 test.
+Botdumparna oförändrade (probe 0+2, 53G 0+3, 0907 0). Slutvalidering hos analysten
+(driftvillkor: 662 event / 42 av 43 / 0 grazers / ≤1 insläpp). Kvarstående dokumen-
+terad risk: bhop-underdetektion (1-sampels nedslag) — övervakas, d²z-nedslagsdetektor
+som reserv. Träningen orörd (~6.4G).

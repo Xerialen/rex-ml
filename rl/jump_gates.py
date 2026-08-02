@@ -193,12 +193,15 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
         outcome = None
         onto_ledge = False
         progressed = False               # d(dst) < 450 i ledgeMASKEN (v6)
-        raw_progressed = False           # d(dst) < 350 var som helst (axial)
+        raw_progressed = False           # d(dst) < 450 var som helst (axial)
+        anchored = False                 # v6.1: >=1 GRUNDAT masksampel i transiten
+        min_d_all = float("inf")         # v6.1: min d(dst) över ALLA transitsampel
         side_acc = 0.0
         dst_c = QUAD if cur == "ring" else RING
         j = i
         while j < len(path) and j - t0 <= MAX_TRANSIT_PTS:
             q = path[j]
+            min_d_all = min(min_d_all, _d2(q, dst_c))
             if _d2(q, PIT_2D) > HEX_R:
                 outcome = "lämnade"          # drog någon annanstans — inget försök
                 break
@@ -207,9 +210,6 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 break
             qp = _plat(q)
             if qp is None and q[2] > LEDGE_Z:
-                # axial-progression 450 (= in-mask-tröskeln): ep5:s genuina
-                # gropkorsningsintention nådde min-d 368 mitt över gropen —
-                # rå 350 missade den (analystens facit: probe ⇒ axial 2)
                 if _d2(q, dst_c) < PROGRESS_D_BAND:
                     raw_progressed = True
                 # v6: ledgetillhörighet via den uppmätta voxelmasken — perp-
@@ -217,6 +217,8 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 if _on_ledge(q):
                     onto_ledge = True
                     side_acc += _side(q)
+                    if grounded[j]:
+                        anchored = True
                     if _d2(q, dst_c) < PROGRESS_D_BAND:
                         progressed = True
             if qp == cur:
@@ -231,6 +233,15 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
         if outcome == "lyckat":
             progressed = progressed or onto_ledge   # framme via ledgen ⇒ progression
             raw_progressed = True
+        if outcome == "ramla":
+            # v6.1 "FÖRANKRAT FALL" (analyst-review 7, evidence/
+            # analyst_v6_validation.md): in-mask-progression förblindade
+            # misslyckandestatistiken på BÅDA sidor (ramla-retention 19-38 % —
+            # fallen driver av maskkolumnerna före d<450). För ramla räknas
+            # progression som min-d över ALLA transitsampel < 450, GIVET
+            # golvförankring (>=1 grundat masksampel i transiten). Utan
+            # förankringskravet blir ep5/ep23 (ren luftöverflygning) gate igen.
+            progressed = (min_d_all < PROGRESS_D_BAND) and anchored
         side_ok = abs(side_acc) * dt >= SIDE_MIN_MASS_US   # tidsnorm. massa (v5.1)
         if onto_ledge and progressed and side_ok and cur_grounded \
                 and outcome in ("lyckat", "ramla", "retreat"):
