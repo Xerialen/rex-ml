@@ -64,11 +64,22 @@ def main(argv=None):
     ap.add_argument("exp_dir", type=Path)
     ap.add_argument("--n", type=int, default=10)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--spawn", choices=["ledge", "ra", "mega"], default=None,
+                    help="färdighetsprob: starta episoderna i curriculum-regionen "
+                         "i st f slumpad OPEN-voxel (mäter förmåga, inte ruttval)")
     args = ap.parse_args(argv)
 
     items = item_positions()
     cfg, _, ac = load_policy(args.exp_dir, "cpu")
-    env = QWGate2Env("qw_gate2", types.SimpleNamespace(qw_backend="qwsim"))
+    spawn_kw = {}
+    if args.spawn == "ledge":
+        from rl.sf_env import _ledge_centers
+        spawn_kw["spawn_centers"] = _ledge_centers()
+    elif args.spawn == "ra":
+        spawn_kw["spawn_region"] = ((0.0, -1000.0, -60.0), (520.0, -460.0, 240.0))
+    elif args.spawn == "mega":
+        spawn_kw["spawn_region"] = ((-1000.0, -150.0, -40.0), (-450.0, 350.0, 140.0))
+    env = QWGate2Env("qw_gate2", types.SimpleNamespace(qw_backend="qwsim"), **spawn_kw)
     from sample_factory.model.model_utils import get_rnn_size
     namer = ZoneNamer()
 

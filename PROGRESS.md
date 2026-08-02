@@ -6237,3 +6237,20 @@ NotebookLM-triage (ägaren bad om kommentar): punkt 1-2 (geometriska rewards, vo
 nyfikenhet) = vår befintliga design; Slow/Fast-RNN + ICM förblir RESERVER med trigger-
 kriterier: RNN-hierarki om långruttsplanering stagnerar EFTER gate-hoppen; ICM om
 täckningen platåar <50 % i >1G frames trots rarity. PBT fortsatt AV (ägarbeslut krävs).
+
+## 2026-08-02 16:12 EEST — Riskregim första läsning @6.0G + färdighetsprob: FÖRSTA HEXAGONFÖRSÖKET (PRELIMINÄRT)
+Snabbsvit @6.0G (87M frames in i riskregimen): n=10 fart 631.6 (upp från 554.7 —
+viktökningarna klätter 0.8/gap 5 kostade ingen fart), score 1.26, 0 fastnade.
+(Täckning 16.6 % @n=10 EJ jämförbar med 41.8 % @n=30 — unionen växer med episodantal;
+snabbsviterna används för hopp/närhet, fulla n=30 för täckningstrend.)
+Fri-strövande-närheten: SNG-mega fortsatt konvergens (5 st +80-vinster, d2 122.8 —
+3 u från kravet); hexagon i fritt val fortfarande gles.
+**NY FÄRDIGHETSPROB** (dump_trajectories --spawn ledge|ra|mega): mäter FÖRMÅGA med
+start i curriculum-regionen, skilt från ruttval. Ledge-prob @6.0G (10 ep):
+- Alla episoder navigerar från ledge till plattform (0 fastnade, fart 380-457).
+- **"quad→ring SO": 1 försök, 1 ramla (PRELIMINÄRT — analystens vetogranskning
+  pågår, evidence/analyst_ledgeprobe_review.md väntas).** Om godkänt: FÖRSTA
+  registrerade hexagonkorsningsförsöket genom v4-detektorn (nivå 0→1 för den gaten
+  i probvillkor; eko av det reboot-förlorade overifierade claimet från i går).
+Nästa: 6.25G-vakt → snabbsvit + ledge-prob igen; full n=30 + artefakt när analysten
+dömt eller nästa fulla cykel. 33/33 test gröna (--spawn-proben).
