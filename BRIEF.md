@@ -72,6 +72,15 @@ Manifestets tes (ruttföljning är en kognitiv tvångströja) är samma slutsats
   ej gate-kritiska. Mätning: `rl/jump_gates.py` på trajektoriedumpar; varje
   lägesuppdatering ska inkludera dessa metrics + befintliga gate-mått, och
   3D-artefakten ska hållas uppdaterad med metrics/targets + trendindikatorer.
+- **AMENDMENT (ägarbeslut 2026-08-02 ~18:30) — sidovägens definition + FP-rendering.**
+  "Om botten lyckas ta sig över är det lyckat": ring↔quad-gaten är plattform→plattform
+  PÅ ANGIVEN SIDA utan att ramla i gropen. Sidovägen omfattar HELA sidogolvet inkl.
+  ytterkanten (|perp| 100-460; ytterkanten är kontinuerlig över inre SO-ledgens
+  226u-gap) — "runtomrutt" är en giltig SO-korsning. Lyckat kräver bekräftad landning
+  på destinationsplattformen (grundat sampel ≤1.35 s efter ankomst). Detektor v7;
+  analysten instruerad att omkalibrera humanbaslinjen till denna definition.
+  Dessutom: 3D-artefakten ska ha FÖRSTAPERSONSRENDERING av ALLA klassade gate-försök,
+  även misslyckade (kamera i ögonhöjd längs banan, flat geometri utan texturer).
 - Platt "500 överallt utom vatten/hiss/tele" FÖRKASTAD med mätstöd: 6,6 % av trafiken
   är torra zoner med mänskligt tak under 500 — en platt gate lär agenten UNDVIKA dem.
 - **Bevis:** inspelade fri-strövnings-demos + per-zon-hastighetsstatistik i artefakten.

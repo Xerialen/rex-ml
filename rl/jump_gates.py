@@ -39,7 +39,12 @@ SIDE_DEADZONE = 100.0                 # |perp| < 100 u räknas inte i sidoklassn
 # ett AXIALT gaphopp rakt ut i gropen fick SO-etikett av 2 luftburna sampel
 # 0.8 u utanför dödzonen (side_acc 201; människors misslyckade SO-korsningar:
 # min 205, median 12 468 över 472 event). Korrigeringar:
-SIDE_LEDGE_MAX = 300.0                # ledgebandet: 100 < |perp| < 300 (voxelmätt)
+# v7 (ÄGARBESLUT 2026-08-02 ~18:30: "ep1 är ett 100% lyckat försök!"): gate-
+# semantiken är ägarens — plattform→plattform PÅ ANGIVEN SIDA utan att ramla i
+# gropen. Ytterkantsgolvet (|perp| 300-460, kontinuerligt över inre ledgens
+# 226u-gap på SO) ÄR en del av sidovägen, inte en "runtomrutt". Maskbredden
+# vidgad 300→460 (SO 89→186, NV 172→224 stödda centers).
+SIDE_LEDGE_MAX = 460.0                # sidovägen: 100 < |perp| < 460 (voxelmätt)
 # v5.1 (analystens villkorade förhandsgodkännande, evidence/analyst_v5_validation.md):
 # in-band-progression 350 var geometriskt onåbar för mittgropsfall (gapmitten
 # d=392, källranden 524) — tappade 34 % genuina misslyckade korsningar. 450 ger
@@ -225,7 +230,21 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 outcome = "retreat"
                 break
             if qp is not None and qp != cur:
-                outcome = "lyckat"
+                # v7 LANDNINGSBEKRÄFTELSE (stänger ep8-luckan, analyst-review 8:
+                # "lyckat" sattes på ett enda fallande sampel varefter boten
+                # fortsatte ner i gropen): ankomsten kräver >=1 GRUNDAT sampel
+                # på destinationsplattformen inom ~1.35 s (bhop-ankomst flyger
+                # ~17 sampel över plattformen före nedslag) — annars ramla/lämnade.
+                confirmed = False
+                fell = False
+                for j2 in range(j, min(len(path), j + 27)):
+                    if path[j2][2] <= PIT_Z:
+                        fell = True
+                        break
+                    if _plat(path[j2]) == qp and grounded[j2]:
+                        confirmed = True
+                        break
+                outcome = "lyckat" if confirmed else ("ramla" if fell else "lämnade")
                 break
             j += 1
         if outcome is None:
@@ -366,11 +385,29 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("dump")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--clips", default=None,
+                    help="skriv FP-klipplista (ägarbeslut 2026-08-02: rendering "
+                         "för ALLA klassade försök, även misslyckade)")
     args = ap.parse_args(argv)
-    res = analyze(json.load(open(args.dump)))
+    dump = json.load(open(args.dump))
+    res = analyze(dump)
     txt = json.dumps(res, indent=1, ensure_ascii=False)
     if args.out:
         open(args.out, "w").write(txt + "\n")
+    if args.clips:
+        clips = []
+        for ei, ep in enumerate(dump["episodes"]):
+            path = np.asarray(ep["path"], dtype=float)
+            for ev in _ring_quad_events(path):
+                ax = ev["hopp"].startswith("axial")
+                clips.append({
+                    "ep": ei, "i0": ev["i0"], "i1": ev["i1"],
+                    "label": f"{ev['hopp']} — {ev['utfall']}",
+                    "verdict": "axial" if ax else
+                               ("godkänd" if ev["utfall"] == "lyckat" else "försök"),
+                })
+        open(args.clips, "w").write(
+            json.dumps({"clips": clips}, ensure_ascii=False) + "\n")
     print(txt)
 
 

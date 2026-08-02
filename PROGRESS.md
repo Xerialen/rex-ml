@@ -6378,3 +6378,22 @@ analystens etiketter (ep4 VERIFIERAT FÖRSÖK huvudklipp; runtomrutten; 2 axiala
 kamera i ögonhöjd längs banans riktning, flat geometri + svag 128u-grid, inga texturer;
 play/paus/scrub/halvfart, ?fp=N-autostart. Mall+bygge synkade till tools/rex3d.
 Publicerad på samma URL. Detektorn ger nu eventranges (i0/i1) för klippextraktion.
+
+## 2026-08-02 18:52 EEST — ÄGARBESLUT: ny gate-definition ⇒ detektor v7, ring→quad SO NIVÅ 2
+Ägaren såg ep1 i förstaperson och beslutade: "ep1 är ett 100% lyckat försök" /
+"om botten lyckas ta sig över är det lyckat". BRIEF-amendment tillagd: sidovägen =
+HELA sidogolvet inkl. ytterkanten (|perp| 100-460; SO-ytterkanten kontinuerlig över
+inre ledgens 226u-gap, voxelmätt); lyckat = bekräftad landning på destinationen.
+**Detektor v7:** mask 300→460, landningsbekräftelse (≥1 grundat sampel på dst inom
+27 sampel — stänger ep8-luckan; bhop-ankomst flyger ~17 sampel före nedslag, uppmätt).
+Buggfix under vägen: första fönstret 13 sampel var för kort — ep1 tappades tyst.
+**Utfall traj_63G: ring→quad SO 2 försök/1 lyckat/1 ramla ⇒ NIVÅ 2 ("lyckas ibland")**
+— ep1 lyckat per ägardefinition, ep4 ramla analystverifierad. Ep8-"lyckat" nu korrekt
+axial ramla. Probens ep5 blir gate-ramla under nya masken (analysten bedömer i om-
+kalibreringen). 40/40 test. Analysten instruerad: uppdatera definitionen i gransknings-
+kedjan + NY låst humanbaslinje genom v7 + flagga ev. nya falskpositivklasser
+(t.ex. korridortrafik utan gropexponering) — evidence/analyst_v7_baseline.md väntas.
+**FP-rendering av ALLA klassade försök (ägarkrav):** rl.jump_gates --clips genererar
+klipplistan automatiskt ur detektorns eventranges; artefakten visar nu 4 klipp
+(ep1 LYCKAT, ep4 försök, 2 axiala) och följer framtida dumpar automatiskt.
+Artefakten republicerad (stegen visar nivå 2). Träningen orörd (~6.7G).

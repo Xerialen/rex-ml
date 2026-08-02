@@ -9,11 +9,11 @@
    "nivå": 0
   },
   "ring→quad SO": {
-   "försök": 1,
-   "lyckade": 0,
+   "försök": 2,
+   "lyckade": 1,
    "ramla": 1,
    "retreat": 0,
-   "nivå": 1
+   "nivå": 2
   },
   "quad→ring NV": {
    "försök": 0,
@@ -41,12 +41,12 @@
   }
  },
  "axiala_gropkorsningar": {
-  "försök": 3,
-  "lyckade": 1,
+  "försök": 2,
+  "lyckade": 0,
   "ramla": 2,
   "retreat": 0
  },
  "min_nivå": 0,
  "review_godkand": true,
- "detektor_version": "v6.1; ANALYSTKORRIGERAD bokföring 2026-08-02 (analyst_breakthrough_review.md): ep4 = FÖRSTA verifierade gateförsöket (SO nivå 1); ep1-'lyckat' omklassat axial (runtomrutt); ep8-'lyckat' i substans ramla (landningsbekräftelse-lucka dokumenterad)"
+ "detektor_version": "v7 (ägarbeslut 2026-08-02: sidoväg = hela sidogolvet inkl ytterkant, lyckat = bekräftad landning). ring→quad SO nivå 2 per ägardefinition (ep1 lyckat + ep4 ramla, ep4 analystverifierad). Analystens humanomkalibrering till v7 pågår."
 }
