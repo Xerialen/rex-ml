@@ -6275,7 +6275,7 @@ nästan omedelbart (grundad ledgetid 3.6 s av 600, längsta run 0.60 s) — ledg
 spawnens uppgift är att ändra exakt detta; axialhoppet är första uppvisade
 gropkorsningsintentionen i riskregimen (spåras nu separat).
 
-## 2026-08-02 16:47 EEST — Detektor v5.1 (analystens två justeringar) + NYTT ep5-claim (PRELIMINÄRT)
+## 2026-08-02 16:37 EEST — Detektor v5.1 (analystens två justeringar) + NYTT ep5-claim (PRELIMINÄRT)
 v5-valideringen gav JUSTERA: falsk-sida löst (0/39 grazers) men 34 % genuina
 misslyckade korsningar tappades (in-band-prog 350 geometriskt onåbar för mittgropsfall
 — gapmitten d=392) och råmassa-tröskeln var dt-beroende. **v5.1:** PROGRESS_D_BAND=450,
