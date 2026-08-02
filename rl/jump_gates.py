@@ -35,6 +35,15 @@ PLAT_R = 260.0                        # 2D-radie plattformsregion
 PLAT_ZBAND = (40.0, 130.0)            # plattformsNIVÅN, inte volymen över gropen
 PROGRESS_D = 350.0                    # försök kräver närmande: d(dst) < 350 någon gång
 SIDE_DEADZONE = 100.0                 # |perp| < 100 u räknas inte i sidoklassningen
+# v5 (analyst-review 5, 2026-08-02, underkände ledgeprobens "quad→ring SO"):
+# ett AXIALT gaphopp rakt ut i gropen fick SO-etikett av 2 luftburna sampel
+# 0.8 u utanför dödzonen (side_acc 201; människors misslyckade SO-korsningar:
+# min 205, median 12 468 över 472 event). Korrigeringar:
+SIDE_LEDGE_MAX = 300.0                # ledgebandet: 100 < |perp| < 300 (voxelmätt)
+SIDE_MIN_ACC = 300.0                  # sidoetiketten kräver minimimassa i signalen
+# ledgenärvaro/progression/sidosignal räknas ENBART i sampel på plattformsnivån
+# (z i PLAT_ZBAND) — progression intjänad i fritt fall under bandet räknas inte.
+# Axiala gropkorsningar (utan ledgekvalificering) bokförs separat, ej som gate.
 LEDGE_Z = -20.0                       # ledgenivå: över detta ute vid sidorna
 HEX_R = 800.0                         # lokalitet kring gropen
 MAX_TRANSIT_PTS = int(4.0 / 0.026)    # 4 s
@@ -109,7 +118,8 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
         seg = [path[t0]]
         outcome = None
         onto_ledge = False
-        progressed = False               # d(dst) < PROGRESS_D någon gång (analystkrav)
+        progressed = False               # d(dst) < PROGRESS_D i ledgebandet (v5)
+        raw_progressed = False           # d(dst) < PROGRESS_D var som helst (axial)
         side_acc = 0.0
         dst_c = QUAD if cur == "ring" else RING
         j = i
@@ -124,12 +134,19 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
                 break
             qp = _plat(q)
             if qp is None and q[2] > LEDGE_Z:
-                onto_ledge = True
-                s = _side(q)
-                if abs(s) > SIDE_DEADZONE:
-                    side_acc += s
                 if _d2(q, dst_c) < PROGRESS_D:
-                    progressed = True
+                    raw_progressed = True
+                # v5: ledgenärvaro/sidosignal/progression enbart på plattforms-
+                # nivån — luftburna sampel under bandet (fritt fall i gropen)
+                # kvalificerar inte ett sidogate-försök.
+                if PLAT_ZBAND[0] < q[2] < PLAT_ZBAND[1]:
+                    s = _side(q)
+                    if SIDE_DEADZONE < abs(s) < SIDE_LEDGE_MAX:
+                        onto_ledge = True
+                    if abs(s) > SIDE_DEADZONE:
+                        side_acc += s
+                    if _d2(q, dst_c) < PROGRESS_D:
+                        progressed = True
             if qp == cur:
                 outcome = "retreat"
                 break
@@ -140,11 +157,20 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
         if outcome is None:
             outcome = "lämnade"              # timeout utan att nå fram
         if outcome == "lyckat":
-            progressed = True                # nådde fram ⇒ per definition
-        if onto_ledge and progressed and outcome in ("lyckat", "ramla", "retreat"):
+            progressed = progressed or onto_ledge   # framme via ledgen ⇒ progression
+            raw_progressed = True
+        side_ok = abs(side_acc) >= SIDE_MIN_ACC     # minimimassa (v5)
+        if onto_ledge and progressed and side_ok \
+                and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
-            side = "NV" if side_acc > 0 else ("SO" if side_acc < 0 else "obestämd")
+            side = "NV" if side_acc > 0 else "SO"
             events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome})
+        elif raw_progressed and outcome in ("lyckat", "ramla", "retreat"):
+            # axial/okvalificerad gropkorsning — spåras separat (analyst-review 5:
+            # "första uppvisade gropkorsningsintentionen", men INTE ett sidogate-
+            # försök). Räknas aldrig mot mognadsstegen.
+            dst = "quad" if cur == "ring" else "ring"
+            events.append({"hopp": f"axial {cur}→{dst}", "utfall": outcome})
         cur = _plat(path[j]) if j < len(path) else None
         t0 = j
         i = j + 1
@@ -224,11 +250,12 @@ def analyze(dump: dict) -> dict:
     gates: dict[str, dict] = {}
     rq = {f"{a}→{b} {s}": {"försök": 0, "lyckade": 0, "ramla": 0, "retreat": 0}
           for a, b in (("ring", "quad"), ("quad", "ring")) for s in ("NV", "SO")}
+    axial = {"försök": 0, "lyckade": 0, "ramla": 0, "retreat": 0}
     ra_att = ra_suc = mega_att = mega_suc = 0
     for ep in dump["episodes"]:
         path = np.asarray(ep["path"], dtype=float)
         for ev in _ring_quad_events(path):
-            g = rq[ev["hopp"]]
+            g = axial if ev["hopp"].startswith("axial") else rq[ev["hopp"]]
             g["försök"] += 1
             g["lyckade"] += int(ev["utfall"] == "lyckat")
             g["ramla"] += int(ev["utfall"] == "ramla")
@@ -244,6 +271,7 @@ def analyze(dump: dict) -> dict:
     gates["SNG-mega"] = {"försök": mega_att, "lyckade": mega_suc,
                           "nivå": _level(mega_att, mega_suc)}
     return {"episodes": len(dump["episodes"]), "gates": gates,
+            "axiala_gropkorsningar": axial,   # informationsspår, EJ gate (v5)
             "min_nivå": min(g["nivå"] for g in gates.values())}
 
 

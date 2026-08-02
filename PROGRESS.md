@@ -6254,3 +6254,23 @@ start i curriculum-regionen, skilt från ruttval. Ledge-prob @6.0G (10 ep):
   i probvillkor; eko av det reboot-förlorade overifierade claimet från i går).
 Nästa: 6.25G-vakt → snabbsvit + ledge-prob igen; full n=30 + artefakt när analysten
 dömt eller nästa fulla cykel. 33/33 test gröna (--spawn-proben).
+
+## 2026-08-02 16:35 EEST — Review 5: ledgeprobens claim UNDERKÄNT (axialt hopp), detektor v5
+Analysten underkände quad→ring SO-claimet från ledgeproben: AXIALT gaphopp rakt ut i
+gropen (obruten ballistisk båge d²z −0.542, 0 grundade sampel, 0 sampel i SO-ledge-
+bandet); SO-etiketten kom från 2 luftburna sampel 0.8/0.04 u utanför dödzonen
+(side_acc 201 mot människors min 205/median 12 468 över 472 event — analysten byggde
+HUMANBASLINJE: evidence/repro/human_ledge_baseline.py/.json, 24 demos). Femte
+falskpositivklassen. Claimet TILLBAKADRAGET.
+**Detektor v5:** sidosignal/ledgenärvaro/progression enbart i plattformsbandet
+(z 40-130); onto_ledge kräver |perp| 100-300 i bandet; sidoetikett kräver
+|side_acc|≥300 (provisorisk, analystkalibrering beställd); okvalificerade
+progressionskorsningar bokförs i NY separat kategori "axiala_gropkorsningar"
+(ej gate). 2 nya test (rekonstruerat underkänt event + positiv SO-kontroll),
+35/35 gröna. Omkörning: proben ⇒ gates 0/0 + axial 1 ramla; traj_53G ⇒ allt 0.
+Analystens v5-validering mot humanbaslinjen PÅGÅR (mål: falsk-SO ~11 %→0 utan
+väsentlig retention-förlust). v5 EJ driftgodkänd förrän domen landar.
+**Probens förmågesvar (analystens, oberoende av claimet):** botten kliver av ledgen
+nästan omedelbart (grundad ledgetid 3.6 s av 600, längsta run 0.60 s) — ledge-
+spawnens uppgift är att ändra exakt detta; axialhoppet är första uppvisade
+gropkorsningsintentionen i riskregimen (spåras nu separat).

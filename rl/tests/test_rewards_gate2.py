@@ -141,6 +141,45 @@ def test_jump_gate_item_airborne_arc_not_attempt():
     assert res["gates"]["SNG-mega"]["nivå"] == 0
 
 
+def test_jump_gate_axial_pit_jump_not_side_attempt():
+    # review 5 (analyst 2026-08-02): axialt gaphopp rakt ut i gropen fick
+    # SO-etikett av 2 luftburna sampel strax utanför dödzonen med progression
+    # intjänad i fritt fall UNDER ledgebandet. v5: sidogate kräver ledgeband-
+    # närvaro (z 40-130, |perp| 100-300), progression i bandet och |side_acc|
+    # >= 300. Axiala korsningar bokförs separat.
+    from rl.jump_gates import QUAD, RING, analyze
+    ax = (QUAD - RING)[:2]
+    axn = ax / np.hypot(*ax)
+    perp = np.array([-axn[1], axn[0]])          # +perp = NV-sidan
+    path = [[*(QUAD[:2] - axn[:2] * 0), 56.0, 300]] * 4      # står på quad
+    for k in range(10):                          # båge mot ring, sjunkande z
+        pos2 = QUAD[:2] - axn * (80.0 + 60.0 * k) - perp * (104.0 if k in (4, 5) else 40.0)
+        z = 30.0 - 6.0 * k                       # under bandet, över LEDGE_Z (-20)
+        path.append([pos2[0], pos2[1], z, 300])  # d(ring) sjunker under 350
+    path.append([*(RING[:2] + axn * 260), -150.0, 300])       # gropen
+    res = analyze({"episodes": [{"path": path}]})
+    assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
+    assert res["axiala_gropkorsningar"]["försök"] == 1
+    assert res["axiala_gropkorsningar"]["ramla"] == 1
+
+
+def test_jump_gate_ledge_crossing_counts_with_mass():
+    # positiv kontroll v5: riktig SO-ledgevandring (z i bandet, |perp| ~150,
+    # många sampel => side_acc-massa >> 300) som når fram räknas som lyckat.
+    from rl.jump_gates import QUAD, RING, analyze
+    ax = (QUAD - RING)[:2]
+    axn = ax / np.hypot(*ax)
+    perp = np.array([-axn[1], axn[0]])
+    path = [[*QUAD[:2], 56.0, 300]] * 4
+    for k in range(14):                          # SO-sidan: -perp (side<0)
+        pos2 = QUAD[:2] - axn * (60.0 + 45.0 * k) - perp * 150.0
+        path.append([pos2[0], pos2[1], 60.0, 300])
+    path += [[*RING[:2], 56.0, 300]] * 3
+    res = analyze({"episodes": [{"path": path}]})
+    g = res["gates"]["quad→ring SO"]
+    assert (g["försök"], g["lyckade"]) == (1, 1)
+
+
 def test_jump_gate_item_apex_quasi_stable_not_grounded():
     # bågAPEX är kvasi-z-stabil (dz 0.4/0.1 @26 ms) men behåller gravitationens
     # kurvatur d²z ≈ −0.5 — exakta samplen ur underkända mega-claimet (ep6,
