@@ -6105,3 +6105,17 @@ Flagga --qw_hex_spawn_workers. Policyns input oförändrad = ingen waypoint.
 Omstart med +--qw_hex_spawn_workers=6 (≈18 % av dm3-träningen börjar uppe). Mätare:
 tid-på-platånivå (spatial), hoppgaternas försöksräknare (analystvetot gäller nollskilda
 claims), n_gap. 31/31 tester.
+
+## 2026-08-02 09:10 EEST — MASKINREBOOT ~02:03: 7 h H100-stillestånd; omstart med höjdkoef 1.5
+Rekonstruktion: vid 01:15-beslutet (höjd 2.0→1.5 efter fart 476.6 < golvet) blockerades
+verkställandet av tillfälligt klassificeraravbrott; strax därefter REBOOTADE maskinen
+(uptime visar 02:03) — tmux/träning/monitor dog, /tmp-scratchpaden rensades. Sessionen
+återuppstod 09:03. Förlust: ~7 h träning (sista checkpoint 02:00, 4.65G-serien intakt på
+disk) + trajektoriedumpen med quad→ring SO-försöket (1 försök/1 grop-fall) — claimet kan
+INTE analyst-verifieras (underlaget borta) ⇒ förblir OVERIFIERAT per vetot; nästa dump
+återmäter. Repo/checkpoints/preserve-arkiv/HF: intakta.
+Åtgärdat: träning omstartad 09:05 i ny tmux-session med **--qw_height_coef=1.5** (den
+beslutade korrigeringen) + övriga flaggor oförändrade; ny persistent monitor (30-min-
+hjärtslag + nere/stillastående-vakt); framtida dumpar skrivs till ~/dumps/ (rebootsäkert,
+utanför git) i stället för /tmp-scratchpad — lärdomen från förlorat verifieringsunderlag.
+Sprintklocka: ~15 h kvar på vmonster (av ursprungliga 48).
