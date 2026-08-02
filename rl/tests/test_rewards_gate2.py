@@ -164,53 +164,69 @@ def test_jump_gate_axial_pit_jump_not_side_attempt():
 
 
 def test_jump_gate_ledge_crossing_counts_with_mass():
-    # positiv kontroll v5: riktig SO-ledgevandring (z i bandet, |perp| ~150,
-    # många sampel => side_acc-massa >> 300) som når fram räknas som lyckat.
+    # positiv kontroll v6: riktig SO-maskvandring hela vägen som når fram
+    # räknas som lyckat med korrekt sidoetikett.
     from rl.jump_gates import QUAD, RING, analyze
-    ax = (QUAD - RING)[:2]
-    axn = ax / np.hypot(*ax)
-    perp = np.array([-axn[1], axn[0]])
-    path = [[*QUAD[:2], 56.0, 300]] * 4
-    for k in range(14):                          # SO-sidan: -perp (side<0)
-        pos2 = QUAD[:2] - axn * (60.0 + 45.0 * k) - perp * 150.0
-        path.append([pos2[0], pos2[1], 60.0, 300])
-    path += [[*RING[:2], 56.0, 300]] * 3
+    path = [[*QUAD[:2], 56.0, 300]] * 4 + _so_ledge_walk() + \
+           [[*RING[:2], 56.0, 300]] * 3
     res = analyze({"episodes": [{"path": path}]})
     g = res["gates"]["quad→ring SO"]
     assert (g["försök"], g["lyckade"]) == (1, 1)
 
 
+def _ledge_walk(sign=-1, d_ring_stop=270.0):
+    # verklig ledgevandring quad→ring ur v6-masken (analyst-review 6:
+    # syntetiska perp-bandbanor kan hamna i gropens luftrum). sign=-1 SO
+    # (har verkligt gap d_ring 330-555), +1 NV (kontinuerlig).
+    from rl.jump_gates import RING, QUAD, _d2, _side, ledge_centers
+    cs = ledge_centers()
+    sel = [p for p in cs if _side(p) * sign > 0
+           and _d2(p, RING) > d_ring_stop and _d2(p, QUAD) > 270.0]
+    sel.sort(key=lambda p: -_d2(p, RING))         # från quad-sidan mot ring
+    return [[p[0], p[1], p[2] + 8.0, 300] for p in sel[::3]]
+
+
+def _so_ledge_walk(d_ring_stop=270.0):
+    return _ledge_walk(-1, d_ring_stop)
+
+
 def test_jump_gate_midgap_fall_counts_as_side_attempt():
-    # v5.1 (analystens justering 1): mittgropsfall — genuin SO-bandvandring som
-    # ramlar FÖRE d<350 (gapmitten ligger på d=392) ska räknas; in-band-
-    # progression 450. 8 bandsampel à |perp| 150 ger massa 1200*0.026=31 u·s.
-    from rl.jump_gates import QUAD, RING, analyze
-    ax = (QUAD - RING)[:2]
-    axn = ax / np.hypot(*ax)
-    perp = np.array([-axn[1], axn[0]])
-    path = [[*QUAD[:2], 56.0, 300]] * 4
-    for k in range(8):                            # når bara d(ring) ~409
-        pos2 = QUAD[:2] - axn * (60.0 + 45.0 * k) - perp * 150.0
-        path.append([pos2[0], pos2[1], 60.0, 300])
-    path.append([*(QUAD[:2] - axn * 420), -150.0, 300])   # gropen
+    # v5.1/v6: mittgropsfall — genuin SO-maskvandring som ramlar före d<350
+    # (gapmitten d=392) ska räknas; in-mask-progression 450.
+    from rl.jump_gates import QUAD, RING, _d2, analyze
+    walk = [q for q in _ledge_walk(+1) if _d2(q, RING) > 360.0]  # NV, ~360-450
+    assert any(_d2(q, RING) < 450.0 for q in walk)
+    path = [[*QUAD[:2], 56.0, 300]] * 4 + walk + \
+           [[QUAD[0] - 300.0, QUAD[1] - 150.0, -150.0, 300]]   # gropen
     res = analyze({"episodes": [{"path": path}]})
-    g = res["gates"]["quad→ring SO"]
+    g = res["gates"]["quad→ring NV"]
     assert (g["försök"], g["ramla"]) == (1, 1)
 
 
+def test_jump_gate_ungrounded_source_platform_is_axial():
+    # v6 (analyst-review 6, ep14-klassen): källplattformsvistelse utan ett enda
+    # grundat sampel (ren luftpassage över quad) kvalificerar inte sidogate.
+    from rl.jump_gates import QUAD, RING, _d2, analyze
+    walk = [q for q in _ledge_walk(+1) if _d2(q, RING) > 360.0]
+    ups = [[QUAD[0], QUAD[1], z, 300] for z in (44.0, 88.0, 70.0, 96.0)]
+    path = ups + walk + \
+           [[QUAD[0] - 300.0, QUAD[1] - 150.0, -150.0, 300]]
+    res = analyze({"episodes": [{"path": path}]})
+    assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
+    assert res["axiala_gropkorsningar"]["försök"] == 1
+
+
 def test_jump_gate_band_graze_low_mass_is_axial():
-    # v5.1 (analystens justering 2): förlängd bandgraze — når in-band-
-    # progression (<450) men sidomassan 2*104*0.026=5.4 u·s < 14 ⇒ axial,
-    # inte sidogate (bot-ep8-klassen med prog 450).
-    from rl.jump_gates import QUAD, RING, analyze
-    ax = (QUAD - RING)[:2]
-    axn = ax / np.hypot(*ax)
-    perp = np.array([-axn[1], axn[0]])
-    path = [[*QUAD[:2], 56.0, 300]] * 4
-    for k in range(2):                            # 2 grazesample i bandet
-        pos2 = QUAD[:2] - axn * (340.0 + 40.0 * k) - perp * 104.0
-        path.append([pos2[0], pos2[1], 60.0, 300])   # d(ring) ~404-444 < 450
-    path.append([*(QUAD[:2] - axn * 420), -150.0, 300])   # gropen
+    # v5.1/v6: kort maskgraze — når progression (<450) men sidomassan under
+    # 14 u·s ⇒ axial, inte sidogate.
+    from rl.jump_gates import QUAD, RING, _d2, _side, analyze, ledge_centers
+    cs = [p for p in ledge_centers()
+          if _side(p) > 0 and 360.0 < _d2(p, RING) < 450.0]   # NV: kontinuerlig
+    cs.sort(key=lambda p: abs(_side(p)))          # minsta sidosignalen
+    graze = [[p[0], p[1], p[2] + 8.0, 300] for p in cs[:2]]
+    assert abs(sum(_side(q) for q in graze)) * 0.026 < 14.0
+    path = [[*QUAD[:2], 56.0, 300]] * 4 + graze + \
+           [[QUAD[0] - 300.0, QUAD[1] - 150.0, -150.0, 300]]   # gropen
     res = analyze({"episodes": [{"path": path}]})
     assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
     assert res["axiala_gropkorsningar"]["försök"] == 1

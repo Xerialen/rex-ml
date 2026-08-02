@@ -202,22 +202,11 @@ _LEDGE_CACHE = None
 
 
 def _ledge_centers():
-    """OPEN-voxelcentrum på hexagonens sidoledger (beräknas en gång per
-    workerprocess — fabriken körs i workern, inget pickling-behov)."""
+    """OPEN-voxelcentrum på hexagonens sidoledger — kanonisk källa är
+    rl.jump_gates.ledge_centers() (v6 delar mask mellan spawn-curriculum och
+    detektor; beräknas en gång per workerprocess, fabriken körs i workern)."""
     global _LEDGE_CACHE
     if _LEDGE_CACHE is None:
-        from rl.jump_gates import PIT_2D, QUAD, RING, _side
-        from rl.zones import CLS_OPEN, RASTER
-        d = np.load(RASTER)
-        m = d["cls"] == CLS_OPEN
-        cs = np.stack([d["ix"][m] * 32.0 + 16, d["iy"][m] * 32.0 + 16,
-                       d["iz"][m] * 32.0 + 16], axis=1)
-        hexm = (np.hypot(cs[:, 0] - PIT_2D[0], cs[:, 1] - PIT_2D[1]) < 800.0) \
-            & (cs[:, 2] > 40.0) & (cs[:, 2] < 130.0)
-        cs = cs[hexm]
-        side = np.abs(np.array([_side(p) for p in cs]))
-        ax = (QUAD - RING)[:2]
-        t = ((cs[:, :2] - RING[:2]) @ ax) / (ax @ ax)   # projektion ring→quad
-        _LEDGE_CACHE = cs[(side > 100.0) & (side < 300.0)
-                          & (t > -0.15) & (t < 1.15)]   # 1031 centers, z 48-112
+        from rl.jump_gates import ledge_centers
+        _LEDGE_CACHE = ledge_centers()
     return _LEDGE_CACHE

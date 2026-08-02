@@ -50,8 +50,17 @@ PROGRESS_D_BAND = 450.0               # in-band-progression (rå axial behåller
 # behållna in-band-korsningar: min 301.8 rå @ deras dt; grazers max 234.6.
 SIDE_MIN_MASS_US = 14.0               # |side_acc|·dt >= 14 u·s för sidoetikett
 SAMPLE_DT = 0.026                     # botdumparnas sampelperiod (var 2:e tick @77 Hz)
-# ledgenärvaro/progression/sidosignal räknas ENBART i sampel på plattformsnivån
-# (z i PLAT_ZBAND) — progression intjänad i fritt fall under bandet räknas inte.
+# v6 (analyst-review 6, evidence/analyst_v51_verdict.md — underkände v5.1-drift
+# och ep5-claimet): perp-band-PROXYN var grundfelet — gropcentrum ligger själv
+# på perp −150, så "bandet" inkluderade gropens LUFTRUM (ep5: alla 22 in-ledge-
+# sampel luftburna i en båge över gropen, dPit 45-119; mänskligt grundat ledge-
+# golv börjar vid dPit p1=134). v6: närvaro/massa/progression räknas mot den
+# UPPMÄTTA ledgevoxelmasken (1031 stödda OPEN-centers) i st f perp-bandet, och
+# källplattformsvistelsen måste innehålla >=1 GRUNDAT sampel (ep14-klassen:
+# 0/41 grundade + gårdsloop till dPit 791 gav falsk retreat på traj_53G).
+LEDGE_VOX = 32.0                      # voxelstorlek för maskuppslag
+LEDGE_Z_ABOVE = 72.0                  # sampel räknas till ledgen upp till +72 u
+LEDGE_Z_BELOW = 8.0                   # ... och 8 u under voxelcentrum
 # Axiala gropkorsningar (utan ledgekvalificering) bokförs separat, ej som gate.
 LEDGE_Z = -20.0                       # ledgenivå: över detta ute vid sidorna
 HEX_R = 800.0                         # lokalitet kring gropen
@@ -82,6 +91,58 @@ GROUND_D2Z = 0.2
 
 _AXIS = (QUAD - RING)[:2]
 
+_LEDGE_CENTERS = None
+_LEDGE_GRID = None
+
+
+def ledge_centers() -> np.ndarray:
+    """Uppmätta ledgevoxlar: stödda OPEN-centers på hexagonens sidoledger
+    (|perp| 100-300, axelprojektion -0.15..1.15, z 48-112; 1031 st). Samma
+    urval som ledge-spawn-curriculumet (sf_env importerar härifrån)."""
+    global _LEDGE_CENTERS
+    if _LEDGE_CENTERS is None:
+        from rl.zones import CLS_OPEN, RASTER
+        d = np.load(RASTER)
+        m = d["cls"] == CLS_OPEN
+        ix, iy, iz = d["ix"][m], d["iy"][m], d["iz"][m]
+        # STÖDD-filter (v6-fix efter ep5-debuggen): OPEN-klassen är öppet
+        # UTRYMME, inte golv — kolumner ovanför gropen (dPit 45-119) låg i
+        # masken. Ledgegolv = OPEN-voxel vars voxel rakt UNDER inte är OPEN.
+        open_set = set(zip(ix.tolist(), iy.tolist(), iz.tolist()))
+        sup = np.array([(x, y, z - 1) not in open_set
+                        for x, y, z in zip(ix, iy, iz)])
+        cs = np.stack([ix * 32.0 + 16, iy * 32.0 + 16, iz * 32.0 + 16], axis=1)
+        cs = cs[sup]
+        hexm = (np.hypot(cs[:, 0] - PIT_2D[0], cs[:, 1] - PIT_2D[1]) < HEX_R) \
+            & (cs[:, 2] > 40.0) & (cs[:, 2] < 130.0)
+        cs = cs[hexm]
+        side = np.abs(np.array([_side(p) for p in cs]))
+        t = ((cs[:, :2] - RING[:2]) @ _AXIS) / (_AXIS @ _AXIS)
+        _LEDGE_CENTERS = cs[(side > SIDE_DEADZONE) & (side < SIDE_LEDGE_MAX)
+                            & (t > -0.15) & (t < 1.15)]
+    return _LEDGE_CENTERS
+
+
+def _ledge_grid() -> dict:
+    global _LEDGE_GRID
+    if _LEDGE_GRID is None:
+        g: dict[tuple[int, int], list[float]] = {}
+        for c in ledge_centers():
+            g.setdefault((int(c[0] // LEDGE_VOX), int(c[1] // LEDGE_VOX)),
+                         []).append(float(c[2]))
+        _LEDGE_GRID = g
+    return _LEDGE_GRID
+
+
+def _on_ledge(p) -> bool:
+    """Sample hör till ledgen om (x,y) ligger i en ledgevoxel-kolumn och z
+    inom [-8, +72] från voxelcentrum (grundad gång + bunnyhop-apex, men inte
+    gropens luftrum — gropvoxlar är inte OPEN och saknas i masken)."""
+    zs = _ledge_grid().get((int(p[0] // LEDGE_VOX), int(p[1] // LEDGE_VOX)))
+    if not zs:
+        return False
+    return any(-LEDGE_Z_BELOW <= p[2] - cz <= LEDGE_Z_ABOVE for cz in zs)
+
 
 def _d2(p, c):
     return float(np.hypot(p[0] - c[0], p[1] - c[1]))
@@ -107,9 +168,12 @@ def _plat(p):
 
 
 def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
-    """Transitförsök mellan plattformarna via sidoledgerna."""
+    """Transitförsök mellan plattformarna via sidoledgerna (v6: ledgevoxelmask
+    + grundat källplattformskrav)."""
     events = []
+    grounded = _grounded(path)
     cur = _plat(path[0])
+    cur_grounded = bool(grounded[0]) if cur is not None else False
     t0 = 0
     i = 1
     while i < len(path):
@@ -117,24 +181,24 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
         plat = _plat(p)
         if cur is None:
             cur, t0 = plat, i
+            cur_grounded = bool(plat is not None and grounded[i])
             i += 1
             continue
         if plat == cur:
             t0 = i
+            cur_grounded = cur_grounded or bool(grounded[i])
             i += 1
             continue
         # lämnat cur-plattformen: följ kandidattransiten
-        seg = [path[t0]]
         outcome = None
         onto_ledge = False
-        progressed = False               # d(dst) < PROGRESS_D i ledgebandet (v5)
-        raw_progressed = False           # d(dst) < PROGRESS_D var som helst (axial)
+        progressed = False               # d(dst) < 450 i ledgeMASKEN (v6)
+        raw_progressed = False           # d(dst) < 350 var som helst (axial)
         side_acc = 0.0
         dst_c = QUAD if cur == "ring" else RING
         j = i
         while j < len(path) and j - t0 <= MAX_TRANSIT_PTS:
             q = path[j]
-            seg.append(q)
             if _d2(q, PIT_2D) > HEX_R:
                 outcome = "lämnade"          # drog någon annanstans — inget försök
                 break
@@ -143,17 +207,16 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 break
             qp = _plat(q)
             if qp is None and q[2] > LEDGE_Z:
-                if _d2(q, dst_c) < PROGRESS_D:
+                # axial-progression 450 (= in-mask-tröskeln): ep5:s genuina
+                # gropkorsningsintention nådde min-d 368 mitt över gropen —
+                # rå 350 missade den (analystens facit: probe ⇒ axial 2)
+                if _d2(q, dst_c) < PROGRESS_D_BAND:
                     raw_progressed = True
-                # v5: ledgenärvaro/sidosignal/progression enbart på plattforms-
-                # nivån — luftburna sampel under bandet (fritt fall i gropen)
-                # kvalificerar inte ett sidogate-försök.
-                if PLAT_ZBAND[0] < q[2] < PLAT_ZBAND[1]:
-                    s = _side(q)
-                    if SIDE_DEADZONE < abs(s) < SIDE_LEDGE_MAX:
-                        onto_ledge = True
-                    if abs(s) > SIDE_DEADZONE:
-                        side_acc += s
+                # v6: ledgetillhörighet via den uppmätta voxelmasken — perp-
+                # bandet inkluderade gropens luftrum (analyst-review 6).
+                if _on_ledge(q):
+                    onto_ledge = True
+                    side_acc += _side(q)
                     if _d2(q, dst_c) < PROGRESS_D_BAND:
                         progressed = True
             if qp == cur:
@@ -169,18 +232,19 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
             progressed = progressed or onto_ledge   # framme via ledgen ⇒ progression
             raw_progressed = True
         side_ok = abs(side_acc) * dt >= SIDE_MIN_MASS_US   # tidsnorm. massa (v5.1)
-        if onto_ledge and progressed and side_ok \
+        if onto_ledge and progressed and side_ok and cur_grounded \
                 and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
             side = "NV" if side_acc > 0 else "SO"
             events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome})
         elif (raw_progressed or progressed) and outcome in ("lyckat", "ramla", "retreat"):
-            # axial/okvalificerad gropkorsning — spåras separat (analyst-review 5:
-            # "första uppvisade gropkorsningsintentionen", men INTE ett sidogate-
-            # försök). Räknas aldrig mot mognadsstegen.
+            # axial/okvalificerad gropkorsning — spåras separat (analyst-review 5/6:
+            # gropkorsningsintention utan ledgekvalificering eller utan grundad
+            # källplattformsvistelse). Räknas aldrig mot mognadsstegen.
             dst = "quad" if cur == "ring" else "ring"
             events.append({"hopp": f"axial {cur}→{dst}", "utfall": outcome})
         cur = _plat(path[j]) if j < len(path) else None
+        cur_grounded = bool(cur is not None and j < len(path) and grounded[j])
         t0 = j
         i = j + 1
     return events

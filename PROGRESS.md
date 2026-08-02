@@ -6292,3 +6292,23 @@ fallklass justering 1 skulle behålla — men startar på ledgen (prob), så ana
 kollar quad-vistelsens äkthet + banans riktning. Domslut väntas i
 evidence/analyst_v51_verdict.md TILLSAMMANS med v5.1-driftdomen (deras skript kräver
 duckdb som saknas i sf-venven — analysten kör slutvalideringen i sin miljö).
+
+## 2026-08-02 17:22 EEST — Review 6: BÅDA domsluten underkända ⇒ detektor v6 (stödd voxelmask); SO-gapet uppmätt
+Analystens review 6 underkände v5.1-driften OCH ep5-claimet: perp-bandet var en proxy
+som inkluderade GROPENS LUFTRUM (gropcentrum ligger på perp −150); ep5:s "korsning"
+var en 0.42 s-luftbåge över gropen (dPit 45-119; grundat ledgegolv börjar dPit p1=134).
+Dessutom: v5.1 gav falsk retreat på traj_53G (ep14: gårdsloop, 0/41 grundade käll-
+sampel) — min egen regressionsutskrift hade dolt den (skrev bara min-nivå, inte alla
+gates; LÄRDOM: skriv alltid ut hela gate-dicten). Mina ep5-instrumenteringssiffror
+reproducerade inte heller (mätte hela episoden, inte transitsegmentet).
+**v6:** (a) ledge_centers() med STÖDD-filter (voxeln under ej OPEN — OPEN är utrymme,
+inte golv): 1031→261 centers, delas nu kanoniskt mellan detektor och spawn-curriculum;
+tillhörighet (x,y)-kolumn ∧ z ∈ [cz−8,+72]. (b) källplattformsvistelse kräver ≥1
+grundat sampel. (c) axial-progression 450. Utfall = analystens facit: probe sidogates
+0 + axial 2; traj_53G sidogates 0 (ep14 ⇒ axial); 38/38 test (fixturer på verkliga
+maskvandringar, NV-sidan). **UPPTÄCKT: stödda SO-ledgen har verkligt GAP d_ring
+330-555 (225 u) — själva trickhoppet; NV kontinuerlig.** SO-mittgropsfallens semantik
+under stödd mask = öppen fråga till analysten (slutvalidering mot 67 band-ramla +
+646 lyckade pågår i deras miljö). v6 EJ driftsatt förrän domen landar. Alla tidigare
+presenterade gate-lägen opåverkade (nollor genom alla versioner).
+Träningen orörd genom hela detektorarbetet (riskregimen ~6.3G, ~52k FPS).
