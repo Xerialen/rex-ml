@@ -6187,7 +6187,7 @@ Omstart från senaste checkpoint (~5.61G); övriga flaggor oförändrade (höjd 
 per 12:40-beslutet: 554.7/41.8 %/0 fastnade/1.108). Artefakten republicerad med
 5.3G-punkten + PRELIMINÄR-banner. Dashboard: fart ↑, täckning ↑, score ↑, hopp 0→.
 
-## 2026-08-02 13:34 EEST — Vetot verkade: mega-claimet UNDERKÄNT, detektor v4 (grundat-krav)
+## 2026-08-02 13:20 EEST — Vetot verkade: mega-claimet UNDERKÄNT, detektor v4 (grundat-krav)
 dm3-analystens review 4 (evidence/analyst_megattempt_review.md + repro/verify_mega_attempt.py)
 underkände SNG-mega-försöket @5.3G: ep6 sampel 2248-2309 var två kedjade bunnyhop-bågar
 in i NO-hörnsväggen (apex z 67.8 LUFTBURET, gravitationsfit d²z=−0.541; max stödd z i
