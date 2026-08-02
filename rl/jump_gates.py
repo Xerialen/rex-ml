@@ -40,7 +40,16 @@ SIDE_DEADZONE = 100.0                 # |perp| < 100 u räknas inte i sidoklassn
 # 0.8 u utanför dödzonen (side_acc 201; människors misslyckade SO-korsningar:
 # min 205, median 12 468 över 472 event). Korrigeringar:
 SIDE_LEDGE_MAX = 300.0                # ledgebandet: 100 < |perp| < 300 (voxelmätt)
-SIDE_MIN_ACC = 300.0                  # sidoetiketten kräver minimimassa i signalen
+# v5.1 (analystens villkorade förhandsgodkännande, evidence/analyst_v5_validation.md):
+# in-band-progression 350 var geometriskt onåbar för mittgropsfall (gapmitten
+# d=392, källranden 524) — tappade 34 % genuina misslyckade korsningar. 450 ger
+# 97 % misslyckad-retention, 646/646 lyckade, 0 grazers.
+PROGRESS_D_BAND = 450.0               # in-band-progression (rå axial behåller 350)
+# Sidomassan tidsnormaliseras (u·s) — råsumman är dt-beroende (26 ms-botdata
+# summerar 2x per tidsenhet mot 51 ms-demon). Humangap 12.0-15.4 u·s;
+# behållna in-band-korsningar: min 301.8 rå @ deras dt; grazers max 234.6.
+SIDE_MIN_MASS_US = 14.0               # |side_acc|·dt >= 14 u·s för sidoetikett
+SAMPLE_DT = 0.026                     # botdumparnas sampelperiod (var 2:e tick @77 Hz)
 # ledgenärvaro/progression/sidosignal räknas ENBART i sampel på plattformsnivån
 # (z i PLAT_ZBAND) — progression intjänad i fritt fall under bandet räknas inte.
 # Axiala gropkorsningar (utan ledgekvalificering) bokförs separat, ej som gate.
@@ -97,7 +106,7 @@ def _plat(p):
     return None
 
 
-def _ring_quad_events(path: np.ndarray) -> list[dict]:
+def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
     """Transitförsök mellan plattformarna via sidoledgerna."""
     events = []
     cur = _plat(path[0])
@@ -145,7 +154,7 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
                         onto_ledge = True
                     if abs(s) > SIDE_DEADZONE:
                         side_acc += s
-                    if _d2(q, dst_c) < PROGRESS_D:
+                    if _d2(q, dst_c) < PROGRESS_D_BAND:
                         progressed = True
             if qp == cur:
                 outcome = "retreat"
@@ -159,13 +168,13 @@ def _ring_quad_events(path: np.ndarray) -> list[dict]:
         if outcome == "lyckat":
             progressed = progressed or onto_ledge   # framme via ledgen ⇒ progression
             raw_progressed = True
-        side_ok = abs(side_acc) >= SIDE_MIN_ACC     # minimimassa (v5)
+        side_ok = abs(side_acc) * dt >= SIDE_MIN_MASS_US   # tidsnorm. massa (v5.1)
         if onto_ledge and progressed and side_ok \
                 and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
             side = "NV" if side_acc > 0 else "SO"
             events.append({"hopp": f"{cur}→{dst} {side}", "utfall": outcome})
-        elif raw_progressed and outcome in ("lyckat", "ramla", "retreat"):
+        elif (raw_progressed or progressed) and outcome in ("lyckat", "ramla", "retreat"):
             # axial/okvalificerad gropkorsning — spåras separat (analyst-review 5:
             # "första uppvisade gropkorsningsintentionen", men INTE ett sidogate-
             # försök). Räknas aldrig mot mognadsstegen.
@@ -246,15 +255,16 @@ def _level(attempts: int, successes: int) -> int:
     return 2
 
 
-def analyze(dump: dict) -> dict:
+def analyze(dump: dict, dt: float | None = None) -> dict:
     gates: dict[str, dict] = {}
+    dt = dt if dt is not None else float(dump.get("dt", SAMPLE_DT))
     rq = {f"{a}→{b} {s}": {"försök": 0, "lyckade": 0, "ramla": 0, "retreat": 0}
           for a, b in (("ring", "quad"), ("quad", "ring")) for s in ("NV", "SO")}
     axial = {"försök": 0, "lyckade": 0, "ramla": 0, "retreat": 0}
     ra_att = ra_suc = mega_att = mega_suc = 0
     for ep in dump["episodes"]:
         path = np.asarray(ep["path"], dtype=float)
-        for ev in _ring_quad_events(path):
+        for ev in _ring_quad_events(path, dt=dt):
             g = axial if ev["hopp"].startswith("axial") else rq[ev["hopp"]]
             g["försök"] += 1
             g["lyckade"] += int(ev["utfall"] == "lyckat")

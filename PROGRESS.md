@@ -6274,3 +6274,21 @@ väsentlig retention-förlust). v5 EJ driftgodkänd förrän domen landar.
 nästan omedelbart (grundad ledgetid 3.6 s av 600, längsta run 0.60 s) — ledge-
 spawnens uppgift är att ändra exakt detta; axialhoppet är första uppvisade
 gropkorsningsintentionen i riskregimen (spåras nu separat).
+
+## 2026-08-02 16:47 EEST — Detektor v5.1 (analystens två justeringar) + NYTT ep5-claim (PRELIMINÄRT)
+v5-valideringen gav JUSTERA: falsk-sida löst (0/39 grazers) men 34 % genuina
+misslyckade korsningar tappades (in-band-prog 350 geometriskt onåbar för mittgropsfall
+— gapmitten d=392) och råmassa-tröskeln var dt-beroende. **v5.1:** PROGRESS_D_BAND=450,
+sidomassa tidsnormaliserad ≥14 u·s (dt-parameter, botdefault 0.026), massblockade
+grazes ⇒ axial. 2 nya regressionstest (mittgropsfall + förlängd graze), 37/37 gröna.
+Analystens prognos med båda: retention 744/1267, falskklassning 0. Bifynd värt att
+minnas: människors NORMALRUTT ring↔quad är AXELNÄRA (median |perp| 19-40) — ledgerna
+är undantagsrutt även för eliten.
+**NYTT CLAIM (PRELIMINÄRT, vetogranskning pågår):** v5.1 på ledgeproben släpper fram
+"quad→ring SO: 1 försök, 1 ramla" — EPISOD 5 (ej det underkända ep6-eventet som
+korrekt ligger kvar i axial): 102 bandsampel, sidomassa 1 635 u·s (krav 14), z 56-98,
+side −167→−320, in-band-progression, fall i gropen. Ser ut som exakt den mittgrops-
+fallklass justering 1 skulle behålla — men startar på ledgen (prob), så analysten
+kollar quad-vistelsens äkthet + banans riktning. Domslut väntas i
+evidence/analyst_v51_verdict.md TILLSAMMANS med v5.1-driftdomen (deras skript kräver
+duckdb som saknas i sf-venven — analysten kör slutvalideringen i sin miljö).

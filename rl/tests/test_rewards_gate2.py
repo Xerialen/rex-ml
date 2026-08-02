@@ -180,6 +180,42 @@ def test_jump_gate_ledge_crossing_counts_with_mass():
     assert (g["försök"], g["lyckade"]) == (1, 1)
 
 
+def test_jump_gate_midgap_fall_counts_as_side_attempt():
+    # v5.1 (analystens justering 1): mittgropsfall — genuin SO-bandvandring som
+    # ramlar FÖRE d<350 (gapmitten ligger på d=392) ska räknas; in-band-
+    # progression 450. 8 bandsampel à |perp| 150 ger massa 1200*0.026=31 u·s.
+    from rl.jump_gates import QUAD, RING, analyze
+    ax = (QUAD - RING)[:2]
+    axn = ax / np.hypot(*ax)
+    perp = np.array([-axn[1], axn[0]])
+    path = [[*QUAD[:2], 56.0, 300]] * 4
+    for k in range(8):                            # når bara d(ring) ~409
+        pos2 = QUAD[:2] - axn * (60.0 + 45.0 * k) - perp * 150.0
+        path.append([pos2[0], pos2[1], 60.0, 300])
+    path.append([*(QUAD[:2] - axn * 420), -150.0, 300])   # gropen
+    res = analyze({"episodes": [{"path": path}]})
+    g = res["gates"]["quad→ring SO"]
+    assert (g["försök"], g["ramla"]) == (1, 1)
+
+
+def test_jump_gate_band_graze_low_mass_is_axial():
+    # v5.1 (analystens justering 2): förlängd bandgraze — når in-band-
+    # progression (<450) men sidomassan 2*104*0.026=5.4 u·s < 14 ⇒ axial,
+    # inte sidogate (bot-ep8-klassen med prog 450).
+    from rl.jump_gates import QUAD, RING, analyze
+    ax = (QUAD - RING)[:2]
+    axn = ax / np.hypot(*ax)
+    perp = np.array([-axn[1], axn[0]])
+    path = [[*QUAD[:2], 56.0, 300]] * 4
+    for k in range(2):                            # 2 grazesample i bandet
+        pos2 = QUAD[:2] - axn * (340.0 + 40.0 * k) - perp * 104.0
+        path.append([pos2[0], pos2[1], 60.0, 300])   # d(ring) ~404-444 < 450
+    path.append([*(QUAD[:2] - axn * 420), -150.0, 300])   # gropen
+    res = analyze({"episodes": [{"path": path}]})
+    assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
+    assert res["axiala_gropkorsningar"]["försök"] == 1
+
+
 def test_jump_gate_item_apex_quasi_stable_not_grounded():
     # bågAPEX är kvasi-z-stabil (dz 0.4/0.1 @26 ms) men behåller gravitationens
     # kurvatur d²z ≈ −0.5 — exakta samplen ur underkända mega-claimet (ep6,
