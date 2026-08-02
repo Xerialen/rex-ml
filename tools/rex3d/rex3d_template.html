@@ -317,7 +317,7 @@ const FP = {on: false, clip: null, path: null, dirs: null, t: 0, t0: 0, t1: 0,
             playing: true, speed: 1, eye: [0,0,0], raf: 0, last: 0};
 function fpView(){
   const n = FP.path.length;
-  const i = Math.min(n - 2, Math.floor(FP.t)), f = Math.min(1, FP.t - i);
+  const i = Math.max(0, Math.min(n - 2, Math.floor(FP.t))), f = Math.max(0, Math.min(1, FP.t - i));
   const a = FP.path[i], b = FP.path[i+1];
   const eye = [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f + 22];
   const da = FP.dirs[i], db = FP.dirs[Math.min(n-1, i+1)];
@@ -844,7 +844,7 @@ document.getElementById("legend").innerHTML =
   const F = DATA.fp;
   const el = document.getElementById("fppanel");
   if (!F || !F.clips || !F.clips.length){ el.style.display = "none"; return; }
-  const DT = F.dt || 0.052;
+
   const VD = {godkänd: ["var(--ok)", "LYCKAT"], försök: ["var(--acc)", "försök (misslyckat)"],
               omklassad: ["var(--acc)", "omklassad"], axial: ["var(--mut)", "axial"],
               artefakt: ["var(--varn)", "detektorlucka"]};
@@ -858,7 +858,7 @@ document.getElementById("legend").innerHTML =
     b.className = "fpclip"; b.id = "fpclip-" + k;
     b.innerHTML = `<b style="color:${col}">▶ ep${c.ep}</b> ${esc(c.label)}` +
       `<br><span class="vd" style="color:${col}">${tag}</span>` +
-      `<span class="vd"> · ${(((c.i1 - c.i0) * DT)).toFixed(1).replace(".", ",")} s + marginal</span>`;
+      `<span class="vd"> · ${((c.path.length * (c.dt || 0.026))).toFixed(1).replace(".", ",")} s</span>`;
     b.addEventListener("click", () => FP.on && FP.clip === c ? exitFP() : enterFP(k));
     el.appendChild(b);
   });
@@ -882,10 +882,11 @@ document.getElementById("legend").innerHTML =
   }
   window.enterFP = function(k){
     const c = F.clips[k];
-    const path = TRAJ.episodes[c.ep].path;
+    const path = c.path;                               /* klippet bär sin bana */
+    FP.dt = c.dt || 0.026;
     FP.clip = c; FP.path = path; FP.dirs = fpDirs(path);
-    FP.t0 = Math.max(0, c.i0 - 38);                    /* ~2 s anlopp */
-    FP.t1 = Math.min(path.length - 2, c.i1 + 19);      /* ~1 s efterspel */
+    FP.t0 = 0;
+    FP.t1 = path.length - 2;
     FP.t = FP.t0; FP.playing = true; FP.speed = 1; FP.on = true;
     if (!savedCam) savedCam = {yaw: cam.yaw, pitch: cam.pitch, dist: cam.dist, at: [...cam.at]};
     document.querySelectorAll(".fpclip.sel").forEach(e => e.classList.remove("sel"));
@@ -913,14 +914,14 @@ document.getElementById("legend").innerHTML =
   };
   function tick(now){
     if (!FP.on) return;
-    const dtms = Math.min(100, now - FP.last); FP.last = now;
+    const dtms = Math.max(0, Math.min(100, now - FP.last)); FP.last = now;
     if (FP.playing){
-      FP.t += (dtms / 1000) * FP.speed / DT;
+      FP.t += (dtms / 1000) * FP.speed / (FP.dt || 0.026);
       if (FP.t >= FP.t1){ FP.t = FP.t0; }              /* loopa klippet */
     }
-    const i = Math.floor(FP.t);
+    const i = Math.max(0, Math.min(FP.path.length - 1, Math.floor(FP.t)));
     scrub.value = Math.round(1000 * (FP.t - FP.t0) / Math.max(1, FP.t1 - FP.t0));
-    tTime.textContent = ((FP.t - FP.t0) * DT).toFixed(1).replace(".", ",") + " s";
+    tTime.textContent = ((FP.t - FP.t0) * (FP.dt || 0.026)).toFixed(1).replace(".", ",") + " s";
     tSpd.textContent = Math.round(FP.path[i][3]) + " u/s";
     draw();
     FP.raf = requestAnimationFrame(tick);

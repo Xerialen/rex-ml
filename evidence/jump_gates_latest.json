@@ -1,5 +1,6 @@
 {
- "episodes": 10,
+ "kommentar": "KUMULATIV stege över VERIFIERADE event (ägarbeslut/analystgodkända): rq-SO = 63G ep1 lyckat + ep4 ramla; qr-SO = probe60G ep5 ramla (probvillkor). Två NV-retreat-claims @6.6G-prober UNDER GRANSKNING (ej inräknade). Senaste fria dump (66G, 30 ep): alla gates 0, axiala 4 ramla.",
+ "episodes": "kumulativ",
  "gates": {
   "ring→quad NV": {
    "försök": 0,
@@ -23,11 +24,11 @@
    "nivå": 0
   },
   "quad→ring SO": {
-   "försök": 0,
+   "försök": 1,
    "lyckade": 0,
-   "ramla": 0,
+   "ramla": 1,
    "retreat": 0,
-   "nivå": 0
+   "nivå": 1
   },
   "RA-tagningen": {
    "försök": 0,
@@ -41,12 +42,12 @@
   }
  },
  "axiala_gropkorsningar": {
-  "försök": 2,
+  "försök": 4,
   "lyckade": 0,
-  "ramla": 2,
+  "ramla": 4,
   "retreat": 0
  },
  "min_nivå": 0,
  "review_godkand": true,
- "detektor_version": "v7 (ägarbeslut 2026-08-02: sidoväg = hela sidogolvet inkl ytterkant, lyckat = bekräftad landning). ring→quad SO nivå 2 per ägardefinition (ep1 lyckat + ep4 ramla, ep4 analystverifierad). Analystens humanomkalibrering till v7 pågår."
+ "detektor_version": "v7.1 (låst baslinje, analyst_v71_baseline.md)"
 }

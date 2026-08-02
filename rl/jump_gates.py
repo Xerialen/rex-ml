@@ -416,8 +416,13 @@ def main(argv=None):
             path = np.asarray(ep["path"], dtype=float)
             for ev in _ring_quad_events(path):
                 ax = ev["hopp"].startswith("axial")
+                # klippet bär sin EGEN bana (2 s anlopp + 1 s efterspel) så
+                # artefaktens FP-uppspelning överlever dumpbyten
+                m0 = max(0, ev["i0"] - 76)
+                m1 = min(len(path) - 1, ev["i1"] + 38)
                 clips.append({
-                    "ep": ei, "i0": ev["i0"], "i1": ev["i1"],
+                    "ep": ei, "dt": SAMPLE_DT,
+                    "path": [[round(float(v), 1) for v in q] for q in path[m0:m1 + 1]],
                     "label": f"{ev['hopp']} — {ev['utfall']}",
                     "verdict": "axial" if ax else
                                ("godkänd" if ev["utfall"] == "lyckat" else "försök"),

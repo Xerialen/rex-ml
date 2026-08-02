@@ -64,10 +64,6 @@ fp = None
 fpf = SCRATCH / "rex_fp_events.json"
 if fpf.exists():
     fp = json.load(open(fpf))
-    for c in fp["clips"]:                 # dumpindex -> decimerat index (::2)
-        c["i0"] //= 2
-        c["i1"] //= 2
-    fp["dt"] = 0.052                      # s per decimerad sampel
 
 metrics = jumpgates = None
 mfile = Path.home() / "rex-ml" / "evidence" / "gate_metrics_history.json"

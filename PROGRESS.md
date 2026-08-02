@@ -6426,3 +6426,20 @@ Kvarstående övervakningspunkter (ej blockerare): retreat utan gropexponeringsk
 inflatera försöksnämnaren vid nivå 3-bedömning; gropcirkeln r 260 är modell.
 Officiellt läge: ring→quad SO nivå 2 (2/1/1), övriga fem gates 0. Detektorkedja
 v1→v7.1 komplett med 8 analystgranskningar och låst humanbaslinje.
+
+## 2026-08-02 21:47 EEST — 6.6G-cykel: täckningsrekord 47.6 % men fart 438.8 ⇒ mix 10→13
+Full cykel @6.6G genom LÅSTA v7.1: n=30 fart 438.8 (<500, ned från 554.7), täckning
+**47.6 % (rekord, +5.8)**, 2 fastnade (upp), score 0.878. Fria dumpen (30 ep): gates
+0/0 men axiala gropförsök 4 (intentionen består); närhet: SNG-mega 161 låga besök
+(3x), hexagon-annalkande <350: 4 st (best 273). Prober: ledge-proben 8 axiala ramla
++ **"ring→quad NV 1 retreat"**; RA-proben 9/10 episoder slutar på RA-toppen +
+**"ring→quad NV 1 retreat"** — BÅDA NV-claimsen under vetogranskning (analystens egen
+övervakningspunkt: retreat utan gropexponeringskrav kan vara sidogolvsvandring).
+**Strukturfixar:** mognadsstegen nu KUMULATIV över verifierade event (rq-SO nivå 2 +
+qr-SO nivå 1 [probe-ep5, analystgodkänd] består oavsett senaste dumps nollor);
+FP-klippen bär egna banor (överlever dumpbyten) — artefakten visar 10 klipp
+(63G-genombrotten + 66G-axiala + 2 NV-prober märkta "granskas"), republicerad.
+**Kursbeslut:** 63G-punkten (554.7) hade SAMMA vikter ⇒ vikterna frias tills vidare;
+fartglidningen tillskrivs bantade gate1-mixen (15→10 vid riskomläggningen).
+Åtgärd: mix 10→13 (fria roamers 10→7, övriga spawnband orörda). Regel: nästa n=30
+(~7.0G) fart <475 ⇒ återställ klätter 0.8→0.5, gap 5→3. Omstart från ~7.0G-checkpoint.
