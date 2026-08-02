@@ -6293,7 +6293,7 @@ kollar quad-vistelsens äkthet + banans riktning. Domslut väntas i
 evidence/analyst_v51_verdict.md TILLSAMMANS med v5.1-driftdomen (deras skript kräver
 duckdb som saknas i sf-venven — analysten kör slutvalideringen i sin miljö).
 
-## 2026-08-02 17:22 EEST — Review 6: BÅDA domsluten underkända ⇒ detektor v6 (stödd voxelmask); SO-gapet uppmätt
+## 2026-08-02 16:55 EEST — Review 6: BÅDA domsluten underkända ⇒ detektor v6 (stödd voxelmask); SO-gapet uppmätt
 Analystens review 6 underkände v5.1-driften OCH ep5-claimet: perp-bandet var en proxy
 som inkluderade GROPENS LUFTRUM (gropcentrum ligger på perp −150); ep5:s "korsning"
 var en 0.42 s-luftbåge över gropen (dPit 45-119; grundat ledgegolv börjar dPit p1=134).
