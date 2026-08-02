@@ -6361,7 +6361,7 @@ Snabbsvit @6.35G (riskregimen ~440M frames in), ALLT genom driftgodkända v6.1:
 Riskregimens kausalkedja ser ut att verka: ledge-spawnworkers → ledgetid i FRI roam
 ↑12x → första korsningsförsöken. Evidens uppdaterad som PRELIMINÄR (banner på).
 
-## 2026-08-02 18:45 EEST — GENOMBROTT VERIFIERAT: första gateförsöket (SO nivå 1) + förstapersonsläge
+## 2026-08-02 18:21 EEST — GENOMBROTT VERIFIERAT: första gateförsöket (SO nivå 1) + förstapersonsläge
 Analystens granskning av 6.35G-claimen (evidence/analyst_breakthrough_review.md):
 **DELVIS GODKÄND** — nivå 2-claimet föll men **ep4 = FÖRSTA VERIFIERADE HEXAGON-
 GATEFÖRSÖKET: ring→quad SO 1 försök/1 ramla ⇒ NIVÅ 1 ("försöker"), analystgodkänt.**
