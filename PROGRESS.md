@@ -6217,7 +6217,7 @@ fix `low and (climbed_near or suc)` kräver egen granskningsrunda.
 review_godkand=true, PRELIMINÄR-bannern släckt, artefakten republicerad.
 Aktuellt godkänt gate-läge: alla sex 0/0, min-nivå 0 (mål 3).
 
-## 2026-08-02 15:03 EEST — RISKREGIM (ägarens genombrottsmandat: sista H100-natten, deadline 08:00)
+## 2026-08-02 14:51 EEST — RISKREGIM (ägarens genombrottsmandat: sista H100-natten, deadline 08:00)
 Ägaren: maskinen rensas i morgon; "beredd att ta risker nu"; 4090:n finputsar sedan.
 Riskbilden korrigerad mot ägaren: inget arbete kan gå förlorat (checkpoints/kod/bevis
 pushade, korpora på HF; 4090 fortsätter från checkpoint) — knappheten är H100-TIMMAR.
