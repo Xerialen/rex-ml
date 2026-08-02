@@ -6255,7 +6255,7 @@ start i curriculum-regionen, skilt från ruttval. Ledge-prob @6.0G (10 ep):
 Nästa: 6.25G-vakt → snabbsvit + ledge-prob igen; full n=30 + artefakt när analysten
 dömt eller nästa fulla cykel. 33/33 test gröna (--spawn-proben).
 
-## 2026-08-02 16:35 EEST — Review 5: ledgeprobens claim UNDERKÄNT (axialt hopp), detektor v5
+## 2026-08-02 16:24 EEST — Review 5: ledgeprobens claim UNDERKÄNT (axialt hopp), detektor v5
 Analysten underkände quad→ring SO-claimet från ledgeproben: AXIALT gaphopp rakt ut i
 gropen (obruten ballistisk båge d²z −0.542, 0 grundade sampel, 0 sampel i SO-ledge-
 bandet); SO-etiketten kom från 2 luftburna sampel 0.8/0.04 u utanför dödzonen
