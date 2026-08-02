@@ -1,5 +1,12 @@
 # BASLINJE OMKALIBRERAD OCH LÅST för detektor v7 (ägardefinitionen): 610 gate-event = 392 lyckat (194 NV / 198 SO) + 181 ramla (51 NV / 130 SO) + 37 retreat; 0 grazers; 0 oförankrade ramla; probe-ep5 KORREKT gate-ramla under ägardefinitionen — MED TVÅ VARNINGAR: (1) landningsbekräftelsen är dt-miskalibrerad för 51 ms-humandata och fäller 194 av 584 äkta v6.1-lyckade (33 %), (2) 26 gate-ramla är ytterkantsfall som aldrig exponerats för gropen
 
+> **ADDENDUM: ERSATT AV v7.1.** Båda varningarna åtgärdade (dt-robust
+> landningsbekräftelse + gropexponeringskrav) och verifierade; SLUTLIG låst
+> baslinje i `evidence/analyst_v71_baseline.md`: 750 gate = 580 lyckat /
+> 133 ramla / 37 retreat, retention 98.6 % av v6.1-lyckade, 0 genuina
+> gropfall tappade, 0 grazers. v7-siffrorna nedan behålls som historik.
+
+
 ## v7-omkalibrering av humanbaslinjen
 
 Analyst, 2026-08-02, efter ägarbeslutet ~18:30 (BRIEF-amendment: gaten =

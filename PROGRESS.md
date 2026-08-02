@@ -6412,3 +6412,17 @@ utanför var avsiktliga nedhopp; ägarens ordalydelse är "ramla ner i GROPEN").
 Botdumpar: 63G SO 2/1/1 oförändrat; 53G-axial 3→2 (en var ytterkantsnedhopp).
 40/40 test. Analystens slutlåsning av v7.1-baslinjen beställd. Träningen ~6.55G;
 nästa mätcykel (n=30 + prober + artefakt) vid 6.6G-vakten med låst detektor.
+
+## 2026-08-02 18:55 EEST — v7.1-baslinjen LÅST (slutlig detektorkalibrering)
+Analystens slutkontroll (evidence/analyst_v71_baseline.md, trippelspårning
+v6.1/v7/v7.1): **LÅST.** 750 humana gate-event: 580 lyckat/133 ramla/37 retreat;
+axial 794; 0 grazers; retention 98.6 % av v6.1-lyckade; 95.9 % av v7:s felfällda
+räddade (prognos 97, inom 1.1 pe); ALLA 133 genuina gropfall behållna; 40 ytterkants-
+fall korrekt ⇒ lämnade (stickprov 53G-ep4 bekräftat: fall FÖRBI gropens NO-hörn ut
+i vattnet). Ep8-botartefakten fälls fortfarande. **Mänskliga lyckandegrader per gate:
+rq-NV 85 %, rq-SO 83 %, qr-NV 82 %, qr-SO 46 %** — notera att nivå 3-tröskeln (90 %)
+ligger ÖVER elitens utfall på svåraste gaten (qr-SO); tas upp med ägaren vid tillfälle.
+Kvarstående övervakningspunkter (ej blockerare): retreat utan gropexponeringskrav kan
+inflatera försöksnämnaren vid nivå 3-bedömning; gropcirkeln r 260 är modell.
+Officiellt läge: ring→quad SO nivå 2 (2/1/1), övriga fem gates 0. Detektorkedja
+v1→v7.1 komplett med 8 analystgranskningar och låst humanbaslinje.
