@@ -1,5 +1,23 @@
 # DELVIS GODKÄND — nivå 2-claimet ("lyckas ibland") UNDERKÄNNS: dumpens enda "lyckade" SO-event är en runtomrutt via ytterkantsgolvet med luftburen maskgraze, inte en gapkorsning; SO-RAMLA-eventet (ep4) GODKÄNNS som första verifierade genuina hexagon-gateFÖRSÖKET (korrekt bokföring: ring→quad SO 1 försök / 0 lyckade / 1 ramla ⇒ nivå 1)
 
+> **ADDENDUM (analyst, 2026-08-02 ~19:xx) — ÄGARBESLUTET 18:30 ERSÄTTER GRANSKNINGENS LEDGEKORSNINGS-SEMANTIK.**
+> Ägaren har efter förstapersonsuppspelning av ep1 formaliserat gaten som
+> plattform→plattform PÅ ANGIVEN SIDA utan att ramla i gropen, där sidovägen
+> omfattar HELA sidogolvet inklusive ytterkanten (detektor v7: mask |perp|
+> 100–460). Domslutet ovan gällde under min snävare ledgekorsnings-semantik
+> (|perp| 100–300 + gapzonspassage) och är för event 1 DÄRMED ERSATT:
+> **event 1 (ep1, runtomrutt via ytterkantsgolvet) är GILTIGT LYCKAT under
+> ägardefinitionen — ring→quad SO 2/1/1 ⇒ nivå 2 står.** Event 2 (ep4-ramlat)
+> är godkänt under båda semantikerna. Event 4 (ep8): min touch-and-fall-
+> invändning är åtgärdad i v7 (landningsbekräftelse) — bokförs nu korrekt som
+> axial ramla. De två detektorluckorna nedan är därmed stängda (lucka 1 via
+> landningsbekräftelsen, lucka 2 upplöst per definition av ägarbeslutet).
+> Faktabeskrivningarna och mätningarna i granskningen står oförändrade;
+> humanbaslinjen är omkalibrerad genom v7 i `evidence/analyst_v7_baseline.md`
+> (+ `evidence/repro/human_ledge_v7_baseline.{py,json}`) — se dess varningar
+> om landningsbekräftelsens 51 ms-bias på humandata.
+
+
 ## Vetogranskning av genombrottsclaimet, traj_63G @6.35G
 
 Analyst, 2026-08-02. Detektor: `rl/jump_gates.py` v6.1 (oförändrad).

@@ -45,6 +45,16 @@ SIDE_DEADZONE = 100.0                 # |perp| < 100 u räknas inte i sidoklassn
 # 226u-gap på SO) ÄR en del av sidovägen, inte en "runtomrutt". Maskbredden
 # vidgad 300→460 (SO 89→186, NV 172→224 stödda centers).
 SIDE_LEDGE_MAX = 460.0                # sidovägen: 100 < |perp| < 460 (voxelmätt)
+# v7.1 (analystens v7-baslinjevarningar, evidence/analyst_v7_baseline.md):
+# (1) landningsbekräftelsen var dt-miskalibrerad (33 % av äkta humanlyckade
+# föll pga 51 ms-glesheten): bekräftelse = grundat sampel ELLER >=0.25 s
+# konsekutiv dst-vistelse utan gropfall, fönster 1.4 s (tidsbaserat, ej sampel).
+# (2) "ramla" = GROPFALL (ägarens ordalydelse): fall utanför gropexponering
+# (dPit >= 260 vid fallpunkten — 25/26 var avsiktliga ytterkantsnedhopp på
+# humandata) bokförs som "lämnade", inte misslyckat försök.
+CONFIRM_WINDOW_S = 1.4
+CONFIRM_STAY_S = 0.25
+PIT_EXPOSURE_R = 260.0
 # v5.1 (analystens villkorade förhandsgodkännande, evidence/analyst_v5_validation.md):
 # in-band-progression 350 var geometriskt onåbar för mittgropsfall (gapmitten
 # d=392, källranden 524) — tappade 34 % genuina misslyckade korsningar. 450 ger
@@ -211,7 +221,8 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 outcome = "lämnade"          # drog någon annanstans — inget försök
                 break
             if q[2] <= PIT_Z:
-                outcome = "ramla"            # nere i gropen
+                # v7.1: bara GROPfall är ramla — ytterkantsnedhopp = lämnade
+                outcome = "ramla" if _d2(q, PIT_2D) < PIT_EXPOSURE_R else "lämnade"
                 break
             qp = _plat(q)
             if qp is None and q[2] > LEDGE_Z:
@@ -230,20 +241,25 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
                 outcome = "retreat"
                 break
             if qp is not None and qp != cur:
-                # v7 LANDNINGSBEKRÄFTELSE (stänger ep8-luckan, analyst-review 8:
-                # "lyckat" sattes på ett enda fallande sampel varefter boten
-                # fortsatte ner i gropen): ankomsten kräver >=1 GRUNDAT sampel
-                # på destinationsplattformen inom ~1.35 s (bhop-ankomst flyger
-                # ~17 sampel över plattformen före nedslag) — annars ramla/lämnade.
+                # v7.1 LANDNINGSBEKRÄFTELSE (dt-robust; stänger ep8-luckan):
+                # grundat sampel på dst ELLER >=CONFIRM_STAY_S konsekutiv
+                # dst-vistelse utan gropfall, inom tidsfönstret CONFIRM_WINDOW_S.
                 confirmed = False
                 fell = False
-                for j2 in range(j, min(len(path), j + 27)):
-                    if path[j2][2] <= PIT_Z:
-                        fell = True
+                consec = 0
+                need = max(1, int(round(CONFIRM_STAY_S / dt)))
+                for j2 in range(j, min(len(path), j + int(round(CONFIRM_WINDOW_S / dt)))):
+                    q2 = path[j2]
+                    if q2[2] <= PIT_Z:
+                        fell = _d2(q2, PIT_2D) < PIT_EXPOSURE_R
                         break
-                    if _plat(path[j2]) == qp and grounded[j2]:
-                        confirmed = True
-                        break
+                    if _plat(q2) == qp:
+                        consec += 1
+                        if grounded[j2] or consec >= need:
+                            confirmed = True
+                            break
+                    else:
+                        consec = 0
                 outcome = "lyckat" if confirmed else ("ramla" if fell else "lämnade")
                 break
             j += 1

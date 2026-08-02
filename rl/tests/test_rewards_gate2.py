@@ -209,8 +209,9 @@ def test_jump_gate_ungrounded_source_platform_is_axial():
     from rl.jump_gates import QUAD, RING, _d2, analyze
     walk = [q for q in _ledge_walk(+1) if _d2(q, RING) > 360.0]
     ups = [[QUAD[0], QUAD[1], z, 300] for z in (44.0, 88.0, 70.0, 96.0)]
+    from rl.jump_gates import PIT_2D
     path = ups + walk + \
-           [[QUAD[0] - 300.0, QUAD[1] - 150.0, -150.0, 300]]
+           [[PIT_2D[0], PIT_2D[1], -150.0, 300]]
     res = analyze({"episodes": [{"path": path}]})
     assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
     assert res["axiala_gropkorsningar"]["försök"] == 1
@@ -247,8 +248,9 @@ def test_jump_gate_anchored_midgap_fall_is_gate():
     for k in range(1, 5):                                # luftbåge mot ring
         pos2 = edge + to_ring * (45.0 * k)
         arc.append([pos2[0], pos2[1], 56.0 + 30.0 - 9.0 * k * k, 300])
+    from rl.jump_gates import PIT_2D
     path = [[*QUAD[:2], 56.0, 300]] * 4 + walk + arc + \
-           [[arc[-1][0], arc[-1][1], -150.0, 300]]       # gropen
+           [[PIT_2D[0], PIT_2D[1], -150.0, 300]]         # gropen (dPit=0)
     res = analyze({"episodes": [{"path": path}]})
     assert any(_d2(np.array(q), RING) < 450.0 for q in arc)
     g = res["gates"]["quad→ring NV"]
@@ -262,10 +264,11 @@ def test_jump_gate_airborne_overflight_is_axial():
     nv = [p for p in ledge_centers() if _side(p) > 0
           and 360.0 < _d2(p, RING) < 700.0 and _d2(p, QUAD) > 270.0]
     nv.sort(key=lambda p: -_d2(p, RING))
+    from rl.jump_gates import PIT_2D
     fly = [[p[0], p[1], p[2] + 20.0 + 7.0 * (i % 5), 300]
            for i, p in enumerate(nv[-10:])]              # närmast ringen; dz>0.5
     path = [[*QUAD[:2], 56.0, 300]] * 4 + fly + \
-           [[fly[-1][0], fly[-1][1], -150.0, 300]]
+           [[PIT_2D[0], PIT_2D[1], -150.0, 300]]
     res = analyze({"episodes": [{"path": path}]})
     assert all(v["försök"] == 0 for k, v in res["gates"].items() if "→" in k)
     assert res["axiala_gropkorsningar"]["försök"] == 1

@@ -6397,3 +6397,18 @@ kedjan + NY låst humanbaslinje genom v7 + flagga ev. nya falskpositivklasser
 klipplistan automatiskt ur detektorns eventranges; artefakten visar nu 4 klipp
 (ep1 LYCKAT, ep4 försök, 2 axiala) och följer framtida dumpar automatiskt.
 Artefakten republicerad (stegen visar nivå 2). Träningen orörd (~6.7G).
+
+## 2026-08-02 19:00 EEST — v7-baslinje låst av analysten + v7.1 (två kalibreringsåtgärder)
+Analystens v7-omkalibrering klar (evidence/analyst_v7_baseline.md): ägardefinitionen
+införd i granskningskedjan, **ring→quad SO nivå 2 STÅR** (ep1 giltigt lyckat, ep4
+godkänd under båda semantikerna), probens ep5 = korrekt gate-ramla under ägar-
+definitionen (gamla underkännandet byggde på ersatta in-bands-kriteriet). Ny human-
+baslinje: 610 gate-event (392 lyckat/181 ramla/37 retreat), 0 grazers, 24 återinträden.
+Två uppmätta varningar ⇒ **v7.1**: (1) dt-robust landningsbekräftelse (grundat sampel
+ELLER ≥0.25 s konsekutiv dst-vistelse, fönster 1.4 s tidsbaserat — 51 ms-humandata
+tappade annars 33 % äkta lyckade; botdata opåverkat), (2) gropexponeringskrav för
+ramla (dPit<260 vid fallpunkten; ytterkantsnedhopp ⇒ "lämnade" — 25/26 humanfall
+utanför var avsiktliga nedhopp; ägarens ordalydelse är "ramla ner i GROPEN").
+Botdumpar: 63G SO 2/1/1 oförändrat; 53G-axial 3→2 (en var ytterkantsnedhopp).
+40/40 test. Analystens slutlåsning av v7.1-baslinjen beställd. Träningen ~6.55G;
+nästa mätcykel (n=30 + prober + artefakt) vid 6.6G-vakten med låst detektor.
