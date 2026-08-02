@@ -6238,7 +6238,7 @@ nyfikenhet) = vår befintliga design; Slow/Fast-RNN + ICM förblir RESERVER med 
 kriterier: RNN-hierarki om långruttsplanering stagnerar EFTER gate-hoppen; ICM om
 täckningen platåar <50 % i >1G frames trots rarity. PBT fortsatt AV (ägarbeslut krävs).
 
-## 2026-08-02 16:12 EEST — Riskregim första läsning @6.0G + färdighetsprob: FÖRSTA HEXAGONFÖRSÖKET (PRELIMINÄRT)
+## 2026-08-02 16:13 EEST — Riskregim första läsning @6.0G + färdighetsprob: FÖRSTA HEXAGONFÖRSÖKET (PRELIMINÄRT)
 Snabbsvit @6.0G (87M frames in i riskregimen): n=10 fart 631.6 (upp från 554.7 —
 viktökningarna klätter 0.8/gap 5 kostade ingen fart), score 1.26, 0 fastnade.
 (Täckning 16.6 % @n=10 EJ jämförbar med 41.8 % @n=30 — unionen växer med episodantal;
