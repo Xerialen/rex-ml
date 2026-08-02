@@ -6331,7 +6331,7 @@ Botdumparna oförändrade (probe 0+2, 53G 0+3, 0907 0). Slutvalidering hos analy
 terad risk: bhop-underdetektion (1-sampels nedslag) — övervakas, d²z-nedslagsdetektor
 som reserv. Träningen orörd (~6.4G).
 
-## 2026-08-02 17:26 EEST — Detektor v6.1 GODKÄND FÖR DRIFT (slutvalidering)
+## 2026-08-02 17:11 EEST — Detektor v6.1 GODKÄND FÖR DRIFT (slutvalidering)
 Analystens slutdom: driftvillkoret håller — 42/43 golvförankrade genuina ramla, 0
 grazers, alla botregressioner gröna (probe 0+2 [ep5+ep8], 53G 0+3, 0907 0+0).
 Avvikelserna mot prognosen (768 event i st f 662, 5 "insläpp" i st f ≤1) utreddes av
