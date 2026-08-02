@@ -6465,3 +6465,43 @@ Notabelt: human-lyckandegrad ring→quad NV blir 90 % med nya nämnaren — äga
 tröskel (90 %) ligger därmed PÅ elitnivå för NV, över (46-83 %) för övriga tre.
 Behållna retreater max dPit 252 (8 u marginal). 41/41 test; alla botdumpar verifierade
 opåverkade. evidence/analyst_v72_baseline.md ersätter v7.1 som regressionsbaslinje.
+
+## 2026-08-02 22:44 EEST — KOMPAKTIONSCHECKPOINT (ägaren begärde compact)
+**Sprintläge:** sista H100-natten, deadline 08:00 (3 aug) då maskinen rensas — INGEN
+migrering utan ägarens uttryckliga order (stående regel). Ägarens riskmandat aktivt:
+genombrott på gate-hoppen prioriteras; 4090 ("pinnacle") finputsar efteråt.
+**Träning:** gate2_v2 mix13-regim sedan 21:39: --qw_gate1_mix_workers=13
+--qw_vertical_rewards --qw_cell_rarity --qw_climb_coef=0.8 --qw_gap_base=5.0
+--qw_height_coef=1.5 --qw_hex_spawn_workers=8 --qw_ra_spawn_workers=8
+--qw_ledge_spawn_workers=8 --qw_mega_spawn_workers=4 (fria roamers 7), tak 12G.
+Nu ~7.27G, ~50-55k FPS. tmux rexml:jobs; monitor b93741a97 (sf_log + checkpointframes).
+Rollback-snapshot: pipeline/out/rl/gate2_snapshot_20260802_pre_risk (5.913G).
+**VÄNTANDE:** 7.3G-vakten (bsou578vk) slår ~22:55 ⇒ kör FULL mätcykel (mall: se
+21:00-cykeln): n=30 eval + spatial + 30-ep dump ~/dumps/traj_73G.json + jump_gates
+--out evidence/jump_gates_latest.json --clips $SCRATCH/rex_fp_events.json + proximity
++ ledge/RA-prober. OBS: jump_gates_latest är KUMULATIV — mall i nuvarande fil;
+uppdatera "Senaste fria dump"-kommentaren + ev. nya VERIFIERADE event i gates.
+**Beslutsregel (journalförd 21:39):** n=30 fart <475 ⇒ återställ klätter 0.8→0.5,
+gap 5→3 (mix 13 behålls); fart ≥475 ⇒ håll allt.
+**Officiellt gate-läge (KUMULATIVT, verifierat):** ring→quad SO NIVÅ 2 (2/1/1: ep1
+lyckat ägarbeslut + ep4 ramla analyst), quad→ring SO NIVÅ 1 (probe-ep5 ramla), övriga
+0. n=30-serien senast (6.6G): 438.8/47.6 %/2 fastnade/0.878 (täckningsrekord, fart
+under mål). Närhetstrend: SNG-mega 161 låga besök, hexagon <350-annalkanden 4.
+**Detektor v7.2 SLUTGILTIG:** 9 analystgranskningar, 6 uteslutna falskpositivklasser
+(bunnyhop-vägg, luftbågsapex, axialhopp, luftöverflygning, gårdsloop, sidogolvs-
+cirkulation); LÅST humanbaslinje evidence/analyst_v72_baseline.md: 735 event
+(580/133/22); ägardefinition i BRIEF (sidoväg inkl ytterkant |perp| 100-460, lyckat =
+ta sig över + bekräftad landning, ramla/retreat kräver gropexponering dPit<260).
+Human-lyckandegrader: rq-NV 90 %, rq-SO 83 %, qr-NV 82 %, qr-SO 46 % — nivå 3-tröskeln
+(90 %) PÅ elitnivå för NV; taget upp med ägaren, inget beslut ännu.
+**Artefakt** (samma URL, c32e9f16): kumulativ mognadsstege + FP-läge med 10 själv-
+bärande klipp (63G-genombrotten m. ägarbeslut/analystetiketter, 66G-axiala, NV-prober
+märkta underkända). Bygge: tools/rex3d → scratchpad (rex3d_build.py läser
+rex_trajectories.json + rex_fp_events.json + evidence-JSONs); screenshot-validering:
+chrome-headless-shell + --use-angle=swiftshader + LD_LIBRARY_PATH=$SC/libs/root/...;
+?fp=N autostartar klipp. FP-krav (ägarbeslut): ALLA klassade försök ska ha klipp.
+**Vetoregeln GÄLLER ALLT: nollskilda hoppclaims ⇒ dm3-analyst FÖRE presentation;**
+PRELIMINÄR-märkning tills dom. Tidsstämplar: kör date FÖRE journalskrivning.
+**Före 08:00:** sista cykel ~06:30, slutsnapshot checkpoint → pipeline/out/rl/
+gate2_snapshot_*, qwserver-tar om ägaren beordrar flytt — ANNARS BARA VÄNTA på order.
+Push: git push origin master:main. HF-token roteras av ägaren efteråt.
