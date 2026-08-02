@@ -6443,3 +6443,16 @@ FP-klippen bär egna banor (överlever dumpbyten) — artefakten visar 10 klipp
 fartglidningen tillskrivs bantade gate1-mixen (15→10 vid riskomläggningen).
 Åtgärd: mix 10→13 (fria roamers 10→7, övriga spawnband orörda). Regel: nästa n=30
 (~7.0G) fart <475 ⇒ återställ klätter 0.8→0.5, gap 5→3. Omstart från ~7.0G-checkpoint.
+
+## 2026-08-02 22:05 EEST — Review 9: NV-retreatclaimsen UNDERKÄNDA ⇒ detektor v7.2
+Analysten underkände BÅDA NV-retreat-claimsen: sidogolvscirkulation utan grop-
+exponering (min dPit 328 resp 310; alla genuina NV-korsningar har ≤192, human-
+retreatmax 305) — exakt den varningsklass de förvarnade om vid baslinjelåsningen.
+Sjätte falskpositivklassen. Kumulativa stegen OFÖRÄNDRAD (rq-SO nivå 2, qr-SO nivå 1).
+**v7.2:** retreat kräver gropexponering (transitens min dPit < 260, samma konstant som
+ramla-semantiken); okvalificerade retreats ⇒ axial. Humankalibrering (analystens):
+lyckat 580 + ramla 133 opåverkade, retreat 37→22, ≥50 u marginal mot genuin-enveloppen.
+Ny fixtur (cirkulation vs gropexponerad retreat), 41/41 test. Proberna omkörda:
+NV-gates 0 (→ axial); 63G/66G opåverkade. Omlåsning av humanbaslinjen beställd.
+Artefaktens klipp uppdaterade (NV-proberna märkta "underkänd som gate — cirkulation").
+Träningen: mix 13-regimen sedan 21:39 (@6.98G), nästa fulla cykel vid 7.3G-vakten.

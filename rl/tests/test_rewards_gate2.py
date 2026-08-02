@@ -274,6 +274,32 @@ def test_jump_gate_airborne_overflight_is_axial():
     assert res["axiala_gropkorsningar"]["försök"] == 1
 
 
+def test_jump_gate_retreat_requires_pit_exposure():
+    # v7.2 (analyst-review 9): retreat utan gropexponering (min dPit >= 260)
+    # är sidogolvscirkulation ⇒ inte gate-försök. Med exponering ⇒ gate-retreat.
+    from rl.jump_gates import PIT_2D, QUAD, RING, _d2, _side, analyze, ledge_centers
+    nv = [p for p in ledge_centers() if _side(p) > 0
+          and _d2(p, PIT_2D) > 280.0 and _d2(p, QUAD) > 270.0 and _d2(p, RING) > 270.0]
+    far = sorted([p for p in nv if _d2(p, RING) > 450.0], key=lambda p: -_d2(p, RING))
+    mid = sorted([p for p in nv if _d2(p, RING) < 450.0], key=lambda p: _d2(p, RING))
+    assert far and mid
+    plat = [[*QUAD[:2], 56.0, 300]] * 4
+    walk = [[p[0], p[1], 56.0, 300] for p in (far[:4] + mid[:3])]
+    # cirkulation: in-mask-progression (d<450) men min dPit >= 280 hela vägen
+    loop = plat + walk + walk[::-1] + plat
+    r1 = analyze({"episodes": [{"path": loop}]})
+    assert r1["gates"]["quad→ring NV"]["försök"] == 0
+    # exponerad: samma loop + en dipp mot gropens innerkant (dPit 200, under bandet)
+    import numpy as np
+    m0 = np.array(mid[0][:2])
+    u = (m0 - PIT_2D) / np.hypot(*(m0 - PIT_2D))
+    dip = PIT_2D + u * 200.0
+    expo = plat + walk + [[dip[0], dip[1], 30.0, 300]] + walk[::-1] + plat
+    r2 = analyze({"episodes": [{"path": expo}]})
+    g = r2["gates"]["quad→ring NV"]
+    assert (g["försök"], g["retreat"]) == (1, 1)
+
+
 def test_jump_gate_item_apex_quasi_stable_not_grounded():
     # bågAPEX är kvasi-z-stabil (dz 0.4/0.1 @26 ms) men behåller gravitationens
     # kurvatur d²z ≈ −0.5 — exakta samplen ur underkända mega-claimet (ep6,

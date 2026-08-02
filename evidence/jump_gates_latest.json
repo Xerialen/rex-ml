@@ -1,5 +1,5 @@
 {
- "kommentar": "KUMULATIV stege över VERIFIERADE event (ägarbeslut/analystgodkända): rq-SO = 63G ep1 lyckat + ep4 ramla; qr-SO = probe60G ep5 ramla (probvillkor). Två NV-retreat-claims @6.6G-prober UNDER GRANSKNING (ej inräknade). Senaste fria dump (66G, 30 ep): alla gates 0, axiala 4 ramla.",
+ "kommentar": "KUMULATIV stege över VERIFIERADE event: rq-SO = 63G ep1 lyckat (ägarbeslut) + ep4 ramla (analyst); qr-SO = probe60G ep5 ramla (analyst, probvillkor). NV-retreat-claimsen @6.6G UNDERKÄNDA (review 9: sidogolvscirkulation utan gropexponering) ⇒ detektor v7.2 (retreat kräver min dPit<260). Senaste fria dump (66G): gates 0, axiala 4 ramla.",
  "episodes": "kumulativ",
  "gates": {
   "ring→quad NV": {
@@ -49,5 +49,5 @@
  },
  "min_nivå": 0,
  "review_godkand": true,
- "detektor_version": "v7.1 (låst baslinje, analyst_v71_baseline.md)"
+ "detektor_version": "v7.2 (gropexponeringskrav för retreat; omlåsning av humanbaslinjen pågår)"
 }

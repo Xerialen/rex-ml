@@ -211,12 +211,14 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
         raw_progressed = False           # d(dst) < 450 var som helst (axial)
         anchored = False                 # v6.1: >=1 GRUNDAT masksampel i transiten
         min_d_all = float("inf")         # v6.1: min d(dst) över ALLA transitsampel
+        min_dpit = float("inf")          # v7.2: gropexponering under transiten
         side_acc = 0.0
         dst_c = QUAD if cur == "ring" else RING
         j = i
         while j < len(path) and j - t0 <= MAX_TRANSIT_PTS:
             q = path[j]
             min_d_all = min(min_d_all, _d2(q, dst_c))
+            min_dpit = min(min_dpit, _d2(q, PIT_2D))
             if _d2(q, PIT_2D) > HEX_R:
                 outcome = "lämnade"          # drog någon annanstans — inget försök
                 break
@@ -278,6 +280,13 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
             # förankringskravet blir ep5/ep23 (ren luftöverflygning) gate igen.
             progressed = (min_d_all < PROGRESS_D_BAND) and anchored
         side_ok = abs(side_acc) * dt >= SIDE_MIN_MASS_US   # tidsnorm. massa (v5.1)
+        # v7.2 (analyst-review 9, evidence/analyst_nv_retreat_review.md): retreat
+        # utan GROPEXPONERING är sidogolvscirkulation, inte avbrutet försök —
+        # alla genuina NV-korsningar har min dPit <= 192; kravet (<260, samma
+        # konstant som ramla) fäller cirkulationsloopar med >= 50 u marginal.
+        # Humankalibrering: retreat 37→22, lyckat/ramla opåverkade.
+        if outcome == "retreat" and min_dpit >= PIT_EXPOSURE_R:
+            progressed = False               # ⇒ ev. axial-bokföring i stället
         if onto_ledge and progressed and side_ok and cur_grounded \
                 and outcome in ("lyckat", "ramla", "retreat"):
             dst = "quad" if cur == "ring" else "ring"
