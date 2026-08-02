@@ -6131,7 +6131,7 @@ libasound återextraherad efter reboot). Träning: höjd 1.5-regimen kör från 
 ~36k FPS rampande. Nästa: n=30-svit @ ~5.2-5.3G avgör om 1.5 håller BÅDA målen
 (fart >500 OCH täckning ≥33 %); därefter slutspurt + migreringschecklistan.
 
-## 2026-08-02 11:55 EEST — Kompaktionscheckpoint (läget för färsk kontext)
+## 2026-08-02 11:59 EEST — Kompaktionscheckpoint (läget för färsk kontext)
 Träning: gate2_v2 kör höjd 1.5-regimen (mix 15, hex 6, climb 0.5, height 1.5, rarity,
 entropi 0.003, tak 12G) från ~4 951.6M efter maskinreboot; nu ~5.4G, ~50k FPS, frisk.
 Persistent monitor aktiv (hjärtslag var 30:e min). **PÅGÅENDE: full mätsvit @ ~5.3G i
