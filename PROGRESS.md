@@ -6764,3 +6764,14 @@ shaping k=3 expressgodkänd (dominans ≥4× ärlig korsning); reward 163→552.
 **Säkrat:** allt pushat t.o.m. φ-serien; snapshots: takeoff_105G (10.481G),
 final_88G, 93G, pre_risk. Stege: 8 försök/1 lyckat (rq-SO nivå 2, rq-NV 1, qr-SO 1).
 **Efter fristen om inget hopp:** stoppa inget själv — invänta ägarorder.
+
+## 2026-08-03 20:09 — BESLUTSREGELN VERKSTÄLLD I FÖRTID: entropi 0.006→0.003, stddev-tak 1.5→1.2
+φ @10.646G (20:08, fasta seeds): p50 0.297 / p90 0.615 / max 0.620. Tre raka mätningar
+(19:37, 19:52, 20:08) ger p50 0.27–0.30 — villkoret "p50 håller >0.4 vid ~20:45" är
+redan falsifierat; att vänta 30 min till bränner frist utan ny information (mitt beslut,
+operatörsisolering). Hypotes oförändrad: entropitrycket driver pendlingen kring
+shaping-optimum; sänkt entropi + smalare stddev-tak ska låta policyn KONVERGERA mot
+banan den redan bevisat kapacitet för (φ 0.793 @18:47, randen 0.805).
+Åtgärd: tmux C-c → omstart samma kommando med --exploration_loss_coeff=0.003 och
+SF_STDDEV_MAX=1.2. Probvakt bo05ev95k + hjärtslag b93741a97 fortsätter opåverkade.
+Nästa φ-mätning ~20:35; frist 22:05.

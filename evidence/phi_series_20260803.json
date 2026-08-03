@@ -9,7 +9,8 @@
   {"tid": "19:10", "checkpoint_frames": 10460000000, "p50": 0.274, "p90": 0.663, "max": 0.683},
   {"tid": "19:21", "checkpoint_frames": 10475000000, "p50": 0.226, "p90": 0.693, "max": 0.695},
   {"tid": "19:37", "checkpoint_frames": 10556841984, "p50": 0.270, "p90": 0.634, "max": 0.648},
-  {"tid": "19:52", "checkpoint_frames": 10570000000, "p50": 0.267, "p90": 0.682, "max": 0.696}
+  {"tid": "19:52", "checkpoint_frames": 10570000000, "p50": 0.267, "p90": 0.682, "max": 0.696},
+  {"tid": "20:08", "checkpoint_frames": 10646417408, "p50": 0.297, "p90": 0.615, "max": 0.620}
  ],
  "granser": {"bortre_randen_phi": 0.805, "fullbordan_kraver": "phi>=~0.805 + grundad landning"},
  "arlig_lasning": "EN topp (18:47: p50 0.635, max 0.793 = 0.012 från randen) följd av pendling kring baslinjen; p50 har ÅTERVÄNT till ~0.23-0.27. Svag topp-drift (max 0.673→0.696, p90 0.630→0.682) ligger nära brusgränsen. Serien bevisar att policyn KAN nå 0.79 (kapacitet) men INTE ihållande förbättring."
