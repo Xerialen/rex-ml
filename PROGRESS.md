@@ -6736,3 +6736,31 @@ gradienten verkar och kapaciteten rör sig, men konvergens till första fullbord
 kräver timmar, inte 2 h. Snapshot gate2_snapshot_takeoff_105G (10.481G) pushad;
 regim + verifieringskedja + φ-mätare redo för 4090-fortsättning ELLER nedstängning
 enligt ägarbeslut. Träningen rullar tills order.
+
+## 2026-08-03 20:04 — KOMPAKTIONSCHECKPOINT: ägaren gav 2 TIMMAR TILL (frist ~22:05)
+**ÄGARBESLUT nyss:** "OK du får 2 timmar till" — målet står: MINST ETT NYTT LYCKAT
+HOPP (verifierat: v7.3-detektor + analyst) före ~22:05, annars stängs projektet.
+**Träningsläge NU:** takeoff-regimen live sedan 17:51, tränar @10.638G, tmux
+rexml:jobs, kommando: SF_STDDEV_MAX=1.5 rl.train_gate2 --qw_gate1_mix_workers=8
+--qw_vertical_rewards --qw_cell_rarity --qw_climb_coef=0.5 --qw_gap_base=3.0
+--qw_height_coef=1.5 --qw_hex/ra/mega=0 --qw_ledge_spawn_workers=6
+--qw_takeoff_spawn_workers=28 --qw_gap_anneal --qw_prog_shaping=3.0
+--exploration_loss_coeff=0.006 --num_workers=48 (resten som förr).
+**Vakter:** bo05ev95k (persistent) = probvakt var ~8 min, 48 samplade försök/runda
+(scratchpad probe_takeoff_sample.py; rundorna 1-26: 0 träffar, fördelning låst
+12/36 — sampling nära-deterministisk). b93741a97 = tränings-hjärtslag. TRÄFF ⇒
+banan finns i $SC/livehits_N.json → kör rl.jump_gates på den → expressanalyst
+(dm3-analyst) → rapport+push. φ-mätare: evidence/repro/probe_progress_dist.py
+(32 fasta seeds; serie i evidence/phi_series_20260803.json m. ärlig läsning:
+EN topp 18:47 p50 0.635/max 0.793, sedan pendling 0.15-0.27/0.65-0.70; rand 0.805).
+**BESLUTSREGEL för förlängningen (journalförd nu):** kör φ-mätning var ~15 min;
+om p50 INTE håller >0.4 vid ~20:45 ⇒ sänk entropi 0.006→0.003 + SF_STDDEV_MAX
+1.5→1.2 (hypotes: entropitrycket ORSAKAR pendlingen — låt policyn konvergera mot
+shaping-optimum; omstart via tmux C-c + samma kommando med nya värden).
+Vid TRÄFF: allt annat åt sidan, validera+rapportera+PUSHA OMEDELBART + PushNotification.
+**Historik ikväll (detalj i tidigare poster):** ultimatum 17:45; massprober
+0/2160+0/384 (identiska utfall); takeoff-regim 3× skeptikergranskad (godkänd),
+shaping k=3 expressgodkänd (dominans ≥4× ärlig korsning); reward 163→552.
+**Säkrat:** allt pushat t.o.m. φ-serien; snapshots: takeoff_105G (10.481G),
+final_88G, 93G, pre_risk. Stege: 8 försök/1 lyckat (rq-SO nivå 2, rq-NV 1, qr-SO 1).
+**Efter fristen om inget hopp:** stoppa inget själv — invänta ägarorder.
