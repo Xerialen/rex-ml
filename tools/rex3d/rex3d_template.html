@@ -853,6 +853,26 @@ document.getElementById("legend").innerHTML =
     `<p style="color:var(--mut);font-size:12px;margin-bottom:2px">Kameran följer boten i ` +
     `ögonhöjd; blickriktning = rörelseriktningen (dumpen saknar siktvinklar). ` +
     `Flat geometri, inga texturer. Etiketter enligt analystens granskning.</p>`;
+  // Genombrottsrutan: de liggarförda gate-eventen, snabbstart (direktlänkar med
+  // ?fp= överlever inte claude.ai-visaren — navigering sker i sidan i stället)
+  const KEY = F.clips.map((c, k) => [c, k]).filter(([c]) =>
+    c.verdict === "godkänd" || /GODKÄND|analystverifierad/.test(c.label));
+  if (KEY.length){
+    const box = document.createElement("div");
+    box.id = "fpkey";
+    box.style.cssText = "border:1px solid var(--ok);border-radius:6px;" +
+      "padding:6px 8px;margin:6px 0 8px";
+    box.innerHTML = `<b style="color:var(--ok);font-size:12px;` +
+      `letter-spacing:.04em">GENOMBROTTSKLIPPEN — liggarförda gate-event</b>`;
+    KEY.forEach(([c, k]) => {
+      const b = document.createElement("button");
+      b.className = "fpclip";
+      b.innerHTML = `<b style="color:var(--ok)">▶</b> ${esc(c.label)}`;
+      b.addEventListener("click", () => enterFP(k));
+      box.appendChild(b);
+    });
+    el.insertBefore(box, el.children[1]);
+  }
   F.clips.forEach((c, k) => {
     const [col, tag] = VD[c.verdict] || ["var(--mut)", c.verdict];
     const b = document.createElement("button");
