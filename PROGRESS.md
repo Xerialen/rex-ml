@@ -6632,7 +6632,7 @@ qr-NV-states UT; novelty-förnybarheten; n_gap-förgiftningen; friktionskomp
 (.claude/worktrees/wf_5769fa30-a6d-15) + omverifiering av belöningshack-
 skeptikern INNAN diff till master. Träning orörd under tiden (9.95G).
 
-## 2026-08-03 16:20 — Fixrundan klar (worktree 936d264): 8/8 skeptikerfixar, 61 tester
+## 2026-08-03 16:05 — Fixrundan klar (worktree 936d264): 8/8 skeptikerfixar, 61 tester
 Gropdyk-jackpotten stängd (hoppknapp+vz>0 på avstampsticken + landnings-z >=
 takeoff−24), ALLA NV-states fällda av geometriverifiering (platt golv på kordorna
 — 4 SO-states kvar, 280 u gropdjup, fri sikt), novelty nollad för takeoff-envs,
