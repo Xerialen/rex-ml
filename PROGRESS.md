@@ -6782,3 +6782,11 @@ Första p50 >0.4 sedan spiken 18:47 — konsistent med hypotesen att entropitryc
 drev pendlingen. Probvakt: fördelningen rör sig igen (runda 31: 10 grop/38 timeout,
 runda 32: 11/37 — var låst 12/36 i ~10 rundor). Max fortfarande 0.719 < randen 0.805;
 ingen fullbordan än. Nästa φ ~20:50. Frist 22:05.
+
+## 2026-08-03 20:53 — φ p50 åter 0.230; rewardvariansen exploderad — bredprob startad
+φ @10.768G (20:52): p50 0.230 / p90 0.660 / max 0.666 — pendlingen kvarstår trots
+entropi 0.003 (0.519-punkten 20:35 var en pendelfas). MEN: träningens snittreward
+svänger nu 165–760 per 5s-fönster (stabil ~175 före omstart) — enskilda episoder
+skördar stora bonusar. Hypotes: rollouts med stddev 1.2 fullbordar ibland det
+proberna (stddev 1.0) missar. Test: massprob med SF_STDDEV_MAX=1.2, 96 försök
+(24/state, seed 9001) mot färskaste checkpoint → livehits_wide.json. Frist 22:05.
