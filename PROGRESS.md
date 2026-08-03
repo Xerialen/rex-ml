@@ -6714,3 +6714,12 @@ gradienten har sannolikt inte seedats (samplad lyckanderate bevisat <0.05%).
 Åtgärd (hyperparametermandat): omstart 18:08 med SF_STDDEV_MAX 1.0→1.5 (bredare
 yaw-sampling) + entropi 0.003→0.006. Övriga flaggor oförändrade. Omverifiering 3
 GODKÄNDE regimen (301ed9d; 3 bevakningspunkter, remote-master-grenen städad).
+
+## 2026-08-03 18:29 — Progressions-shaping LIVE (k=3) @10.356G
+Rundorna 5-8 fortsatt 0/48 (grop 13-18) trots utforskningshöjning ⇒ bootstrap-
+problemet består. Åtgärd: potentialbaserad shaping mot takeoff-målet mergad
+(rl/env_gate2, teleskopsäker per konstruktion — total inkomst = k·slutprogress,
+oscillation nettar 0, cap 1.2, default AV; 68 tester). Omstart 18:27 med
+--qw_prog_shaping=3.0 (+ stddev 1.5, entropi 0.006 kvar). Gropdyk nettar ≤~1.5,
+fullbordan ~3+15 jackpot ⇒ gradient mot bortre kanten från episod 1. Express-
+skeptiker tillfrågas parallellt.
