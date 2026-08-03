@@ -6537,7 +6537,7 @@ resume mot denna. Rollback-snapshoten (pre_risk 5.913G) committas också nu.
 fortsatt träning från final_88G. Träningen på DENNA maskin rullar tills ägaren drar
 ur sladden — snapshotet är taget, allt pushat.
 
-## 2026-08-03 08:41 — OKÄND SIGINT 08:13 (0 frames förlorade), omstart, flyttinventering
+## 2026-08-03 08:40 — OKÄND SIGINT 08:13 (0 frames förlorade), omstart, flyttinventering
 Träningen fick extern SIGINT 08:13:30 ("Keyboard interrupt detected in the event
 loop") — gracefull nedstängning, slutcheckpoint skrevs VID stoppunkten 8 826 040 320
 (= exakt snapshotens checkpoint ⇒ inget förlorat). Ingen inloggning i who/last, inget
