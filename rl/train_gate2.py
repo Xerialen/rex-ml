@@ -66,6 +66,13 @@ def main(argv=None):
     parser.add_argument("--qw_takeoff_max_ticks", type=int, default=77 * 12,
                         help="episodtak för takeoff-workers (~12 s; försöket avgörs "
                              "inom 2-3 s — taket mångfaldigar kantförsök per frame)")
+    parser.add_argument("--qw_takeoff_air_frac", type=float, default=0.0,
+                        help="reverse curriculum steg -1: andel takeoff-episoder "
+                             "som spawnar mitt i idealbågen (luftstyrning+landning "
+                             "tränas isolerat; ingen gapbonus/n_gap därifrån)")
+    parser.add_argument("--qw_air_land_bonus", type=float, default=6.0,
+                        help="luftspawn: bonus för målnära grundad landning "
+                             "(z>=ledge-24, <=96 u horisontellt från centroiden)")
     parser.add_argument("--qw_prog_shaping", type=float, default=0.0,
                         help="potentialbaserad progressions-shaping mot takeoff-"
                              "målet: r += k*dclamp(proj/d,0,1.2)/tick — teleskop-"

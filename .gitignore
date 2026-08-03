@@ -24,3 +24,4 @@ pipeline/out/rl/*.onnx
 .keepgoing_count
 __pycache__/
 *.pyc
+.claude/

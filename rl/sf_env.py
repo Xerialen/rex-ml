@@ -100,6 +100,8 @@ class QWGate2Env(gym.Env):
             spawn_takeoff_states=spawn_takeoff_states,
             takeoff_speed_range=(float(getattr(cfg, "qw_takeoff_speed_lo", 350.0)),
                                  float(getattr(cfg, "qw_takeoff_speed_hi", 450.0))),
+            takeoff_air_frac=float(getattr(cfg, "qw_takeoff_air_frac", 0.0)),
+            air_land_bonus=float(getattr(cfg, "qw_air_land_bonus", 6.0)),
             prog_shaping=float(getattr(cfg, "qw_prog_shaping", 0.0)),
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),

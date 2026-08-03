@@ -76,6 +76,19 @@ class Gate2Config:
     takeoff_speed_range: tuple = (350.0, 450.0)  # kanoniskt human-lyckat ~p50..~max
     takeoff_yaw_jitter: float = 6.0
     takeoff_pos_jitter: float = 12.0
+    # LUFTSPAWN (reverse curriculum steg -1, 2026-08-03 natt): andel av takeoff-
+    # episoderna som spawnar MITT I idealbågen mot landningscentroiden — position
+    # vid andel f av kordan, höjd på symmetrisk parabel (apex AIR_APEX_H), vel =
+    # bandfart mot målet + parabelns vz. Gravitationen gör att ballistiken från
+    # spawnpunkten landar 30-80 u KORT vid låga f — luftstyrning krävs, och
+    # svårigheten växer när f sjunker (inbyggd curriculum-gradient via mixturen
+    # air_frac_range, ingen schemamaskin). Fullbordan betalar air_land_bonus
+    # (grundad landning, z >= ledge-24, horisontellt <= AIR_LAND_R från målet).
+    # Kan ALDRIG öppna luftsegment (kräver äkta avstamp) ⇒ ingen gapbonus,
+    # inget n_gap — stegen/mätetalen förblir rena.
+    takeoff_air_frac: float = 0.0            # 0 = av
+    air_frac_range: tuple = (0.15, 0.75)     # f-mixtur: lätt (0.75) → svår (0.15)
+    air_land_bonus: float = 6.0
     # potentialbaserad progressions-shaping mot takeoff-målet (2026-08-03,
     # bootstrap-fix under ägarultimatum): r += k·Δclamp(proj/d, 0, 1.2) per
     # tick. Teleskopsumman gör termen farm-omöjlig by construction — total
@@ -130,12 +143,18 @@ class QWGate2Core:
             if (self.cfg.gap_anneal and self.cfg.vertical_rewards) else None
         self._reset_state(self.spawns[0])
 
+    AIR_APEX_H = 45.0      # idealbågens apex (u) — QW-hoppets 270²/(2·800) ≈ 45.6
+    AIR_LAND_R = 96.0      # målnära landning: horisontell tolerans mot centroiden
+
     def _pick_spawn(self):
         if self.cfg.spawn_takeoff_states is not None:
             # kantavstamp: riktad state + tangentiell jitter (längs kanten,
             # vinkelrätt mot avstampsriktningen — trycker aldrig ut i gapet)
             states = self.cfg.spawn_takeoff_states
             s = states[int(self.rng.integers(len(states)))]
+            if (self.cfg.takeoff_air_frac > 0.0 and s.get("landing_2d") is not None
+                    and self.rng.random() < self.cfg.takeoff_air_frac):
+                return self._pick_air_spawn(s)
             yaw = float(s["yaw"]) + float(self.rng.uniform(
                 -self.cfg.takeoff_yaw_jitter, self.cfg.takeoff_yaw_jitter))
             pos = np.asarray(s["pos"], dtype=float).copy()
@@ -184,6 +203,33 @@ class QWGate2Core:
         pos, yaw = cands[i]
         return pos.copy(), yaw + float(self.rng.uniform(-180.0, 180.0)), None
 
+    def _pick_air_spawn(self, s):
+        """Luftspawn längs idealbågen kantstate→landningscentroid (steg -1).
+        Returnerar 5-tupel (pos, yaw, None, target, vel3) — femte elementet
+        signalerar luftspawn till _reset_state/reset (ingen settling, ingen
+        fartinjektion; velocity sätts direkt i backend-reset)."""
+        p0 = np.asarray(s["pos"], dtype=float)
+        target = np.asarray(s["landing_2d"], dtype=float)
+        chord = target - p0[:2]
+        d = float(np.linalg.norm(chord))
+        u = chord / d
+        yaw = float(np.degrees(np.arctan2(u[1], u[0]))) + float(
+            self.rng.uniform(-3.0, 3.0))
+        speed = float(self.rng.uniform(*self.cfg.takeoff_speed_range))
+        f = float(self.rng.uniform(*self.cfg.air_frac_range))
+        pos = np.empty(3)
+        pos[:2] = p0[:2] + f * chord
+        # liten tangentiell jitter — håller spawnen ÖVER gapet (8 u << gapbredd)
+        perp = np.array([-u[1], u[0]])
+        pos[:2] += perp * float(self.rng.uniform(-8.0, 8.0))
+        # symmetrisk parabel z(f) = z0 + 4h·f(1-f); vz = dz/dt = 4h(1-2f)/T
+        # med T = d/speed (bakåtkonstruerad ur lyckad landning vid f=1, z=z0).
+        pos[2] = p0[2] + 4.0 * self.AIR_APEX_H * f * (1.0 - f)
+        T = d / speed
+        vz = 4.0 * self.AIR_APEX_H * (1.0 - 2.0 * f) / T
+        vel = np.array([u[0] * speed, u[1] * speed, vz])
+        return pos, yaw, None, target, (vel, float(p0[2]))
+
     def _reset_state(self, spawn):
         pos, yaw = spawn[0], spawn[1]
         # tredje element = önskad initialfart (kantavstamps-spawnern); tvåtupler
@@ -192,6 +238,15 @@ class QWGate2Core:
         # fjärde element = takeoff-statens landningsmål (landing_2d) för
         # sidovillkoret; None i alla övriga spawn-grenar (skeptikerrunda 2b)
         self._takeoff_target = spawn[3] if len(spawn) > 3 else None
+        # femte element = luftspawn (steg -1): (hastighetsvektor, ledge-ref-z).
+        # ref-z följer med tupeln — bågpunktens z är INTE ledgenivån, och
+        # landningsbonusens z-krav ska mätas mot statens ledge.
+        if len(spawn) > 4 and spawn[4] is not None:
+            self._air_spawn_vel, self._air_ref_z = spawn[4]
+        else:
+            self._air_spawn_vel = None
+            self._air_ref_z = None
+        self._air_landed = False
         self._prog_prev = None      # potential-shaping: init på första steget
         self._prog_origin = None
         self.pos = pos
@@ -227,6 +282,14 @@ class QWGate2Core:
         for _attempt in range(6):
             self._reset_state(self._pick_spawn())
             self.novelty.reset()
+            if self._air_spawn_vel is not None:
+                # luftspawn (steg -1): INGEN settling — boten ska börja i
+                # luften med bågens hastighet; en synk-tick hämtar tillståndet
+                # (1 ticks gravitation ~3.4 u/s, försumbar mot bågens vz).
+                self.b.reset(self.pos, self._air_spawn_vel, self.yaw)
+                self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
+                    self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+                return self._obs()
             self.b.reset(self.pos, self.vel, self.yaw)
             for _ in range(90):
                 self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
@@ -414,6 +477,19 @@ class QWGate2Core:
         if self.cfg.spawn_takeoff_states is not None \
                 and not prev_og and self.onground:
             self._landed_done = True
+            # Luftspawn (steg -1): målnära grundad landning betalar
+            # air_land_bonus EN gång (episoden termineras här — FIX C).
+            # Kraven speglar gap-kvalificeringens landningssida: räknad zon,
+            # z >= ledge-24 (ingen grop-/vattenutbetalning), horisontellt
+            # <= AIR_LAND_R från centroiden (inget rimklipp långt från målet).
+            if (self._air_spawn_vel is not None and counted
+                    and self._takeoff_target is not None
+                    and self._air_ref_z is not None
+                    and float(self.pos[2]) >= self._air_ref_z - 24.0
+                    and float(np.linalg.norm(
+                        self.pos[:2] - self._takeoff_target)) <= self.AIR_LAND_R):
+                r += self.cfg.air_land_bonus
+                self._air_landed = True
         # Potential-shaping mot takeoff-målet (se Gate2Config.prog_shaping):
         # φ = clamp(projektion mot målet / målavstånd, 0, 1.2); r += k·Δφ.
         if self.cfg.prog_shaping > 0.0 and self._takeoff_target is not None:
@@ -449,4 +525,6 @@ class QWGate2Core:
             "novel_voxels": len(self.novelty.seen),
             "n_climb": self.n_climb, "n_gap": self.n_gap,
             "landed": self._landed_done,
+            "air_spawn": self._air_spawn_vel is not None,
+            "air_landed": self._air_landed,
         }

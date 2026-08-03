@@ -547,3 +547,113 @@ def test_prog_shaping_telescopes_and_caps():
 def test_prog_shaping_flag_reaches_config():
     from rl.env_gate2 import Gate2Config
     assert Gate2Config().prog_shaping == 0.0   # default av = bitkompatibel
+
+
+# ---------------------------------------------------------------------------
+# LUFTSPAWN (reverse curriculum steg -1, 2026-08-03 natt)
+# ---------------------------------------------------------------------------
+
+AIR_STATES = [{"namn": "a0", "pos": [100.0, 200.0, 40.0], "yaw": 0.0,
+               "landing_2d": [600.0, 200.0]}]   # korda 500 u längs +x
+
+
+def test_air_spawn_geometry_and_velocity():
+    # 5-tupel med pos PÅ kordan (f i mixturen), z på idealparabeln och
+    # vel = bandfart mot målet + parabelns vz (T = d/speed)
+    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0)
+    h = env.AIR_APEX_H
+    p0 = np.array(AIR_STATES[0]["pos"])
+    tgt = np.array(AIR_STATES[0]["landing_2d"])
+    u = (tgt - p0[:2]) / 500.0
+    for _ in range(20):
+        spawn = env._pick_spawn()
+        assert len(spawn) == 5
+        pos, yaw, speed, target, (vel, ref_z) = spawn
+        assert speed is None                      # ingen fartinjektion
+        assert np.allclose(target, tgt)
+        assert ref_z == p0[2]                     # ledgenivån följer med
+        f = float((pos[:2] - p0[:2]) @ u) / 500.0     # perp-jitter ⊥ u
+        assert 0.15 - 1e-9 <= f <= 0.75 + 1e-9
+        assert abs(pos[2] - (p0[2] + 4.0 * h * f * (1.0 - f))) < 1e-9
+        sp = float(np.linalg.norm(vel[:2]))
+        assert 350.0 <= sp <= 450.0
+        assert np.allclose(vel[:2] / sp, u)       # riktad mot målet
+        T = 500.0 / sp
+        assert abs(vel[2] - 4.0 * h * (1.0 - 2.0 * f) / T) < 1e-9
+        assert abs(yaw - 0.0) <= 3.0 + 1e-9       # yaw-jitter ±3
+
+
+def test_air_spawn_frac_zero_and_missing_target_stay_ledge():
+    # default av (frac 0) ⇒ alltid kantgren; frac 1.0 UTAN landing_2d likaså
+    env = make_takeoff_env(states=AIR_STATES)                 # frac default 0
+    assert all(len(env._pick_spawn()) == 4 for _ in range(20))
+    env2 = make_takeoff_env(takeoff_air_frac=1.0)             # STATES: inget mål
+    assert all(len(env2._pick_spawn()) == 4 for _ in range(20))
+    env3 = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=0.5)
+    lens = {len(env3._pick_spawn()) for _ in range(60)}
+    assert lens == {4, 5}                                     # mixturen aktiv
+
+
+def test_air_spawn_reset_airborne_no_settling_no_segment():
+    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
+                           vertical_rewards=True)
+    env.reset()
+    assert not env.onground                       # i luften, ingen settling
+    assert env._air_spawn_vel is not None
+    assert env._air_takeoff is None               # inget öppet luftsegment
+    assert float(np.linalg.norm(env.vel[:2])) > 300.0   # bågfarten levererad
+
+
+def test_air_spawn_easy_lands_near_target_pays_bonus_and_terminates():
+    # lätt ände (f 0.7, fart 400): ballistiken från spawnpunkten når målnära
+    # landning UTAN input — bonusen betalas, episoden termineras (FIX C),
+    # och n_gap förblir 0 trots grop under banan (inget luftsegment)
+    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
+                           vertical_rewards=True,
+                           air_frac_range=(0.7, 0.7),
+                           takeoff_speed_range=(400.0, 400.0))
+    env.b.set_pit((150.0, 550.0), -224.0)
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    total, done, info = 0.0, False, {}
+    for _ in range(200):
+        _, r, done, info = env.step(box, 0, 0, 0)
+        total += r
+        if done:
+            break
+    assert done and info["landed"] and info["air_spawn"]
+    assert info["air_landed"]                     # målnära (<=96 u), z 32 >= 16
+    assert total >= env.cfg.air_land_bonus - 1.0  # bonusen dominerar summan
+    assert info["n_gap"] == 0                     # ALDRIG gapbonus från luftspawn
+
+
+def test_air_spawn_short_fall_pays_nothing():
+    # svår ände (f 0.15, fart 350): ballistiken landar långt från målet —
+    # ingen bonus, inget n_gap; och hög ledge-ref (z-kravet) betalar heller
+    # aldrig golvlandning 176 u under ledgen
+    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
+                           vertical_rewards=True,
+                           air_frac_range=(0.15, 0.15),
+                           takeoff_speed_range=(350.0, 350.0))
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    done, info = False, {}
+    for _ in range(200):
+        _, _, done, info = env.step(box, 0, 0, 0)
+        if done:
+            break
+    assert done and info["landed"] and info["air_spawn"]
+    assert not info["air_landed"]
+    assert info["n_gap"] == 0
+    high = [{"namn": "hi", "pos": [100.0, 200.0, 200.0], "yaw": 0.0,
+             "landing_2d": [600.0, 200.0]}]      # ref 200: golv 32 < 176 diskas
+    env2 = make_takeoff_env(states=high, takeoff_air_frac=1.0,
+                            vertical_rewards=True,
+                            air_frac_range=(0.7, 0.7))
+    env2.reset()
+    done, info = False, {}
+    for _ in range(300):
+        _, _, done, info = env2.step(box, 0, 0, 0)
+        if done:
+            break
+    assert done and not info["air_landed"]

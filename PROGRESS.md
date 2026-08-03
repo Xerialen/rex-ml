@@ -6814,3 +6814,22 @@ isolering):
 3. Probvakt bo05ev95k + hjärtslag b93741a97 fortsätter; hammaren återstartas för natten
    med lägre kadens efter deploy. φ-serien fortsätter (~var 30 min under natten).
 Hammaren t.o.m. 21:40: 0 träffar på ~3800 försök (rundor à 288, stddev 1.2).
+
+## 2026-08-03 22:24 — ROTORSAK FUNNEN: takeoff-uppgiften är FYSIKALISKT OMÖJLIG som poserad
+Skeptikern UNDERKÄNDE luftspawnen (parabeln implicerar g≈193, inte 800; se
+agentens fynd 1-4). Vid ombygget mot verklig bana (63G ep1, enda verifierade
+lyckade rq-SO) föll rotorsaken ut: klippet innehåller FEM ballistiska segment —
+rutten är en FLERHOPPSKEDJA ring→(603,-197,z83)→(939,-135,z59)→(898,180,z83)→
+quadtopp (658,122,z99.7). Fysik: enkelhopp ≤450 UPS ger max ~340 u projektion
+(flygtid 0.675-0.75 s); landning +43 HÖGRE (quad) ger ~220 u — kravet för gap-
+bonus är prog>=0.6 × d 573 ≈ 344 u i ETT segment ⇒ ONÅBART. FIX C terminerar
+dessutom episoden vid FÖRSTA landningen ⇒ den verifierade flerhoppsrutten är
+FÖRBJUDEN i träningen. φ-probtaket ~0.72 ≈ ballistikgränsen — policyn har
+korrekt lärt sig att uppgiften inte går. Detta förklarar 0/~10 000 probförsök.
+ÅTGÄRD (bygger nu): (1) flerhoppsterminering i takeoff-envs (terminera vid
+gropfall/fullbordan/markcamp >1.5s/tidstak, INTE första landning), (2) episod-
+fullbordansbonus vid målnära grundad landning, (3) klätterbonus 0 i takeoff-envs
+(anti-studsfarm), (4) rutt-spawn (steg -1) ur verkliga 63G-banans states i
+stället för parabeln, (5) truncated→terminated-fix (skeptikerfynd 4), (6) r=0
+utom shaping/bonus i rutt-spawnade episoder (skeptikerfynd 2). Ny skeptiker-
+runda före deploy. Snapshot pre_airspawn @10.924G redan säkrad.

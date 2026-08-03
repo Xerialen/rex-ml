@@ -13,7 +13,8 @@
   {"tid": "20:08", "checkpoint_frames": 10646417408, "p50": 0.297, "p90": 0.615, "max": 0.620},
   {"tid": "20:35", "checkpoint_frames": 10718916608, "p50": 0.519, "p90": 0.667, "max": 0.719, "regim": "entropi 0.003 + stddev-tak 1.2 (omstart 20:10)"},
   {"tid": "20:52", "checkpoint_frames": 10767802368, "p50": 0.230, "p90": 0.660, "max": 0.666, "not": "pendling kvarstår trots sänkt entropi; träningsreward samtidigt 165-760 per 5s-fönster (var stabil ~175) — episodiska storbonusar i rollouts"},
-  {"tid": "21:20", "checkpoint_frames": 10847690752, "p50": 0.267, "p90": 0.682, "max": 0.687}
+  {"tid": "21:20", "checkpoint_frames": 10847690752, "p50": 0.267, "p90": 0.682, "max": 0.687},
+  {"tid": "21:45", "checkpoint_frames": 10918604800, "p50": 0.178, "p90": 0.684, "max": 0.708}
  ],
  "granser": {"bortre_randen_phi": 0.805, "fullbordan_kraver": "phi>=~0.805 + grundad landning"},
  "arlig_lasning": "EN topp (18:47: p50 0.635, max 0.793 = 0.012 från randen) följd av pendling kring baslinjen; p50 har ÅTERVÄNT till ~0.23-0.27. Svag topp-drift (max 0.673→0.696, p90 0.630→0.682) ligger nära brusgränsen. Serien bevisar att policyn KAN nå 0.79 (kapacitet) men INTE ihållande förbättring."
