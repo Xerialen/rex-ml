@@ -6775,3 +6775,10 @@ banan den redan bevisat kapacitet för (φ 0.793 @18:47, randen 0.805).
 Åtgärd: tmux C-c → omstart samma kommando med --exploration_loss_coeff=0.003 och
 SF_STDDEV_MAX=1.2. Probvakt bo05ev95k + hjärtslag b93741a97 fortsätter opåverkade.
 Nästa φ-mätning ~20:35; frist 22:05.
+
+## 2026-08-03 20:35 — FÖRSTA SIGNAL EFTER ENTROPISÄNKNING: φ p50 0.297→0.519
+φ @10.719G (20:35, 25 min in i nya regimen): p50 0.519 / p90 0.667 / max 0.719.
+Första p50 >0.4 sedan spiken 18:47 — konsistent med hypotesen att entropitrycket
+drev pendlingen. Probvakt: fördelningen rör sig igen (runda 31: 10 grop/38 timeout,
+runda 32: 11/37 — var låst 12/36 i ~10 rundor). Max fortfarande 0.719 < randen 0.805;
+ingen fullbordan än. Nästa φ ~20:50. Frist 22:05.
