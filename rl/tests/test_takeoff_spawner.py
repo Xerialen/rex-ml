@@ -394,8 +394,9 @@ def test_flat_hop_full_loop_zero_bonus_and_takeoff_terminates_on_landing():
                            takeoff_yaw_jitter=0.0, takeoff_pos_jitter=0.0)
     calls = []
     orig = env.air_bonus.landing
-    def spy(span, rise, effective_depth, deep_anneal=1.0):
-        b = orig(span, rise, effective_depth, deep_anneal=deep_anneal)
+    def spy(span, rise, effective_depth, deep_anneal=1.0, pay_climb=True):
+        b = orig(span, rise, effective_depth, deep_anneal=deep_anneal,
+                 pay_climb=pay_climb)
         calls.append({"span": span, "depth": effective_depth, "bonus": b})
         return b
     env.air_bonus.landing = spy
@@ -550,110 +551,175 @@ def test_prog_shaping_flag_reaches_config():
 
 
 # ---------------------------------------------------------------------------
-# LUFTSPAWN (reverse curriculum steg -1, 2026-08-03 natt)
+# FLERHOPPSREGIMEN + RUTT-SPAWN (rotorsaksfixen, 2026-08-03 natt)
 # ---------------------------------------------------------------------------
 
-AIR_STATES = [{"namn": "a0", "pos": [100.0, 200.0, 40.0], "yaw": 0.0,
-               "landing_2d": [600.0, 200.0]}]   # korda 500 u längs +x
+TGT_STATES = [{"namn": "t0", "pos": [100.0, 200.0, 40.0], "yaw": 20.0,
+               "landing_2d": [600.0, 200.0]}]
+
+ROUTE = [{"pos": [400.0, 210.0, 90.0], "vel": [380.0, 20.0, -60.0],
+          "yaw": 3.0, "target_2d": [600.0, 200.0], "ref_z": 56.0},
+         {"pos": [250.0, 205.0, 70.0], "vel": [400.0, 0.0, 120.0],
+          "yaw": 0.0, "target_2d": [600.0, 200.0], "ref_z": 56.0}]
 
 
-def test_air_spawn_geometry_and_velocity():
-    # 5-tupel med pos PÅ kordan (f i mixturen), z på idealparabeln och
-    # vel = bandfart mot målet + parabelns vz (T = d/speed)
-    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0)
-    h = env.AIR_APEX_H
-    p0 = np.array(AIR_STATES[0]["pos"])
-    tgt = np.array(AIR_STATES[0]["landing_2d"])
-    u = (tgt - p0[:2]) / 500.0
-    for _ in range(20):
+def test_route_spawn_returns_recorded_state_no_jitter():
+    env = make_takeoff_env(states=TGT_STATES, takeoff_air_frac=1.0,
+                           route_states=ROUTE)
+    seen = set()
+    for _ in range(30):
         spawn = env._pick_spawn()
         assert len(spawn) == 5
         pos, yaw, speed, target, (vel, ref_z) = spawn
-        assert speed is None                      # ingen fartinjektion
-        assert np.allclose(target, tgt)
-        assert ref_z == p0[2]                     # ledgenivån följer med
-        f = float((pos[:2] - p0[:2]) @ u) / 500.0     # perp-jitter ⊥ u
-        assert 0.15 - 1e-9 <= f <= 0.75 + 1e-9
-        assert abs(pos[2] - (p0[2] + 4.0 * h * f * (1.0 - f))) < 1e-9
-        sp = float(np.linalg.norm(vel[:2]))
-        assert 350.0 <= sp <= 450.0
-        assert np.allclose(vel[:2] / sp, u)       # riktad mot målet
-        T = 500.0 / sp
-        assert abs(vel[2] - 4.0 * h * (1.0 - 2.0 * f) / T) < 1e-9
-        assert abs(yaw - 0.0) <= 3.0 + 1e-9       # yaw-jitter ±3
+        assert speed is None
+        assert ref_z == 56.0
+        assert np.allclose(target, [600.0, 200.0])
+        m = min(range(len(ROUTE)),
+                key=lambda k: abs(pos[0] - ROUTE[k]["pos"][0]))
+        assert np.allclose(pos, ROUTE[m]["pos"])      # EXAKT — ingen jitter
+        assert np.allclose(vel, ROUTE[m]["vel"])
+        assert yaw == ROUTE[m]["yaw"]
+        seen.add(m)
+    assert seen == {0, 1}                             # mixturen samplar båda
 
 
-def test_air_spawn_frac_zero_and_missing_target_stay_ledge():
-    # default av (frac 0) ⇒ alltid kantgren; frac 1.0 UTAN landing_2d likaså
-    env = make_takeoff_env(states=AIR_STATES)                 # frac default 0
+def test_route_spawn_frac_zero_or_no_states_stays_ledge():
+    env = make_takeoff_env(states=TGT_STATES, route_states=ROUTE)  # frac 0
     assert all(len(env._pick_spawn()) == 4 for _ in range(20))
-    env2 = make_takeoff_env(takeoff_air_frac=1.0)             # STATES: inget mål
+    env2 = make_takeoff_env(states=TGT_STATES, takeoff_air_frac=1.0)  # inga states
     assert all(len(env2._pick_spawn()) == 4 for _ in range(20))
-    env3 = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=0.5)
-    lens = {len(env3._pick_spawn()) for _ in range(60)}
-    assert lens == {4, 5}                                     # mixturen aktiv
 
 
-def test_air_spawn_reset_airborne_no_settling_no_segment():
-    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
-                           vertical_rewards=True)
+def test_route_spawn_reset_airborne_sets_ref_no_segment():
+    env = make_takeoff_env(states=TGT_STATES, takeoff_air_frac=1.0,
+                           route_states=[ROUTE[0]], vertical_rewards=True)
     env.reset()
-    assert not env.onground                       # i luften, ingen settling
-    assert env._air_spawn_vel is not None
-    assert env._air_takeoff is None               # inget öppet luftsegment
-    assert float(np.linalg.norm(env.vel[:2])) > 300.0   # bågfarten levererad
+    assert not env.onground                  # inspelat lufttillstånd, ingen settling
+    assert env._takeoff_ref_z == 56.0
+    assert env._air_takeoff is None          # inget öppet luftsegment
+    assert float(np.linalg.norm(env.vel[:2])) > 300.0
 
 
-def test_air_spawn_easy_lands_near_target_pays_bonus_and_terminates():
-    # lätt ände (f 0.7, fart 400): ballistiken från spawnpunkten når målnära
-    # landning UTAN input — bonusen betalas, episoden termineras (FIX C),
-    # och n_gap förblir 0 trots grop under banan (inget luftsegment)
-    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
-                           vertical_rewards=True,
-                           air_frac_range=(0.7, 0.7),
-                           takeoff_speed_range=(400.0, 400.0))
-    env.b.set_pit((150.0, 550.0), -224.0)
+def test_route_episode_pays_only_shaping_and_completion():
+    # Skeptikerfynd 2-fixen: med prog_shaping=0 är VARJE stegreward exakt 0
+    # i rutt-episoder (fartinkomsten i fritt fall vore annars > 0 varje tick)
+    env = make_takeoff_env(states=TGT_STATES, takeoff_air_frac=1.0,
+                           route_states=[ROUTE[0]], vertical_rewards=True,
+                           takeoff_multihop=True, height_coef=1.5)
     env.reset()
     box = np.zeros(2, dtype=np.float32)
-    total, done, info = 0.0, False, {}
-    for _ in range(200):
+    for _ in range(40):
+        _, r, done, info = env.step(box, 1, 0, 0)
+        if done:
+            break
+        assert r == 0.0
+
+
+def test_multihop_landing_does_not_terminate_pit_does():
+    env = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                           takeoff_multihop=True,
+                           takeoff_yaw_jitter=0.0, takeoff_pos_jitter=0.0)
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    landed_once = False
+    for t in range(120):
+        _, _, done, info = env.step(box, 1, 0, 1 if t == 0 else 0)
+        if info["landed"] or info["completed"]:
+            break
+        if env.onground and t > 3:
+            landed_once = True
+            assert not done                    # mellanlandning terminerar INTE
+            break
+    assert landed_once
+    # gropfall: referensnivå högt över golvet ⇒ nästa landning är terminal
+    env.reset()
+    env._takeoff_ref_z = 200.0                 # golv 32 < 200-48 ⇒ grop
+    for t in range(120):
+        _, _, done, info = env.step(box, 1, 0, 1 if t == 0 else 0)
+        if done:
+            break
+    assert done and info["landed"] and info["terminal"] and not info["completed"]
+
+
+def test_multihop_completion_pays_bonus_and_terminates():
+    env = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                           takeoff_multihop=True)
+    env.reset()
+    # tvinga en landning rakt på målet: luftläge strax över golvet vid target
+    env.b.pos = np.array([600.0, 200.0, 40.0])
+    env.b.vel = np.array([0.0, 0.0, -300.0])
+    env.b.onground = False
+    env.pos = env.b.pos.copy()
+    env.onground = False
+    env._takeoff_ref_z = 32.0
+    box = np.zeros(2, dtype=np.float32)
+    done, info, r = False, {}, 0.0
+    for _ in range(6):
         _, r, done, info = env.step(box, 0, 0, 0)
-        total += r
         if done:
             break
-    assert done and info["landed"] and info["air_spawn"]
-    assert info["air_landed"]                     # målnära (<=96 u), z 32 >= 16
-    assert total >= env.cfg.air_land_bonus - 1.0  # bonusen dominerar summan
-    assert info["n_gap"] == 0                     # ALDRIG gapbonus från luftspawn
+    assert done and info["completed"] and info["terminal"]
+    assert r >= env.cfg.completion_bonus - 1e-9
 
 
-def test_air_spawn_short_fall_pays_nothing():
-    # svår ände (f 0.15, fart 350): ballistiken landar långt från målet —
-    # ingen bonus, inget n_gap; och hög ledge-ref (z-kravet) betalar heller
-    # aldrig golvlandning 176 u under ledgen
-    env = make_takeoff_env(states=AIR_STATES, takeoff_air_frac=1.0,
-                           vertical_rewards=True,
-                           air_frac_range=(0.15, 0.15),
-                           takeoff_speed_range=(350.0, 350.0))
+def test_multihop_ground_camp_terminates_quickly():
+    env = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                           takeoff_multihop=True)
     env.reset()
     box = np.zeros(2, dtype=np.float32)
-    done, info = False, {}
-    for _ in range(200):
-        _, _, done, info = env.step(box, 0, 0, 0)
+    done, info, steps = False, {}, 0
+    for t in range(400):
+        _, _, done, info = env.step(box, 0, 0, 0)   # står stilla — campar
+        steps = t + 1
         if done:
             break
-    assert done and info["landed"] and info["air_spawn"]
-    assert not info["air_landed"]
-    assert info["n_gap"] == 0
-    high = [{"namn": "hi", "pos": [100.0, 200.0, 200.0], "yaw": 0.0,
-             "landing_2d": [600.0, 200.0]}]      # ref 200: golv 32 < 176 diskas
-    env2 = make_takeoff_env(states=high, takeoff_air_frac=1.0,
-                            vertical_rewards=True,
-                            air_frac_range=(0.7, 0.7))
-    env2.reset()
-    done, info = False, {}
-    for _ in range(300):
-        _, _, done, info = env2.step(box, 0, 0, 0)
+    assert done and info["terminal"] and not info["landed"]
+    assert steps <= env.cfg.ground_camp_ticks + 2   # långt före 12 s-taket
+
+
+def test_multihop_climb_bonus_suppressed_gap_kept():
+    env = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                           takeoff_multihop=True)
+    # rent klätterhopp (rise 60, inget gap): betalar 0 under multihop
+    env.waterlevel = 0
+    env.pos = np.array([100.0, 0.0, 56.0])
+    env.onground = False
+    env._takeoff_target = None
+    env._air_segment(prev_og=True, counted=True, jumped=True)
+    env._air_buf = [np.array([120.0 + i, 0.0, 90.0]) for i in range(4)]
+    env.pos = np.array([160.0, 0.0, 116.0])
+    env.onground = True
+    assert env._air_segment(prev_og=False, counted=True) == 0.0
+    assert env.n_climb == 1                          # räknaren lever (diagnostik)
+    # äkta kvalificerad gapkorsning betalar fortfarande (positiv kontroll)
+    assert _land_gap(env) > 0.0
+    # icke-multihop: klättret betalar som förut (regression)
+    env2 = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                            climb_coef=0.5)
+    env2.waterlevel = 0
+    env2.pos = np.array([100.0, 0.0, 56.0])
+    env2.onground = False
+    env2._takeoff_target = None
+    env2._air_segment(prev_og=True, counted=True, jumped=True)
+    env2._air_buf = [np.array([120.0 + i, 0.0, 90.0]) for i in range(4)]
+    env2.pos = np.array([160.0, 0.0, 116.0])
+    env2.onground = True
+    assert env2._air_segment(prev_og=False, counted=True) > 0.0
+
+
+def test_multihop_ledge_episode_pays_zero_per_tick_income():
+    # Skeptikerfynd r2:1: kantspawnade multihop-episoder var en cirkelfarm
+    # (fart-exp + höjdterm ~330/episod). Nu: ALLA multihop-takeoff-episoder
+    # betalar 0 per tick (prog_shaping=0 här) — inkl. under injicerad fart
+    # 350-450 och höjdterm 1.5. Enda nollskilda utfall: completion/stuck.
+    env = make_takeoff_env(states=TGT_STATES, vertical_rewards=True,
+                           takeoff_multihop=True, height_coef=1.5,
+                           cell_rarity=True)
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    for t in range(200):
+        _, r, done, info = env.step(box, 1, 0, 1 if t % 40 == 0 else 0)
         if done:
+            assert info["terminal"]
             break
-    assert done and not info["air_landed"]
+        assert r == 0.0                       # ingen fart-/höjd-/gapinkomst

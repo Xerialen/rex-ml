@@ -6833,3 +6833,21 @@ fullbordansbonus vid målnära grundad landning, (3) klätterbonus 0 i takeoff-e
 stället för parabeln, (5) truncated→terminated-fix (skeptikerfynd 4), (6) r=0
 utom shaping/bonus i rutt-spawnade episoder (skeptikerfynd 2). Ny skeptiker-
 runda före deploy. Snapshot pre_airspawn @10.924G redan säkrad.
+
+## 2026-08-03 22:55 — Skeptikerrundor 1-2 på nattens ombygge; fixar implementerade
+RUNDA 1 (parabelluftspawn): UNDERKÄND — parabeln implicerade g≈193 (fynd 1),
+frittfalls-inkomst 4-7.5/episod (fynd 2), 1.3 % kilspawn (fynd 3), truncated-
+bootstrap av FIX C-slut (fynd 4). Ledde till ROTORSAKSFYNDET (se 22:5x-posten).
+RUNDA 2 (flerhoppsregim + rutt-spawn): UNDERKÄND — kantgrenens per-tick-inkomst
+var cirkelfarm ~330/episod vs fullbordan 15.6 (fynd 1, empiriskt m dum policy);
+gapkedjefarm teoretiskt möjlig (fynd 2); 8 ruttstates m utsmetad centraldiff-vz
+(fynd 4). GODKÄNT: completion-radien betalar inte icke-korsning (74-87 % grop i
+startsidans kvadrant), curriculum-gradienten äkta (0→0→4), ingen regression för
+strövande envs, camp-omsättningen 8x verifierad.
+FIXAR (nu implementerade): inkomstgate r=0 för ALLA multihop-takeoff-episoder
+(släcker r2:1+r2:2); og-diskontinuitetsfilter i gen_route_states (|dvz|>120,
+8 droppade, 100 states kvar); nytt test för kantgrenens nollinkomst. 77 tester
+gröna. Validering riktiga qwsim: rutt-tredjedelar tidig/mitt/sen = 0/0/4 auto-
+fullbordan (nollpolicy), inkomstgate exakt 0, kantepisoder p50 115 ticks.
+RUNDA 3 pågår (omverifiering av fixarna). Deploy efter GODKÄND:
+--qw_takeoff_multihop --qw_takeoff_air_frac=0.35 + befintliga flaggor.

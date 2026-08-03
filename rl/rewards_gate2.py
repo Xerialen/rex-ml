@@ -112,7 +112,7 @@ class AirLandingBonus:
                 and rise >= -self.GAP_MAX_DROP)
 
     def landing(self, span: float, rise: float, effective_depth: float,
-                deep_anneal: float = 1.0) -> float:
+                deep_anneal: float = 1.0, pay_climb: bool = True) -> float:
         """effective_depth: fotrelativt gapdjup (env_gate2._air_segment:
         min(takeoff_z, landing_z) − ORIGIN_FLOOR_OFFSET − min golv-z under
         banan). deep_anneal ∈ [0,1]: skalning av djupnivåns EXTRA (×2 →
@@ -120,7 +120,10 @@ class AirLandingBonus:
         Sätts av TransitionRarity (env_gate2) — grunda gap och klätterbonusen
         berörs ej."""
         r = 0.0
-        if rise >= self.CLIMB_MIN_RISE:
+        # pay_climb=False (flerhoppsregimen 2026-08-03): klätterbonus i
+        # takeoff-envs vore en studsfarm (upp/ner mellan nivåer betalar
+        # ~climb_coef·rise per varv inom episoden när FIX C inte terminerar)
+        if pay_climb and rise >= self.CLIMB_MIN_RISE:
             r += self.climb_coef * min(rise, self.CLIMB_RISE_CAP)
         if self.gap_qualifies(span, rise, effective_depth):
             deep = 1.0 + deep_anneal if effective_depth > self.GAP_DEEP_DEPTH else 1.0

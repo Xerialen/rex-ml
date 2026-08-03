@@ -76,19 +76,35 @@ class Gate2Config:
     takeoff_speed_range: tuple = (350.0, 450.0)  # kanoniskt human-lyckat ~p50..~max
     takeoff_yaw_jitter: float = 6.0
     takeoff_pos_jitter: float = 12.0
-    # LUFTSPAWN (reverse curriculum steg -1, 2026-08-03 natt): andel av takeoff-
-    # episoderna som spawnar MITT I idealbågen mot landningscentroiden — position
-    # vid andel f av kordan, höjd på symmetrisk parabel (apex AIR_APEX_H), vel =
-    # bandfart mot målet + parabelns vz. Gravitationen gör att ballistiken från
-    # spawnpunkten landar 30-80 u KORT vid låga f — luftstyrning krävs, och
-    # svårigheten växer när f sjunker (inbyggd curriculum-gradient via mixturen
-    # air_frac_range, ingen schemamaskin). Fullbordan betalar air_land_bonus
-    # (grundad landning, z >= ledge-24, horisontellt <= AIR_LAND_R från målet).
-    # Kan ALDRIG öppna luftsegment (kräver äkta avstamp) ⇒ ingen gapbonus,
-    # inget n_gap — stegen/mätetalen förblir rena.
-    takeoff_air_frac: float = 0.0            # 0 = av
-    air_frac_range: tuple = (0.15, 0.75)     # f-mixtur: lätt (0.75) → svår (0.15)
-    air_land_bonus: float = 6.0
+    # FLERHOPPSREGIMEN (rotorsaksfixen 2026-08-03 natt, PROGRESS 22:5x):
+    # enkelhopp over rq/qr-gapen är FYSIKALISKT OMÖJLIGT (max ~340 u projektion
+    # vid <=450 UPS; landning +43 HÖGRE ger ~220 u — kravet ~344 u), och den
+    # enda VERIFIERADE lyckade rutten (63G ep1) är en flerhoppskedja som FIX C
+    # (terminering vid första landningen) förbjöd i träningen. Med multihop:
+    # takeoff-episoder termineras i stället vid (i) GROPFALL (grundad landning
+    # z < ref − pit_drop), (ii) FULLBORDAN (grundad, räknad zon, z >= ref−24,
+    # horisontellt <= completion_radius från landing_2d — betalar completion_
+    # bonus EN gång), (iii) MARKCAMP (grundad ground_camp_ticks i följd — ger
+    # snabb episodomsättning i stället för 12 s timeout-ståend), (iv) tidstaket.
+    # Klätterbonusen stängs av i takeoff-envs (anti-studsfarm: hoppa upp/ner
+    # mellan nivåer hade betalat ~0.5·rise per varv inom episoden); de tränar
+    # på completion + φ-shaping (+ gapbonus om ett äkta kvalificerat segment
+    # ändå inträffar).
+    takeoff_multihop: bool = False
+    completion_bonus: float = 12.0
+    completion_radius: float = 192.0   # täcker verifierade ruttens quad-nedslag
+    takeoff_pit_drop: float = 48.0
+    ground_camp_ticks: int = int(1.5 / S.TICK_DT)
+    # RUTT-SPAWN (reverse curriculum steg -1, ersätter den underkända parabel-
+    # luftspawnen — skeptikerfynd 1: parabeln implicerade g≈193, inte 800):
+    # states samplas ur BOTTENS EGEN verifierade lyckade bana (63G ep1, riktiga
+    # pmove-tillstånd, ballistiskt konsistenta per konstruktion; ingen mänsklig
+    # BC — endast reset-fördelning). route_states: lista av {pos, vel, yaw}.
+    # Skeptikerfynd 2-fixen: rutt-spawnade episoder betalar ENDAST shaping +
+    # completion + stuck (ingen fart-/höjdinkomst — fritt fall gav annars
+    # 4-7.5 gratis-reward/episod och dränkte kontrasten).
+    takeoff_air_frac: float = 0.0            # andel rutt-spawn (0 = av)
+    route_states: object = None
     # potentialbaserad progressions-shaping mot takeoff-målet (2026-08-03,
     # bootstrap-fix under ägarultimatum): r += k·Δclamp(proj/d, 0, 1.2) per
     # tick. Teleskopsumman gör termen farm-omöjlig by construction — total
@@ -143,18 +159,16 @@ class QWGate2Core:
             if (self.cfg.gap_anneal and self.cfg.vertical_rewards) else None
         self._reset_state(self.spawns[0])
 
-    AIR_APEX_H = 45.0      # idealbågens apex (u) — QW-hoppets 270²/(2·800) ≈ 45.6
-    AIR_LAND_R = 96.0      # målnära landning: horisontell tolerans mot centroiden
-
     def _pick_spawn(self):
         if self.cfg.spawn_takeoff_states is not None:
+            if (self.cfg.takeoff_air_frac > 0.0
+                    and self.cfg.route_states
+                    and self.rng.random() < self.cfg.takeoff_air_frac):
+                return self._pick_route_spawn()
             # kantavstamp: riktad state + tangentiell jitter (längs kanten,
             # vinkelrätt mot avstampsriktningen — trycker aldrig ut i gapet)
             states = self.cfg.spawn_takeoff_states
             s = states[int(self.rng.integers(len(states)))]
-            if (self.cfg.takeoff_air_frac > 0.0 and s.get("landing_2d") is not None
-                    and self.rng.random() < self.cfg.takeoff_air_frac):
-                return self._pick_air_spawn(s)
             yaw = float(s["yaw"]) + float(self.rng.uniform(
                 -self.cfg.takeoff_yaw_jitter, self.cfg.takeoff_yaw_jitter))
             pos = np.asarray(s["pos"], dtype=float).copy()
@@ -203,32 +217,19 @@ class QWGate2Core:
         pos, yaw = cands[i]
         return pos.copy(), yaw + float(self.rng.uniform(-180.0, 180.0)), None
 
-    def _pick_air_spawn(self, s):
-        """Luftspawn längs idealbågen kantstate→landningscentroid (steg -1).
-        Returnerar 5-tupel (pos, yaw, None, target, vel3) — femte elementet
-        signalerar luftspawn till _reset_state/reset (ingen settling, ingen
-        fartinjektion; velocity sätts direkt i backend-reset)."""
-        p0 = np.asarray(s["pos"], dtype=float)
-        target = np.asarray(s["landing_2d"], dtype=float)
-        chord = target - p0[:2]
-        d = float(np.linalg.norm(chord))
-        u = chord / d
-        yaw = float(np.degrees(np.arctan2(u[1], u[0]))) + float(
-            self.rng.uniform(-3.0, 3.0))
-        speed = float(self.rng.uniform(*self.cfg.takeoff_speed_range))
-        f = float(self.rng.uniform(*self.cfg.air_frac_range))
-        pos = np.empty(3)
-        pos[:2] = p0[:2] + f * chord
-        # liten tangentiell jitter — håller spawnen ÖVER gapet (8 u << gapbredd)
-        perp = np.array([-u[1], u[0]])
-        pos[:2] += perp * float(self.rng.uniform(-8.0, 8.0))
-        # symmetrisk parabel z(f) = z0 + 4h·f(1-f); vz = dz/dt = 4h(1-2f)/T
-        # med T = d/speed (bakåtkonstruerad ur lyckad landning vid f=1, z=z0).
-        pos[2] = p0[2] + 4.0 * self.AIR_APEX_H * f * (1.0 - f)
-        T = d / speed
-        vz = 4.0 * self.AIR_APEX_H * (1.0 - 2.0 * f) / T
-        vel = np.array([u[0] * speed, u[1] * speed, vz])
-        return pos, yaw, None, target, (vel, float(p0[2]))
+    def _pick_route_spawn(self):
+        """Rutt-spawn (steg -1): sampla ett VERKLIGT tillstånd (pos, vel, yaw)
+        ur den verifierade lyckade banan (cfg.route_states). Ingen jitter —
+        punkterna kommer ur riktiga pmove-trajektorier (skeptikerfynd 3:
+        parabelspawnens perp-jitter kilade ~1.3 % i geometrin; inspelade
+        tillstånd är per konstruktion bbox-giltiga). Returnerar 5-tupel
+        (pos, yaw, None, target, (vel, ref_z))."""
+        st = self.cfg.route_states[int(self.rng.integers(
+            len(self.cfg.route_states)))]
+        pos = np.asarray(st["pos"], dtype=float).copy()
+        vel = np.asarray(st["vel"], dtype=float).copy()
+        target = np.asarray(st["target_2d"], dtype=float)
+        return pos, float(st["yaw"]), None, target, (vel, float(st["ref_z"]))
 
     def _reset_state(self, spawn):
         pos, yaw = spawn[0], spawn[1]
@@ -238,15 +239,20 @@ class QWGate2Core:
         # fjärde element = takeoff-statens landningsmål (landing_2d) för
         # sidovillkoret; None i alla övriga spawn-grenar (skeptikerrunda 2b)
         self._takeoff_target = spawn[3] if len(spawn) > 3 else None
-        # femte element = luftspawn (steg -1): (hastighetsvektor, ledge-ref-z).
-        # ref-z följer med tupeln — bågpunktens z är INTE ledgenivån, och
-        # landningsbonusens z-krav ska mätas mot statens ledge.
+        # femte element = rutt-spawn (steg -1): (hastighetsvektor, ref-z).
+        # ref-z följer med tupeln — ruttpunktens z är INTE ledgenivån, och
+        # termineringens z-krav ska mätas mot ruttens referensnivå.
         if len(spawn) > 4 and spawn[4] is not None:
-            self._air_spawn_vel, self._air_ref_z = spawn[4]
+            self._route_vel, self._route_ref_z = spawn[4]
         else:
-            self._air_spawn_vel = None
-            self._air_ref_z = None
-        self._air_landed = False
+            self._route_vel = None
+            self._route_ref_z = None
+        # flerhoppsregimen: referensnivå (sätts i reset()), markcamp-räknare,
+        # fullbordansflagga
+        self._takeoff_ref_z = None
+        self._ground_ticks = 0
+        self._camped = False
+        self._completed = False
         self._prog_prev = None      # potential-shaping: init på första steget
         self._prog_origin = None
         self.pos = pos
@@ -282,13 +288,15 @@ class QWGate2Core:
         for _attempt in range(6):
             self._reset_state(self._pick_spawn())
             self.novelty.reset()
-            if self._air_spawn_vel is not None:
-                # luftspawn (steg -1): INGEN settling — boten ska börja i
-                # luften med bågens hastighet; en synk-tick hämtar tillståndet
-                # (1 ticks gravitation ~3.4 u/s, försumbar mot bågens vz).
-                self.b.reset(self.pos, self._air_spawn_vel, self.yaw)
+            if self._route_vel is not None:
+                # rutt-spawn (steg -1): INGEN settling — boten börjar i det
+                # inspelade tillståndet (ofta i luften) med banans hastighet;
+                # en synk-tick hämtar tillståndet (1 ticks gravitation
+                # ~3.4 u/s, försumbar).
+                self.b.reset(self.pos, self._route_vel, self.yaw)
                 self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
                     self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+                self._takeoff_ref_z = self._route_ref_z
                 return self._obs()
             self.b.reset(self.pos, self.vel, self.yaw)
             for _ in range(90):
@@ -332,6 +340,9 @@ class QWGate2Core:
             self.b.reset(self.pos, v, self.yaw)
             self.pos, self.vel, self.onground, self.waterlevel, self.jump_held = \
                 self.b.step(self.yaw, self.pitch, 0.0, 0.0, False)
+        if self.cfg.spawn_takeoff_states is not None:
+            # flerhoppsregimens referensnivå = ledgenivån efter settling
+            self._takeoff_ref_z = float(self.pos[2])
         return self._obs()
 
     def _obs(self) -> np.ndarray:
@@ -423,7 +434,10 @@ class QWGate2Core:
         # √(ref/(n+1)) per transitioncell så jackpotten inte blir farm-jämvikt
         anneal = self.gap_rarity.anneal(takeoff, self.pos) \
             if self.gap_rarity is not None else 1.0
-        bonus = self.air_bonus.landing(span, rise, eff_depth, deep_anneal=anneal)
+        pay_climb = not (self.cfg.spawn_takeoff_states is not None
+                         and self.cfg.takeoff_multihop)
+        bonus = self.air_bonus.landing(span, rise, eff_depth, deep_anneal=anneal,
+                                       pay_climb=pay_climb)
         if rise >= self.air_bonus.CLIMB_MIN_RISE:
             self.n_climb += 1
         # n_gap räknar ENDAST fullt kvalificerade gap-korsningar (skeptikerfix
@@ -474,22 +488,42 @@ class QWGate2Core:
         # episoder termineras vid FÖRSTA luft→mark-övergången (hopp ELLER
         # walkoff, lyckad eller ej) — landningsbonusen för just den ticken är
         # redan utbetald ovan; ingen kedjefarmning inom episoden är möjlig.
-        if self.cfg.spawn_takeoff_states is not None \
-                and not prev_og and self.onground:
-            self._landed_done = True
-            # Luftspawn (steg -1): målnära grundad landning betalar
-            # air_land_bonus EN gång (episoden termineras här — FIX C).
-            # Kraven speglar gap-kvalificeringens landningssida: räknad zon,
-            # z >= ledge-24 (ingen grop-/vattenutbetalning), horisontellt
-            # <= AIR_LAND_R från centroiden (inget rimklipp långt från målet).
-            if (self._air_spawn_vel is not None and counted
-                    and self._takeoff_target is not None
-                    and self._air_ref_z is not None
-                    and float(self.pos[2]) >= self._air_ref_z - 24.0
-                    and float(np.linalg.norm(
-                        self.pos[:2] - self._takeoff_target)) <= self.AIR_LAND_R):
-                r += self.cfg.air_land_bonus
-                self._air_landed = True
+        # Skeptikerfynd r1:2 + r2:1-fixen: ALLA multihop-takeoff-episoder (kant
+        # OCH rutt) betalar ENDAST φ-shaping + completion + stuck. Per-tick-
+        # inkomsten (fart-exp + höjdterm) var annars en ledge-cirkelfarm på
+        # 324-335/episod mot fullbordans 15.6 (skeptikerrunda 2, dum konstant-
+        # policy på riktiga dm3) — FIX C-jämviktsklassen återöppnad. Nollningen
+        # tar även gapbonuskedjan (r2:2) och kollisionsstraffet (r2:8, medvetet:
+        # stuck −5 betalas efter gaten). Räknarna (n_gap/n_climb) lever kvar
+        # för diagnostik.
+        if self._route_vel is not None or (
+                self.cfg.spawn_takeoff_states is not None
+                and self.cfg.takeoff_multihop):
+            r = 0.0
+        if self.cfg.spawn_takeoff_states is not None:
+            if self.cfg.takeoff_multihop:
+                # FLERHOPPSREGIMEN (rotorsaksfixen): terminera vid gropfall/
+                # fullbordan/markcamp — INTE vid första landningen (FIX C:s
+                # anti-kedjefarm ersätts av klätterbonus AV + camp-taket +
+                # engångs-completion; den verifierade rutten är flerhopp).
+                ref = self._takeoff_ref_z
+                if not prev_og and self.onground and ref is not None:
+                    if float(self.pos[2]) < ref - self.cfg.takeoff_pit_drop:
+                        self._landed_done = True          # gropfall — terminal
+                    elif (counted and self._takeoff_target is not None
+                          and float(self.pos[2]) >= ref - 24.0
+                          and float(np.linalg.norm(
+                              self.pos[:2] - self._takeoff_target))
+                              <= self.cfg.completion_radius):
+                        r += self.cfg.completion_bonus
+                        self._completed = True
+                        self._landed_done = True          # fullbordan — terminal
+                self._ground_ticks = self._ground_ticks + 1 \
+                    if self.onground else 0
+                if self._ground_ticks >= self.cfg.ground_camp_ticks:
+                    self._camped = True                   # markcamp — terminal
+            elif not prev_og and self.onground:
+                self._landed_done = True                  # FIX C (legacy)
         # Potential-shaping mot takeoff-målet (se Gate2Config.prog_shaping):
         # φ = clamp(projektion mot målet / målavstånd, 0, 1.2); r += k·Δφ.
         if self.cfg.prog_shaping > 0.0 and self._takeoff_target is not None:
@@ -518,13 +552,17 @@ class QWGate2Core:
         self.last_action = S.flat_action(
             float(box[0]) * S.MAX_DYAW_DEG, float(box[1]) * S.MAX_DPITCH_DEG,
             fwd, side, jump)
-        done = self.stuck or self._landed_done or self.tick >= self.cfg.max_ticks
+        done = self.stuck or self._landed_done or self._camped \
+            or self.tick >= self.cfg.max_ticks
         mean_speed = self.speed_sum / max(self.speed_n, 1)
         return self._obs(), float(r), done, {
             "stuck": self.stuck, "mean_speed_counted": mean_speed,
             "novel_voxels": len(self.novelty.seen),
             "n_climb": self.n_climb, "n_gap": self.n_gap,
             "landed": self._landed_done,
-            "air_spawn": self._air_spawn_vel is not None,
-            "air_landed": self._air_landed,
+            # terminal = äkta terminaltillstånd (skeptikerfynd 4: FIX C-/grop-/
+            # fullbordans-/camp-slut ska INTE värde-bootstrappas som truncated)
+            "terminal": self.stuck or self._landed_done or self._camped,
+            "route_spawn": self._route_vel is not None,
+            "completed": self._completed,
         }

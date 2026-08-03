@@ -101,7 +101,10 @@ class QWGate2Env(gym.Env):
             takeoff_speed_range=(float(getattr(cfg, "qw_takeoff_speed_lo", 350.0)),
                                  float(getattr(cfg, "qw_takeoff_speed_hi", 450.0))),
             takeoff_air_frac=float(getattr(cfg, "qw_takeoff_air_frac", 0.0)),
-            air_land_bonus=float(getattr(cfg, "qw_air_land_bonus", 6.0)),
+            takeoff_multihop=bool(getattr(cfg, "qw_takeoff_multihop", False)),
+            completion_bonus=float(getattr(cfg, "qw_completion_bonus", 12.0)),
+            route_states=_route_states()
+                if float(getattr(cfg, "qw_takeoff_air_frac", 0.0)) > 0.0 else None,
             prog_shaping=float(getattr(cfg, "qw_prog_shaping", 0.0)),
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
@@ -138,8 +141,13 @@ class QWGate2Env(gym.Env):
             box, fwd, side, jump = a[0:2], a[2], a[3], a[4]
         obs, r, done, info = self.core.step(np.asarray(box, dtype=np.float32),
                                             int(fwd), int(side), int(jump))
-        truncated = done and not info["stuck"]
-        return obs.astype(np.float32), r, done and info["stuck"], truncated, info
+        # Skeptikerfynd 4 (2026-08-03): FIX C-/grop-/fullbordans-/camp-slut är
+        # ÄKTA terminaler — som truncated hade de värde-bootstrappats med
+        # γ·V(slutobs) och dränkt completionkontrasten (takeoff-envs har
+        # 15-70× fler sådana slut per frame än strövepisoder).
+        terminal = info.get("terminal", info["stuck"])
+        truncated = done and not terminal
+        return obs.astype(np.float32), r, done and terminal, truncated, info
 
     def render(self):
         return None
@@ -236,6 +244,22 @@ def _takeoff_states():
         p = Path(__file__).parent / "data" / "gate_takeoff_states.json"
         _TAKEOFF_CACHE = json.load(open(p))["states"]
     return _TAKEOFF_CACHE
+
+
+_ROUTE_CACHE = None
+
+
+def _route_states():
+    """Rutt-states (steg -1): verkliga (pos, vel, yaw)-tillstånd samplade ur
+    bottens verifierade lyckade rq-SO-bana (rl/data/route_states_rq_so.json,
+    genererad ur traj_63G ep1-klippet). Modul-cachad som _TAKEOFF_CACHE."""
+    global _ROUTE_CACHE
+    if _ROUTE_CACHE is None:
+        import json
+        from pathlib import Path
+        p = Path(__file__).parent / "data" / "route_states_rq_so.json"
+        _ROUTE_CACHE = json.load(open(p))["states"]
+    return _ROUTE_CACHE
 
 
 def _ledge_centers():
