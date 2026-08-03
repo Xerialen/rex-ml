@@ -66,6 +66,10 @@ def main(argv=None):
     parser.add_argument("--qw_takeoff_max_ticks", type=int, default=77 * 12,
                         help="episodtak för takeoff-workers (~12 s; försöket avgörs "
                              "inom 2-3 s — taket mångfaldigar kantförsök per frame)")
+    parser.add_argument("--qw_prog_shaping", type=float, default=0.0,
+                        help="potentialbaserad progressions-shaping mot takeoff-"
+                             "målet: r += k*dclamp(proj/d,0,1.2)/tick — teleskop-"
+                             "summa, farm-omöjlig (bootstrap-fix 2026-08-03)")
     parser.add_argument("--qw_gap_anneal", action="store_true",
                         help="Transitions-ICM-graften: √(ref/(n+1))-annealing av "
                              "gapdjupsextran (×2→×1) per transitioncell (256u)")

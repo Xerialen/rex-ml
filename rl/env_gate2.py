@@ -76,6 +76,12 @@ class Gate2Config:
     takeoff_speed_range: tuple = (350.0, 450.0)  # kanoniskt human-lyckat ~p50..~max
     takeoff_yaw_jitter: float = 6.0
     takeoff_pos_jitter: float = 12.0
+    # potentialbaserad progressions-shaping mot takeoff-målet (2026-08-03,
+    # bootstrap-fix under ägarultimatum): r += k·Δclamp(proj/d, 0, 1.2) per
+    # tick. Teleskopsumman gör termen farm-omöjlig by construction — total
+    # episodinkomst = k·(slutprogress − startprogress); oscillation nettar 0.
+    # Gropdyk nettar ≤ ~0.5k (progress till mittgap), fullbordan ~1.0k + jackpot.
+    prog_shaping: float = 0.0                # 0 = av
     # Graft ur Transitions-ICM (2026-08-03): √(ref/(n+1))-annealing (capad) av
     # gap-djupmultiplikatorns extra (×2→×1) per transitioncell — förhindrar att
     # gropjackpotten blir nästa farm-jämvikt (orbitens felmod vid 27-36/s).
@@ -186,6 +192,8 @@ class QWGate2Core:
         # fjärde element = takeoff-statens landningsmål (landing_2d) för
         # sidovillkoret; None i alla övriga spawn-grenar (skeptikerrunda 2b)
         self._takeoff_target = spawn[3] if len(spawn) > 3 else None
+        self._prog_prev = None      # potential-shaping: init på första steget
+        self._prog_origin = None
         self.pos = pos
         self.yaw = yaw % 360.0
         self.pitch = 0.0
@@ -406,6 +414,21 @@ class QWGate2Core:
         if self.cfg.spawn_takeoff_states is not None \
                 and not prev_og and self.onground:
             self._landed_done = True
+        # Potential-shaping mot takeoff-målet (se Gate2Config.prog_shaping):
+        # φ = clamp(projektion mot målet / målavstånd, 0, 1.2); r += k·Δφ.
+        if self.cfg.prog_shaping > 0.0 and self._takeoff_target is not None:
+            if self._prog_origin is None:
+                self._prog_origin = self.pos[:2].copy()
+                tv = np.asarray(self._takeoff_target, dtype=float) - self._prog_origin
+                d = float(np.hypot(*tv))
+                self._prog_u = tv / d if d > 1.0 else None
+                self._prog_d = max(d, 1.0)
+            if self._prog_u is not None:
+                proj = float((self.pos[:2] - self._prog_origin) @ self._prog_u)
+                phi = min(max(proj / self._prog_d, 0.0), 1.2)
+                if self._prog_prev is not None:
+                    r += self.cfg.prog_shaping * (phi - self._prog_prev)
+                self._prog_prev = phi
         if counted:
             self.speed_sum += sp
             self.speed_n += 1

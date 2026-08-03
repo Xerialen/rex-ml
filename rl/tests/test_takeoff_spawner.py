@@ -519,3 +519,31 @@ def test_takeoff_states_lie_on_ledge_mask_with_correct_side_and_aim():
         fwd = np.array([np.cos(np.radians(s["yaw"])), np.sin(np.radians(s["yaw"]))])
         to_dst = dst[:2] - p[:2]
         assert float(fwd @ (to_dst / np.linalg.norm(to_dst))) > 0.7, s["namn"]
+
+
+def test_prog_shaping_telescopes_and_caps():
+    # potential-shaping (env_gate2.step): total inkomst = k*(slutfi − startfi);
+    # oscillation nettar 0; overshoot cappas 1.2. Ren invariantverifiering av
+    # samma formel som step()-blocket (proj/clamp/delta).
+    import numpy as np
+    k = 3.0
+    origin = np.array([0.0, 0.0])
+    target = np.array([400.0, 0.0])
+    tv = target - origin
+    d = float(np.hypot(*tv)); u = tv / d
+    prev = None; tot = 0.0
+    for x in (0.0, 100.0, 200.0, 100.0, 250.0, 400.0):
+        pos = np.array([x, 0.0])
+        proj = float((pos - origin) @ u)
+        phi = min(max(proj / d, 0.0), 1.2)
+        if prev is not None:
+            tot += k * (phi - prev)
+        prev = phi
+    assert abs(tot - k * 1.0) < 1e-9   # netto = k*(1.0-0.0); oscillationen gratis
+    proj = float((np.array([600.0, 0.0]) - origin) @ u)
+    assert min(max(proj / d, 0.0), 1.2) == 1.2
+
+
+def test_prog_shaping_flag_reaches_config():
+    from rl.env_gate2 import Gate2Config
+    assert Gate2Config().prog_shaping == 0.0   # default av = bitkompatibel
