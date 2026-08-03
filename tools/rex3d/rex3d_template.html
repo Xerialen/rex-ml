@@ -847,8 +847,9 @@ document.getElementById("legend").innerHTML =
 
   const VD = {godkänd: ["var(--ok)", "LYCKAT"], försök: ["var(--acc)", "försök (misslyckat)"],
               omklassad: ["var(--acc)", "omklassad"], axial: ["var(--mut)", "axial"],
-              artefakt: ["var(--varn)", "detektorlucka"]};
-  el.innerHTML = `<h3>Förstaperson · gropkorsningarna @6.35G</h3>` +
+              artefakt: ["var(--varn)", "detektorlucka"],
+              underkänd: ["var(--varn)", "UNDERKÄND (analyst)"]};
+  el.innerHTML = `<h3>Förstaperson · alla klassade försök (ägarbeslut)</h3>` +
     `<p style="color:var(--mut);font-size:12px;margin-bottom:2px">Kameran följer boten i ` +
     `ögonhöjd; blickriktning = rörelseriktningen (dumpen saknar siktvinklar). ` +
     `Flat geometri, inga texturer. Etiketter enligt analystens granskning.</p>`;
