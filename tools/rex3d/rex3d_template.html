@@ -873,6 +873,12 @@ document.getElementById("legend").innerHTML =
     });
     el.insertBefore(box, el.children[1]);
   }
+  // axiala (gråa) klipp fälls ihop, stängd per default (ägarbeslut 2026-08-03)
+  const axBox = document.createElement("details");
+  const nAx = F.clips.filter(c => c.verdict === "axial").length;
+  axBox.innerHTML = `<summary style="cursor:pointer;color:var(--mut);` +
+    `font-size:12px;padding:4px 0;user-select:none">Axiala gropkorsningar — ` +
+    `informationsspår, ej gates (${nAx} klipp)</summary>`;
   F.clips.forEach((c, k) => {
     const [col, tag] = VD[c.verdict] || ["var(--mut)", c.verdict];
     const b = document.createElement("button");
@@ -881,8 +887,9 @@ document.getElementById("legend").innerHTML =
       `<br><span class="vd" style="color:${col}">${tag}</span>` +
       `<span class="vd"> · ${((c.path.length * (c.dt || 0.026))).toFixed(1).replace(".", ",")} s</span>`;
     b.addEventListener("click", () => FP.on && FP.clip === c ? exitFP() : enterFP(k));
-    el.appendChild(b);
+    (c.verdict === "axial" ? axBox : el).appendChild(b);
   });
+  if (nAx) el.appendChild(axBox);
 
   const hud = document.getElementById("fphud"), cross = document.getElementById("fpcross");
   const bPlay = document.getElementById("fp-play"), scrub = document.getElementById("fp-scrub");
