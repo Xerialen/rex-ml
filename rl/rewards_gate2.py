@@ -60,10 +60,20 @@ class AirLandingBonus:
     Trösklar kalibrerade mot mänskliga korpusen (evidence/analyst_review_
     vertical_rewards.md, 2026-08-01): SNG→mega span p50 182/max 332 u och
     fönsterinflygning span p50 150-191 u gjorde ursprungsförslaget span>240
-    värdelöst (4.5 % resp. 0/29 träffar). Platt bunnyhopp når apex ~44 u ⇒
-    golvdjup>56 utesluter alla platta hopp; djup>141 fångar 100 % av mega-
-    hoppen (golvdjup där: 244 u) utan en enda platt träff. Mänsklig RA-
-    klättring är trappserie med rise p50 32.8 u/hopp ⇒ klättertröskel 24 u.
+    värdelöst (4.5 % resp. 0/29 träffar). Mänsklig RA-klättring är trappserie
+    med rise p50 32.8 u/hopp ⇒ klättertröskel 24 u.
+
+    DJUPMÅTTET (skeptikerfix runda 2, 2026-08-03, ultra_fix_reverification §3):
+    `effective_depth` är FOTRELATIVT — djupet av golvet under flygbanan
+    RELATIVT landnings-/avstampsfotnivån, INTE absolut trace-längd från
+    spelarorigo. Origo sitter ORIGIN_FLOOR_OFFSET = 24 u över golvytan
+    (uppmätt, probe_origin.py), så den gamla origo-baserade tracen mätte
+    67.8 u under ett HELT PLATT hopp (24 origo-offset + ~44 apex) — tröskeln
+    56 uteslöt i verkligheten ingenting och varje platt hopp med span >= 150
+    betalade gapbonus (261/261 icke-korsningar i skeptikerns fan-probe).
+    Fotrelativt: platt hopp ⇒ effective_depth ≈ 0 ⇒ diskat; gropkorsningen
+    (fot 32, gropgolv −224) ⇒ 256 ⇒ deep. Trösklarna 56/141 behålls enligt
+    skeptikerns föreskrift — de biter nu på verkligt gapdjup.
     Bonusstorlekarna är startestimat (novelty betalar ~2.25/voxel i fartskala;
     ett fullt gap-hopp ska väga som en handfull nya voxlar) — justeras efter
     mätning, inte antagande."""
@@ -74,6 +84,14 @@ class AirLandingBonus:
     GAP_MIN_DEPTH = 56.0
     GAP_DEEP_DEPTH = 141.0
     GAP_SPAN_CAP = 2.5
+    # uppmätt spelarorigo→golvyta-offset (stående: origo-z − golv-z = 24.0;
+    # probe_origin.py mot riktiga qwsim/dm3) — dras av vid fotnivåberäkningen
+    ORIGIN_FLOOR_OFFSET = 24.0
+    # Skeptikerfix 2026-08-03 (gropdyk-jackpotten): en gap-KORSNING landar på
+    # ledgenivå — landnings-z >= takeoff-z - 24 (rise >= -24). Gropdyk
+    # (48 -> -224, rise -272) diskvalificeras automatiskt; mänsklig ring<->quad
+    # är ~nivåneutral (plattformarna z=56 båda).
+    GAP_MAX_DROP = 24.0
 
     # koefficienterna är instansparametrar (flaggexponerade 2026-08-01 för
     # billig justering utan kodändring; PBT-förberedelse — aktivering av PBT
@@ -82,14 +100,67 @@ class AirLandingBonus:
         self.climb_coef = climb_coef   # 0.08*rise: typiskt klätterhopp (32.8 u) ⇒ ~2.6
         self.gap_base = gap_base       # skalas med span; djup nivå ×2 ⇒ SNG→mega ~7.3
 
-    def landing(self, span: float, rise: float, max_floor_depth: float) -> float:
+    def gap_qualifies(self, span: float, rise: float,
+                      effective_depth: float) -> bool:
+        """Gap-korsningens fulla kvalificering (skeptikerfixar 2026-08-03):
+        span + FOTRELATIVT golvdjup (effective_depth — se klassdocstringen;
+        platt hopp ⇒ ~0 ⇒ diskat), PLUS landningsnivåkravet rise >=
+        -GAP_MAX_DROP — gropdyk (landning på gropgolvet, rise -272) och alla
+        nedslag mer än 24 u under avstampet ger noll gapbonus, inget n_gap."""
+        return (span >= self.GAP_MIN_SPAN
+                and effective_depth > self.GAP_MIN_DEPTH
+                and rise >= -self.GAP_MAX_DROP)
+
+    def landing(self, span: float, rise: float, effective_depth: float,
+                deep_anneal: float = 1.0) -> float:
+        """effective_depth: fotrelativt gapdjup (env_gate2._air_segment:
+        min(takeoff_z, landing_z) − ORIGIN_FLOOR_OFFSET − min golv-z under
+        banan). deep_anneal ∈ [0,1]: skalning av djupnivåns EXTRA (×2 →
+        ×1+anneal); 1.0 = full ×2 (bitkompatibel default), 0.0 = baspoäng.
+        Sätts av TransitionRarity (env_gate2) — grunda gap och klätterbonusen
+        berörs ej."""
         r = 0.0
         if rise >= self.CLIMB_MIN_RISE:
             r += self.climb_coef * min(rise, self.CLIMB_RISE_CAP)
-        if span >= self.GAP_MIN_SPAN and max_floor_depth > self.GAP_MIN_DEPTH:
+        if self.gap_qualifies(span, rise, effective_depth):
+            deep = 1.0 + deep_anneal if effective_depth > self.GAP_DEEP_DEPTH else 1.0
             r += self.gap_base * min(span / self.GAP_MIN_SPAN, self.GAP_SPAN_CAP) \
-                 * (2.0 if max_floor_depth > self.GAP_DEEP_DEPTH else 1.0)
+                 * deep
         return r
+
+
+class TransitionRarity:
+    """Graft ur Transitions-ICM (2026-08-03): √(ref/(n+1))-annealing, capad
+    vid 1.0, av gap-djupmultiplikatorns EXTRA (×2→×1) per transitioncell
+    (takeoffcell→landningscell, 256u — samma cellstorlek som CellRarity).
+    Motiv: V2-djupbonusen (gap_base×spancap×2) är en jackpot; utan avklingning
+    blir den nästa farm-jämvikt (samma felmod som orbiten vid 27-36/s).
+    Med ref=1.0 är extran full vid första lyckandet och ~×1.2 efter ~25
+    lyckade i samma cellpar. Per env-instans, lever ÖVER episoder (samma
+    prejudikat som CellRarity). Endast i belöningskalkylatorn, aldrig i
+    observationerna."""
+
+    CELL_U = 256.0
+
+    def __init__(self, ref: float = 1.0):
+        # NaN-vakt (skeptikerfix 2026-08-03): negativt ref hade gett
+        # np.sqrt(negativt) = NaN som tyst propagerar in i PPO-belöningen
+        self.ref = max(0.0, float(ref))
+        self.n: dict[tuple, int] = {}
+
+    @staticmethod
+    def _key(takeoff: np.ndarray, landing: np.ndarray) -> tuple:
+        c = TransitionRarity.CELL_U
+        return (int(takeoff[0] // c), int(takeoff[1] // c), int(takeoff[2] // c),
+                int(landing[0] // c), int(landing[1] // c), int(landing[2] // c))
+
+    def anneal(self, takeoff: np.ndarray, landing: np.ndarray) -> float:
+        n = self.n.get(self._key(takeoff, landing), 0)
+        return float(min(1.0, np.sqrt(self.ref / (n + 1))))
+
+    def note(self, takeoff: np.ndarray, landing: np.ndarray):
+        k = self._key(takeoff, landing)
+        self.n[k] = self.n.get(k, 0) + 1
 
 
 class CellRarity:

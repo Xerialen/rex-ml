@@ -52,6 +52,26 @@ def main(argv=None):
                         help="riskregim: workers som spawnar UTE på hexagonens sidoledger")
     parser.add_argument("--qw_mega_spawn_workers", type=int, default=0,
                         help="riskregim: workers som spawnar i SNG-mega-ansatsen")
+    parser.add_argument("--qw_takeoff_spawn_workers", type=int, default=0,
+                        help="kantavstamps-spawnern (reverse curriculum steg 0): "
+                             "workers med riktade takeoff-states + initialfart")
+    parser.add_argument("--qw_takeoff_speed_lo", type=float, default=350.0,
+                        help="kantavstamp: initialfartbandets golv (kanoniskt "
+                             "human-lyckat p50 372.8; analyst_fas1_validation.md "
+                             "— gamla 271.6 var en dt-artefakt)")
+    parser.add_argument("--qw_takeoff_speed_hi", type=float, default=450.0,
+                        help="kantavstamp: initialfartbandets tak (kanoniskt "
+                             "human-lyckat p90 418.6/max 451.4; "
+                             "analyst_fas1_validation.md)")
+    parser.add_argument("--qw_takeoff_max_ticks", type=int, default=77 * 12,
+                        help="episodtak för takeoff-workers (~12 s; försöket avgörs "
+                             "inom 2-3 s — taket mångfaldigar kantförsök per frame)")
+    parser.add_argument("--qw_gap_anneal", action="store_true",
+                        help="Transitions-ICM-graften: √(ref/(n+1))-annealing av "
+                             "gapdjupsextran (×2→×1) per transitioncell (256u)")
+    parser.add_argument("--qw_gap_anneal_ref", type=float, default=1.0,
+                        help="annealingens ref: extra=min(1,√(ref/(n+1))) — 1.0 ger "
+                             "~baspoäng efter ~25 lyckade i samma cellpar")
     cfg = parse_full_cfg(parser, argv=argv)
     return run_rl(cfg)
 
