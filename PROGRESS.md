@@ -6865,3 +6865,16 @@ spawn av 28 takeoff-workers), övriga flaggor och entropi 0.003/stddev 1.2 kvar.
 Snapshot pre_airspawn @10.924G säkrad. Probvakt/hjärtslag fortsätter; probskriptet
 uppdaterat (MAX_STEPS 260, LAND_R 192 — gamla kriteriet hade MISSAT verifierade
 ruttens landning 188 u från centroiden).
+
+## 2026-08-03 23:01 — FLERHOPPSREGIMEN DEPLOYAD (omstart 22:59 @11.108G)
+Live: 45-46k FPS; snittreward föll 165-760 → ~1.3 = inkomstgaten bevisligen aktiv
+i produktion (takeoff-episoder betalar endast shaping/completion). Flaggor: som
+förut + --qw_takeoff_multihop --qw_takeoff_air_frac=0.35; entropi 0.003, stddev 1.2.
+NATTVAKTER: probvakt bo05ev95k (48 försök/~8 min, TRÄFF=målnära landning <=192 u,
+flerhopp tillåtet, MAX_STEPS 260); natthammare b316bhhzp (Monitor: 96 försök
+stddev 1.2 var ~15:e min, notifierar TRÄFF direkt); natt-φ b3elufpqo (var 30:e
+min → night_phi.log, sammanställs på morgonen); hjärtslag b93741a97.
+TRÄFF-protokollet oförändrat: v7.3-detektor på sparad bana → express-dm3-analyst
+→ rapport + push + PushNotification OMEDELBART. Rapportering använder 'completed'
+(ej n_gap) för flerhoppsregimen (skeptiker-r3). Morgonrapport till ägaren ~07:00
+med φ-serien, probsummor och ev. träffar.
