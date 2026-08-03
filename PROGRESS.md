@@ -6586,3 +6586,32 @@ tränad m. återställda vikter klätter 0.5/gap 3.0 sedan 9.208G). Träning fri
 **Nästa:** cykel vid ~9.6-9.7G (första mätningen på återställda vikter); NV-lyckat är
 närmsta stegmål (ramla föll 10 u från kanten @63G-SO, nu NV-båge över axeln — båda
 sidorna "nästan"); RA/mega kräver fortfarande klättring/dwell som inte setts.
+
+## 2026-08-03 15:40 — ULTRACODE-WORKFLOW KLAR (19 agenter): diff STOPPAD av skeptiker, diagnostik före åtgärd
+Ägarbeordrad ultracode (evidence/ultra_jump_conversion.json, ~1.5M tokens totalt).
+**Fas 1-fynd (6 dimensioner, bot-vs-human på liggarens 5 event, PRELIMINÄRT tills
+dm3-analytikern validerat humansiffrorna):**
+- Anloppsfart: botens alla 5 event 413-456 u/s — SAMTLIGA över human-lyckat-p90
+  (389); enda lyckandet (456) över human-MAX (444). Humanmedian lyckat: 272.
+- Avstamp: kantlokalisering humanlik (6.5-15 u) UTOM NV-ramlan (sista markkontakt
+  102 u från kant — bunnyhopbåge från plattformsinre, saknar humansignatur).
+- Det som skilde bot-lyckat från bot-ramla i botdatan: drift/styrjitter i luften
+  (dim 3+5), INTE fart — kritikerns huvudpoäng.
+**Vinnarförslag (domarranking):** kantavstamps-spawner med initialfart 250-390
+(reverse curriculum steg 0). Implementerad i worktree, 54 tester gröna, röktest
+40/40 grundade resets mot riktiga qwsim.
+**MEN skeptikerpanelen fällde diffen:** belöningshack-skeptikern UNDERKÄNDE
+(kritisk gropdyk-jackpot: gå av kanten utan hopp ger gapbonus; NV-states trasiga
+— platt golv z=32 utan gap på qr-NV-kordan, yaw mot vägg; novelty förnybar var
+12 s; mätförgiftning av n_gap). Stabilitet+numerik: GODKÄND_MED_ÄNDRINGAR
+(friktionsbett ×0.948 på fartbandet, rarity-asymmetri, NaN-lucka anneal_ref<0).
+**Kritikerns avgörande invändning:** spawnerbandet 250-390 tränar bort från
+botens bevisade framgångsmod (lyckandet var dess SNABBASTE event) och från Gate 2-
+målet >500; det odiagnostiserade är luftstyrningen. Kritikerns diagnostik #2
+(greedy vs samplad) REDAN AVGJORD: dumparna är greedy ⇒ jittret är äkta policy.
+**BESLUT (journalfört):** diffen appliceras INTE i befintligt skick. Nästa steg:
+(1) kritikerns fartbandsdiagnostik — mät NUVARANDE policy från kantavstamps-
+states utan träning, lyckandegrad per fartband 250-500 genom v7.3 ⇒ separerar
+"fel initialtillstånd" från "oförmögen luftstyrning"; (2) därefter antingen
+spawner med korrigerat band ELLER luftstyrningsshaping, med skeptikerfixarna.
+Fas 1-humansiffrorna → dm3-analytikern för validering före kanonisering.
