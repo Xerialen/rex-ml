@@ -6615,3 +6615,19 @@ states utan träning, lyckandegrad per fartband 250-500 genom v7.3 ⇒ separerar
 "fel initialtillstånd" från "oförmögen luftstyrning"; (2) därefter antingen
 spawner med korrigerat band ELLER luftstyrningsshaping, med skeptikerfixarna.
 Fas 1-humansiffrorna → dm3-analytikern för validering före kanonisering.
+
+## 2026-08-03 15:52 — FARTBANDSDIAGNOSTIKEN: 0/144 — luftstyrningen ÄR bristen
+Kritikerns diagnostik körd på checkpoint @9.951G (evidence/takeoff_bands_9951.json,
+repro evidence/repro/probe_takeoff_bands.py): nuvarande policy från de 8 kant-
+avstamps-staterna × fartband 250-500 × 3 jittervarianter, greedy, ingen träning.
+**Resultat: 0 landningar av 144.** Mönster: låga band ⇒ timeout (lämnar inte
+kanten/vandrar); höga band ⇒ gropfall (rq-SO 350-500: 3/3 grop — flyger över
+gapet men fullföljer inte). Kritikerfrågan AVGJORD: det är INTE utgångsläget —
+policyn saknar luftstyrningskompetens helt. Dumparna är dessutom greedy
+(verifierat i rl/dump_trajectories.py:110) ⇒ jittersignaturen i fas 1 är äkta.
+**Slutsats: interventionen = spawner (exponering) + luftfas-shaping (gradient),
+med skeptikernas EXAKTA fixar** (gropdyk-jackpotten kräver hopp+rise; trasiga
+qr-NV-states UT; novelty-förnybarheten; n_gap-förgiftningen; friktionskomp
+×1/0.948; NaN-vakt anneal_ref). Fixrunda i befintligt worktree
+(.claude/worktrees/wf_5769fa30-a6d-15) + omverifiering av belöningshack-
+skeptikern INNAN diff till master. Träning orörd under tiden (9.95G).
