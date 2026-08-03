@@ -6798,3 +6798,19 @@ dumpar, ~/dumps har bara manuella). BESLUT: inga fler ingrepp i träningen (ny
 värdeshock <1h före frist = negativ EV). I stället: pendlingen gör vissa checkpoints
 heta (φ p50 0.23↔0.52); hammare breddprobar VARJE ny checkpoint (stddev 1.2,
 96 försök, roterande seed) till ~21:50. TRÄFF-protokollet oförändrat. Frist 22:05.
+
+## 2026-08-03 21:40 — ÄGARORDER: "Kör till imorgon bitti" — 22:05-fristen hävd
+Nytt fönster: hela natten, avstämning imorgon bitti. Målet oförändrat: minst ett
+nytt verifierat lyckat hopp (v7.3 + analystveto). NATTPLAN (mitt beslut, operatörs-
+isolering):
+1. Träningen fortsätter ostörd i nuvarande regim tills interventionen nedan är klar.
+2. HUVUDINTERVENTION: reverse curriculum steg -1 — LUFTSPAWN: andel takeoff-workers
+   spawnar MITT I flygbanan (ballistiskt konsistent pos+vel längs bågen, t~[0.2,0.6])
+   så policyn tränar exakt bristfärdigheten (luftstyrning→landning) isolerat.
+   Motiv: 0/~10k probförsök visar att sampling inte hittar fullbordan från kanten;
+   shaping ensam pendlar (φ-serien). Implementeras med tester + express-skeptikergranskning
+   INNAN deploy; snapshot före regimbyte. Farmrisker granskas särskilt (gap-bonusens
+   avstampsvillkor gäller ej luftspawn — landningsbonus gate:as separat).
+3. Probvakt bo05ev95k + hjärtslag b93741a97 fortsätter; hammaren återstartas för natten
+   med lägre kadens efter deploy. φ-serien fortsätter (~var 30 min under natten).
+Hammaren t.o.m. 21:40: 0 träffar på ~3800 försök (rundor à 288, stddev 1.2).
