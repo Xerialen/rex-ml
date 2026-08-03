@@ -6640,3 +6640,20 @@ n_gap sanerad, friktionskomp ÷0.948 (uppmätt 251-384), NaN-vakt, spawn_speed-
 läcka tätad, rarity endast djupa gap. Omverifiering av belöningshack-skeptikern
 PÅGÅR — diffen når inte master/träning före GODKÄND. Analyst granskar parallellt
 96G-eventen + fas1-humansiffrorna. Träning orörd (~10.0G).
+
+## 2026-08-03 16:35 — 96G-eventen GODKÄNDA (stege: rq-SO 3/1/2 nivå 2, qr-SO 3/0/3, NV 1); fas1-fartsiffrorna KORRIGERADE
+Analyst (analyst_96G_review.md): båda proben-eventen godkända — qr-SO-eventet inom
+hela human-enveloppen (14 mått, 3 nymätta); rq-SO-eventet från RA-SPAWNAD prob med
+funktionellt fri transit (18.8 s, ~10 zoner) = närmast fri-dump-kvalitet. Kumulativt:
+8 verifierade försök, 1 lyckat. Liggare + artefakt (61 klipp, 6 i genombrottsrutan)
+uppdaterade/publicerade.
+**Fas1-validering (analyst_fas1_validation.md):** avstampspunkt KANONISERAD (alla
+percentiler exakta; ledge_centers=410, ej 1031). Anloppsfart KORRIGERAD — workflow-
+agenten antog fast dt=0.051 men kohortens seg-dt är 13-51 ms ⇒ upp till 3.9× fartfel.
+Kanoniska (dt-korrekta, n=459/95): human-lyckat p50 372.8 / p90 418.6 / max 451.4;
+ramla p50 362.7. "Ramla långsammare"-riktningen HÅLLER; "bot över human-max" FALLER
+(botens 413-456 = humana p75-max-bandet). Dim 3 (luftbågedrift) har samma dt-fel —
+EJ kanoniserad. ⇒ SPAWNERBANDET SKA VARA ~350-450, inte 250-390 (uppdateras i
+worktreet efter skeptikerns omverifiering, som pågår). 0/144-diagnostiken opåverkad
+— luftstyrningen är fortfarande bristen; men "sakta ner botten" är INTE längre del
+av interventionen.
