@@ -53,25 +53,31 @@ def test_collision_dominates():
 
 
 def test_air_bonus_thresholds_from_corpus():
+    # FOTRELATIV omkalibrering (skeptikerrunda 2, 2026-08-03): djupargumentet
+    # är effective_depth = min(avstamps-z, landnings-z) − 24 − min(golv-z
+    # under banan) — INTE origo-trace-längd. Gamla testets "golvdjup ~apex 44"
+    # för platthoppet var själva origo-artefakten (verklig origo-trace under
+    # platt hopp: 67.8 > 56 ⇒ tröskeln uteslöt ingenting).
     from rl.rewards_gate2 import AirLandingBonus
     ab = AirLandingBonus()
-    # platt bunnyhopp: span 280 men golvdjup ~apex 44 ⇒ ingen gapbonus
-    assert ab.landing(span=280.0, rise=0.0, max_floor_depth=44.0) == 0.0
-    # SNG→mega (korpus: span p50 182, golvdjup 244) ⇒ djup nivå, ×2
-    mega = ab.landing(span=182.0, rise=0.0, max_floor_depth=244.0)
+    # platt bunnyhopp: span 280 men golvet ÄR fotnivån ⇒ eff-djup ~0 ⇒ noll
+    assert ab.landing(span=280.0, rise=0.0, effective_depth=0.0) == 0.0
+    # 16-24u-steg (NV-geometrin) ligger också under tröskeln 56
+    assert ab.landing(span=280.0, rise=0.0, effective_depth=24.0) == 0.0
+    # gropkorsningen (fot 32, gropgolv −224 ⇒ eff-djup 256) ⇒ djup nivå, ×2
+    mega = ab.landing(span=182.0, rise=0.0, effective_depth=256.0)
     assert mega > 0.0
-    # fönsterinflygning (span 150-191, djup 13-128): grunda varianten ska betala
-    # — rise -20 (2026-08-03: landningsnivåkravet rise >= -24, skeptikerfixen
-    # mot gropdyk-jackpotten; inflygningar mer än 24 u under avstampet betalar
-    # inte längre — gropdyk 48→-224 var straffFRITT farmbart)
-    window = ab.landing(span=170.0, rise=-20.0, max_floor_depth=100.0)
+    # fönsterinflygning: grunt gap (56 < eff-djup < 141) ska betala basnivå
+    # — rise -20 (landningsnivåkravet rise >= -24, skeptikerfixen mot
+    # gropdyk-jackpotten; nedslag mer än 24 u under avstampet betalar inte)
+    window = ab.landing(span=170.0, rise=-20.0, effective_depth=100.0)
     assert 0.0 < window < mega
-    assert ab.landing(span=170.0, rise=-30.0, max_floor_depth=100.0) == 0.0
+    assert ab.landing(span=170.0, rise=-30.0, effective_depth=100.0) == 0.0
     # klätterhopp (RA-trappan: rise p50 32.8) betalar utan gapkrav
-    climb = ab.landing(span=60.0, rise=32.8, max_floor_depth=0.0)
+    climb = ab.landing(span=60.0, rise=32.8, effective_depth=0.0)
     assert climb > 0.0
     # under klättertröskeln (vanligt hopp på plan mark) ⇒ noll
-    assert ab.landing(span=60.0, rise=10.0, max_floor_depth=0.0) == 0.0
+    assert ab.landing(span=60.0, rise=10.0, effective_depth=0.0) == 0.0
 
 
 def test_cell_rarity_boosts_unseen_damps_oversat():

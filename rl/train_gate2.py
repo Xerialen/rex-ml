@@ -55,10 +55,14 @@ def main(argv=None):
     parser.add_argument("--qw_takeoff_spawn_workers", type=int, default=0,
                         help="kantavstamps-spawnern (reverse curriculum steg 0): "
                              "workers med riktade takeoff-states + initialfart")
-    parser.add_argument("--qw_takeoff_speed_lo", type=float, default=250.0,
-                        help="kantavstamp: initialfartbandets golv (human-p50 271.6)")
-    parser.add_argument("--qw_takeoff_speed_hi", type=float, default=390.0,
-                        help="kantavstamp: initialfartbandets tak (human-p90 388.8)")
+    parser.add_argument("--qw_takeoff_speed_lo", type=float, default=350.0,
+                        help="kantavstamp: initialfartbandets golv (kanoniskt "
+                             "human-lyckat p50 372.8; analyst_fas1_validation.md "
+                             "— gamla 271.6 var en dt-artefakt)")
+    parser.add_argument("--qw_takeoff_speed_hi", type=float, default=450.0,
+                        help="kantavstamp: initialfartbandets tak (kanoniskt "
+                             "human-lyckat p90 418.6/max 451.4; "
+                             "analyst_fas1_validation.md)")
     parser.add_argument("--qw_takeoff_max_ticks", type=int, default=77 * 12,
                         help="episodtak för takeoff-workers (~12 s; försöket avgörs "
                              "inom 2-3 s — taket mångfaldigar kantförsök per frame)")

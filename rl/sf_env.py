@@ -98,8 +98,8 @@ class QWGate2Env(gym.Env):
             spawn_region=spawn_region,
             spawn_centers=spawn_centers,
             spawn_takeoff_states=spawn_takeoff_states,
-            takeoff_speed_range=(float(getattr(cfg, "qw_takeoff_speed_lo", 250.0)),
-                                 float(getattr(cfg, "qw_takeoff_speed_hi", 390.0))),
+            takeoff_speed_range=(float(getattr(cfg, "qw_takeoff_speed_lo", 350.0)),
+                                 float(getattr(cfg, "qw_takeoff_speed_hi", 450.0))),
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
             novelty_bonus=float(getattr(cfg, "qw_novelty_bonus", 1.5)),
@@ -200,8 +200,9 @@ def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
                           spawn_centers=_ledge_centers())
     # KANTAVSTAMPS-workers (reverse curriculum steg 0, 2026-08-03): riktade
     # takeoff-states på hexagonens sidoledger — grundad kantstart, yaw mot
-    # målplattformens landningscentroid, initialfart 250-390 u/s (human-
-    # lyckat p50-p90). Episodtak ~12 s (graft ur förslag 4: varje takeoff-
+    # målplattformens landningscentroid, initialfart 350-450 u/s (kanoniskt
+    # human-lyckat p50 372.8/p90 418.6/max 451.4, analyst_fas1_validation.md
+    # — FIX D 2026-08-03). Episodtak ~12 s (graft ur förslag 4: varje takeoff-
     # episod avgörs inom ~2-3 s; resten är post-försöks-strövande som redan
     # täcks av hex/ra/mix ⇒ ~5x fler kantförsök per frame ur samma workers).
     tofn = getattr(cfg, "qw_takeoff_spawn_workers", 0) if cfg is not None else 0

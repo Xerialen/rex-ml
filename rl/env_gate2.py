@@ -62,11 +62,13 @@ class Gate2Config:
     # KANTAVSTAMPS-SPAWNER (reverse curriculum steg 0, 2026-08-03): riktade
     # takeoff-states — grundad kantstart 7-15 u från kanten (human-p50), yaw
     # mot målplattformens uppmätta landningscentroid, initialfart i human-
-    # lyckat-bandet (p50 271.6 .. p90 388.8). Har företräde före ALLA andra
-    # spawn-grenar. Fas 1-motivet: boten anlöper 413-456 u/s där ~2/580 humana
-    # lyckanden finns — spawnern eliminerar den felinlärda anloppsfasen.
+    # lyckat-bandet. Har företräde före ALLA andra spawn-grenar.
+    # FIX D (2026-08-03, analyst_fas1_validation.md): workflowens gamla
+    # humanfartsiffror (p50 271.6/p90 388.8) var dt-artefakter (fast dt=0.051
+    # på en 13-51 ms-blandad kohort); kanoniskt human-lyckat är p50 372.8 /
+    # p90 418.6 / max 451.4 ⇒ default-bandet 250-390 → 350-450.
     spawn_takeoff_states: object = None      # lista av {pos:[x,y,z], yaw:deg}
-    takeoff_speed_range: tuple = (250.0, 390.0)  # human-lyckat p50..p90
+    takeoff_speed_range: tuple = (350.0, 450.0)  # kanoniskt human-lyckat ~p50..~max
     takeoff_yaw_jitter: float = 6.0
     takeoff_pos_jitter: float = 12.0
     # Graft ur Transitions-ICM (2026-08-03): √(ref/(n+1))-annealing (capad) av
@@ -189,6 +191,10 @@ class QWGate2Core:
         self._air_buf: list[np.ndarray] = []
         self.n_climb = 0
         self.n_gap = 0
+        # FIX C (skeptikerförslag runda 2): takeoff-episoder termineras vid
+        # FÖRSTA landningen (lyckad eller ej) — hindrar kedjefarmning inom
+        # episoden och eliminerar post-försöks-strövandet (~80 % av 12s-taket)
+        self._landed_done = False
 
     def reset(self) -> np.ndarray:
         if self.rarity is not None:
@@ -281,33 +287,46 @@ class QWGate2Core:
             return 0.0
         span = float(np.linalg.norm((self.pos - takeoff)[:2]))
         rise = float(self.pos[2] - takeoff[2])
-        max_depth = 0.0
+        eff_depth = 0.0
         if span >= self.air_bonus.GAP_MIN_SPAN and len(self._air_buf) >= 3:
-            # 3-punkts golvdjup under banan (25/50/75 %), samma klassificerare
-            # som analyze_gapjumps fast online; 512 u räcker för dm3:s schakt
+            # 3-punkts golvprofil under banan (25/50/75 %), samma provpunkter
+            # som analyze_gapjumps fast online; 512 u räcker för dm3:s schakt.
+            # Skeptikerfix runda 2 (2026-08-03, origo-offset-hålet): djupet är
+            # FOTRELATIVT, inte trace-längd från origo. Trace-längd mätte
+            # origo-höjd + apex (67.8 u under ett HELT PLATT hopp > tröskeln
+            # 56 ⇒ gapbonus för varje platt hopp med span >= 150, uppmätt
+            # 261/261 icke-korsningar). Nu: golv-z per prov = prov-z − trace,
+            # fotnivå = min(avstamps-z, landnings-z) − 24 (origo→golvyta,
+            # uppmätt), effective_depth = fotnivå − min(golv-z). Platt hopp:
+            # golvet ÄR fotnivån ⇒ ~0 ⇒ diskat. Gropkorsning: fot 32 −
+            # gropgolv −224 ⇒ 256 ⇒ deep. (frac 1.0 = inget golv inom 512 u
+            # ⇒ golv-z minst 512 under provet — djupt, korrekt kvalificerat.)
             idx = [len(self._air_buf) // 4, len(self._air_buf) // 2,
                    (3 * len(self._air_buf)) // 4]
             origins = np.stack([self._air_buf[i] for i in idx]).astype(np.float32)
             down = np.tile(np.array([0.0, 0.0, -1.0], dtype=np.float32), (3, 1))
             fracs = np.asarray(self.b.trace_rays(origins, down, 512.0))
-            max_depth = float(np.max(fracs) * 512.0)
+            floor_z = origins[:, 2].astype(float) - fracs * 512.0
+            foot_z = min(float(takeoff[2]), float(self.pos[2])) \
+                - self.air_bonus.ORIGIN_FLOOR_OFFSET
+            eff_depth = float(foot_z - np.min(floor_z))
         self._air_buf.clear()
         # gap-anneal (Transitions-ICM-graften): djupextran ×2→×1 avklingar med
         # √(ref/(n+1)) per transitioncell så jackpotten inte blir farm-jämvikt
         anneal = self.gap_rarity.anneal(takeoff, self.pos) \
             if self.gap_rarity is not None else 1.0
-        bonus = self.air_bonus.landing(span, rise, max_depth, deep_anneal=anneal)
+        bonus = self.air_bonus.landing(span, rise, eff_depth, deep_anneal=anneal)
         if rise >= self.air_bonus.CLIMB_MIN_RISE:
             self.n_climb += 1
         # n_gap räknar ENDAST fullt kvalificerade gap-korsningar (skeptikerfix
         # 2026-08-03: mätförgiftningen — gropdyk/nivåtappande nedslag räknas
         # inte; gap_qualifies inkluderar landningsnivåkravet rise >= -24)
-        if bonus > 0.0 and self.air_bonus.gap_qualifies(span, rise, max_depth):
+        if bonus > 0.0 and self.air_bonus.gap_qualifies(span, rise, eff_depth):
             self.n_gap += 1
             # rarity-asymmetrin (skeptikerfix): note() endast för DJUPA gap —
             # grunda gap i samma cellpar ska inte avklinga djupextran
             if self.gap_rarity is not None \
-                    and max_depth > self.air_bonus.GAP_DEEP_DEPTH:
+                    and eff_depth > self.air_bonus.GAP_DEEP_DEPTH:
                 self.gap_rarity.note(takeoff, self.pos)
         return bonus
 
@@ -343,6 +362,13 @@ class QWGate2Core:
             # vz <= 0; hoppknapp hållen utan verkställt hopp ger också vz <= 0)
             jumped = bool(jb) and float(self.vel[2]) > 0.0
             r += self._air_segment(prev_og, counted, jumped=jumped)
+        # FIX C (skeptikerförslag runda 2, 2026-08-03): takeoff-spawnade
+        # episoder termineras vid FÖRSTA luft→mark-övergången (hopp ELLER
+        # walkoff, lyckad eller ej) — landningsbonusen för just den ticken är
+        # redan utbetald ovan; ingen kedjefarmning inom episoden är möjlig.
+        if self.cfg.spawn_takeoff_states is not None \
+                and not prev_og and self.onground:
+            self._landed_done = True
         if counted:
             self.speed_sum += sp
             self.speed_n += 1
@@ -356,10 +382,11 @@ class QWGate2Core:
         self.last_action = S.flat_action(
             float(box[0]) * S.MAX_DYAW_DEG, float(box[1]) * S.MAX_DPITCH_DEG,
             fwd, side, jump)
-        done = self.stuck or self.tick >= self.cfg.max_ticks
+        done = self.stuck or self._landed_done or self.tick >= self.cfg.max_ticks
         mean_speed = self.speed_sum / max(self.speed_n, 1)
         return self._obs(), float(r), done, {
             "stuck": self.stuck, "mean_speed_counted": mean_speed,
             "novel_voxels": len(self.novelty.seen),
             "n_climb": self.n_climb, "n_gap": self.n_gap,
+            "landed": self._landed_done,
         }

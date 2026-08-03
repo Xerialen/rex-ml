@@ -1,7 +1,7 @@
 {
  "generator": "gen_takeoff_states.py (engångs, 2026-08-03)",
  "källa": "Fas 1-ankare + rl.jump_gates.ledge_centers()/_side() (detektor v7.3-mask)",
- "fartband_motiv": "human-lyckat p50 271.6 .. p90 388.8 u/s (24-demoskohorten)",
+ "fartband_motiv": "kanoniskt human-lyckat p50 372.8 / p90 418.6 / max 451.4 u/s (analyst_fas1_validation.md 2026-08-03: gamla 271.6/388.8 var dt-artefakter — fast dt=0.051 på 13-51 ms-blandad kohort krossade farterna i 460/726 event) => default-band 350-450",
  "geometriverifiering": "2026-08-03, riktiga qwsim/dm3: golvdjupsprofil under kordan pos→landing_2d (dump_trajectories-metoden: zref=min(z0,z1)+8, punkter 0.3/0.5/0.7, trace ned) + fri sikt längs yaw från ögonhöjd. NV-SIDAN BORTTAGEN (skeptikerfynd, bekräftat med egen mätning): qr-NV/qr-NV-b OCH rq-NV/rq-NV-b hade PLATT golv på kordan (djup ~24 u hela vägen, inget gap) och vägg i siktlinjen (fri sikt 30-72 % av kordan) — spegelantagandet 'axelspeglade' höll inte. Kvarvarande 4 SO-states uppmätta: gropdjup 280 u på kordans mittparti (gropgolv z=-224, zref 56) och 100 % fri sikt hela kordan.",
  "states": [
   {

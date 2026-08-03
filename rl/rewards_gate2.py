@@ -60,10 +60,20 @@ class AirLandingBonus:
     Trösklar kalibrerade mot mänskliga korpusen (evidence/analyst_review_
     vertical_rewards.md, 2026-08-01): SNG→mega span p50 182/max 332 u och
     fönsterinflygning span p50 150-191 u gjorde ursprungsförslaget span>240
-    värdelöst (4.5 % resp. 0/29 träffar). Platt bunnyhopp når apex ~44 u ⇒
-    golvdjup>56 utesluter alla platta hopp; djup>141 fångar 100 % av mega-
-    hoppen (golvdjup där: 244 u) utan en enda platt träff. Mänsklig RA-
-    klättring är trappserie med rise p50 32.8 u/hopp ⇒ klättertröskel 24 u.
+    värdelöst (4.5 % resp. 0/29 träffar). Mänsklig RA-klättring är trappserie
+    med rise p50 32.8 u/hopp ⇒ klättertröskel 24 u.
+
+    DJUPMÅTTET (skeptikerfix runda 2, 2026-08-03, ultra_fix_reverification §3):
+    `effective_depth` är FOTRELATIVT — djupet av golvet under flygbanan
+    RELATIVT landnings-/avstampsfotnivån, INTE absolut trace-längd från
+    spelarorigo. Origo sitter ORIGIN_FLOOR_OFFSET = 24 u över golvytan
+    (uppmätt, probe_origin.py), så den gamla origo-baserade tracen mätte
+    67.8 u under ett HELT PLATT hopp (24 origo-offset + ~44 apex) — tröskeln
+    56 uteslöt i verkligheten ingenting och varje platt hopp med span >= 150
+    betalade gapbonus (261/261 icke-korsningar i skeptikerns fan-probe).
+    Fotrelativt: platt hopp ⇒ effective_depth ≈ 0 ⇒ diskat; gropkorsningen
+    (fot 32, gropgolv −224) ⇒ 256 ⇒ deep. Trösklarna 56/141 behålls enligt
+    skeptikerns föreskrift — de biter nu på verkligt gapdjup.
     Bonusstorlekarna är startestimat (novelty betalar ~2.25/voxel i fartskala;
     ett fullt gap-hopp ska väga som en handfull nya voxlar) — justeras efter
     mätning, inte antagande."""
@@ -74,6 +84,9 @@ class AirLandingBonus:
     GAP_MIN_DEPTH = 56.0
     GAP_DEEP_DEPTH = 141.0
     GAP_SPAN_CAP = 2.5
+    # uppmätt spelarorigo→golvyta-offset (stående: origo-z − golv-z = 24.0;
+    # probe_origin.py mot riktiga qwsim/dm3) — dras av vid fotnivåberäkningen
+    ORIGIN_FLOOR_OFFSET = 24.0
     # Skeptikerfix 2026-08-03 (gropdyk-jackpotten): en gap-KORSNING landar på
     # ledgenivå — landnings-z >= takeoff-z - 24 (rise >= -24). Gropdyk
     # (48 -> -224, rise -272) diskvalificeras automatiskt; mänsklig ring<->quad
@@ -88,25 +101,29 @@ class AirLandingBonus:
         self.gap_base = gap_base       # skalas med span; djup nivå ×2 ⇒ SNG→mega ~7.3
 
     def gap_qualifies(self, span: float, rise: float,
-                      max_floor_depth: float) -> bool:
-        """Gap-korsningens fulla kvalificering (skeptikerfix 2026-08-03):
-        span + golvdjup som förr, PLUS landningsnivåkravet rise >= -GAP_MAX_DROP
-        — gropdyk (landning på gropgolvet, rise -272) och alla nedslag mer än
-        24 u under avstampet ger noll gapbonus och räknas inte i n_gap."""
+                      effective_depth: float) -> bool:
+        """Gap-korsningens fulla kvalificering (skeptikerfixar 2026-08-03):
+        span + FOTRELATIVT golvdjup (effective_depth — se klassdocstringen;
+        platt hopp ⇒ ~0 ⇒ diskat), PLUS landningsnivåkravet rise >=
+        -GAP_MAX_DROP — gropdyk (landning på gropgolvet, rise -272) och alla
+        nedslag mer än 24 u under avstampet ger noll gapbonus, inget n_gap."""
         return (span >= self.GAP_MIN_SPAN
-                and max_floor_depth > self.GAP_MIN_DEPTH
+                and effective_depth > self.GAP_MIN_DEPTH
                 and rise >= -self.GAP_MAX_DROP)
 
-    def landing(self, span: float, rise: float, max_floor_depth: float,
+    def landing(self, span: float, rise: float, effective_depth: float,
                 deep_anneal: float = 1.0) -> float:
-        """deep_anneal ∈ [0,1]: skalning av djupnivåns EXTRA (×2 → ×1+anneal);
-        1.0 = full ×2 (bitkompatibel default), 0.0 = baspoäng. Sätts av
-        TransitionRarity (env_gate2) — grunda gap och klätterbonusen berörs ej."""
+        """effective_depth: fotrelativt gapdjup (env_gate2._air_segment:
+        min(takeoff_z, landing_z) − ORIGIN_FLOOR_OFFSET − min golv-z under
+        banan). deep_anneal ∈ [0,1]: skalning av djupnivåns EXTRA (×2 →
+        ×1+anneal); 1.0 = full ×2 (bitkompatibel default), 0.0 = baspoäng.
+        Sätts av TransitionRarity (env_gate2) — grunda gap och klätterbonusen
+        berörs ej."""
         r = 0.0
         if rise >= self.CLIMB_MIN_RISE:
             r += self.climb_coef * min(rise, self.CLIMB_RISE_CAP)
-        if self.gap_qualifies(span, rise, max_floor_depth):
-            deep = 1.0 + deep_anneal if max_floor_depth > self.GAP_DEEP_DEPTH else 1.0
+        if self.gap_qualifies(span, rise, effective_depth):
+            deep = 1.0 + deep_anneal if effective_depth > self.GAP_DEEP_DEPTH else 1.0
             r += self.gap_base * min(span / self.GAP_MIN_SPAN, self.GAP_SPAN_CAP) \
                  * deep
         return r

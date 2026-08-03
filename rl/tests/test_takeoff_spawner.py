@@ -8,6 +8,13 @@ datafilen mot v7.3-ledgemasken, samt skeptikerfixarna 2026-08-03:
 äkta-hopp-kravet (kantavgång ⇒ ingen gapbonus), landningsnivåkravet
 (gropdyk ⇒ ingen bonus, inget n_gap), novelty-nollningen för takeoff-envs,
 NaN-vakten, spawn_speed-i-grop-läckan och rarity-asymmetrin.
+
+Runda 2 (ultra_fix_reverification, 2026-08-03): FIX A — fotrelativt
+effective_depth (origo-offset-hålet: platt hopp mätte trace-djup 67.8 > 56
+och betalade gapbonus; nu ~0 ⇒ diskat) med omkalibrerad stub som kan
+representera BÅDE platt golv och gropgeometri + explicit platthoppsfall;
+FIX C — takeoff-episoder termineras vid första landningen (anti-kedjefarm);
+FIX D — kanoniskt fartband 350-450 (analyst_fas1_validation.md).
 """
 import numpy as np
 
@@ -27,7 +34,23 @@ class GroundKeepBackend(StubBackend):
     = ×0.948, sedan pos += vel·dt (samma ordning som pmove: friktion före
     förflyttning). Tidigare version behöll farten oförändrad och MASKERADE
     friktionsbettet (skeptikerfynd) — nu testas ÷0.948-kompensationen i
-    reset() på riktigt: levererat band ska bli exakt det konfigurerade."""
+    reset() på riktigt: levererat band ska bli exakt det konfigurerade.
+
+    GOLVGEOMETRI (skeptikerfix runda 2, origo-offset-hålet): tidigare stub-
+    kalibrering lade golvet 200 u under luftbufferten och MASKERADE att ett
+    platt hopp mätte trace-djup 67.8 (origo-offset 24 + apex) > tröskeln 56.
+    Nu kan stubben representera BÅDE platt golv (trace från origo ≈ 24 +
+    fothöjd, dvs golvytan z=32 rakt under) OCH gropgeometri: set_pit((lo,hi),
+    golv_z) sänker golvet till golv_z för nedåttracar vars origo-x ligger i
+    [lo,hi] — flygbanans mittparti kan alltså exponera ett äkta gap medan
+    avstamp/landning står på golvytan."""
+
+    def __init__(self):
+        super().__init__()
+        self._pit = None                 # ((x_lo, x_hi), golv_z) | None
+
+    def set_pit(self, x_range, floor_z):
+        self._pit = None if floor_z is None else (tuple(x_range), float(floor_z))
 
     def step(self, yaw_deg, pitch_deg, forwardmove, sidemove, jump):
         if self.onground and not jump and abs(forwardmove) < 1e-9 \
@@ -36,6 +59,17 @@ class GroundKeepBackend(StubBackend):
             self.pos += self.vel * S.TICK_DT
             return self.pos.copy(), self.vel.copy(), True, 0, False
         return super().step(yaw_deg, pitch_deg, forwardmove, sidemove, jump)
+
+    def trace_rays(self, origins, dirs, max_dist):
+        frac = np.asarray(super().trace_rays(origins, dirs, max_dist),
+                          dtype=np.float32).copy()
+        if self._pit is not None:
+            (lo, hi), pit_z = self._pit
+            for i in range(len(dirs)):
+                if dirs[i][2] < -1e-6 and lo <= origins[i][0] <= hi:
+                    t = (origins[i][2] - pit_z) / -dirs[i][2]
+                    frac[i] = min(max(t, 0.0), max_dist) / max_dist
+        return frac
 
 
 def make_takeoff_env(backend=None, states=STATES, seed=7, **kw):
@@ -49,7 +83,8 @@ def test_pick_spawn_returns_triple_in_band():
     env = make_takeoff_env()
     for _ in range(20):
         pos, yaw, speed = env._pick_spawn()
-        assert 250.0 <= speed <= 390.0
+        # FIX D: kanoniskt fartband 350-450 (analyst_fas1_validation.md)
+        assert 350.0 <= speed <= 450.0
         src = min(STATES, key=lambda s: np.hypot(pos[0] - s["pos"][0],
                                                  pos[1] - s["pos"][1]))
         assert abs(yaw - src["yaw"]) <= 6.0 + 1e-9        # yaw-jitter ±6
@@ -88,8 +123,8 @@ def test_reset_injects_speed_after_settling():
         assert env.onground                               # grundad kantstart
         sp = float(np.hypot(env.vel[0], env.vel[1]))
         # friktionskompensationen ÷0.948 ⇒ LEVERERAT band efter synk-ticken
-        # (som tar ×0.948) är exakt det konfigurerade — inte 237-370
-        assert 250.0 - 1e-6 <= sp <= 390.0 + 1e-6
+        # (som tar ×0.948) är exakt det konfigurerade (FIX D: 350-450)
+        assert 350.0 - 1e-6 <= sp <= 450.0 + 1e-6
         vdir = env.vel[:2] / sp
         fwd = np.array([np.cos(np.radians(env.yaw)), np.sin(np.radians(env.yaw))])
         assert float(vdir @ fwd) > 0.999                  # riktad längs yaw
@@ -172,16 +207,22 @@ def test_air_landing_bonus_deep_anneal():
     assert ab.landing(60.0, 32.8, 0.0, deep_anneal=0.0) == climb
 
 
-def _land_gap(env, takeoff_x=100.0, land_z=232.0, jumped=True, buf_z=232.0):
+def _land_gap(env, takeoff_x=100.0, land_z=56.0, jumped=True, pit_floor=-224.0):
     """Simulerad gap-landning genom takeoff- och landningsgrenarna i
-    _air_segment: span 200, luftbuffert buf_z över stubbgolvet (z=32) ⇒
-    golvdjup buf_z-32 (232 ⇒ 200 > GAP_DEEP_DEPTH 141; 132 ⇒ 100 = grunt).
+    _air_segment — FOTRELATIVT omkalibrerad (skeptikerfix runda 2): avstamp
+    och landning på ledge-ORIGONIVÅ z=56 (fotnivå 32 = stubbens golvyta),
+    luftbuffert på origoapex ~101; gropen läggs i banans mittparti via
+    stubbens set_pit. effective_depth = (56−24) − pit_floor:
+      −224 ⇒ 256 (deep, dm3-gropens verkliga siffra)
+      −68  ⇒ 100 (grunt gap, 56 < 100 < 141)
+      None ⇒ platt golv 32 ⇒ 0 (diskat — origo-offset-hålets regressionsfall).
     jumped=False modellerar ren kantavgång (prev_og→luft utan hoppknapp)."""
     env.waterlevel = 0
-    env.pos = np.array([takeoff_x, 0.0, 232.0])
+    env.pos = np.array([takeoff_x, 0.0, 56.0])
     env.onground = False
     env._air_segment(prev_og=True, counted=True, jumped=jumped)   # avstampstick
-    env._air_buf = [np.array([takeoff_x + d, 0.0, buf_z]) for d in (50.0, 100.0, 150.0)]
+    env.b.set_pit((takeoff_x + 25.0, takeoff_x + 175.0), pit_floor)
+    env._air_buf = [np.array([takeoff_x + d, 0.0, 101.0]) for d in (50.0, 100.0, 150.0)]
     env.pos = np.array([takeoff_x + 200.0, 0.0, land_z])
     env.onground = True
     return env._air_segment(prev_og=False, counted=True)
@@ -219,11 +260,12 @@ def test_edge_walkoff_pays_no_gap_bonus():
 
 def test_pit_dive_landing_pays_nothing_and_is_not_counted():
     # Skeptikerfix (gropdyk-jackpotten + mätförgiftningen): hopp som landar på
-    # gropgolvet (rise -272, flygbanedjup > 141) ger noll bonus, räknas inte i
-    # n_gap och noterar inte transitioncellen i rarityn
+    # gropgolvet (rise -256; fotrelativt djup dessutom ~0 — man landar PÅ
+    # golvet under banan) ger noll bonus, räknas inte i n_gap och noterar
+    # inte transitioncellen i rarityn
     env = make_takeoff_env(vertical_rewards=True, gap_anneal=True,
                            gap_anneal_ref=1.0)
-    assert _land_gap(env, land_z=-40.0) == 0.0            # rise -272
+    assert _land_gap(env, land_z=-200.0) == 0.0           # origo på gropgolvet
     assert env.n_gap == 0
     assert env.gap_rarity.n == {}                         # ingen anneal-nedräkning
     # och den äkta korsningen efteråt får fortfarande full jackpot
@@ -239,12 +281,79 @@ def test_rarity_note_only_for_deep_gaps():
                            gap_anneal_ref=1.0)
     base = env.air_bonus.gap_base * min(200.0 / env.air_bonus.GAP_MIN_SPAN,
                                         env.air_bonus.GAP_SPAN_CAP)
-    shallow = _land_gap(env, buf_z=132.0)                 # golvdjup 100: grunt
+    shallow = _land_gap(env, pit_floor=-68.0)             # eff-djup 100: grunt
     assert abs(shallow - base) < 1e-9                     # betalas, utan djupextra
     assert env.n_gap == 1                                 # grunt gap räknas i n_gap
     assert env.gap_rarity.n == {}                         # men noteras INTE
     assert abs(_land_deep_gap(env) - 2.0 * base) < 1e-9   # djupextran orörd
     assert len(env.gap_rarity.n) == 1                     # djupt gap noteras
+
+
+def test_flat_hop_pays_no_gap_bonus_and_no_n_gap():
+    # FIX A-regressionen (origo-offset-hålet, skeptikerrunda 2): platt hopp
+    # över plant golv — span 200 >= 150, äkta hopp, nivåneutral landning —
+    # betalar NOLL och räknas inte i n_gap. Gamla origo-tracen mätte här
+    # 24 (origo-offset) + ~44 (apex) = 67.8 > GAP_MIN_DEPTH 56 och betalade
+    # (skeptikerns fan-probe: 261/261 icke-korsningar).
+    env = make_takeoff_env(vertical_rewards=True)
+    assert _land_gap(env, pit_floor=None) == 0.0          # platt golv ⇒ diskat
+    assert env.n_gap == 0
+    # 16-24u-steget (NV-klassens geometri) är också under tröskeln
+    assert _land_gap(env, pit_floor=8.0) == 0.0           # eff-djup 24 < 56
+    assert env.n_gap == 0
+    # och gropen betalar fortfarande (positiv kontroll i samma geometri)
+    assert _land_gap(env) > 0.0                           # eff-djup 256
+    assert env.n_gap == 1
+
+
+def test_flat_hop_full_loop_zero_bonus_and_takeoff_terminates_on_landing():
+    # Helt varv genom core.step på stubbens PLATTA golv: äkta hopp i
+    # 350-450-fart ger span >> 150 (frestande farmgeometri) men fotrelativt
+    # djup ~0 ⇒ landing() anropas och betalar 0, n_gap 0. FIX C: episoden
+    # termineras på landningsticken (ingen kedjefarmning inom episoden).
+    env = make_takeoff_env(states=[STATES[0]], vertical_rewards=True,
+                           takeoff_yaw_jitter=0.0, takeoff_pos_jitter=0.0)
+    calls = []
+    orig = env.air_bonus.landing
+    def spy(span, rise, effective_depth, deep_anneal=1.0):
+        b = orig(span, rise, effective_depth, deep_anneal=deep_anneal)
+        calls.append({"span": span, "depth": effective_depth, "bonus": b})
+        return b
+    env.air_bonus.landing = spy
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    done, info = False, {}
+    for t in range(300):
+        _, _, done, info = env.step(box, 1, 0, 1 if t == 0 else 0)
+        if done:
+            break
+    assert done and info["landed"] and not info["stuck"]  # FIX C: terminerad
+    assert env.tick < env.cfg.max_ticks                   # ...FÖRE tidstaket
+    assert len(calls) == 1                                # exakt en landning
+    assert calls[0]["span"] >= 150.0                      # farmbar span...
+    assert calls[0]["depth"] < 56.0                       # ...men inget gapdjup
+    assert calls[0]["bonus"] == 0.0
+    assert info["n_gap"] == 0
+
+
+def test_non_takeoff_env_does_not_terminate_on_landing():
+    # FIX C gäller ENDAST takeoff-spawnade episoder — strövande envs får
+    # hoppa och landa fritt utan terminering
+    b = StubBackend()
+    b.X_WALL = 1e6
+    env = QWGate2Core(b, cfg=Gate2Config(spawn_mode="fixed",
+                                         vertical_rewards=True),
+                      rng=np.random.default_rng(3))
+    env.reset()
+    box = np.zeros(2, dtype=np.float32)
+    was_air = False
+    for t in range(300):
+        _, _, done, info = env.step(box, 1, 0, 1 if t == 0 else 0)
+        if was_air and env.onground:
+            assert not done and not info["landed"]
+            return
+        was_air = not env.onground
+    raise AssertionError("ingen landning inträffade i stubbmiljön")
 
 
 def test_transition_rarity_negative_ref_is_nan_guarded():
@@ -300,7 +409,8 @@ def test_sf_env_takeoff_worker_branch_and_datafile():
     # "geometriverifiering")
     assert st is not None and len(st) == 4
     assert env.core.cfg.max_ticks == 77 * 12              # episodtaket (graften)
-    assert env.core.cfg.takeoff_speed_range == (250.0, 390.0)
+    # FIX D: kanoniskt human-lyckat p50 372.8/p90 418.6/max 451.4
+    assert env.core.cfg.takeoff_speed_range == (350.0, 450.0)
     # workern EFTER takeoff-bandet är mega (region, inga takeoff-states)
     env2 = make_env_gate2("qw_gate2", cfg, {"worker_index": 2})
     assert env2.core.cfg.spawn_takeoff_states is None
