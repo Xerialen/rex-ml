@@ -6707,3 +6707,10 @@ träningen i st f före — fixen är skeptikerns egen formel och dess verifieri
 uppfyllda; skeptikerns dom styr fortsätt/rollback. Probvakt bo05ev95k: var ~8:e
 min 48 samplade försök från färsk checkpoint; TRÄFF ⇒ v7.3 + expressanalyst.
 Runda 1 (checkpoint=start): 0/48. Rollback vid behov: checkpoint 10.256G.
+
+## 2026-08-03 18:11 — Utforskningshöjning @10.30G (bootstrap-problemet)
+Rundorna 2-4 identiska (0/48, grop 12/timeout 36) efter 65M frames ⇒ jackpot-
+gradienten har sannolikt inte seedats (samplad lyckanderate bevisat <0.05%).
+Åtgärd (hyperparametermandat): omstart 18:08 med SF_STDDEV_MAX 1.0→1.5 (bredare
+yaw-sampling) + entropi 0.003→0.006. Övriga flaggor oförändrade. Omverifiering 3
+GODKÄNDE regimen (301ed9d; 3 bevakningspunkter, remote-master-grenen städad).
