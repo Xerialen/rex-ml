@@ -6631,3 +6631,12 @@ qr-NV-states UT; novelty-förnybarheten; n_gap-förgiftningen; friktionskomp
 ×1/0.948; NaN-vakt anneal_ref). Fixrunda i befintligt worktree
 (.claude/worktrees/wf_5769fa30-a6d-15) + omverifiering av belöningshack-
 skeptikern INNAN diff till master. Träning orörd under tiden (9.95G).
+
+## 2026-08-03 16:20 — Fixrundan klar (worktree 936d264): 8/8 skeptikerfixar, 61 tester
+Gropdyk-jackpotten stängd (hoppknapp+vz>0 på avstampsticken + landnings-z >=
+takeoff−24), ALLA NV-states fällda av geometriverifiering (platt golv på kordorna
+— 4 SO-states kvar, 280 u gropdjup, fri sikt), novelty nollad för takeoff-envs,
+n_gap sanerad, friktionskomp ÷0.948 (uppmätt 251-384), NaN-vakt, spawn_speed-
+läcka tätad, rarity endast djupa gap. Omverifiering av belöningshack-skeptikern
+PÅGÅR — diffen når inte master/träning före GODKÄND. Analyst granskar parallellt
+96G-eventen + fas1-humansiffrorna. Träning orörd (~10.0G).
