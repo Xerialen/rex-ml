@@ -6670,7 +6670,7 @@ stubb-omkalibrering; (B) fan-probe-krav 0 utbetalningar icke-grop; (C) terminera
 takeoff-episoder vid första landning; (D) fartband 250-390 → 350-450 (analystens
 dt-korrigerade humansiffror). Därefter omverifiering 2. Träning orörd (~10.1G).
 
-## 2026-08-03 17:35 — Fixrunda 2 klar (worktree 0765fd6); omverifiering 2 pågår
+## 2026-08-03 16:55 — Fixrunda 2 klar (worktree 0765fd6); omverifiering 2 pågår
 Origo-offset-hålet stängt: effective_depth = fotnivå(min(takeoff,landing)−24) −
 min(golv under banan). Fan-probe 840 trials riktiga qwsim: 0 platthoppsutbetal-
 ningar (förra: 261/261), äkta gropkorsning betalar alla 4 SO-states, walkoff
