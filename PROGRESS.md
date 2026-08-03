@@ -6723,3 +6723,16 @@ oscillation nettar 0, cap 1.2, default AV; 68 tester). Omstart 18:27 med
 --qw_prog_shaping=3.0 (+ stddev 1.5, entropi 0.006 kvar). Gropdyk nettar ≤~1.5,
 fullbordan ~3+15 jackpot ⇒ gradient mot bortre kanten från episod 1. Express-
 skeptiker tillfrågas parallellt.
+
+## 2026-08-03 19:21 — ULTIMATUM-SLUTLÄGE: inget nytt lyckat hopp inom fristen
+Facit 17:45-19:45: 0 verifierade fullbordanden. Insatser: takeoff-regimen (3
+granskningsrundor, mergad, live 17:51), utforskningshöjning (stddev 1.5/entropi
+0.006, 18:08), potential-shaping k=3 (18:27, expressgodkänd), ~2600 probeförsök
+(0 träffar; sampling visad nära-deterministisk — 8 burstprocesser identiska
+utfall). φ-linjalen (max projektion mot mål, 32 fasta seeds): 0.235/0.630/0.673
+(18:39) → 0.635/0.782/0.793 (18:47, topp — 0.012 från randen) → pendling
+0.15-0.27/0.65-0.69 (19:21). Träningsreward 163→552 (shaping-inkomst). Slutsats:
+gradienten verkar och kapaciteten rör sig, men konvergens till första fullbordan
+kräver timmar, inte 2 h. Snapshot gate2_snapshot_takeoff_105G (10.481G) pushad;
+regim + verifieringskedja + φ-mätare redo för 4090-fortsättning ELLER nedstängning
+enligt ägarbeslut. Träningen rullar tills order.
