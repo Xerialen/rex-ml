@@ -6587,7 +6587,7 @@ tränad m. återställda vikter klätter 0.5/gap 3.0 sedan 9.208G). Träning fri
 närmsta stegmål (ramla föll 10 u från kanten @63G-SO, nu NV-båge över axeln — båda
 sidorna "nästan"); RA/mega kräver fortfarande klättring/dwell som inte setts.
 
-## 2026-08-03 15:40 — ULTRACODE-WORKFLOW KLAR (19 agenter): diff STOPPAD av skeptiker, diagnostik före åtgärd
+## 2026-08-03 15:28 — ULTRACODE-WORKFLOW KLAR (19 agenter): diff STOPPAD av skeptiker, diagnostik före åtgärd
 Ägarbeordrad ultracode (evidence/ultra_jump_conversion.json, ~1.5M tokens totalt).
 **Fas 1-fynd (6 dimensioner, bot-vs-human på liggarens 5 event, PRELIMINÄRT tills
 dm3-analytikern validerat humansiffrorna):**
