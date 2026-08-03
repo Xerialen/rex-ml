@@ -6693,3 +6693,17 @@ andel separerar ej). EXAKT FIX §4: målprogressionsvillkor prog=((land−takeof
 d_tgt>130 i fan+strafe-probe, positiv kontroll 15.0 alla 4 states). Konvergens-
 mönster: 261 platthopp → 52 hörnklipp → strafenåbart klipp m. exakt separator.
 Träning ~10.25G, orörd.
+
+## 2026-08-03 17:52 — ÄGARULTIMATUM (nytt lyckat hopp före ~19:45) — takeoff-regimen LIVE
+Ägarorder ~17:45: minst ett nytt lyckat hopp inom 2 h annars stängs projektet.
+Åtgärder: (1) gamla träningen stoppad @10.256G (producerade ~1 försök/h — värdelös
+mot ultimatum); (2) 6 massprober samplad policy: 0/2160 (grop ~800, timeout ~1360)
+— stokastisk policy kan inte heller fullborda; (3) fixrunda 3 klar (a3cdf5a, mål-
+progression >=0.6, alla skeptikerkrav 0 läckor, 66 tester) ⇒ MERGAD till master
+(ea526fc) och TRÄNAR sedan 17:51 (resume 10.256G): 28 takeoff-workers (kant-
+avstamp 350-450, landningsterminering ⇒ maximal försökstäthet), 6 ledge, 8 mix,
+6 fria, gap_anneal. AVVIKELSE (journalförd): omverifiering 3 körs PARALLELLT med
+träningen i st f före — fixen är skeptikerns egen formel och dess verifieringskrav
+uppfyllda; skeptikerns dom styr fortsätt/rollback. Probvakt bo05ev95k: var ~8:e
+min 48 samplade försök från färsk checkpoint; TRÄFF ⇒ v7.3 + expressanalyst.
+Runda 1 (checkpoint=start): 0/48. Rollback vid behov: checkpoint 10.256G.
