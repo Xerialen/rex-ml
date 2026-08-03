@@ -6680,3 +6680,16 @@ FLAGGAD RESIDUAL: 52/840 hörnklipp (yaw ±35-80° över grophörn → samma sid
 bonus 6.5-11.7, äkta void under banan) — omverifiering 2 (pågår) ska kvantifiera
 farmvärdet med termineringen aktiv och avgöra dominant farm / acceptabel
 gradient / villkorskrav (t.ex. landningssida ≠ avstampssida). Träning ~10.2G.
+
+## 2026-08-03 17:27 — Omverifiering 2 UNDERKÄND (hörnklipp = dominant farm); fixrunda 3 (målprogression)
+Skeptiker 2 (evidence/ultra_fix_reverification2.md): platthopp/terminering/band
+håller (allt verifierat, 64 tester, pogo uteslutet — qwsim onground=True på
+landningstick), MEN hörnklippet är policy-nåbart från kanonisk spawn (3°/tick
+strafe; policyn gör 1.7-2.9) och betalar 18.85/episod vs gropfallets 9.24 (2×,
+3.7×/frame) — dominant farm, förgiftar n_gap; kartfri fix uppmätt omöjlig (void-
+andel separerar ej). EXAKT FIX §4: målprogressionsvillkor prog=((land−takeoff)·u)/d²
+>= 0.6 mot statens landing_2d (separation: klipp 0.054-0.444 vs korsning
+0.805-0.902). Fixrunda 3 pågår med skeptikerns verifieringskrav (0 utbetalningar
+d_tgt>130 i fan+strafe-probe, positiv kontroll 15.0 alla 4 states). Konvergens-
+mönster: 261 platthopp → 52 hörnklipp → strafenåbart klipp m. exakt separator.
+Träning ~10.25G, orörd.
