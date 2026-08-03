@@ -6641,7 +6641,7 @@ läcka tätad, rarity endast djupa gap. Omverifiering av belöningshack-skeptike
 PÅGÅR — diffen når inte master/träning före GODKÄND. Analyst granskar parallellt
 96G-eventen + fas1-humansiffrorna. Träning orörd (~10.0G).
 
-## 2026-08-03 16:35 — 96G-eventen GODKÄNDA (stege: rq-SO 3/1/2 nivå 2, qr-SO 3/0/3, NV 1); fas1-fartsiffrorna KORRIGERADE
+## 2026-08-03 16:17 — 96G-eventen GODKÄNDA (stege: rq-SO 3/1/2 nivå 2, qr-SO 3/0/3, NV 1); fas1-fartsiffrorna KORRIGERADE
 Analyst (analyst_96G_review.md): båda proben-eventen godkända — qr-SO-eventet inom
 hela human-enveloppen (14 mått, 3 nymätta); rq-SO-eventet från RA-SPAWNAD prob med
 funktionellt fri transit (18.8 s, ~10 zoner) = närmast fri-dump-kvalitet. Kumulativt:
