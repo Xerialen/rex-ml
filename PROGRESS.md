@@ -6851,3 +6851,17 @@ gröna. Validering riktiga qwsim: rutt-tredjedelar tidig/mitt/sen = 0/0/4 auto-
 fullbordan (nollpolicy), inkomstgate exakt 0, kantepisoder p50 115 ticks.
 RUNDA 3 pågår (omverifiering av fixarna). Deploy efter GODKÄND:
 --qw_takeoff_multihop --qw_takeoff_air_frac=0.35 + befintliga flaggor.
+
+## 2026-08-03 22:59 — SKEPTIKERRUNDA 3: GODKÄND — DEPLOYAR FLERHOPPSREGIMEN
+r3-verifiering (riktiga qwsim, produktionsflaggor): farm 324-335 → 0.10-0.78/episod
+(endast shaping-teleskopticks); tvingad målnära landning betalar EXAKT 12.00 med
+completed/terminal satta; ruttfilens 5 utpekade states borta, inga grundade |vz|>40;
+sviten (77 tester) fångar nu farmregressionen. Noteringar (icke-blockerande, r3):
+camp-taket räknar all grundad tid (marginal 3.8x mot ruttens markpassager);
+ruttepisoder utan kollisionsstraff (designval, bevakas); RAPPORTERING SKA ANVÄNDA
+'completed', inte n_gap, i denna regim (prog per segment < 0.6 på flerhopp).
+DEPLOY: omstart med + --qw_takeoff_multihop --qw_takeoff_air_frac=0.35 (35 % rutt-
+spawn av 28 takeoff-workers), övriga flaggor och entropi 0.003/stddev 1.2 kvar.
+Snapshot pre_airspawn @10.924G säkrad. Probvakt/hjärtslag fortsätter; probskriptet
+uppdaterat (MAX_STEPS 260, LAND_R 192 — gamla kriteriet hade MISSAT verifierade
+ruttens landning 188 u från centroiden).
