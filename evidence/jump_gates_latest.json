@@ -1,5 +1,5 @@
 {
- "kommentar": "KUMULATIV stege över VERIFIERADE event (detektor v7.3, omlåst humanbaslinje analyst_v73_baseline.md 726=580/133/13): rq-SO = 63G ep1 lyckat (ägarbeslut) + ep4 ramla (analyst); rq-NV = traj_89G ep8 ramla (analyst_89G_review: GODKÄNT — första fria NV-eventet, dominanta humana NV-felmoden); qr-SO = probe60G ep5 ramla + probe_ledge_89G ep4 ramla (båda analyst-godkända, probvillkor). 73G-claimsen (RA trappspring, NV dörrtröskelretreat) UNDERKÄNDA och borta under v7.3. Senaste fria dump (89G): rq-NV 1 ramla, axiala 4.",
+ "kommentar": "KUMULATIV stege över VERIFIERADE event (detektor v7.3, baslinje analyst_v73_baseline.md): rq-SO = 63G ep1 lyckat (ägarbeslut) + 63G ep4 ramla + probe_ra_96G ep5 ramla (analyst_96G_review, RA-spawnad prob med funktionellt fri transit 18.8 s); rq-NV = traj_89G ep8 ramla (första fria NV-eventet); qr-SO = probe60G ep5 + probe_ledge_89G ep4 + probe_ledge_96G ep6 (alla ramla, probvillkor). Senaste fria dump (96G): gates 0, axiala 6 — hopptryck ner efter viktåterställningen @9.208G.",
  "episodes": "kumulativ",
  "gates": {
   "ring→quad NV": {
@@ -10,9 +10,9 @@
    "nivå": 1
   },
   "ring→quad SO": {
-   "försök": 2,
+   "försök": 3,
    "lyckade": 1,
-   "ramla": 1,
+   "ramla": 2,
    "retreat": 0,
    "nivå": 2
   },
@@ -24,9 +24,9 @@
    "nivå": 0
   },
   "quad→ring SO": {
-   "försök": 2,
+   "försök": 3,
    "lyckade": 0,
-   "ramla": 2,
+   "ramla": 3,
    "retreat": 0,
    "nivå": 1
   },
