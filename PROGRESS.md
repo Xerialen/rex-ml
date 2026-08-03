@@ -6669,3 +6669,14 @@ fynd 3 var fel-fixat (datafix i st f belöningsfix). Fixrunda 2 pågår i worktr
 stubb-omkalibrering; (B) fan-probe-krav 0 utbetalningar icke-grop; (C) terminera
 takeoff-episoder vid första landning; (D) fartband 250-390 → 350-450 (analystens
 dt-korrigerade humansiffror). Därefter omverifiering 2. Träning orörd (~10.1G).
+
+## 2026-08-03 17:35 — Fixrunda 2 klar (worktree 0765fd6); omverifiering 2 pågår
+Origo-offset-hålet stängt: effective_depth = fotnivå(min(takeoff,landing)−24) −
+min(golv under banan). Fan-probe 840 trials riktiga qwsim: 0 platthoppsutbetal-
+ningar (förra: 261/261), äkta gropkorsning betalar alla 4 SO-states, walkoff
+inert. Terminering vid första landning (takeoff-envs). Fartband 350-450 enligt
+analystkanonisering; uppmätt levererat 351.8-449.9. 64 tester gröna. ÄRLIGT
+FLAGGAD RESIDUAL: 52/840 hörnklipp (yaw ±35-80° över grophörn → samma sidas rim,
+bonus 6.5-11.7, äkta void under banan) — omverifiering 2 (pågår) ska kvantifiera
+farmvärdet med termineringen aktiv och avgöra dominant farm / acceptabel
+gradient / villkorskrav (t.ex. landningssida ≠ avstampssida). Träning ~10.2G.
