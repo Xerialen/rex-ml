@@ -6564,3 +6564,25 @@ verkställd: --qw_climb_coef 0.8→0.5, --qw_gap_base 5.0→3.0; mix 13 + spawn-
 omstart 11:11 med resume. Cykelns dump/prober (pågår) läser egna checkpoints — opåverkade.
 8.9G-cykelns återstående steg: dump traj_89G + gates + närhets + prober; därefter
 historikpunkter, v7.3-implementation enligt analystspec, analytikeromlåsning.
+
+## 2026-08-03 11:50 — GENOMBROTT: FÖRSTA NV-EVENTET GODKÄNT; v7.3 låst, mega strikt, stege 3 av 6 gates ≥ nivå 1
+**Analystleverans (analyst_v73_baseline.md + analyst_89G_review.md):**
+- v7.3-baslinjen OMLÅST: 726 event (580 lyckat/133 ramla/13 retreat), prognos träffad
+  exakt; rq-NV 208/13/1 (94 % human). Alla 3 liggarförda event överlever v7.3 med
+  identiska intervall. Bevakningspunkt: dwell räknar konsekutiva sampel (kalibrering
+  räknade totala) — RA-retention 618/619, accepterat som konservativt.
+- MEGA-BESLUT: strict=True driftsatt (fullkorpus 2146 demos: 248/248 lyckade retained;
+  21 fällda missar = gångbrogenomfart z≤112, trappspringanalogen). Commit efter flip.
+- **DOM A GODKÄNT: traj_89G ep8 ring→quad NV ramla** — grundad källvistelse, 3 golv-
+  ankare inre NV-ledgen, massa 66.2 u·s, gaphopp → gropfall dPit 183.6 (humanmedian
+  192); dominanta humana NV-felmoden (11/13). FÖRSTA FRIA NV-EVENTET ⇒ rq-NV nivå 1.
+- **DOM B GODKÄNT (probvillkor): probe_ledge_89G ep4 qr-SO ramla** — 13 grundade
+  källsampel, massa 339.7, min dPit 54.5 (human-p50 62.4) ⇒ qr-SO kumulativt 2/0/2.
+**Kumulativ stege nu: rq-SO NIVÅ 2 (1/2), rq-NV NIVÅ 1 (0/1), qr-SO NIVÅ 1 (0/2),**
+qr-NV/RA/mega 0. min_nivå 0. Liggare + artefakt (45 FP-klipp, båda godkända eventen
+märkta) uppdaterade och publicerade. Historikpunkter 8.9G inne sedan tidigare.
+**Snapshot: gate2_snapshot_93G** (checkpoint @9.320G + config — FÄRSKASTE för 4090;
+tränad m. återställda vikter klätter 0.5/gap 3.0 sedan 9.208G). Träning frisk ~52k FPS.
+**Nästa:** cykel vid ~9.6-9.7G (första mätningen på återställda vikter); NV-lyckat är
+närmsta stegmål (ramla föll 10 u från kanten @63G-SO, nu NV-båge över axeln — båda
+sidorna "nästan"); RA/mega kräver fortfarande klättring/dwell som inte setts.

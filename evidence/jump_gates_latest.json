@@ -1,13 +1,13 @@
 {
- "kommentar": "KUMULATIV stege över VERIFIERADE event: rq-SO = 63G ep1 lyckat (ägarbeslut) + ep4 ramla (analyst); qr-SO = probe60G ep5 ramla (analyst, probvillkor). NV-retreat-claimsen @6.6G UNDERKÄNDA (review 9: sidogolvscirkulation utan gropexponering) ⇒ detektor v7.2 (retreat kräver min dPit<260). Senaste fria dump (66G): gates 0, axiala 4 ramla.",
+ "kommentar": "KUMULATIV stege över VERIFIERADE event (detektor v7.3, omlåst humanbaslinje analyst_v73_baseline.md 726=580/133/13): rq-SO = 63G ep1 lyckat (ägarbeslut) + ep4 ramla (analyst); rq-NV = traj_89G ep8 ramla (analyst_89G_review: GODKÄNT — första fria NV-eventet, dominanta humana NV-felmoden); qr-SO = probe60G ep5 ramla + probe_ledge_89G ep4 ramla (båda analyst-godkända, probvillkor). 73G-claimsen (RA trappspring, NV dörrtröskelretreat) UNDERKÄNDA och borta under v7.3. Senaste fria dump (89G): rq-NV 1 ramla, axiala 4.",
  "episodes": "kumulativ",
  "gates": {
   "ring→quad NV": {
-   "försök": 0,
+   "försök": 1,
    "lyckade": 0,
-   "ramla": 0,
+   "ramla": 1,
    "retreat": 0,
-   "nivå": 0
+   "nivå": 1
   },
   "ring→quad SO": {
    "försök": 2,
@@ -24,9 +24,9 @@
    "nivå": 0
   },
   "quad→ring SO": {
-   "försök": 1,
+   "försök": 2,
    "lyckade": 0,
-   "ramla": 1,
+   "ramla": 2,
    "retreat": 0,
    "nivå": 1
   },
@@ -44,10 +44,10 @@
  "axiala_gropkorsningar": {
   "försök": 4,
   "lyckade": 0,
-  "ramla": 4,
-  "retreat": 0
+  "ramla": 2,
+  "retreat": 2
  },
  "min_nivå": 0,
  "review_godkand": true,
- "detektor_version": "v7.2 (gropexponeringskrav för retreat; omlåsning av humanbaslinjen pågår)"
+ "detektor_version": "v7.3 (retreat dPit<192; item-dwell 0.15s/+130, RA+mega strikta; omlåst baslinje 726)"
 }
