@@ -6790,3 +6790,11 @@ svänger nu 165–760 per 5s-fönster (stabil ~175 före omstart) — enskilda e
 skördar stora bonusar. Hypotes: rollouts med stddev 1.2 fullbordar ibland det
 proberna (stddev 1.0) missar. Test: massprob med SF_STDDEV_MAX=1.2, 96 försök
 (24/state, seed 9001) mot färskaste checkpoint → livehits_wide.json. Frist 22:05.
+
+## 2026-08-03 20:56 — Bredprob 0/288; sista timmens plan: checkpoint-hammare
+Bredprob stddev 1.2 @10.774G: 0/288 (73 grop, 215 timeout) — rollout-brus fullbordar
+inte; rewardspikarna 165–760 tillskrivs mix-/roamepisoders fartinkomst (inga färska
+dumpar, ~/dumps har bara manuella). BESLUT: inga fler ingrepp i träningen (ny
+värdeshock <1h före frist = negativ EV). I stället: pendlingen gör vissa checkpoints
+heta (φ p50 0.23↔0.52); hammare breddprobar VARJE ny checkpoint (stddev 1.2,
+96 försök, roterande seed) till ~21:50. TRÄFF-protokollet oförändrat. Frist 22:05.
