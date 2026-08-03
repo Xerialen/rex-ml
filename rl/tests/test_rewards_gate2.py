@@ -61,8 +61,12 @@ def test_air_bonus_thresholds_from_corpus():
     mega = ab.landing(span=182.0, rise=0.0, max_floor_depth=244.0)
     assert mega > 0.0
     # fönsterinflygning (span 150-191, djup 13-128): grunda varianten ska betala
-    window = ab.landing(span=170.0, rise=-30.0, max_floor_depth=100.0)
+    # — rise -20 (2026-08-03: landningsnivåkravet rise >= -24, skeptikerfixen
+    # mot gropdyk-jackpotten; inflygningar mer än 24 u under avstampet betalar
+    # inte längre — gropdyk 48→-224 var straffFRITT farmbart)
+    window = ab.landing(span=170.0, rise=-20.0, max_floor_depth=100.0)
     assert 0.0 < window < mega
+    assert ab.landing(span=170.0, rise=-30.0, max_floor_depth=100.0) == 0.0
     # klätterhopp (RA-trappan: rise p50 32.8) betalar utan gapkrav
     climb = ab.landing(span=60.0, rise=32.8, max_floor_depth=0.0)
     assert climb > 0.0

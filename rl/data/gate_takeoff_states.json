@@ -1,0 +1,64 @@
+{
+ "generator": "gen_takeoff_states.py (engångs, 2026-08-03)",
+ "källa": "Fas 1-ankare + rl.jump_gates.ledge_centers()/_side() (detektor v7.3-mask)",
+ "fartband_motiv": "human-lyckat p50 271.6 .. p90 388.8 u/s (24-demoskohorten)",
+ "geometriverifiering": "2026-08-03, riktiga qwsim/dm3: golvdjupsprofil under kordan pos→landing_2d (dump_trajectories-metoden: zref=min(z0,z1)+8, punkter 0.3/0.5/0.7, trace ned) + fri sikt längs yaw från ögonhöjd. NV-SIDAN BORTTAGEN (skeptikerfynd, bekräftat med egen mätning): qr-NV/qr-NV-b OCH rq-NV/rq-NV-b hade PLATT golv på kordan (djup ~24 u hela vägen, inget gap) och vägg i siktlinjen (fri sikt 30-72 % av kordan) — spegelantagandet 'axelspeglade' höll inte. Kvarvarande 4 SO-states uppmätta: gropdjup 280 u på kordans mittparti (gropgolv z=-224, zref 56) och 100 % fri sikt hela kordan.",
+ "states": [
+  {
+   "namn": "rq-SO",
+   "pos": [
+    368.0,
+    -144.0,
+    48.0
+   ],
+   "yaw": 19.9,
+   "snap_dist": 13.6,
+   "landing_2d": [
+    906.5,
+    50.6
+   ]
+  },
+  {
+   "namn": "rq-SO-b",
+   "pos": [
+    304.0,
+    -272.0,
+    48.0
+   ],
+   "yaw": 28.2,
+   "snap_dist": 6.8,
+   "landing_2d": [
+    906.5,
+    50.6
+   ]
+  },
+  {
+   "namn": "qr-SO",
+   "pos": [
+    944.0,
+    48.0,
+    48.0
+   ],
+   "yaw": 198.2,
+   "snap_dist": 8.8,
+   "landing_2d": [
+    310.0,
+    -160.0
+   ]
+  },
+  {
+   "namn": "qr-SO-b",
+   "pos": [
+    912.0,
+    144.0,
+    48.0
+   ],
+   "yaw": 206.8,
+   "snap_dist": 18.2,
+   "landing_2d": [
+    310.0,
+    -160.0
+   ]
+  }
+ ]
+}

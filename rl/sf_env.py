@@ -87,7 +87,8 @@ class QWGate2Env(gym.Env):
     zonrastret används för fastnad-undantag (vatten/hiss/tele)."""
 
     def __init__(self, full_env_name: str, cfg=None, env_config=None, render_mode=None,
-                 spawn_region=None, spawn_centers=None):
+                 spawn_region=None, spawn_centers=None, spawn_takeoff_states=None,
+                 max_ticks=None):
         from rl.env_gate2 import Gate2Config, QWGate2Core
         from rl.zones import RASTER, ZoneRaster
         self.name = full_env_name
@@ -96,6 +97,9 @@ class QWGate2Env(gym.Env):
         g2cfg = Gate2Config(
             spawn_region=spawn_region,
             spawn_centers=spawn_centers,
+            spawn_takeoff_states=spawn_takeoff_states,
+            takeoff_speed_range=(float(getattr(cfg, "qw_takeoff_speed_lo", 250.0)),
+                                 float(getattr(cfg, "qw_takeoff_speed_hi", 390.0))),
             vertical_rewards=bool(getattr(cfg, "qw_vertical_rewards", False)),
             cell_rarity=bool(getattr(cfg, "qw_cell_rarity", False)),
             novelty_bonus=float(getattr(cfg, "qw_novelty_bonus", 1.5)),
@@ -103,7 +107,11 @@ class QWGate2Env(gym.Env):
             rarity_hi=float(getattr(cfg, "qw_rarity_hi", 4.0)),
             climb_coef=float(getattr(cfg, "qw_climb_coef", 0.08)),
             gap_base=float(getattr(cfg, "qw_gap_base", 3.0)),
-            height_coef=float(getattr(cfg, "qw_height_coef", 0.0)))
+            height_coef=float(getattr(cfg, "qw_height_coef", 0.0)),
+            gap_anneal=bool(getattr(cfg, "qw_gap_anneal", False)),
+            gap_anneal_ref=float(getattr(cfg, "qw_gap_anneal_ref", 1.0)))
+        if max_ticks is not None:
+            g2cfg.max_ticks = int(max_ticks)
         self.core = QWGate2Core(_make_backend(cfg, "dm3"), cfg=g2cfg,
                                 is_excluded=is_excluded)
         n_obs = self.core.obs_spec.n_obs
@@ -190,15 +198,40 @@ def make_env_gate2(full_env_name, cfg=None, env_config=None, render_mode=None):
     if widx < mix + hexn + ran + ledn:
         return QWGate2Env(full_env_name, cfg, env_config, render_mode,
                           spawn_centers=_ledge_centers())
+    # KANTAVSTAMPS-workers (reverse curriculum steg 0, 2026-08-03): riktade
+    # takeoff-states på hexagonens sidoledger — grundad kantstart, yaw mot
+    # målplattformens landningscentroid, initialfart 250-390 u/s (human-
+    # lyckat p50-p90). Episodtak ~12 s (graft ur förslag 4: varje takeoff-
+    # episod avgörs inom ~2-3 s; resten är post-försöks-strövande som redan
+    # täcks av hex/ra/mix ⇒ ~5x fler kantförsök per frame ur samma workers).
+    tofn = getattr(cfg, "qw_takeoff_spawn_workers", 0) if cfg is not None else 0
+    if widx < mix + hexn + ran + ledn + tofn:
+        return QWGate2Env(full_env_name, cfg, env_config, render_mode,
+                          spawn_takeoff_states=_takeoff_states(),
+                          max_ticks=getattr(cfg, "qw_takeoff_max_ticks", 77 * 12))
     # MEGA-workers: SNG-rummets ansats mot megahyllan (-720,80,160).
     megn = getattr(cfg, "qw_mega_spawn_workers", 0) if cfg is not None else 0
-    if widx < mix + hexn + ran + ledn + megn:
+    if widx < mix + hexn + ran + ledn + tofn + megn:
         return QWGate2Env(full_env_name, cfg, env_config, render_mode,
                           spawn_region=((-1000.0, -150.0, -40.0), (-450.0, 350.0, 140.0)))
     return QWGate2Env(full_env_name, cfg, env_config, render_mode)
 
 
 _LEDGE_CACHE = None
+_TAKEOFF_CACHE = None
+
+
+def _takeoff_states():
+    """Kantavstamps-states (rl/data/gate_takeoff_states.json, genererad ur
+    ledge_centers()-masken + Fas 1-ankarna). Modul-cachad json-laddning —
+    samma mönster som _LEDGE_CACHE; fabriken körs i workerprocessen."""
+    global _TAKEOFF_CACHE
+    if _TAKEOFF_CACHE is None:
+        import json
+        from pathlib import Path
+        p = Path(__file__).parent / "data" / "gate_takeoff_states.json"
+        _TAKEOFF_CACHE = json.load(open(p))["states"]
+    return _TAKEOFF_CACHE
 
 
 def _ledge_centers():
