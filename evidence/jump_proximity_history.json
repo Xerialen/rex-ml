@@ -250,6 +250,42 @@
     "d2min_elev_best": 185.4,
     "d2min_krav": 120.0
    }
+  },
+  {
+   "ts": "2026-08-03 15:08",
+   "frames_g": 9.9,
+   "dump": "traj_96G.json",
+   "regim": "återställda vikter klätter 0.5/gap 3.0 (sedan 9.208G)",
+   "episodes": 30,
+   "hexagon": {
+    "plattformstid_pct": 1.66,
+    "ledgetid_pct": 1.82,
+    "ledgevistelser": 40,
+    "ledgefall_i_grop": 0,
+    "annalkande_min_p50": 531.2,
+    "annalkande_min_best": 264.2,
+    "annalkande_under_350": 1
+   },
+   "RA": {
+    "regiontid_pct": 3.15,
+    "besök_låga": 29,
+    "zvinst_p50": 25.5,
+    "zvinst_max": 120.0,
+    "zvinst_over_40": 8,
+    "zvinst_over_80": 1,
+    "d2min_elev_best": 64.6,
+    "d2min_krav": 120.0
+   },
+   "SNG-mega": {
+    "regiontid_pct": 3.74,
+    "besök_låga": 85,
+    "zvinst_p50": 12.3,
+    "zvinst_max": 104.0,
+    "zvinst_over_40": 15,
+    "zvinst_over_80": 4,
+    "d2min_elev_best": 110.9,
+    "d2min_krav": 120.0
+   }
   }
  ]
 }
