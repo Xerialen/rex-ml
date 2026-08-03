@@ -6878,3 +6878,12 @@ TRÄFF-protokollet oförändrat: v7.3-detektor på sparad bana → express-dm3-a
 → rapport + push + PushNotification OMEDELBART. Rapportering använder 'completed'
 (ej n_gap) för flerhoppsregimen (skeptiker-r3). Morgonrapport till ägaren ~07:00
 med φ-serien, probsummor och ev. träffar.
+
+## 2026-08-03 23:04 — ÄGARORDER: "stoppa allting nu en stund" — ALLT STOPPAT
+Träningen gracefullt nere (sista checkpoint 11.120G, checkpoint_002714878);
+alla vakter stoppade (probvakt bo05ev95k, natthammare b316bhhzp, natt-φ
+b3elufpqo, hjärtslag b93741a97). Inga prob-/träningsprocesser kvar.
+Läget vid stopp: flerhoppsregimen hade kört ~25 min (11.108G→11.120G);
+natthammarens första runda 0/96. Allt pushat t.o.m. a3fc3a2 + journalposter.
+ÅTERSTART när ägaren säger till: tmux-kommandot i 22:5x-deployposten (multihop-
+flaggorna), vakterna enligt nattvaktsposten.
