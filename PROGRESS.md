@@ -6554,3 +6554,13 @@ EJ bevarat (medvetet): qw-corpus-build 281G (härledbart ur rådemos + kod),
 dm3-extract 27G (dito), sim-byggen/.venv (byggs om), mvd_analyzer (ren klon).
 4090-recept: klona repot → bygg sim → HF-token → resume från gate2_snapshot_final_88G
 (eller träna vidare här tills sladden dras). HF-token roteras av ägaren efter flytt.
+
+## 2026-08-03 11:12 — BESLUTSREGELN UTLÖST @9.2G: klätter/gap återställda (0.5/3.0)
+8.9G-cykelns n=30 (mätt @~8.93G): fart 447.6 (<475-tröskeln), täckning 43.0 % (ner
+från 47.9), 0 fastnade, score 0.894. BÅDA axlarna backade ⇒ journalregeln (21:39 2/8)
+verkställd: --qw_climb_coef 0.8→0.5, --qw_gap_base 5.0→3.0; mix 13 + spawn-workers
+(hex8/ra8/ledge8/mega4) + height 1.5 OFÖRÄNDRADE. Träning stoppad gracefullt @9.208G
+(C-c via tmux; OBS pgrep-mönstret måste ankras "^sim/" — oankrat matchar tmux-servern),
+omstart 11:11 med resume. Cykelns dump/prober (pågår) läser egna checkpoints — opåverkade.
+8.9G-cykelns återstående steg: dump traj_89G + gates + närhets + prober; därefter
+historikpunkter, v7.3-implementation enligt analystspec, analytikeromlåsning.
