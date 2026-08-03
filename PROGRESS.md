@@ -6536,3 +6536,21 @@ resume mot denna. Rollback-snapshoten (pre_risk 5.913G) committas också nu.
 **Nästa (4090):** v7.3 enligt spec ovan → analystvalidering → omlåst baslinje →
 fortsatt träning från final_88G. Träningen på DENNA maskin rullar tills ägaren drar
 ur sladden — snapshotet är taget, allt pushat.
+
+## 2026-08-03 08:41 — OKÄND SIGINT 08:13 (0 frames förlorade), omstart, flyttinventering
+Träningen fick extern SIGINT 08:13:30 ("Keyboard interrupt detected in the event
+loop") — gracefull nedstängning, slutcheckpoint skrevs VID stoppunkten 8 826 040 320
+(= exakt snapshotens checkpoint ⇒ inget förlorat). Ingen inloggning i who/last, inget
+av mina kommandon körde då; ägaren tillfrågad om det var hen. Omstart 08:38 med
+resume från 8.826G, samma flaggor, nytt tmux-fönster rexml:jobs.
+**Flyttinventering (ägarfråga):** GH-repot (679 filer) har nu även: evidence/dumps/
+(alla 10 trajektorie-dumpar 14M), tools/rex3d/data/ (rex_fp_events.json 28 klipp +
+geo/heat-atlaser). HF Xerial/qw-demos-mined-db (115 GB): mvd-korpus komprimerad
+55.7G, qwd movement-bundle 31.2G, parquet store-dm3 9.1G, preserve-20260801 (qwd-
+korpus-tarrar 17G + mvd-diff). NYTT preserve-20260803 laddas upp nu: train_dir
+gate2_v2 komplett (8 checkpoints + sf_log + git.diff, ~390M), ~/mlx/qwserver
+(mvdsv-servermiljön för replay-bevis, 335M), route-lab-jobs (48M), sha256-manifest.
+EJ bevarat (medvetet): qw-corpus-build 281G (härledbart ur rådemos + kod),
+dm3-extract 27G (dito), sim-byggen/.venv (byggs om), mvd_analyzer (ren klon).
+4090-recept: klona repot → bygg sim → HF-token → resume från gate2_snapshot_final_88G
+(eller träna vidare här tills sladden dras). HF-token roteras av ägaren efter flytt.
