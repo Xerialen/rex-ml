@@ -29,6 +29,11 @@ DM3_SPAWNS = Path(__file__).parent / "data" / "dm3_spawns.json"
 STUCK_SPEED = 50.0
 STUCK_TICKS = int(2.0 / S.TICK_DT)      # 2 s
 STUCK_PENALTY = -5.0
+# Sidovillkorets tröskel (skeptikerrunda 2b, mätkalibrerad på riktiga qwsim):
+# målprogression prog = ((landning − takeoff)·u)/d² där u = takeoff→landing_2d,
+# d = |u|. Uppmätt separation: hörnklipp 0,054-0,444, äkta korsning 0,805-0,902
+# ⇒ 0,6 har >= 0,16 marginal åt båda håll. Under tröskeln: effective_depth = 0.
+TAKEOFF_PROG_MIN = 0.6
 
 
 def load_spawns(path: Path = DM3_SPAWNS) -> list[tuple[np.ndarray, float]]:
@@ -134,7 +139,15 @@ class QWGate2Core:
                 -self.cfg.takeoff_pos_jitter, self.cfg.takeoff_pos_jitter))
             pos[2] += 8.0                # strax över; settling tar golvet
             speed = float(self.rng.uniform(*self.cfg.takeoff_speed_range))
-            return pos, yaw, speed
+            # Sidovillkoret (skeptikerrunda 2b, ultra_fix_reverification2 §4):
+            # spara valt states MÅL — landningscentroiden — så att gap-
+            # kvalificeringen kan kräva målprogression vid landningen.
+            # Fjärde tupelelementet ⇒ _reset_state sätter det atomiskt med
+            # spawnen (övriga grenar = 3-/2-tupler ⇒ target None där).
+            target = s.get("landing_2d")
+            if target is not None:
+                target = np.asarray(target, dtype=float)
+            return pos, yaw, speed, target
         if self.cfg.spawn_centers is not None:
             cs = np.asarray(self.cfg.spawn_centers, dtype=float)
             i = int(self.rng.integers(len(cs)))
@@ -170,6 +183,9 @@ class QWGate2Core:
         # tredje element = önskad initialfart (kantavstamps-spawnern); tvåtupler
         # (fasta spawns) förblir giltiga anrop
         self._spawn_speed = float(spawn[2]) if len(spawn) > 2 and spawn[2] else None
+        # fjärde element = takeoff-statens landningsmål (landing_2d) för
+        # sidovillkoret; None i alla övriga spawn-grenar (skeptikerrunda 2b)
+        self._takeoff_target = spawn[3] if len(spawn) > 3 else None
         self.pos = pos
         self.yaw = yaw % 360.0
         self.pitch = 0.0
@@ -310,6 +326,27 @@ class QWGate2Core:
             foot_z = min(float(takeoff[2]), float(self.pos[2])) \
                 - self.air_bonus.ORIGIN_FLOOR_OFFSET
             eff_depth = float(foot_z - np.min(floor_z))
+        # Sidovillkoret (skeptikerrunda 2b, ultra_fix_reverification2 §4):
+        # gapbonus i takeoff-envs kräver MÅLPROGRESSION — hörnklippet (hopp
+        # över gropens hörn, landning på samma sidas rim, d_tgt ~570) var
+        # uppmätt dominant jämvikt (18,85/episod på 0,66 s = 3,7× gropfallets
+        # frame-rate) och policy-nåbart med en konstant 0,15-luftstrafe från
+        # kanonisk spawn. prog = projektionen av faktiska hoppvektorn på
+        # målvektorn, normerad mot målavståndet. Kalibrering (riktiga qwsim):
+        # klipp 0,054-0,444, äkta korsning 0,805-0,902 ⇒ tröskeln 0,6 har
+        # >= 0,16 marginal åt båda håll. Kartfri separation (void-andel under
+        # banan) är uppmätt OMÖJLIG — klippet är en äkta void-bana (0,88-1,00
+        # mot korsningens 0,81-1,00). Gäller ENDAST takeoff-spawnade envs
+        # (strövande envs har inget landing_2d — oförändrad semantik där).
+        # Nollar också klippets n_gap-förgiftning (gap_qualifies ser samma 0).
+        if self.cfg.spawn_takeoff_states is not None \
+                and self._takeoff_target is not None:
+            u = self._takeoff_target - takeoff[:2]
+            d = float(np.linalg.norm(u))
+            prog = float((self.pos[:2] - takeoff[:2]) @ u) / (d * d) \
+                if d > 1e-6 else 0.0
+            if prog < TAKEOFF_PROG_MIN:
+                eff_depth = 0.0    # ⇒ gap_qualifies False ⇒ bonus 0, n_gap orört
         self._air_buf.clear()
         # gap-anneal (Transitions-ICM-graften): djupextran ×2→×1 avklingar med
         # √(ref/(n+1)) per transitioncell så jackpotten inte blir farm-jämvikt

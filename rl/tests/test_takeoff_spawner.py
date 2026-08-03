@@ -82,9 +82,10 @@ def make_takeoff_env(backend=None, states=STATES, seed=7, **kw):
 def test_pick_spawn_returns_triple_in_band():
     env = make_takeoff_env()
     for _ in range(20):
-        pos, yaw, speed = env._pick_spawn()
+        pos, yaw, speed, tgt = env._pick_spawn()
         # FIX D: kanoniskt fartband 350-450 (analyst_fas1_validation.md)
         assert 350.0 <= speed <= 450.0
+        assert tgt is None                # STATES saknar landing_2d ⇒ inget mål
         src = min(STATES, key=lambda s: np.hypot(pos[0] - s["pos"][0],
                                                  pos[1] - s["pos"][1]))
         assert abs(yaw - src["yaw"]) <= 6.0 + 1e-9        # yaw-jitter ±6
@@ -99,7 +100,7 @@ def test_pick_spawn_jitter_is_tangential():
     fwd = np.array([np.cos(np.radians(20.0)), np.sin(np.radians(20.0))])
     seen_off_axis = False
     for _ in range(20):
-        pos, yaw, _ = env._pick_spawn()
+        pos, yaw, _, _tgt = env._pick_spawn()
         assert yaw == 20.0
         delta = pos[:2] - np.array(STATES[0]["pos"][:2])
         assert abs(float(delta @ fwd)) < 1e-9             # noll längs yaw
@@ -287,6 +288,84 @@ def test_rarity_note_only_for_deep_gaps():
     assert env.gap_rarity.n == {}                         # men noteras INTE
     assert abs(_land_deep_gap(env) - 2.0 * base) < 1e-9   # djupextran orörd
     assert len(env.gap_rarity.n) == 1                     # djupt gap noteras
+
+
+def _land_gap_at(env, land_xy, target, takeoff=(100.0, 0.0, 56.0),
+                 pit_floor=-224.0):
+    """Som _land_gap men med fri landningspunkt i planet + explicit
+    takeoff-mål (sidovillkoret, skeptikerrunda 2b). Gropen läggs under
+    banans mittparti (25/50/75 %-punkterna) oavsett riktning — geometrin är
+    alltså en ÄKTA void-bana i alla fall; det enda som skiljer klipp från
+    korsning är VART den landar (skeptikerns §3: kartfri separation omöjlig)."""
+    env.waterlevel = 0
+    t = np.array(takeoff)
+    env.pos = t.copy()
+    env.onground = False
+    env._takeoff_target = None if target is None \
+        else np.asarray(target, dtype=float)
+    env._air_segment(prev_og=True, counted=True, jumped=True)   # avstampstick
+    land = np.array([land_xy[0], land_xy[1], takeoff[2]])
+    pts = [t + f * (land - t) for f in (0.25, 0.5, 0.75)]
+    xs = [float(p[0]) for p in pts]
+    env.b.set_pit((min(xs) - 5.0, max(xs) + 5.0), pit_floor)
+    env._air_buf = [np.array([p[0], p[1], 101.0]) for p in pts]
+    env.pos = land
+    env.onground = True
+    return env._air_segment(prev_og=False, counted=True)
+
+
+def test_takeoff_target_saved_on_reset_and_none_elsewhere():
+    # Sidovillkoret (skeptikerrunda 2b): _pick_spawn sparar valt states
+    # landing_2d; övriga grenar (och states utan landing_2d) ger None
+    states = [{"namn": "t0", "pos": [100.0, 200.0, 40.0], "yaw": 20.0,
+               "landing_2d": [600.0, 200.0]}]
+    env = make_takeoff_env(states=states)
+    env.reset()
+    assert env._takeoff_target is not None
+    assert np.allclose(env._takeoff_target, [600.0, 200.0])
+    env2 = make_takeoff_env()                      # STATES saknar landing_2d
+    env2.reset()
+    assert env2._takeoff_target is None
+    b = StubBackend()
+    b.X_WALL = 1e6
+    env3 = QWGate2Core(b, cfg=Gate2Config(spawn_mode="fixed"),
+                       rng=np.random.default_rng(3))
+    env3.reset()
+    assert env3._takeoff_target is None
+
+
+def test_takeoff_progression_condition_blocks_corner_clip_pays_crossing():
+    # Sidovillkoret (skeptikerrunda 2b, ultra_fix_reverification2 §4):
+    # gapbonus i takeoff-envs kräver prog = ((landning−takeoff)·u)/d² >= 0.6
+    # (u = takeoff→landing_2d). Verkliga separationstal (riktiga qwsim):
+    # hörnklipp 0,054-0,444 ⇒ 0; äkta korsning 0,805-0,902 ⇒ full bonus.
+    from rl.env_gate2 import TAKEOFF_PROG_MIN
+    assert TAKEOFF_PROG_MIN == 0.6
+    env = make_takeoff_env(vertical_rewards=True)
+    tgt = [600.0, 0.0]                             # d = 500 från takeoff (100,0)
+    full = env.air_bonus.gap_base * env.air_bonus.GAP_SPAN_CAP * 2.0   # 15.0
+    # hörnklipp, strafe-klippets uppmätta prog 0,079: nästan vinkelrät
+    # landning på samma sidas rim — span 203,9 >= 150, äkta void under banan
+    assert _land_gap_at(env, (139.5, 200.0), tgt) == 0.0
+    assert env.n_gap == 0                          # n_gap-förgiftningen nollad
+    # värsta uppmätta klippet (fan −35°): prog 0,444 — fortfarande diskat
+    assert _land_gap_at(env, (322.0, 200.0), tgt) == 0.0
+    assert env.n_gap == 0
+    # äkta korsning, uppmätt prog-band 0,805-0,902: prog 0,85 ⇒ full jackpot
+    b = _land_gap_at(env, (525.0, 20.0), tgt)
+    assert abs(b - full) < 1e-9
+    assert env.n_gap == 1
+    # samma klippgeometri UTAN mål (strövande semantik / states utan
+    # landing_2d) betalar som förut — villkoret gäller ENDAST med mål
+    assert _land_gap_at(env, (139.5, 200.0), None) > 0.0
+    assert env.n_gap == 2
+    # icke-takeoff-env: oförändrad semantik (inget mål existerar där)
+    b2 = GroundKeepBackend()
+    b2.X_WALL = 1e6
+    env2 = QWGate2Core(b2, cfg=Gate2Config(spawn_mode="fixed",
+                                           vertical_rewards=True),
+                       rng=np.random.default_rng(3))
+    assert _land_gap_at(env2, (131.6, 200.0), None) > 0.0
 
 
 def test_flat_hop_pays_no_gap_bonus_and_no_n_gap():
