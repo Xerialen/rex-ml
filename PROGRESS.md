@@ -6657,3 +6657,15 @@ EJ kanoniserad. ⇒ SPAWNERBANDET SKA VARA ~350-450, inte 250-390 (uppdateras i
 worktreet efter skeptikerns omverifiering, som pågår). 0/144-diagnostiken opåverkad
 — luftstyrningen är fortfarande bristen; men "sakta ner botten" är INTE längre del
 av interventionen.
+
+## 2026-08-03 16:25 — Omverifiering: UNDERKÄND IGEN (platthopps-farmen); fixrunda 2 igång
+Skeptikern (evidence/ultra_fix_reverification.md): alla 8 fixar korrekt implemen-
+terade OCH gropdyk-jackpotten stängd — men NY exploat: gapdjupet traceas från
+spelar-ORIGO (24 u över golv) ⇒ platta hopp mäter djup 67.8 > tröskel 56.
+Fan-probe: 261/261 icke-korsningar fick bonus (3.03-5.07/hopp, ~5-7.5/s kedjat,
+riskfritt) — strikt dominant mot äkta korsning (~0.2-0.8/s). Originalskeptikerns
+fynd 3 var fel-fixat (datafix i st f belöningsfix). Fixrunda 2 pågår i worktreet:
+(A) effective_depth = min(takeoff_z,landing_z) − 24 − min(golv under banan),
+stubb-omkalibrering; (B) fan-probe-krav 0 utbetalningar icke-grop; (C) terminera
+takeoff-episoder vid första landning; (D) fartband 250-390 → 350-450 (analystens
+dt-korrigerade humansiffror). Därefter omverifiering 2. Träning orörd (~10.1G).
