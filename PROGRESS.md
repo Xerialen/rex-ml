@@ -6506,7 +6506,7 @@ PRELIMINÄR-märkning tills dom. Tidsstämplar: kör date FÖRE journalskrivning
 gate2_snapshot_*, qwserver-tar om ägaren beordrar flytt — ANNARS BARA VÄNTA på order.
 Push: git push origin master:main. HF-token roteras av ägaren efteråt.
 
-## 2026-08-03 08:20 — NATTRESULTAT + SLUTSNAPSHOT 8.8G (deadline passerad, ägaren ej hörd av)
+## 2026-08-03 08:15 — NATTRESULTAT + SLUTSNAPSHOT 8.8G (deadline passerad, ägaren ej hörd av)
 **Träning:** oavbruten hela natten, 48 workers @ ~51k FPS; 7.35G → **8.83G frames**
 (+1.48G sedan 7.3G-cykeln). Planerad 56-workers-omstart GENOMFÖRDES ALDRIG — C-c i
 tmux togs inte emot av SF-processen och kill/pkill nekades av permission-klassificeraren;
