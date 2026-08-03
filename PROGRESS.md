@@ -6505,3 +6505,34 @@ PRELIMINÄR-märkning tills dom. Tidsstämplar: kör date FÖRE journalskrivning
 **Före 08:00:** sista cykel ~06:30, slutsnapshot checkpoint → pipeline/out/rl/
 gate2_snapshot_*, qwserver-tar om ägaren beordrar flytt — ANNARS BARA VÄNTA på order.
 Push: git push origin master:main. HF-token roteras av ägaren efteråt.
+
+## 2026-08-03 08:20 — NATTRESULTAT + SLUTSNAPSHOT 8.8G (deadline passerad, ägaren ej hörd av)
+**Träning:** oavbruten hela natten, 48 workers @ ~51k FPS; 7.35G → **8.83G frames**
+(+1.48G sedan 7.3G-cykeln). Planerad 56-workers-omstart GENOMFÖRDES ALDRIG — C-c i
+tmux togs inte emot av SF-processen och kill/pkill nekades av permission-klassificeraren;
+i efterhand rätt utfall (noll omstartsspill, stabil FPS). Monitorn frisk hela natten.
+**7.3G-cykeln (fullständig):** n=30: fart 497.2 / täckning 47.9 % (rekord) / 0 fastnade
+/ score 0.994 ⇒ beslutsregeln föll ut HÅLL ALLT (klätter 0.8, gap 5.0, mix 13 kvar).
+Närhets: RA zvinst_max 139.8 (först >80-krav i fri dump), d2min 50; historikpunkter
+appendade (gate_metrics_history, jump_proximity_history).
+**Analystdom (evidence/analyst_73G_review.md): BÅDA nya event UNDERKÄNDA.**
+- RA-tagningen ep20: trappspring — aldrig över entré+104.7 (RA +304.7), dwell 0.026 s;
+  humankalibrering 619 RA-försök: snittmängden (dwell<0.15 s ∧ grundad<+150) = 0/619.
+- ring→quad NV retreat (ledge-prob ep8): review 9-klassen i ny skepnad — dörrtröskel-
+  geometri; dPit 256 ligger i humandatas TOMMA gap (genuina ≤169, dörrtröskel ≤250).
+- RA-probens "8/10 vid RA-toppen" = spawn-zonsetikettartefakt; ingen episod slutar uppe.
+**⇒ Kumulativa liggaren OFÖRÄNDRAD:** rq-SO nivå 2 (2/1/1), qr-SO nivå 1 (1/0/1/0),
+övriga 0. Axiala (informationsspår): 8 fria + 5 ledge + 3 RA — intentionen växer.
+**Detektor v7.3-SPEC från analytikern (EJ implementerad än — görs på 4090):**
+(1) item-gates: dwell ≥0.15 s (dt-normerat) ELLER max grundad ≥ entré+130 (RA-retention
+100 %; SNG-mega MÅSTE revalideras separat före driftsättning); (2) retreat: min dPit
+< 192 (fäller 9/9 dörrtröskel m. 16 u marginal, behåller 13/13 genuina m. 22.7 u);
+(3) baslinje-omlåsning 735→726 (580/133/13), rq-NV 208/13/1 — KRÄVS före nästa botclaim.
+**Slutsnapshot: pipeline/out/rl/gate2_snapshot_final_88G** (checkpoint_002154795_
+8826040320.pth @ 8.826G + config.json) — återupptagning på 4090: --restart_behavior=
+resume mot denna. Rollback-snapshoten (pre_risk 5.913G) committas också nu.
+**jump_gates utökad (3fe4955):** --clips skriver FP-klipp även för item-gates
+(räknelogik orörd, 41 tester gröna, 66G-regression identisk).
+**Nästa (4090):** v7.3 enligt spec ovan → analystvalidering → omlåst baslinje →
+fortsatt träning från final_88G. Träningen på DENNA maskin rullar tills ägaren drar
+ur sladden — snapshotet är taget, allt pushat.
