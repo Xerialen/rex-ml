@@ -55,6 +55,16 @@ SIDE_LEDGE_MAX = 460.0                # sidovägen: 100 < |perp| < 460 (voxelmä
 CONFIRM_WINDOW_S = 1.4
 CONFIRM_STAY_S = 0.25
 PIT_EXPOSURE_R = 260.0
+# v7.3 (analyst_73G_review, 2026-08-03): retreat-exponeringen skärpt geometriskt —
+# dörrtröskelklassen (ringplattformens kant når 64 u in i 260-cirkeln) gav vakuösa
+# "exponeringar" vid varje återinträde. 192 = uppmätt human korsningsenvelope:
+# fäller 9/9 dörrtröskelretreats (16 u marginal), behåller 13/13 genuina (22.7 u).
+# Konsekutiv-/durationskrav separerar INTE (analyst-mätt: max_run överlappar).
+RETREAT_PIT_R = 192.0
+# v7.3 item-gates (RA-claimet @7.35G underkänt som trappspring): kvalificering
+# kräver dwell ≥0.15 s i samtidighetsvillkoret ELLER max grundad ≥ entré+130.
+ITEM_DWELL_S = 0.15
+ITEM_HIGH_GAIN = 130.0
 # v5.1 (analystens villkorade förhandsgodkännande, evidence/analyst_v5_validation.md):
 # in-band-progression 350 var geometriskt onåbar för mittgropsfall (gapmitten
 # d=392, källranden 524) — tappade 34 % genuina misslyckade korsningar. 450 ger
@@ -280,12 +290,12 @@ def _ring_quad_events(path: np.ndarray, dt: float = SAMPLE_DT) -> list[dict]:
             # förankringskravet blir ep5/ep23 (ren luftöverflygning) gate igen.
             progressed = (min_d_all < PROGRESS_D_BAND) and anchored
         side_ok = abs(side_acc) * dt >= SIDE_MIN_MASS_US   # tidsnorm. massa (v5.1)
-        # v7.2 (analyst-review 9, evidence/analyst_nv_retreat_review.md): retreat
-        # utan GROPEXPONERING är sidogolvscirkulation, inte avbrutet försök —
-        # alla genuina NV-korsningar har min dPit <= 192; kravet (<260, samma
-        # konstant som ramla) fäller cirkulationsloopar med >= 50 u marginal.
-        # Humankalibrering: retreat 37→22, lyckat/ramla opåverkade.
-        if outcome == "retreat" and min_dpit >= PIT_EXPOSURE_R:
+        # v7.2 (analyst-review 9): retreat utan GROPEXPONERING är sidogolvs-
+        # cirkulation, inte avbrutet försök. v7.3 (analyst_73G_review): tröskeln
+        # skärpt 260→192 (RETREAT_PIT_R) — 260-cirkeln når 64 u in på ring-
+        # plattformen och gav vakuösa dörrtröskelexponeringar (botens dPit 256
+        # låg i humandatas TOMMA gap 169.3→208.0). 192 = korsningsenvelopen.
+        if outcome == "retreat" and min_dpit >= RETREAT_PIT_R:
             progressed = False               # ⇒ ev. axial-bokföring i stället
         if onto_ledge and progressed and side_ok and cur_grounded \
                 and outcome in ("lyckat", "ramla", "retreat"):
@@ -322,20 +332,39 @@ def _grounded(path: np.ndarray) -> np.ndarray:
 
 
 def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
-                 low_pred) -> tuple[int, int, list[dict]]:
+                 low_pred, dt: float = SAMPLE_DT,
+                 strict: bool = True) -> tuple[int, int, list[dict]]:
     """(försök, lyckade, events) för item-gates. Analyst-korrigerat (v1 räknade
     all korridortrafik som "försök", 95/96 RA-intervall var tele↔RA-nedre-
     passager): försök = besöksintervall som börjar lågt (low_pred) OCH där
     klättring PÅBÖRJAS (z stiger ≥ CLIMB_GAIN över intervallets entré-z);
     lyckat = pickupboxen nås (2D<60, dz i (−32,+80) = mänskligt touch-fönster).
-    events bär i0/i1 (besöksintervallet) för FP-klipp — räknelogiken orörd."""
+    events bär i0/i1 (besöksintervallet) för FP-klipp.
+    v7.3 (analyst_73G_review, underkände RA-claimet @7.35G som trappspring):
+    strict=True kräver dessutom dwell ≥ ITEM_DWELL_S i samtidighetsvillkoret
+    (dt-normerat: konsekutiva kvalificerande sampel × dt) ELLER max grundad
+    z ≥ entré+ITEM_HIGH_GAIN. Humankalibrering 619 RA-försök: snittmängden
+    (dwell<0.15 ∧ grundad<+150) är 0/619 — regeln har 100 % RA-retention.
+    strict=False = v7.2-semantik (1 sampel räcker); SNG-mega körs så tills
+    analytikern revaliderat regeln mot mega-korpusen (får EJ driftsättas innan)."""
     attempts = successes = 0
     events: list[dict] = []
     inside = False
     low = climbed_near = suc = False
     z_entry = 0.0
     i_enter = 0
+    run = max_run = 0          # konsekutiva samtidighetssampel (v7.3-dwell)
+    max_ground_gain = 0.0      # max grundad z − entré (v7.3-höjdgren)
     grounded = _grounded(path)
+
+    def _qualifies() -> bool:
+        if not (low and climbed_near):
+            return False
+        if not strict:
+            return True
+        return (max_run * dt >= ITEM_DWELL_S) or \
+               (max_ground_gain >= ITEM_HIGH_GAIN)
+
     for i, p in enumerate(path):
         d = _d2(p, item)
         if d < approach_r:
@@ -352,20 +381,26 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
             # @5.3G): samtidighetssamplet måste dessutom vara STÖTT — ep6:s
             # "klättring" var två kedjade bunnyhop-bågar in i NO-hörnsväggen
             # (apex z 67.8 luftburet; max stödd z i intervallet = entré+0).
-            # Människornas nerifrån-väg ger stödda platåer på entré+104..+136,
-            # så grundat +80 behåller 21/24 mänskliga positiva (analyst-mätt).
             if p[2] >= z_entry + CLIMB_GAIN and d < APPROACH_MIN and grounded[i]:
                 climbed_near = True
+                run += 1
+                max_run = max(max_run, run)
+            else:
+                run = 0
+            if grounded[i]:
+                max_ground_gain = max(max_ground_gain, p[2] - z_entry)
             if d < PICKUP_2D and \
                     PICKUP_DZ_LO < p[2] - item[2] < PICKUP_DZ_HI:
                 suc = True
         elif inside:
-            if low and climbed_near:
+            if _qualifies():
                 attempts += 1
                 successes += int(suc)
                 events.append({"i0": i_enter, "i1": i - 1, "lyckat": suc})
             inside, low, climbed_near, suc = False, False, False, False
-    if inside and low and climbed_near:
+            run = max_run = 0
+            max_ground_gain = 0.0
+    if inside and _qualifies():
         attempts += 1
         successes += int(suc)
         events.append({"i0": i_enter, "i1": len(path) - 1, "lyckat": suc})
@@ -397,9 +432,12 @@ def analyze(dump: dict, dt: float | None = None) -> dict:
             g["lyckade"] += int(ev["utfall"] == "lyckat")
             g["ramla"] += int(ev["utfall"] == "ramla")
             g["retreat"] += int(ev["utfall"] == "retreat")
-        a, s, _ = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0)
+        a, s, _ = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0,
+                               dt=dt, strict=True)
         ra_att += a; ra_suc += s
-        a, s, _ = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0)
+        # mega: v7.2-semantik tills analytikern revaliderat dwell-regeln (v7.3-spec)
+        a, s, _ = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0,
+                               dt=dt, strict=False)
         mega_att += a; mega_suc += s
     for name, g in rq.items():
         gates[name] = {**g, "nivå": _level(g["försök"], g["lyckade"])}
@@ -446,9 +484,11 @@ def main(argv=None):
                           f"{ev['hopp']} — {ev['utfall']}",
                           "axial" if ax else
                           ("godkänd" if ev["utfall"] == "lyckat" else "försök"))
-            for name, item, low in (("RA-tagningen", RA, lambda p: p[2] < 150.0),
-                                    ("SNG-mega", MEGA_SNG, lambda p: p[2] < 100.0)):
-                for ev in _item_events(path, item, 300.0, low)[2]:
+            for name, item, low, strict in (
+                    ("RA-tagningen", RA, lambda p: p[2] < 150.0, True),
+                    ("SNG-mega", MEGA_SNG, lambda p: p[2] < 100.0, False)):
+                for ev in _item_events(path, item, 300.0, low,
+                                       strict=strict)[2]:
                     utfall = "lyckat" if ev["lyckat"] else "misslyckat"
                     _add_clip(ei, path, ev["i0"], ev["i1"],
                               f"{name} — {utfall}",

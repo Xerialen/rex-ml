@@ -275,8 +275,10 @@ def test_jump_gate_airborne_overflight_is_axial():
 
 
 def test_jump_gate_retreat_requires_pit_exposure():
-    # v7.2 (analyst-review 9): retreat utan gropexponering (min dPit >= 260)
-    # är sidogolvscirkulation ⇒ inte gate-försök. Med exponering ⇒ gate-retreat.
+    # v7.2 (analyst-review 9): retreat utan gropexponering är sidogolvs-
+    # cirkulation ⇒ inte gate-försök. v7.3 (analyst_73G_review): tröskeln 192
+    # (korsningsenvelopen) — dPit i dörrtröskelgapet 192..260 räcker INTE
+    # (botens underkända NV-retreat @8.9G-proben låg på 256).
     from rl.jump_gates import PIT_2D, QUAD, RING, _d2, _side, analyze, ledge_centers
     nv = [p for p in ledge_centers() if _side(p) > 0
           and _d2(p, PIT_2D) > 280.0 and _d2(p, QUAD) > 270.0 and _d2(p, RING) > 270.0]
@@ -289,15 +291,53 @@ def test_jump_gate_retreat_requires_pit_exposure():
     loop = plat + walk + walk[::-1] + plat
     r1 = analyze({"episodes": [{"path": loop}]})
     assert r1["gates"]["quad→ring NV"]["försök"] == 0
-    # exponerad: samma loop + en dipp mot gropens innerkant (dPit 200, under bandet)
     import numpy as np
     m0 = np.array(mid[0][:2])
     u = (m0 - PIT_2D) / np.hypot(*(m0 - PIT_2D))
-    dip = PIT_2D + u * 200.0
-    expo = plat + walk + [[dip[0], dip[1], 30.0, 300]] + walk[::-1] + plat
-    r2 = analyze({"episodes": [{"path": expo}]})
-    g = r2["gates"]["quad→ring NV"]
+    # dörrtröskelzonen: dipp på dPit 200 (gamla bandet, i humandatas tomma gap)
+    # ⇒ INTE retreat i v7.3
+    dip200 = PIT_2D + u * 200.0
+    near = plat + walk + [[dip200[0], dip200[1], 30.0, 300]] + walk[::-1] + plat
+    r2 = analyze({"episodes": [{"path": near}]})
+    assert r2["gates"]["quad→ring NV"]["försök"] == 0
+    # genuint exponerad: dipp dPit 180 < RETREAT_PIT_R ⇒ gate-retreat
+    dip180 = PIT_2D + u * 180.0
+    expo = plat + walk + [[dip180[0], dip180[1], 30.0, 300]] + walk[::-1] + plat
+    r3 = analyze({"episodes": [{"path": expo}]})
+    g = r3["gates"]["quad→ring NV"]
     assert (g["försök"], g["retreat"]) == (1, 1)
+
+
+def test_jump_gate_item_single_sample_stair_sprint_rejected():
+    # v7.3 (analyst_73G_review, underkände RA-claimet @7.35G): ETT samtidighets-
+    # sampel på låg höjd (trappspring i full fart) kvalificerar inte — kräver
+    # dwell >= 0.15 s ELLER max grundad >= entré+130.
+    from rl.jump_gates import APPROACH_MIN, RA, analyze
+    x, y = float(RA[0]), float(RA[1])
+    ent = 0.0
+    # sprint: in lågt, passerar en +104-avsats med EXAKT ett kvalificerande
+    # sampel (grundat kräver z-stabilitet: 3 sampel på samma z), vidare ut
+    plat104 = [[x, y + 116, 104.0, 300]] * 3          # d2 116 < APPROACH_MIN
+    path = [[x, y - 280, ent, 300]] * 4 + \
+           [[x, y - 150, ent, 300]] * 2 + plat104 + \
+           [[x, y - 150, ent, 300]] * 2 + [[x, y - 350, ent, 300]] * 3
+    res = analyze({"episodes": [{"path": path}]})
+    assert res["gates"]["RA-tagningen"]["försök"] == 0
+
+
+def test_jump_gate_item_dwell_qualifies():
+    # v7.3: samma lågklättring men med dwell >= 0.15 s (>=6 sampel @26 ms)
+    # i samtidighetsvillkoret ⇒ försök (ej lyckat — pickup nås ej).
+    from rl.jump_gates import RA, analyze
+    x, y = float(RA[0]), float(RA[1])
+    ent = 0.0
+    plat104 = [[x, y + 116, 104.0, 300]] * 8          # 8 sampel: 6 grundade
+    path = [[x, y - 280, ent, 300]] * 4 + \
+           [[x, y - 150, ent, 300]] * 2 + plat104 + \
+           [[x, y - 150, ent, 300]] * 2 + [[x, y - 350, ent, 300]] * 3
+    res = analyze({"episodes": [{"path": path}]})
+    g = res["gates"]["RA-tagningen"]
+    assert (g["försök"], g["lyckade"]) == (1, 0)
 
 
 def test_jump_gate_item_apex_quasi_stable_not_grounded():
