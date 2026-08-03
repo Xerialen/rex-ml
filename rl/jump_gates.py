@@ -344,9 +344,11 @@ def _item_events(path: np.ndarray, item: np.ndarray, approach_r: float,
     strict=True kräver dessutom dwell ≥ ITEM_DWELL_S i samtidighetsvillkoret
     (dt-normerat: konsekutiva kvalificerande sampel × dt) ELLER max grundad
     z ≥ entré+ITEM_HIGH_GAIN. Humankalibrering 619 RA-försök: snittmängden
-    (dwell<0.15 ∧ grundad<+150) är 0/619 — regeln har 100 % RA-retention.
-    strict=False = v7.2-semantik (1 sampel räcker); SNG-mega körs så tills
-    analytikern revaliderat regeln mot mega-korpusen (får EJ driftsättas innan)."""
+    (dwell<0.15 ∧ grundad<+150) är 0/619 — RA-retention 618/619 (den fällda är
+    en genuin loiterer; analystens bevakningspunkt: dwell räknar KONSEKUTIVA
+    sampel, kalibreringen räknade totala — accepterat som konservativt).
+    SNG-mega: strict=True driftsatt efter fullkorpusrevalidering (248/248
+    lyckade retained, se analyst_v73_baseline.md). strict=False = v7.2-semantik."""
     attempts = successes = 0
     events: list[dict] = []
     inside = False
@@ -435,9 +437,11 @@ def analyze(dump: dict, dt: float | None = None) -> dict:
         a, s, _ = _item_events(path, RA, 300.0, lambda p: p[2] < 150.0,
                                dt=dt, strict=True)
         ra_att += a; ra_suc += s
-        # mega: v7.2-semantik tills analytikern revaliderat dwell-regeln (v7.3-spec)
+        # mega strict=True driftsatt efter analystens fullkorpusrevalidering
+        # (analyst_v73_baseline.md: 248/248 lyckade retained; 21 fällda missar =
+        # gångbrogenomfart z<=112, mänskliga trappspringanalogen)
         a, s, _ = _item_events(path, MEGA_SNG, 300.0, lambda p: p[2] < 100.0,
-                               dt=dt, strict=False)
+                               dt=dt, strict=True)
         mega_att += a; mega_suc += s
     for name, g in rq.items():
         gates[name] = {**g, "nivå": _level(g["försök"], g["lyckade"])}
@@ -484,11 +488,11 @@ def main(argv=None):
                           f"{ev['hopp']} — {ev['utfall']}",
                           "axial" if ax else
                           ("godkänd" if ev["utfall"] == "lyckat" else "försök"))
-            for name, item, low, strict in (
-                    ("RA-tagningen", RA, lambda p: p[2] < 150.0, True),
-                    ("SNG-mega", MEGA_SNG, lambda p: p[2] < 100.0, False)):
+            for name, item, low in (
+                    ("RA-tagningen", RA, lambda p: p[2] < 150.0),
+                    ("SNG-mega", MEGA_SNG, lambda p: p[2] < 100.0)):
                 for ev in _item_events(path, item, 300.0, low,
-                                       strict=strict)[2]:
+                                       strict=True)[2]:
                     utfall = "lyckat" if ev["lyckat"] else "misslyckat"
                     _add_clip(ei, path, ev["i0"], ev["i1"],
                               f"{name} — {utfall}",
